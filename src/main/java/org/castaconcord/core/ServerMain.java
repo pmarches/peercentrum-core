@@ -19,10 +19,10 @@ import org.slf4j.LoggerFactory;
 public class ServerMain implements Runnable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServerMain.class);
 	
-	Config config;
+	TopLevelConfig config;
 	NetworkServer server;
 
-	public ServerMain(Config configNode) {
+	public ServerMain(TopLevelConfig configNode) {
 		this.config=configNode;
 	}
 
@@ -31,7 +31,7 @@ public class ServerMain implements Runnable {
 			System.err.println("Usage : "+ServerMain.class.getSimpleName()+" <configFile.yaml>");
 			return;
 		}
-		Config config = Config.loadFromFile(new File(args[0]));
+		TopLevelConfig config = TopLevelConfig.loadFromFile(new File(args[0]));
 		config.setEnableNAT(true);
 		ServerMain serverMain = new ServerMain(config);
 		serverMain.run();

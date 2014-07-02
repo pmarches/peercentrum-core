@@ -117,7 +117,7 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 	}
 
 	public void bootstrapGossiping() throws Exception {
-		Config topConfig=clientOrServer.getConfig();
+		TopLevelConfig topConfig=clientOrServer.getConfig();
 		NodeGossipConfig gossipConfig=(NodeGossipConfig) topConfig.getAppConfig(NodeGossipConfig.class);
 		if(gossipConfig.getBootstrapEndpoint()!=null){
 			LOGGER.info("Starting bootstrap with {}", gossipConfig.getBootstrapEndpoint());

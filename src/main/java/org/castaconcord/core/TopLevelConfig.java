@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.yaml.snakeyaml.Yaml;
 
-public class Config {
+public class TopLevelConfig {
 	File directoryOfConfigFile;	
 
 	String nodeIdentifier; //FIXME Temporary, should be derived from the private key...
@@ -15,9 +15,9 @@ public class Config {
 	List<?> applications;
 	boolean enableNAT=false;
 
-	public static Config loadFromFile(File file) throws Exception {
+	public static TopLevelConfig loadFromFile(File file) throws Exception {
 		Yaml yaml = new Yaml();
-		Config config= (Config) yaml.load(new FileInputStream(file));
+		TopLevelConfig config= (TopLevelConfig) yaml.load(new FileInputStream(file));
 		config.setBaseDirectory(file.getAbsoluteFile().getParentFile().getCanonicalFile());
 		return config;
 	}

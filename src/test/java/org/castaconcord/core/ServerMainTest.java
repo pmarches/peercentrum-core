@@ -8,7 +8,7 @@ public class ServerMainTest {
 
 	@Test
 	public void test() throws Exception {
-		Config configNode1=Config.loadFromFile(new File("-config.yaml"));
+		TopLevelConfig configNode1=TopLevelConfig.loadFromFile(new File("-config.yaml"));
 		configNode1.setNodeIdentifier("Node1");
 		configNode1.setListenPort(0);
 		configNode1.setEnableNAT(false);
@@ -17,7 +17,7 @@ public class ServerMainTest {
 		node1Gossipconfig.setBootstrapEndpoint(null);
 		node1.run();
 
-		Config configNode2=Config.loadFromFile(new File("-config.yaml"));
+		TopLevelConfig configNode2=TopLevelConfig.loadFromFile(new File("-config.yaml"));
 		configNode2.setNodeIdentifier("Node2");
 		configNode2.setListenPort(0);
 		configNode2.setEnableNAT(false);

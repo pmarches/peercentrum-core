@@ -11,7 +11,7 @@ public class ConfigTest {
 
 	@Test
 	public void test() throws Exception {
-		Config config = Config.loadFromFile(new File("-config.yaml"));
+		TopLevelConfig config = TopLevelConfig.loadFromFile(new File("-config.yaml"));
 		assertNotNull(config);
 		System.out.println(config);
 		assertEquals("Node1", config.getNodeIdentifier());

@@ -15,7 +15,7 @@ import java.net.InetSocketAddress;
 import java.util.Hashtable;
 
 import org.castaconcord.core.ApplicationIdentifier;
-import org.castaconcord.core.Config;
+import org.castaconcord.core.TopLevelConfig;
 import org.castaconcord.core.NodeDatabase;
 import org.castaconcord.core.NodeIdentifier;
 import org.slf4j.Logger;
@@ -27,7 +27,7 @@ public class NetworkServer extends NetworkClientOrServer {
 	DefaultEventExecutorGroup applicationWorkerGroup = new DefaultEventExecutorGroup(2);
 	NioEventLoopGroup nioWorkerGroup = new NioEventLoopGroup();
 	Channel bindChannel;
-	Config configuration;
+	TopLevelConfig configuration;
 	Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler> allApplicationHandler=new Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler>();
 	
 	ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
@@ -78,10 +78,10 @@ public class NetworkServer extends NetworkClientOrServer {
 		return allApplicationHandler.get(appIdReceived);
 	}
 
-	public void setConfig(Config config) {
+	public void setConfig(TopLevelConfig config) {
 		this.configuration=config;
 	}
-	public Config getConfig(){
+	public TopLevelConfig getConfig(){
 		return configuration;
 	}
 
