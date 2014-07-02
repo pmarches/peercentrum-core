@@ -8,7 +8,7 @@ public final class ProtocolBuffer {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface BazarroHeaderMessageOrBuilder
+  public interface HeaderMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional .castaconcord.SenderInformationMsg senderInfo = 1;
@@ -84,24 +84,24 @@ public final class ProtocolBuffer {
     int getApplicationSpecificStreamLength();
   }
   /**
-   * Protobuf type {@code castaconcord.BazarroHeaderMessage}
+   * Protobuf type {@code castaconcord.HeaderMessage}
    */
-  public static final class BazarroHeaderMessage extends
+  public static final class HeaderMessage extends
       com.google.protobuf.GeneratedMessage
-      implements BazarroHeaderMessageOrBuilder {
-    // Use BazarroHeaderMessage.newBuilder() to construct.
-    private BazarroHeaderMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HeaderMessageOrBuilder {
+    // Use HeaderMessage.newBuilder() to construct.
+    private HeaderMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private BazarroHeaderMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HeaderMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final BazarroHeaderMessage defaultInstance;
-    public static BazarroHeaderMessage getDefaultInstance() {
+    private static final HeaderMessage defaultInstance;
+    public static HeaderMessage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public BazarroHeaderMessage getDefaultInstanceForType() {
+    public HeaderMessage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -111,7 +111,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private BazarroHeaderMessage(
+    private HeaderMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -186,28 +186,28 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroHeaderMessage_descriptor;
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_HeaderMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroHeaderMessage_fieldAccessorTable
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_HeaderMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage.class, org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage.Builder.class);
+              org.castaconcord.core.ProtocolBuffer.HeaderMessage.class, org.castaconcord.core.ProtocolBuffer.HeaderMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BazarroHeaderMessage> PARSER =
-        new com.google.protobuf.AbstractParser<BazarroHeaderMessage>() {
-      public BazarroHeaderMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<HeaderMessage> PARSER =
+        new com.google.protobuf.AbstractParser<HeaderMessage>() {
+      public HeaderMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BazarroHeaderMessage(input, extensionRegistry);
+        return new HeaderMessage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BazarroHeaderMessage> getParserForType() {
+    public com.google.protobuf.Parser<HeaderMessage> getParserForType() {
       return PARSER;
     }
 
@@ -405,53 +405,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseFrom(byte[] data)
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseDelimitedFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseDelimitedFrom(
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.HeaderMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -460,7 +460,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage prototype) {
+    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.HeaderMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -472,24 +472,24 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroHeaderMessage}
+     * Protobuf type {@code castaconcord.HeaderMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessageOrBuilder {
+       implements org.castaconcord.core.ProtocolBuffer.HeaderMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroHeaderMessage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_HeaderMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroHeaderMessage_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_HeaderMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage.class, org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.HeaderMessage.class, org.castaconcord.core.ProtocolBuffer.HeaderMessage.Builder.class);
       }
 
-      // Construct using org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage.newBuilder()
+      // Construct using org.castaconcord.core.ProtocolBuffer.HeaderMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -535,23 +535,23 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroHeaderMessage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_HeaderMessage_descriptor;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage getDefaultInstanceForType() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage.getDefaultInstance();
+      public org.castaconcord.core.ProtocolBuffer.HeaderMessage getDefaultInstanceForType() {
+        return org.castaconcord.core.ProtocolBuffer.HeaderMessage.getDefaultInstance();
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage build() {
-        org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage result = buildPartial();
+      public org.castaconcord.core.ProtocolBuffer.HeaderMessage build() {
+        org.castaconcord.core.ProtocolBuffer.HeaderMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage buildPartial() {
-        org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage result = new org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage(this);
+      public org.castaconcord.core.ProtocolBuffer.HeaderMessage buildPartial() {
+        org.castaconcord.core.ProtocolBuffer.HeaderMessage result = new org.castaconcord.core.ProtocolBuffer.HeaderMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -588,16 +588,16 @@ public final class ProtocolBuffer {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage) {
-          return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage)other);
+        if (other instanceof org.castaconcord.core.ProtocolBuffer.HeaderMessage) {
+          return mergeFrom((org.castaconcord.core.ProtocolBuffer.HeaderMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage other) {
-        if (other == org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.HeaderMessage other) {
+        if (other == org.castaconcord.core.ProtocolBuffer.HeaderMessage.getDefaultInstance()) return this;
         if (other.hasSenderInfo()) {
           mergeSenderInfo(other.getSenderInfo());
         }
@@ -628,11 +628,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage parsedMessage = null;
+        org.castaconcord.core.ProtocolBuffer.HeaderMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage) e.getUnfinishedMessage();
+          parsedMessage = (org.castaconcord.core.ProtocolBuffer.HeaderMessage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -947,15 +947,15 @@ public final class ProtocolBuffer {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:castaconcord.BazarroHeaderMessage)
+      // @@protoc_insertion_point(builder_scope:castaconcord.HeaderMessage)
     }
 
     static {
-      defaultInstance = new BazarroHeaderMessage(true);
+      defaultInstance = new HeaderMessage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:castaconcord.BazarroHeaderMessage)
+    // @@protoc_insertion_point(class_scope:castaconcord.HeaderMessage)
   }
 
   public interface SenderInformationMsgOrBuilder
@@ -1900,38 +1900,38 @@ public final class ProtocolBuffer {
     // @@protoc_insertion_point(class_scope:castaconcord.SenderInformationMsg)
   }
 
-  public interface BazarroNetworkMessageOrBuilder
+  public interface NetworkMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;
+    // optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;
     /**
-     * <code>optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;</code>
+     * <code>optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;</code>
      */
     boolean hasOperation();
     /**
-     * <code>optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;</code>
+     * <code>optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;</code>
      */
-    org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation getOperation();
+    org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation getOperation();
   }
   /**
-   * Protobuf type {@code castaconcord.BazarroNetworkMessage}
+   * Protobuf type {@code castaconcord.NetworkMessage}
    */
-  public static final class BazarroNetworkMessage extends
+  public static final class NetworkMessage extends
       com.google.protobuf.GeneratedMessage
-      implements BazarroNetworkMessageOrBuilder {
-    // Use BazarroNetworkMessage.newBuilder() to construct.
-    private BazarroNetworkMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements NetworkMessageOrBuilder {
+    // Use NetworkMessage.newBuilder() to construct.
+    private NetworkMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private BazarroNetworkMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private NetworkMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final BazarroNetworkMessage defaultInstance;
-    public static BazarroNetworkMessage getDefaultInstance() {
+    private static final NetworkMessage defaultInstance;
+    public static NetworkMessage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public BazarroNetworkMessage getDefaultInstanceForType() {
+    public NetworkMessage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1941,7 +1941,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private BazarroNetworkMessage(
+    private NetworkMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1966,7 +1966,7 @@ public final class ProtocolBuffer {
             }
             case 8: {
               int rawValue = input.readEnum();
-              org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation value = org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation.valueOf(rawValue);
+              org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation value = org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -1989,33 +1989,33 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroNetworkMessage_descriptor;
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_NetworkMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroNetworkMessage_fieldAccessorTable
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_NetworkMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.class, org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.Builder.class);
+              org.castaconcord.core.ProtocolBuffer.NetworkMessage.class, org.castaconcord.core.ProtocolBuffer.NetworkMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BazarroNetworkMessage> PARSER =
-        new com.google.protobuf.AbstractParser<BazarroNetworkMessage>() {
-      public BazarroNetworkMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<NetworkMessage> PARSER =
+        new com.google.protobuf.AbstractParser<NetworkMessage>() {
+      public NetworkMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BazarroNetworkMessage(input, extensionRegistry);
+        return new NetworkMessage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BazarroNetworkMessage> getParserForType() {
+    public com.google.protobuf.Parser<NetworkMessage> getParserForType() {
       return PARSER;
     }
 
     /**
-     * Protobuf enum {@code castaconcord.BazarroNetworkMessage.NetworkOperation}
+     * Protobuf enum {@code castaconcord.NetworkMessage.NetworkOperation}
      */
     public enum NetworkOperation
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -2080,7 +2080,7 @@ public final class ProtocolBuffer {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.getDescriptor().getEnumTypes().get(0);
+        return org.castaconcord.core.ProtocolBuffer.NetworkMessage.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final NetworkOperation[] VALUES = values();
@@ -2102,28 +2102,28 @@ public final class ProtocolBuffer {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:castaconcord.BazarroNetworkMessage.NetworkOperation)
+      // @@protoc_insertion_point(enum_scope:castaconcord.NetworkMessage.NetworkOperation)
     }
 
     private int bitField0_;
-    // optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;
+    // optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;
     public static final int OPERATION_FIELD_NUMBER = 1;
-    private org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation operation_;
+    private org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation operation_;
     /**
-     * <code>optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;</code>
+     * <code>optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;</code>
      */
     public boolean hasOperation() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;</code>
+     * <code>optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;</code>
      */
-    public org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation getOperation() {
+    public org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation getOperation() {
       return operation_;
     }
 
     private void initFields() {
-      operation_ = org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation.CLOSE_CONNECTION;
+      operation_ = org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation.CLOSE_CONNECTION;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2165,53 +2165,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseFrom(byte[] data)
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseDelimitedFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseDelimitedFrom(
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.NetworkMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2220,7 +2220,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage prototype) {
+    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.NetworkMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -2232,24 +2232,24 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroNetworkMessage}
+     * Protobuf type {@code castaconcord.NetworkMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessageOrBuilder {
+       implements org.castaconcord.core.ProtocolBuffer.NetworkMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroNetworkMessage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_NetworkMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroNetworkMessage_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_NetworkMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.class, org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.NetworkMessage.class, org.castaconcord.core.ProtocolBuffer.NetworkMessage.Builder.class);
       }
 
-      // Construct using org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.newBuilder()
+      // Construct using org.castaconcord.core.ProtocolBuffer.NetworkMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2269,7 +2269,7 @@ public final class ProtocolBuffer {
 
       public Builder clear() {
         super.clear();
-        operation_ = org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation.CLOSE_CONNECTION;
+        operation_ = org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation.CLOSE_CONNECTION;
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -2280,23 +2280,23 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroNetworkMessage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_NetworkMessage_descriptor;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage getDefaultInstanceForType() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.getDefaultInstance();
+      public org.castaconcord.core.ProtocolBuffer.NetworkMessage getDefaultInstanceForType() {
+        return org.castaconcord.core.ProtocolBuffer.NetworkMessage.getDefaultInstance();
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage build() {
-        org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage result = buildPartial();
+      public org.castaconcord.core.ProtocolBuffer.NetworkMessage build() {
+        org.castaconcord.core.ProtocolBuffer.NetworkMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage buildPartial() {
-        org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage result = new org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage(this);
+      public org.castaconcord.core.ProtocolBuffer.NetworkMessage buildPartial() {
+        org.castaconcord.core.ProtocolBuffer.NetworkMessage result = new org.castaconcord.core.ProtocolBuffer.NetworkMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2309,16 +2309,16 @@ public final class ProtocolBuffer {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage) {
-          return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage)other);
+        if (other instanceof org.castaconcord.core.ProtocolBuffer.NetworkMessage) {
+          return mergeFrom((org.castaconcord.core.ProtocolBuffer.NetworkMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage other) {
-        if (other == org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.NetworkMessage other) {
+        if (other == org.castaconcord.core.ProtocolBuffer.NetworkMessage.getDefaultInstance()) return this;
         if (other.hasOperation()) {
           setOperation(other.getOperation());
         }
@@ -2334,11 +2334,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage parsedMessage = null;
+        org.castaconcord.core.ProtocolBuffer.NetworkMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage) e.getUnfinishedMessage();
+          parsedMessage = (org.castaconcord.core.ProtocolBuffer.NetworkMessage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2349,24 +2349,24 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;
-      private org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation operation_ = org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation.CLOSE_CONNECTION;
+      // optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;
+      private org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation operation_ = org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation.CLOSE_CONNECTION;
       /**
-       * <code>optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;</code>
+       * <code>optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;</code>
        */
       public boolean hasOperation() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;</code>
+       * <code>optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation getOperation() {
+      public org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation getOperation() {
         return operation_;
       }
       /**
-       * <code>optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;</code>
+       * <code>optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;</code>
        */
-      public Builder setOperation(org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation value) {
+      public Builder setOperation(org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2376,80 +2376,80 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroNetworkMessage.NetworkOperation operation = 1;</code>
+       * <code>optional .castaconcord.NetworkMessage.NetworkOperation operation = 1;</code>
        */
       public Builder clearOperation() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        operation_ = org.castaconcord.core.ProtocolBuffer.BazarroNetworkMessage.NetworkOperation.CLOSE_CONNECTION;
+        operation_ = org.castaconcord.core.ProtocolBuffer.NetworkMessage.NetworkOperation.CLOSE_CONNECTION;
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:castaconcord.BazarroNetworkMessage)
+      // @@protoc_insertion_point(builder_scope:castaconcord.NetworkMessage)
     }
 
     static {
-      defaultInstance = new BazarroNetworkMessage(true);
+      defaultInstance = new NetworkMessage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:castaconcord.BazarroNetworkMessage)
+    // @@protoc_insertion_point(class_scope:castaconcord.NetworkMessage)
   }
 
-  public interface BazarroGossipMessageOrBuilder
+  public interface GossipMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;
+    // optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;
     /**
-     * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+     * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
      */
     boolean hasRequestMorePeers();
     /**
-     * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+     * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
      */
-    org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers getRequestMorePeers();
+    org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers getRequestMorePeers();
     /**
-     * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+     * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
      */
-    org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeersOrBuilder getRequestMorePeersOrBuilder();
+    org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeersOrBuilder getRequestMorePeersOrBuilder();
 
-    // optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;
+    // optional .castaconcord.GossipReplyMorePeers reply = 2;
     /**
-     * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+     * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
      */
     boolean hasReply();
     /**
-     * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+     * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
      */
-    org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers getReply();
+    org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers getReply();
     /**
-     * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+     * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
      */
-    org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeersOrBuilder getReplyOrBuilder();
+    org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeersOrBuilder getReplyOrBuilder();
   }
   /**
-   * Protobuf type {@code castaconcord.BazarroGossipMessage}
+   * Protobuf type {@code castaconcord.GossipMessage}
    *
    * <pre>
    *Gossip application
    * </pre>
    */
-  public static final class BazarroGossipMessage extends
+  public static final class GossipMessage extends
       com.google.protobuf.GeneratedMessage
-      implements BazarroGossipMessageOrBuilder {
-    // Use BazarroGossipMessage.newBuilder() to construct.
-    private BazarroGossipMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GossipMessageOrBuilder {
+    // Use GossipMessage.newBuilder() to construct.
+    private GossipMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private BazarroGossipMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private GossipMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final BazarroGossipMessage defaultInstance;
-    public static BazarroGossipMessage getDefaultInstance() {
+    private static final GossipMessage defaultInstance;
+    public static GossipMessage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public BazarroGossipMessage getDefaultInstanceForType() {
+    public GossipMessage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -2459,7 +2459,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private BazarroGossipMessage(
+    private GossipMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2483,11 +2483,11 @@ public final class ProtocolBuffer {
               break;
             }
             case 10: {
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.Builder subBuilder = null;
+              org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = requestMorePeers_.toBuilder();
               }
-              requestMorePeers_ = input.readMessage(org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.PARSER, extensionRegistry);
+              requestMorePeers_ = input.readMessage(org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(requestMorePeers_);
                 requestMorePeers_ = subBuilder.buildPartial();
@@ -2496,11 +2496,11 @@ public final class ProtocolBuffer {
               break;
             }
             case 18: {
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.Builder subBuilder = null;
+              org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = reply_.toBuilder();
               }
-              reply_ = input.readMessage(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PARSER, extensionRegistry);
+              reply_ = input.readMessage(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(reply_);
                 reply_ = subBuilder.buildPartial();
@@ -2522,79 +2522,79 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipMessage_descriptor;
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipMessage_fieldAccessorTable
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage.Builder.class);
+              org.castaconcord.core.ProtocolBuffer.GossipMessage.class, org.castaconcord.core.ProtocolBuffer.GossipMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BazarroGossipMessage> PARSER =
-        new com.google.protobuf.AbstractParser<BazarroGossipMessage>() {
-      public BazarroGossipMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<GossipMessage> PARSER =
+        new com.google.protobuf.AbstractParser<GossipMessage>() {
+      public GossipMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BazarroGossipMessage(input, extensionRegistry);
+        return new GossipMessage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BazarroGossipMessage> getParserForType() {
+    public com.google.protobuf.Parser<GossipMessage> getParserForType() {
       return PARSER;
     }
 
     private int bitField0_;
-    // optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;
+    // optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;
     public static final int REQUESTMOREPEERS_FIELD_NUMBER = 1;
-    private org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers requestMorePeers_;
+    private org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers requestMorePeers_;
     /**
-     * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+     * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
      */
     public boolean hasRequestMorePeers() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+     * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
      */
-    public org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers getRequestMorePeers() {
+    public org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers getRequestMorePeers() {
       return requestMorePeers_;
     }
     /**
-     * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+     * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
      */
-    public org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeersOrBuilder getRequestMorePeersOrBuilder() {
+    public org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeersOrBuilder getRequestMorePeersOrBuilder() {
       return requestMorePeers_;
     }
 
-    // optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;
+    // optional .castaconcord.GossipReplyMorePeers reply = 2;
     public static final int REPLY_FIELD_NUMBER = 2;
-    private org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers reply_;
+    private org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers reply_;
     /**
-     * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+     * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
      */
     public boolean hasReply() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+     * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
      */
-    public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers getReply() {
+    public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers getReply() {
       return reply_;
     }
     /**
-     * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+     * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
      */
-    public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeersOrBuilder getReplyOrBuilder() {
+    public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeersOrBuilder getReplyOrBuilder() {
       return reply_;
     }
 
     private void initFields() {
-      requestMorePeers_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.getDefaultInstance();
-      reply_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.getDefaultInstance();
+      requestMorePeers_ = org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.getDefaultInstance();
+      reply_ = org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2643,53 +2643,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseFrom(byte[] data)
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseDelimitedFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseDelimitedFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2698,7 +2698,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage prototype) {
+    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.GossipMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -2710,7 +2710,7 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroGossipMessage}
+     * Protobuf type {@code castaconcord.GossipMessage}
      *
      * <pre>
      *Gossip application
@@ -2718,20 +2718,20 @@ public final class ProtocolBuffer {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.castaconcord.core.ProtocolBuffer.BazarroGossipMessageOrBuilder {
+       implements org.castaconcord.core.ProtocolBuffer.GossipMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipMessage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipMessage_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.GossipMessage.class, org.castaconcord.core.ProtocolBuffer.GossipMessage.Builder.class);
       }
 
-      // Construct using org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage.newBuilder()
+      // Construct using org.castaconcord.core.ProtocolBuffer.GossipMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2754,13 +2754,13 @@ public final class ProtocolBuffer {
       public Builder clear() {
         super.clear();
         if (requestMorePeersBuilder_ == null) {
-          requestMorePeers_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.getDefaultInstance();
+          requestMorePeers_ = org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.getDefaultInstance();
         } else {
           requestMorePeersBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         if (replyBuilder_ == null) {
-          reply_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.getDefaultInstance();
+          reply_ = org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.getDefaultInstance();
         } else {
           replyBuilder_.clear();
         }
@@ -2774,23 +2774,23 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipMessage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipMessage_descriptor;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage getDefaultInstanceForType() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage.getDefaultInstance();
+      public org.castaconcord.core.ProtocolBuffer.GossipMessage getDefaultInstanceForType() {
+        return org.castaconcord.core.ProtocolBuffer.GossipMessage.getDefaultInstance();
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage build() {
-        org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage result = buildPartial();
+      public org.castaconcord.core.ProtocolBuffer.GossipMessage build() {
+        org.castaconcord.core.ProtocolBuffer.GossipMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage buildPartial() {
-        org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage result = new org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage(this);
+      public org.castaconcord.core.ProtocolBuffer.GossipMessage buildPartial() {
+        org.castaconcord.core.ProtocolBuffer.GossipMessage result = new org.castaconcord.core.ProtocolBuffer.GossipMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2815,16 +2815,16 @@ public final class ProtocolBuffer {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage) {
-          return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage)other);
+        if (other instanceof org.castaconcord.core.ProtocolBuffer.GossipMessage) {
+          return mergeFrom((org.castaconcord.core.ProtocolBuffer.GossipMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage other) {
-        if (other == org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.GossipMessage other) {
+        if (other == org.castaconcord.core.ProtocolBuffer.GossipMessage.getDefaultInstance()) return this;
         if (other.hasRequestMorePeers()) {
           mergeRequestMorePeers(other.getRequestMorePeers());
         }
@@ -2843,11 +2843,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage parsedMessage = null;
+        org.castaconcord.core.ProtocolBuffer.GossipMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroGossipMessage) e.getUnfinishedMessage();
+          parsedMessage = (org.castaconcord.core.ProtocolBuffer.GossipMessage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2858,20 +2858,20 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;
-      private org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers requestMorePeers_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.getDefaultInstance();
+      // optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;
+      private org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers requestMorePeers_ = org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers, org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeersOrBuilder> requestMorePeersBuilder_;
+          org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers, org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeersOrBuilder> requestMorePeersBuilder_;
       /**
-       * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+       * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
        */
       public boolean hasRequestMorePeers() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+       * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers getRequestMorePeers() {
+      public org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers getRequestMorePeers() {
         if (requestMorePeersBuilder_ == null) {
           return requestMorePeers_;
         } else {
@@ -2879,9 +2879,9 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+       * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
        */
-      public Builder setRequestMorePeers(org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers value) {
+      public Builder setRequestMorePeers(org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers value) {
         if (requestMorePeersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2895,10 +2895,10 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+       * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
        */
       public Builder setRequestMorePeers(
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.Builder builderForValue) {
+          org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.Builder builderForValue) {
         if (requestMorePeersBuilder_ == null) {
           requestMorePeers_ = builderForValue.build();
           onChanged();
@@ -2909,14 +2909,14 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+       * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
        */
-      public Builder mergeRequestMorePeers(org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers value) {
+      public Builder mergeRequestMorePeers(org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers value) {
         if (requestMorePeersBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              requestMorePeers_ != org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.getDefaultInstance()) {
+              requestMorePeers_ != org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.getDefaultInstance()) {
             requestMorePeers_ =
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.newBuilder(requestMorePeers_).mergeFrom(value).buildPartial();
+              org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.newBuilder(requestMorePeers_).mergeFrom(value).buildPartial();
           } else {
             requestMorePeers_ = value;
           }
@@ -2928,11 +2928,11 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+       * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
        */
       public Builder clearRequestMorePeers() {
         if (requestMorePeersBuilder_ == null) {
-          requestMorePeers_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.getDefaultInstance();
+          requestMorePeers_ = org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.getDefaultInstance();
           onChanged();
         } else {
           requestMorePeersBuilder_.clear();
@@ -2941,17 +2941,17 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+       * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.Builder getRequestMorePeersBuilder() {
+      public org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.Builder getRequestMorePeersBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
         return getRequestMorePeersFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+       * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeersOrBuilder getRequestMorePeersOrBuilder() {
+      public org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeersOrBuilder getRequestMorePeersOrBuilder() {
         if (requestMorePeersBuilder_ != null) {
           return requestMorePeersBuilder_.getMessageOrBuilder();
         } else {
@@ -2959,14 +2959,14 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipRequestMorePeers requestMorePeers = 1;</code>
+       * <code>optional .castaconcord.GossipRequestMorePeers requestMorePeers = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers, org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeersOrBuilder> 
+          org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers, org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeersOrBuilder> 
           getRequestMorePeersFieldBuilder() {
         if (requestMorePeersBuilder_ == null) {
           requestMorePeersBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers, org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeersOrBuilder>(
+              org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers, org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeersOrBuilder>(
                   requestMorePeers_,
                   getParentForChildren(),
                   isClean());
@@ -2975,20 +2975,20 @@ public final class ProtocolBuffer {
         return requestMorePeersBuilder_;
       }
 
-      // optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;
-      private org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers reply_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.getDefaultInstance();
+      // optional .castaconcord.GossipReplyMorePeers reply = 2;
+      private org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers reply_ = org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeersOrBuilder> replyBuilder_;
+          org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeersOrBuilder> replyBuilder_;
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
        */
       public boolean hasReply() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers getReply() {
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers getReply() {
         if (replyBuilder_ == null) {
           return reply_;
         } else {
@@ -2996,9 +2996,9 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
        */
-      public Builder setReply(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers value) {
+      public Builder setReply(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers value) {
         if (replyBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3012,10 +3012,10 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
        */
       public Builder setReply(
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.Builder builderForValue) {
+          org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.Builder builderForValue) {
         if (replyBuilder_ == null) {
           reply_ = builderForValue.build();
           onChanged();
@@ -3026,14 +3026,14 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
        */
-      public Builder mergeReply(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers value) {
+      public Builder mergeReply(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers value) {
         if (replyBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              reply_ != org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.getDefaultInstance()) {
+              reply_ != org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.getDefaultInstance()) {
             reply_ =
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.newBuilder(reply_).mergeFrom(value).buildPartial();
+              org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.newBuilder(reply_).mergeFrom(value).buildPartial();
           } else {
             reply_ = value;
           }
@@ -3045,11 +3045,11 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
        */
       public Builder clearReply() {
         if (replyBuilder_ == null) {
-          reply_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.getDefaultInstance();
+          reply_ = org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.getDefaultInstance();
           onChanged();
         } else {
           replyBuilder_.clear();
@@ -3058,17 +3058,17 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.Builder getReplyBuilder() {
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.Builder getReplyBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getReplyFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeersOrBuilder getReplyOrBuilder() {
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeersOrBuilder getReplyOrBuilder() {
         if (replyBuilder_ != null) {
           return replyBuilder_.getMessageOrBuilder();
         } else {
@@ -3076,14 +3076,14 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers reply = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers reply = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeersOrBuilder> 
+          org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeersOrBuilder> 
           getReplyFieldBuilder() {
         if (replyBuilder_ == null) {
           replyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeersOrBuilder>(
+              org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.Builder, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeersOrBuilder>(
                   reply_,
                   getParentForChildren(),
                   isClean());
@@ -3092,18 +3092,18 @@ public final class ProtocolBuffer {
         return replyBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:castaconcord.BazarroGossipMessage)
+      // @@protoc_insertion_point(builder_scope:castaconcord.GossipMessage)
     }
 
     static {
-      defaultInstance = new BazarroGossipMessage(true);
+      defaultInstance = new GossipMessage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:castaconcord.BazarroGossipMessage)
+    // @@protoc_insertion_point(class_scope:castaconcord.GossipMessage)
   }
 
-  public interface BazarroGossipRequestMorePeersOrBuilder
+  public interface GossipRequestMorePeersOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // repeated bytes applicationsRequested = 1;
@@ -3133,24 +3133,24 @@ public final class ProtocolBuffer {
     com.google.protobuf.ByteString getApplicationsRequested(int index);
   }
   /**
-   * Protobuf type {@code castaconcord.BazarroGossipRequestMorePeers}
+   * Protobuf type {@code castaconcord.GossipRequestMorePeers}
    */
-  public static final class BazarroGossipRequestMorePeers extends
+  public static final class GossipRequestMorePeers extends
       com.google.protobuf.GeneratedMessage
-      implements BazarroGossipRequestMorePeersOrBuilder {
-    // Use BazarroGossipRequestMorePeers.newBuilder() to construct.
-    private BazarroGossipRequestMorePeers(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GossipRequestMorePeersOrBuilder {
+    // Use GossipRequestMorePeers.newBuilder() to construct.
+    private GossipRequestMorePeers(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private BazarroGossipRequestMorePeers(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private GossipRequestMorePeers(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final BazarroGossipRequestMorePeers defaultInstance;
-    public static BazarroGossipRequestMorePeers getDefaultInstance() {
+    private static final GossipRequestMorePeers defaultInstance;
+    public static GossipRequestMorePeers getDefaultInstance() {
       return defaultInstance;
     }
 
-    public BazarroGossipRequestMorePeers getDefaultInstanceForType() {
+    public GossipRequestMorePeers getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -3160,7 +3160,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private BazarroGossipRequestMorePeers(
+    private GossipRequestMorePeers(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3208,28 +3208,28 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipRequestMorePeers_descriptor;
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipRequestMorePeers_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipRequestMorePeers_fieldAccessorTable
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipRequestMorePeers_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.Builder.class);
+              org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.class, org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BazarroGossipRequestMorePeers> PARSER =
-        new com.google.protobuf.AbstractParser<BazarroGossipRequestMorePeers>() {
-      public BazarroGossipRequestMorePeers parsePartialFrom(
+    public static com.google.protobuf.Parser<GossipRequestMorePeers> PARSER =
+        new com.google.protobuf.AbstractParser<GossipRequestMorePeers>() {
+      public GossipRequestMorePeers parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BazarroGossipRequestMorePeers(input, extensionRegistry);
+        return new GossipRequestMorePeers(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BazarroGossipRequestMorePeers> getParserForType() {
+    public com.google.protobuf.Parser<GossipRequestMorePeers> getParserForType() {
       return PARSER;
     }
 
@@ -3316,53 +3316,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseFrom(byte[] data)
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseDelimitedFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseDelimitedFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3371,7 +3371,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers prototype) {
+    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -3383,24 +3383,24 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroGossipRequestMorePeers}
+     * Protobuf type {@code castaconcord.GossipRequestMorePeers}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeersOrBuilder {
+       implements org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeersOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipRequestMorePeers_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipRequestMorePeers_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipRequestMorePeers_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipRequestMorePeers_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.class, org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.Builder.class);
       }
 
-      // Construct using org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.newBuilder()
+      // Construct using org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3431,23 +3431,23 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipRequestMorePeers_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipRequestMorePeers_descriptor;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers getDefaultInstanceForType() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.getDefaultInstance();
+      public org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers getDefaultInstanceForType() {
+        return org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.getDefaultInstance();
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers build() {
-        org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers result = buildPartial();
+      public org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers build() {
+        org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers buildPartial() {
-        org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers result = new org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers(this);
+      public org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers buildPartial() {
+        org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers result = new org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers(this);
         int from_bitField0_ = bitField0_;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           applicationsRequested_ = java.util.Collections.unmodifiableList(applicationsRequested_);
@@ -3459,16 +3459,16 @@ public final class ProtocolBuffer {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers) {
-          return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers)other);
+        if (other instanceof org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers) {
+          return mergeFrom((org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers other) {
-        if (other == org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers other) {
+        if (other == org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers.getDefaultInstance()) return this;
         if (!other.applicationsRequested_.isEmpty()) {
           if (applicationsRequested_.isEmpty()) {
             applicationsRequested_ = other.applicationsRequested_;
@@ -3491,11 +3491,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers parsedMessage = null;
+        org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroGossipRequestMorePeers) e.getUnfinishedMessage();
+          parsedMessage = (org.castaconcord.core.ProtocolBuffer.GossipRequestMorePeers) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -3606,64 +3606,64 @@ public final class ProtocolBuffer {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:castaconcord.BazarroGossipRequestMorePeers)
+      // @@protoc_insertion_point(builder_scope:castaconcord.GossipRequestMorePeers)
     }
 
     static {
-      defaultInstance = new BazarroGossipRequestMorePeers(true);
+      defaultInstance = new GossipRequestMorePeers(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:castaconcord.BazarroGossipRequestMorePeers)
+    // @@protoc_insertion_point(class_scope:castaconcord.GossipRequestMorePeers)
   }
 
-  public interface BazarroGossipReplyMorePeersOrBuilder
+  public interface GossipReplyMorePeersOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;
+    // repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
-    java.util.List<org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint> 
+    java.util.List<org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint> 
         getPeersList();
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
-    org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint getPeers(int index);
+    org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint getPeers(int index);
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
     int getPeersCount();
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
-    java.util.List<? extends org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder> 
+    java.util.List<? extends org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder> 
         getPeersOrBuilderList();
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
-    org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder getPeersOrBuilder(
+    org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder getPeersOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code castaconcord.BazarroGossipReplyMorePeers}
+   * Protobuf type {@code castaconcord.GossipReplyMorePeers}
    */
-  public static final class BazarroGossipReplyMorePeers extends
+  public static final class GossipReplyMorePeers extends
       com.google.protobuf.GeneratedMessage
-      implements BazarroGossipReplyMorePeersOrBuilder {
-    // Use BazarroGossipReplyMorePeers.newBuilder() to construct.
-    private BazarroGossipReplyMorePeers(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GossipReplyMorePeersOrBuilder {
+    // Use GossipReplyMorePeers.newBuilder() to construct.
+    private GossipReplyMorePeers(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private BazarroGossipReplyMorePeers(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private GossipReplyMorePeers(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final BazarroGossipReplyMorePeers defaultInstance;
-    public static BazarroGossipReplyMorePeers getDefaultInstance() {
+    private static final GossipReplyMorePeers defaultInstance;
+    public static GossipReplyMorePeers getDefaultInstance() {
       return defaultInstance;
     }
 
-    public BazarroGossipReplyMorePeers getDefaultInstanceForType() {
+    public GossipReplyMorePeers getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -3673,7 +3673,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private BazarroGossipReplyMorePeers(
+    private GossipReplyMorePeers(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3698,10 +3698,10 @@ public final class ProtocolBuffer {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                peers_ = new java.util.ArrayList<org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint>();
+                peers_ = new java.util.ArrayList<org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              peers_.add(input.readMessage(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.PARSER, extensionRegistry));
+              peers_.add(input.readMessage(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.PARSER, extensionRegistry));
               break;
             }
           }
@@ -3721,28 +3721,28 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_descriptor;
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_fieldAccessorTable
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.Builder.class);
+              org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.class, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BazarroGossipReplyMorePeers> PARSER =
-        new com.google.protobuf.AbstractParser<BazarroGossipReplyMorePeers>() {
-      public BazarroGossipReplyMorePeers parsePartialFrom(
+    public static com.google.protobuf.Parser<GossipReplyMorePeers> PARSER =
+        new com.google.protobuf.AbstractParser<GossipReplyMorePeers>() {
+      public GossipReplyMorePeers parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BazarroGossipReplyMorePeers(input, extensionRegistry);
+        return new GossipReplyMorePeers(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BazarroGossipReplyMorePeers> getParserForType() {
+    public com.google.protobuf.Parser<GossipReplyMorePeers> getParserForType() {
       return PARSER;
     }
 
@@ -3759,22 +3759,22 @@ public final class ProtocolBuffer {
        */
       com.google.protobuf.ByteString getIdentity();
 
-      // optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;
+      // optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
        */
       boolean hasIpEndpoint();
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
        */
-      org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint getIpEndpoint();
+      org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint getIpEndpoint();
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
        */
-      org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder getIpEndpointOrBuilder();
+      org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder getIpEndpointOrBuilder();
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint}
+     * Protobuf type {@code castaconcord.GossipReplyMorePeers.PeerEndpoint}
      */
     public static final class PeerEndpoint extends
         com.google.protobuf.GeneratedMessage
@@ -3830,11 +3830,11 @@ public final class ProtocolBuffer {
                 break;
               }
               case 18: {
-                org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder subBuilder = null;
+                org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder subBuilder = null;
                 if (((bitField0_ & 0x00000002) == 0x00000002)) {
                   subBuilder = ipEndpoint_.toBuilder();
                 }
-                ipEndpoint_ = input.readMessage(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.PARSER, extensionRegistry);
+                ipEndpoint_ = input.readMessage(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.PARSER, extensionRegistry);
                 if (subBuilder != null) {
                   subBuilder.mergeFrom(ipEndpoint_);
                   ipEndpoint_ = subBuilder.buildPartial();
@@ -3856,14 +3856,14 @@ public final class ProtocolBuffer {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.class, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder.class);
       }
 
       public static com.google.protobuf.Parser<PeerEndpoint> PARSER =
@@ -3910,7 +3910,7 @@ public final class ProtocolBuffer {
         int getPort();
       }
       /**
-       * Protobuf type {@code castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint}
+       * Protobuf type {@code castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint}
        */
       public static final class IPEndpoint extends
           com.google.protobuf.GeneratedMessage
@@ -3984,14 +3984,14 @@ public final class ProtocolBuffer {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
+          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable
+          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder.class);
+                  org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.class, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder.class);
         }
 
         public static com.google.protobuf.Parser<IPEndpoint> PARSER =
@@ -4120,53 +4120,53 @@ public final class ProtocolBuffer {
           return super.writeReplace();
         }
 
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(byte[] data)
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(java.io.InputStream input)
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(java.io.InputStream input)
             throws java.io.IOException {
           return PARSER.parseFrom(input);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return PARSER.parseFrom(input, extensionRegistry);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseDelimitedFrom(java.io.InputStream input)
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
           return PARSER.parseDelimitedFrom(input);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseDelimitedFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
           return PARSER.parseFrom(input);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -4175,7 +4175,7 @@ public final class ProtocolBuffer {
 
         public static Builder newBuilder() { return Builder.create(); }
         public Builder newBuilderForType() { return newBuilder(); }
-        public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint prototype) {
+        public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint prototype) {
           return newBuilder().mergeFrom(prototype);
         }
         public Builder toBuilder() { return newBuilder(this); }
@@ -4187,24 +4187,24 @@ public final class ProtocolBuffer {
           return builder;
         }
         /**
-         * Protobuf type {@code castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint}
+         * Protobuf type {@code castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint}
          */
         public static final class Builder extends
             com.google.protobuf.GeneratedMessage.Builder<Builder>
-           implements org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder {
+           implements org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
               getDescriptor() {
-            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
+            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
           }
 
           protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
               internalGetFieldAccessorTable() {
-            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable
+            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                    org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder.class);
+                    org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.class, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder.class);
           }
 
-          // Construct using org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.newBuilder()
+          // Construct using org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.newBuilder()
           private Builder() {
             maybeForceBuilderInitialization();
           }
@@ -4237,23 +4237,23 @@ public final class ProtocolBuffer {
 
           public com.google.protobuf.Descriptors.Descriptor
               getDescriptorForType() {
-            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
+            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
           }
 
-          public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint getDefaultInstanceForType() {
-            return org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
+          public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint getDefaultInstanceForType() {
+            return org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
           }
 
-          public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint build() {
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint result = buildPartial();
+          public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint build() {
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint result = buildPartial();
             if (!result.isInitialized()) {
               throw newUninitializedMessageException(result);
             }
             return result;
           }
 
-          public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint buildPartial() {
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint result = new org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint(this);
+          public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint buildPartial() {
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint result = new org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint(this);
             int from_bitField0_ = bitField0_;
             int to_bitField0_ = 0;
             if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4270,16 +4270,16 @@ public final class ProtocolBuffer {
           }
 
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint) {
-              return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint)other);
+            if (other instanceof org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint) {
+              return mergeFrom((org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint other) {
-            if (other == org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance()) return this;
+          public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint other) {
+            if (other == org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance()) return this;
             if (other.hasIpaddress()) {
               bitField0_ |= 0x00000001;
               ipaddress_ = other.ipaddress_;
@@ -4300,11 +4300,11 @@ public final class ProtocolBuffer {
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws java.io.IOException {
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint parsedMessage = null;
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint) e.getUnfinishedMessage();
+              parsedMessage = (org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint) e.getUnfinishedMessage();
               throw e;
             } finally {
               if (parsedMessage != null) {
@@ -4422,7 +4422,7 @@ public final class ProtocolBuffer {
             return this;
           }
 
-          // @@protoc_insertion_point(builder_scope:castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint)
+          // @@protoc_insertion_point(builder_scope:castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint)
         }
 
         static {
@@ -4430,7 +4430,7 @@ public final class ProtocolBuffer {
           defaultInstance.initFields();
         }
 
-        // @@protoc_insertion_point(class_scope:castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint)
+        // @@protoc_insertion_point(class_scope:castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint)
       }
 
       public interface TOREndpointOrBuilder
@@ -4452,7 +4452,7 @@ public final class ProtocolBuffer {
             getTORAddressBytes();
       }
       /**
-       * Protobuf type {@code castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint}
+       * Protobuf type {@code castaconcord.GossipReplyMorePeers.PeerEndpoint.TOREndpoint}
        */
       public static final class TOREndpoint extends
           com.google.protobuf.GeneratedMessage
@@ -4521,14 +4521,14 @@ public final class ProtocolBuffer {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
+          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable
+          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint.Builder.class);
+                  org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.class, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.Builder.class);
         }
 
         public static com.google.protobuf.Parser<TOREndpoint> PARSER =
@@ -4633,53 +4633,53 @@ public final class ProtocolBuffer {
           return super.writeReplace();
         }
 
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(byte[] data)
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(java.io.InputStream input)
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(java.io.InputStream input)
             throws java.io.IOException {
           return PARSER.parseFrom(input);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return PARSER.parseFrom(input, extensionRegistry);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseDelimitedFrom(java.io.InputStream input)
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
           return PARSER.parseDelimitedFrom(input);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseDelimitedFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return PARSER.parseDelimitedFrom(input, extensionRegistry);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
           return PARSER.parseFrom(input);
         }
-        public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
+        public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -4688,7 +4688,7 @@ public final class ProtocolBuffer {
 
         public static Builder newBuilder() { return Builder.create(); }
         public Builder newBuilderForType() { return newBuilder(); }
-        public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint prototype) {
+        public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint prototype) {
           return newBuilder().mergeFrom(prototype);
         }
         public Builder toBuilder() { return newBuilder(this); }
@@ -4700,24 +4700,24 @@ public final class ProtocolBuffer {
           return builder;
         }
         /**
-         * Protobuf type {@code castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint}
+         * Protobuf type {@code castaconcord.GossipReplyMorePeers.PeerEndpoint.TOREndpoint}
          */
         public static final class Builder extends
             com.google.protobuf.GeneratedMessage.Builder<Builder>
-           implements org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpointOrBuilder {
+           implements org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpointOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
               getDescriptor() {
-            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
+            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
           }
 
           protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
               internalGetFieldAccessorTable() {
-            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable
+            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                    org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint.Builder.class);
+                    org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.class, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.Builder.class);
           }
 
-          // Construct using org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint.newBuilder()
+          // Construct using org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.newBuilder()
           private Builder() {
             maybeForceBuilderInitialization();
           }
@@ -4748,23 +4748,23 @@ public final class ProtocolBuffer {
 
           public com.google.protobuf.Descriptors.Descriptor
               getDescriptorForType() {
-            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
+            return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
           }
 
-          public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint getDefaultInstanceForType() {
-            return org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint.getDefaultInstance();
+          public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint getDefaultInstanceForType() {
+            return org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.getDefaultInstance();
           }
 
-          public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint build() {
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint result = buildPartial();
+          public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint build() {
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint result = buildPartial();
             if (!result.isInitialized()) {
               throw newUninitializedMessageException(result);
             }
             return result;
           }
 
-          public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint buildPartial() {
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint result = new org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint(this);
+          public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint buildPartial() {
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint result = new org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint(this);
             int from_bitField0_ = bitField0_;
             int to_bitField0_ = 0;
             if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4777,16 +4777,16 @@ public final class ProtocolBuffer {
           }
 
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint) {
-              return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint)other);
+            if (other instanceof org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint) {
+              return mergeFrom((org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint other) {
-            if (other == org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint.getDefaultInstance()) return this;
+          public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint other) {
+            if (other == org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.getDefaultInstance()) return this;
             if (other.hasTORAddress()) {
               bitField0_ |= 0x00000001;
               tORAddress_ = other.tORAddress_;
@@ -4804,11 +4804,11 @@ public final class ProtocolBuffer {
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws java.io.IOException {
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint parsedMessage = null;
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint) e.getUnfinishedMessage();
+              parsedMessage = (org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.TOREndpoint) e.getUnfinishedMessage();
               throw e;
             } finally {
               if (parsedMessage != null) {
@@ -4893,7 +4893,7 @@ public final class ProtocolBuffer {
             return this;
           }
 
-          // @@protoc_insertion_point(builder_scope:castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint)
+          // @@protoc_insertion_point(builder_scope:castaconcord.GossipReplyMorePeers.PeerEndpoint.TOREndpoint)
         }
 
         static {
@@ -4901,7 +4901,7 @@ public final class ProtocolBuffer {
           defaultInstance.initFields();
         }
 
-        // @@protoc_insertion_point(class_scope:castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.TOREndpoint)
+        // @@protoc_insertion_point(class_scope:castaconcord.GossipReplyMorePeers.PeerEndpoint.TOREndpoint)
       }
 
       private int bitField0_;
@@ -4921,31 +4921,31 @@ public final class ProtocolBuffer {
         return identity_;
       }
 
-      // optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;
+      // optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;
       public static final int IPENDPOINT_FIELD_NUMBER = 2;
-      private org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint_;
+      private org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint_;
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
        */
       public boolean hasIpEndpoint() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint getIpEndpoint() {
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint getIpEndpoint() {
         return ipEndpoint_;
       }
       /**
-       * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+       * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder getIpEndpointOrBuilder() {
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder getIpEndpointOrBuilder() {
         return ipEndpoint_;
       }
 
       private void initFields() {
         identity_ = com.google.protobuf.ByteString.EMPTY;
-        ipEndpoint_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
+        ipEndpoint_ = org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
@@ -4994,53 +4994,53 @@ public final class ProtocolBuffer {
         return super.writeReplace();
       }
 
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseFrom(
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseFrom(
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseFrom(byte[] data)
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseFrom(
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseFrom(java.io.InputStream input)
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseFrom(
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseDelimitedFrom(java.io.InputStream input)
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseDelimitedFrom(
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseFrom(
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parseFrom(
+      public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -5049,7 +5049,7 @@ public final class ProtocolBuffer {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint prototype) {
+      public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
@@ -5061,24 +5061,24 @@ public final class ProtocolBuffer {
         return builder;
       }
       /**
-       * Protobuf type {@code castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint}
+       * Protobuf type {@code castaconcord.GossipReplyMorePeers.PeerEndpoint}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder {
+         implements org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_descriptor;
+          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_fieldAccessorTable
+          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder.class);
+                  org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.class, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder.class);
         }
 
-        // Construct using org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.newBuilder()
+        // Construct using org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -5102,7 +5102,7 @@ public final class ProtocolBuffer {
           identity_ = com.google.protobuf.ByteString.EMPTY;
           bitField0_ = (bitField0_ & ~0x00000001);
           if (ipEndpointBuilder_ == null) {
-            ipEndpoint_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
+            ipEndpoint_ = org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
           } else {
             ipEndpointBuilder_.clear();
           }
@@ -5116,23 +5116,23 @@ public final class ProtocolBuffer {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_descriptor;
+          return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_descriptor;
         }
 
-        public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint getDefaultInstanceForType() {
-          return org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.getDefaultInstance();
+        public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint getDefaultInstanceForType() {
+          return org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.getDefaultInstance();
         }
 
-        public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint build() {
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint result = buildPartial();
+        public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint build() {
+          org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint buildPartial() {
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint result = new org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint(this);
+        public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint buildPartial() {
+          org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint result = new org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5153,16 +5153,16 @@ public final class ProtocolBuffer {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint) {
-            return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint)other);
+          if (other instanceof org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint) {
+            return mergeFrom((org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint other) {
-          if (other == org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint other) {
+          if (other == org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.getDefaultInstance()) return this;
           if (other.hasIdentity()) {
             setIdentity(other.getIdentity());
           }
@@ -5181,11 +5181,11 @@ public final class ProtocolBuffer {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint parsedMessage = null;
+          org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint) e.getUnfinishedMessage();
+            parsedMessage = (org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -5232,20 +5232,20 @@ public final class ProtocolBuffer {
           return this;
         }
 
-        // optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;
-        private org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
+        // optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;
+        private org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint_ = org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
         private com.google.protobuf.SingleFieldBuilder<
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder> ipEndpointBuilder_;
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder> ipEndpointBuilder_;
         /**
-         * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+         * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
          */
         public boolean hasIpEndpoint() {
           return ((bitField0_ & 0x00000002) == 0x00000002);
         }
         /**
-         * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+         * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
          */
-        public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint getIpEndpoint() {
+        public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint getIpEndpoint() {
           if (ipEndpointBuilder_ == null) {
             return ipEndpoint_;
           } else {
@@ -5253,9 +5253,9 @@ public final class ProtocolBuffer {
           }
         }
         /**
-         * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+         * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
          */
-        public Builder setIpEndpoint(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint value) {
+        public Builder setIpEndpoint(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint value) {
           if (ipEndpointBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -5269,10 +5269,10 @@ public final class ProtocolBuffer {
           return this;
         }
         /**
-         * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+         * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
          */
         public Builder setIpEndpoint(
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder builderForValue) {
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder builderForValue) {
           if (ipEndpointBuilder_ == null) {
             ipEndpoint_ = builderForValue.build();
             onChanged();
@@ -5283,14 +5283,14 @@ public final class ProtocolBuffer {
           return this;
         }
         /**
-         * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+         * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
          */
-        public Builder mergeIpEndpoint(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint value) {
+        public Builder mergeIpEndpoint(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint value) {
           if (ipEndpointBuilder_ == null) {
             if (((bitField0_ & 0x00000002) == 0x00000002) &&
-                ipEndpoint_ != org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance()) {
+                ipEndpoint_ != org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance()) {
               ipEndpoint_ =
-                org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.newBuilder(ipEndpoint_).mergeFrom(value).buildPartial();
+                org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.newBuilder(ipEndpoint_).mergeFrom(value).buildPartial();
             } else {
               ipEndpoint_ = value;
             }
@@ -5302,11 +5302,11 @@ public final class ProtocolBuffer {
           return this;
         }
         /**
-         * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+         * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
          */
         public Builder clearIpEndpoint() {
           if (ipEndpointBuilder_ == null) {
-            ipEndpoint_ = org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
+            ipEndpoint_ = org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
             onChanged();
           } else {
             ipEndpointBuilder_.clear();
@@ -5315,17 +5315,17 @@ public final class ProtocolBuffer {
           return this;
         }
         /**
-         * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+         * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
          */
-        public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder getIpEndpointBuilder() {
+        public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder getIpEndpointBuilder() {
           bitField0_ |= 0x00000002;
           onChanged();
           return getIpEndpointFieldBuilder().getBuilder();
         }
         /**
-         * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+         * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
          */
-        public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder getIpEndpointOrBuilder() {
+        public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder getIpEndpointOrBuilder() {
           if (ipEndpointBuilder_ != null) {
             return ipEndpointBuilder_.getMessageOrBuilder();
           } else {
@@ -5333,14 +5333,14 @@ public final class ProtocolBuffer {
           }
         }
         /**
-         * <code>optional .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
+         * <code>optional .castaconcord.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
          */
         private com.google.protobuf.SingleFieldBuilder<
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder> 
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder> 
             getIpEndpointFieldBuilder() {
           if (ipEndpointBuilder_ == null) {
             ipEndpointBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder>(
+                org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder>(
                     ipEndpoint_,
                     getParentForChildren(),
                     isClean());
@@ -5349,7 +5349,7 @@ public final class ProtocolBuffer {
           return ipEndpointBuilder_;
         }
 
-        // @@protoc_insertion_point(builder_scope:castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint)
+        // @@protoc_insertion_point(builder_scope:castaconcord.GossipReplyMorePeers.PeerEndpoint)
       }
 
       static {
@@ -5357,41 +5357,41 @@ public final class ProtocolBuffer {
         defaultInstance.initFields();
       }
 
-      // @@protoc_insertion_point(class_scope:castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint)
+      // @@protoc_insertion_point(class_scope:castaconcord.GossipReplyMorePeers.PeerEndpoint)
     }
 
-    // repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;
+    // repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;
     public static final int PEERS_FIELD_NUMBER = 1;
-    private java.util.List<org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint> peers_;
+    private java.util.List<org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint> peers_;
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
-    public java.util.List<org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint> getPeersList() {
+    public java.util.List<org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint> getPeersList() {
       return peers_;
     }
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
-    public java.util.List<? extends org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder> 
+    public java.util.List<? extends org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder> 
         getPeersOrBuilderList() {
       return peers_;
     }
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
     public int getPeersCount() {
       return peers_.size();
     }
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
-    public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint getPeers(int index) {
+    public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint getPeers(int index) {
       return peers_.get(index);
     }
     /**
-     * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
      */
-    public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder getPeersOrBuilder(
+    public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder getPeersOrBuilder(
         int index) {
       return peers_.get(index);
     }
@@ -5439,53 +5439,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseFrom(byte[] data)
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseDelimitedFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseDelimitedFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5494,7 +5494,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers prototype) {
+    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -5506,24 +5506,24 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroGossipReplyMorePeers}
+     * Protobuf type {@code castaconcord.GossipReplyMorePeers}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeersOrBuilder {
+       implements org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeersOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.class, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.class, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.Builder.class);
       }
 
-      // Construct using org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.newBuilder()
+      // Construct using org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5559,23 +5559,23 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroGossipReplyMorePeers_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_GossipReplyMorePeers_descriptor;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers getDefaultInstanceForType() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.getDefaultInstance();
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers getDefaultInstanceForType() {
+        return org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.getDefaultInstance();
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers build() {
-        org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers result = buildPartial();
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers build() {
+        org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers buildPartial() {
-        org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers result = new org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers(this);
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers buildPartial() {
+        org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers result = new org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers(this);
         int from_bitField0_ = bitField0_;
         if (peersBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5591,16 +5591,16 @@ public final class ProtocolBuffer {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers) {
-          return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers)other);
+        if (other instanceof org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers) {
+          return mergeFrom((org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers other) {
-        if (other == org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers other) {
+        if (other == org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.getDefaultInstance()) return this;
         if (peersBuilder_ == null) {
           if (!other.peers_.isEmpty()) {
             if (peers_.isEmpty()) {
@@ -5639,11 +5639,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers parsedMessage = null;
+        org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers) e.getUnfinishedMessage();
+          parsedMessage = (org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -5654,23 +5654,23 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;
-      private java.util.List<org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint> peers_ =
+      // repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;
+      private java.util.List<org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint> peers_ =
         java.util.Collections.emptyList();
       private void ensurePeersIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          peers_ = new java.util.ArrayList<org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint>(peers_);
+          peers_ = new java.util.ArrayList<org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint>(peers_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder> peersBuilder_;
+          org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder> peersBuilder_;
 
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
-      public java.util.List<org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint> getPeersList() {
+      public java.util.List<org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint> getPeersList() {
         if (peersBuilder_ == null) {
           return java.util.Collections.unmodifiableList(peers_);
         } else {
@@ -5678,7 +5678,7 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
       public int getPeersCount() {
         if (peersBuilder_ == null) {
@@ -5688,9 +5688,9 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint getPeers(int index) {
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint getPeers(int index) {
         if (peersBuilder_ == null) {
           return peers_.get(index);
         } else {
@@ -5698,10 +5698,10 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
       public Builder setPeers(
-          int index, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint value) {
+          int index, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint value) {
         if (peersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5715,10 +5715,10 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
       public Builder setPeers(
-          int index, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder builderForValue) {
+          int index, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder builderForValue) {
         if (peersBuilder_ == null) {
           ensurePeersIsMutable();
           peers_.set(index, builderForValue.build());
@@ -5729,9 +5729,9 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
-      public Builder addPeers(org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint value) {
+      public Builder addPeers(org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint value) {
         if (peersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5745,10 +5745,10 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
       public Builder addPeers(
-          int index, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint value) {
+          int index, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint value) {
         if (peersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5762,10 +5762,10 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
       public Builder addPeers(
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder builderForValue) {
+          org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder builderForValue) {
         if (peersBuilder_ == null) {
           ensurePeersIsMutable();
           peers_.add(builderForValue.build());
@@ -5776,10 +5776,10 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
       public Builder addPeers(
-          int index, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder builderForValue) {
+          int index, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder builderForValue) {
         if (peersBuilder_ == null) {
           ensurePeersIsMutable();
           peers_.add(index, builderForValue.build());
@@ -5790,10 +5790,10 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
       public Builder addAllPeers(
-          java.lang.Iterable<? extends org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint> values) {
+          java.lang.Iterable<? extends org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint> values) {
         if (peersBuilder_ == null) {
           ensurePeersIsMutable();
           super.addAll(values, peers_);
@@ -5804,7 +5804,7 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
       public Builder clearPeers() {
         if (peersBuilder_ == null) {
@@ -5817,7 +5817,7 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
       public Builder removePeers(int index) {
         if (peersBuilder_ == null) {
@@ -5830,16 +5830,16 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder getPeersBuilder(
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder getPeersBuilder(
           int index) {
         return getPeersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder getPeersOrBuilder(
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder getPeersOrBuilder(
           int index) {
         if (peersBuilder_ == null) {
           return peers_.get(index);  } else {
@@ -5847,9 +5847,9 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
-      public java.util.List<? extends org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder> 
+      public java.util.List<? extends org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder> 
            getPeersOrBuilderList() {
         if (peersBuilder_ != null) {
           return peersBuilder_.getMessageOrBuilderList();
@@ -5858,33 +5858,33 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder addPeersBuilder() {
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder addPeersBuilder() {
         return getPeersFieldBuilder().addBuilder(
-            org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.getDefaultInstance());
+            org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.getDefaultInstance());
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder addPeersBuilder(
+      public org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder addPeersBuilder(
           int index) {
         return getPeersFieldBuilder().addBuilder(
-            index, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.getDefaultInstance());
+            index, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.getDefaultInstance());
       }
       /**
-       * <code>repeated .castaconcord.BazarroGossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .castaconcord.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
        */
-      public java.util.List<org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder> 
+      public java.util.List<org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder> 
            getPeersBuilderList() {
         return getPeersFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder> 
+          org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder> 
           getPeersFieldBuilder() {
         if (peersBuilder_ == null) {
           peersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.BazarroGossipReplyMorePeers.PeerEndpointOrBuilder>(
+              org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder, org.castaconcord.core.ProtocolBuffer.GossipReplyMorePeers.PeerEndpointOrBuilder>(
                   peers_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -5894,15 +5894,15 @@ public final class ProtocolBuffer {
         return peersBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:castaconcord.BazarroGossipReplyMorePeers)
+      // @@protoc_insertion_point(builder_scope:castaconcord.GossipReplyMorePeers)
     }
 
     static {
-      defaultInstance = new BazarroGossipReplyMorePeers(true);
+      defaultInstance = new GossipReplyMorePeers(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:castaconcord.BazarroGossipReplyMorePeers)
+    // @@protoc_insertion_point(class_scope:castaconcord.GossipReplyMorePeers)
   }
 
   public interface GenericResponseOrBuilder
@@ -15209,7 +15209,7 @@ public final class ProtocolBuffer {
     // @@protoc_insertion_point(class_scope:castaconcord.P2PBlobHashListMsg)
   }
 
-  public interface BazarroSettlementMessageOrBuilder
+  public interface SettlementMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional bool requestSettlementMethod = 1;
@@ -15240,39 +15240,39 @@ public final class ProtocolBuffer {
      */
     boolean getRequestTermsOfService();
 
-    // optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;
+    // optional .castaconcord.SettlementMethod settlementMethod = 21;
     /**
-     * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+     * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
      */
     boolean hasSettlementMethod();
     /**
-     * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+     * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
      */
-    org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod getSettlementMethod();
+    org.castaconcord.core.ProtocolBuffer.SettlementMethod getSettlementMethod();
     /**
-     * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+     * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
      */
-    org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethodOrBuilder getSettlementMethodOrBuilder();
+    org.castaconcord.core.ProtocolBuffer.SettlementMethodOrBuilder getSettlementMethodOrBuilder();
   }
   /**
-   * Protobuf type {@code castaconcord.BazarroSettlementMessage}
+   * Protobuf type {@code castaconcord.SettlementMessage}
    */
-  public static final class BazarroSettlementMessage extends
+  public static final class SettlementMessage extends
       com.google.protobuf.GeneratedMessage
-      implements BazarroSettlementMessageOrBuilder {
-    // Use BazarroSettlementMessage.newBuilder() to construct.
-    private BazarroSettlementMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements SettlementMessageOrBuilder {
+    // Use SettlementMessage.newBuilder() to construct.
+    private SettlementMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private BazarroSettlementMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private SettlementMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final BazarroSettlementMessage defaultInstance;
-    public static BazarroSettlementMessage getDefaultInstance() {
+    private static final SettlementMessage defaultInstance;
+    public static SettlementMessage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public BazarroSettlementMessage getDefaultInstanceForType() {
+    public SettlementMessage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -15282,7 +15282,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private BazarroSettlementMessage(
+    private SettlementMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15316,11 +15316,11 @@ public final class ProtocolBuffer {
               break;
             }
             case 170: {
-              org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.Builder subBuilder = null;
+              org.castaconcord.core.ProtocolBuffer.SettlementMethod.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = settlementMethod_.toBuilder();
               }
-              settlementMethod_ = input.readMessage(org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.PARSER, extensionRegistry);
+              settlementMethod_ = input.readMessage(org.castaconcord.core.ProtocolBuffer.SettlementMethod.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(settlementMethod_);
                 settlementMethod_ = subBuilder.buildPartial();
@@ -15342,28 +15342,28 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMessage_descriptor;
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMessage_fieldAccessorTable
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage.class, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage.Builder.class);
+              org.castaconcord.core.ProtocolBuffer.SettlementMessage.class, org.castaconcord.core.ProtocolBuffer.SettlementMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BazarroSettlementMessage> PARSER =
-        new com.google.protobuf.AbstractParser<BazarroSettlementMessage>() {
-      public BazarroSettlementMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<SettlementMessage> PARSER =
+        new com.google.protobuf.AbstractParser<SettlementMessage>() {
+      public SettlementMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BazarroSettlementMessage(input, extensionRegistry);
+        return new SettlementMessage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BazarroSettlementMessage> getParserForType() {
+    public com.google.protobuf.Parser<SettlementMessage> getParserForType() {
       return PARSER;
     }
 
@@ -15408,32 +15408,32 @@ public final class ProtocolBuffer {
       return requestTermsOfService_;
     }
 
-    // optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;
+    // optional .castaconcord.SettlementMethod settlementMethod = 21;
     public static final int SETTLEMENTMETHOD_FIELD_NUMBER = 21;
-    private org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod settlementMethod_;
+    private org.castaconcord.core.ProtocolBuffer.SettlementMethod settlementMethod_;
     /**
-     * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+     * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
      */
     public boolean hasSettlementMethod() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+     * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
      */
-    public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod getSettlementMethod() {
+    public org.castaconcord.core.ProtocolBuffer.SettlementMethod getSettlementMethod() {
       return settlementMethod_;
     }
     /**
-     * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+     * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
      */
-    public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethodOrBuilder getSettlementMethodOrBuilder() {
+    public org.castaconcord.core.ProtocolBuffer.SettlementMethodOrBuilder getSettlementMethodOrBuilder() {
       return settlementMethod_;
     }
 
     private void initFields() {
       requestSettlementMethod_ = false;
       requestTermsOfService_ = false;
-      settlementMethod_ = org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.getDefaultInstance();
+      settlementMethod_ = org.castaconcord.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -15489,53 +15489,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseFrom(byte[] data)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseDelimitedFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseDelimitedFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -15544,7 +15544,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage prototype) {
+    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.SettlementMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -15556,24 +15556,24 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroSettlementMessage}
+     * Protobuf type {@code castaconcord.SettlementMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessageOrBuilder {
+       implements org.castaconcord.core.ProtocolBuffer.SettlementMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMessage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMessage_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage.class, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.SettlementMessage.class, org.castaconcord.core.ProtocolBuffer.SettlementMessage.Builder.class);
       }
 
-      // Construct using org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage.newBuilder()
+      // Construct using org.castaconcord.core.ProtocolBuffer.SettlementMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -15599,7 +15599,7 @@ public final class ProtocolBuffer {
         requestTermsOfService_ = false;
         bitField0_ = (bitField0_ & ~0x00000002);
         if (settlementMethodBuilder_ == null) {
-          settlementMethod_ = org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.getDefaultInstance();
+          settlementMethod_ = org.castaconcord.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
         } else {
           settlementMethodBuilder_.clear();
         }
@@ -15613,23 +15613,23 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMessage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMessage_descriptor;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage getDefaultInstanceForType() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage.getDefaultInstance();
+      public org.castaconcord.core.ProtocolBuffer.SettlementMessage getDefaultInstanceForType() {
+        return org.castaconcord.core.ProtocolBuffer.SettlementMessage.getDefaultInstance();
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage build() {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage result = buildPartial();
+      public org.castaconcord.core.ProtocolBuffer.SettlementMessage build() {
+        org.castaconcord.core.ProtocolBuffer.SettlementMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage buildPartial() {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage result = new org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage(this);
+      public org.castaconcord.core.ProtocolBuffer.SettlementMessage buildPartial() {
+        org.castaconcord.core.ProtocolBuffer.SettlementMessage result = new org.castaconcord.core.ProtocolBuffer.SettlementMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -15654,16 +15654,16 @@ public final class ProtocolBuffer {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage) {
-          return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage)other);
+        if (other instanceof org.castaconcord.core.ProtocolBuffer.SettlementMessage) {
+          return mergeFrom((org.castaconcord.core.ProtocolBuffer.SettlementMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage other) {
-        if (other == org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.SettlementMessage other) {
+        if (other == org.castaconcord.core.ProtocolBuffer.SettlementMessage.getDefaultInstance()) return this;
         if (other.hasRequestSettlementMethod()) {
           setRequestSettlementMethod(other.getRequestSettlementMethod());
         }
@@ -15685,11 +15685,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage parsedMessage = null;
+        org.castaconcord.core.ProtocolBuffer.SettlementMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroSettlementMessage) e.getUnfinishedMessage();
+          parsedMessage = (org.castaconcord.core.ProtocolBuffer.SettlementMessage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -15782,20 +15782,20 @@ public final class ProtocolBuffer {
         return this;
       }
 
-      // optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;
-      private org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod settlementMethod_ = org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.getDefaultInstance();
+      // optional .castaconcord.SettlementMethod settlementMethod = 21;
+      private org.castaconcord.core.ProtocolBuffer.SettlementMethod settlementMethod_ = org.castaconcord.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.Builder, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethodOrBuilder> settlementMethodBuilder_;
+          org.castaconcord.core.ProtocolBuffer.SettlementMethod, org.castaconcord.core.ProtocolBuffer.SettlementMethod.Builder, org.castaconcord.core.ProtocolBuffer.SettlementMethodOrBuilder> settlementMethodBuilder_;
       /**
-       * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+       * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
        */
       public boolean hasSettlementMethod() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+       * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod getSettlementMethod() {
+      public org.castaconcord.core.ProtocolBuffer.SettlementMethod getSettlementMethod() {
         if (settlementMethodBuilder_ == null) {
           return settlementMethod_;
         } else {
@@ -15803,9 +15803,9 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+       * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
        */
-      public Builder setSettlementMethod(org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod value) {
+      public Builder setSettlementMethod(org.castaconcord.core.ProtocolBuffer.SettlementMethod value) {
         if (settlementMethodBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -15819,10 +15819,10 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+       * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
        */
       public Builder setSettlementMethod(
-          org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.Builder builderForValue) {
+          org.castaconcord.core.ProtocolBuffer.SettlementMethod.Builder builderForValue) {
         if (settlementMethodBuilder_ == null) {
           settlementMethod_ = builderForValue.build();
           onChanged();
@@ -15833,14 +15833,14 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+       * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
        */
-      public Builder mergeSettlementMethod(org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod value) {
+      public Builder mergeSettlementMethod(org.castaconcord.core.ProtocolBuffer.SettlementMethod value) {
         if (settlementMethodBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              settlementMethod_ != org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.getDefaultInstance()) {
+              settlementMethod_ != org.castaconcord.core.ProtocolBuffer.SettlementMethod.getDefaultInstance()) {
             settlementMethod_ =
-              org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.newBuilder(settlementMethod_).mergeFrom(value).buildPartial();
+              org.castaconcord.core.ProtocolBuffer.SettlementMethod.newBuilder(settlementMethod_).mergeFrom(value).buildPartial();
           } else {
             settlementMethod_ = value;
           }
@@ -15852,11 +15852,11 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+       * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
        */
       public Builder clearSettlementMethod() {
         if (settlementMethodBuilder_ == null) {
-          settlementMethod_ = org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.getDefaultInstance();
+          settlementMethod_ = org.castaconcord.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
           onChanged();
         } else {
           settlementMethodBuilder_.clear();
@@ -15865,17 +15865,17 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+       * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.Builder getSettlementMethodBuilder() {
+      public org.castaconcord.core.ProtocolBuffer.SettlementMethod.Builder getSettlementMethodBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getSettlementMethodFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+       * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
        */
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethodOrBuilder getSettlementMethodOrBuilder() {
+      public org.castaconcord.core.ProtocolBuffer.SettlementMethodOrBuilder getSettlementMethodOrBuilder() {
         if (settlementMethodBuilder_ != null) {
           return settlementMethodBuilder_.getMessageOrBuilder();
         } else {
@@ -15883,14 +15883,14 @@ public final class ProtocolBuffer {
         }
       }
       /**
-       * <code>optional .castaconcord.BazarroSettlementMethod settlementMethod = 21;</code>
+       * <code>optional .castaconcord.SettlementMethod settlementMethod = 21;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.Builder, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethodOrBuilder> 
+          org.castaconcord.core.ProtocolBuffer.SettlementMethod, org.castaconcord.core.ProtocolBuffer.SettlementMethod.Builder, org.castaconcord.core.ProtocolBuffer.SettlementMethodOrBuilder> 
           getSettlementMethodFieldBuilder() {
         if (settlementMethodBuilder_ == null) {
           settlementMethodBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.Builder, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethodOrBuilder>(
+              org.castaconcord.core.ProtocolBuffer.SettlementMethod, org.castaconcord.core.ProtocolBuffer.SettlementMethod.Builder, org.castaconcord.core.ProtocolBuffer.SettlementMethodOrBuilder>(
                   settlementMethod_,
                   getParentForChildren(),
                   isClean());
@@ -15899,18 +15899,18 @@ public final class ProtocolBuffer {
         return settlementMethodBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:castaconcord.BazarroSettlementMessage)
+      // @@protoc_insertion_point(builder_scope:castaconcord.SettlementMessage)
     }
 
     static {
-      defaultInstance = new BazarroSettlementMessage(true);
+      defaultInstance = new SettlementMessage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:castaconcord.BazarroSettlementMessage)
+    // @@protoc_insertion_point(class_scope:castaconcord.SettlementMessage)
   }
 
-  public interface BazarroSettlementMethodOrBuilder
+  public interface SettlementMethodOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional bytes bitcoinAddress = 1;
@@ -15958,24 +15958,24 @@ public final class ProtocolBuffer {
     com.google.protobuf.ByteString getAcceptedRippleCurrencies(int index);
   }
   /**
-   * Protobuf type {@code castaconcord.BazarroSettlementMethod}
+   * Protobuf type {@code castaconcord.SettlementMethod}
    */
-  public static final class BazarroSettlementMethod extends
+  public static final class SettlementMethod extends
       com.google.protobuf.GeneratedMessage
-      implements BazarroSettlementMethodOrBuilder {
-    // Use BazarroSettlementMethod.newBuilder() to construct.
-    private BazarroSettlementMethod(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements SettlementMethodOrBuilder {
+    // Use SettlementMethod.newBuilder() to construct.
+    private SettlementMethod(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private BazarroSettlementMethod(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private SettlementMethod(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final BazarroSettlementMethod defaultInstance;
-    public static BazarroSettlementMethod getDefaultInstance() {
+    private static final SettlementMethod defaultInstance;
+    public static SettlementMethod getDefaultInstance() {
       return defaultInstance;
     }
 
-    public BazarroSettlementMethod getDefaultInstanceForType() {
+    public SettlementMethod getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -15985,7 +15985,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private BazarroSettlementMethod(
+    private SettlementMethod(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16043,28 +16043,28 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMethod_descriptor;
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMethod_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMethod_fieldAccessorTable
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMethod_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.class, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.Builder.class);
+              org.castaconcord.core.ProtocolBuffer.SettlementMethod.class, org.castaconcord.core.ProtocolBuffer.SettlementMethod.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BazarroSettlementMethod> PARSER =
-        new com.google.protobuf.AbstractParser<BazarroSettlementMethod>() {
-      public BazarroSettlementMethod parsePartialFrom(
+    public static com.google.protobuf.Parser<SettlementMethod> PARSER =
+        new com.google.protobuf.AbstractParser<SettlementMethod>() {
+      public SettlementMethod parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BazarroSettlementMethod(input, extensionRegistry);
+        return new SettlementMethod(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BazarroSettlementMethod> getParserForType() {
+    public com.google.protobuf.Parser<SettlementMethod> getParserForType() {
       return PARSER;
     }
 
@@ -16198,53 +16198,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseFrom(byte[] data)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseDelimitedFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseDelimitedFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementMethod parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -16253,7 +16253,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod prototype) {
+    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.SettlementMethod prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -16265,24 +16265,24 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroSettlementMethod}
+     * Protobuf type {@code castaconcord.SettlementMethod}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethodOrBuilder {
+       implements org.castaconcord.core.ProtocolBuffer.SettlementMethodOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMethod_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMethod_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMethod_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMethod_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.class, org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.SettlementMethod.class, org.castaconcord.core.ProtocolBuffer.SettlementMethod.Builder.class);
       }
 
-      // Construct using org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.newBuilder()
+      // Construct using org.castaconcord.core.ProtocolBuffer.SettlementMethod.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -16317,23 +16317,23 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementMethod_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementMethod_descriptor;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod getDefaultInstanceForType() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.getDefaultInstance();
+      public org.castaconcord.core.ProtocolBuffer.SettlementMethod getDefaultInstanceForType() {
+        return org.castaconcord.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod build() {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod result = buildPartial();
+      public org.castaconcord.core.ProtocolBuffer.SettlementMethod build() {
+        org.castaconcord.core.ProtocolBuffer.SettlementMethod result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod buildPartial() {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod result = new org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod(this);
+      public org.castaconcord.core.ProtocolBuffer.SettlementMethod buildPartial() {
+        org.castaconcord.core.ProtocolBuffer.SettlementMethod result = new org.castaconcord.core.ProtocolBuffer.SettlementMethod(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -16355,16 +16355,16 @@ public final class ProtocolBuffer {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod) {
-          return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod)other);
+        if (other instanceof org.castaconcord.core.ProtocolBuffer.SettlementMethod) {
+          return mergeFrom((org.castaconcord.core.ProtocolBuffer.SettlementMethod)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod other) {
-        if (other == org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.SettlementMethod other) {
+        if (other == org.castaconcord.core.ProtocolBuffer.SettlementMethod.getDefaultInstance()) return this;
         if (other.hasBitcoinAddress()) {
           setBitcoinAddress(other.getBitcoinAddress());
         }
@@ -16393,11 +16393,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod parsedMessage = null;
+        org.castaconcord.core.ProtocolBuffer.SettlementMethod parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod) e.getUnfinishedMessage();
+          parsedMessage = (org.castaconcord.core.ProtocolBuffer.SettlementMethod) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -16572,18 +16572,18 @@ public final class ProtocolBuffer {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:castaconcord.BazarroSettlementMethod)
+      // @@protoc_insertion_point(builder_scope:castaconcord.SettlementMethod)
     }
 
     static {
-      defaultInstance = new BazarroSettlementMethod(true);
+      defaultInstance = new SettlementMethod(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:castaconcord.BazarroSettlementMethod)
+    // @@protoc_insertion_point(class_scope:castaconcord.SettlementMethod)
   }
 
-  public interface BazarroSettlementTermOfServiceByteStorageOrBuilder
+  public interface SettlementTermOfServiceByteStorageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional bytes pricePerBytePerPeriod = 1;
@@ -16651,28 +16651,28 @@ public final class ProtocolBuffer {
     int getRecoveryDelayInSeconds();
   }
   /**
-   * Protobuf type {@code castaconcord.BazarroSettlementTermOfServiceByteStorage}
+   * Protobuf type {@code castaconcord.SettlementTermOfServiceByteStorage}
    *
    * <pre>
    *** This stuff should go on a per app basis ***********
    * </pre>
    */
-  public static final class BazarroSettlementTermOfServiceByteStorage extends
+  public static final class SettlementTermOfServiceByteStorage extends
       com.google.protobuf.GeneratedMessage
-      implements BazarroSettlementTermOfServiceByteStorageOrBuilder {
-    // Use BazarroSettlementTermOfServiceByteStorage.newBuilder() to construct.
-    private BazarroSettlementTermOfServiceByteStorage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements SettlementTermOfServiceByteStorageOrBuilder {
+    // Use SettlementTermOfServiceByteStorage.newBuilder() to construct.
+    private SettlementTermOfServiceByteStorage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private BazarroSettlementTermOfServiceByteStorage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private SettlementTermOfServiceByteStorage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final BazarroSettlementTermOfServiceByteStorage defaultInstance;
-    public static BazarroSettlementTermOfServiceByteStorage getDefaultInstance() {
+    private static final SettlementTermOfServiceByteStorage defaultInstance;
+    public static SettlementTermOfServiceByteStorage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public BazarroSettlementTermOfServiceByteStorage getDefaultInstanceForType() {
+    public SettlementTermOfServiceByteStorage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -16682,7 +16682,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private BazarroSettlementTermOfServiceByteStorage(
+    private SettlementTermOfServiceByteStorage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16739,28 +16739,28 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_descriptor;
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteStorage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_fieldAccessorTable
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteStorage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage.class, org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage.Builder.class);
+              org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage.class, org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BazarroSettlementTermOfServiceByteStorage> PARSER =
-        new com.google.protobuf.AbstractParser<BazarroSettlementTermOfServiceByteStorage>() {
-      public BazarroSettlementTermOfServiceByteStorage parsePartialFrom(
+    public static com.google.protobuf.Parser<SettlementTermOfServiceByteStorage> PARSER =
+        new com.google.protobuf.AbstractParser<SettlementTermOfServiceByteStorage>() {
+      public SettlementTermOfServiceByteStorage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BazarroSettlementTermOfServiceByteStorage(input, extensionRegistry);
+        return new SettlementTermOfServiceByteStorage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BazarroSettlementTermOfServiceByteStorage> getParserForType() {
+    public com.google.protobuf.Parser<SettlementTermOfServiceByteStorage> getParserForType() {
       return PARSER;
     }
 
@@ -16920,53 +16920,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseFrom(byte[] data)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseDelimitedFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseDelimitedFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -16975,7 +16975,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage prototype) {
+    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -16987,7 +16987,7 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroSettlementTermOfServiceByteStorage}
+     * Protobuf type {@code castaconcord.SettlementTermOfServiceByteStorage}
      *
      * <pre>
      *** This stuff should go on a per app basis ***********
@@ -16995,20 +16995,20 @@ public final class ProtocolBuffer {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorageOrBuilder {
+       implements org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteStorage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteStorage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage.class, org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage.class, org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage.Builder.class);
       }
 
-      // Construct using org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage.newBuilder()
+      // Construct using org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -17045,23 +17045,23 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteStorage_descriptor;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage getDefaultInstanceForType() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage.getDefaultInstance();
+      public org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage getDefaultInstanceForType() {
+        return org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage.getDefaultInstance();
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage build() {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage result = buildPartial();
+      public org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage build() {
+        org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage buildPartial() {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage result = new org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage(this);
+      public org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage buildPartial() {
+        org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage result = new org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -17086,16 +17086,16 @@ public final class ProtocolBuffer {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage) {
-          return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage)other);
+        if (other instanceof org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage) {
+          return mergeFrom((org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage other) {
-        if (other == org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage other) {
+        if (other == org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage.getDefaultInstance()) return this;
         if (other.hasPricePerBytePerPeriod()) {
           setPricePerBytePerPeriod(other.getPricePerBytePerPeriod());
         }
@@ -17120,11 +17120,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage parsedMessage = null;
+        org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteStorage) e.getUnfinishedMessage();
+          parsedMessage = (org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteStorage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -17318,18 +17318,18 @@ public final class ProtocolBuffer {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:castaconcord.BazarroSettlementTermOfServiceByteStorage)
+      // @@protoc_insertion_point(builder_scope:castaconcord.SettlementTermOfServiceByteStorage)
     }
 
     static {
-      defaultInstance = new BazarroSettlementTermOfServiceByteStorage(true);
+      defaultInstance = new SettlementTermOfServiceByteStorage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:castaconcord.BazarroSettlementTermOfServiceByteStorage)
+    // @@protoc_insertion_point(class_scope:castaconcord.SettlementTermOfServiceByteStorage)
   }
 
-  public interface BazarroSettlementTermOfServiceByteTransferOrBuilder
+  public interface SettlementTermOfServiceByteTransferOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional bytes priceIncomingPerByte = 1;
@@ -17373,24 +17373,24 @@ public final class ProtocolBuffer {
     int getMaximumOutgoingBytesPerSecond();
   }
   /**
-   * Protobuf type {@code castaconcord.BazarroSettlementTermOfServiceByteTransfer}
+   * Protobuf type {@code castaconcord.SettlementTermOfServiceByteTransfer}
    */
-  public static final class BazarroSettlementTermOfServiceByteTransfer extends
+  public static final class SettlementTermOfServiceByteTransfer extends
       com.google.protobuf.GeneratedMessage
-      implements BazarroSettlementTermOfServiceByteTransferOrBuilder {
-    // Use BazarroSettlementTermOfServiceByteTransfer.newBuilder() to construct.
-    private BazarroSettlementTermOfServiceByteTransfer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements SettlementTermOfServiceByteTransferOrBuilder {
+    // Use SettlementTermOfServiceByteTransfer.newBuilder() to construct.
+    private SettlementTermOfServiceByteTransfer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private BazarroSettlementTermOfServiceByteTransfer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private SettlementTermOfServiceByteTransfer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final BazarroSettlementTermOfServiceByteTransfer defaultInstance;
-    public static BazarroSettlementTermOfServiceByteTransfer getDefaultInstance() {
+    private static final SettlementTermOfServiceByteTransfer defaultInstance;
+    public static SettlementTermOfServiceByteTransfer getDefaultInstance() {
       return defaultInstance;
     }
 
-    public BazarroSettlementTermOfServiceByteTransfer getDefaultInstanceForType() {
+    public SettlementTermOfServiceByteTransfer getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -17400,7 +17400,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private BazarroSettlementTermOfServiceByteTransfer(
+    private SettlementTermOfServiceByteTransfer(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -17457,28 +17457,28 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_descriptor;
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteTransfer_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_fieldAccessorTable
+      return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteTransfer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer.class, org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer.Builder.class);
+              org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer.class, org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BazarroSettlementTermOfServiceByteTransfer> PARSER =
-        new com.google.protobuf.AbstractParser<BazarroSettlementTermOfServiceByteTransfer>() {
-      public BazarroSettlementTermOfServiceByteTransfer parsePartialFrom(
+    public static com.google.protobuf.Parser<SettlementTermOfServiceByteTransfer> PARSER =
+        new com.google.protobuf.AbstractParser<SettlementTermOfServiceByteTransfer>() {
+      public SettlementTermOfServiceByteTransfer parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BazarroSettlementTermOfServiceByteTransfer(input, extensionRegistry);
+        return new SettlementTermOfServiceByteTransfer(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BazarroSettlementTermOfServiceByteTransfer> getParserForType() {
+    public com.google.protobuf.Parser<SettlementTermOfServiceByteTransfer> getParserForType() {
       return PARSER;
     }
 
@@ -17614,53 +17614,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseFrom(byte[] data)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseDelimitedFrom(java.io.InputStream input)
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseDelimitedFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parseFrom(
+    public static org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -17669,7 +17669,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer prototype) {
+    public static Builder newBuilder(org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -17681,24 +17681,24 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code castaconcord.BazarroSettlementTermOfServiceByteTransfer}
+     * Protobuf type {@code castaconcord.SettlementTermOfServiceByteTransfer}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransferOrBuilder {
+       implements org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransferOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteTransfer_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_fieldAccessorTable
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteTransfer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer.class, org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer.Builder.class);
+                org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer.class, org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer.Builder.class);
       }
 
-      // Construct using org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer.newBuilder()
+      // Construct using org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -17735,23 +17735,23 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_descriptor;
+        return org.castaconcord.core.ProtocolBuffer.internal_static_castaconcord_SettlementTermOfServiceByteTransfer_descriptor;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer getDefaultInstanceForType() {
-        return org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer.getDefaultInstance();
+      public org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer getDefaultInstanceForType() {
+        return org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer.getDefaultInstance();
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer build() {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer result = buildPartial();
+      public org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer build() {
+        org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer buildPartial() {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer result = new org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer(this);
+      public org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer buildPartial() {
+        org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer result = new org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -17776,16 +17776,16 @@ public final class ProtocolBuffer {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer) {
-          return mergeFrom((org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer)other);
+        if (other instanceof org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer) {
+          return mergeFrom((org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer other) {
-        if (other == org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer other) {
+        if (other == org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer.getDefaultInstance()) return this;
         if (other.hasPriceIncomingPerByte()) {
           setPriceIncomingPerByte(other.getPriceIncomingPerByte());
         }
@@ -17810,11 +17810,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer parsedMessage = null;
+        org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.castaconcord.core.ProtocolBuffer.BazarroSettlementTermOfServiceByteTransfer) e.getUnfinishedMessage();
+          parsedMessage = (org.castaconcord.core.ProtocolBuffer.SettlementTermOfServiceByteTransfer) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -17963,62 +17963,62 @@ public final class ProtocolBuffer {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:castaconcord.BazarroSettlementTermOfServiceByteTransfer)
+      // @@protoc_insertion_point(builder_scope:castaconcord.SettlementTermOfServiceByteTransfer)
     }
 
     static {
-      defaultInstance = new BazarroSettlementTermOfServiceByteTransfer(true);
+      defaultInstance = new SettlementTermOfServiceByteTransfer(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:castaconcord.BazarroSettlementTermOfServiceByteTransfer)
+    // @@protoc_insertion_point(class_scope:castaconcord.SettlementTermOfServiceByteTransfer)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroHeaderMessage_descriptor;
+    internal_static_castaconcord_HeaderMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroHeaderMessage_fieldAccessorTable;
+      internal_static_castaconcord_HeaderMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_castaconcord_SenderInformationMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_castaconcord_SenderInformationMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroNetworkMessage_descriptor;
+    internal_static_castaconcord_NetworkMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroNetworkMessage_fieldAccessorTable;
+      internal_static_castaconcord_NetworkMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroGossipMessage_descriptor;
+    internal_static_castaconcord_GossipMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroGossipMessage_fieldAccessorTable;
+      internal_static_castaconcord_GossipMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroGossipRequestMorePeers_descriptor;
+    internal_static_castaconcord_GossipRequestMorePeers_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroGossipRequestMorePeers_fieldAccessorTable;
+      internal_static_castaconcord_GossipRequestMorePeers_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroGossipReplyMorePeers_descriptor;
+    internal_static_castaconcord_GossipReplyMorePeers_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroGossipReplyMorePeers_fieldAccessorTable;
+      internal_static_castaconcord_GossipReplyMorePeers_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_descriptor;
+    internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_fieldAccessorTable;
+      internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
+    internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable;
+      internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
+    internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable;
+      internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_castaconcord_GenericResponse_descriptor;
   private static
@@ -18080,25 +18080,25 @@ public final class ProtocolBuffer {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_castaconcord_P2PBlobHashListMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroSettlementMessage_descriptor;
+    internal_static_castaconcord_SettlementMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroSettlementMessage_fieldAccessorTable;
+      internal_static_castaconcord_SettlementMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroSettlementMethod_descriptor;
+    internal_static_castaconcord_SettlementMethod_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroSettlementMethod_fieldAccessorTable;
+      internal_static_castaconcord_SettlementMethod_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_descriptor;
+    internal_static_castaconcord_SettlementTermOfServiceByteStorage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_fieldAccessorTable;
+      internal_static_castaconcord_SettlementTermOfServiceByteStorage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_descriptor;
+    internal_static_castaconcord_SettlementTermOfServiceByteTransfer_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_fieldAccessorTable;
+      internal_static_castaconcord_SettlementTermOfServiceByteTransfer_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -18109,7 +18109,7 @@ public final class ProtocolBuffer {
   static {
     java.lang.String[] descriptorData = {
       "\n\027castaconcord-core.proto\022\014castaconcord\"" +
-      "\340\001\n\024BazarroHeaderMessage\0226\n\nsenderInfo\030\001" +
+      "\340\001\n\024HeaderMessage\0226\n\nsenderInfo\030\001" +
       " \001(\0132\".castaconcord.SenderInformationMsg" +
       "\022\025\n\rrequestNumber\030\002 \001(\r\022\025\n\rapplicationId" +
       "\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022&\n\036application" +
@@ -18118,18 +18118,18 @@ public final class ProtocolBuffer {
       "ormationMsg\022\021\n\tuserAgent\030\001 \001(\t\022\022\n\nextern" +
       "alIP\030\002 \001(\t\022\024\n\014externalPort\030\003 \001(\r\022\025\n\rnode" +
       "PublicKey\030\004 \001(\014\022\035\n\025applicationsSupported",
-      "\030\005 \003(\014\"\236\001\n\025BazarroNetworkMessage\022G\n\toper" +
-      "ation\030\001 \001(\01624.castaconcord.BazarroNetwor" +
+      "\030\005 \003(\014\"\236\001\n\025NetworkMessage\022G\n\toper" +
+      "ation\030\001 \001(\01624.castaconcord.Networ" +
       "kMessage.NetworkOperation\"<\n\020NetworkOper" +
       "ation\022\024\n\020CLOSE_CONNECTION\020\000\022\010\n\004PING\020\001\022\010\n" +
-      "\004PONG\020\002\"\227\001\n\024BazarroGossipMessage\022E\n\020requ" +
+      "\004PONG\020\002\"\227\001\n\024GossipMessage\022E\n\020requ" +
       "estMorePeers\030\001 \001(\0132+.castaconcord.Bazarr" +
       "oGossipRequestMorePeers\0228\n\005reply\030\002 \001(\0132)" +
-      ".castaconcord.BazarroGossipReplyMorePeer" +
-      "s\">\n\035BazarroGossipRequestMorePeers\022\035\n\025ap" +
-      "plicationsRequested\030\001 \003(\014\"\260\002\n\033BazarroGos",
+      ".castaconcord.GossipReplyMorePeer" +
+      "s\">\n\035GossipRequestMorePeers\022\035\n\025ap" +
+      "plicationsRequested\030\001 \003(\014\"\260\002\n\033Gos",
       "sipReplyMorePeers\022E\n\005peers\030\001 \003(\01326.casta" +
-      "concord.BazarroGossipReplyMorePeers.Peer" +
+      "concord.GossipReplyMorePeers.Peer" +
       "Endpoint\032\311\001\n\014PeerEndpoint\022\020\n\010identity\030\001 " +
       "\001(\014\022U\n\nipEndpoint\030\002 \001(\0132A.castaconcord.B" +
       "azarroGossipReplyMorePeers.PeerEndpoint." +
@@ -18178,14 +18178,14 @@ public final class ProtocolBuffer {
       "roSettlementMessage\022\037\n\027requestSettlement" +
       "Method\030\001 \001(\010\022\035\n\025requestTermsOfService\030\002 " +
       "\001(\010\022?\n\020settlementMethod\030\025 \001(\0132%.castacon",
-      "cord.BazarroSettlementMethod\"j\n\027BazarroS" +
+      "cord.SettlementMethod\"j\n\027S" +
       "ettlementMethod\022\026\n\016bitcoinAddress\030\001 \001(\014\022" +
       "\025\n\rrippleAddress\030\013 \001(\014\022 \n\030acceptedRipple" +
-      "Currencies\030\014 \003(\014\"\250\001\n)BazarroSettlementTe" +
+      "Currencies\030\014 \003(\014\"\250\001\n)SettlementTe" +
       "rmOfServiceByteStorage\022\035\n\025pricePerBytePe" +
       "rPeriod\030\001 \001(\014\022\036\n\026storagePeriodInSeconds\030" +
       "\002 \001(\r\022\034\n\024minimumNumberOfBytes\030\003 \001(\004\022\036\n\026r" +
-      "ecoveryDelayInSeconds\030\005 \001(\r\"\266\001\n*BazarroS" +
+      "ecoveryDelayInSeconds\030\005 \001(\r\"\266\001\n*S" +
       "ettlementTermOfServiceByteTransfer\022\034\n\024pr" +
       "iceIncomingPerByte\030\001 \001(\014\022\034\n\024priceOutgoin",
       "gPerByte\030\002 \001(\014\022%\n\035maximumIncomingBytesPe" +
@@ -18198,11 +18198,11 @@ public final class ProtocolBuffer {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_castaconcord_BazarroHeaderMessage_descriptor =
+          internal_static_castaconcord_HeaderMessage_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_castaconcord_BazarroHeaderMessage_fieldAccessorTable = new
+          internal_static_castaconcord_HeaderMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroHeaderMessage_descriptor,
+              internal_static_castaconcord_HeaderMessage_descriptor,
               new java.lang.String[] { "SenderInfo", "RequestNumber", "ApplicationId", "Signature", "ApplicationSpecificBlockLength", "ApplicationSpecificStreamLength", });
           internal_static_castaconcord_SenderInformationMsg_descriptor =
             getDescriptor().getMessageTypes().get(1);
@@ -18210,47 +18210,47 @@ public final class ProtocolBuffer {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_castaconcord_SenderInformationMsg_descriptor,
               new java.lang.String[] { "UserAgent", "ExternalIP", "ExternalPort", "NodePublicKey", "ApplicationsSupported", });
-          internal_static_castaconcord_BazarroNetworkMessage_descriptor =
+          internal_static_castaconcord_NetworkMessage_descriptor =
             getDescriptor().getMessageTypes().get(2);
-          internal_static_castaconcord_BazarroNetworkMessage_fieldAccessorTable = new
+          internal_static_castaconcord_NetworkMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroNetworkMessage_descriptor,
+              internal_static_castaconcord_NetworkMessage_descriptor,
               new java.lang.String[] { "Operation", });
-          internal_static_castaconcord_BazarroGossipMessage_descriptor =
+          internal_static_castaconcord_GossipMessage_descriptor =
             getDescriptor().getMessageTypes().get(3);
-          internal_static_castaconcord_BazarroGossipMessage_fieldAccessorTable = new
+          internal_static_castaconcord_GossipMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroGossipMessage_descriptor,
+              internal_static_castaconcord_GossipMessage_descriptor,
               new java.lang.String[] { "RequestMorePeers", "Reply", });
-          internal_static_castaconcord_BazarroGossipRequestMorePeers_descriptor =
+          internal_static_castaconcord_GossipRequestMorePeers_descriptor =
             getDescriptor().getMessageTypes().get(4);
-          internal_static_castaconcord_BazarroGossipRequestMorePeers_fieldAccessorTable = new
+          internal_static_castaconcord_GossipRequestMorePeers_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroGossipRequestMorePeers_descriptor,
+              internal_static_castaconcord_GossipRequestMorePeers_descriptor,
               new java.lang.String[] { "ApplicationsRequested", });
-          internal_static_castaconcord_BazarroGossipReplyMorePeers_descriptor =
+          internal_static_castaconcord_GossipReplyMorePeers_descriptor =
             getDescriptor().getMessageTypes().get(5);
-          internal_static_castaconcord_BazarroGossipReplyMorePeers_fieldAccessorTable = new
+          internal_static_castaconcord_GossipReplyMorePeers_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroGossipReplyMorePeers_descriptor,
+              internal_static_castaconcord_GossipReplyMorePeers_descriptor,
               new java.lang.String[] { "Peers", });
-          internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_descriptor =
-            internal_static_castaconcord_BazarroGossipReplyMorePeers_descriptor.getNestedTypes().get(0);
-          internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_fieldAccessorTable = new
+          internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_descriptor =
+            internal_static_castaconcord_GossipReplyMorePeers_descriptor.getNestedTypes().get(0);
+          internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_descriptor,
+              internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_descriptor,
               new java.lang.String[] { "Identity", "IpEndpoint", });
-          internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor =
-            internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_descriptor.getNestedTypes().get(0);
-          internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable = new
+          internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor =
+            internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_descriptor.getNestedTypes().get(0);
+          internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor,
+              internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor,
               new java.lang.String[] { "Ipaddress", "Port", });
-          internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor =
-            internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_descriptor.getNestedTypes().get(1);
-          internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable = new
+          internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor =
+            internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_descriptor.getNestedTypes().get(1);
+          internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroGossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor,
+              internal_static_castaconcord_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor,
               new java.lang.String[] { "TORAddress", });
           internal_static_castaconcord_GenericResponse_descriptor =
             getDescriptor().getMessageTypes().get(6);
@@ -18324,29 +18324,29 @@ public final class ProtocolBuffer {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_castaconcord_P2PBlobHashListMsg_descriptor,
               new java.lang.String[] { "HashBytes", });
-          internal_static_castaconcord_BazarroSettlementMessage_descriptor =
+          internal_static_castaconcord_SettlementMessage_descriptor =
             getDescriptor().getMessageTypes().get(18);
-          internal_static_castaconcord_BazarroSettlementMessage_fieldAccessorTable = new
+          internal_static_castaconcord_SettlementMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroSettlementMessage_descriptor,
+              internal_static_castaconcord_SettlementMessage_descriptor,
               new java.lang.String[] { "RequestSettlementMethod", "RequestTermsOfService", "SettlementMethod", });
-          internal_static_castaconcord_BazarroSettlementMethod_descriptor =
+          internal_static_castaconcord_SettlementMethod_descriptor =
             getDescriptor().getMessageTypes().get(19);
-          internal_static_castaconcord_BazarroSettlementMethod_fieldAccessorTable = new
+          internal_static_castaconcord_SettlementMethod_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroSettlementMethod_descriptor,
+              internal_static_castaconcord_SettlementMethod_descriptor,
               new java.lang.String[] { "BitcoinAddress", "RippleAddress", "AcceptedRippleCurrencies", });
-          internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_descriptor =
+          internal_static_castaconcord_SettlementTermOfServiceByteStorage_descriptor =
             getDescriptor().getMessageTypes().get(20);
-          internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_fieldAccessorTable = new
+          internal_static_castaconcord_SettlementTermOfServiceByteStorage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroSettlementTermOfServiceByteStorage_descriptor,
+              internal_static_castaconcord_SettlementTermOfServiceByteStorage_descriptor,
               new java.lang.String[] { "PricePerBytePerPeriod", "StoragePeriodInSeconds", "MinimumNumberOfBytes", "RecoveryDelayInSeconds", });
-          internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_descriptor =
+          internal_static_castaconcord_SettlementTermOfServiceByteTransfer_descriptor =
             getDescriptor().getMessageTypes().get(21);
-          internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_fieldAccessorTable = new
+          internal_static_castaconcord_SettlementTermOfServiceByteTransfer_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_castaconcord_BazarroSettlementTermOfServiceByteTransfer_descriptor,
+              internal_static_castaconcord_SettlementTermOfServiceByteTransfer_descriptor,
               new java.lang.String[] { "PriceIncomingPerByte", "PriceOutgoingPerByte", "MaximumIncomingBytesPerSecond", "MaximumOutgoingBytesPerSecond", });
           return null;
         }

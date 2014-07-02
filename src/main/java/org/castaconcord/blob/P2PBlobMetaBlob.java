@@ -1,11 +1,11 @@
 package org.castaconcord.blob;
 
-import org.castaconcord.h2pk.BazarroHashIdentifier;
+import org.castaconcord.h2pk.HashIdentifier;
 
 import com.google.common.primitives.UnsignedLong;
 
 public class P2PBlobMetaBlob {
-	public BazarroHashIdentifier getIdentifier(){
+	public HashIdentifier getIdentifier(){
 		return null;
 	}
 	

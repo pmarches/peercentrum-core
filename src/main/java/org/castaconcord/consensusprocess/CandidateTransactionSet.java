@@ -3,7 +3,7 @@ package org.castaconcord.consensusprocess;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,9 +13,9 @@ import com.google.common.primitives.UnsignedLong;
 public class CandidateTransactionSet {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CandidateTransactionSet.class);
 
-	protected HashMap<ConsensusTransaction, HashMap<BazarroNodeIdentifier, Boolean>> votesPerTX = new HashMap<>();
+	protected HashMap<ConsensusTransaction, HashMap<NodeIdentifier, Boolean>> votesPerTX = new HashMap<>();
 	
-	public ProposedTransactions<?> packageProposals(BazarroNodeIdentifier thisNode, UnsignedLong DBVersionNumber, int nbValidatorRequired){
+	public ProposedTransactions<?> packageProposals(NodeIdentifier thisNode, UnsignedLong DBVersionNumber, int nbValidatorRequired){
 		LOGGER.trace("votesPerTX.size={}", votesPerTX.size());
 		LOGGER.trace("votesPerTX={}", votesPerTX);
 
@@ -23,7 +23,7 @@ public class CandidateTransactionSet {
 		Iterator<ConsensusTransaction> txIt=getTransactionIterator();
 		while(txIt.hasNext()){
 			ConsensusTransaction currentTx = txIt.next();
-			HashMap<BazarroNodeIdentifier, Boolean> txVotes = votesPerTX.get(currentTx);
+			HashMap<NodeIdentifier, Boolean> txVotes = votesPerTX.get(currentTx);
 			int nbValidatorsThatAcceptedTx=0;
 			for(Boolean oneVote : txVotes.values()){
 				if(oneVote.equals(Boolean.TRUE)){
@@ -46,7 +46,7 @@ public class CandidateTransactionSet {
 //		int nbApprovedTransactions=0;
 //		Iterator<Transaction> txIt=getTransactionIterator();
 //		while(txIt.hasNext()){
-//			Hashtable<BazarroNodeIdentifier, Boolean> nodesThatApprovedThisTx = votesPerTX.get(txIt.next());
+//			Hashtable<NodeIdentifier, Boolean> nodesThatApprovedThisTx = votesPerTX.get(txIt.next());
 //			final int nbNodesRequiredForConsensus=(int) (this.validatorCount*CONSENSUS_THRESHOLD);
 //			if(nodesThatApprovedThisTx.size()>=nbNodesRequiredForConsensus){
 //				nbApprovedTransactions++;
@@ -59,10 +59,10 @@ public class CandidateTransactionSet {
 		return votesPerTX.keySet().iterator();
 	}
 
-	synchronized public void setApproval(BazarroNodeIdentifier from, ConsensusTransaction tx, boolean isTransactionApprovedByNode) {
-		HashMap<BazarroNodeIdentifier, Boolean> nodeApprovalsOfThisTx = votesPerTX.get(tx);
+	synchronized public void setApproval(NodeIdentifier from, ConsensusTransaction tx, boolean isTransactionApprovedByNode) {
+		HashMap<NodeIdentifier, Boolean> nodeApprovalsOfThisTx = votesPerTX.get(tx);
 		if(nodeApprovalsOfThisTx==null){
-			nodeApprovalsOfThisTx = new HashMap<BazarroNodeIdentifier, Boolean>(); 
+			nodeApprovalsOfThisTx = new HashMap<NodeIdentifier, Boolean>(); 
 			votesPerTX.put(tx, nodeApprovalsOfThisTx);
 		}
 		Boolean otherNodeVoteOnTX=nodeApprovalsOfThisTx.get(from);

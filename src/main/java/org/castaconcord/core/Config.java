@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.yaml.snakeyaml.Yaml;
 
-public class BazarroConfig {
+public class Config {
 	File directoryOfConfigFile;	
 
 	String nodeIdentifier; //FIXME Temporary, should be derived from the private key...
@@ -15,9 +15,9 @@ public class BazarroConfig {
 	List<?> applications;
 	boolean enableNAT=false;
 
-	public static BazarroConfig loadFromFile(File file) throws Exception {
+	public static Config loadFromFile(File file) throws Exception {
 		Yaml yaml = new Yaml();
-		BazarroConfig config= (BazarroConfig) yaml.load(new FileInputStream(file));
+		Config config= (Config) yaml.load(new FileInputStream(file));
 		config.setBaseDirectory(file.getAbsoluteFile().getParentFile().getCanonicalFile());
 		return config;
 	}
@@ -77,7 +77,7 @@ public class BazarroConfig {
 
 	@Override
 	public String toString() {
-		return "BazarroConfig [nodeIdentifier=" + nodeIdentifier + ", privateKey=" + privateKey + ", listenPort="
+		return "Config [nodeIdentifier=" + nodeIdentifier + ", privateKey=" + privateKey + ", listenPort="
 				+ listenPort + ", applications=" + applications + "]";
 	}
 }

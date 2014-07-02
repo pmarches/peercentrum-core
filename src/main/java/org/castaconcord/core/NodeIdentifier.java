@@ -1,14 +1,14 @@
 package org.castaconcord.core;
 
-import org.castaconcord.h2pk.BazarroPublicKeyIdentifier;
+import org.castaconcord.h2pk.PublicKeyIdentifier;
 
 
-public class BazarroNodeIdentifier extends BazarroPublicKeyIdentifier {
-	public BazarroNodeIdentifier(String humanReadableIdentifier){
+public class NodeIdentifier extends PublicKeyIdentifier {
+	public NodeIdentifier(String humanReadableIdentifier){
 		super(humanReadableIdentifier.getBytes());
 	}
 	
-	public BazarroNodeIdentifier(byte[] binaryIdentifier){
+	public NodeIdentifier(byte[] binaryIdentifier){
 		super(binaryIdentifier);
 		if(binaryIdentifier==null || binaryIdentifier.length==0){
 			throw new RuntimeException("invalid identifier");

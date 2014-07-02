@@ -11,49 +11,49 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
 import org.castaconcord.core.ProtocolBuffer;
-import org.castaconcord.h2pk.BazarroHashIdentifier;
+import org.castaconcord.h2pk.HashIdentifier;
 import org.spongycastle.crypto.digests.SHA256Digest;
 
 import com.google.protobuf.ByteString;
 
-public class P2PBlobHashList extends ArrayList<BazarroHashIdentifier> {
+public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 	public static final int HASH_BYTE_SIZE = 32; //Number of bytes per hash
-	BazarroHashIdentifier topLevelHash;
+	HashIdentifier topLevelHash;
 
 	public P2PBlobHashList(byte[] concatenatedBlockHashes) {
 		ByteBuf concatenatedHashes=Unpooled.wrappedBuffer(concatenatedBlockHashes);
 		while(concatenatedHashes.readableBytes()!=0){
 			byte[] blockHash=new byte[HASH_BYTE_SIZE];
 			concatenatedHashes.readBytes(blockHash);
-			add(new BazarroHashIdentifier(blockHash));
+			add(new HashIdentifier(blockHash));
 		}
 	}
 
 	public P2PBlobHashList(ProtocolBuffer.P2PBlobHashListMsg hashListMsg) {
 		for(ByteString hashMsg:hashListMsg.getHashBytesList()){
-			add(new BazarroHashIdentifier(hashMsg.toByteArray()));
+			add(new HashIdentifier(hashMsg.toByteArray()));
 		}
 	}
 
 	public P2PBlobHashList() {
 	}
 
-	public BazarroHashIdentifier getTopLevelHash() {
+	public HashIdentifier getTopLevelHash() {
 		if(topLevelHash==null){
 			SHA256Digest mda = new SHA256Digest();
-			for(BazarroHashIdentifier hashOfBlock:this){
+			for(HashIdentifier hashOfBlock:this){
 				mda.update(hashOfBlock.getBytes(), 0, hashOfBlock.getBytes().length);
 			}
 			byte[] hashBytes = new byte[32];
 			mda.doFinal(hashBytes, 0);
-			topLevelHash=new BazarroHashIdentifier(hashBytes);
+			topLevelHash=new HashIdentifier(hashBytes);
 		}
 		return topLevelHash;
 	}
 
 	public ProtocolBuffer.P2PBlobHashListMsg toHashListMsg() {
 		ProtocolBuffer.P2PBlobHashListMsg.Builder hashListMsg=ProtocolBuffer.P2PBlobHashListMsg.newBuilder();
-		for(BazarroHashIdentifier currentHash:this){
+		for(HashIdentifier currentHash:this){
 			hashListMsg.addHashBytes(currentHash.toByteString());
 		}
 		return hashListMsg.build();
@@ -72,7 +72,7 @@ public class P2PBlobHashList extends ArrayList<BazarroHashIdentifier> {
 				continue;
 			}
 			if(dataBlock.limit()!=0){
-				BazarroHashIdentifier blockHash=hashBytes(dataBlock.array(), dataBlock.arrayOffset(), dataBlock.position());
+				HashIdentifier blockHash=hashBytes(dataBlock.array(), dataBlock.arrayOffset(), dataBlock.position());
 				hashList.add(blockHash);
 				dataBlock.rewind();
 			}
@@ -85,12 +85,12 @@ public class P2PBlobHashList extends ArrayList<BazarroHashIdentifier> {
 		return hashList;
 	}
 
-	public static BazarroHashIdentifier hashBytes(byte[] dataToHash, int offset, int length){
+	public static HashIdentifier hashBytes(byte[] dataToHash, int offset, int length){
 		SHA256Digest mda = new SHA256Digest();
 		mda.update(dataToHash, offset, length);
 		byte[] hashBytes = new byte[32];
 		mda.doFinal(hashBytes, 0);
-		return new BazarroHashIdentifier(hashBytes);
+		return new HashIdentifier(hashBytes);
 	}
 	
 	public static int getNumberOfBlocksForBlobSize(long blobByteSize) {

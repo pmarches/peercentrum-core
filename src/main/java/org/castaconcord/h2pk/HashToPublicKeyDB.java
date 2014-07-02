@@ -44,7 +44,7 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 		}
 	}
 
-	public void registerPublicKey(BazarroHashIdentifier address, BazarroPublicKeyIdentifier publicKey) throws Exception {
+	public void registerPublicKey(HashIdentifier address, PublicKeyIdentifier publicKey) throws Exception {
 		db.beginTransaction(SqlJetTransactionMode.WRITE);
 		try {
 			long newRow = addressToPKTable.insert(address.getBytes(), publicKey.getBytes());
@@ -54,7 +54,7 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 		}
 	}
 
-	public void unRegisterPublicKeyForAddress(BazarroHashIdentifier address, BazarroPublicKeyIdentifier publicKey)
+	public void unRegisterPublicKeyForAddress(HashIdentifier address, PublicKeyIdentifier publicKey)
 			throws Exception {
 		db.beginTransaction(SqlJetTransactionMode.WRITE);
 		try {
@@ -70,16 +70,16 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 		}
 	}
 
-	public Set<BazarroPublicKeyIdentifier> getRegisteredPublicKeysForAddress(BazarroHashIdentifier address) {
+	public Set<PublicKeyIdentifier> getRegisteredPublicKeysForAddress(HashIdentifier address) {
 		try {
-			Set<BazarroPublicKeyIdentifier> publicKeys = new HashSet<>();
+			Set<PublicKeyIdentifier> publicKeys = new HashSet<>();
 
 			db.beginTransaction(SqlJetTransactionMode.READ_ONLY);
 			try {
 				ISqlJetCursor matchingkPKCursor = addressToPKTable.lookup(INDEX_ADDRESS, address.getBytes());
 				while(!matchingkPKCursor.eof()){
 					byte[] pkBytes=matchingkPKCursor.getBlobAsArray(FIELD_PUBLIC_KEY);
-					publicKeys.add(new BazarroPublicKeyIdentifier(pkBytes));
+					publicKeys.add(new PublicKeyIdentifier(pkBytes));
 					matchingkPKCursor.next();
 				}
 			} finally {
@@ -108,7 +108,7 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 		}
 	}
 
-	public boolean isPublicKeyRegisteredForAddress(BazarroHashIdentifier address, BazarroPublicKeyIdentifier publicKey) {
+	public boolean isPublicKeyRegisteredForAddress(HashIdentifier address, PublicKeyIdentifier publicKey) {
 		if(address==null){
 			throw new NullPointerException("address cannot be null");
 		}
@@ -146,8 +146,8 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 	 */
 	@Override
 	public void applyOneTransaction(HashToPublicKeyTransaction tx) throws Exception {
-		BazarroHashIdentifier address = tx.getAddress();
-		BazarroPublicKeyIdentifier publicKey = tx.getPublicKey();
+		HashIdentifier address = tx.getAddress();
+		PublicKeyIdentifier publicKey = tx.getPublicKey();
 		if (tx.isAppend()) {
 			registerPublicKey(address, publicKey);
 		} else if (tx.isRemove()) {

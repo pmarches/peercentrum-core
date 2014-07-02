@@ -6,17 +6,17 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
 
-import org.castaconcord.core.BazarroApplicationIdentifier;
+import org.castaconcord.core.ApplicationIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
-class BazarroRoutingHandler extends ChannelInboundHandlerAdapter {
-	private static final Logger LOGGER = LoggerFactory.getLogger(BazarroRoutingHandler.class);
+class RoutingHandler extends ChannelInboundHandlerAdapter {
+	private static final Logger LOGGER = LoggerFactory.getLogger(RoutingHandler.class);
 	
-	private BazarroNetworkServer server;
+	private NetworkServer server;
 
-	public BazarroRoutingHandler(BazarroNetworkServer server) {
+	public RoutingHandler(NetworkServer server) {
 		this.server=server;
 	}
 
@@ -24,8 +24,8 @@ class BazarroRoutingHandler extends ChannelInboundHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		MDC.put("NodeId", server.thisNodeId.toString());
 		HeaderAndPayload currentHeaderAndPayload = (HeaderAndPayload) msg;
-		BazarroApplicationIdentifier appIdReceived = new BazarroApplicationIdentifier(currentHeaderAndPayload.header.getApplicationId().toByteArray());
-		BaseBazarroApplicationMessageHandler applicationHandler=server.getApplicationHandler(appIdReceived);
+		ApplicationIdentifier appIdReceived = new ApplicationIdentifier(currentHeaderAndPayload.header.getApplicationId().toByteArray());
+		BaseApplicationMessageHandler applicationHandler=server.getApplicationHandler(appIdReceived);
 		if(applicationHandler!=null){
 			HeaderAndPayload response = applicationHandler.generateReponseFromQuery(ctx, currentHeaderAndPayload);
 			if(response!=null){

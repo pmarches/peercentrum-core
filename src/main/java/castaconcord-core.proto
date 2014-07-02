@@ -3,7 +3,7 @@ package castaconcord;
 option java_package = "org.castaconcord.core";
 option java_outer_classname = "ProtocolBuffer";
 
-message BazarroHeaderMessage {
+message HeaderMessage {
 	optional SenderInformationMsg senderInfo=1;
 	optional uint32 requestNumber=2; 
 	optional bytes applicationId=3;
@@ -21,7 +21,7 @@ message SenderInformationMsg {
   repeated bytes applicationsSupported=5;
 };
 
-message BazarroNetworkMessage {
+message NetworkMessage {
 	enum NetworkOperation {
 		CLOSE_CONNECTION=0;
 		PING=1;
@@ -31,16 +31,16 @@ message BazarroNetworkMessage {
 };
 
 //Gossip application
-message BazarroGossipMessage {
-  optional BazarroGossipRequestMorePeers requestMorePeers=1;
-  optional BazarroGossipReplyMorePeers reply=2;
+message GossipMessage {
+  optional GossipRequestMorePeers requestMorePeers=1;
+  optional GossipReplyMorePeers reply=2;
 };
 
-message BazarroGossipRequestMorePeers {
+message GossipRequestMorePeers {
   repeated bytes applicationsRequested=1; //If omited, return a bunch of peers
 };
 
-message BazarroGossipReplyMorePeers {
+message GossipReplyMorePeers {
 	message PeerEndpoint {
 		message IPEndpoint {
 			optional string ipaddress=1;
@@ -149,14 +149,14 @@ message P2PBlobHashListMsg {
 
 /////////////// Settlement ////////////////
 
-message BazarroSettlementMessage {
+message SettlementMessage {
   optional bool requestSettlementMethod=1;
   optional bool requestTermsOfService=2; //Goes for any service
 
-  optional BazarroSettlementMethod settlementMethod=21;
+  optional SettlementMethod settlementMethod=21;
 };
 
-message BazarroSettlementMethod {
+message SettlementMethod {
   optional bytes bitcoinAddress=1;
   //Probably more stuff here for micro payment channels
   //optional bytes bitcoinEscrowAddress=2;
@@ -166,7 +166,7 @@ message BazarroSettlementMethod {
 };
 
 /*** This stuff should go on a per app basis ************/
-message BazarroSettlementTermOfServiceByteStorage {
+message SettlementTermOfServiceByteStorage {
   optional bytes pricePerBytePerPeriod=1;
   optional uint32 storagePeriodInSeconds=2; //Per Hour, Per day,Per month?
 
@@ -174,7 +174,7 @@ message BazarroSettlementTermOfServiceByteStorage {
   optional uint32 recoveryDelayInSeconds=5; //How much time may elapse before we return the data 
 };
 
-message BazarroSettlementTermOfServiceByteTransfer {
+message SettlementTermOfServiceByteTransfer {
   optional bytes priceIncomingPerByte=1;
   optional bytes priceOutgoingPerByte=2;
   optional uint32 maximumIncomingBytesPerSecond=3;

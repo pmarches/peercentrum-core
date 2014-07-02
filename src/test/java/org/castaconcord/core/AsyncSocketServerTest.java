@@ -13,10 +13,10 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage;
-import org.castaconcord.network.BaseBazarroApplicationMessageHandler;
-import org.castaconcord.network.BazarroNetworkClientConnection;
-import org.castaconcord.network.BazarroNetworkServer;
+import org.castaconcord.core.ProtocolBuffer.HeaderMessage;
+import org.castaconcord.network.BaseApplicationMessageHandler;
+import org.castaconcord.network.NetworkClientConnection;
+import org.castaconcord.network.NetworkServer;
 import org.castaconcord.network.HeaderAndPayload;
 import org.junit.Test;
 
@@ -24,18 +24,18 @@ public class AsyncSocketServerTest {
 	final int NB_CLIENTS=10;
 	final int NUMBER_OF_MESSAGE = 2;
 
-	static class BazarroMessageEchoApp extends BaseBazarroApplicationMessageHandler {
-		public static final BazarroApplicationIdentifier ECHO_APP = new BazarroApplicationIdentifier("EchoApp".getBytes());
+	static class MessageEchoApp extends BaseApplicationMessageHandler {
+		public static final ApplicationIdentifier ECHO_APP = new ApplicationIdentifier("EchoApp".getBytes());
 		CountDownLatch countdownLatch;
 		public AtomicInteger numberOfMessagesReceived=new AtomicInteger();
 
-		public BazarroMessageEchoApp(BazarroNetworkServer server, CountDownLatch serverSideLatch) {
+		public MessageEchoApp(NetworkServer server, CountDownLatch serverSideLatch) {
 			super(server);
 			countdownLatch = serverSideLatch;
 		}
 		
 		@Override
-		public BazarroApplicationIdentifier getApplicationId() {
+		public ApplicationIdentifier getApplicationId() {
 			return ECHO_APP;
 		}
 
@@ -46,7 +46,7 @@ public class AsyncSocketServerTest {
 			}
 			numberOfMessagesReceived.incrementAndGet();
 //			System.out.println("Payload is of size "+receivedRequest.payload.readableBytes());
-			BazarroHeaderMessage.Builder headerBuilder = newResponseHeaderForRequest(receivedRequest);
+			HeaderMessage.Builder headerBuilder = newResponseHeaderForRequest(receivedRequest);
 			
 			HeaderAndPayload response = new HeaderAndPayload(headerBuilder, receivedRequest.payload);
 			return response;
@@ -56,12 +56,12 @@ public class AsyncSocketServerTest {
 	@Test
 	public void testAsyncSocketServer() throws Exception {
 		ResourceLeakDetector.setLevel(Level.ADVANCED);
-		final BazarroNetworkServer server = new BazarroNetworkServer(null, null, 0);
+		final NetworkServer server = new NetworkServer(null, null, 0);
 		final CountDownLatch serverDoneBarrier = new CountDownLatch(NB_CLIENTS*NUMBER_OF_MESSAGE);
-		BazarroMessageEchoApp serverSideCountingHandler=new BazarroMessageEchoApp(server, serverDoneBarrier);
+		MessageEchoApp serverSideCountingHandler=new MessageEchoApp(server, serverDoneBarrier);
 		
 		InetSocketAddress serverEndpoint=new InetSocketAddress(server.getListeningPort());
-		final BazarroNetworkClientConnection connection = new BazarroNetworkClientConnection(serverEndpoint);
+		final NetworkClientConnection connection = new NetworkClientConnection(serverEndpoint);
 		final CountDownLatch clientsDoneBarrier = new CountDownLatch(NB_CLIENTS);
 		for(int i=0; i<NB_CLIENTS; i++){
 			new Thread(){ @Override public void run() {
@@ -83,12 +83,12 @@ public class AsyncSocketServerTest {
 		assertEquals(NB_CLIENTS*NUMBER_OF_MESSAGE, serverSideCountingHandler.numberOfMessagesReceived.intValue());
 	}
 
-	private void doNettyClientWrite(BazarroNetworkClientConnection connection) throws InterruptedException, ExecutionException {
+	private void doNettyClientWrite(NetworkClientConnection connection) throws InterruptedException, ExecutionException {
 		ByteBuf helloWorldBuffer = Unpooled.wrappedBuffer("Hello world".getBytes());
-		Future<ByteBuf> helloWorldResponse=connection.sendRequestBytes(BazarroMessageEchoApp.ECHO_APP, helloWorldBuffer);
+		Future<ByteBuf> helloWorldResponse=connection.sendRequestBytes(MessageEchoApp.ECHO_APP, helloWorldBuffer);
 
 		ByteBuf bonjourBuffer = Unpooled.wrappedBuffer("Bonjour le monde".getBytes());
-		Future<ByteBuf> bonjourResponse=connection.sendRequestBytes(BazarroMessageEchoApp.ECHO_APP, bonjourBuffer);
+		Future<ByteBuf> bonjourResponse=connection.sendRequestBytes(MessageEchoApp.ECHO_APP, bonjourBuffer);
 
 		assertEquals(bonjourBuffer, bonjourResponse.get());
 		assertEquals(helloWorldBuffer, helloWorldResponse.get());
@@ -104,13 +104,13 @@ public class AsyncSocketServerTest {
 //			for (int i=0; i < MESSAGE_SIZE; i++) {
 //				payloadBytesToWrite.writeByte(0+i);
 //			}
-//			sendHeaderAndPayload(clientChannel, BazarroMessageEchoApp.ECHO_APP, payloadBytesToWrite);
+//			sendHeaderAndPayload(clientChannel, MessageEchoApp.ECHO_APP, payloadBytesToWrite);
 //			receivedHeaderAndPayload(clientChannel);
 //		}
 //		
-//		ProtocolBuffer.BazarroNetworkMessage closeMsg=ProtocolBuffer.BazarroNetworkMessage.newBuilder()
+//		ProtocolBuffer.NetworkMessage closeMsg=ProtocolBuffer.NetworkMessage.newBuilder()
 //				.setOperation(NetworkOperation.CLOSE_CONNECTION).build();
-//		sendHeaderAndProtobufMessage(clientChannel, BazarroNetworkApplication.BNETWORK_APPID, closeMsg);
+//		sendHeaderAndProtobufMessage(clientChannel, NetworkApplication.BNETWORK_APPID, closeMsg);
 //
 //		clientChannel.close();
 //		System.out.println("Client done");
@@ -136,7 +136,7 @@ public class AsyncSocketServerTest {
 //			}
 //		}
 //		
-//		BazarroHeaderMessage header=byteBufToProcolBuffer(headerBytes, ProtocolBuffer.BazarroHeaderMessage.newBuilder());
+//		HeaderMessage header=byteBufToProcolBuffer(headerBytes, ProtocolBuffer.HeaderMessage.newBuilder());
 //		HeaderAndPayload headerAndPayload= new HeaderAndPayload(header);
 //		headerAndPayload.payload=Unpooled.copiedBuffer(payloadBytes);
 //		return headerAndPayload;
@@ -190,7 +190,7 @@ public class AsyncSocketServerTest {
 //	}
 //
 //
-//	private void sendHeaderAndProtobufMessage(SocketChannel socketChannel, BazarroApplicationIdentifier appid, BazarroNetworkMessage protobufMsg) throws Exception {
+//	private void sendHeaderAndProtobufMessage(SocketChannel socketChannel, ApplicationIdentifier appid, NetworkMessage protobufMsg) throws Exception {
 //		ProtobufNetworkMessageCodec codec = new ProtobufNetworkMessageCodec();
 //		sendHeaderAndPayload(socketChannel, appid, codec.encode(protobufMsg));
 //	}
@@ -198,8 +198,8 @@ public class AsyncSocketServerTest {
 //
 //	protected void sendHeaderAndPayload(
 //			java.nio.channels.SocketChannel socketChannel,
-//			BazarroApplicationIdentifier appid, ByteBuf payloadBytesToWrite) throws IOException {
-//		BazarroHeaderMessage headerMessage = ProtocolBuffer.BazarroHeaderMessage.newBuilder()
+//			ApplicationIdentifier appid, ByteBuf payloadBytesToWrite) throws IOException {
+//		HeaderMessage headerMessage = ProtocolBuffer.HeaderMessage.newBuilder()
 //				.setApplicationId(ByteString.copyFrom(appid.toByteArray()))
 //				.build();
 //		byte[] headerMessageBytes = headerMessage.toByteArray();

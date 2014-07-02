@@ -1,6 +1,6 @@
 package org.castaconcord.core;
 
-public class BazarroNodeDatabaseConfig {
+public class NodeDatabaseConfig {
 	String nodeDbPath;
 
 	public String getNodeDbPath() {

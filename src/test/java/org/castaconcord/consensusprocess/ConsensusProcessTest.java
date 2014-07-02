@@ -2,7 +2,7 @@ package org.castaconcord.consensusprocess;
 
 import static org.junit.Assert.assertEquals;
 
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 import org.junit.Test;
 
 import com.google.common.primitives.UnsignedLong;
@@ -17,7 +17,7 @@ public class ConsensusProcessTest extends BaseTestCase {
 
 	@Test
 	public void testProcessor() {
-		BazarroNodeIdentifier thisNode=new BazarroNodeIdentifier("ThisNode");
+		NodeIdentifier thisNode=new NodeIdentifier("ThisNode");
 		ConsensusDB db=null;
 		ConsensusProcess proc = new MockConsensusProcess(thisNode, txEvaluator, unl, db);
 		proc.moveLocalTransactionsToCandidateSet();

@@ -1,9 +1,9 @@
 package org.castaconcord.consensusprocess;
 
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 
 public class MockConsensusProcess extends ConsensusProcess {
-	public MockConsensusProcess(BazarroNodeIdentifier thisNode, TransactionEvaluator txEvaluator, UniqueNodeList unl, ConsensusDB db) {
+	public MockConsensusProcess(NodeIdentifier thisNode, TransactionEvaluator txEvaluator, UniqueNodeList unl, ConsensusDB db) {
 		super(thisNode, txEvaluator, unl, db, null);
 	}
 

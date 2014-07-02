@@ -7,16 +7,16 @@ import javax.xml.bind.DatatypeConverter;
 
 import com.google.protobuf.ByteString;
 
-public class BazarroIdentifier {
+public class Identifier {
 	final static SecureRandom RANDOM = new SecureRandom();
 	protected byte[] binaryValue;
 	
-	public BazarroIdentifier() {
+	public Identifier() {
 		binaryValue=new byte[32];
 		RANDOM.nextBytes(binaryValue);
 	}
 	
-	public BazarroIdentifier(byte[] binaryValue) {
+	public Identifier(byte[] binaryValue) {
 		this.binaryValue=binaryValue;
 	}
 	
@@ -40,10 +40,10 @@ public class BazarroIdentifier {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if(obj==null || !(obj instanceof BazarroIdentifier)){
+		if(obj==null || !(obj instanceof Identifier)){
 			return false;
 		}
-		BazarroIdentifier other=(BazarroIdentifier) obj;
+		Identifier other=(Identifier) obj;
 		return Arrays.equals(binaryValue, other.binaryValue);
 	}
 

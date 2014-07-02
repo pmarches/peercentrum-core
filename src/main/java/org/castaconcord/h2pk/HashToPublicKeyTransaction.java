@@ -7,20 +7,20 @@ import org.castaconcord.core.ProtocolBuffer;
 import com.google.protobuf.ByteString;
 
 public class HashToPublicKeyTransaction extends ConsensusTransaction implements Cloneable {
-	BazarroHashIdentifier address;
-	BazarroPublicKeyIdentifier publicKey;
-	BazarroHashPointerSignature signature;
+	HashIdentifier address;
+	PublicKeyIdentifier publicKey;
+	HashPointerSignature signature;
 	boolean isAppend;
 	
 	public HashToPublicKeyTransaction(ProtocolBuffer.HashToPublicKeyTransaction TXMsg) {
-		address=new BazarroHashIdentifier(TXMsg.getAddress().toByteArray());
-		publicKey=new BazarroPublicKeyIdentifier(TXMsg.getPublicKey().toByteArray());
-		signature=new BazarroHashPointerSignature(TXMsg.getSignature().toByteArray());
+		address=new HashIdentifier(TXMsg.getAddress().toByteArray());
+		publicKey=new PublicKeyIdentifier(TXMsg.getPublicKey().toByteArray());
+		signature=new HashPointerSignature(TXMsg.getSignature().toByteArray());
 		isAppend=TXMsg.getOperation()==ProtocolBuffer.HashToPublicKeyTransaction.OPERATION.APPEND;
 	}
 	
-	public HashToPublicKeyTransaction(BazarroHashIdentifier address, BazarroPublicKeyIdentifier publicKey, 
-			boolean isAppend, BazarroHashPointerSignature signature) {
+	public HashToPublicKeyTransaction(HashIdentifier address, PublicKeyIdentifier publicKey, 
+			boolean isAppend, HashPointerSignature signature) {
 		this.address=address;
 		this.publicKey=publicKey;
 		this.isAppend=isAppend;
@@ -29,8 +29,8 @@ public class HashToPublicKeyTransaction extends ConsensusTransaction implements 
 
 	@Override
 	public HashToPublicKeyTransaction clone() throws CloneNotSupportedException {
-		return new HashToPublicKeyTransaction(new BazarroHashIdentifier(address.getBytes()),
-				new BazarroPublicKeyIdentifier(publicKey.getBytes()), isAppend, new BazarroHashPointerSignature(signature.getBytes()));
+		return new HashToPublicKeyTransaction(new HashIdentifier(address.getBytes()),
+				new PublicKeyIdentifier(publicKey.getBytes()), isAppend, new HashPointerSignature(signature.getBytes()));
 	}
 
 	public ProtocolBuffer.HashToPublicKeyTransaction toMessage(){
@@ -55,11 +55,11 @@ public class HashToPublicKeyTransaction extends ConsensusTransaction implements 
 		return !isAppend;
 	}
 
-	public BazarroHashIdentifier getAddress() {
+	public HashIdentifier getAddress() {
 		return address;
 	}
 
-	public BazarroPublicKeyIdentifier getPublicKey() {
+	public PublicKeyIdentifier getPublicKey() {
 		return publicKey;
 	}
 

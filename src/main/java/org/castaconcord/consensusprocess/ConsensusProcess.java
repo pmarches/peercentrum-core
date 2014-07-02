@@ -2,7 +2,7 @@ package org.castaconcord.consensusprocess;
 
 import java.util.Iterator;
 
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -16,7 +16,7 @@ public abstract class ConsensusProcess {
 	protected TransactionQueue localValidTXQueue=new TransactionQueue();
 	protected TransactionEvaluator<? super ConsensusTransaction> txEvaluator;
 	public UniqueNodeList unl;
-	protected BazarroNodeIdentifier localNodeIdentifier;
+	protected NodeIdentifier localNodeIdentifier;
 	protected ConsensusDB<? super ConsensusTransaction> consensusDB;
 	public ConsensusThreshold consensusThreshold;
 
@@ -53,7 +53,7 @@ public abstract class ConsensusProcess {
 
 	abstract protected void broadcastProposedTransactions(ProposedTransactions<? super ConsensusTransaction> ourProposedTx);
 
-	public ConsensusProcess(BazarroNodeIdentifier thisNodeID,
+	public ConsensusProcess(NodeIdentifier thisNodeID,
 			TransactionEvaluator txEvaluator,
 			UniqueNodeList unl,
 			ConsensusDB consensusDB,

@@ -7,15 +7,15 @@ import java.io.File;
 
 import org.junit.Test;
 
-public class BazarroConfigTest {
+public class ConfigTest {
 
 	@Test
 	public void test() throws Exception {
-		BazarroConfig config = BazarroConfig.loadFromFile(new File("bazarro-config.yaml"));
+		Config config = Config.loadFromFile(new File("-config.yaml"));
 		assertNotNull(config);
 		System.out.println(config);
 		assertEquals("Node1", config.getNodeIdentifier());
-		BazarroNodeGossipConfig gossipConfig=(BazarroNodeGossipConfig) config.getAppConfig(BazarroNodeGossipConfig.class);
+		NodeGossipConfig gossipConfig=(NodeGossipConfig) config.getAppConfig(NodeGossipConfig.class);
 		assertNotNull(gossipConfig);
 		assertEquals("127.0.0.1:1234", gossipConfig.getBootstrapEndpoint());
 		assertEquals(new File(".").getCanonicalFile(), config.getBaseDirectory());

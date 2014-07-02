@@ -1,16 +1,16 @@
 package org.castaconcord.consensusprocess;
 
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 
 import com.google.common.primitives.UnsignedLong;
 
 public class BaseTestCase {
-	public static BazarroNodeIdentifier nodeA;
-	public static BazarroNodeIdentifier nodeB;
-	public static BazarroNodeIdentifier nodeC;
-	public static BazarroNodeIdentifier nodeD;
-	public static BazarroNodeIdentifier nodeE;
-	public static BazarroNodeIdentifier nodeZ;
+	public static NodeIdentifier nodeA;
+	public static NodeIdentifier nodeB;
+	public static NodeIdentifier nodeC;
+	public static NodeIdentifier nodeD;
+	public static NodeIdentifier nodeE;
+	public static NodeIdentifier nodeZ;
 
 	public static UniqueNodeList unl;
 	public static ConsensusTransaction tx1;
@@ -30,11 +30,11 @@ public class BaseTestCase {
 	public static ProposedTransactions nodeZProposal_1_2_3;
 
 	static{
-		nodeA = new BazarroNodeIdentifier("nodeA");
-		nodeB = new BazarroNodeIdentifier("nodeB");
-		nodeC = new BazarroNodeIdentifier("nodeC");
-		nodeD = new BazarroNodeIdentifier("nodeC");
-		nodeZ = new BazarroNodeIdentifier("nodeZ");
+		nodeA = new NodeIdentifier("nodeA");
+		nodeB = new NodeIdentifier("nodeB");
+		nodeC = new NodeIdentifier("nodeC");
+		nodeD = new NodeIdentifier("nodeC");
+		nodeZ = new NodeIdentifier("nodeZ");
 		
 		unl = new UniqueNodeList();
 		unl.addValidatorNode(nodeA);

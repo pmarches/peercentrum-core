@@ -2,18 +2,18 @@ package org.castaconcord.core;
 
 import java.net.InetSocketAddress;
 
-public class BazarroNodeInformation {
-	public BazarroNodeInformation(BazarroNodeIdentifier bazarroNodeIdentifier, InetSocketAddress nodeSocketAddress) {
-		this.publicKey=bazarroNodeIdentifier;
+public class NodeInformation {
+	public NodeInformation(NodeIdentifier NodeIdentifier, InetSocketAddress nodeSocketAddress) {
+		this.publicKey=NodeIdentifier;
 		this.nodeSocketAddress=nodeSocketAddress;
 	}
 
-	public BazarroNodeIdentifier publicKey;
+	public NodeIdentifier publicKey;
 	public InetSocketAddress nodeSocketAddress;
 
 	public long firstSeenAt;
 	public long lastSeenAt;
-	public BazarroApplicationIdentifier applications;
+	public ApplicationIdentifier applications;
 	
 	//Stats to detect leechers? Looks weak.
 	public long numberOfMessagesExchanged;

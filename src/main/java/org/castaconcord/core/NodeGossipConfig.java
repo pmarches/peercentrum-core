@@ -1,6 +1,6 @@
 package org.castaconcord.core;
 
-public class BazarroNodeGossipConfig {
+public class NodeGossipConfig {
 	String bootstrapEndpoint;
 	String nodeDatabasePath;
 
@@ -20,7 +20,7 @@ public class BazarroNodeGossipConfig {
 	}
 	@Override
 	public String toString() {
-		return "BazarroNodeGossipConfig [bootstrapEndpoint=" + bootstrapEndpoint + ", nodeDatabasePath="
+		return "NodeGossipConfig [bootstrapEndpoint=" + bootstrapEndpoint + ", nodeDatabasePath="
 				+ nodeDatabasePath + "]";
 	}
 	

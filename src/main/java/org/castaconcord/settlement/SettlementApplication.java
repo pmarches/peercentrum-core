@@ -4,15 +4,15 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.concurrent.Future;
 
-import org.castaconcord.core.BazarroApplicationIdentifier;
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.ApplicationIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 import org.castaconcord.core.ProtocolBuffer;
-import org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage.Builder;
-import org.castaconcord.core.ProtocolBuffer.BazarroSettlementMethod;
+import org.castaconcord.core.ProtocolBuffer.HeaderMessage.Builder;
+import org.castaconcord.core.ProtocolBuffer.SettlementMethod;
 import org.castaconcord.core.ProtocolBuffer.SenderInformationMsg;
-import org.castaconcord.network.BaseBazarroApplicationMessageHandler;
-import org.castaconcord.network.BazarroNetworkClient;
-import org.castaconcord.network.BazarroNetworkServer;
+import org.castaconcord.network.BaseApplicationMessageHandler;
+import org.castaconcord.network.NetworkClient;
+import org.castaconcord.network.NetworkServer;
 import org.castaconcord.network.HeaderAndPayload;
 import org.castaconcord.network.ProtobufByteBufCodec;
 import org.slf4j.Logger;
@@ -20,14 +20,14 @@ import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.ByteString;
 
-public class SettlementApplication extends BaseBazarroApplicationMessageHandler {
+public class SettlementApplication extends BaseApplicationMessageHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SettlementApplication.class);
-	public static final BazarroApplicationIdentifier APP_ID=new BazarroApplicationIdentifier("SettlementApplication".getBytes());
+	public static final ApplicationIdentifier APP_ID=new ApplicationIdentifier("SettlementApplication".getBytes());
 
 //	RippleSeedAddress rippleSeed;
 //	RippleSettlementDB rippleSettlement;
 	
-	public SettlementApplication(BazarroNetworkServer clientOrServer, SettlementConfig config) throws Exception {
+	public SettlementApplication(NetworkServer clientOrServer, SettlementConfig config) throws Exception {
 		super(clientOrServer);
 //		rippleSeed=new RippleSeedAddress(config.getRippleSeed());
 //		rippleSettlement=new RippleSettlementDB(rippleSeed.getPublicRippleAddress(), config.getSettlementDbPath());
@@ -42,17 +42,17 @@ public class SettlementApplication extends BaseBazarroApplicationMessageHandler 
 				return null;
 			}
 			SenderInformationMsg senderInfo = receivedMessage.header.getSenderInfo();
-			BazarroNodeIdentifier remoteNodeIdentifier = new BazarroNodeIdentifier(senderInfo.getNodePublicKey().toByteArray());
+			NodeIdentifier remoteNodeIdentifier = new NodeIdentifier(senderInfo.getNodePublicKey().toByteArray());
 
-			ProtocolBuffer.BazarroSettlementMessage settlementMessage = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, ProtocolBuffer.BazarroSettlementMessage.class);
+			ProtocolBuffer.SettlementMessage settlementMessage = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, ProtocolBuffer.SettlementMessage.class);
 			if(settlementMessage.hasSettlementMethod()){
-				BazarroSettlementMethod remoteSettlementMethod = settlementMessage.getSettlementMethod();
+				SettlementMethod remoteSettlementMethod = settlementMessage.getSettlementMethod();
 				recordSettlementMehod(remoteNodeIdentifier, remoteSettlementMethod);
 			}
 			
-			ProtocolBuffer.BazarroSettlementMessage.Builder topLevelResponse=ProtocolBuffer.BazarroSettlementMessage.newBuilder();
+			ProtocolBuffer.SettlementMessage.Builder topLevelResponse=ProtocolBuffer.SettlementMessage.newBuilder();
 			if(settlementMessage.hasRequestSettlementMethod() && settlementMessage.getRequestSettlementMethod()){
-				ProtocolBuffer.BazarroSettlementMethod.Builder localSettlementMethod = getLocalSettlementMethod();
+				ProtocolBuffer.SettlementMethod.Builder localSettlementMethod = getLocalSettlementMethod();
 				topLevelResponse.setSettlementMethod(localSettlementMethod);
 			}
 			
@@ -66,7 +66,7 @@ public class SettlementApplication extends BaseBazarroApplicationMessageHandler 
 		}
 	}
 	
-	void recordSettlementMehod(BazarroNodeIdentifier remoteNodeIdentifier, BazarroSettlementMethod settlementMethod) throws Exception {
+	void recordSettlementMehod(NodeIdentifier remoteNodeIdentifier, SettlementMethod settlementMethod) throws Exception {
 		LOGGER.debug("Recording settlement method for node {} ", remoteNodeIdentifier);
 		if(settlementMethod.hasBitcoinAddress()){
 			LOGGER.error("Bitcoin micro-payment settlement not implemented yet :-(");
@@ -77,23 +77,23 @@ public class SettlementApplication extends BaseBazarroApplicationMessageHandler 
 		}
 	}
 
-	public void exchangeSettlementAddresses(final BazarroNetworkClient client, BazarroNodeIdentifier remoteNodeId) throws Exception {
-		ProtocolBuffer.BazarroSettlementMessage.Builder topLevelSettlementMsg=ProtocolBuffer.BazarroSettlementMessage.newBuilder();
+	public void exchangeSettlementAddresses(final NetworkClient client, NodeIdentifier remoteNodeId) throws Exception {
+		ProtocolBuffer.SettlementMessage.Builder topLevelSettlementMsg=ProtocolBuffer.SettlementMessage.newBuilder();
 		topLevelSettlementMsg.setRequestSettlementMethod(true);
 		
-		ProtocolBuffer.BazarroSettlementMethod.Builder localSettlementMethod = getLocalSettlementMethod();
+		ProtocolBuffer.SettlementMethod.Builder localSettlementMethod = getLocalSettlementMethod();
 		topLevelSettlementMsg.setSettlementMethod(localSettlementMethod);
 		
-		Future<ProtocolBuffer.BazarroSettlementMessage> settlementResponseFuture = client.sendRequest(remoteNodeId, getApplicationId(), topLevelSettlementMsg.build());
-		ProtocolBuffer.BazarroSettlementMessage settlementResponse=settlementResponseFuture.get();
+		Future<ProtocolBuffer.SettlementMessage> settlementResponseFuture = client.sendRequest(remoteNodeId, getApplicationId(), topLevelSettlementMsg.build());
+		ProtocolBuffer.SettlementMessage settlementResponse=settlementResponseFuture.get();
 		if(settlementResponse.hasSettlementMethod()){
-			ProtocolBuffer.BazarroSettlementMethod remoteSettlementMethod=settlementResponse.getSettlementMethod();
+			ProtocolBuffer.SettlementMethod remoteSettlementMethod=settlementResponse.getSettlementMethod();
 			recordSettlementMehod(remoteNodeId, remoteSettlementMethod);
 		}
 	}
 
-	protected ProtocolBuffer.BazarroSettlementMethod.Builder getLocalSettlementMethod() {
-		ProtocolBuffer.BazarroSettlementMethod.Builder localSettlementMethod=ProtocolBuffer.BazarroSettlementMethod.newBuilder();
+	protected ProtocolBuffer.SettlementMethod.Builder getLocalSettlementMethod() {
+		ProtocolBuffer.SettlementMethod.Builder localSettlementMethod=ProtocolBuffer.SettlementMethod.newBuilder();
 		localSettlementMethod.addAcceptedRippleCurrencies(ByteString.EMPTY);
 //		RippleAddress localRippleAddress=rippleSeed.getPublicRippleAddress();
 //		localSettlementMethod.setRippleAddress(ByteString.copyFrom(localRippleAddress.getBytes()));
@@ -101,7 +101,7 @@ public class SettlementApplication extends BaseBazarroApplicationMessageHandler 
 	}
 
 	@Override
-	public BazarroApplicationIdentifier getApplicationId() {
+	public ApplicationIdentifier getApplicationId() {
 		return APP_ID;
 	}
 

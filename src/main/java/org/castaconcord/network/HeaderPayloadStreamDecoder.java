@@ -14,13 +14,13 @@ import org.slf4j.LoggerFactory;
 public class HeaderPayloadStreamDecoder extends ByteToMessageDecoder {
 	private static final Logger LOGGER = LoggerFactory.getLogger(HeaderPayloadStreamDecoder.class);
 	HeaderAndPayload pendingHeaderAndPayload;
-	ProtocolBuffer.BazarroHeaderMessage pendingHeader;
+	ProtocolBuffer.HeaderMessage pendingHeader;
 	ByteBuf pendingApplicationBlock;
 	int nbBytesLeftToStream;
 	@Override
 	protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
 		if(pendingHeader==null){
-			pendingHeader=ProtobufByteBufCodec.decodeWithLengthPrefix(in, ProtocolBuffer.BazarroHeaderMessage.class);
+			pendingHeader=ProtobufByteBufCodec.decodeWithLengthPrefix(in, ProtocolBuffer.HeaderMessage.class);
 			if(pendingHeader==null){
 				return;
 			}

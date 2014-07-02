@@ -3,8 +3,8 @@ package org.castaconcord.core;
 import java.util.Arrays;
 
 
-public class BazarroApplicationIdentifier extends BazarroIdentifier {
-	public BazarroApplicationIdentifier(byte[] appIdBytes) {
+public class ApplicationIdentifier extends Identifier {
+	public ApplicationIdentifier(byte[] appIdBytes) {
 		super(appIdBytes);
 	}
 	
@@ -24,7 +24,7 @@ public class BazarroApplicationIdentifier extends BazarroIdentifier {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BazarroApplicationIdentifier other = (BazarroApplicationIdentifier) obj;
+		ApplicationIdentifier other = (ApplicationIdentifier) obj;
 		if (!Arrays.equals(binaryValue, other.binaryValue))
 			return false;
 		return true;

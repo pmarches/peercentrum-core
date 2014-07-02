@@ -57,7 +57,7 @@ public class AbstractNodeBalanceDB implements AutoCloseable {
 		balanceTable = db.getTable(balanceTN);
 	}
 
-	public long getBalanceForNode(final BazarroNodeIdentifier nodeId) throws SqlJetException {
+	public long getBalanceForNode(final NodeIdentifier nodeId) throws SqlJetException {
 		ISqlJetTransaction getBalanceTx=new ISqlJetTransaction() {
 			@Override public Object run(SqlJetDb db) throws SqlJetException {
 				ISqlJetCursor nodeAccountCursor = balanceTable.lookup(null, nodeId.getBytes());
@@ -72,7 +72,7 @@ public class AbstractNodeBalanceDB implements AutoCloseable {
 		return (long) db.runReadTransaction(getBalanceTx);
 	}
 
-	public boolean maybeDebit(final BazarroNodeIdentifier nodeId, final long amountToBeDebited) {
+	public boolean maybeDebit(final NodeIdentifier nodeId, final long amountToBeDebited) {
 		if(amountToBeDebited<0){
 			throw new RuntimeException("Invalid debit amount "+amountToBeDebited);
 		}
@@ -122,7 +122,7 @@ public class AbstractNodeBalanceDB implements AutoCloseable {
 		}
 	}
 
-	public long creditNode(final BazarroNodeIdentifier nodeId, final long creditAmount) {
+	public long creditNode(final NodeIdentifier nodeId, final long creditAmount) {
 		if(creditAmount<0){
 			throw new RuntimeException("Invalid credit amount "+creditAmount);
 		}
@@ -164,7 +164,7 @@ public class AbstractNodeBalanceDB implements AutoCloseable {
 				db.beginTransaction(SqlJetTransactionMode.READ_ONLY);
 				nodeAccountCursor = balanceTable.scope(null, null, null);
 				while(nodeAccountCursor.eof()==false){
-					BazarroNodeIdentifier node=new BazarroNodeIdentifier(nodeAccountCursor.getBlobAsArray(NODE_ID_FN));
+					NodeIdentifier node=new NodeIdentifier(nodeAccountCursor.getBlobAsArray(NODE_ID_FN));
 					System.out.println(nodeAccountCursor.getInteger(BALANCE_FN)+" '"+node+"'");
 					nodeAccountCursor.next();
 				}

@@ -20,18 +20,18 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.castaconcord.core.BazarroApplicationIdentifier;
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.ApplicationIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 import org.castaconcord.core.ProtocolBuffer;
-import org.castaconcord.core.ProtocolBuffer.BazarroHeaderMessage;
+import org.castaconcord.core.ProtocolBuffer.HeaderMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 
-public class BazarroNetworkClientConnection implements Closeable {
-	private static final Logger LOGGER = LoggerFactory.getLogger(BazarroNetworkClientConnection.class);
+public class NetworkClientConnection implements Closeable {
+	private static final Logger LOGGER = LoggerFactory.getLogger(NetworkClientConnection.class);
 	
 	NioEventLoopGroup workerGroup = new NioEventLoopGroup(); //TODO Pass-in as argument
 	ChannelFuture socketChannelFuture;
@@ -67,7 +67,7 @@ public class BazarroNetworkClientConnection implements Closeable {
     	};
     };
 	
-	public BazarroNetworkClientConnection(InetSocketAddress serverAddress) {
+	public NetworkClientConnection(InetSocketAddress serverAddress) {
         Bootstrap b = new Bootstrap();
         b.group(workerGroup);
         b.channel(NioSocketChannel.class);
@@ -77,8 +77,8 @@ public class BazarroNetworkClientConnection implements Closeable {
         socketChannelFuture = b.connect(serverAddress);
 	}
 
-	public Future<ByteBuf> sendRequestBytes(BazarroApplicationIdentifier destinationApp, ByteBuf applicationSpecificBytesToSend) {
-		BazarroHeaderMessage.Builder headerBuilder=BazarroHeaderMessage.newBuilder();
+	public Future<ByteBuf> sendRequestBytes(ApplicationIdentifier destinationApp, ByteBuf applicationSpecificBytesToSend) {
+		HeaderMessage.Builder headerBuilder=HeaderMessage.newBuilder();
         headerBuilder.setApplicationId(ByteString.copyFrom(destinationApp.getBytes()));
         if(senderInfo!=null){
     		headerBuilder.setSenderInfo(senderInfo);
@@ -97,11 +97,11 @@ public class BazarroNetworkClientConnection implements Closeable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends MessageLite> Future<T> sendRequestMsg(BazarroApplicationIdentifier destinationAppId, final T protobufRequest) {
+	public <T extends MessageLite> Future<T> sendRequestMsg(ApplicationIdentifier destinationAppId, final T protobufRequest) {
 		return (Future<T>) sendRequestMsg(destinationAppId, protobufRequest, protobufRequest.getClass());
 	}
 
-	public <T extends MessageLite> Future<T> sendRequestMsg(BazarroApplicationIdentifier applicationId, MessageLite appSpecificRequestMsg, final Class<T> appSpecificResponseClass) {
+	public <T extends MessageLite> Future<T> sendRequestMsg(ApplicationIdentifier applicationId, MessageLite appSpecificRequestMsg, final Class<T> appSpecificResponseClass) {
 		ByteBuf appSpecificProtobufBytes=ProtobufByteBufCodec.encodeNoLengthPrefix(appSpecificRequestMsg);
 		Future<ByteBuf> responseBytesFuture = sendRequestBytes(applicationId, appSpecificProtobufBytes);
 		//FIXME should we release() something?
@@ -127,12 +127,12 @@ public class BazarroNetworkClientConnection implements Closeable {
 			LOGGER.error("Closing connection while pending requests still exists: "+pendingRequests.keySet());
 		}
 
-		sendRequestBytes(BazarroNetworkApplication.BNETWORK_APPID, BazarroNetworkApplication.getCloseMessageBytes());
+		sendRequestBytes(NetworkApplication.BNETWORK_APPID, NetworkApplication.getCloseMessageBytes());
 		socketChannelFuture.channel().close().syncUninterruptibly();
 		workerGroup.shutdownGracefully(); //FIXME Not our responsability if passed in as argument..
 	}
 
-	public void setLocalNodeInfo(BazarroNodeIdentifier localNodeId, int listeningPort) {
+	public void setLocalNodeInfo(NodeIdentifier localNodeId, int listeningPort) {
         ProtocolBuffer.SenderInformationMsg.Builder senderInfoBuilder=ProtocolBuffer.SenderInformationMsg.newBuilder();
         senderInfoBuilder.setUserAgent(getClass().getName());
         senderInfoBuilder.setNodePublicKey(ByteString.copyFrom(localNodeId.getBytes()));

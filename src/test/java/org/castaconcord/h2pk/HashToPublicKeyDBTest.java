@@ -15,15 +15,15 @@ public class HashToPublicKeyDBTest {
 
 	@Test
 	public void testGenerateDbSyncResponse() throws Exception {
-		BazarroHashPointerSignature signature=new BazarroHashPointerSignature();
-		BazarroHashIdentifier address0=new BazarroHashIdentifier(new byte[32]);
-		BazarroHashIdentifier address1=new BazarroHashIdentifier();
+		HashPointerSignature signature=new HashPointerSignature();
+		HashIdentifier address0=new HashIdentifier(new byte[32]);
+		HashIdentifier address1=new HashIdentifier();
 		byte[] address1Bytes = address1.getBytes().clone();
 		address1Bytes[0]++; //Ensure address1 is smaller than address2
-		BazarroHashIdentifier address2=new BazarroHashIdentifier(address1Bytes);
-		BazarroPublicKeyIdentifier publicKey1=new BazarroPublicKeyIdentifier();
-		BazarroPublicKeyIdentifier publicKey2=new BazarroPublicKeyIdentifier();
-		BazarroPublicKeyIdentifier publicKey3=new BazarroPublicKeyIdentifier();
+		HashIdentifier address2=new HashIdentifier(address1Bytes);
+		PublicKeyIdentifier publicKey1=new PublicKeyIdentifier();
+		PublicKeyIdentifier publicKey2=new PublicKeyIdentifier();
+		PublicKeyIdentifier publicKey3=new PublicKeyIdentifier();
 
 		HashToPublicKeyDB db = new HashToPublicKeyDB();
 		db.applyOneTransaction(new HashToPublicKeyTransaction(address0, publicKey1, true, signature));

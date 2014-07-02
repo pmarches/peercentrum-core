@@ -5,7 +5,7 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
-import org.castaconcord.h2pk.BazarroHashIdentifier;
+import org.castaconcord.h2pk.HashIdentifier;
 
 import com.google.protobuf.ByteString;
 
@@ -13,7 +13,7 @@ public class P2PBlobStoredBlobRepositoryFS extends P2PBlobStoredBlob {
 	protected File blobFile;
 	protected P2PBlobRepositoryFS repository;
 
-	public P2PBlobStoredBlobRepositoryFS(BazarroHashIdentifier blobHash, P2PBlobHashList hashList,
+	public P2PBlobStoredBlobRepositoryFS(HashIdentifier blobHash, P2PBlobHashList hashList,
 			P2PBlobRangeSet localBlockRange, long blobByteSize, P2PBlobRepositoryFS repository) {
 		super(blobHash, hashList, localBlockRange, blobByteSize);
 		this.repository=repository;
@@ -45,7 +45,7 @@ public class P2PBlobStoredBlobRepositoryFS extends P2PBlobStoredBlob {
 	}
 
 
-	protected File getFileFromBlobId(BazarroHashIdentifier blobId) {
+	protected File getFileFromBlobId(HashIdentifier blobId) {
 		File blobFile=new File(repository.repositoryDirectory, blobId.toString()+".blob");
 		return blobFile;
 	}

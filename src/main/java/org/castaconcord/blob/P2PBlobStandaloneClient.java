@@ -5,24 +5,24 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
-import org.castaconcord.core.BazarroNodeDatabase;
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.NodeDatabase;
+import org.castaconcord.core.NodeIdentifier;
 import org.castaconcord.core.ProtocolBuffer;
 import org.castaconcord.core.ProtocolBuffer.P2PBlobResponse;
-import org.castaconcord.h2pk.BazarroHashIdentifier;
-import org.castaconcord.network.BazarroNetworkClient;
-import org.castaconcord.network.BazarroNetworkClientConnection;
+import org.castaconcord.h2pk.HashIdentifier;
+import org.castaconcord.network.NetworkClient;
+import org.castaconcord.network.NetworkClientConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.ByteString;
 
-public class P2PBlobStandaloneClient extends BazarroNetworkClient {
+public class P2PBlobStandaloneClient extends NetworkClient {
 	private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobStandaloneClient.class);
 	
-	protected BazarroNodeIdentifier remoteHost;
+	protected NodeIdentifier remoteHost;
 
-	public P2PBlobStandaloneClient(BazarroNodeIdentifier remoteHost, BazarroNodeIdentifier thisNodeId, BazarroNodeDatabase nodeDatabase) {
+	public P2PBlobStandaloneClient(NodeIdentifier remoteHost, NodeIdentifier thisNodeId, NodeDatabase nodeDatabase) {
 		super(thisNodeId, nodeDatabase);
 		this.remoteHost=remoteHost;
 	}
@@ -44,7 +44,7 @@ public class P2PBlobStandaloneClient extends BazarroNetworkClient {
 			appLevelMessage.addAllRequestedRanges(missingRanges.toP2PBlobRangeMsgList());
 		}
 
-		BazarroNetworkClientConnection connection = maybeOpenConnectionToPeer(remoteHost);
+		NetworkClientConnection connection = maybeOpenConnectionToPeer(remoteHost);
 		Future<ProtocolBuffer.P2PBlobResponse> responseFuture = connection.sendRequestMsg(
 				P2PBlobApplication.APP_ID, appLevelMessage.build(), ProtocolBuffer.P2PBlobResponse.class);
 
@@ -85,8 +85,8 @@ public class P2PBlobStandaloneClient extends BazarroNetworkClient {
 		int currentBlockIndex=blobBlockMsg.getBlockIndex();
 		byte[] blobBlockBytes=blobBlockMsg.getBlobBytes().toByteArray();
 		
-		BazarroHashIdentifier blockHash=transitStatus.hashList.get(currentBlockIndex);
-		BazarroHashIdentifier blobBlockBytesHash=P2PBlobHashList.hashBytes(blobBlockBytes, 0 ,blobBlockBytes.length);
+		HashIdentifier blockHash=transitStatus.hashList.get(currentBlockIndex);
+		HashIdentifier blobBlockBytesHash=P2PBlobHashList.hashBytes(blobBlockBytes, 0 ,blobBlockBytes.length);
 		if(blobBlockBytesHash.equals(blockHash)==false){
 			LOGGER.error("The block "+currentBlockIndex+" does not hash to "+blockHash);
 			return; //Throw exception?

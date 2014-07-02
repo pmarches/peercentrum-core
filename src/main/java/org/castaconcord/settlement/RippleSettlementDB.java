@@ -3,7 +3,7 @@
 //import java.util.HashMap;
 //
 //import org.castaconcord.core.AbstractNodeBalanceDB;
-//import org.castaconcord.core.BazarroNodeIdentifier;
+//import org.castaconcord.core.NodeIdentifier;
 //import org.json.simple.JSONObject;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -76,7 +76,7 @@
 //			return;
 //		}
 //
-//		final BazarroNodeIdentifier nodeIdOfPayer = getNodeIdFromRippleAddress(paymentTx.payer);
+//		final NodeIdentifier nodeIdOfPayer = getNodeIdFromRippleAddress(paymentTx.payer);
 //		if(nodeIdOfPayer==null){
 //			LOGGER.warn("The TX {} will be ignored since we do not have the nodeId corresponding to rippleAddress {}", paymentTx.txHash, paymentTx.payer);
 //			return;
@@ -106,13 +106,13 @@
 //			}});
 //	}
 //
-//	private BazarroNodeIdentifier getNodeIdFromRippleAddress(final RippleAddress rippleAddress) throws SqlJetException {
-//		return (BazarroNodeIdentifier) db.runReadTransaction(new ISqlJetTransaction() {
+//	private NodeIdentifier getNodeIdFromRippleAddress(final RippleAddress rippleAddress) throws SqlJetException {
+//		return (NodeIdentifier) db.runReadTransaction(new ISqlJetTransaction() {
 //			@Override public Object run(SqlJetDb db) throws SqlJetException {
 //				ISqlJetCursor rippleAddressCursor = settlementMethodTable.lookup(SETTLEMENT_METHOD_RIPPLE_ADDRESS_IN, rippleAddress.toString());
-//				BazarroNodeIdentifier nodeId=null;
+//				NodeIdentifier nodeId=null;
 //				if(rippleAddressCursor.eof()==false){
-//					nodeId=new BazarroNodeIdentifier(rippleAddressCursor.getBlobAsArray(NODE_ID_FN));
+//					nodeId=new NodeIdentifier(rippleAddressCursor.getBlobAsArray(NODE_ID_FN));
 //				}
 //				rippleAddressCursor.close();
 //				return nodeId;
@@ -150,7 +150,7 @@
 //		settlementMethodTable = db.getTable(SETTLEMENT_METHOD_TN);
 //	}
 //
-//	public void setSettlementMethod(final BazarroNodeIdentifier nodeId, final RippleAddress rippleAddress) throws Exception {
+//	public void setSettlementMethod(final NodeIdentifier nodeId, final RippleAddress rippleAddress) throws Exception {
 //		db.runWriteTransaction(new ISqlJetTransaction() {
 //			@Override public Object run(SqlJetDb db) throws SqlJetException {
 //				ISqlJetCursor rippleAddressCursor = settlementMethodTable.lookup(SETTLEMENT_METHOD_RIPPLE_ADDRESS_IN, rippleAddress.toString());

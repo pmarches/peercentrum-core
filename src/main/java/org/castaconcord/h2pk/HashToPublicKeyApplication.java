@@ -9,15 +9,15 @@ import org.castaconcord.consensusprocess.ConsensusProcess;
 import org.castaconcord.consensusprocess.ConsensusThreshold;
 import org.castaconcord.consensusprocess.ProposedTransactions;
 import org.castaconcord.consensusprocess.UniqueNodeList;
-import org.castaconcord.core.BazarroApplicationIdentifier;
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.ApplicationIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 import org.castaconcord.core.ProtocolBuffer;
 import org.castaconcord.core.ProtocolBuffer.H2PKDBSyncQuery;
 import org.castaconcord.core.ProtocolBuffer.H2PKProposedTransactions;
 import org.castaconcord.core.ProtocolBuffer.HashToPublicKeyMessage;
-import org.castaconcord.network.BaseBazarroApplicationMessageHandler;
-import org.castaconcord.network.BazarroNetworkClient;
-import org.castaconcord.network.BazarroNetworkServer;
+import org.castaconcord.network.BaseApplicationMessageHandler;
+import org.castaconcord.network.NetworkClient;
+import org.castaconcord.network.NetworkServer;
 import org.castaconcord.network.HeaderAndPayload;
 import org.castaconcord.network.ProtobufByteBufCodec;
 import org.slf4j.Logger;
@@ -26,21 +26,21 @@ import org.slf4j.LoggerFactory;
 import com.google.common.primitives.UnsignedLong;
 import com.google.protobuf.ByteString;
 
-public class HashToPublicKeyApplication extends BaseBazarroApplicationMessageHandler {
+public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(HashToPublicKeyApplication.class);
-	public static final BazarroApplicationIdentifier APP_ID=new BazarroApplicationIdentifier(HashToPublicKeyApplication.class.getSimpleName().getBytes());
+	public static final ApplicationIdentifier APP_ID=new ApplicationIdentifier(HashToPublicKeyApplication.class.getSimpleName().getBytes());
 	ConsensusProcess consensus;
 	HashToPublicKeyTXEvaluator txEvaluator;
 	HashToPublicKeyDB db;
-	BazarroNetworkClient networkClient;
+	NetworkClient networkClient;
 		
-	public HashToPublicKeyApplication(BazarroNetworkServer nodeServer, HashToPublicKeyDB db, UniqueNodeList unl) {
+	public HashToPublicKeyApplication(NetworkServer nodeServer, HashToPublicKeyDB db, UniqueNodeList unl) {
 		super(nodeServer);
 		if(unl==null){
 			throw new NullPointerException("NULL UNL not allowed");
 		}
 
-		networkClient=new BazarroNetworkClient(nodeServer.getLocalNodeId(), nodeServer.getNodeDatabase());
+		networkClient=new NetworkClient(nodeServer.getLocalNodeId(), nodeServer.getNodeDatabase());
 		this.db=db;
 		txEvaluator=new HashToPublicKeyTXEvaluator(db);
 		final int DB_CLOSECYCLE_PERIOD_MS = 3000;
@@ -53,7 +53,7 @@ public class HashToPublicKeyApplication extends BaseBazarroApplicationMessageHan
 					ProposedTransactions<HashToPublicKeyTransaction> proposedTX=ourProposedTx;
 					LOGGER.debug("broadcasting our {} proposed transactions", proposedTX.size());
 					ProtocolBuffer.HashToPublicKeyMessage proposedTXMsg = encodeProposedTXToMsg(proposedTX);
-					for(BazarroNodeIdentifier aValidator:unl){
+					for(NodeIdentifier aValidator:unl){
 						LOGGER.debug("Sending proposedTX to {}", aValidator);
 						networkClient.sendRequest(aValidator, getApplicationId(), proposedTXMsg);
 					}
@@ -92,7 +92,7 @@ public class HashToPublicKeyApplication extends BaseBazarroApplicationMessageHan
 				queryMsg.setBeginDbVersionNumber(0);
 			}
 			appLevelMsg.setDbSyncQuery(queryMsg.build());
-			BazarroNodeIdentifier remoteId=consensus.unl.getOneExcluding(this.clientOrServer.getLocalNodeId());
+			NodeIdentifier remoteId=consensus.unl.getOneExcluding(this.clientOrServer.getLocalNodeId());
 			HashToPublicKeyMessage appLevelResponse = networkClient.sendRequest(remoteId, getApplicationId(), appLevelMsg.build()).get();
 			if(appLevelResponse.hasDbSyncResponse()){
 				ProtocolBuffer.H2PKDBSyncResponse dbSyncResponse = appLevelResponse.getDbSyncResponse();
@@ -141,7 +141,7 @@ public class HashToPublicKeyApplication extends BaseBazarroApplicationMessageHan
 
 	protected ProposedTransactions<HashToPublicKeyTransaction> decodeMsgToProposedTX(ProtocolBuffer.H2PKProposedTransactions proposedTxMsg) {
 		UnsignedLong proposalDbVersion=UnsignedLong.valueOf(proposedTxMsg.getDbVersionNumber());
-		BazarroNodeIdentifier senderPK=new BazarroNodeIdentifier(proposedTxMsg.getProposedBy().toByteArray());
+		NodeIdentifier senderPK=new NodeIdentifier(proposedTxMsg.getProposedBy().toByteArray());
 		ProposedTransactions<HashToPublicKeyTransaction> proposedTransaction=new ProposedTransactions<HashToPublicKeyTransaction>(proposalDbVersion, senderPK);
 
 		List<ProtocolBuffer.HashToPublicKeyTransaction> txMsgList = proposedTxMsg.getProposedTransactionsList();
@@ -167,7 +167,7 @@ public class HashToPublicKeyApplication extends BaseBazarroApplicationMessageHan
 	}
 
 	@Override
-	public BazarroApplicationIdentifier getApplicationId() {
+	public ApplicationIdentifier getApplicationId() {
 		return APP_ID;
 	}
 }

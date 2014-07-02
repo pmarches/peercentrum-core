@@ -6,27 +6,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.castaconcord.core.BazarroNodeDatabase;
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.NodeDatabase;
+import org.castaconcord.core.NodeIdentifier;
 import org.castaconcord.core.ProtocolBuffer;
 import org.castaconcord.core.ProtocolBuffer.GenericResponse;
 import org.castaconcord.core.ProtocolBuffer.HashToPublicKeyMessage;
-import org.castaconcord.network.BazarroNetworkClient;
+import org.castaconcord.network.NetworkClient;
 
 import com.google.protobuf.ByteString;
 
-public class HashToPublicKeyStandaloneClient extends BazarroNetworkClient {
-	private BazarroNodeIdentifier remoteHost;
+public class HashToPublicKeyStandaloneClient extends NetworkClient {
+	private NodeIdentifier remoteHost;
 
-	public HashToPublicKeyStandaloneClient(BazarroNodeIdentifier remoteHost, BazarroNodeIdentifier thisNodeIdentifier, BazarroNodeDatabase nodeDb) {
+	public HashToPublicKeyStandaloneClient(NodeIdentifier remoteHost, NodeIdentifier thisNodeIdentifier, NodeDatabase nodeDb) {
 		super(thisNodeIdentifier, nodeDb);
 		this.remoteHost=remoteHost;
 	}
 	
-	public void registerForAddress(BazarroHashIdentifier address, BazarroPublicKeyIdentifier publicKey) throws Exception {
+	public void registerForAddress(HashIdentifier address, PublicKeyIdentifier publicKey) throws Exception {
 		//TODO Add expiration
 		//TODO Add real signature here
-		BazarroHashPointerSignature signature = new BazarroHashPointerSignature("FAKE sig data".getBytes());
+		HashPointerSignature signature = new HashPointerSignature("FAKE sig data".getBytes());
 		HashToPublicKeyTransaction txObject=new HashToPublicKeyTransaction(address, publicKey, true, signature);
 		
 		ProtocolBuffer.HashToPublicKeyMessage.Builder appLevelMessage=ProtocolBuffer.HashToPublicKeyMessage.newBuilder();
@@ -38,7 +38,7 @@ public class HashToPublicKeyStandaloneClient extends BazarroNetworkClient {
 		}
 	}
 	
-	public List<BazarroNodeIdentifier> getMembershipForAddress(BazarroHashIdentifier address) throws Exception {
+	public List<NodeIdentifier> getMembershipForAddress(HashIdentifier address) throws Exception {
 		ProtocolBuffer.HashToPublicKeyMessage.Builder topLevelMessage=ProtocolBuffer.HashToPublicKeyMessage.newBuilder();
 		topLevelMessage.setMembershipQuery(ByteString.copyFrom(address.getBytes()));
 
@@ -52,9 +52,9 @@ public class HashToPublicKeyStandaloneClient extends BazarroNetworkClient {
 			return Collections.emptyList();
 		}
 
-		ArrayList<BazarroNodeIdentifier> membership = new ArrayList<BazarroNodeIdentifier>(membershipResponse.size());
+		ArrayList<NodeIdentifier> membership = new ArrayList<NodeIdentifier>(membershipResponse.size());
 		for (ByteString registeredBytes : membershipResponse) {
-			membership.add(new BazarroNodeIdentifier(registeredBytes.toByteArray()));
+			membership.add(new NodeIdentifier(registeredBytes.toByteArray()));
 		}
 		return membership;
 	}

@@ -17,8 +17,8 @@ import org.tmatesoft.sqljet.core.table.ISqlJetTable;
 import org.tmatesoft.sqljet.core.table.ISqlJetTransaction;
 import org.tmatesoft.sqljet.core.table.SqlJetDb;
 
-public class BazarroNodeDatabase implements AutoCloseable {
-	private static final Logger LOGGER = LoggerFactory.getLogger(BazarroNodeDatabase.class);
+public class NodeDatabase implements AutoCloseable {
+	private static final Logger LOGGER = LoggerFactory.getLogger(NodeDatabase.class);
 
 	static final String NODE_INFO_TABLE_NAME = "NODE_INFO";
 
@@ -30,13 +30,13 @@ public class BazarroNodeDatabase implements AutoCloseable {
 	static final String NODE_ID_FN = "nodeId";
 
 	
-//	Hashtable<BazarroNodeIdentifier, BazarroNodeInformation> idToPeer=new Hashtable<>();
+//	Hashtable<NodeIdentifier, NodeInformation> idToPeer=new Hashtable<>();
 	protected SqlJetDb db;
 
 	ISqlJetTable nodeInfoTable;
 	ISqlJetTable nodeApplicationTable;
 	
-	public BazarroNodeDatabase(String nodeDatabasePath) {
+	public NodeDatabase(String nodeDatabasePath) {
 		try {
 			boolean schemaNeedsToBeCreated;
 			if(nodeDatabasePath==null){
@@ -77,15 +77,15 @@ public class BazarroNodeDatabase implements AutoCloseable {
 	}
 
 	//TODO Add some checks to ensure we do not map stale IP/Port info.. 
-	public void mapNodeIdToAddress(final BazarroNodeIdentifier bazarroNodeIdentifier, final InetSocketAddress nodeSocketAddress) {
-//		BazarroNodeInformation info = new BazarroNodeInformation(bazarroNodeIdentifier, nodeSocketAddress);
-//		LOGGER.debug("Mapped {} to {}", bazarroNodeIdentifier, nodeSocketAddress);
-//		idToPeer.put(bazarroNodeIdentifier, info);
+	public void mapNodeIdToAddress(final NodeIdentifier NodeIdentifier, final InetSocketAddress nodeSocketAddress) {
+//		NodeInformation info = new NodeInformation(NodeIdentifier, nodeSocketAddress);
+//		LOGGER.debug("Mapped {} to {}", NodeIdentifier, nodeSocketAddress);
+//		idToPeer.put(NodeIdentifier, info);
 		ISqlJetTransaction updateEndpointTx=new ISqlJetTransaction() {
 			@Override public Object run(SqlJetDb db) throws SqlJetException {
-				ISqlJetCursor nodeInfoCursor = nodeInfoTable.lookup(null, bazarroNodeIdentifier.getBytes());
+				ISqlJetCursor nodeInfoCursor = nodeInfoTable.lookup(null, NodeIdentifier.getBytes());
 				if(nodeInfoCursor.eof()){
-					nodeInfoTable.insert(bazarroNodeIdentifier.getBytes(), nodeSocketAddress.getHostString(), nodeSocketAddress.getPort());
+					nodeInfoTable.insert(NodeIdentifier.getBytes(), nodeSocketAddress.getHostString(), nodeSocketAddress.getPort());
 				}
 				else{
 					Map<String, Object> fieldsToUpdate=new HashMap<>();
@@ -123,7 +123,7 @@ public class BazarroNodeDatabase implements AutoCloseable {
 		}
 	}
 
-	public InetSocketAddress getEndpointByIdentifier(final BazarroNodeIdentifier remoteID) {
+	public InetSocketAddress getEndpointByIdentifier(final NodeIdentifier remoteID) {
 		try {
 			ISqlJetTransaction getEndpointTx=new ISqlJetTransaction() {
 				@Override public Object run(SqlJetDb db) throws SqlJetException {
@@ -145,17 +145,17 @@ public class BazarroNodeDatabase implements AutoCloseable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<BazarroNodeInformation> getAllNodeInformation(final int maxNumberOfNodes){
+	public List<NodeInformation> getAllNodeInformation(final int maxNumberOfNodes){
 		ISqlJetTransaction getAllNodesTx=new ISqlJetTransaction() {
 			@Override public Object run(SqlJetDb db) throws SqlJetException {
-				ArrayList<BazarroNodeInformation> listOfNodeInfo=new ArrayList<>();
+				ArrayList<NodeInformation> listOfNodeInfo=new ArrayList<>();
 				ISqlJetCursor allNodesCursor = nodeInfoTable.scope(nodeInfoTable.getPrimaryKeyIndexName(), null, null);
 				for(int i=0; i<maxNumberOfNodes && allNodesCursor.eof()==false; i++){
 					InetSocketAddress endPoint=new InetSocketAddress(allNodesCursor.getString(ENDPOINT_ADDRESS_FN), 
 							(int) allNodesCursor.getInteger(ENDPOINT_PORT_FN));
 					
-					BazarroNodeIdentifier nodeId=new BazarroNodeIdentifier(allNodesCursor.getBlobAsArray(NODE_ID_FN));
-					BazarroNodeInformation currentBNI=new BazarroNodeInformation(nodeId, endPoint);
+					NodeIdentifier nodeId=new NodeIdentifier(allNodesCursor.getBlobAsArray(NODE_ID_FN));
+					NodeInformation currentBNI=new NodeInformation(nodeId, endPoint);
 					listOfNodeInfo.add(currentBNI);
 					
 					allNodesCursor.next();
@@ -165,14 +165,14 @@ public class BazarroNodeDatabase implements AutoCloseable {
 			}
 		};
 		try {
-			return (List<BazarroNodeInformation>) db.runReadTransaction(getAllNodesTx);
+			return (List<NodeInformation>) db.runReadTransaction(getAllNodesTx);
 		} catch (SqlJetException e) {
 			LOGGER.error("DB error", e);
 			throw new RuntimeException(e);
 		}
 	}
 //	@Override
-//	public Iterator<BazarroNodeInformation> iterator() {
+//	public Iterator<NodeInformation> iterator() {
 //		return idToPeer.values().iterator();
 //	}
 

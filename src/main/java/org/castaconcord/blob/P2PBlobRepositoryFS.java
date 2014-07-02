@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Hashtable;
 
-import org.castaconcord.h2pk.BazarroHashIdentifier;
+import org.castaconcord.h2pk.HashIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tmatesoft.sqljet.core.SqlJetException;
@@ -29,7 +29,7 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 	protected SqlJetDb db;
 	protected ISqlJetTable blobMetaTable;
 	protected File repositoryDirectory;
-	protected Hashtable<BazarroHashIdentifier, P2PBlobStoredBlobRepositoryFS> cachedTransitStatus=new Hashtable<>();
+	protected Hashtable<HashIdentifier, P2PBlobStoredBlobRepositoryFS> cachedTransitStatus=new Hashtable<>();
 
 	private FilenameFilter nonRepositoryFilenameFilter=new FilenameFilter() {
 		@Override
@@ -62,9 +62,9 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 	
 	protected void importFileIntoRepository(final File nonRepositoryFile) throws Exception {
 		final P2PBlobHashList fileHashList=P2PBlobHashList.createFromFile(nonRepositoryFile);
-		final BazarroHashIdentifier topHash=fileHashList.getTopLevelHash();
+		final HashIdentifier topHash=fileHashList.getTopLevelHash();
 		final ByteBuf concatenatedHashes=Unpooled.buffer(fileHashList.size()*P2PBlobHashList.HASH_BYTE_SIZE);
-		for(BazarroHashIdentifier hashBlock:fileHashList){
+		for(HashIdentifier hashBlock:fileHashList){
 			concatenatedHashes.writeBytes(hashBlock.getBytes());
 		}
 		
@@ -106,7 +106,7 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 	}
 
 	@Override
-	public P2PBlobStoredBlob getStoredBlob(final BazarroHashIdentifier blobId){
+	public P2PBlobStoredBlob getStoredBlob(final HashIdentifier blobId){
 		synchronized(cachedTransitStatus){
 			P2PBlobStoredBlobRepositoryFS transitStatus = cachedTransitStatus.get(blobId);
 			if(transitStatus!=null){

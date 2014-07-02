@@ -2,7 +2,7 @@ package org.castaconcord.blob;
 
 import java.security.InvalidParameterException;
 
-import org.castaconcord.h2pk.BazarroHashIdentifier;
+import org.castaconcord.h2pk.HashIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +14,7 @@ import com.google.protobuf.ByteString;
 public abstract class P2PBlobStoredBlob {
 	private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobStoredBlob.class);
 	
-	protected BazarroHashIdentifier blobHash;
+	protected HashIdentifier blobHash;
 	protected P2PBlobRangeSet localBlockRange;
 	protected P2PBlobHashList hashList;
 	protected long blobLengthInBytes;
@@ -22,7 +22,7 @@ public abstract class P2PBlobStoredBlob {
 	abstract protected void acceptValidatedBlobBytes(int blockIndex, byte[] blobBlockBytes);
 	abstract public ByteString getBytesRange(long offset, int length) throws Exception;
 
-	public P2PBlobStoredBlob(BazarroHashIdentifier blobHash, P2PBlobHashList hashList, P2PBlobRangeSet localBlockRange, long blobByteSize) {
+	public P2PBlobStoredBlob(HashIdentifier blobHash, P2PBlobHashList hashList, P2PBlobRangeSet localBlockRange, long blobByteSize) {
 		this.blobHash=blobHash;
 		this.hashList=hashList;
 		this.localBlockRange=localBlockRange;
@@ -65,7 +65,7 @@ public abstract class P2PBlobStoredBlob {
 		return new P2PBlobRangeSet(missingRanges);
 	}
 
-	public BazarroHashIdentifier getBlobIdentifier() {
+	public HashIdentifier getBlobIdentifier() {
 		return blobHash;
 	}
 	

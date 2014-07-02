@@ -1,5 +1,5 @@
 package org.castaconcord.peerdiscovery;
-//package bazarro.peerdiscovery;
+//package .peerdiscovery;
 //
 //import java.nio.ByteBuffer;
 //import java.util.concurrent.Callable;
@@ -9,19 +9,19 @@ package org.castaconcord.peerdiscovery;
 //import java.util.concurrent.Executors;
 //import java.util.concurrent.LinkedBlockingQueue;
 //
-//import bazarro.BazarroApplicationIdentifier;
-//import bazarro.BazarroApplication;
-//import bazarro.BazarroNetworkServer;
-//import bazarro.BazarroNodeIdentifier;
-//import bazarro.BazarroReceivedMessage;
-//import bazarro.concurency.Awaitable;
+//import .ApplicationIdentifier;
+//import .Application;
+//import .NetworkServer;
+//import .NodeIdentifier;
+//import .ReceivedMessage;
+//import .concurency.Awaitable;
 //
-//public class GossipPeerDiscovery extends BazarroApplication {
-//	static final BazarroApplicationIdentifier GOSSIP_PEER_DISCOVERY_APP_ID=null;
-//	BazarroNetworkServer network;
-//	LinkedBlockingQueue<BazarroReceivedMessage> gossipResponses;
+//public class GossipPeerDiscovery extends Application {
+//	static final ApplicationIdentifier GOSSIP_PEER_DISCOVERY_APP_ID=null;
+//	NetworkServer network;
+//	LinkedBlockingQueue<ReceivedMessage> gossipResponses;
 //
-//	public GossipPeerDiscovery(BazarroNetworkServer network) {
+//	public GossipPeerDiscovery(NetworkServer network) {
 //		network.registerApplication(this);
 //	}
 //	
@@ -43,7 +43,7 @@ package org.castaconcord.peerdiscovery;
 //		 */
 //		
 //		for(int i=0; i<10; i++){
-//			BazarroNodeIdentifier randomlyChosenPeer=network.getRandomNodeIdentifierFromConnectedNodes();
+//			NodeIdentifier randomlyChosenPeer=network.getRandomNodeIdentifierFromConnectedNodes();
 //			ByteBuffer getMorePeerInfoRequestBytes; //From protobuf..
 //			Awaitable futureResponse=sendByteBuffer(getMorePeerInfoRequestBytes, GOSSIP_PEER_DISCOVERY_APP_ID, randomlyChosenPeer);
 //		}
@@ -55,7 +55,7 @@ package org.castaconcord.peerdiscovery;
 //	}
 //
 //	@Override
-//	public BazarroApplicationIdentifier getApplicationIdentifier() {
+//	public ApplicationIdentifier getApplicationIdentifier() {
 //		return GOSSIP_PEER_DISCOVERY_APP_ID;
 //	}
 //}

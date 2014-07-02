@@ -5,12 +5,12 @@
 //import java.io.File;
 //import java.math.BigInteger;
 //
-//import org.castaconcord.core.BazarroNodeIdentifier;
+//import org.castaconcord.core.NodeIdentifier;
 //import org.junit.Test;
 //
 //public class RippleSettlementDBTest {
-//	static final BazarroNodeIdentifier node1=new BazarroNodeIdentifier("node1");
-//	static final BazarroNodeIdentifier node2=new BazarroNodeIdentifier("node2");
+//	static final NodeIdentifier node1=new NodeIdentifier("node1");
+//	static final NodeIdentifier node2=new NodeIdentifier("node2");
 //
 //	@Test
 //	public void testUpdateBalancesWithNewTransactionsFromNetwork() throws Exception {

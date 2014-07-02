@@ -3,9 +3,9 @@ package org.castaconcord.consensusprocess;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 
-import org.castaconcord.h2pk.BazarroHashIdentifier;
-import org.castaconcord.h2pk.BazarroHashPointerSignature;
-import org.castaconcord.h2pk.BazarroPublicKeyIdentifier;
+import org.castaconcord.h2pk.HashIdentifier;
+import org.castaconcord.h2pk.HashPointerSignature;
+import org.castaconcord.h2pk.PublicKeyIdentifier;
 import org.castaconcord.h2pk.HashToPublicKeyTransaction;
 import org.junit.Test;
 
@@ -29,7 +29,7 @@ public class CandidateTransactionSetTest extends BaseTestCase {
 		cs.setApproval(nodeC, tx6_clone, true);
 		assertEquals(2, cs.votesPerTX.size());
 		
-		HashToPublicKeyTransaction h2pkTx=new HashToPublicKeyTransaction(new BazarroHashIdentifier(), new BazarroPublicKeyIdentifier(), true, new BazarroHashPointerSignature());
+		HashToPublicKeyTransaction h2pkTx=new HashToPublicKeyTransaction(new HashIdentifier(), new PublicKeyIdentifier(), true, new HashPointerSignature());
 		HashToPublicKeyTransaction h2pkTxClone=h2pkTx.clone();
 		assertEquals(h2pkTx, h2pkTxClone);
 		assertNotSame(h2pkTx, h2pkTxClone);

@@ -12,39 +12,39 @@ import org.castaconcord.blob.P2PBlobApplication;
 import org.castaconcord.blob.P2PBlobConfig;
 import org.castaconcord.blob.P2PBlobRepository;
 import org.castaconcord.blob.P2PBlobRepositoryFS;
-import org.castaconcord.network.BazarroNetworkServer;
+import org.castaconcord.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BazarroServerMain implements Runnable {
-	private static final Logger LOGGER = LoggerFactory.getLogger(BazarroServerMain.class);
+public class ServerMain implements Runnable {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ServerMain.class);
 	
-	BazarroConfig config;
-	BazarroNetworkServer server;
+	Config config;
+	NetworkServer server;
 
-	public BazarroServerMain(BazarroConfig configNode) {
+	public ServerMain(Config configNode) {
 		this.config=configNode;
 	}
 
 	public static void main(String[] args) throws Exception {
 		if(args.length!=1){
-			System.err.println("Usage : "+BazarroServerMain.class.getSimpleName()+" <configFile.yaml>");
+			System.err.println("Usage : "+ServerMain.class.getSimpleName()+" <configFile.yaml>");
 			return;
 		}
-		BazarroConfig config = BazarroConfig.loadFromFile(new File(args[0]));
+		Config config = Config.loadFromFile(new File(args[0]));
 		config.setEnableNAT(true);
-		BazarroServerMain serverMain = new BazarroServerMain(config);
+		ServerMain serverMain = new ServerMain(config);
 		serverMain.run();
 		Thread.sleep(Long.MAX_VALUE);
 	}
 
 	public void run() {
 		try {
-			BazarroNodeGossipConfig gossipConfig=(BazarroNodeGossipConfig) config.getAppConfig(BazarroNodeGossipConfig.class);
+			NodeGossipConfig gossipConfig=(NodeGossipConfig) config.getAppConfig(NodeGossipConfig.class);
 
-			BazarroNodeDatabase nodeDb=new BazarroNodeDatabase(gossipConfig.getNodeDatabasePath());
-			BazarroNodeIdentifier serverId=new BazarroNodeIdentifier(config.getNodeIdentifier());
-			server = new BazarroNetworkServer(serverId, nodeDb, config.getListenPort());
+			NodeDatabase nodeDb=new NodeDatabase(gossipConfig.getNodeDatabasePath());
+			NodeIdentifier serverId=new NodeIdentifier(config.getNodeIdentifier());
+			server = new NetworkServer(serverId, nodeDb, config.getListenPort());
 			server.setConfig(config);
 			if(config.getEnableNAT()){
 				enableNATInboundConnections();

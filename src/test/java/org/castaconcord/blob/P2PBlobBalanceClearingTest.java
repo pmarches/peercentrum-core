@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 import org.junit.Test;
 
 public class P2PBlobBalanceClearingTest {
@@ -18,7 +18,7 @@ public class P2PBlobBalanceClearingTest {
 		P2PBlobTransferBalanceDB accounting=new P2PBlobTransferBalanceDB(null);
 		accounting.setDefaultLoanAllowed(0);
 
-		BazarroNodeIdentifier goodNodeId=new BazarroNodeIdentifier("some node that will pay us 10".getBytes());
+		NodeIdentifier goodNodeId=new NodeIdentifier("some node that will pay us 10".getBytes());
 		assertEquals(0, accounting.getBalanceForNode(goodNodeId));
 
 		long costOfOperation=1;
@@ -28,7 +28,7 @@ public class P2PBlobBalanceClearingTest {
 		assertTrue(accounting.maybeDebit(goodNodeId, costOfOperation));
 		assertEquals(9, accounting.getBalanceForNode(goodNodeId));
 
-		BazarroNodeIdentifier leecherNodeId=new BazarroNodeIdentifier("some node that does not pay".getBytes());
+		NodeIdentifier leecherNodeId=new NodeIdentifier("some node that does not pay".getBytes());
 		assertFalse(accounting.maybeDebit(leecherNodeId, 1));
 		accounting.setDefaultLoanAllowed(1);
 		assertTrue(accounting.maybeDebit(leecherNodeId, 1));
@@ -38,7 +38,7 @@ public class P2PBlobBalanceClearingTest {
 	public void testThreading() throws Exception{
 		Logger.getLogger(P2PBlobTransferBalanceDB.class).setLevel(Level.OFF); //This test is way too verbose
 		final P2PBlobTransferBalanceDB accounting=new P2PBlobTransferBalanceDB(null);
-		final BazarroNodeIdentifier goodNodeId=new BazarroNodeIdentifier("some node that will pay us 10".getBytes());
+		final NodeIdentifier goodNodeId=new NodeIdentifier("some node that will pay us 10".getBytes());
 		final int NB_THREADS=10;
 		final CountDownLatch jobsReady=new CountDownLatch(NB_THREADS);
 		final CountDownLatch jobsDone=new CountDownLatch(NB_THREADS);

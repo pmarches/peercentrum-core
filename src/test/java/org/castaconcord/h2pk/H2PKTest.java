@@ -7,9 +7,9 @@ import java.net.InetSocketAddress;
 import org.castaconcord.consensusprocess.ConsensusThreshold;
 import org.castaconcord.consensusprocess.MockTriggerableThreshold;
 import org.castaconcord.consensusprocess.UniqueNodeList;
-import org.castaconcord.core.BazarroNodeDatabase;
-import org.castaconcord.core.BazarroNodeIdentifier;
-import org.castaconcord.network.BazarroNetworkServer;
+import org.castaconcord.core.NodeDatabase;
+import org.castaconcord.core.NodeIdentifier;
+import org.castaconcord.network.NetworkServer;
 import org.junit.Test;
 
 
@@ -17,15 +17,15 @@ public class H2PKTest {
 	@Test
 	public void test() throws Exception {
 		final int NB_NODES=3;
-		BazarroNodeIdentifier clientNodeId=new BazarroNodeIdentifier("ClientNode");
+		NodeIdentifier clientNodeId=new NodeIdentifier("ClientNode");
 		HashToPublicKeyStandaloneClient client=null;
 		UniqueNodeList sharedUNL = new UniqueNodeList();
-		BazarroNodeDatabase sharedNodeDatabase = new BazarroNodeDatabase(null);
+		NodeDatabase sharedNodeDatabase = new NodeDatabase(null);
 		HashToPublicKeyApplication[] apps=new HashToPublicKeyApplication[NB_NODES]; 
 		ConsensusThreshold mockThreshold=new MockTriggerableThreshold(1, NB_NODES);
 		for(int i=0; i<NB_NODES; i++){
-			BazarroNodeIdentifier nodeId=new BazarroNodeIdentifier("Node"+i);
-			BazarroNetworkServer nodeServer = new BazarroNetworkServer(nodeId, sharedNodeDatabase, 0);
+			NodeIdentifier nodeId=new NodeIdentifier("Node"+i);
+			NetworkServer nodeServer = new NetworkServer(nodeId, sharedNodeDatabase, 0);
 			InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", nodeServer.getListeningPort());
 			sharedNodeDatabase.mapNodeIdToAddress(nodeId, serverEndpoint);
 			sharedUNL.addValidatorNode(nodeId);
@@ -36,7 +36,7 @@ public class H2PKTest {
 				client=new HashToPublicKeyStandaloneClient(nodeId, clientNodeId, sharedNodeDatabase);
 			}
 		}
-		BazarroHashIdentifier address=new BazarroHashIdentifier();
+		HashIdentifier address=new HashIdentifier();
 		client.registerForAddress(address, clientNodeId);
 		client.close();
 		for(HashToPublicKeyApplication app : apps){

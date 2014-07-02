@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.NodeIdentifier;
 
 import com.google.common.primitives.UnsignedLong;
 
@@ -13,10 +13,10 @@ public class ProposedTransactions<T extends ConsensusTransaction> implements Ser
 	private static final long serialVersionUID = 7066902725948459145L;
 
 	protected List<T> proposedTx = new ArrayList<T>();
-	protected BazarroNodeIdentifier from;
+	protected NodeIdentifier from;
 	protected UnsignedLong applicableToDBVersionNumber;
 	
-	public ProposedTransactions(UnsignedLong applicableToLedgerNumber, BazarroNodeIdentifier from) {
+	public ProposedTransactions(UnsignedLong applicableToLedgerNumber, NodeIdentifier from) {
 		if(applicableToLedgerNumber==null){
 			throw new NullPointerException();
 		}
@@ -33,7 +33,7 @@ public class ProposedTransactions<T extends ConsensusTransaction> implements Ser
 		return proposedTx.iterator();
 	}
 
-	public BazarroNodeIdentifier getFrom() {
+	public NodeIdentifier getFrom() {
 		return from;
 	}
 

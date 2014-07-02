@@ -14,21 +14,21 @@ import io.netty.util.concurrent.DefaultEventExecutorGroup;
 import java.net.InetSocketAddress;
 import java.util.Hashtable;
 
-import org.castaconcord.core.BazarroApplicationIdentifier;
-import org.castaconcord.core.BazarroConfig;
-import org.castaconcord.core.BazarroNodeDatabase;
-import org.castaconcord.core.BazarroNodeIdentifier;
+import org.castaconcord.core.ApplicationIdentifier;
+import org.castaconcord.core.Config;
+import org.castaconcord.core.NodeDatabase;
+import org.castaconcord.core.NodeIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BazarroNetworkServer extends BazarroNetworkClientOrServer {
-	private static final Logger LOGGER = LoggerFactory.getLogger(BazarroNetworkServer.class);
+public class NetworkServer extends NetworkClientOrServer {
+	private static final Logger LOGGER = LoggerFactory.getLogger(NetworkServer.class);
 	
 	DefaultEventExecutorGroup applicationWorkerGroup = new DefaultEventExecutorGroup(2);
 	NioEventLoopGroup nioWorkerGroup = new NioEventLoopGroup();
 	Channel bindChannel;
-	BazarroConfig configuration;
-	Hashtable<BazarroApplicationIdentifier, BaseBazarroApplicationMessageHandler> allApplicationHandler=new Hashtable<BazarroApplicationIdentifier, BaseBazarroApplicationMessageHandler>();
+	Config configuration;
+	Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler> allApplicationHandler=new Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler>();
 	
 	ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
 		@Override
@@ -36,7 +36,7 @@ public class BazarroNetworkServer extends BazarroNetworkClientOrServer {
 			ch.pipeline().addLast("idleStateHandler", new IdleStateHandler(60, 30, 0));
 			ch.pipeline().addLast(new HeaderPayloadStreamDecoder());
 //			ch.pipeline().addLast(new TraceHandler("Before server Routing"));
-			ch.pipeline().addLast(applicationWorkerGroup, new BazarroRoutingHandler(BazarroNetworkServer.this));
+			ch.pipeline().addLast(applicationWorkerGroup, new RoutingHandler(NetworkServer.this));
 
 			ch.pipeline().addLast(new HeaderAndPayloadToBytesEncoder());
     		ch.pipeline().addLast(new ChunkedWriteHandler());
@@ -44,10 +44,10 @@ public class BazarroNetworkServer extends BazarroNetworkClientOrServer {
 	};
 	protected int listeningPort;
 
-	public BazarroNetworkServer(BazarroNodeIdentifier serverId, BazarroNodeDatabase nodeDatabase, int listenPort) throws InterruptedException {
+	public NetworkServer(NodeIdentifier serverId, NodeDatabase nodeDatabase, int listenPort) throws InterruptedException {
 		super(serverId, nodeDatabase);
 		
-		new BazarroNetworkApplication(this);
+		new NetworkApplication(this);
 		ServerBootstrap b = new ServerBootstrap();
 		b.group(nioWorkerGroup)
 			.channel(NioServerSocketChannel.class)
@@ -70,18 +70,18 @@ public class BazarroNetworkServer extends BazarroNetworkClientOrServer {
 	}
 
 
-	public void addApplicationHandler(BaseBazarroApplicationMessageHandler applicationHandler) {
+	public void addApplicationHandler(BaseApplicationMessageHandler applicationHandler) {
 		this.allApplicationHandler.put(applicationHandler.getApplicationId(), applicationHandler);
 	}
 
-	public BaseBazarroApplicationMessageHandler getApplicationHandler(BazarroApplicationIdentifier appIdReceived) {
+	public BaseApplicationMessageHandler getApplicationHandler(ApplicationIdentifier appIdReceived) {
 		return allApplicationHandler.get(appIdReceived);
 	}
 
-	public void setConfig(BazarroConfig config) {
+	public void setConfig(Config config) {
 		this.configuration=config;
 	}
-	public BazarroConfig getConfig(){
+	public Config getConfig(){
 		return configuration;
 	}
 
