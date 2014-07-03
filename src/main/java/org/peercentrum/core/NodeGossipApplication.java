@@ -7,7 +7,6 @@ import io.netty.util.concurrent.Future;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutionException;
 
-import org.peercentrum.core.ProtocolBuffer;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkClient;
