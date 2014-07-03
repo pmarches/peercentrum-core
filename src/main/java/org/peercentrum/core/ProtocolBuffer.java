@@ -14270,15 +14270,15 @@ public final class ProtocolBuffer {
   public interface P2PBlobBlockMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int64 blockOffset = 1;
+    // optional int64 offset = 1;
     /**
-     * <code>optional int64 blockOffset = 1;</code>
+     * <code>optional int64 offset = 1;</code>
      */
-    boolean hasBlockOffset();
+    boolean hasOffset();
     /**
-     * <code>optional int64 blockOffset = 1;</code>
+     * <code>optional int64 offset = 1;</code>
      */
-    long getBlockOffset();
+    long getOffset();
 
     // optional bytes blobBytes = 2;
     /**
@@ -14343,7 +14343,7 @@ public final class ProtocolBuffer {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              blockOffset_ = input.readInt64();
+              offset_ = input.readInt64();
               break;
             }
             case 18: {
@@ -14391,20 +14391,20 @@ public final class ProtocolBuffer {
     }
 
     private int bitField0_;
-    // optional int64 blockOffset = 1;
-    public static final int BLOCKOFFSET_FIELD_NUMBER = 1;
-    private long blockOffset_;
+    // optional int64 offset = 1;
+    public static final int OFFSET_FIELD_NUMBER = 1;
+    private long offset_;
     /**
-     * <code>optional int64 blockOffset = 1;</code>
+     * <code>optional int64 offset = 1;</code>
      */
-    public boolean hasBlockOffset() {
+    public boolean hasOffset() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional int64 blockOffset = 1;</code>
+     * <code>optional int64 offset = 1;</code>
      */
-    public long getBlockOffset() {
-      return blockOffset_;
+    public long getOffset() {
+      return offset_;
     }
 
     // optional bytes blobBytes = 2;
@@ -14424,7 +14424,7 @@ public final class ProtocolBuffer {
     }
 
     private void initFields() {
-      blockOffset_ = 0L;
+      offset_ = 0L;
       blobBytes_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
@@ -14440,7 +14440,7 @@ public final class ProtocolBuffer {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(1, blockOffset_);
+        output.writeInt64(1, offset_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, blobBytes_);
@@ -14456,7 +14456,7 @@ public final class ProtocolBuffer {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, blockOffset_);
+          .computeInt64Size(1, offset_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -14578,7 +14578,7 @@ public final class ProtocolBuffer {
 
       public Builder clear() {
         super.clear();
-        blockOffset_ = 0L;
+        offset_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
         blobBytes_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -14613,7 +14613,7 @@ public final class ProtocolBuffer {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.blockOffset_ = blockOffset_;
+        result.offset_ = offset_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -14634,8 +14634,8 @@ public final class ProtocolBuffer {
 
       public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.P2PBlobBlockMsg other) {
         if (other == org.peercentrum.core.ProtocolBuffer.P2PBlobBlockMsg.getDefaultInstance()) return this;
-        if (other.hasBlockOffset()) {
-          setBlockOffset(other.getBlockOffset());
+        if (other.hasOffset()) {
+          setOffset(other.getOffset());
         }
         if (other.hasBlobBytes()) {
           setBlobBytes(other.getBlobBytes());
@@ -14667,35 +14667,35 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional int64 blockOffset = 1;
-      private long blockOffset_ ;
+      // optional int64 offset = 1;
+      private long offset_ ;
       /**
-       * <code>optional int64 blockOffset = 1;</code>
+       * <code>optional int64 offset = 1;</code>
        */
-      public boolean hasBlockOffset() {
+      public boolean hasOffset() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional int64 blockOffset = 1;</code>
+       * <code>optional int64 offset = 1;</code>
        */
-      public long getBlockOffset() {
-        return blockOffset_;
+      public long getOffset() {
+        return offset_;
       }
       /**
-       * <code>optional int64 blockOffset = 1;</code>
+       * <code>optional int64 offset = 1;</code>
        */
-      public Builder setBlockOffset(long value) {
+      public Builder setOffset(long value) {
         bitField0_ |= 0x00000001;
-        blockOffset_ = value;
+        offset_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 blockOffset = 1;</code>
+       * <code>optional int64 offset = 1;</code>
        */
-      public Builder clearBlockOffset() {
+      public Builder clearOffset() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        blockOffset_ = 0L;
+        offset_ = 0L;
         onChanged();
         return this;
       }
@@ -18170,25 +18170,25 @@ public final class ProtocolBuffer {
       "e\0221\n\010hashList\030\002 \001(\0132\037.peercentrum.P2PBlo",
       "bHashListMsg\022\022\n\nblobLength\030\003 \001(\003\022/\n\tblob" +
       "Bytes\030\004 \003(\0132\034.peercentrum.P2PBlobBlockMs" +
-      "g\"9\n\017P2PBlobBlockMsg\022\023\n\013blockOffset\030\001 \001(" +
-      "\003\022\021\n\tblobBytes\030\002 \001(\014\"\'\n\022P2PBlobHashListM" +
-      "sg\022\021\n\thashBytes\030\001 \003(\014\"\214\001\n\021SettlementMess" +
-      "age\022\037\n\027requestSettlementMethod\030\001 \001(\010\022\035\n\025" +
-      "requestTermsOfService\030\002 \001(\010\0227\n\020settlemen" +
-      "tMethod\030\025 \001(\0132\035.peercentrum.SettlementMe" +
-      "thod\"c\n\020SettlementMethod\022\026\n\016bitcoinAddre" +
-      "ss\030\001 \001(\014\022\025\n\rrippleAddress\030\013 \001(\014\022 \n\030accep",
-      "tedRippleCurrencies\030\014 \003(\014\"\241\001\n\"Settlement" +
-      "TermOfServiceByteStorage\022\035\n\025pricePerByte" +
-      "PerPeriod\030\001 \001(\014\022\036\n\026storagePeriodInSecond" +
-      "s\030\002 \001(\r\022\034\n\024minimumNumberOfBytes\030\003 \001(\003\022\036\n" +
-      "\026recoveryDelayInSeconds\030\005 \001(\r\"\257\001\n#Settle" +
-      "mentTermOfServiceByteTransfer\022\034\n\024priceIn" +
-      "comingPerByte\030\001 \001(\014\022\034\n\024priceOutgoingPerB" +
-      "yte\030\002 \001(\014\022%\n\035maximumIncomingBytesPerSeco" +
-      "nd\030\003 \001(\r\022%\n\035maximumOutgoingBytesPerSecon" +
-      "d\030\004 \001(\rB&\n\024org.peercentrum.coreB\016Protoco",
-      "lBuffer"
+      "g\"4\n\017P2PBlobBlockMsg\022\016\n\006offset\030\001 \001(\003\022\021\n\t" +
+      "blobBytes\030\002 \001(\014\"\'\n\022P2PBlobHashListMsg\022\021\n" +
+      "\thashBytes\030\001 \003(\014\"\214\001\n\021SettlementMessage\022\037" +
+      "\n\027requestSettlementMethod\030\001 \001(\010\022\035\n\025reque" +
+      "stTermsOfService\030\002 \001(\010\0227\n\020settlementMeth" +
+      "od\030\025 \001(\0132\035.peercentrum.SettlementMethod\"" +
+      "c\n\020SettlementMethod\022\026\n\016bitcoinAddress\030\001 " +
+      "\001(\014\022\025\n\rrippleAddress\030\013 \001(\014\022 \n\030acceptedRi",
+      "ppleCurrencies\030\014 \003(\014\"\241\001\n\"SettlementTermO" +
+      "fServiceByteStorage\022\035\n\025pricePerBytePerPe" +
+      "riod\030\001 \001(\014\022\036\n\026storagePeriodInSeconds\030\002 \001" +
+      "(\r\022\034\n\024minimumNumberOfBytes\030\003 \001(\003\022\036\n\026reco" +
+      "veryDelayInSeconds\030\005 \001(\r\"\257\001\n#SettlementT" +
+      "ermOfServiceByteTransfer\022\034\n\024priceIncomin" +
+      "gPerByte\030\001 \001(\014\022\034\n\024priceOutgoingPerByte\030\002" +
+      " \001(\014\022%\n\035maximumIncomingBytesPerSecond\030\003 " +
+      "\001(\r\022%\n\035maximumOutgoingBytesPerSecond\030\004 \001" +
+      "(\rB&\n\024org.peercentrum.coreB\016ProtocolBuff",
+      "er"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -18314,7 +18314,7 @@ public final class ProtocolBuffer {
           internal_static_peercentrum_P2PBlobBlockMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobBlockMsg_descriptor,
-              new java.lang.String[] { "BlockOffset", "BlobBytes", });
+              new java.lang.String[] { "Offset", "BlobBytes", });
           internal_static_peercentrum_P2PBlobHashListMsg_descriptor =
             getDescriptor().getMessageTypes().get(17);
           internal_static_peercentrum_P2PBlobHashListMsg_fieldAccessorTable = new

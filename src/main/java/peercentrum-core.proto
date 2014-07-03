@@ -139,7 +139,7 @@ message P2PBlobResponse {
 };
 
 message P2PBlobBlockMsg {
-	optional int64 blockOffset=1;
+	optional int64 offset=1;
 	optional bytes blobBytes=2;
 };
 
