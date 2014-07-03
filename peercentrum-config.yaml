@@ -1,0 +1,30 @@
+!!org.peercentrum.core.TopLevelConfig
+nodeIdentifier: Node1
+privateKey: 124567890
+listenPort: 0    #Set to 0 to select any open port at startup
+enableNAT: true
+applications: 
+  - !!org.peercentrum.core.NodeGossipConfig
+      bootstrapEndpoint: 66.172.33.39:35460
+      nodeDatabasePath: peercentrum-nodes.db  #All relative paths are relative to the configuration file 
+  
+  - !!org.peercentrum.h2pk.HashToPublicKeyConfig
+    databasePath: h2pk.db
+    validatorIdentifiers:
+      - 123456789
+      - qwertyuiop
+
+  - !!org.peercentrum.blob.P2PBlobConfig
+    blobRepositoryPath: repository
+    #maximumStorageAllowed: 100M
+    storagePricePerGBPerDay: 0.248 XRP #About 0.03USD/GB/Month
+    inboundTransferPricePerGB:  15 XRP          #About 0.06USD/GB
+    outboundTransferPricePerGB: 15 XRP          #About 0.06USD/GB
+
+  - !!org.peercentrum.core.NodeDatabaseConfig
+    nodeDbPath: nodeInfo.db
+    
+  - !!org.peercentrum.settlement.SettlementConfig
+    settlementDbPath: settlement.db
+    rippleSeed: aaaaaaa
+    bitcoinPrivateKey: BBBBBBB
