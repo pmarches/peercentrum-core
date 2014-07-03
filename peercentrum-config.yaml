@@ -6,7 +6,7 @@ enableNAT: true
 applications: 
   - !!org.peercentrum.core.NodeGossipConfig
       bootstrapEndpoint: 66.172.33.39:35460
-      nodeDatabasePath: peercentrum-nodes.db  #All relative paths are relative to the configuration file 
+      nodeDatabasePath: nodeDB.db  #All relative paths are relative to the configuration file 
   
   - !!org.peercentrum.h2pk.HashToPublicKeyConfig
     databasePath: h2pk.db
@@ -27,4 +27,4 @@ applications:
   - !!org.peercentrum.settlement.SettlementConfig
     settlementDbPath: settlement.db
     rippleSeed: aaaaaaa
-    bitcoinPrivateKey: BBBBBBB
+    bitcoinWalletPath: bitcoin.wallet

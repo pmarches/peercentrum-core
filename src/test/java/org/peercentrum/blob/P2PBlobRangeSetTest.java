@@ -18,8 +18,8 @@ public class P2PBlobRangeSetTest {
 	@Test
 	public void testIterator() {
 		P2PBlobRangeSet rangeSet = new P2PBlobRangeSet();
-		rangeSet.add(Range.closed(1, 3));
-		rangeSet.add(Range.open(11, 15));
+		rangeSet.add(Range.closed(1L, 3L));
+		rangeSet.add(Range.open(11L, 15L));
 		P2PBlobRangeSet.DiscreteIterator it1=rangeSet.discreteIterator();
 		assertTrue(it1.hasNext());
 		assertEquals(1, it1.next().intValue());
@@ -49,10 +49,19 @@ public class P2PBlobRangeSetTest {
 	}
 	
 	@Test
+	public void testSizeConstraint(){
+    P2PBlobRangeSet range1=new P2PBlobRangeSet(0, 257);
+    assertEquals(new P2PBlobRangeSet(0L, 255L), range1.constrainMaximumSpan(256));
+    
+    P2PBlobRangeSet range2=new P2PBlobRangeSet("[[0‥10], [20‥21], [30‥100], [300‥1000]]");
+    assertEquals("[[0‥10], [20‥21], [30‥31]]", range2.constrainMaximumSpan(15).toString());
+	}
+	
+	@Test
 	public void testToString(){
 		P2PBlobRangeSet rangeSetOri=new P2PBlobRangeSet();
-		rangeSetOri.add(Range.closed(0, 10));
-		rangeSetOri.add(Range.closed(15, 20));
+		rangeSetOri.add(Range.closed(0L, 10L));
+		rangeSetOri.add(Range.closed(15L, 20L));
 		
 		P2PBlobRangeSet rangeSetFromString=new P2PBlobRangeSet(rangeSetOri.toString());
 		assertEquals(rangeSetOri, rangeSetFromString);

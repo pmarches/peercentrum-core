@@ -113,8 +113,8 @@ message H2PKDBSyncUnit {
 
 //////////////P2PBlob /////////////////
 message P2PBlobRange {
-  optional uint32 begin=1;
-  optional uint32 end=2;
+  optional int64 begin=1;
+  optional int64 end=2;
 };
 
 message P2PBlobRequest {
@@ -125,7 +125,7 @@ message P2PBlobRequest {
     no blobBytes are returned, but the remaining header bytes are returned. If set to 0,
     no blobBytes will be returned.
   */
-  optional uint64 maximumBlobLength=2;
+  optional int64 maximumBlobLength=2;
   optional bool requestHashList=3;
   optional bool requestBlobLength=4;
   repeated P2PBlobRange requestedRanges=5;
@@ -134,12 +134,12 @@ message P2PBlobRequest {
 message P2PBlobResponse {
   optional GenericResponse genericResponse=1;
   optional P2PBlobHashListMsg hashList=2;
-  optional uint64 blobLength=3;
+  optional int64 blobLength=3;
   repeated P2PBlobBlockMsg blobBytes=4;
 };
 
 message P2PBlobBlockMsg {
-	optional uint32 blockIndex=1;
+	optional int64 blockOffset=1;
 	optional bytes blobBytes=2;
 };
 
@@ -170,7 +170,7 @@ message SettlementTermOfServiceByteStorage {
   optional bytes pricePerBytePerPeriod=1;
   optional uint32 storagePeriodInSeconds=2; //Per Hour, Per day,Per month?
 
-  optional uint64 minimumNumberOfBytes=3; //To create usage tiers
+  optional int64 minimumNumberOfBytes=3; //To create usage tiers
   optional uint32 recoveryDelayInSeconds=5; //How much time may elapse before we return the data 
 };
 

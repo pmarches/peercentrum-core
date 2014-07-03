@@ -11559,25 +11559,25 @@ public final class ProtocolBuffer {
   public interface P2PBlobRangeOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional uint32 begin = 1;
+    // optional int64 begin = 1;
     /**
-     * <code>optional uint32 begin = 1;</code>
+     * <code>optional int64 begin = 1;</code>
      */
     boolean hasBegin();
     /**
-     * <code>optional uint32 begin = 1;</code>
+     * <code>optional int64 begin = 1;</code>
      */
-    int getBegin();
+    long getBegin();
 
-    // optional uint32 end = 2;
+    // optional int64 end = 2;
     /**
-     * <code>optional uint32 end = 2;</code>
+     * <code>optional int64 end = 2;</code>
      */
     boolean hasEnd();
     /**
-     * <code>optional uint32 end = 2;</code>
+     * <code>optional int64 end = 2;</code>
      */
-    int getEnd();
+    long getEnd();
   }
   /**
    * Protobuf type {@code peercentrum.P2PBlobRange}
@@ -11636,12 +11636,12 @@ public final class ProtocolBuffer {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              begin_ = input.readUInt32();
+              begin_ = input.readInt64();
               break;
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              end_ = input.readUInt32();
+              end_ = input.readInt64();
               break;
             }
           }
@@ -11684,41 +11684,41 @@ public final class ProtocolBuffer {
     }
 
     private int bitField0_;
-    // optional uint32 begin = 1;
+    // optional int64 begin = 1;
     public static final int BEGIN_FIELD_NUMBER = 1;
-    private int begin_;
+    private long begin_;
     /**
-     * <code>optional uint32 begin = 1;</code>
+     * <code>optional int64 begin = 1;</code>
      */
     public boolean hasBegin() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional uint32 begin = 1;</code>
+     * <code>optional int64 begin = 1;</code>
      */
-    public int getBegin() {
+    public long getBegin() {
       return begin_;
     }
 
-    // optional uint32 end = 2;
+    // optional int64 end = 2;
     public static final int END_FIELD_NUMBER = 2;
-    private int end_;
+    private long end_;
     /**
-     * <code>optional uint32 end = 2;</code>
+     * <code>optional int64 end = 2;</code>
      */
     public boolean hasEnd() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional uint32 end = 2;</code>
+     * <code>optional int64 end = 2;</code>
      */
-    public int getEnd() {
+    public long getEnd() {
       return end_;
     }
 
     private void initFields() {
-      begin_ = 0;
-      end_ = 0;
+      begin_ = 0L;
+      end_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11733,10 +11733,10 @@ public final class ProtocolBuffer {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, begin_);
+        output.writeInt64(1, begin_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, end_);
+        output.writeInt64(2, end_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -11749,11 +11749,11 @@ public final class ProtocolBuffer {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, begin_);
+          .computeInt64Size(1, begin_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, end_);
+          .computeInt64Size(2, end_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11875,9 +11875,9 @@ public final class ProtocolBuffer {
 
       public Builder clear() {
         super.clear();
-        begin_ = 0;
+        begin_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        end_ = 0;
+        end_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -11964,68 +11964,68 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional uint32 begin = 1;
-      private int begin_ ;
+      // optional int64 begin = 1;
+      private long begin_ ;
       /**
-       * <code>optional uint32 begin = 1;</code>
+       * <code>optional int64 begin = 1;</code>
        */
       public boolean hasBegin() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional uint32 begin = 1;</code>
+       * <code>optional int64 begin = 1;</code>
        */
-      public int getBegin() {
+      public long getBegin() {
         return begin_;
       }
       /**
-       * <code>optional uint32 begin = 1;</code>
+       * <code>optional int64 begin = 1;</code>
        */
-      public Builder setBegin(int value) {
+      public Builder setBegin(long value) {
         bitField0_ |= 0x00000001;
         begin_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 begin = 1;</code>
+       * <code>optional int64 begin = 1;</code>
        */
       public Builder clearBegin() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        begin_ = 0;
+        begin_ = 0L;
         onChanged();
         return this;
       }
 
-      // optional uint32 end = 2;
-      private int end_ ;
+      // optional int64 end = 2;
+      private long end_ ;
       /**
-       * <code>optional uint32 end = 2;</code>
+       * <code>optional int64 end = 2;</code>
        */
       public boolean hasEnd() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional uint32 end = 2;</code>
+       * <code>optional int64 end = 2;</code>
        */
-      public int getEnd() {
+      public long getEnd() {
         return end_;
       }
       /**
-       * <code>optional uint32 end = 2;</code>
+       * <code>optional int64 end = 2;</code>
        */
-      public Builder setEnd(int value) {
+      public Builder setEnd(long value) {
         bitField0_ |= 0x00000002;
         end_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 end = 2;</code>
+       * <code>optional int64 end = 2;</code>
        */
       public Builder clearEnd() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        end_ = 0;
+        end_ = 0L;
         onChanged();
         return this;
       }
@@ -12062,9 +12062,9 @@ public final class ProtocolBuffer {
      */
     com.google.protobuf.ByteString getRequestedHash();
 
-    // optional uint64 maximumBlobLength = 2;
+    // optional int64 maximumBlobLength = 2;
     /**
-     * <code>optional uint64 maximumBlobLength = 2;</code>
+     * <code>optional int64 maximumBlobLength = 2;</code>
      *
      * <pre>
      *Maximum number of bytes the response may return. If the blobBytes exceed this, 
@@ -12074,7 +12074,7 @@ public final class ProtocolBuffer {
      */
     boolean hasMaximumBlobLength();
     /**
-     * <code>optional uint64 maximumBlobLength = 2;</code>
+     * <code>optional int64 maximumBlobLength = 2;</code>
      *
      * <pre>
      *Maximum number of bytes the response may return. If the blobBytes exceed this, 
@@ -12187,7 +12187,7 @@ public final class ProtocolBuffer {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              maximumBlobLength_ = input.readUInt64();
+              maximumBlobLength_ = input.readInt64();
               break;
             }
             case 24: {
@@ -12275,11 +12275,11 @@ public final class ProtocolBuffer {
       return requestedHash_;
     }
 
-    // optional uint64 maximumBlobLength = 2;
+    // optional int64 maximumBlobLength = 2;
     public static final int MAXIMUMBLOBLENGTH_FIELD_NUMBER = 2;
     private long maximumBlobLength_;
     /**
-     * <code>optional uint64 maximumBlobLength = 2;</code>
+     * <code>optional int64 maximumBlobLength = 2;</code>
      *
      * <pre>
      *Maximum number of bytes the response may return. If the blobBytes exceed this, 
@@ -12291,7 +12291,7 @@ public final class ProtocolBuffer {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional uint64 maximumBlobLength = 2;</code>
+     * <code>optional int64 maximumBlobLength = 2;</code>
      *
      * <pre>
      *Maximum number of bytes the response may return. If the blobBytes exceed this, 
@@ -12394,7 +12394,7 @@ public final class ProtocolBuffer {
         output.writeBytes(1, requestedHash_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt64(2, maximumBlobLength_);
+        output.writeInt64(2, maximumBlobLength_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBool(3, requestHashList_);
@@ -12420,7 +12420,7 @@ public final class ProtocolBuffer {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(2, maximumBlobLength_);
+          .computeInt64Size(2, maximumBlobLength_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -12751,10 +12751,10 @@ public final class ProtocolBuffer {
         return this;
       }
 
-      // optional uint64 maximumBlobLength = 2;
+      // optional int64 maximumBlobLength = 2;
       private long maximumBlobLength_ ;
       /**
-       * <code>optional uint64 maximumBlobLength = 2;</code>
+       * <code>optional int64 maximumBlobLength = 2;</code>
        *
        * <pre>
        *Maximum number of bytes the response may return. If the blobBytes exceed this, 
@@ -12766,7 +12766,7 @@ public final class ProtocolBuffer {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional uint64 maximumBlobLength = 2;</code>
+       * <code>optional int64 maximumBlobLength = 2;</code>
        *
        * <pre>
        *Maximum number of bytes the response may return. If the blobBytes exceed this, 
@@ -12778,7 +12778,7 @@ public final class ProtocolBuffer {
         return maximumBlobLength_;
       }
       /**
-       * <code>optional uint64 maximumBlobLength = 2;</code>
+       * <code>optional int64 maximumBlobLength = 2;</code>
        *
        * <pre>
        *Maximum number of bytes the response may return. If the blobBytes exceed this, 
@@ -12793,7 +12793,7 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional uint64 maximumBlobLength = 2;</code>
+       * <code>optional int64 maximumBlobLength = 2;</code>
        *
        * <pre>
        *Maximum number of bytes the response may return. If the blobBytes exceed this, 
@@ -13156,13 +13156,13 @@ public final class ProtocolBuffer {
      */
     org.peercentrum.core.ProtocolBuffer.P2PBlobHashListMsgOrBuilder getHashListOrBuilder();
 
-    // optional uint64 blobLength = 3;
+    // optional int64 blobLength = 3;
     /**
-     * <code>optional uint64 blobLength = 3;</code>
+     * <code>optional int64 blobLength = 3;</code>
      */
     boolean hasBlobLength();
     /**
-     * <code>optional uint64 blobLength = 3;</code>
+     * <code>optional int64 blobLength = 3;</code>
      */
     long getBlobLength();
 
@@ -13270,7 +13270,7 @@ public final class ProtocolBuffer {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              blobLength_ = input.readUInt64();
+              blobLength_ = input.readInt64();
               break;
             }
             case 34: {
@@ -13368,17 +13368,17 @@ public final class ProtocolBuffer {
       return hashList_;
     }
 
-    // optional uint64 blobLength = 3;
+    // optional int64 blobLength = 3;
     public static final int BLOBLENGTH_FIELD_NUMBER = 3;
     private long blobLength_;
     /**
-     * <code>optional uint64 blobLength = 3;</code>
+     * <code>optional int64 blobLength = 3;</code>
      */
     public boolean hasBlobLength() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional uint64 blobLength = 3;</code>
+     * <code>optional int64 blobLength = 3;</code>
      */
     public long getBlobLength() {
       return blobLength_;
@@ -13445,7 +13445,7 @@ public final class ProtocolBuffer {
         output.writeMessage(2, hashList_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt64(3, blobLength_);
+        output.writeInt64(3, blobLength_);
       }
       for (int i = 0; i < blobBytes_.size(); i++) {
         output.writeMessage(4, blobBytes_.get(i));
@@ -13469,7 +13469,7 @@ public final class ProtocolBuffer {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(3, blobLength_);
+          .computeInt64Size(3, blobLength_);
       }
       for (int i = 0; i < blobBytes_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -13983,22 +13983,22 @@ public final class ProtocolBuffer {
         return hashListBuilder_;
       }
 
-      // optional uint64 blobLength = 3;
+      // optional int64 blobLength = 3;
       private long blobLength_ ;
       /**
-       * <code>optional uint64 blobLength = 3;</code>
+       * <code>optional int64 blobLength = 3;</code>
        */
       public boolean hasBlobLength() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional uint64 blobLength = 3;</code>
+       * <code>optional int64 blobLength = 3;</code>
        */
       public long getBlobLength() {
         return blobLength_;
       }
       /**
-       * <code>optional uint64 blobLength = 3;</code>
+       * <code>optional int64 blobLength = 3;</code>
        */
       public Builder setBlobLength(long value) {
         bitField0_ |= 0x00000004;
@@ -14007,7 +14007,7 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional uint64 blobLength = 3;</code>
+       * <code>optional int64 blobLength = 3;</code>
        */
       public Builder clearBlobLength() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -14270,15 +14270,15 @@ public final class ProtocolBuffer {
   public interface P2PBlobBlockMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional uint32 blockIndex = 1;
+    // optional int64 blockOffset = 1;
     /**
-     * <code>optional uint32 blockIndex = 1;</code>
+     * <code>optional int64 blockOffset = 1;</code>
      */
-    boolean hasBlockIndex();
+    boolean hasBlockOffset();
     /**
-     * <code>optional uint32 blockIndex = 1;</code>
+     * <code>optional int64 blockOffset = 1;</code>
      */
-    int getBlockIndex();
+    long getBlockOffset();
 
     // optional bytes blobBytes = 2;
     /**
@@ -14343,7 +14343,7 @@ public final class ProtocolBuffer {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              blockIndex_ = input.readUInt32();
+              blockOffset_ = input.readInt64();
               break;
             }
             case 18: {
@@ -14391,20 +14391,20 @@ public final class ProtocolBuffer {
     }
 
     private int bitField0_;
-    // optional uint32 blockIndex = 1;
-    public static final int BLOCKINDEX_FIELD_NUMBER = 1;
-    private int blockIndex_;
+    // optional int64 blockOffset = 1;
+    public static final int BLOCKOFFSET_FIELD_NUMBER = 1;
+    private long blockOffset_;
     /**
-     * <code>optional uint32 blockIndex = 1;</code>
+     * <code>optional int64 blockOffset = 1;</code>
      */
-    public boolean hasBlockIndex() {
+    public boolean hasBlockOffset() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional uint32 blockIndex = 1;</code>
+     * <code>optional int64 blockOffset = 1;</code>
      */
-    public int getBlockIndex() {
-      return blockIndex_;
+    public long getBlockOffset() {
+      return blockOffset_;
     }
 
     // optional bytes blobBytes = 2;
@@ -14424,7 +14424,7 @@ public final class ProtocolBuffer {
     }
 
     private void initFields() {
-      blockIndex_ = 0;
+      blockOffset_ = 0L;
       blobBytes_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
@@ -14440,7 +14440,7 @@ public final class ProtocolBuffer {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, blockIndex_);
+        output.writeInt64(1, blockOffset_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, blobBytes_);
@@ -14456,7 +14456,7 @@ public final class ProtocolBuffer {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, blockIndex_);
+          .computeInt64Size(1, blockOffset_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -14578,7 +14578,7 @@ public final class ProtocolBuffer {
 
       public Builder clear() {
         super.clear();
-        blockIndex_ = 0;
+        blockOffset_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
         blobBytes_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -14613,7 +14613,7 @@ public final class ProtocolBuffer {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.blockIndex_ = blockIndex_;
+        result.blockOffset_ = blockOffset_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -14634,8 +14634,8 @@ public final class ProtocolBuffer {
 
       public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.P2PBlobBlockMsg other) {
         if (other == org.peercentrum.core.ProtocolBuffer.P2PBlobBlockMsg.getDefaultInstance()) return this;
-        if (other.hasBlockIndex()) {
-          setBlockIndex(other.getBlockIndex());
+        if (other.hasBlockOffset()) {
+          setBlockOffset(other.getBlockOffset());
         }
         if (other.hasBlobBytes()) {
           setBlobBytes(other.getBlobBytes());
@@ -14667,35 +14667,35 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional uint32 blockIndex = 1;
-      private int blockIndex_ ;
+      // optional int64 blockOffset = 1;
+      private long blockOffset_ ;
       /**
-       * <code>optional uint32 blockIndex = 1;</code>
+       * <code>optional int64 blockOffset = 1;</code>
        */
-      public boolean hasBlockIndex() {
+      public boolean hasBlockOffset() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional uint32 blockIndex = 1;</code>
+       * <code>optional int64 blockOffset = 1;</code>
        */
-      public int getBlockIndex() {
-        return blockIndex_;
+      public long getBlockOffset() {
+        return blockOffset_;
       }
       /**
-       * <code>optional uint32 blockIndex = 1;</code>
+       * <code>optional int64 blockOffset = 1;</code>
        */
-      public Builder setBlockIndex(int value) {
+      public Builder setBlockOffset(long value) {
         bitField0_ |= 0x00000001;
-        blockIndex_ = value;
+        blockOffset_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 blockIndex = 1;</code>
+       * <code>optional int64 blockOffset = 1;</code>
        */
-      public Builder clearBlockIndex() {
+      public Builder clearBlockOffset() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        blockIndex_ = 0;
+        blockOffset_ = 0L;
         onChanged();
         return this;
       }
@@ -16614,9 +16614,9 @@ public final class ProtocolBuffer {
      */
     int getStoragePeriodInSeconds();
 
-    // optional uint64 minimumNumberOfBytes = 3;
+    // optional int64 minimumNumberOfBytes = 3;
     /**
-     * <code>optional uint64 minimumNumberOfBytes = 3;</code>
+     * <code>optional int64 minimumNumberOfBytes = 3;</code>
      *
      * <pre>
      *To create usage tiers
@@ -16624,7 +16624,7 @@ public final class ProtocolBuffer {
      */
     boolean hasMinimumNumberOfBytes();
     /**
-     * <code>optional uint64 minimumNumberOfBytes = 3;</code>
+     * <code>optional int64 minimumNumberOfBytes = 3;</code>
      *
      * <pre>
      *To create usage tiers
@@ -16717,7 +16717,7 @@ public final class ProtocolBuffer {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              minimumNumberOfBytes_ = input.readUInt64();
+              minimumNumberOfBytes_ = input.readInt64();
               break;
             }
             case 40: {
@@ -16805,11 +16805,11 @@ public final class ProtocolBuffer {
       return storagePeriodInSeconds_;
     }
 
-    // optional uint64 minimumNumberOfBytes = 3;
+    // optional int64 minimumNumberOfBytes = 3;
     public static final int MINIMUMNUMBEROFBYTES_FIELD_NUMBER = 3;
     private long minimumNumberOfBytes_;
     /**
-     * <code>optional uint64 minimumNumberOfBytes = 3;</code>
+     * <code>optional int64 minimumNumberOfBytes = 3;</code>
      *
      * <pre>
      *To create usage tiers
@@ -16819,7 +16819,7 @@ public final class ProtocolBuffer {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional uint64 minimumNumberOfBytes = 3;</code>
+     * <code>optional int64 minimumNumberOfBytes = 3;</code>
      *
      * <pre>
      *To create usage tiers
@@ -16878,7 +16878,7 @@ public final class ProtocolBuffer {
         output.writeUInt32(2, storagePeriodInSeconds_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt64(3, minimumNumberOfBytes_);
+        output.writeInt64(3, minimumNumberOfBytes_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(5, recoveryDelayInSeconds_);
@@ -16902,7 +16902,7 @@ public final class ProtocolBuffer {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(3, minimumNumberOfBytes_);
+          .computeInt64Size(3, minimumNumberOfBytes_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
@@ -17220,10 +17220,10 @@ public final class ProtocolBuffer {
         return this;
       }
 
-      // optional uint64 minimumNumberOfBytes = 3;
+      // optional int64 minimumNumberOfBytes = 3;
       private long minimumNumberOfBytes_ ;
       /**
-       * <code>optional uint64 minimumNumberOfBytes = 3;</code>
+       * <code>optional int64 minimumNumberOfBytes = 3;</code>
        *
        * <pre>
        *To create usage tiers
@@ -17233,7 +17233,7 @@ public final class ProtocolBuffer {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional uint64 minimumNumberOfBytes = 3;</code>
+       * <code>optional int64 minimumNumberOfBytes = 3;</code>
        *
        * <pre>
        *To create usage tiers
@@ -17243,7 +17243,7 @@ public final class ProtocolBuffer {
         return minimumNumberOfBytes_;
       }
       /**
-       * <code>optional uint64 minimumNumberOfBytes = 3;</code>
+       * <code>optional int64 minimumNumberOfBytes = 3;</code>
        *
        * <pre>
        *To create usage tiers
@@ -17256,7 +17256,7 @@ public final class ProtocolBuffer {
         return this;
       }
       /**
-       * <code>optional uint64 minimumNumberOfBytes = 3;</code>
+       * <code>optional int64 minimumNumberOfBytes = 3;</code>
        *
        * <pre>
        *To create usage tiers
@@ -18160,35 +18160,35 @@ public final class ProtocolBuffer {
       "syncUnits\030\004 \003(\0132\033.peercentrum.H2PKDBSync",
       "Unit\"?\n\016H2PKDBSyncUnit\022\017\n\007address\030\001 \001(\014\022" +
       "\034\n\024publicKeysRegistered\030\002 \003(\014\"*\n\014P2PBlob" +
-      "Range\022\r\n\005begin\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"\252\001\n\016P2" +
+      "Range\022\r\n\005begin\030\001 \001(\003\022\013\n\003end\030\002 \001(\003\"\252\001\n\016P2" +
       "PBlobRequest\022\025\n\rrequestedHash\030\001 \001(\014\022\031\n\021m" +
-      "aximumBlobLength\030\002 \001(\004\022\027\n\017requestHashLis" +
+      "aximumBlobLength\030\002 \001(\003\022\027\n\017requestHashLis" +
       "t\030\003 \001(\010\022\031\n\021requestBlobLength\030\004 \001(\010\0222\n\017re" +
       "questedRanges\030\005 \003(\0132\031.peercentrum.P2PBlo" +
       "bRange\"\300\001\n\017P2PBlobResponse\0225\n\017genericRes" +
       "ponse\030\001 \001(\0132\034.peercentrum.GenericRespons" +
       "e\0221\n\010hashList\030\002 \001(\0132\037.peercentrum.P2PBlo",
-      "bHashListMsg\022\022\n\nblobLength\030\003 \001(\004\022/\n\tblob" +
+      "bHashListMsg\022\022\n\nblobLength\030\003 \001(\003\022/\n\tblob" +
       "Bytes\030\004 \003(\0132\034.peercentrum.P2PBlobBlockMs" +
-      "g\"8\n\017P2PBlobBlockMsg\022\022\n\nblockIndex\030\001 \001(\r" +
-      "\022\021\n\tblobBytes\030\002 \001(\014\"\'\n\022P2PBlobHashListMs" +
-      "g\022\021\n\thashBytes\030\001 \003(\014\"\214\001\n\021SettlementMessa" +
-      "ge\022\037\n\027requestSettlementMethod\030\001 \001(\010\022\035\n\025r" +
-      "equestTermsOfService\030\002 \001(\010\0227\n\020settlement" +
-      "Method\030\025 \001(\0132\035.peercentrum.SettlementMet" +
-      "hod\"c\n\020SettlementMethod\022\026\n\016bitcoinAddres" +
-      "s\030\001 \001(\014\022\025\n\rrippleAddress\030\013 \001(\014\022 \n\030accept",
-      "edRippleCurrencies\030\014 \003(\014\"\241\001\n\"SettlementT" +
-      "ermOfServiceByteStorage\022\035\n\025pricePerByteP" +
-      "erPeriod\030\001 \001(\014\022\036\n\026storagePeriodInSeconds" +
-      "\030\002 \001(\r\022\034\n\024minimumNumberOfBytes\030\003 \001(\004\022\036\n\026" +
-      "recoveryDelayInSeconds\030\005 \001(\r\"\257\001\n#Settlem" +
-      "entTermOfServiceByteTransfer\022\034\n\024priceInc" +
-      "omingPerByte\030\001 \001(\014\022\034\n\024priceOutgoingPerBy" +
-      "te\030\002 \001(\014\022%\n\035maximumIncomingBytesPerSecon" +
-      "d\030\003 \001(\r\022%\n\035maximumOutgoingBytesPerSecond" +
-      "\030\004 \001(\rB&\n\024org.peercentrum.coreB\016Protocol",
-      "Buffer"
+      "g\"9\n\017P2PBlobBlockMsg\022\023\n\013blockOffset\030\001 \001(" +
+      "\003\022\021\n\tblobBytes\030\002 \001(\014\"\'\n\022P2PBlobHashListM" +
+      "sg\022\021\n\thashBytes\030\001 \003(\014\"\214\001\n\021SettlementMess" +
+      "age\022\037\n\027requestSettlementMethod\030\001 \001(\010\022\035\n\025" +
+      "requestTermsOfService\030\002 \001(\010\0227\n\020settlemen" +
+      "tMethod\030\025 \001(\0132\035.peercentrum.SettlementMe" +
+      "thod\"c\n\020SettlementMethod\022\026\n\016bitcoinAddre" +
+      "ss\030\001 \001(\014\022\025\n\rrippleAddress\030\013 \001(\014\022 \n\030accep",
+      "tedRippleCurrencies\030\014 \003(\014\"\241\001\n\"Settlement" +
+      "TermOfServiceByteStorage\022\035\n\025pricePerByte" +
+      "PerPeriod\030\001 \001(\014\022\036\n\026storagePeriodInSecond" +
+      "s\030\002 \001(\r\022\034\n\024minimumNumberOfBytes\030\003 \001(\003\022\036\n" +
+      "\026recoveryDelayInSeconds\030\005 \001(\r\"\257\001\n#Settle" +
+      "mentTermOfServiceByteTransfer\022\034\n\024priceIn" +
+      "comingPerByte\030\001 \001(\014\022\034\n\024priceOutgoingPerB" +
+      "yte\030\002 \001(\014\022%\n\035maximumIncomingBytesPerSeco" +
+      "nd\030\003 \001(\r\022%\n\035maximumOutgoingBytesPerSecon" +
+      "d\030\004 \001(\rB&\n\024org.peercentrum.coreB\016Protoco",
+      "lBuffer"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -18314,7 +18314,7 @@ public final class ProtocolBuffer {
           internal_static_peercentrum_P2PBlobBlockMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobBlockMsg_descriptor,
-              new java.lang.String[] { "BlockIndex", "BlobBytes", });
+              new java.lang.String[] { "BlockOffset", "BlobBytes", });
           internal_static_peercentrum_P2PBlobHashListMsg_descriptor =
             getDescriptor().getMessageTypes().get(17);
           internal_static_peercentrum_P2PBlobHashListMsg_fieldAccessorTable = new
