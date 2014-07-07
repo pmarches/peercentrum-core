@@ -1,9 +1,8 @@
 package org.peercentrum.settlement;
-//package org.peercentrum.settlement;
 //
 //import java.util.HashMap;
 //
-//import org.peercentrum.core.AbstractNodeBalanceDB;
+//import org.peercentrum.core.AbstractNodeBalanceTable;
 //import org.peercentrum.core.NodeIdentifier;
 //import org.json.simple.JSONObject;
 //import org.slf4j.Logger;
@@ -15,7 +14,7 @@ package org.peercentrum.settlement;
 //import org.tmatesoft.sqljet.core.table.ISqlJetTransaction;
 //import org.tmatesoft.sqljet.core.table.SqlJetDb;
 //
-//public class RippleSettlementDB extends AbstractNodeBalanceDB {
+//public class RippleSettlementDB extends AbstractNodeBalanceTable {
 //	private static final Logger LOGGER = LoggerFactory.getLogger(RippleSettlementDB.class);
 //
 //	static final String RIPPLE_SETTLEMENT_SETTINGS_TN = "rippleSettlementSettings";

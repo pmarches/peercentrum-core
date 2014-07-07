@@ -113,8 +113,8 @@ message H2PKDBSyncUnit {
 
 //////////////P2PBlob /////////////////
 message P2PBlobRange {
-  optional int64 begin=1;
-  optional int64 end=2;
+  optional uint32 begin=1;
+  optional uint32 end=2;
 };
 
 message P2PBlobRequest {
@@ -139,7 +139,7 @@ message P2PBlobResponse {
 };
 
 message P2PBlobBlockMsg {
-	optional int64 offset=1;
+	optional uint32 blockIndex=1;
 	optional bytes blobBytes=2;
 };
 
@@ -154,10 +154,16 @@ message SettlementMessage {
   optional bool requestTermsOfService=2; //Goes for any service
 
   optional SettlementMethod settlementMethod=21;
+  optional BitcoinSettlementTransaction bitcoinTX=22;
+};
+
+message BitcoinSettlementTransaction {
+  optional bytes destinationApplication=1;
+  optional bytes txBytes=3;
 };
 
 message SettlementMethod {
-  optional bytes bitcoinAddress=1;
+  optional bytes bitcoinPublicKey=1;
   //Probably more stuff here for micro payment channels
   //optional bytes bitcoinEscrowAddress=2;
   

@@ -13,38 +13,20 @@ import org.tmatesoft.sqljet.core.table.ISqlJetTable;
 import org.tmatesoft.sqljet.core.table.ISqlJetTransaction;
 import org.tmatesoft.sqljet.core.table.SqlJetDb;
 
-public class AbstractNodeBalanceDB implements AutoCloseable {
-	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractNodeBalanceDB.class);
-	protected static final String NODE_ID_FN = "nodeId";
+public class AbstractNodeBalanceTable extends AbstractApplicationTable {
+	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractNodeBalanceTable.class);
 	protected static final String BALANCE_FN = "balance";
 	
 	protected String balanceTN;
-	protected SqlJetDb db;
 	protected ISqlJetTable balanceTable;
 	protected long negativeBalanceAllowed=1;
 
-	public AbstractNodeBalanceDB(String dbPath, String tableName) throws SqlJetException {
+	public AbstractNodeBalanceTable(AbstractApplicationDB appDb, String tableName) throws SqlJetException {
+	  super(appDb);
 		balanceTN=tableName;
-		synchronized(this){
-			setupDatabase(dbPath);
-		}
-	}
-	
-	protected void setupDatabase(String dbPath) throws SqlJetException {
-		boolean schemaNeedsToBeCreated;
-		if(dbPath==null){
-			schemaNeedsToBeCreated=true;
-			db = new SqlJetDb(SqlJetDb.IN_MEMORY, true);
-		}
-		else{
-			File dbFile=new File(dbPath);
-			schemaNeedsToBeCreated=dbFile.exists()==false;
-			db = new SqlJetDb(dbFile, true);
-		}
-		db.open();
-		maybeCreateSchema(schemaNeedsToBeCreated);
 	}
 
+	@Override
 	protected void maybeCreateSchema(boolean schemaNeedsToBeCreated) throws SqlJetException {
 		if(schemaNeedsToBeCreated){
 			db.beginTransaction(SqlJetTransactionMode.WRITE);
@@ -186,10 +168,5 @@ public class AbstractNodeBalanceDB implements AutoCloseable {
 		this.negativeBalanceAllowed=defaultLoanAmmount;
 	}
 
-
-	@Override
-	public void close() throws Exception {
-		db.close();
-	}
 
 }

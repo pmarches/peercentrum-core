@@ -76,6 +76,11 @@
     	<artifactId>snakeyaml</artifactId>
     	<version>1.13</version>
     </dependency>
+    <dependency>
+    	<groupId>org.pmarches.jBlockChainAPI</groupId>
+    	<artifactId>org-pmarches-jBlockChainAPI</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <build>
   	<plugins>

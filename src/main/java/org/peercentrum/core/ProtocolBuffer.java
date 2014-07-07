@@ -11559,25 +11559,25 @@ public final class ProtocolBuffer {
   public interface P2PBlobRangeOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int64 begin = 1;
+    // optional uint32 begin = 1;
     /**
-     * <code>optional int64 begin = 1;</code>
+     * <code>optional uint32 begin = 1;</code>
      */
     boolean hasBegin();
     /**
-     * <code>optional int64 begin = 1;</code>
+     * <code>optional uint32 begin = 1;</code>
      */
-    long getBegin();
+    int getBegin();
 
-    // optional int64 end = 2;
+    // optional uint32 end = 2;
     /**
-     * <code>optional int64 end = 2;</code>
+     * <code>optional uint32 end = 2;</code>
      */
     boolean hasEnd();
     /**
-     * <code>optional int64 end = 2;</code>
+     * <code>optional uint32 end = 2;</code>
      */
-    long getEnd();
+    int getEnd();
   }
   /**
    * Protobuf type {@code peercentrum.P2PBlobRange}
@@ -11636,12 +11636,12 @@ public final class ProtocolBuffer {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              begin_ = input.readInt64();
+              begin_ = input.readUInt32();
               break;
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              end_ = input.readInt64();
+              end_ = input.readUInt32();
               break;
             }
           }
@@ -11684,41 +11684,41 @@ public final class ProtocolBuffer {
     }
 
     private int bitField0_;
-    // optional int64 begin = 1;
+    // optional uint32 begin = 1;
     public static final int BEGIN_FIELD_NUMBER = 1;
-    private long begin_;
+    private int begin_;
     /**
-     * <code>optional int64 begin = 1;</code>
+     * <code>optional uint32 begin = 1;</code>
      */
     public boolean hasBegin() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional int64 begin = 1;</code>
+     * <code>optional uint32 begin = 1;</code>
      */
-    public long getBegin() {
+    public int getBegin() {
       return begin_;
     }
 
-    // optional int64 end = 2;
+    // optional uint32 end = 2;
     public static final int END_FIELD_NUMBER = 2;
-    private long end_;
+    private int end_;
     /**
-     * <code>optional int64 end = 2;</code>
+     * <code>optional uint32 end = 2;</code>
      */
     public boolean hasEnd() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int64 end = 2;</code>
+     * <code>optional uint32 end = 2;</code>
      */
-    public long getEnd() {
+    public int getEnd() {
       return end_;
     }
 
     private void initFields() {
-      begin_ = 0L;
-      end_ = 0L;
+      begin_ = 0;
+      end_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11733,10 +11733,10 @@ public final class ProtocolBuffer {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(1, begin_);
+        output.writeUInt32(1, begin_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt64(2, end_);
+        output.writeUInt32(2, end_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -11749,11 +11749,11 @@ public final class ProtocolBuffer {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, begin_);
+          .computeUInt32Size(1, begin_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, end_);
+          .computeUInt32Size(2, end_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11875,9 +11875,9 @@ public final class ProtocolBuffer {
 
       public Builder clear() {
         super.clear();
-        begin_ = 0L;
+        begin_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        end_ = 0L;
+        end_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -11964,68 +11964,68 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional int64 begin = 1;
-      private long begin_ ;
+      // optional uint32 begin = 1;
+      private int begin_ ;
       /**
-       * <code>optional int64 begin = 1;</code>
+       * <code>optional uint32 begin = 1;</code>
        */
       public boolean hasBegin() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional int64 begin = 1;</code>
+       * <code>optional uint32 begin = 1;</code>
        */
-      public long getBegin() {
+      public int getBegin() {
         return begin_;
       }
       /**
-       * <code>optional int64 begin = 1;</code>
+       * <code>optional uint32 begin = 1;</code>
        */
-      public Builder setBegin(long value) {
+      public Builder setBegin(int value) {
         bitField0_ |= 0x00000001;
         begin_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 begin = 1;</code>
+       * <code>optional uint32 begin = 1;</code>
        */
       public Builder clearBegin() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        begin_ = 0L;
+        begin_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int64 end = 2;
-      private long end_ ;
+      // optional uint32 end = 2;
+      private int end_ ;
       /**
-       * <code>optional int64 end = 2;</code>
+       * <code>optional uint32 end = 2;</code>
        */
       public boolean hasEnd() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int64 end = 2;</code>
+       * <code>optional uint32 end = 2;</code>
        */
-      public long getEnd() {
+      public int getEnd() {
         return end_;
       }
       /**
-       * <code>optional int64 end = 2;</code>
+       * <code>optional uint32 end = 2;</code>
        */
-      public Builder setEnd(long value) {
+      public Builder setEnd(int value) {
         bitField0_ |= 0x00000002;
         end_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 end = 2;</code>
+       * <code>optional uint32 end = 2;</code>
        */
       public Builder clearEnd() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        end_ = 0L;
+        end_ = 0;
         onChanged();
         return this;
       }
@@ -14270,15 +14270,15 @@ public final class ProtocolBuffer {
   public interface P2PBlobBlockMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int64 offset = 1;
+    // optional uint32 blockIndex = 1;
     /**
-     * <code>optional int64 offset = 1;</code>
+     * <code>optional uint32 blockIndex = 1;</code>
      */
-    boolean hasOffset();
+    boolean hasBlockIndex();
     /**
-     * <code>optional int64 offset = 1;</code>
+     * <code>optional uint32 blockIndex = 1;</code>
      */
-    long getOffset();
+    int getBlockIndex();
 
     // optional bytes blobBytes = 2;
     /**
@@ -14343,7 +14343,7 @@ public final class ProtocolBuffer {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              offset_ = input.readInt64();
+              blockIndex_ = input.readUInt32();
               break;
             }
             case 18: {
@@ -14391,20 +14391,20 @@ public final class ProtocolBuffer {
     }
 
     private int bitField0_;
-    // optional int64 offset = 1;
-    public static final int OFFSET_FIELD_NUMBER = 1;
-    private long offset_;
+    // optional uint32 blockIndex = 1;
+    public static final int BLOCKINDEX_FIELD_NUMBER = 1;
+    private int blockIndex_;
     /**
-     * <code>optional int64 offset = 1;</code>
+     * <code>optional uint32 blockIndex = 1;</code>
      */
-    public boolean hasOffset() {
+    public boolean hasBlockIndex() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional int64 offset = 1;</code>
+     * <code>optional uint32 blockIndex = 1;</code>
      */
-    public long getOffset() {
-      return offset_;
+    public int getBlockIndex() {
+      return blockIndex_;
     }
 
     // optional bytes blobBytes = 2;
@@ -14424,7 +14424,7 @@ public final class ProtocolBuffer {
     }
 
     private void initFields() {
-      offset_ = 0L;
+      blockIndex_ = 0;
       blobBytes_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
@@ -14440,7 +14440,7 @@ public final class ProtocolBuffer {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(1, offset_);
+        output.writeUInt32(1, blockIndex_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, blobBytes_);
@@ -14456,7 +14456,7 @@ public final class ProtocolBuffer {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, offset_);
+          .computeUInt32Size(1, blockIndex_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -14578,7 +14578,7 @@ public final class ProtocolBuffer {
 
       public Builder clear() {
         super.clear();
-        offset_ = 0L;
+        blockIndex_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         blobBytes_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -14613,7 +14613,7 @@ public final class ProtocolBuffer {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.offset_ = offset_;
+        result.blockIndex_ = blockIndex_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -14634,8 +14634,8 @@ public final class ProtocolBuffer {
 
       public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.P2PBlobBlockMsg other) {
         if (other == org.peercentrum.core.ProtocolBuffer.P2PBlobBlockMsg.getDefaultInstance()) return this;
-        if (other.hasOffset()) {
-          setOffset(other.getOffset());
+        if (other.hasBlockIndex()) {
+          setBlockIndex(other.getBlockIndex());
         }
         if (other.hasBlobBytes()) {
           setBlobBytes(other.getBlobBytes());
@@ -14667,35 +14667,35 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional int64 offset = 1;
-      private long offset_ ;
+      // optional uint32 blockIndex = 1;
+      private int blockIndex_ ;
       /**
-       * <code>optional int64 offset = 1;</code>
+       * <code>optional uint32 blockIndex = 1;</code>
        */
-      public boolean hasOffset() {
+      public boolean hasBlockIndex() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional int64 offset = 1;</code>
+       * <code>optional uint32 blockIndex = 1;</code>
        */
-      public long getOffset() {
-        return offset_;
+      public int getBlockIndex() {
+        return blockIndex_;
       }
       /**
-       * <code>optional int64 offset = 1;</code>
+       * <code>optional uint32 blockIndex = 1;</code>
        */
-      public Builder setOffset(long value) {
+      public Builder setBlockIndex(int value) {
         bitField0_ |= 0x00000001;
-        offset_ = value;
+        blockIndex_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 offset = 1;</code>
+       * <code>optional uint32 blockIndex = 1;</code>
        */
-      public Builder clearOffset() {
+      public Builder clearBlockIndex() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        offset_ = 0L;
+        blockIndex_ = 0;
         onChanged();
         return this;
       }
@@ -15253,6 +15253,20 @@ public final class ProtocolBuffer {
      * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
      */
     org.peercentrum.core.ProtocolBuffer.SettlementMethodOrBuilder getSettlementMethodOrBuilder();
+
+    // optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;
+    /**
+     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+     */
+    boolean hasBitcoinTX();
+    /**
+     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+     */
+    org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction getBitcoinTX();
+    /**
+     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+     */
+    org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder getBitcoinTXOrBuilder();
   }
   /**
    * Protobuf type {@code peercentrum.SettlementMessage}
@@ -15326,6 +15340,19 @@ public final class ProtocolBuffer {
                 settlementMethod_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000004;
+              break;
+            }
+            case 178: {
+              org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = bitcoinTX_.toBuilder();
+              }
+              bitcoinTX_ = input.readMessage(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(bitcoinTX_);
+                bitcoinTX_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
               break;
             }
           }
@@ -15430,10 +15457,33 @@ public final class ProtocolBuffer {
       return settlementMethod_;
     }
 
+    // optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;
+    public static final int BITCOINTX_FIELD_NUMBER = 22;
+    private org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction bitcoinTX_;
+    /**
+     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+     */
+    public boolean hasBitcoinTX() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+     */
+    public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction getBitcoinTX() {
+      return bitcoinTX_;
+    }
+    /**
+     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+     */
+    public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder getBitcoinTXOrBuilder() {
+      return bitcoinTX_;
+    }
+
     private void initFields() {
       requestSettlementMethod_ = false;
       requestTermsOfService_ = false;
       settlementMethod_ = org.peercentrum.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
+      bitcoinTX_ = org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -15456,6 +15506,9 @@ public final class ProtocolBuffer {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(21, settlementMethod_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(22, bitcoinTX_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -15476,6 +15529,10 @@ public final class ProtocolBuffer {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(21, settlementMethod_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, bitcoinTX_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -15586,6 +15643,7 @@ public final class ProtocolBuffer {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getSettlementMethodFieldBuilder();
+          getBitcoinTXFieldBuilder();
         }
       }
       private static Builder create() {
@@ -15604,6 +15662,12 @@ public final class ProtocolBuffer {
           settlementMethodBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
+        if (bitcoinTXBuilder_ == null) {
+          bitcoinTX_ = org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
+        } else {
+          bitcoinTXBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -15648,6 +15712,14 @@ public final class ProtocolBuffer {
         } else {
           result.settlementMethod_ = settlementMethodBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (bitcoinTXBuilder_ == null) {
+          result.bitcoinTX_ = bitcoinTX_;
+        } else {
+          result.bitcoinTX_ = bitcoinTXBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -15672,6 +15744,9 @@ public final class ProtocolBuffer {
         }
         if (other.hasSettlementMethod()) {
           mergeSettlementMethod(other.getSettlementMethod());
+        }
+        if (other.hasBitcoinTX()) {
+          mergeBitcoinTX(other.getBitcoinTX());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -15899,6 +15974,123 @@ public final class ProtocolBuffer {
         return settlementMethodBuilder_;
       }
 
+      // optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;
+      private org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction bitcoinTX_ = org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder> bitcoinTXBuilder_;
+      /**
+       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+       */
+      public boolean hasBitcoinTX() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+       */
+      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction getBitcoinTX() {
+        if (bitcoinTXBuilder_ == null) {
+          return bitcoinTX_;
+        } else {
+          return bitcoinTXBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+       */
+      public Builder setBitcoinTX(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction value) {
+        if (bitcoinTXBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          bitcoinTX_ = value;
+          onChanged();
+        } else {
+          bitcoinTXBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+       */
+      public Builder setBitcoinTX(
+          org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder builderForValue) {
+        if (bitcoinTXBuilder_ == null) {
+          bitcoinTX_ = builderForValue.build();
+          onChanged();
+        } else {
+          bitcoinTXBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+       */
+      public Builder mergeBitcoinTX(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction value) {
+        if (bitcoinTXBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              bitcoinTX_ != org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance()) {
+            bitcoinTX_ =
+              org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.newBuilder(bitcoinTX_).mergeFrom(value).buildPartial();
+          } else {
+            bitcoinTX_ = value;
+          }
+          onChanged();
+        } else {
+          bitcoinTXBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+       */
+      public Builder clearBitcoinTX() {
+        if (bitcoinTXBuilder_ == null) {
+          bitcoinTX_ = org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
+          onChanged();
+        } else {
+          bitcoinTXBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+       */
+      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder getBitcoinTXBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getBitcoinTXFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+       */
+      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder getBitcoinTXOrBuilder() {
+        if (bitcoinTXBuilder_ != null) {
+          return bitcoinTXBuilder_.getMessageOrBuilder();
+        } else {
+          return bitcoinTX_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder> 
+          getBitcoinTXFieldBuilder() {
+        if (bitcoinTXBuilder_ == null) {
+          bitcoinTXBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder>(
+                  bitcoinTX_,
+                  getParentForChildren(),
+                  isClean());
+          bitcoinTX_ = null;
+        }
+        return bitcoinTXBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:peercentrum.SettlementMessage)
     }
 
@@ -15910,28 +16102,511 @@ public final class ProtocolBuffer {
     // @@protoc_insertion_point(class_scope:peercentrum.SettlementMessage)
   }
 
+  public interface BitcoinSettlementTransactionOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional bytes destinationApplication = 1;
+    /**
+     * <code>optional bytes destinationApplication = 1;</code>
+     */
+    boolean hasDestinationApplication();
+    /**
+     * <code>optional bytes destinationApplication = 1;</code>
+     */
+    com.google.protobuf.ByteString getDestinationApplication();
+
+    // optional bytes txBytes = 3;
+    /**
+     * <code>optional bytes txBytes = 3;</code>
+     */
+    boolean hasTxBytes();
+    /**
+     * <code>optional bytes txBytes = 3;</code>
+     */
+    com.google.protobuf.ByteString getTxBytes();
+  }
+  /**
+   * Protobuf type {@code peercentrum.BitcoinSettlementTransaction}
+   */
+  public static final class BitcoinSettlementTransaction extends
+      com.google.protobuf.GeneratedMessage
+      implements BitcoinSettlementTransactionOrBuilder {
+    // Use BitcoinSettlementTransaction.newBuilder() to construct.
+    private BitcoinSettlementTransaction(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private BitcoinSettlementTransaction(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final BitcoinSettlementTransaction defaultInstance;
+    public static BitcoinSettlementTransaction getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public BitcoinSettlementTransaction getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private BitcoinSettlementTransaction(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              destinationApplication_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000002;
+              txBytes_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.class, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<BitcoinSettlementTransaction> PARSER =
+        new com.google.protobuf.AbstractParser<BitcoinSettlementTransaction>() {
+      public BitcoinSettlementTransaction parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new BitcoinSettlementTransaction(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<BitcoinSettlementTransaction> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional bytes destinationApplication = 1;
+    public static final int DESTINATIONAPPLICATION_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString destinationApplication_;
+    /**
+     * <code>optional bytes destinationApplication = 1;</code>
+     */
+    public boolean hasDestinationApplication() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional bytes destinationApplication = 1;</code>
+     */
+    public com.google.protobuf.ByteString getDestinationApplication() {
+      return destinationApplication_;
+    }
+
+    // optional bytes txBytes = 3;
+    public static final int TXBYTES_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString txBytes_;
+    /**
+     * <code>optional bytes txBytes = 3;</code>
+     */
+    public boolean hasTxBytes() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bytes txBytes = 3;</code>
+     */
+    public com.google.protobuf.ByteString getTxBytes() {
+      return txBytes_;
+    }
+
+    private void initFields() {
+      destinationApplication_ = com.google.protobuf.ByteString.EMPTY;
+      txBytes_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, destinationApplication_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(3, txBytes_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, destinationApplication_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, txBytes_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.BitcoinSettlementTransaction}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.class, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        destinationApplication_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        txBytes_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_descriptor;
+      }
+
+      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction getDefaultInstanceForType() {
+        return org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction build() {
+        org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction buildPartial() {
+        org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction result = new org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.destinationApplication_ = destinationApplication_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.txBytes_ = txBytes_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction) {
+          return mergeFrom((org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction other) {
+        if (other == org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance()) return this;
+        if (other.hasDestinationApplication()) {
+          setDestinationApplication(other.getDestinationApplication());
+        }
+        if (other.hasTxBytes()) {
+          setTxBytes(other.getTxBytes());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional bytes destinationApplication = 1;
+      private com.google.protobuf.ByteString destinationApplication_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes destinationApplication = 1;</code>
+       */
+      public boolean hasDestinationApplication() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional bytes destinationApplication = 1;</code>
+       */
+      public com.google.protobuf.ByteString getDestinationApplication() {
+        return destinationApplication_;
+      }
+      /**
+       * <code>optional bytes destinationApplication = 1;</code>
+       */
+      public Builder setDestinationApplication(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        destinationApplication_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes destinationApplication = 1;</code>
+       */
+      public Builder clearDestinationApplication() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        destinationApplication_ = getDefaultInstance().getDestinationApplication();
+        onChanged();
+        return this;
+      }
+
+      // optional bytes txBytes = 3;
+      private com.google.protobuf.ByteString txBytes_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes txBytes = 3;</code>
+       */
+      public boolean hasTxBytes() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional bytes txBytes = 3;</code>
+       */
+      public com.google.protobuf.ByteString getTxBytes() {
+        return txBytes_;
+      }
+      /**
+       * <code>optional bytes txBytes = 3;</code>
+       */
+      public Builder setTxBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        txBytes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes txBytes = 3;</code>
+       */
+      public Builder clearTxBytes() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        txBytes_ = getDefaultInstance().getTxBytes();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.BitcoinSettlementTransaction)
+    }
+
+    static {
+      defaultInstance = new BitcoinSettlementTransaction(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.BitcoinSettlementTransaction)
+  }
+
   public interface SettlementMethodOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional bytes bitcoinAddress = 1;
+    // optional bytes bitcoinPublicKey = 1;
     /**
-     * <code>optional bytes bitcoinAddress = 1;</code>
+     * <code>optional bytes bitcoinPublicKey = 1;</code>
      *
      * <pre>
      *Probably more stuff here for micro payment channels
      *optional bytes bitcoinEscrowAddress=2;
      * </pre>
      */
-    boolean hasBitcoinAddress();
+    boolean hasBitcoinPublicKey();
     /**
-     * <code>optional bytes bitcoinAddress = 1;</code>
+     * <code>optional bytes bitcoinPublicKey = 1;</code>
      *
      * <pre>
      *Probably more stuff here for micro payment channels
      *optional bytes bitcoinEscrowAddress=2;
      * </pre>
      */
-    com.google.protobuf.ByteString getBitcoinAddress();
+    com.google.protobuf.ByteString getBitcoinPublicKey();
 
     // optional bytes rippleAddress = 11;
     /**
@@ -16010,7 +16685,7 @@ public final class ProtocolBuffer {
             }
             case 10: {
               bitField0_ |= 0x00000001;
-              bitcoinAddress_ = input.readBytes();
+              bitcoinPublicKey_ = input.readBytes();
               break;
             }
             case 90: {
@@ -16069,30 +16744,30 @@ public final class ProtocolBuffer {
     }
 
     private int bitField0_;
-    // optional bytes bitcoinAddress = 1;
-    public static final int BITCOINADDRESS_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString bitcoinAddress_;
+    // optional bytes bitcoinPublicKey = 1;
+    public static final int BITCOINPUBLICKEY_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString bitcoinPublicKey_;
     /**
-     * <code>optional bytes bitcoinAddress = 1;</code>
+     * <code>optional bytes bitcoinPublicKey = 1;</code>
      *
      * <pre>
      *Probably more stuff here for micro payment channels
      *optional bytes bitcoinEscrowAddress=2;
      * </pre>
      */
-    public boolean hasBitcoinAddress() {
+    public boolean hasBitcoinPublicKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional bytes bitcoinAddress = 1;</code>
+     * <code>optional bytes bitcoinPublicKey = 1;</code>
      *
      * <pre>
      *Probably more stuff here for micro payment channels
      *optional bytes bitcoinEscrowAddress=2;
      * </pre>
      */
-    public com.google.protobuf.ByteString getBitcoinAddress() {
-      return bitcoinAddress_;
+    public com.google.protobuf.ByteString getBitcoinPublicKey() {
+      return bitcoinPublicKey_;
     }
 
     // optional bytes rippleAddress = 11;
@@ -16135,7 +16810,7 @@ public final class ProtocolBuffer {
     }
 
     private void initFields() {
-      bitcoinAddress_ = com.google.protobuf.ByteString.EMPTY;
+      bitcoinPublicKey_ = com.google.protobuf.ByteString.EMPTY;
       rippleAddress_ = com.google.protobuf.ByteString.EMPTY;
       acceptedRippleCurrencies_ = java.util.Collections.emptyList();
     }
@@ -16152,7 +16827,7 @@ public final class ProtocolBuffer {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, bitcoinAddress_);
+        output.writeBytes(1, bitcoinPublicKey_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(11, rippleAddress_);
@@ -16171,7 +16846,7 @@ public final class ProtocolBuffer {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, bitcoinAddress_);
+          .computeBytesSize(1, bitcoinPublicKey_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -16302,7 +16977,7 @@ public final class ProtocolBuffer {
 
       public Builder clear() {
         super.clear();
-        bitcoinAddress_ = com.google.protobuf.ByteString.EMPTY;
+        bitcoinPublicKey_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
         rippleAddress_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -16339,7 +17014,7 @@ public final class ProtocolBuffer {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.bitcoinAddress_ = bitcoinAddress_;
+        result.bitcoinPublicKey_ = bitcoinPublicKey_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -16365,8 +17040,8 @@ public final class ProtocolBuffer {
 
       public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.SettlementMethod other) {
         if (other == org.peercentrum.core.ProtocolBuffer.SettlementMethod.getDefaultInstance()) return this;
-        if (other.hasBitcoinAddress()) {
-          setBitcoinAddress(other.getBitcoinAddress());
+        if (other.hasBitcoinPublicKey()) {
+          setBitcoinPublicKey(other.getBitcoinPublicKey());
         }
         if (other.hasRippleAddress()) {
           setRippleAddress(other.getRippleAddress());
@@ -16408,58 +17083,58 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional bytes bitcoinAddress = 1;
-      private com.google.protobuf.ByteString bitcoinAddress_ = com.google.protobuf.ByteString.EMPTY;
+      // optional bytes bitcoinPublicKey = 1;
+      private com.google.protobuf.ByteString bitcoinPublicKey_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes bitcoinAddress = 1;</code>
+       * <code>optional bytes bitcoinPublicKey = 1;</code>
        *
        * <pre>
        *Probably more stuff here for micro payment channels
        *optional bytes bitcoinEscrowAddress=2;
        * </pre>
        */
-      public boolean hasBitcoinAddress() {
+      public boolean hasBitcoinPublicKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional bytes bitcoinAddress = 1;</code>
+       * <code>optional bytes bitcoinPublicKey = 1;</code>
        *
        * <pre>
        *Probably more stuff here for micro payment channels
        *optional bytes bitcoinEscrowAddress=2;
        * </pre>
        */
-      public com.google.protobuf.ByteString getBitcoinAddress() {
-        return bitcoinAddress_;
+      public com.google.protobuf.ByteString getBitcoinPublicKey() {
+        return bitcoinPublicKey_;
       }
       /**
-       * <code>optional bytes bitcoinAddress = 1;</code>
+       * <code>optional bytes bitcoinPublicKey = 1;</code>
        *
        * <pre>
        *Probably more stuff here for micro payment channels
        *optional bytes bitcoinEscrowAddress=2;
        * </pre>
        */
-      public Builder setBitcoinAddress(com.google.protobuf.ByteString value) {
+      public Builder setBitcoinPublicKey(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        bitcoinAddress_ = value;
+        bitcoinPublicKey_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bytes bitcoinAddress = 1;</code>
+       * <code>optional bytes bitcoinPublicKey = 1;</code>
        *
        * <pre>
        *Probably more stuff here for micro payment channels
        *optional bytes bitcoinEscrowAddress=2;
        * </pre>
        */
-      public Builder clearBitcoinAddress() {
+      public Builder clearBitcoinPublicKey() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        bitcoinAddress_ = getDefaultInstance().getBitcoinAddress();
+        bitcoinPublicKey_ = getDefaultInstance().getBitcoinPublicKey();
         onChanged();
         return this;
       }
@@ -18085,6 +18760,11 @@ public final class ProtocolBuffer {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_peercentrum_SettlementMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_peercentrum_BitcoinSettlementTransaction_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_peercentrum_BitcoinSettlementTransaction_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_peercentrum_SettlementMethod_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -18160,7 +18840,7 @@ public final class ProtocolBuffer {
       "syncUnits\030\004 \003(\0132\033.peercentrum.H2PKDBSync",
       "Unit\"?\n\016H2PKDBSyncUnit\022\017\n\007address\030\001 \001(\014\022" +
       "\034\n\024publicKeysRegistered\030\002 \003(\014\"*\n\014P2PBlob" +
-      "Range\022\r\n\005begin\030\001 \001(\003\022\013\n\003end\030\002 \001(\003\"\252\001\n\016P2" +
+      "Range\022\r\n\005begin\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"\252\001\n\016P2" +
       "PBlobRequest\022\025\n\rrequestedHash\030\001 \001(\014\022\031\n\021m" +
       "aximumBlobLength\030\002 \001(\003\022\027\n\017requestHashLis" +
       "t\030\003 \001(\010\022\031\n\021requestBlobLength\030\004 \001(\010\0222\n\017re" +
@@ -18170,25 +18850,28 @@ public final class ProtocolBuffer {
       "e\0221\n\010hashList\030\002 \001(\0132\037.peercentrum.P2PBlo",
       "bHashListMsg\022\022\n\nblobLength\030\003 \001(\003\022/\n\tblob" +
       "Bytes\030\004 \003(\0132\034.peercentrum.P2PBlobBlockMs" +
-      "g\"4\n\017P2PBlobBlockMsg\022\016\n\006offset\030\001 \001(\003\022\021\n\t" +
-      "blobBytes\030\002 \001(\014\"\'\n\022P2PBlobHashListMsg\022\021\n" +
-      "\thashBytes\030\001 \003(\014\"\214\001\n\021SettlementMessage\022\037" +
-      "\n\027requestSettlementMethod\030\001 \001(\010\022\035\n\025reque" +
-      "stTermsOfService\030\002 \001(\010\0227\n\020settlementMeth" +
-      "od\030\025 \001(\0132\035.peercentrum.SettlementMethod\"" +
-      "c\n\020SettlementMethod\022\026\n\016bitcoinAddress\030\001 " +
-      "\001(\014\022\025\n\rrippleAddress\030\013 \001(\014\022 \n\030acceptedRi",
-      "ppleCurrencies\030\014 \003(\014\"\241\001\n\"SettlementTermO" +
-      "fServiceByteStorage\022\035\n\025pricePerBytePerPe" +
-      "riod\030\001 \001(\014\022\036\n\026storagePeriodInSeconds\030\002 \001" +
-      "(\r\022\034\n\024minimumNumberOfBytes\030\003 \001(\003\022\036\n\026reco" +
-      "veryDelayInSeconds\030\005 \001(\r\"\257\001\n#SettlementT" +
-      "ermOfServiceByteTransfer\022\034\n\024priceIncomin" +
-      "gPerByte\030\001 \001(\014\022\034\n\024priceOutgoingPerByte\030\002" +
-      " \001(\014\022%\n\035maximumIncomingBytesPerSecond\030\003 " +
-      "\001(\r\022%\n\035maximumOutgoingBytesPerSecond\030\004 \001" +
-      "(\rB&\n\024org.peercentrum.coreB\016ProtocolBuff",
-      "er"
+      "g\"8\n\017P2PBlobBlockMsg\022\022\n\nblockIndex\030\001 \001(\r" +
+      "\022\021\n\tblobBytes\030\002 \001(\014\"\'\n\022P2PBlobHashListMs" +
+      "g\022\021\n\thashBytes\030\001 \003(\014\"\312\001\n\021SettlementMessa" +
+      "ge\022\037\n\027requestSettlementMethod\030\001 \001(\010\022\035\n\025r" +
+      "equestTermsOfService\030\002 \001(\010\0227\n\020settlement" +
+      "Method\030\025 \001(\0132\035.peercentrum.SettlementMet" +
+      "hod\022<\n\tbitcoinTX\030\026 \001(\0132).peercentrum.Bit" +
+      "coinSettlementTransaction\"O\n\034BitcoinSett",
+      "lementTransaction\022\036\n\026destinationApplicat" +
+      "ion\030\001 \001(\014\022\017\n\007txBytes\030\003 \001(\014\"e\n\020Settlement" +
+      "Method\022\030\n\020bitcoinPublicKey\030\001 \001(\014\022\025\n\rripp" +
+      "leAddress\030\013 \001(\014\022 \n\030acceptedRippleCurrenc" +
+      "ies\030\014 \003(\014\"\241\001\n\"SettlementTermOfServiceByt" +
+      "eStorage\022\035\n\025pricePerBytePerPeriod\030\001 \001(\014\022" +
+      "\036\n\026storagePeriodInSeconds\030\002 \001(\r\022\034\n\024minim" +
+      "umNumberOfBytes\030\003 \001(\003\022\036\n\026recoveryDelayIn" +
+      "Seconds\030\005 \001(\r\"\257\001\n#SettlementTermOfServic" +
+      "eByteTransfer\022\034\n\024priceIncomingPerByte\030\001 ",
+      "\001(\014\022\034\n\024priceOutgoingPerByte\030\002 \001(\014\022%\n\035max" +
+      "imumIncomingBytesPerSecond\030\003 \001(\r\022%\n\035maxi" +
+      "mumOutgoingBytesPerSecond\030\004 \001(\rB&\n\024org.p" +
+      "eercentrum.coreB\016ProtocolBuffer"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -18314,7 +18997,7 @@ public final class ProtocolBuffer {
           internal_static_peercentrum_P2PBlobBlockMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobBlockMsg_descriptor,
-              new java.lang.String[] { "Offset", "BlobBytes", });
+              new java.lang.String[] { "BlockIndex", "BlobBytes", });
           internal_static_peercentrum_P2PBlobHashListMsg_descriptor =
             getDescriptor().getMessageTypes().get(17);
           internal_static_peercentrum_P2PBlobHashListMsg_fieldAccessorTable = new
@@ -18326,21 +19009,27 @@ public final class ProtocolBuffer {
           internal_static_peercentrum_SettlementMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_SettlementMessage_descriptor,
-              new java.lang.String[] { "RequestSettlementMethod", "RequestTermsOfService", "SettlementMethod", });
-          internal_static_peercentrum_SettlementMethod_descriptor =
+              new java.lang.String[] { "RequestSettlementMethod", "RequestTermsOfService", "SettlementMethod", "BitcoinTX", });
+          internal_static_peercentrum_BitcoinSettlementTransaction_descriptor =
             getDescriptor().getMessageTypes().get(19);
+          internal_static_peercentrum_BitcoinSettlementTransaction_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_peercentrum_BitcoinSettlementTransaction_descriptor,
+              new java.lang.String[] { "DestinationApplication", "TxBytes", });
+          internal_static_peercentrum_SettlementMethod_descriptor =
+            getDescriptor().getMessageTypes().get(20);
           internal_static_peercentrum_SettlementMethod_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_SettlementMethod_descriptor,
-              new java.lang.String[] { "BitcoinAddress", "RippleAddress", "AcceptedRippleCurrencies", });
+              new java.lang.String[] { "BitcoinPublicKey", "RippleAddress", "AcceptedRippleCurrencies", });
           internal_static_peercentrum_SettlementTermOfServiceByteStorage_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_peercentrum_SettlementTermOfServiceByteStorage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_SettlementTermOfServiceByteStorage_descriptor,
               new java.lang.String[] { "PricePerBytePerPeriod", "StoragePeriodInSeconds", "MinimumNumberOfBytes", "RecoveryDelayInSeconds", });
           internal_static_peercentrum_SettlementTermOfServiceByteTransfer_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_peercentrum_SettlementTermOfServiceByteTransfer_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_SettlementTermOfServiceByteTransfer_descriptor,

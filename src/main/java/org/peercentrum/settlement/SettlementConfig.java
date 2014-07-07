@@ -2,8 +2,9 @@ package org.peercentrum.settlement;
 
 public class SettlementConfig {
 	String rippleSeed;
-	String bitcoinPrivateKey;
+	String bitcoinWalletPath;
 	String settlementDbPath;
+  String bitcoinNetwork="regtest";
 	
 	public String getSettlementDbPath() {
 		return settlementDbPath;
@@ -18,10 +19,18 @@ public class SettlementConfig {
 		this.rippleSeed = rippleSeed;
 	}
 
-	public String getBitcoinPrivateKey() {
-		return bitcoinPrivateKey;
+	public String getBitcoinWalletPath() {
+		return bitcoinWalletPath;
 	}
-	public void setBitcoinPrivateKey(String bitcoinPrivateKey) {
-		this.bitcoinPrivateKey = bitcoinPrivateKey;
+	public void setBitcoinWalletPath(String bitcoinWalletPath) {
+		this.bitcoinWalletPath = bitcoinWalletPath;
 	}
+
+	public String getBitcoinNetwork() {
+    return bitcoinNetwork;
+  }
+	public void setBitcoinNetwork(String networkStr) {
+    bitcoinNetwork=networkStr;
+  }
+
 }

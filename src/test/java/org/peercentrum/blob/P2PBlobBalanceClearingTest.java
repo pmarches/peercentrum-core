@@ -9,14 +9,14 @@ import java.util.concurrent.CountDownLatch;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.peercentrum.blob.P2PBlobTransferBalanceDB;
+import org.peercentrum.blob.P2PBlobTransferBalanceTable;
 import org.peercentrum.core.NodeIdentifier;
 
 public class P2PBlobBalanceClearingTest {
 	@Test
 	public void testPayment() throws Exception {
 //		RippleWallet rippleWallet=new RippleWallet();
-		P2PBlobTransferBalanceDB accounting=new P2PBlobTransferBalanceDB(null);
+		P2PBlobTransferBalanceTable accounting=new P2PBlobTransferBalanceTable(null);
 		accounting.setDefaultLoanAllowed(0);
 
 		NodeIdentifier goodNodeId=new NodeIdentifier("some node that will pay us 10".getBytes());
@@ -37,8 +37,8 @@ public class P2PBlobBalanceClearingTest {
 	
 	@Test
 	public void testThreading() throws Exception{
-		Logger.getLogger(P2PBlobTransferBalanceDB.class).setLevel(Level.OFF); //This test is way too verbose
-		final P2PBlobTransferBalanceDB accounting=new P2PBlobTransferBalanceDB(null);
+		Logger.getLogger(P2PBlobTransferBalanceTable.class).setLevel(Level.OFF); //This test is way too verbose
+		final P2PBlobTransferBalanceTable accounting=new P2PBlobTransferBalanceTable(null);
 		final NodeIdentifier goodNodeId=new NodeIdentifier("some node that will pay us 10".getBytes());
 		final int NB_THREADS=10;
 		final CountDownLatch jobsReady=new CountDownLatch(NB_THREADS);

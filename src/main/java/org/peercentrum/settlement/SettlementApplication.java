@@ -18,6 +18,10 @@ import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.bitcoin.core.ECKey;
+import com.google.bitcoin.core.NetworkParameters;
+import com.google.bitcoin.params.MainNetParams;
+import com.google.bitcoin.params.RegTestParams;
 import com.google.protobuf.ByteString;
 
 public class SettlementApplication extends BaseApplicationMessageHandler {
@@ -26,9 +30,18 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 
 //	RippleSeedAddress rippleSeed;
 //	RippleSettlementDB rippleSettlement;
+  protected SettlementDB db;
 	
 	public SettlementApplication(NetworkServer clientOrServer, SettlementConfig config) throws Exception {
 		super(clientOrServer);
+		
+		NetworkParameters params=null;
+		switch(config.getBitcoinNetwork()){
+  		case "main": params=MainNetParams.get(); break;
+      case "regtest": params=RegTestParams.get(); break;
+      default: throw new Exception("Unknown bitcoin network "+config.getBitcoinNetwork());
+		}
+    db=new SettlementDB(params);
 //		rippleSeed=new RippleSeedAddress(config.getRippleSeed());
 //		rippleSettlement=new RippleSettlementDB(rippleSeed.getPublicRippleAddress(), config.getSettlementDbPath());
 	}
@@ -68,8 +81,10 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 	
 	void recordSettlementMehod(NodeIdentifier remoteNodeIdentifier, SettlementMethod settlementMethod) throws Exception {
 		LOGGER.debug("Recording settlement method for node {} ", remoteNodeIdentifier);
-		if(settlementMethod.hasBitcoinAddress()){
+		if(settlementMethod.hasBitcoinPublicKey()){
 			LOGGER.error("Bitcoin micro-payment settlement not implemented yet :-(");
+			ECKey remoteBitcointPublicKey=new ECKey(null, settlementMethod.getBitcoinPublicKey().toByteArray());
+			db.settlementMethod.setBitcointSettlementMethod(remoteNodeIdentifier, remoteBitcointPublicKey);
 		}
 		if(settlementMethod.hasRippleAddress()){
 //			RippleAddress remoteRippleAddress=new RippleAddress(settlementMethod.getRippleAddress().toByteArray());

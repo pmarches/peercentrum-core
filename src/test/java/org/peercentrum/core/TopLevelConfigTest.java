@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.peercentrum.core.NodeGossipConfig;
 import org.peercentrum.core.TopLevelConfig;
 
-public class ConfigTest {
+public class TopLevelConfigTest {
 
 	@Test
 	public void test() throws Exception {
