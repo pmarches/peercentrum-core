@@ -36,7 +36,7 @@ public class NodeDatabase implements AutoCloseable {
 	ISqlJetTable nodeInfoTable;
 	ISqlJetTable nodeApplicationTable;
 	
-	public NodeDatabase(String nodeDatabasePath) {
+	public NodeDatabase(File nodeDatabasePath) {
 		try {
 			boolean schemaNeedsToBeCreated;
 			if(nodeDatabasePath==null){
@@ -44,9 +44,8 @@ public class NodeDatabase implements AutoCloseable {
 				db = new SqlJetDb(SqlJetDb.IN_MEMORY, true);
 			}
 			else{
-				File dbFile=new File(nodeDatabasePath);
-				schemaNeedsToBeCreated=dbFile.exists()==false;
-				db = new SqlJetDb(dbFile, true);
+				schemaNeedsToBeCreated=nodeDatabasePath.exists()==false;
+				db = new SqlJetDb(nodeDatabasePath, true);
 			}
 			db.open();
 			maybeCreateSchema(schemaNeedsToBeCreated);

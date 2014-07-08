@@ -7,11 +7,11 @@ import org.peercentrum.core.ProtocolBuffer;
 import org.peercentrum.core.ProtocolBuffer.HeaderMessage;
 
 public abstract class BaseApplicationMessageHandler {
-	protected NetworkServer clientOrServer;
+	protected NetworkServer server;
 	
 	public BaseApplicationMessageHandler(NetworkServer clientOrServer){
 		if(clientOrServer!=null){
-			this.clientOrServer=clientOrServer;
+			this.server=clientOrServer;
 			clientOrServer.addApplicationHandler(this);
 		}
 	}

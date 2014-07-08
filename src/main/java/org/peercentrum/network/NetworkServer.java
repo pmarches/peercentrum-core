@@ -21,7 +21,7 @@ import org.peercentrum.core.TopLevelConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class NetworkServer extends NetworkClientOrServer {
+public class NetworkServer { //TODO implement AutoClosable
 	private static final Logger LOGGER = LoggerFactory.getLogger(NetworkServer.class);
 	
 	DefaultEventExecutorGroup applicationWorkerGroup = new DefaultEventExecutorGroup(2);
@@ -29,6 +29,9 @@ public class NetworkServer extends NetworkClientOrServer {
 	Channel bindChannel;
 	TopLevelConfig configuration;
 	Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler> allApplicationHandler=new Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler>();
+  protected int effectiveListeningPort;
+  protected NodeDatabase nodeDatabase;
+  protected NodeIdentifier thisNodeId;
 	
 	ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
 		@Override
@@ -42,10 +45,10 @@ public class NetworkServer extends NetworkClientOrServer {
     		ch.pipeline().addLast(new ChunkedWriteHandler());
 		}
 	};
-	protected int listeningPort;
 
-	public NetworkServer(NodeIdentifier serverId, NodeDatabase nodeDatabase, int listenPort) throws InterruptedException {
-		super(serverId, nodeDatabase);
+	public NetworkServer(TopLevelConfig config) throws InterruptedException {
+    this.thisNodeId=new NodeIdentifier(config.getNodeIdentifier().getBytes());
+    this.nodeDatabase=new NodeDatabase(config.getFile(config.getNodeDatabasePath()));
 		
 		new NetworkApplication(this);
 		ServerBootstrap b = new ServerBootstrap();
@@ -55,9 +58,9 @@ public class NetworkServer extends NetworkClientOrServer {
 			.option(ChannelOption.SO_BACKLOG, 128)
 			.childOption(ChannelOption.SO_KEEPALIVE, true)
 			.childOption(ChannelOption.ALLOW_HALF_CLOSURE, true);
-		bindChannel = b.bind(listenPort).sync().channel();
-		listeningPort=((InetSocketAddress) bindChannel.localAddress()).getPort();
-		LOGGER.debug("network server now listening on port {}", listeningPort);
+		bindChannel = b.bind(config.getListenPort()).sync().channel();
+		effectiveListeningPort=((InetSocketAddress) bindChannel.localAddress()).getPort();
+		LOGGER.debug("network server now listening on port {}", effectiveListeningPort);
 	}
 	
 	public void stopAcceptingConnections() throws InterruptedException{
@@ -86,7 +89,14 @@ public class NetworkServer extends NetworkClientOrServer {
 	}
 
 	public int getListeningPort() {
-		return listeningPort;
+		return effectiveListeningPort;
 	}
 
+  public NodeDatabase getNodeDatabase(){
+    return nodeDatabase;
+  }
+  
+  public NodeIdentifier getLocalNodeId(){
+    return thisNodeId;
+  }
 }

@@ -11,8 +11,8 @@ public class SettlementDB extends AbstractApplicationDB {
   private static final Logger LOGGER = LoggerFactory.getLogger(SettlementDB.class);
   public SettlementMethodTable settlementMethod;
   
-  public SettlementDB(NetworkParameters params) throws SqlJetException {
+  public SettlementDB() throws SqlJetException {
     super("settlementDb.dat");
-    settlementMethod=new SettlementMethodTable(params, this);
+    settlementMethod=new SettlementMethodTable(this);
   }
 }

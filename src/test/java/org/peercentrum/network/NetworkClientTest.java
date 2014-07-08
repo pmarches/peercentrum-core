@@ -7,7 +7,9 @@ import java.net.InetSocketAddress;
 import org.junit.Test;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeGossipApplication;
+import org.peercentrum.core.NodeGossipClient;
 import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkServer;
 
@@ -35,25 +37,23 @@ public class NetworkClientTest {
 	
 	@Test
 	public void testNodeGossip() throws Exception{
-		NodeIdentifier serverId=new NodeIdentifier("ServerNode".getBytes());
-		NodeDatabase serverNodeDatabase = new NodeDatabase(null);
-		serverNodeDatabase.mapNodeIdToAddress(new NodeIdentifier("A new node on port 22".getBytes()), new InetSocketAddress(22));
-		NetworkServer server = new NetworkServer(serverId, serverNodeDatabase, 0);
+		TopLevelConfig serverConfig=new TopLevelConfig();
+		serverConfig.setNodeIdentifier("ServerNode");
+		NetworkServer server = new NetworkServer(serverConfig);
+		server.nodeDatabase.mapNodeIdToAddress(new NodeIdentifier("A new node on port 22".getBytes()), new InetSocketAddress(22));
 		new NodeGossipApplication(server);
 		
 		NodeDatabase clientNodeDatabase = new NodeDatabase(null);
 		InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", server.getListeningPort());
-		clientNodeDatabase.mapNodeIdToAddress(serverId, serverEndpoint);
+		clientNodeDatabase.mapNodeIdToAddress(server.getLocalNodeId(), serverEndpoint);
 		NetworkClient client = new NetworkClient(new NodeIdentifier("ClientNode".getBytes()), clientNodeDatabase);
 
-		//FIXME clientSideServerThatShouldNotNeedToExist
-		NetworkServer clientSideServerThatShouldNotNeedToExist = new NetworkServer(client.getLocalNodeId(), clientNodeDatabase, 0);
-		NodeGossipApplication clientSideGossipApp=new NodeGossipApplication(clientSideServerThatShouldNotNeedToExist);
-		clientSideGossipApp.exchangeNodes(client, serverId);
+		NodeGossipClient clientSideGossipApp=new NodeGossipClient(client.getLocalNodeId(), client.getNodeDatabase());
+		clientSideGossipApp.exchangeNodes(client, server.getLocalNodeId());
 		client.close();
 		server.stopAcceptingConnections();
 		
-		assertEquals(1, serverNodeDatabase.size());
+		assertEquals(1, server.nodeDatabase.size());
 		assertEquals(2, clientNodeDatabase.size());
 	}
 }

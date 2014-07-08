@@ -10,6 +10,7 @@ import org.peercentrum.consensusprocess.MockTriggerableThreshold;
 import org.peercentrum.consensusprocess.UniqueNodeList;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.h2pk.HashToPublicKeyApplication;
 import org.peercentrum.h2pk.HashToPublicKeyDB;
@@ -28,16 +29,16 @@ public class H2PKTest {
 		HashToPublicKeyApplication[] apps=new HashToPublicKeyApplication[NB_NODES]; 
 		ConsensusThreshold mockThreshold=new MockTriggerableThreshold(1, NB_NODES);
 		for(int i=0; i<NB_NODES; i++){
-			NodeIdentifier nodeId=new NodeIdentifier("Node"+i);
-			NetworkServer nodeServer = new NetworkServer(nodeId, sharedNodeDatabase, 0);
+			TopLevelConfig topConfig=new TopLevelConfig("Node"+i);
+			NetworkServer nodeServer = new NetworkServer(topConfig);
 			InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", nodeServer.getListeningPort());
-			sharedNodeDatabase.mapNodeIdToAddress(nodeId, serverEndpoint);
-			sharedUNL.addValidatorNode(nodeId);
+			sharedNodeDatabase.mapNodeIdToAddress(nodeServer.getLocalNodeId(), serverEndpoint);
+			sharedUNL.addValidatorNode(nodeServer.getLocalNodeId());
 			HashToPublicKeyDB db=new HashToPublicKeyDB();
 			apps[i]=new HashToPublicKeyApplication(nodeServer, db, sharedUNL);
 //			apps[i].consensus.consensusThreshold=mockThreshold;
 			if(client==null){
-				client=new HashToPublicKeyStandaloneClient(nodeId, clientNodeId, sharedNodeDatabase);
+				client=new HashToPublicKeyStandaloneClient(nodeServer.getLocalNodeId(), clientNodeId, sharedNodeDatabase);
 			}
 		}
 		HashIdentifier address=new HashIdentifier();

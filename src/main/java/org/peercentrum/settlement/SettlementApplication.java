@@ -19,37 +19,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.NetworkParameters;
-import com.google.bitcoin.params.MainNetParams;
-import com.google.bitcoin.params.RegTestParams;
 import com.google.protobuf.ByteString;
 
 public class SettlementApplication extends BaseApplicationMessageHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SettlementApplication.class);
 	public static final ApplicationIdentifier APP_ID=new ApplicationIdentifier("SettlementApplication".getBytes());
 
-//	RippleSeedAddress rippleSeed;
-//	RippleSettlementDB rippleSettlement;
   protected SettlementDB db;
+  protected BitcoinSettlement bitcoinSettlement;
 	
-	public SettlementApplication(NetworkServer clientOrServer, SettlementConfig config) throws Exception {
-		super(clientOrServer);
-		
-		NetworkParameters params=null;
-		switch(config.getBitcoinNetwork()){
-  		case "main": params=MainNetParams.get(); break;
-      case "regtest": params=RegTestParams.get(); break;
-      default: throw new Exception("Unknown bitcoin network "+config.getBitcoinNetwork());
-		}
-    db=new SettlementDB(params);
-//		rippleSeed=new RippleSeedAddress(config.getRippleSeed());
-//		rippleSettlement=new RippleSettlementDB(rippleSeed.getPublicRippleAddress(), config.getSettlementDbPath());
+	public SettlementApplication(NetworkServer server) throws Exception {
+		super(server);
+		SettlementConfig settlementConfig=(SettlementConfig) server.getConfig().getAppConfig(SettlementConfig.class);
+    db=new SettlementDB();
+    bitcoinSettlement=new BitcoinSettlement(server.getConfig().getFile(settlementConfig.getBitcoinWalletPath()));
 	}
 
 	@Override
 	public HeaderAndPayload generateReponseFromQuery(ChannelHandlerContext ctx, HeaderAndPayload receivedMessage) {
 		LOGGER.debug("settlement generateReponseFromQuery");
-
 		try {
 			if(receivedMessage.header.hasSenderInfo()==false){
 				return null;
@@ -68,6 +56,8 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 				ProtocolBuffer.SettlementMethod.Builder localSettlementMethod = getLocalSettlementMethod();
 				topLevelResponse.setSettlementMethod(localSettlementMethod);
 			}
+			
+			//Micro payment handling
 			
 			
 			Builder headerResponse = super.newResponseHeaderForRequest(receivedMessage);

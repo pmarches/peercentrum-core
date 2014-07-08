@@ -2,9 +2,7 @@ package org.peercentrum.core;
 
 public class NodeGossipConfig {
 	String bootstrapEndpoint;
-	String nodeDatabasePath;
 
-	
 	
 	public String getBootstrapEndpoint() {
 		return bootstrapEndpoint;
@@ -12,16 +10,9 @@ public class NodeGossipConfig {
 	public void setBootstrapEndpoint(String bootstrapEndpoint) {
 		this.bootstrapEndpoint = bootstrapEndpoint;
 	}
-	public String getNodeDatabasePath() {
-		return nodeDatabasePath;
-	}
-	public void setNodeDatabasePath(String nodeDatabasePath) {
-		this.nodeDatabasePath = nodeDatabasePath;
-	}
 	@Override
 	public String toString() {
-		return "NodeGossipConfig [bootstrapEndpoint=" + bootstrapEndpoint + ", nodeDatabasePath="
-				+ nodeDatabasePath + "]";
+		return "NodeGossipConfig [bootstrapEndpoint=" + bootstrapEndpoint + "]";
 	}
 	
 	

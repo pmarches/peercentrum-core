@@ -18,6 +18,7 @@ import org.peercentrum.blob.P2PBlobStoredBlob;
 import org.peercentrum.blob.P2PBlobStoredBlobMemoryOnly;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.network.NetworkServer;
 
@@ -25,18 +26,18 @@ public class P2PBlobApplicationTest {
 
 	@Test
 	public void test() throws Exception {
-		NodeIdentifier clientNodeId=new NodeIdentifier("ClientNode");
-		NodeDatabase sharedNodeDatabase = new NodeDatabase(null);
-		NodeIdentifier nodeId=new NodeIdentifier("Node1");
-		NetworkServer nodeServer = new NetworkServer(nodeId, sharedNodeDatabase, 0);
-		InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", nodeServer.getListeningPort());
-		sharedNodeDatabase.mapNodeIdToAddress(nodeId, serverEndpoint);
+		TopLevelConfig node1Config=new TopLevelConfig("Node1");
+		NetworkServer node1 = new NetworkServer(node1Config);
+		InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", node1.getListeningPort());
+		NodeDatabase sharedNodeDatabase = node1.getNodeDatabase();
+		sharedNodeDatabase.mapNodeIdToAddress(node1.getLocalNodeId(), serverEndpoint);
 
 		Path repositoryPath = FileSystems.getDefault().getPath("testRepo");
 		P2PBlobRepositoryFS serverSideBlobRepo=new P2PBlobRepositoryFS(repositoryPath);
-		P2PBlobApplication serverSideApp=new P2PBlobApplication(nodeServer, serverSideBlobRepo);
+		P2PBlobApplication serverSideApp=new P2PBlobApplication(node1, serverSideBlobRepo);
 		
-		P2PBlobStandaloneClient client = new P2PBlobStandaloneClient(nodeId, clientNodeId, sharedNodeDatabase);
+		NodeIdentifier clientNodeId=new NodeIdentifier("ClientNode");
+		P2PBlobStandaloneClient client = new P2PBlobStandaloneClient(node1.getLocalNodeId(), clientNodeId, sharedNodeDatabase);
 		HashIdentifier blobIdToDownload=new HashIdentifier(DatatypeConverter.parseHexBinary("B67D1B1F9C750304D9E8A63CD3C077B5C9AC6131BB2C2C874CEAFE53AC69F5F9"));
 		P2PBlobStoredBlobMemoryOnly download=new P2PBlobStoredBlobMemoryOnly(blobIdToDownload);
 		Future<P2PBlobStoredBlob> downloadCompleteFuture=client.downloadAll(download);

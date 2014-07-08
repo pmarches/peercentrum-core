@@ -13,7 +13,6 @@ import org.tmatesoft.sqljet.core.table.ISqlJetTransaction;
 import org.tmatesoft.sqljet.core.table.SqlJetDb;
 
 import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.NetworkParameters;
 
 public class SettlementMethodTable extends AbstractApplicationTable {
   private static final Logger LOGGER = LoggerFactory.getLogger(SettlementMethodTable.class);
@@ -24,11 +23,8 @@ public class SettlementMethodTable extends AbstractApplicationTable {
 
   protected ISqlJetTable settlementMethodTable;
 
-  protected NetworkParameters params;
-
-  public SettlementMethodTable(NetworkParameters params, AbstractApplicationDB appDB) throws SqlJetException {
+  public SettlementMethodTable(AbstractApplicationDB appDB) throws SqlJetException {
     super(appDB);
-    this.params=params;
   }
   
   protected void maybeCreateSchema(boolean schemaNeedsToBeCreated) throws SqlJetException {

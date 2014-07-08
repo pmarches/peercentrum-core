@@ -133,12 +133,14 @@ public class NetworkClientConnection implements Closeable {
 		workerGroup.shutdownGracefully(); //FIXME Not our responsability if passed in as argument..
 	}
 
-	public void setLocalNodeInfo(NodeIdentifier localNodeId, int listeningPort) {
+	public void setLocalNodeInfo(NodeIdentifier localNodeId, int localListeningPort) {
         ProtocolBuffer.SenderInformationMsg.Builder senderInfoBuilder=ProtocolBuffer.SenderInformationMsg.newBuilder();
         senderInfoBuilder.setUserAgent(getClass().getName());
         senderInfoBuilder.setNodePublicKey(ByteString.copyFrom(localNodeId.getBytes()));
-//        senderInfoBuilder.setExternalIP(listeningPort.getAddress().getHostName());
-        senderInfoBuilder.setExternalPort(listeningPort);
+//        senderInfoBuilder.setExternalIP(effectiveListeningPort.getAddress().getHostName());
+        if(localListeningPort!=0){
+          senderInfoBuilder.setExternalPort(localListeningPort);          
+        }
         this.senderInfo=senderInfoBuilder.build();
 	}
 

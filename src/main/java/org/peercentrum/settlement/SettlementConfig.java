@@ -4,8 +4,7 @@ public class SettlementConfig {
 	String rippleSeed;
 	String bitcoinWalletPath;
 	String settlementDbPath;
-  String bitcoinNetwork="regtest";
-	
+  
 	public String getSettlementDbPath() {
 		return settlementDbPath;
 	}
@@ -25,12 +24,4 @@ public class SettlementConfig {
 	public void setBitcoinWalletPath(String bitcoinWalletPath) {
 		this.bitcoinWalletPath = bitcoinWalletPath;
 	}
-
-	public String getBitcoinNetwork() {
-    return bitcoinNetwork;
-  }
-	public void setBitcoinNetwork(String networkStr) {
-    bitcoinNetwork=networkStr;
-  }
-
 }

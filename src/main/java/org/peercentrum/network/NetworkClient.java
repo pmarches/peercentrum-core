@@ -14,14 +14,18 @@ import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.MessageLite;
 
-public class NetworkClient extends NetworkClientOrServer implements Closeable {
+public class NetworkClient implements Closeable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NetworkClient.class);
 	
 	//TODO maybe use a good caching library for this cache?
 	//FIXME This cache will work only for a small number of nodes! 
 	protected HashMap<NodeIdentifier, NetworkClientConnection> connectionCache=new HashMap<>();
-	public NetworkClient(NodeIdentifier thisNodeId, NodeDatabase nodeDatabase) {
-		super(thisNodeId, nodeDatabase);
+	protected NodeIdentifier thisNodeId;
+	protected NodeDatabase nodeDatabase;
+
+  public NetworkClient(NodeIdentifier thisNodeId, NodeDatabase nodeDatabase) {
+		this.thisNodeId=thisNodeId;
+		this.nodeDatabase=nodeDatabase;
 	}
 
 	@Override
@@ -78,4 +82,11 @@ public class NetworkClient extends NetworkClientOrServer implements Closeable {
 		return responseFuture;
 	}	
 
+	public NodeDatabase getNodeDatabase(){
+	  return nodeDatabase;
+	}
+
+  public NodeIdentifier getLocalNodeId() {
+    return this.thisNodeId;
+  }
 }

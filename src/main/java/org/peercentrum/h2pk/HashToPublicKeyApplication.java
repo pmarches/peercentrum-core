@@ -76,7 +76,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 			}
 			dbCloseProcess=new Thread(consensus.stepDatabaseCloseProcess);
 		}
-		dbCloseProcess.setName(super.clientOrServer.getLocalNodeId().toString());
+		dbCloseProcess.setName(super.server.getLocalNodeId().toString());
 		dbCloseProcess.start();
 	}
 	
@@ -92,7 +92,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 				queryMsg.setBeginDbVersionNumber(0);
 			}
 			appLevelMsg.setDbSyncQuery(queryMsg.build());
-			NodeIdentifier remoteId=consensus.unl.getOneExcluding(this.clientOrServer.getLocalNodeId());
+			NodeIdentifier remoteId=consensus.unl.getOneExcluding(this.server.getLocalNodeId());
 			HashToPublicKeyMessage appLevelResponse = networkClient.sendRequest(remoteId, getApplicationId(), appLevelMsg.build()).get();
 			if(appLevelResponse.hasDbSyncResponse()){
 				ProtocolBuffer.H2PKDBSyncResponse dbSyncResponse = appLevelResponse.getDbSyncResponse();

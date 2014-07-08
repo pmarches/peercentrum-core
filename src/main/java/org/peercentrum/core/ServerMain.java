@@ -19,11 +19,11 @@ import org.slf4j.LoggerFactory;
 public class ServerMain implements Runnable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServerMain.class);
 	
-	TopLevelConfig config;
+	TopLevelConfig topConfig;
 	NetworkServer server;
 
 	public ServerMain(TopLevelConfig configNode) {
-		this.config=configNode;
+		this.topConfig=configNode;
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -40,19 +40,15 @@ public class ServerMain implements Runnable {
 
 	public void run() {
 		try {
-			NodeGossipConfig gossipConfig=(NodeGossipConfig) config.getAppConfig(NodeGossipConfig.class);
-
-			NodeDatabase nodeDb=new NodeDatabase(gossipConfig.getNodeDatabasePath());
-			NodeIdentifier serverId=new NodeIdentifier(config.getNodeIdentifier());
-			server = new NetworkServer(serverId, nodeDb, config.getListenPort());
-			server.setConfig(config);
-			if(config.getEnableNAT()){
+			server = new NetworkServer(topConfig);
+			server.setConfig(topConfig);
+			if(topConfig.getEnableNAT()){
 				enableNATInboundConnections();
 			}
 
-			//TODO Load the applications from the config file, dynamically, resolving dependencies, ... Maybe we need a OSGI container now?
+			//TODO Load the applications from the topConfig file, dynamically, resolving dependencies, ... Maybe we need a OSGI container now?
 			new NodeGossipApplication(server);
-			P2PBlobConfig blobConfig=(P2PBlobConfig) config.getAppConfig(P2PBlobConfig.class);
+			P2PBlobConfig blobConfig=(P2PBlobConfig) topConfig.getAppConfig(P2PBlobConfig.class);
 			Path repositoryPath = FileSystems.getDefault().getPath(blobConfig.getBlobRepositoryPath());
 			P2PBlobRepository blobRepository=new P2PBlobRepositoryFS(repositoryPath);
 			new P2PBlobApplication(server, blobRepository);
