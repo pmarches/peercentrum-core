@@ -35,7 +35,7 @@ public class NetworkClientTest {
 //		rippleApp.getBalanceForAddress(address1);
 //	}
 	
-//	@Test
+	@Test
 	public void testNodeGossip() throws Exception{
 		TopLevelConfig serverConfig=new TopLevelConfig();
 		serverConfig.setNodeIdentifier("ServerNode");
@@ -71,7 +71,6 @@ public class NetworkClientTest {
 	    clientNodeDatabase.mapNodeIdToAddress(server.getLocalNodeId(), serverEndpoint);
 	    NetworkClient client = new NetworkClient(new NodeIdentifier("ClientNode".getBytes()), clientNodeDatabase);
 	    
-	    System.out.println("server port "+server.getListeningPort());
 	    client.ping(server.getLocalNodeId());
       client.ping(server.getLocalNodeId());
 

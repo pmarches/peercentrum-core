@@ -2,7 +2,6 @@ package org.peercentrum.network;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.GenericFutureListener;
 
 import java.io.Closeable;
 import java.net.InetSocketAddress;
@@ -95,13 +94,6 @@ public class NetworkClient implements Closeable {
   public void ping(NodeIdentifier nodeToPing) throws InterruptedException {
     NetworkClientConnection connection = maybeOpenConnectionToPeer(nodeToPing);
     Future<ByteBuf> pingResponseFuture = connection.sendRequestBytes(NetworkApplication.NETWORK_APPID, NetworkApplication.pingMessageBytes);
-    pingResponseFuture.addListener(new GenericFutureListener<Future<ByteBuf>>() {
-      @Override
-      public void operationComplete(Future<ByteBuf> future) throws Exception {
-        System.err.println("OPERATIONB COMPLETE!");
-      }
-      
-    });
-    pingResponseFuture.await();
+    pingResponseFuture.await(); //TODO add timeout
   }
 }

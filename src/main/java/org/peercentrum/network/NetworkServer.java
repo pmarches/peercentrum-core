@@ -8,6 +8,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 
 import java.net.InetSocketAddress;
@@ -17,7 +18,6 @@ import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.core.TraceHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,10 +36,10 @@ public class NetworkServer { //TODO implement AutoClosable
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
-//      ch.pipeline().addLast("idleStateHandler", new IdleStateHandler(60, 30, 0));
-      ch.pipeline().addLast(new TraceHandler("Before anything"));
+      ch.pipeline().addLast("idleStateHandler", new IdleStateHandler(60, 30, 0));
+//      ch.pipeline().addLast(new TraceHandler("Before anything"));
       ch.pipeline().addLast(new HeaderPayloadStreamDecoder());
-      ch.pipeline().addLast(new TraceHandler("Before routing"));
+//      ch.pipeline().addLast(new TraceHandler("Before routing"));
       ch.pipeline().addLast(applicationWorkerGroup, new RoutingHandler(NetworkServer.this));
 
       ch.pipeline().addLast(new HeaderAndPayloadToBytesEncoder());
