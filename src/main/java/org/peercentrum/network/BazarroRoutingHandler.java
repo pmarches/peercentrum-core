@@ -45,6 +45,7 @@ class RoutingHandler extends ChannelInboundHandlerAdapter {
 		if (evt instanceof IdleStateEvent) {
 			IdleStateEvent e = (IdleStateEvent) evt;
 			if (e.state() == IdleState.READER_IDLE) {
+        LOGGER.debug("Reader idle, closing connection");
 				ctx.close();
 			} else if (e.state() == IdleState.WRITER_IDLE) {
 				//				ctx.writeAndFlush(new PingMessage());

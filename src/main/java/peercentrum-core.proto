@@ -6,6 +6,7 @@ option java_outer_classname = "ProtocolBuffer";
 message HeaderMessage {
 	optional SenderInformationMsg senderInfo=1;
 	optional uint32 requestNumber=2; 
+  optional bytes nodePublicKey=7; //FIXME
 	optional bytes applicationId=3;
 	optional bytes signature=4;
 	//Notice there is no payload in the protobuf message. It is simply appended as a multipart message
@@ -13,7 +14,7 @@ message HeaderMessage {
 	optional uint32 applicationSpecificStreamLength=6;
 };
 
-message SenderInformationMsg {
+message SenderInformationMsg { //FIXME Get rid of all this crap, create endpoint message...
   optional string userAgent=1;
   optional string externalIP=2;
   optional uint32 externalPort=3;
@@ -149,26 +150,40 @@ message P2PBlobHashListMsg {
 
 /////////////// Settlement ////////////////
 
-message SettlementMessage {
-  optional bool requestSettlementMethod=1;
-  optional bool requestTermsOfService=2; //Goes for any service
+import "paymentchannel.proto";
 
-  optional SettlementMethod settlementMethod=21;
-  optional BitcoinSettlementTransaction bitcoinTX=22;
+message SettlementMsg {
+	optional CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg=1;
+	optional MicroPaymentUpdateMsg microPaymentUpdateMsg=2;	
+	repeated paymentchannels.TwoWayChannelMessage twoWayChannelMsg=3;
 };
 
-message BitcoinSettlementTransaction {
-  optional bytes destinationApplication=1;
-  optional bytes txBytes=3;
+message CreateMicroPaymentChannelMsg{
+  optional bytes channelID=1;
+	optional bytes timeLockedFullRefundTX=2;  //Sent by the client
+	optional bytes timeLockedFullRefundSig=3; //Sent by the server
+	optional bytes clientSideEscrowPublicKey=4;
+
+//  optional bytes serverSidePublicKey=4; //Only if no payment channel exists?
+//  optional bytes existingPaymentChannelID=5; //The client already has it...
+//  optional uint32 validUntilTS=6;
 };
 
-message SettlementMethod {
-  optional bytes bitcoinPublicKey=1;
-  //Probably more stuff here for micro payment channels
-  //optional bytes bitcoinEscrowAddress=2;
-  
-  optional bytes rippleAddress=11;
-  repeated bytes acceptedRippleCurrencies=12;
+message MicroPaymentUpdateMsg {
+  optional uint32 payingQuoteId=1;
+  optional bytes channelID=2;
+	optional bytes currentMicropaymentTX=3; //Sent only once, subsequent updates only the amount and signature
+	optional int64 currentMicropaymentAmount=4; //This should always increase
+	optional bytes currentMicropaymentSignature=5;
+};
+
+/**
+ * This message is returned to the client when the server wants the client to pay.
+ */
+message MicroQuoteMsg {
+  optional uint32 quoteID=1; //Might be tracked by certain applications, not P2PBlob
+  optional bytes applicationID=2;
+  optional int64 amountRequested=3;
 };
 
 /*** This stuff should go on a per app basis ************/

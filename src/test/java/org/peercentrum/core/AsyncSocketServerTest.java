@@ -63,7 +63,7 @@ public class AsyncSocketServerTest {
 		MessageEchoApp serverSideCountingHandler=new MessageEchoApp(server, serverDoneBarrier);
 		
 		InetSocketAddress serverEndpoint=new InetSocketAddress(server.getListeningPort());
-		final NetworkClientConnection connection = new NetworkClientConnection(serverEndpoint);
+		final NetworkClientConnection connection = new NetworkClientConnection(null, serverEndpoint);
 		final CountDownLatch clientsDoneBarrier = new CountDownLatch(NB_CLIENTS);
 		for(int i=0; i<NB_CLIENTS; i++){
 			new Thread(){ @Override public void run() {
@@ -112,7 +112,7 @@ public class AsyncSocketServerTest {
 //		
 //		ProtocolBuffer.NetworkMessage closeMsg=ProtocolBuffer.NetworkMessage.newBuilder()
 //				.setOperation(NetworkOperation.CLOSE_CONNECTION).build();
-//		sendHeaderAndProtobufMessage(clientChannel, NetworkApplication.BNETWORK_APPID, closeMsg);
+//		sendHeaderAndProtobufMessage(clientChannel, NetworkApplication.NETWORK_APPID, closeMsg);
 //
 //		clientChannel.close();
 //		System.out.println("Client done");

@@ -1,6 +1,8 @@
 package org.peercentrum.network;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 import java.io.Closeable;
 import java.net.InetSocketAddress;
@@ -43,7 +45,7 @@ public class NetworkClient implements Closeable {
 		if(remoteEndpoint==null){
 			throw new RuntimeException("No endpoint found for peer "+remoteId);
 		}
-		NetworkClientConnection newConnection = new NetworkClientConnection(remoteEndpoint);
+		NetworkClientConnection newConnection = new NetworkClientConnection(thisNodeId, remoteEndpoint);
 		return newConnection;
 	}
 
@@ -88,5 +90,18 @@ public class NetworkClient implements Closeable {
 
   public NodeIdentifier getLocalNodeId() {
     return this.thisNodeId;
+  }
+
+  public void ping(NodeIdentifier nodeToPing) throws InterruptedException {
+    NetworkClientConnection connection = maybeOpenConnectionToPeer(nodeToPing);
+    Future<ByteBuf> pingResponseFuture = connection.sendRequestBytes(NetworkApplication.NETWORK_APPID, NetworkApplication.pingMessageBytes);
+    pingResponseFuture.addListener(new GenericFutureListener<Future<ByteBuf>>() {
+      @Override
+      public void operationComplete(Future<ByteBuf> future) throws Exception {
+        System.err.println("OPERATIONB COMPLETE!");
+      }
+      
+    });
+    pingResponseFuture.await();
   }
 }

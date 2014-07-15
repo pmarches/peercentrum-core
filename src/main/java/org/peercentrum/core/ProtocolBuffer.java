@@ -35,6 +35,24 @@ public final class ProtocolBuffer {
      */
     int getRequestNumber();
 
+    // optional bytes nodePublicKey = 7;
+    /**
+     * <code>optional bytes nodePublicKey = 7;</code>
+     *
+     * <pre>
+     *FIXME
+     * </pre>
+     */
+    boolean hasNodePublicKey();
+    /**
+     * <code>optional bytes nodePublicKey = 7;</code>
+     *
+     * <pre>
+     *FIXME
+     * </pre>
+     */
+    com.google.protobuf.ByteString getNodePublicKey();
+
     // optional bytes applicationId = 3;
     /**
      * <code>optional bytes applicationId = 3;</code>
@@ -153,23 +171,28 @@ public final class ProtocolBuffer {
               break;
             }
             case 26: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               applicationId_ = input.readBytes();
               break;
             }
             case 34: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               signature_ = input.readBytes();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               applicationSpecificBlockLength_ = input.readUInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               applicationSpecificStreamLength_ = input.readUInt32();
+              break;
+            }
+            case 58: {
+              bitField0_ |= 0x00000004;
+              nodePublicKey_ = input.readBytes();
               break;
             }
           }
@@ -250,6 +273,30 @@ public final class ProtocolBuffer {
       return requestNumber_;
     }
 
+    // optional bytes nodePublicKey = 7;
+    public static final int NODEPUBLICKEY_FIELD_NUMBER = 7;
+    private com.google.protobuf.ByteString nodePublicKey_;
+    /**
+     * <code>optional bytes nodePublicKey = 7;</code>
+     *
+     * <pre>
+     *FIXME
+     * </pre>
+     */
+    public boolean hasNodePublicKey() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bytes nodePublicKey = 7;</code>
+     *
+     * <pre>
+     *FIXME
+     * </pre>
+     */
+    public com.google.protobuf.ByteString getNodePublicKey() {
+      return nodePublicKey_;
+    }
+
     // optional bytes applicationId = 3;
     public static final int APPLICATIONID_FIELD_NUMBER = 3;
     private com.google.protobuf.ByteString applicationId_;
@@ -257,7 +304,7 @@ public final class ProtocolBuffer {
      * <code>optional bytes applicationId = 3;</code>
      */
     public boolean hasApplicationId() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional bytes applicationId = 3;</code>
@@ -273,7 +320,7 @@ public final class ProtocolBuffer {
      * <code>optional bytes signature = 4;</code>
      */
     public boolean hasSignature() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional bytes signature = 4;</code>
@@ -293,7 +340,7 @@ public final class ProtocolBuffer {
      * </pre>
      */
     public boolean hasApplicationSpecificBlockLength() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional uint32 applicationSpecificBlockLength = 5;</code>
@@ -313,7 +360,7 @@ public final class ProtocolBuffer {
      * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
      */
     public boolean hasApplicationSpecificStreamLength() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
@@ -325,6 +372,7 @@ public final class ProtocolBuffer {
     private void initFields() {
       senderInfo_ = org.peercentrum.core.ProtocolBuffer.SenderInformationMsg.getDefaultInstance();
       requestNumber_ = 0;
+      nodePublicKey_ = com.google.protobuf.ByteString.EMPTY;
       applicationId_ = com.google.protobuf.ByteString.EMPTY;
       signature_ = com.google.protobuf.ByteString.EMPTY;
       applicationSpecificBlockLength_ = 0;
@@ -348,17 +396,20 @@ public final class ProtocolBuffer {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt32(2, requestNumber_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(3, applicationId_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(4, signature_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeUInt32(5, applicationSpecificBlockLength_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeUInt32(6, applicationSpecificStreamLength_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(7, nodePublicKey_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -377,21 +428,25 @@ public final class ProtocolBuffer {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(2, requestNumber_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(3, applicationId_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, signature_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(5, applicationSpecificBlockLength_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(6, applicationSpecificStreamLength_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, nodePublicKey_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -518,14 +573,16 @@ public final class ProtocolBuffer {
         bitField0_ = (bitField0_ & ~0x00000001);
         requestNumber_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        applicationId_ = com.google.protobuf.ByteString.EMPTY;
+        nodePublicKey_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
-        signature_ = com.google.protobuf.ByteString.EMPTY;
+        applicationId_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000008);
-        applicationSpecificBlockLength_ = 0;
+        signature_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000010);
-        applicationSpecificStreamLength_ = 0;
+        applicationSpecificBlockLength_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        applicationSpecificStreamLength_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -569,17 +626,21 @@ public final class ProtocolBuffer {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.applicationId_ = applicationId_;
+        result.nodePublicKey_ = nodePublicKey_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.signature_ = signature_;
+        result.applicationId_ = applicationId_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.applicationSpecificBlockLength_ = applicationSpecificBlockLength_;
+        result.signature_ = signature_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
+        }
+        result.applicationSpecificBlockLength_ = applicationSpecificBlockLength_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
         }
         result.applicationSpecificStreamLength_ = applicationSpecificStreamLength_;
         result.bitField0_ = to_bitField0_;
@@ -603,6 +664,9 @@ public final class ProtocolBuffer {
         }
         if (other.hasRequestNumber()) {
           setRequestNumber(other.getRequestNumber());
+        }
+        if (other.hasNodePublicKey()) {
+          setNodePublicKey(other.getNodePublicKey());
         }
         if (other.hasApplicationId()) {
           setApplicationId(other.getApplicationId());
@@ -793,13 +857,65 @@ public final class ProtocolBuffer {
         return this;
       }
 
+      // optional bytes nodePublicKey = 7;
+      private com.google.protobuf.ByteString nodePublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes nodePublicKey = 7;</code>
+       *
+       * <pre>
+       *FIXME
+       * </pre>
+       */
+      public boolean hasNodePublicKey() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional bytes nodePublicKey = 7;</code>
+       *
+       * <pre>
+       *FIXME
+       * </pre>
+       */
+      public com.google.protobuf.ByteString getNodePublicKey() {
+        return nodePublicKey_;
+      }
+      /**
+       * <code>optional bytes nodePublicKey = 7;</code>
+       *
+       * <pre>
+       *FIXME
+       * </pre>
+       */
+      public Builder setNodePublicKey(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        nodePublicKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes nodePublicKey = 7;</code>
+       *
+       * <pre>
+       *FIXME
+       * </pre>
+       */
+      public Builder clearNodePublicKey() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        nodePublicKey_ = getDefaultInstance().getNodePublicKey();
+        onChanged();
+        return this;
+      }
+
       // optional bytes applicationId = 3;
       private com.google.protobuf.ByteString applicationId_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <code>optional bytes applicationId = 3;</code>
        */
       public boolean hasApplicationId() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional bytes applicationId = 3;</code>
@@ -814,7 +930,7 @@ public final class ProtocolBuffer {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000008;
         applicationId_ = value;
         onChanged();
         return this;
@@ -823,7 +939,7 @@ public final class ProtocolBuffer {
        * <code>optional bytes applicationId = 3;</code>
        */
       public Builder clearApplicationId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         applicationId_ = getDefaultInstance().getApplicationId();
         onChanged();
         return this;
@@ -835,7 +951,7 @@ public final class ProtocolBuffer {
        * <code>optional bytes signature = 4;</code>
        */
       public boolean hasSignature() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional bytes signature = 4;</code>
@@ -850,7 +966,7 @@ public final class ProtocolBuffer {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         signature_ = value;
         onChanged();
         return this;
@@ -859,7 +975,7 @@ public final class ProtocolBuffer {
        * <code>optional bytes signature = 4;</code>
        */
       public Builder clearSignature() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         signature_ = getDefaultInstance().getSignature();
         onChanged();
         return this;
@@ -875,7 +991,7 @@ public final class ProtocolBuffer {
        * </pre>
        */
       public boolean hasApplicationSpecificBlockLength() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional uint32 applicationSpecificBlockLength = 5;</code>
@@ -895,7 +1011,7 @@ public final class ProtocolBuffer {
        * </pre>
        */
       public Builder setApplicationSpecificBlockLength(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         applicationSpecificBlockLength_ = value;
         onChanged();
         return this;
@@ -908,7 +1024,7 @@ public final class ProtocolBuffer {
        * </pre>
        */
       public Builder clearApplicationSpecificBlockLength() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         applicationSpecificBlockLength_ = 0;
         onChanged();
         return this;
@@ -920,7 +1036,7 @@ public final class ProtocolBuffer {
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
        */
       public boolean hasApplicationSpecificStreamLength() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
@@ -932,7 +1048,7 @@ public final class ProtocolBuffer {
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
        */
       public Builder setApplicationSpecificStreamLength(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         applicationSpecificStreamLength_ = value;
         onChanged();
         return this;
@@ -941,7 +1057,7 @@ public final class ProtocolBuffer {
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
        */
       public Builder clearApplicationSpecificStreamLength() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         applicationSpecificStreamLength_ = 0;
         onChanged();
         return this;
@@ -1027,6 +1143,10 @@ public final class ProtocolBuffer {
   }
   /**
    * Protobuf type {@code peercentrum.SenderInformationMsg}
+   *
+   * <pre>
+   *FIXME Get rid of all this crap, create endpoint message...
+   * </pre>
    */
   public static final class SenderInformationMsg extends
       com.google.protobuf.GeneratedMessage
@@ -1436,6 +1556,10 @@ public final class ProtocolBuffer {
     }
     /**
      * Protobuf type {@code peercentrum.SenderInformationMsg}
+     *
+     * <pre>
+     *FIXME Get rid of all this crap, create endpoint message...
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -15209,84 +15333,81 @@ public final class ProtocolBuffer {
     // @@protoc_insertion_point(class_scope:peercentrum.P2PBlobHashListMsg)
   }
 
-  public interface SettlementMessageOrBuilder
+  public interface SettlementMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional bool requestSettlementMethod = 1;
+    // optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;
     /**
-     * <code>optional bool requestSettlementMethod = 1;</code>
+     * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
      */
-    boolean hasRequestSettlementMethod();
+    boolean hasCreateMicroPaymentChannelMsg();
     /**
-     * <code>optional bool requestSettlementMethod = 1;</code>
+     * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
      */
-    boolean getRequestSettlementMethod();
+    org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg getCreateMicroPaymentChannelMsg();
+    /**
+     * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+     */
+    org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsgOrBuilder getCreateMicroPaymentChannelMsgOrBuilder();
 
-    // optional bool requestTermsOfService = 2;
+    // optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;
     /**
-     * <code>optional bool requestTermsOfService = 2;</code>
-     *
-     * <pre>
-     *Goes for any service
-     * </pre>
+     * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
      */
-    boolean hasRequestTermsOfService();
+    boolean hasMicroPaymentUpdateMsg();
     /**
-     * <code>optional bool requestTermsOfService = 2;</code>
-     *
-     * <pre>
-     *Goes for any service
-     * </pre>
+     * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
      */
-    boolean getRequestTermsOfService();
+    org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg getMicroPaymentUpdateMsg();
+    /**
+     * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+     */
+    org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsgOrBuilder getMicroPaymentUpdateMsgOrBuilder();
 
-    // optional .peercentrum.SettlementMethod settlementMethod = 21;
+    // repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;
     /**
-     * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
      */
-    boolean hasSettlementMethod();
+    java.util.List<org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage> 
+        getTwoWayChannelMsgList();
     /**
-     * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
      */
-    org.peercentrum.core.ProtocolBuffer.SettlementMethod getSettlementMethod();
+    org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage getTwoWayChannelMsg(int index);
     /**
-     * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
      */
-    org.peercentrum.core.ProtocolBuffer.SettlementMethodOrBuilder getSettlementMethodOrBuilder();
-
-    // optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;
+    int getTwoWayChannelMsgCount();
     /**
-     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
      */
-    boolean hasBitcoinTX();
+    java.util.List<? extends org.bitcoin.paymentchannel.Protos.TwoWayChannelMessageOrBuilder> 
+        getTwoWayChannelMsgOrBuilderList();
     /**
-     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
      */
-    org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction getBitcoinTX();
-    /**
-     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-     */
-    org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder getBitcoinTXOrBuilder();
+    org.bitcoin.paymentchannel.Protos.TwoWayChannelMessageOrBuilder getTwoWayChannelMsgOrBuilder(
+        int index);
   }
   /**
-   * Protobuf type {@code peercentrum.SettlementMessage}
+   * Protobuf type {@code peercentrum.SettlementMsg}
    */
-  public static final class SettlementMessage extends
+  public static final class SettlementMsg extends
       com.google.protobuf.GeneratedMessage
-      implements SettlementMessageOrBuilder {
-    // Use SettlementMessage.newBuilder() to construct.
-    private SettlementMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements SettlementMsgOrBuilder {
+    // Use SettlementMsg.newBuilder() to construct.
+    private SettlementMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private SettlementMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private SettlementMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final SettlementMessage defaultInstance;
-    public static SettlementMessage getDefaultInstance() {
+    private static final SettlementMsg defaultInstance;
+    public static SettlementMsg getDefaultInstance() {
       return defaultInstance;
     }
 
-    public SettlementMessage getDefaultInstanceForType() {
+    public SettlementMsg getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -15296,7 +15417,1808 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private SettlementMessage(
+    private SettlementMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = createMicroPaymentChannelMsg_.toBuilder();
+              }
+              createMicroPaymentChannelMsg_ = input.readMessage(org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(createMicroPaymentChannelMsg_);
+                createMicroPaymentChannelMsg_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = microPaymentUpdateMsg_.toBuilder();
+              }
+              microPaymentUpdateMsg_ = input.readMessage(org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(microPaymentUpdateMsg_);
+                microPaymentUpdateMsg_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                twoWayChannelMsg_ = new java.util.ArrayList<org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              twoWayChannelMsg_.add(input.readMessage(org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          twoWayChannelMsg_ = java.util.Collections.unmodifiableList(twoWayChannelMsg_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.ProtocolBuffer.SettlementMsg.class, org.peercentrum.core.ProtocolBuffer.SettlementMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SettlementMsg> PARSER =
+        new com.google.protobuf.AbstractParser<SettlementMsg>() {
+      public SettlementMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SettlementMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SettlementMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;
+    public static final int CREATEMICROPAYMENTCHANNELMSG_FIELD_NUMBER = 1;
+    private org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg_;
+    /**
+     * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+     */
+    public boolean hasCreateMicroPaymentChannelMsg() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+     */
+    public org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg getCreateMicroPaymentChannelMsg() {
+      return createMicroPaymentChannelMsg_;
+    }
+    /**
+     * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+     */
+    public org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsgOrBuilder getCreateMicroPaymentChannelMsgOrBuilder() {
+      return createMicroPaymentChannelMsg_;
+    }
+
+    // optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;
+    public static final int MICROPAYMENTUPDATEMSG_FIELD_NUMBER = 2;
+    private org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg microPaymentUpdateMsg_;
+    /**
+     * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+     */
+    public boolean hasMicroPaymentUpdateMsg() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+     */
+    public org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg getMicroPaymentUpdateMsg() {
+      return microPaymentUpdateMsg_;
+    }
+    /**
+     * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+     */
+    public org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsgOrBuilder getMicroPaymentUpdateMsgOrBuilder() {
+      return microPaymentUpdateMsg_;
+    }
+
+    // repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;
+    public static final int TWOWAYCHANNELMSG_FIELD_NUMBER = 3;
+    private java.util.List<org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage> twoWayChannelMsg_;
+    /**
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+     */
+    public java.util.List<org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage> getTwoWayChannelMsgList() {
+      return twoWayChannelMsg_;
+    }
+    /**
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+     */
+    public java.util.List<? extends org.bitcoin.paymentchannel.Protos.TwoWayChannelMessageOrBuilder> 
+        getTwoWayChannelMsgOrBuilderList() {
+      return twoWayChannelMsg_;
+    }
+    /**
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+     */
+    public int getTwoWayChannelMsgCount() {
+      return twoWayChannelMsg_.size();
+    }
+    /**
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+     */
+    public org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage getTwoWayChannelMsg(int index) {
+      return twoWayChannelMsg_.get(index);
+    }
+    /**
+     * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+     */
+    public org.bitcoin.paymentchannel.Protos.TwoWayChannelMessageOrBuilder getTwoWayChannelMsgOrBuilder(
+        int index) {
+      return twoWayChannelMsg_.get(index);
+    }
+
+    private void initFields() {
+      createMicroPaymentChannelMsg_ = org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.getDefaultInstance();
+      microPaymentUpdateMsg_ = org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.getDefaultInstance();
+      twoWayChannelMsg_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getTwoWayChannelMsgCount(); i++) {
+        if (!getTwoWayChannelMsg(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, createMicroPaymentChannelMsg_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, microPaymentUpdateMsg_);
+      }
+      for (int i = 0; i < twoWayChannelMsg_.size(); i++) {
+        output.writeMessage(3, twoWayChannelMsg_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, createMicroPaymentChannelMsg_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, microPaymentUpdateMsg_);
+      }
+      for (int i = 0; i < twoWayChannelMsg_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, twoWayChannelMsg_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.SettlementMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.ProtocolBuffer.SettlementMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.SettlementMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.ProtocolBuffer.SettlementMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.ProtocolBuffer.SettlementMsg.class, org.peercentrum.core.ProtocolBuffer.SettlementMsg.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.ProtocolBuffer.SettlementMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getCreateMicroPaymentChannelMsgFieldBuilder();
+          getMicroPaymentUpdateMsgFieldBuilder();
+          getTwoWayChannelMsgFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (createMicroPaymentChannelMsgBuilder_ == null) {
+          createMicroPaymentChannelMsg_ = org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.getDefaultInstance();
+        } else {
+          createMicroPaymentChannelMsgBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (microPaymentUpdateMsgBuilder_ == null) {
+          microPaymentUpdateMsg_ = org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.getDefaultInstance();
+        } else {
+          microPaymentUpdateMsgBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (twoWayChannelMsgBuilder_ == null) {
+          twoWayChannelMsg_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          twoWayChannelMsgBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMsg_descriptor;
+      }
+
+      public org.peercentrum.core.ProtocolBuffer.SettlementMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.ProtocolBuffer.SettlementMsg.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.ProtocolBuffer.SettlementMsg build() {
+        org.peercentrum.core.ProtocolBuffer.SettlementMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.ProtocolBuffer.SettlementMsg buildPartial() {
+        org.peercentrum.core.ProtocolBuffer.SettlementMsg result = new org.peercentrum.core.ProtocolBuffer.SettlementMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (createMicroPaymentChannelMsgBuilder_ == null) {
+          result.createMicroPaymentChannelMsg_ = createMicroPaymentChannelMsg_;
+        } else {
+          result.createMicroPaymentChannelMsg_ = createMicroPaymentChannelMsgBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (microPaymentUpdateMsgBuilder_ == null) {
+          result.microPaymentUpdateMsg_ = microPaymentUpdateMsg_;
+        } else {
+          result.microPaymentUpdateMsg_ = microPaymentUpdateMsgBuilder_.build();
+        }
+        if (twoWayChannelMsgBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            twoWayChannelMsg_ = java.util.Collections.unmodifiableList(twoWayChannelMsg_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.twoWayChannelMsg_ = twoWayChannelMsg_;
+        } else {
+          result.twoWayChannelMsg_ = twoWayChannelMsgBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.ProtocolBuffer.SettlementMsg) {
+          return mergeFrom((org.peercentrum.core.ProtocolBuffer.SettlementMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.SettlementMsg other) {
+        if (other == org.peercentrum.core.ProtocolBuffer.SettlementMsg.getDefaultInstance()) return this;
+        if (other.hasCreateMicroPaymentChannelMsg()) {
+          mergeCreateMicroPaymentChannelMsg(other.getCreateMicroPaymentChannelMsg());
+        }
+        if (other.hasMicroPaymentUpdateMsg()) {
+          mergeMicroPaymentUpdateMsg(other.getMicroPaymentUpdateMsg());
+        }
+        if (twoWayChannelMsgBuilder_ == null) {
+          if (!other.twoWayChannelMsg_.isEmpty()) {
+            if (twoWayChannelMsg_.isEmpty()) {
+              twoWayChannelMsg_ = other.twoWayChannelMsg_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureTwoWayChannelMsgIsMutable();
+              twoWayChannelMsg_.addAll(other.twoWayChannelMsg_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.twoWayChannelMsg_.isEmpty()) {
+            if (twoWayChannelMsgBuilder_.isEmpty()) {
+              twoWayChannelMsgBuilder_.dispose();
+              twoWayChannelMsgBuilder_ = null;
+              twoWayChannelMsg_ = other.twoWayChannelMsg_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              twoWayChannelMsgBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getTwoWayChannelMsgFieldBuilder() : null;
+            } else {
+              twoWayChannelMsgBuilder_.addAllMessages(other.twoWayChannelMsg_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getTwoWayChannelMsgCount(); i++) {
+          if (!getTwoWayChannelMsg(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.ProtocolBuffer.SettlementMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.ProtocolBuffer.SettlementMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;
+      private org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg_ = org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg, org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.Builder, org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsgOrBuilder> createMicroPaymentChannelMsgBuilder_;
+      /**
+       * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+       */
+      public boolean hasCreateMicroPaymentChannelMsg() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+       */
+      public org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg getCreateMicroPaymentChannelMsg() {
+        if (createMicroPaymentChannelMsgBuilder_ == null) {
+          return createMicroPaymentChannelMsg_;
+        } else {
+          return createMicroPaymentChannelMsgBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+       */
+      public Builder setCreateMicroPaymentChannelMsg(org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg value) {
+        if (createMicroPaymentChannelMsgBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          createMicroPaymentChannelMsg_ = value;
+          onChanged();
+        } else {
+          createMicroPaymentChannelMsgBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+       */
+      public Builder setCreateMicroPaymentChannelMsg(
+          org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.Builder builderForValue) {
+        if (createMicroPaymentChannelMsgBuilder_ == null) {
+          createMicroPaymentChannelMsg_ = builderForValue.build();
+          onChanged();
+        } else {
+          createMicroPaymentChannelMsgBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+       */
+      public Builder mergeCreateMicroPaymentChannelMsg(org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg value) {
+        if (createMicroPaymentChannelMsgBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              createMicroPaymentChannelMsg_ != org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.getDefaultInstance()) {
+            createMicroPaymentChannelMsg_ =
+              org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.newBuilder(createMicroPaymentChannelMsg_).mergeFrom(value).buildPartial();
+          } else {
+            createMicroPaymentChannelMsg_ = value;
+          }
+          onChanged();
+        } else {
+          createMicroPaymentChannelMsgBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+       */
+      public Builder clearCreateMicroPaymentChannelMsg() {
+        if (createMicroPaymentChannelMsgBuilder_ == null) {
+          createMicroPaymentChannelMsg_ = org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          createMicroPaymentChannelMsgBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+       */
+      public org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.Builder getCreateMicroPaymentChannelMsgBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getCreateMicroPaymentChannelMsgFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+       */
+      public org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsgOrBuilder getCreateMicroPaymentChannelMsgOrBuilder() {
+        if (createMicroPaymentChannelMsgBuilder_ != null) {
+          return createMicroPaymentChannelMsgBuilder_.getMessageOrBuilder();
+        } else {
+          return createMicroPaymentChannelMsg_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg, org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.Builder, org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsgOrBuilder> 
+          getCreateMicroPaymentChannelMsgFieldBuilder() {
+        if (createMicroPaymentChannelMsgBuilder_ == null) {
+          createMicroPaymentChannelMsgBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg, org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.Builder, org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsgOrBuilder>(
+                  createMicroPaymentChannelMsg_,
+                  getParentForChildren(),
+                  isClean());
+          createMicroPaymentChannelMsg_ = null;
+        }
+        return createMicroPaymentChannelMsgBuilder_;
+      }
+
+      // optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;
+      private org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg microPaymentUpdateMsg_ = org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg, org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.Builder, org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsgOrBuilder> microPaymentUpdateMsgBuilder_;
+      /**
+       * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+       */
+      public boolean hasMicroPaymentUpdateMsg() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+       */
+      public org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg getMicroPaymentUpdateMsg() {
+        if (microPaymentUpdateMsgBuilder_ == null) {
+          return microPaymentUpdateMsg_;
+        } else {
+          return microPaymentUpdateMsgBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+       */
+      public Builder setMicroPaymentUpdateMsg(org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg value) {
+        if (microPaymentUpdateMsgBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          microPaymentUpdateMsg_ = value;
+          onChanged();
+        } else {
+          microPaymentUpdateMsgBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+       */
+      public Builder setMicroPaymentUpdateMsg(
+          org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.Builder builderForValue) {
+        if (microPaymentUpdateMsgBuilder_ == null) {
+          microPaymentUpdateMsg_ = builderForValue.build();
+          onChanged();
+        } else {
+          microPaymentUpdateMsgBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+       */
+      public Builder mergeMicroPaymentUpdateMsg(org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg value) {
+        if (microPaymentUpdateMsgBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              microPaymentUpdateMsg_ != org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.getDefaultInstance()) {
+            microPaymentUpdateMsg_ =
+              org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.newBuilder(microPaymentUpdateMsg_).mergeFrom(value).buildPartial();
+          } else {
+            microPaymentUpdateMsg_ = value;
+          }
+          onChanged();
+        } else {
+          microPaymentUpdateMsgBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+       */
+      public Builder clearMicroPaymentUpdateMsg() {
+        if (microPaymentUpdateMsgBuilder_ == null) {
+          microPaymentUpdateMsg_ = org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          microPaymentUpdateMsgBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+       */
+      public org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.Builder getMicroPaymentUpdateMsgBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getMicroPaymentUpdateMsgFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+       */
+      public org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsgOrBuilder getMicroPaymentUpdateMsgOrBuilder() {
+        if (microPaymentUpdateMsgBuilder_ != null) {
+          return microPaymentUpdateMsgBuilder_.getMessageOrBuilder();
+        } else {
+          return microPaymentUpdateMsg_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.MicroPaymentUpdateMsg microPaymentUpdateMsg = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg, org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.Builder, org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsgOrBuilder> 
+          getMicroPaymentUpdateMsgFieldBuilder() {
+        if (microPaymentUpdateMsgBuilder_ == null) {
+          microPaymentUpdateMsgBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg, org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.Builder, org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsgOrBuilder>(
+                  microPaymentUpdateMsg_,
+                  getParentForChildren(),
+                  isClean());
+          microPaymentUpdateMsg_ = null;
+        }
+        return microPaymentUpdateMsgBuilder_;
+      }
+
+      // repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;
+      private java.util.List<org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage> twoWayChannelMsg_ =
+        java.util.Collections.emptyList();
+      private void ensureTwoWayChannelMsgIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          twoWayChannelMsg_ = new java.util.ArrayList<org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage>(twoWayChannelMsg_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessageOrBuilder> twoWayChannelMsgBuilder_;
+
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public java.util.List<org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage> getTwoWayChannelMsgList() {
+        if (twoWayChannelMsgBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(twoWayChannelMsg_);
+        } else {
+          return twoWayChannelMsgBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public int getTwoWayChannelMsgCount() {
+        if (twoWayChannelMsgBuilder_ == null) {
+          return twoWayChannelMsg_.size();
+        } else {
+          return twoWayChannelMsgBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage getTwoWayChannelMsg(int index) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          return twoWayChannelMsg_.get(index);
+        } else {
+          return twoWayChannelMsgBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public Builder setTwoWayChannelMsg(
+          int index, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage value) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTwoWayChannelMsgIsMutable();
+          twoWayChannelMsg_.set(index, value);
+          onChanged();
+        } else {
+          twoWayChannelMsgBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public Builder setTwoWayChannelMsg(
+          int index, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder builderForValue) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          ensureTwoWayChannelMsgIsMutable();
+          twoWayChannelMsg_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          twoWayChannelMsgBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public Builder addTwoWayChannelMsg(org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage value) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTwoWayChannelMsgIsMutable();
+          twoWayChannelMsg_.add(value);
+          onChanged();
+        } else {
+          twoWayChannelMsgBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public Builder addTwoWayChannelMsg(
+          int index, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage value) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTwoWayChannelMsgIsMutable();
+          twoWayChannelMsg_.add(index, value);
+          onChanged();
+        } else {
+          twoWayChannelMsgBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public Builder addTwoWayChannelMsg(
+          org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder builderForValue) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          ensureTwoWayChannelMsgIsMutable();
+          twoWayChannelMsg_.add(builderForValue.build());
+          onChanged();
+        } else {
+          twoWayChannelMsgBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public Builder addTwoWayChannelMsg(
+          int index, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder builderForValue) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          ensureTwoWayChannelMsgIsMutable();
+          twoWayChannelMsg_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          twoWayChannelMsgBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public Builder addAllTwoWayChannelMsg(
+          java.lang.Iterable<? extends org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage> values) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          ensureTwoWayChannelMsgIsMutable();
+          super.addAll(values, twoWayChannelMsg_);
+          onChanged();
+        } else {
+          twoWayChannelMsgBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public Builder clearTwoWayChannelMsg() {
+        if (twoWayChannelMsgBuilder_ == null) {
+          twoWayChannelMsg_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          twoWayChannelMsgBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public Builder removeTwoWayChannelMsg(int index) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          ensureTwoWayChannelMsgIsMutable();
+          twoWayChannelMsg_.remove(index);
+          onChanged();
+        } else {
+          twoWayChannelMsgBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder getTwoWayChannelMsgBuilder(
+          int index) {
+        return getTwoWayChannelMsgFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public org.bitcoin.paymentchannel.Protos.TwoWayChannelMessageOrBuilder getTwoWayChannelMsgOrBuilder(
+          int index) {
+        if (twoWayChannelMsgBuilder_ == null) {
+          return twoWayChannelMsg_.get(index);  } else {
+          return twoWayChannelMsgBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public java.util.List<? extends org.bitcoin.paymentchannel.Protos.TwoWayChannelMessageOrBuilder> 
+           getTwoWayChannelMsgOrBuilderList() {
+        if (twoWayChannelMsgBuilder_ != null) {
+          return twoWayChannelMsgBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(twoWayChannelMsg_);
+        }
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder addTwoWayChannelMsgBuilder() {
+        return getTwoWayChannelMsgFieldBuilder().addBuilder(
+            org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder addTwoWayChannelMsgBuilder(
+          int index) {
+        return getTwoWayChannelMsgFieldBuilder().addBuilder(
+            index, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .paymentchannels.TwoWayChannelMessage twoWayChannelMsg = 3;</code>
+       */
+      public java.util.List<org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder> 
+           getTwoWayChannelMsgBuilderList() {
+        return getTwoWayChannelMsgFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessageOrBuilder> 
+          getTwoWayChannelMsgFieldBuilder() {
+        if (twoWayChannelMsgBuilder_ == null) {
+          twoWayChannelMsgBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage.Builder, org.bitcoin.paymentchannel.Protos.TwoWayChannelMessageOrBuilder>(
+                  twoWayChannelMsg_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          twoWayChannelMsg_ = null;
+        }
+        return twoWayChannelMsgBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.SettlementMsg)
+    }
+
+    static {
+      defaultInstance = new SettlementMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.SettlementMsg)
+  }
+
+  public interface CreateMicroPaymentChannelMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional bytes channelID = 1;
+    /**
+     * <code>optional bytes channelID = 1;</code>
+     */
+    boolean hasChannelID();
+    /**
+     * <code>optional bytes channelID = 1;</code>
+     */
+    com.google.protobuf.ByteString getChannelID();
+
+    // optional bytes timeLockedFullRefundTX = 2;
+    /**
+     * <code>optional bytes timeLockedFullRefundTX = 2;</code>
+     *
+     * <pre>
+     *Sent by the client
+     * </pre>
+     */
+    boolean hasTimeLockedFullRefundTX();
+    /**
+     * <code>optional bytes timeLockedFullRefundTX = 2;</code>
+     *
+     * <pre>
+     *Sent by the client
+     * </pre>
+     */
+    com.google.protobuf.ByteString getTimeLockedFullRefundTX();
+
+    // optional bytes timeLockedFullRefundSig = 3;
+    /**
+     * <code>optional bytes timeLockedFullRefundSig = 3;</code>
+     *
+     * <pre>
+     *Sent by the server
+     * </pre>
+     */
+    boolean hasTimeLockedFullRefundSig();
+    /**
+     * <code>optional bytes timeLockedFullRefundSig = 3;</code>
+     *
+     * <pre>
+     *Sent by the server
+     * </pre>
+     */
+    com.google.protobuf.ByteString getTimeLockedFullRefundSig();
+
+    // optional bytes clientSideEscrowPublicKey = 4;
+    /**
+     * <code>optional bytes clientSideEscrowPublicKey = 4;</code>
+     */
+    boolean hasClientSideEscrowPublicKey();
+    /**
+     * <code>optional bytes clientSideEscrowPublicKey = 4;</code>
+     */
+    com.google.protobuf.ByteString getClientSideEscrowPublicKey();
+  }
+  /**
+   * Protobuf type {@code peercentrum.CreateMicroPaymentChannelMsg}
+   */
+  public static final class CreateMicroPaymentChannelMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements CreateMicroPaymentChannelMsgOrBuilder {
+    // Use CreateMicroPaymentChannelMsg.newBuilder() to construct.
+    private CreateMicroPaymentChannelMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private CreateMicroPaymentChannelMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final CreateMicroPaymentChannelMsg defaultInstance;
+    public static CreateMicroPaymentChannelMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public CreateMicroPaymentChannelMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CreateMicroPaymentChannelMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              channelID_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              timeLockedFullRefundTX_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              timeLockedFullRefundSig_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              clientSideEscrowPublicKey_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_CreateMicroPaymentChannelMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_CreateMicroPaymentChannelMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.class, org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<CreateMicroPaymentChannelMsg> PARSER =
+        new com.google.protobuf.AbstractParser<CreateMicroPaymentChannelMsg>() {
+      public CreateMicroPaymentChannelMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CreateMicroPaymentChannelMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CreateMicroPaymentChannelMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional bytes channelID = 1;
+    public static final int CHANNELID_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString channelID_;
+    /**
+     * <code>optional bytes channelID = 1;</code>
+     */
+    public boolean hasChannelID() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional bytes channelID = 1;</code>
+     */
+    public com.google.protobuf.ByteString getChannelID() {
+      return channelID_;
+    }
+
+    // optional bytes timeLockedFullRefundTX = 2;
+    public static final int TIMELOCKEDFULLREFUNDTX_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString timeLockedFullRefundTX_;
+    /**
+     * <code>optional bytes timeLockedFullRefundTX = 2;</code>
+     *
+     * <pre>
+     *Sent by the client
+     * </pre>
+     */
+    public boolean hasTimeLockedFullRefundTX() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bytes timeLockedFullRefundTX = 2;</code>
+     *
+     * <pre>
+     *Sent by the client
+     * </pre>
+     */
+    public com.google.protobuf.ByteString getTimeLockedFullRefundTX() {
+      return timeLockedFullRefundTX_;
+    }
+
+    // optional bytes timeLockedFullRefundSig = 3;
+    public static final int TIMELOCKEDFULLREFUNDSIG_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString timeLockedFullRefundSig_;
+    /**
+     * <code>optional bytes timeLockedFullRefundSig = 3;</code>
+     *
+     * <pre>
+     *Sent by the server
+     * </pre>
+     */
+    public boolean hasTimeLockedFullRefundSig() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bytes timeLockedFullRefundSig = 3;</code>
+     *
+     * <pre>
+     *Sent by the server
+     * </pre>
+     */
+    public com.google.protobuf.ByteString getTimeLockedFullRefundSig() {
+      return timeLockedFullRefundSig_;
+    }
+
+    // optional bytes clientSideEscrowPublicKey = 4;
+    public static final int CLIENTSIDEESCROWPUBLICKEY_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString clientSideEscrowPublicKey_;
+    /**
+     * <code>optional bytes clientSideEscrowPublicKey = 4;</code>
+     */
+    public boolean hasClientSideEscrowPublicKey() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional bytes clientSideEscrowPublicKey = 4;</code>
+     */
+    public com.google.protobuf.ByteString getClientSideEscrowPublicKey() {
+      return clientSideEscrowPublicKey_;
+    }
+
+    private void initFields() {
+      channelID_ = com.google.protobuf.ByteString.EMPTY;
+      timeLockedFullRefundTX_ = com.google.protobuf.ByteString.EMPTY;
+      timeLockedFullRefundSig_ = com.google.protobuf.ByteString.EMPTY;
+      clientSideEscrowPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, channelID_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, timeLockedFullRefundTX_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, timeLockedFullRefundSig_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, clientSideEscrowPublicKey_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, channelID_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, timeLockedFullRefundTX_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, timeLockedFullRefundSig_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, clientSideEscrowPublicKey_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.CreateMicroPaymentChannelMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_CreateMicroPaymentChannelMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_CreateMicroPaymentChannelMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.class, org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        channelID_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        timeLockedFullRefundTX_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timeLockedFullRefundSig_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        clientSideEscrowPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_CreateMicroPaymentChannelMsg_descriptor;
+      }
+
+      public org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg build() {
+        org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg buildPartial() {
+        org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg result = new org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.channelID_ = channelID_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.timeLockedFullRefundTX_ = timeLockedFullRefundTX_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.timeLockedFullRefundSig_ = timeLockedFullRefundSig_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.clientSideEscrowPublicKey_ = clientSideEscrowPublicKey_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg) {
+          return mergeFrom((org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg other) {
+        if (other == org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg.getDefaultInstance()) return this;
+        if (other.hasChannelID()) {
+          setChannelID(other.getChannelID());
+        }
+        if (other.hasTimeLockedFullRefundTX()) {
+          setTimeLockedFullRefundTX(other.getTimeLockedFullRefundTX());
+        }
+        if (other.hasTimeLockedFullRefundSig()) {
+          setTimeLockedFullRefundSig(other.getTimeLockedFullRefundSig());
+        }
+        if (other.hasClientSideEscrowPublicKey()) {
+          setClientSideEscrowPublicKey(other.getClientSideEscrowPublicKey());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.ProtocolBuffer.CreateMicroPaymentChannelMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional bytes channelID = 1;
+      private com.google.protobuf.ByteString channelID_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes channelID = 1;</code>
+       */
+      public boolean hasChannelID() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional bytes channelID = 1;</code>
+       */
+      public com.google.protobuf.ByteString getChannelID() {
+        return channelID_;
+      }
+      /**
+       * <code>optional bytes channelID = 1;</code>
+       */
+      public Builder setChannelID(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        channelID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes channelID = 1;</code>
+       */
+      public Builder clearChannelID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        channelID_ = getDefaultInstance().getChannelID();
+        onChanged();
+        return this;
+      }
+
+      // optional bytes timeLockedFullRefundTX = 2;
+      private com.google.protobuf.ByteString timeLockedFullRefundTX_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes timeLockedFullRefundTX = 2;</code>
+       *
+       * <pre>
+       *Sent by the client
+       * </pre>
+       */
+      public boolean hasTimeLockedFullRefundTX() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional bytes timeLockedFullRefundTX = 2;</code>
+       *
+       * <pre>
+       *Sent by the client
+       * </pre>
+       */
+      public com.google.protobuf.ByteString getTimeLockedFullRefundTX() {
+        return timeLockedFullRefundTX_;
+      }
+      /**
+       * <code>optional bytes timeLockedFullRefundTX = 2;</code>
+       *
+       * <pre>
+       *Sent by the client
+       * </pre>
+       */
+      public Builder setTimeLockedFullRefundTX(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        timeLockedFullRefundTX_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes timeLockedFullRefundTX = 2;</code>
+       *
+       * <pre>
+       *Sent by the client
+       * </pre>
+       */
+      public Builder clearTimeLockedFullRefundTX() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timeLockedFullRefundTX_ = getDefaultInstance().getTimeLockedFullRefundTX();
+        onChanged();
+        return this;
+      }
+
+      // optional bytes timeLockedFullRefundSig = 3;
+      private com.google.protobuf.ByteString timeLockedFullRefundSig_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes timeLockedFullRefundSig = 3;</code>
+       *
+       * <pre>
+       *Sent by the server
+       * </pre>
+       */
+      public boolean hasTimeLockedFullRefundSig() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional bytes timeLockedFullRefundSig = 3;</code>
+       *
+       * <pre>
+       *Sent by the server
+       * </pre>
+       */
+      public com.google.protobuf.ByteString getTimeLockedFullRefundSig() {
+        return timeLockedFullRefundSig_;
+      }
+      /**
+       * <code>optional bytes timeLockedFullRefundSig = 3;</code>
+       *
+       * <pre>
+       *Sent by the server
+       * </pre>
+       */
+      public Builder setTimeLockedFullRefundSig(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        timeLockedFullRefundSig_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes timeLockedFullRefundSig = 3;</code>
+       *
+       * <pre>
+       *Sent by the server
+       * </pre>
+       */
+      public Builder clearTimeLockedFullRefundSig() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        timeLockedFullRefundSig_ = getDefaultInstance().getTimeLockedFullRefundSig();
+        onChanged();
+        return this;
+      }
+
+      // optional bytes clientSideEscrowPublicKey = 4;
+      private com.google.protobuf.ByteString clientSideEscrowPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes clientSideEscrowPublicKey = 4;</code>
+       */
+      public boolean hasClientSideEscrowPublicKey() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional bytes clientSideEscrowPublicKey = 4;</code>
+       */
+      public com.google.protobuf.ByteString getClientSideEscrowPublicKey() {
+        return clientSideEscrowPublicKey_;
+      }
+      /**
+       * <code>optional bytes clientSideEscrowPublicKey = 4;</code>
+       */
+      public Builder setClientSideEscrowPublicKey(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        clientSideEscrowPublicKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes clientSideEscrowPublicKey = 4;</code>
+       */
+      public Builder clearClientSideEscrowPublicKey() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        clientSideEscrowPublicKey_ = getDefaultInstance().getClientSideEscrowPublicKey();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.CreateMicroPaymentChannelMsg)
+    }
+
+    static {
+      defaultInstance = new CreateMicroPaymentChannelMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.CreateMicroPaymentChannelMsg)
+  }
+
+  public interface MicroPaymentUpdateMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional uint32 payingQuoteId = 1;
+    /**
+     * <code>optional uint32 payingQuoteId = 1;</code>
+     */
+    boolean hasPayingQuoteId();
+    /**
+     * <code>optional uint32 payingQuoteId = 1;</code>
+     */
+    int getPayingQuoteId();
+
+    // optional bytes channelID = 2;
+    /**
+     * <code>optional bytes channelID = 2;</code>
+     */
+    boolean hasChannelID();
+    /**
+     * <code>optional bytes channelID = 2;</code>
+     */
+    com.google.protobuf.ByteString getChannelID();
+
+    // optional bytes currentMicropaymentTX = 3;
+    /**
+     * <code>optional bytes currentMicropaymentTX = 3;</code>
+     *
+     * <pre>
+     *Sent only once, subsequent updates only the amount and signature
+     * </pre>
+     */
+    boolean hasCurrentMicropaymentTX();
+    /**
+     * <code>optional bytes currentMicropaymentTX = 3;</code>
+     *
+     * <pre>
+     *Sent only once, subsequent updates only the amount and signature
+     * </pre>
+     */
+    com.google.protobuf.ByteString getCurrentMicropaymentTX();
+
+    // optional int64 currentMicropaymentAmount = 4;
+    /**
+     * <code>optional int64 currentMicropaymentAmount = 4;</code>
+     *
+     * <pre>
+     *This should always increase
+     * </pre>
+     */
+    boolean hasCurrentMicropaymentAmount();
+    /**
+     * <code>optional int64 currentMicropaymentAmount = 4;</code>
+     *
+     * <pre>
+     *This should always increase
+     * </pre>
+     */
+    long getCurrentMicropaymentAmount();
+
+    // optional bytes currentMicropaymentSignature = 5;
+    /**
+     * <code>optional bytes currentMicropaymentSignature = 5;</code>
+     */
+    boolean hasCurrentMicropaymentSignature();
+    /**
+     * <code>optional bytes currentMicropaymentSignature = 5;</code>
+     */
+    com.google.protobuf.ByteString getCurrentMicropaymentSignature();
+  }
+  /**
+   * Protobuf type {@code peercentrum.MicroPaymentUpdateMsg}
+   */
+  public static final class MicroPaymentUpdateMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements MicroPaymentUpdateMsgOrBuilder {
+    // Use MicroPaymentUpdateMsg.newBuilder() to construct.
+    private MicroPaymentUpdateMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MicroPaymentUpdateMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MicroPaymentUpdateMsg defaultInstance;
+    public static MicroPaymentUpdateMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MicroPaymentUpdateMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MicroPaymentUpdateMsg(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -15321,869 +17243,27 @@ public final class ProtocolBuffer {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              requestSettlementMethod_ = input.readBool();
+              payingQuoteId_ = input.readUInt32();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
-              requestTermsOfService_ = input.readBool();
-              break;
-            }
-            case 170: {
-              org.peercentrum.core.ProtocolBuffer.SettlementMethod.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = settlementMethod_.toBuilder();
-              }
-              settlementMethod_ = input.readMessage(org.peercentrum.core.ProtocolBuffer.SettlementMethod.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(settlementMethod_);
-                settlementMethod_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-            case 178: {
-              org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = bitcoinTX_.toBuilder();
-              }
-              bitcoinTX_ = input.readMessage(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(bitcoinTX_);
-                bitcoinTX_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000008;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMessage_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.peercentrum.core.ProtocolBuffer.SettlementMessage.class, org.peercentrum.core.ProtocolBuffer.SettlementMessage.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<SettlementMessage> PARSER =
-        new com.google.protobuf.AbstractParser<SettlementMessage>() {
-      public SettlementMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SettlementMessage(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SettlementMessage> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional bool requestSettlementMethod = 1;
-    public static final int REQUESTSETTLEMENTMETHOD_FIELD_NUMBER = 1;
-    private boolean requestSettlementMethod_;
-    /**
-     * <code>optional bool requestSettlementMethod = 1;</code>
-     */
-    public boolean hasRequestSettlementMethod() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional bool requestSettlementMethod = 1;</code>
-     */
-    public boolean getRequestSettlementMethod() {
-      return requestSettlementMethod_;
-    }
-
-    // optional bool requestTermsOfService = 2;
-    public static final int REQUESTTERMSOFSERVICE_FIELD_NUMBER = 2;
-    private boolean requestTermsOfService_;
-    /**
-     * <code>optional bool requestTermsOfService = 2;</code>
-     *
-     * <pre>
-     *Goes for any service
-     * </pre>
-     */
-    public boolean hasRequestTermsOfService() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional bool requestTermsOfService = 2;</code>
-     *
-     * <pre>
-     *Goes for any service
-     * </pre>
-     */
-    public boolean getRequestTermsOfService() {
-      return requestTermsOfService_;
-    }
-
-    // optional .peercentrum.SettlementMethod settlementMethod = 21;
-    public static final int SETTLEMENTMETHOD_FIELD_NUMBER = 21;
-    private org.peercentrum.core.ProtocolBuffer.SettlementMethod settlementMethod_;
-    /**
-     * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-     */
-    public boolean hasSettlementMethod() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-     */
-    public org.peercentrum.core.ProtocolBuffer.SettlementMethod getSettlementMethod() {
-      return settlementMethod_;
-    }
-    /**
-     * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-     */
-    public org.peercentrum.core.ProtocolBuffer.SettlementMethodOrBuilder getSettlementMethodOrBuilder() {
-      return settlementMethod_;
-    }
-
-    // optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;
-    public static final int BITCOINTX_FIELD_NUMBER = 22;
-    private org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction bitcoinTX_;
-    /**
-     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-     */
-    public boolean hasBitcoinTX() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-     */
-    public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction getBitcoinTX() {
-      return bitcoinTX_;
-    }
-    /**
-     * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-     */
-    public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder getBitcoinTXOrBuilder() {
-      return bitcoinTX_;
-    }
-
-    private void initFields() {
-      requestSettlementMethod_ = false;
-      requestTermsOfService_ = false;
-      settlementMethod_ = org.peercentrum.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
-      bitcoinTX_ = org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBool(1, requestSettlementMethod_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBool(2, requestTermsOfService_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(21, settlementMethod_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(22, bitcoinTX_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, requestSettlementMethod_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, requestTermsOfService_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(21, settlementMethod_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(22, bitcoinTX_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.peercentrum.core.ProtocolBuffer.SettlementMessage prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code peercentrum.SettlementMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.peercentrum.core.ProtocolBuffer.SettlementMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMessage_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.peercentrum.core.ProtocolBuffer.SettlementMessage.class, org.peercentrum.core.ProtocolBuffer.SettlementMessage.Builder.class);
-      }
-
-      // Construct using org.peercentrum.core.ProtocolBuffer.SettlementMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getSettlementMethodFieldBuilder();
-          getBitcoinTXFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        requestSettlementMethod_ = false;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestTermsOfService_ = false;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (settlementMethodBuilder_ == null) {
-          settlementMethod_ = org.peercentrum.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
-        } else {
-          settlementMethodBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (bitcoinTXBuilder_ == null) {
-          bitcoinTX_ = org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
-        } else {
-          bitcoinTXBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMessage_descriptor;
-      }
-
-      public org.peercentrum.core.ProtocolBuffer.SettlementMessage getDefaultInstanceForType() {
-        return org.peercentrum.core.ProtocolBuffer.SettlementMessage.getDefaultInstance();
-      }
-
-      public org.peercentrum.core.ProtocolBuffer.SettlementMessage build() {
-        org.peercentrum.core.ProtocolBuffer.SettlementMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.peercentrum.core.ProtocolBuffer.SettlementMessage buildPartial() {
-        org.peercentrum.core.ProtocolBuffer.SettlementMessage result = new org.peercentrum.core.ProtocolBuffer.SettlementMessage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.requestSettlementMethod_ = requestSettlementMethod_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.requestTermsOfService_ = requestTermsOfService_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        if (settlementMethodBuilder_ == null) {
-          result.settlementMethod_ = settlementMethod_;
-        } else {
-          result.settlementMethod_ = settlementMethodBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        if (bitcoinTXBuilder_ == null) {
-          result.bitcoinTX_ = bitcoinTX_;
-        } else {
-          result.bitcoinTX_ = bitcoinTXBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.peercentrum.core.ProtocolBuffer.SettlementMessage) {
-          return mergeFrom((org.peercentrum.core.ProtocolBuffer.SettlementMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.SettlementMessage other) {
-        if (other == org.peercentrum.core.ProtocolBuffer.SettlementMessage.getDefaultInstance()) return this;
-        if (other.hasRequestSettlementMethod()) {
-          setRequestSettlementMethod(other.getRequestSettlementMethod());
-        }
-        if (other.hasRequestTermsOfService()) {
-          setRequestTermsOfService(other.getRequestTermsOfService());
-        }
-        if (other.hasSettlementMethod()) {
-          mergeSettlementMethod(other.getSettlementMethod());
-        }
-        if (other.hasBitcoinTX()) {
-          mergeBitcoinTX(other.getBitcoinTX());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.peercentrum.core.ProtocolBuffer.SettlementMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.peercentrum.core.ProtocolBuffer.SettlementMessage) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional bool requestSettlementMethod = 1;
-      private boolean requestSettlementMethod_ ;
-      /**
-       * <code>optional bool requestSettlementMethod = 1;</code>
-       */
-      public boolean hasRequestSettlementMethod() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional bool requestSettlementMethod = 1;</code>
-       */
-      public boolean getRequestSettlementMethod() {
-        return requestSettlementMethod_;
-      }
-      /**
-       * <code>optional bool requestSettlementMethod = 1;</code>
-       */
-      public Builder setRequestSettlementMethod(boolean value) {
-        bitField0_ |= 0x00000001;
-        requestSettlementMethod_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool requestSettlementMethod = 1;</code>
-       */
-      public Builder clearRequestSettlementMethod() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestSettlementMethod_ = false;
-        onChanged();
-        return this;
-      }
-
-      // optional bool requestTermsOfService = 2;
-      private boolean requestTermsOfService_ ;
-      /**
-       * <code>optional bool requestTermsOfService = 2;</code>
-       *
-       * <pre>
-       *Goes for any service
-       * </pre>
-       */
-      public boolean hasRequestTermsOfService() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional bool requestTermsOfService = 2;</code>
-       *
-       * <pre>
-       *Goes for any service
-       * </pre>
-       */
-      public boolean getRequestTermsOfService() {
-        return requestTermsOfService_;
-      }
-      /**
-       * <code>optional bool requestTermsOfService = 2;</code>
-       *
-       * <pre>
-       *Goes for any service
-       * </pre>
-       */
-      public Builder setRequestTermsOfService(boolean value) {
-        bitField0_ |= 0x00000002;
-        requestTermsOfService_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool requestTermsOfService = 2;</code>
-       *
-       * <pre>
-       *Goes for any service
-       * </pre>
-       */
-      public Builder clearRequestTermsOfService() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        requestTermsOfService_ = false;
-        onChanged();
-        return this;
-      }
-
-      // optional .peercentrum.SettlementMethod settlementMethod = 21;
-      private org.peercentrum.core.ProtocolBuffer.SettlementMethod settlementMethod_ = org.peercentrum.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.ProtocolBuffer.SettlementMethod, org.peercentrum.core.ProtocolBuffer.SettlementMethod.Builder, org.peercentrum.core.ProtocolBuffer.SettlementMethodOrBuilder> settlementMethodBuilder_;
-      /**
-       * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-       */
-      public boolean hasSettlementMethod() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-       */
-      public org.peercentrum.core.ProtocolBuffer.SettlementMethod getSettlementMethod() {
-        if (settlementMethodBuilder_ == null) {
-          return settlementMethod_;
-        } else {
-          return settlementMethodBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-       */
-      public Builder setSettlementMethod(org.peercentrum.core.ProtocolBuffer.SettlementMethod value) {
-        if (settlementMethodBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          settlementMethod_ = value;
-          onChanged();
-        } else {
-          settlementMethodBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-       */
-      public Builder setSettlementMethod(
-          org.peercentrum.core.ProtocolBuffer.SettlementMethod.Builder builderForValue) {
-        if (settlementMethodBuilder_ == null) {
-          settlementMethod_ = builderForValue.build();
-          onChanged();
-        } else {
-          settlementMethodBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-       */
-      public Builder mergeSettlementMethod(org.peercentrum.core.ProtocolBuffer.SettlementMethod value) {
-        if (settlementMethodBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              settlementMethod_ != org.peercentrum.core.ProtocolBuffer.SettlementMethod.getDefaultInstance()) {
-            settlementMethod_ =
-              org.peercentrum.core.ProtocolBuffer.SettlementMethod.newBuilder(settlementMethod_).mergeFrom(value).buildPartial();
-          } else {
-            settlementMethod_ = value;
-          }
-          onChanged();
-        } else {
-          settlementMethodBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-       */
-      public Builder clearSettlementMethod() {
-        if (settlementMethodBuilder_ == null) {
-          settlementMethod_ = org.peercentrum.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
-          onChanged();
-        } else {
-          settlementMethodBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-       */
-      public org.peercentrum.core.ProtocolBuffer.SettlementMethod.Builder getSettlementMethodBuilder() {
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return getSettlementMethodFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-       */
-      public org.peercentrum.core.ProtocolBuffer.SettlementMethodOrBuilder getSettlementMethodOrBuilder() {
-        if (settlementMethodBuilder_ != null) {
-          return settlementMethodBuilder_.getMessageOrBuilder();
-        } else {
-          return settlementMethod_;
-        }
-      }
-      /**
-       * <code>optional .peercentrum.SettlementMethod settlementMethod = 21;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.ProtocolBuffer.SettlementMethod, org.peercentrum.core.ProtocolBuffer.SettlementMethod.Builder, org.peercentrum.core.ProtocolBuffer.SettlementMethodOrBuilder> 
-          getSettlementMethodFieldBuilder() {
-        if (settlementMethodBuilder_ == null) {
-          settlementMethodBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              org.peercentrum.core.ProtocolBuffer.SettlementMethod, org.peercentrum.core.ProtocolBuffer.SettlementMethod.Builder, org.peercentrum.core.ProtocolBuffer.SettlementMethodOrBuilder>(
-                  settlementMethod_,
-                  getParentForChildren(),
-                  isClean());
-          settlementMethod_ = null;
-        }
-        return settlementMethodBuilder_;
-      }
-
-      // optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;
-      private org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction bitcoinTX_ = org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder> bitcoinTXBuilder_;
-      /**
-       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-       */
-      public boolean hasBitcoinTX() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-       */
-      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction getBitcoinTX() {
-        if (bitcoinTXBuilder_ == null) {
-          return bitcoinTX_;
-        } else {
-          return bitcoinTXBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-       */
-      public Builder setBitcoinTX(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction value) {
-        if (bitcoinTXBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          bitcoinTX_ = value;
-          onChanged();
-        } else {
-          bitcoinTXBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-       */
-      public Builder setBitcoinTX(
-          org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder builderForValue) {
-        if (bitcoinTXBuilder_ == null) {
-          bitcoinTX_ = builderForValue.build();
-          onChanged();
-        } else {
-          bitcoinTXBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-       */
-      public Builder mergeBitcoinTX(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction value) {
-        if (bitcoinTXBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              bitcoinTX_ != org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance()) {
-            bitcoinTX_ =
-              org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.newBuilder(bitcoinTX_).mergeFrom(value).buildPartial();
-          } else {
-            bitcoinTX_ = value;
-          }
-          onChanged();
-        } else {
-          bitcoinTXBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-       */
-      public Builder clearBitcoinTX() {
-        if (bitcoinTXBuilder_ == null) {
-          bitcoinTX_ = org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
-          onChanged();
-        } else {
-          bitcoinTXBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-       */
-      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder getBitcoinTXBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return getBitcoinTXFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-       */
-      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder getBitcoinTXOrBuilder() {
-        if (bitcoinTXBuilder_ != null) {
-          return bitcoinTXBuilder_.getMessageOrBuilder();
-        } else {
-          return bitcoinTX_;
-        }
-      }
-      /**
-       * <code>optional .peercentrum.BitcoinSettlementTransaction bitcoinTX = 22;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder> 
-          getBitcoinTXFieldBuilder() {
-        if (bitcoinTXBuilder_ == null) {
-          bitcoinTXBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder>(
-                  bitcoinTX_,
-                  getParentForChildren(),
-                  isClean());
-          bitcoinTX_ = null;
-        }
-        return bitcoinTXBuilder_;
-      }
-
-      // @@protoc_insertion_point(builder_scope:peercentrum.SettlementMessage)
-    }
-
-    static {
-      defaultInstance = new SettlementMessage(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:peercentrum.SettlementMessage)
-  }
-
-  public interface BitcoinSettlementTransactionOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional bytes destinationApplication = 1;
-    /**
-     * <code>optional bytes destinationApplication = 1;</code>
-     */
-    boolean hasDestinationApplication();
-    /**
-     * <code>optional bytes destinationApplication = 1;</code>
-     */
-    com.google.protobuf.ByteString getDestinationApplication();
-
-    // optional bytes txBytes = 3;
-    /**
-     * <code>optional bytes txBytes = 3;</code>
-     */
-    boolean hasTxBytes();
-    /**
-     * <code>optional bytes txBytes = 3;</code>
-     */
-    com.google.protobuf.ByteString getTxBytes();
-  }
-  /**
-   * Protobuf type {@code peercentrum.BitcoinSettlementTransaction}
-   */
-  public static final class BitcoinSettlementTransaction extends
-      com.google.protobuf.GeneratedMessage
-      implements BitcoinSettlementTransactionOrBuilder {
-    // Use BitcoinSettlementTransaction.newBuilder() to construct.
-    private BitcoinSettlementTransaction(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private BitcoinSettlementTransaction(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final BitcoinSettlementTransaction defaultInstance;
-    public static BitcoinSettlementTransaction getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public BitcoinSettlementTransaction getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private BitcoinSettlementTransaction(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              destinationApplication_ = input.readBytes();
+              channelID_ = input.readBytes();
               break;
             }
             case 26: {
-              bitField0_ |= 0x00000002;
-              txBytes_ = input.readBytes();
+              bitField0_ |= 0x00000004;
+              currentMicropaymentTX_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              currentMicropaymentAmount_ = input.readInt64();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              currentMicropaymentSignature_ = input.readBytes();
               break;
             }
           }
@@ -16200,67 +17280,134 @@ public final class ProtocolBuffer {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_descriptor;
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroPaymentUpdateMsg_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_fieldAccessorTable
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroPaymentUpdateMsg_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.class, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder.class);
+              org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.class, org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<BitcoinSettlementTransaction> PARSER =
-        new com.google.protobuf.AbstractParser<BitcoinSettlementTransaction>() {
-      public BitcoinSettlementTransaction parsePartialFrom(
+    public static com.google.protobuf.Parser<MicroPaymentUpdateMsg> PARSER =
+        new com.google.protobuf.AbstractParser<MicroPaymentUpdateMsg>() {
+      public MicroPaymentUpdateMsg parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BitcoinSettlementTransaction(input, extensionRegistry);
+        return new MicroPaymentUpdateMsg(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<BitcoinSettlementTransaction> getParserForType() {
+    public com.google.protobuf.Parser<MicroPaymentUpdateMsg> getParserForType() {
       return PARSER;
     }
 
     private int bitField0_;
-    // optional bytes destinationApplication = 1;
-    public static final int DESTINATIONAPPLICATION_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString destinationApplication_;
+    // optional uint32 payingQuoteId = 1;
+    public static final int PAYINGQUOTEID_FIELD_NUMBER = 1;
+    private int payingQuoteId_;
     /**
-     * <code>optional bytes destinationApplication = 1;</code>
+     * <code>optional uint32 payingQuoteId = 1;</code>
      */
-    public boolean hasDestinationApplication() {
+    public boolean hasPayingQuoteId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional bytes destinationApplication = 1;</code>
+     * <code>optional uint32 payingQuoteId = 1;</code>
      */
-    public com.google.protobuf.ByteString getDestinationApplication() {
-      return destinationApplication_;
+    public int getPayingQuoteId() {
+      return payingQuoteId_;
     }
 
-    // optional bytes txBytes = 3;
-    public static final int TXBYTES_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString txBytes_;
+    // optional bytes channelID = 2;
+    public static final int CHANNELID_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString channelID_;
     /**
-     * <code>optional bytes txBytes = 3;</code>
+     * <code>optional bytes channelID = 2;</code>
      */
-    public boolean hasTxBytes() {
+    public boolean hasChannelID() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional bytes txBytes = 3;</code>
+     * <code>optional bytes channelID = 2;</code>
      */
-    public com.google.protobuf.ByteString getTxBytes() {
-      return txBytes_;
+    public com.google.protobuf.ByteString getChannelID() {
+      return channelID_;
+    }
+
+    // optional bytes currentMicropaymentTX = 3;
+    public static final int CURRENTMICROPAYMENTTX_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString currentMicropaymentTX_;
+    /**
+     * <code>optional bytes currentMicropaymentTX = 3;</code>
+     *
+     * <pre>
+     *Sent only once, subsequent updates only the amount and signature
+     * </pre>
+     */
+    public boolean hasCurrentMicropaymentTX() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bytes currentMicropaymentTX = 3;</code>
+     *
+     * <pre>
+     *Sent only once, subsequent updates only the amount and signature
+     * </pre>
+     */
+    public com.google.protobuf.ByteString getCurrentMicropaymentTX() {
+      return currentMicropaymentTX_;
+    }
+
+    // optional int64 currentMicropaymentAmount = 4;
+    public static final int CURRENTMICROPAYMENTAMOUNT_FIELD_NUMBER = 4;
+    private long currentMicropaymentAmount_;
+    /**
+     * <code>optional int64 currentMicropaymentAmount = 4;</code>
+     *
+     * <pre>
+     *This should always increase
+     * </pre>
+     */
+    public boolean hasCurrentMicropaymentAmount() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int64 currentMicropaymentAmount = 4;</code>
+     *
+     * <pre>
+     *This should always increase
+     * </pre>
+     */
+    public long getCurrentMicropaymentAmount() {
+      return currentMicropaymentAmount_;
+    }
+
+    // optional bytes currentMicropaymentSignature = 5;
+    public static final int CURRENTMICROPAYMENTSIGNATURE_FIELD_NUMBER = 5;
+    private com.google.protobuf.ByteString currentMicropaymentSignature_;
+    /**
+     * <code>optional bytes currentMicropaymentSignature = 5;</code>
+     */
+    public boolean hasCurrentMicropaymentSignature() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional bytes currentMicropaymentSignature = 5;</code>
+     */
+    public com.google.protobuf.ByteString getCurrentMicropaymentSignature() {
+      return currentMicropaymentSignature_;
     }
 
     private void initFields() {
-      destinationApplication_ = com.google.protobuf.ByteString.EMPTY;
-      txBytes_ = com.google.protobuf.ByteString.EMPTY;
+      payingQuoteId_ = 0;
+      channelID_ = com.google.protobuf.ByteString.EMPTY;
+      currentMicropaymentTX_ = com.google.protobuf.ByteString.EMPTY;
+      currentMicropaymentAmount_ = 0L;
+      currentMicropaymentSignature_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -16275,10 +17422,19 @@ public final class ProtocolBuffer {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, destinationApplication_);
+        output.writeUInt32(1, payingQuoteId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(3, txBytes_);
+        output.writeBytes(2, channelID_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, currentMicropaymentTX_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt64(4, currentMicropaymentAmount_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, currentMicropaymentSignature_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -16291,11 +17447,23 @@ public final class ProtocolBuffer {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, destinationApplication_);
+          .computeUInt32Size(1, payingQuoteId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, txBytes_);
+          .computeBytesSize(2, channelID_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, currentMicropaymentTX_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, currentMicropaymentAmount_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, currentMicropaymentSignature_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -16309,53 +17477,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(byte[] data)
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(java.io.InputStream input)
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseDelimitedFrom(java.io.InputStream input)
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseDelimitedFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -16364,7 +17532,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction prototype) {
+    public static Builder newBuilder(org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -16376,24 +17544,24 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code peercentrum.BitcoinSettlementTransaction}
+     * Protobuf type {@code peercentrum.MicroPaymentUpdateMsg}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransactionOrBuilder {
+       implements org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsgOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_descriptor;
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroPaymentUpdateMsg_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_fieldAccessorTable
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroPaymentUpdateMsg_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.class, org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.Builder.class);
+                org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.class, org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.Builder.class);
       }
 
-      // Construct using org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.newBuilder()
+      // Construct using org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -16413,10 +17581,16 @@ public final class ProtocolBuffer {
 
       public Builder clear() {
         super.clear();
-        destinationApplication_ = com.google.protobuf.ByteString.EMPTY;
+        payingQuoteId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        txBytes_ = com.google.protobuf.ByteString.EMPTY;
+        channelID_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
+        currentMicropaymentTX_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        currentMicropaymentAmount_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        currentMicropaymentSignature_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -16426,54 +17600,75 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_BitcoinSettlementTransaction_descriptor;
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroPaymentUpdateMsg_descriptor;
       }
 
-      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction getDefaultInstanceForType() {
-        return org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance();
+      public org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.getDefaultInstance();
       }
 
-      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction build() {
-        org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction result = buildPartial();
+      public org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg build() {
+        org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction buildPartial() {
-        org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction result = new org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction(this);
+      public org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg buildPartial() {
+        org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg result = new org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.destinationApplication_ = destinationApplication_;
+        result.payingQuoteId_ = payingQuoteId_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.txBytes_ = txBytes_;
+        result.channelID_ = channelID_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.currentMicropaymentTX_ = currentMicropaymentTX_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.currentMicropaymentAmount_ = currentMicropaymentAmount_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.currentMicropaymentSignature_ = currentMicropaymentSignature_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction) {
-          return mergeFrom((org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction)other);
+        if (other instanceof org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg) {
+          return mergeFrom((org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction other) {
-        if (other == org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction.getDefaultInstance()) return this;
-        if (other.hasDestinationApplication()) {
-          setDestinationApplication(other.getDestinationApplication());
+      public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg other) {
+        if (other == org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg.getDefaultInstance()) return this;
+        if (other.hasPayingQuoteId()) {
+          setPayingQuoteId(other.getPayingQuoteId());
         }
-        if (other.hasTxBytes()) {
-          setTxBytes(other.getTxBytes());
+        if (other.hasChannelID()) {
+          setChannelID(other.getChannelID());
+        }
+        if (other.hasCurrentMicropaymentTX()) {
+          setCurrentMicropaymentTX(other.getCurrentMicropaymentTX());
+        }
+        if (other.hasCurrentMicropaymentAmount()) {
+          setCurrentMicropaymentAmount(other.getCurrentMicropaymentAmount());
+        }
+        if (other.hasCurrentMicropaymentSignature()) {
+          setCurrentMicropaymentSignature(other.getCurrentMicropaymentSignature());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -16487,11 +17682,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction parsedMessage = null;
+        org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.peercentrum.core.ProtocolBuffer.BitcoinSettlementTransaction) e.getUnfinishedMessage();
+          parsedMessage = (org.peercentrum.core.ProtocolBuffer.MicroPaymentUpdateMsg) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -16502,155 +17697,288 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional bytes destinationApplication = 1;
-      private com.google.protobuf.ByteString destinationApplication_ = com.google.protobuf.ByteString.EMPTY;
+      // optional uint32 payingQuoteId = 1;
+      private int payingQuoteId_ ;
       /**
-       * <code>optional bytes destinationApplication = 1;</code>
+       * <code>optional uint32 payingQuoteId = 1;</code>
        */
-      public boolean hasDestinationApplication() {
+      public boolean hasPayingQuoteId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional bytes destinationApplication = 1;</code>
+       * <code>optional uint32 payingQuoteId = 1;</code>
        */
-      public com.google.protobuf.ByteString getDestinationApplication() {
-        return destinationApplication_;
+      public int getPayingQuoteId() {
+        return payingQuoteId_;
       }
       /**
-       * <code>optional bytes destinationApplication = 1;</code>
+       * <code>optional uint32 payingQuoteId = 1;</code>
        */
-      public Builder setDestinationApplication(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        destinationApplication_ = value;
+      public Builder setPayingQuoteId(int value) {
+        bitField0_ |= 0x00000001;
+        payingQuoteId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bytes destinationApplication = 1;</code>
+       * <code>optional uint32 payingQuoteId = 1;</code>
        */
-      public Builder clearDestinationApplication() {
+      public Builder clearPayingQuoteId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        destinationApplication_ = getDefaultInstance().getDestinationApplication();
+        payingQuoteId_ = 0;
         onChanged();
         return this;
       }
 
-      // optional bytes txBytes = 3;
-      private com.google.protobuf.ByteString txBytes_ = com.google.protobuf.ByteString.EMPTY;
+      // optional bytes channelID = 2;
+      private com.google.protobuf.ByteString channelID_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes txBytes = 3;</code>
+       * <code>optional bytes channelID = 2;</code>
        */
-      public boolean hasTxBytes() {
+      public boolean hasChannelID() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional bytes txBytes = 3;</code>
+       * <code>optional bytes channelID = 2;</code>
        */
-      public com.google.protobuf.ByteString getTxBytes() {
-        return txBytes_;
+      public com.google.protobuf.ByteString getChannelID() {
+        return channelID_;
       }
       /**
-       * <code>optional bytes txBytes = 3;</code>
+       * <code>optional bytes channelID = 2;</code>
        */
-      public Builder setTxBytes(com.google.protobuf.ByteString value) {
+      public Builder setChannelID(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000002;
-        txBytes_ = value;
+        channelID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bytes txBytes = 3;</code>
+       * <code>optional bytes channelID = 2;</code>
        */
-      public Builder clearTxBytes() {
+      public Builder clearChannelID() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        txBytes_ = getDefaultInstance().getTxBytes();
+        channelID_ = getDefaultInstance().getChannelID();
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:peercentrum.BitcoinSettlementTransaction)
+      // optional bytes currentMicropaymentTX = 3;
+      private com.google.protobuf.ByteString currentMicropaymentTX_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes currentMicropaymentTX = 3;</code>
+       *
+       * <pre>
+       *Sent only once, subsequent updates only the amount and signature
+       * </pre>
+       */
+      public boolean hasCurrentMicropaymentTX() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional bytes currentMicropaymentTX = 3;</code>
+       *
+       * <pre>
+       *Sent only once, subsequent updates only the amount and signature
+       * </pre>
+       */
+      public com.google.protobuf.ByteString getCurrentMicropaymentTX() {
+        return currentMicropaymentTX_;
+      }
+      /**
+       * <code>optional bytes currentMicropaymentTX = 3;</code>
+       *
+       * <pre>
+       *Sent only once, subsequent updates only the amount and signature
+       * </pre>
+       */
+      public Builder setCurrentMicropaymentTX(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        currentMicropaymentTX_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes currentMicropaymentTX = 3;</code>
+       *
+       * <pre>
+       *Sent only once, subsequent updates only the amount and signature
+       * </pre>
+       */
+      public Builder clearCurrentMicropaymentTX() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        currentMicropaymentTX_ = getDefaultInstance().getCurrentMicropaymentTX();
+        onChanged();
+        return this;
+      }
+
+      // optional int64 currentMicropaymentAmount = 4;
+      private long currentMicropaymentAmount_ ;
+      /**
+       * <code>optional int64 currentMicropaymentAmount = 4;</code>
+       *
+       * <pre>
+       *This should always increase
+       * </pre>
+       */
+      public boolean hasCurrentMicropaymentAmount() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int64 currentMicropaymentAmount = 4;</code>
+       *
+       * <pre>
+       *This should always increase
+       * </pre>
+       */
+      public long getCurrentMicropaymentAmount() {
+        return currentMicropaymentAmount_;
+      }
+      /**
+       * <code>optional int64 currentMicropaymentAmount = 4;</code>
+       *
+       * <pre>
+       *This should always increase
+       * </pre>
+       */
+      public Builder setCurrentMicropaymentAmount(long value) {
+        bitField0_ |= 0x00000008;
+        currentMicropaymentAmount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 currentMicropaymentAmount = 4;</code>
+       *
+       * <pre>
+       *This should always increase
+       * </pre>
+       */
+      public Builder clearCurrentMicropaymentAmount() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        currentMicropaymentAmount_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional bytes currentMicropaymentSignature = 5;
+      private com.google.protobuf.ByteString currentMicropaymentSignature_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes currentMicropaymentSignature = 5;</code>
+       */
+      public boolean hasCurrentMicropaymentSignature() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional bytes currentMicropaymentSignature = 5;</code>
+       */
+      public com.google.protobuf.ByteString getCurrentMicropaymentSignature() {
+        return currentMicropaymentSignature_;
+      }
+      /**
+       * <code>optional bytes currentMicropaymentSignature = 5;</code>
+       */
+      public Builder setCurrentMicropaymentSignature(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        currentMicropaymentSignature_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes currentMicropaymentSignature = 5;</code>
+       */
+      public Builder clearCurrentMicropaymentSignature() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        currentMicropaymentSignature_ = getDefaultInstance().getCurrentMicropaymentSignature();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.MicroPaymentUpdateMsg)
     }
 
     static {
-      defaultInstance = new BitcoinSettlementTransaction(true);
+      defaultInstance = new MicroPaymentUpdateMsg(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:peercentrum.BitcoinSettlementTransaction)
+    // @@protoc_insertion_point(class_scope:peercentrum.MicroPaymentUpdateMsg)
   }
 
-  public interface SettlementMethodOrBuilder
+  public interface MicroQuoteMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional bytes bitcoinPublicKey = 1;
+    // optional uint32 quoteID = 1;
     /**
-     * <code>optional bytes bitcoinPublicKey = 1;</code>
+     * <code>optional uint32 quoteID = 1;</code>
      *
      * <pre>
-     *Probably more stuff here for micro payment channels
-     *optional bytes bitcoinEscrowAddress=2;
+     *Might be tracked by certain applications, not P2PBlob
      * </pre>
      */
-    boolean hasBitcoinPublicKey();
+    boolean hasQuoteID();
     /**
-     * <code>optional bytes bitcoinPublicKey = 1;</code>
+     * <code>optional uint32 quoteID = 1;</code>
      *
      * <pre>
-     *Probably more stuff here for micro payment channels
-     *optional bytes bitcoinEscrowAddress=2;
+     *Might be tracked by certain applications, not P2PBlob
      * </pre>
      */
-    com.google.protobuf.ByteString getBitcoinPublicKey();
+    int getQuoteID();
 
-    // optional bytes rippleAddress = 11;
+    // optional bytes applicationID = 2;
     /**
-     * <code>optional bytes rippleAddress = 11;</code>
+     * <code>optional bytes applicationID = 2;</code>
      */
-    boolean hasRippleAddress();
+    boolean hasApplicationID();
     /**
-     * <code>optional bytes rippleAddress = 11;</code>
+     * <code>optional bytes applicationID = 2;</code>
      */
-    com.google.protobuf.ByteString getRippleAddress();
+    com.google.protobuf.ByteString getApplicationID();
 
-    // repeated bytes acceptedRippleCurrencies = 12;
+    // optional int64 amountRequested = 3;
     /**
-     * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
+     * <code>optional int64 amountRequested = 3;</code>
      */
-    java.util.List<com.google.protobuf.ByteString> getAcceptedRippleCurrenciesList();
+    boolean hasAmountRequested();
     /**
-     * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
+     * <code>optional int64 amountRequested = 3;</code>
      */
-    int getAcceptedRippleCurrenciesCount();
-    /**
-     * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
-     */
-    com.google.protobuf.ByteString getAcceptedRippleCurrencies(int index);
+    long getAmountRequested();
   }
   /**
-   * Protobuf type {@code peercentrum.SettlementMethod}
+   * Protobuf type {@code peercentrum.MicroQuoteMsg}
+   *
+   * <pre>
+   **
+   * This message is returned to the client when the server wants the client to pay.
+   * </pre>
    */
-  public static final class SettlementMethod extends
+  public static final class MicroQuoteMsg extends
       com.google.protobuf.GeneratedMessage
-      implements SettlementMethodOrBuilder {
-    // Use SettlementMethod.newBuilder() to construct.
-    private SettlementMethod(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements MicroQuoteMsgOrBuilder {
+    // Use MicroQuoteMsg.newBuilder() to construct.
+    private MicroQuoteMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private SettlementMethod(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private MicroQuoteMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final SettlementMethod defaultInstance;
-    public static SettlementMethod getDefaultInstance() {
+    private static final MicroQuoteMsg defaultInstance;
+    public static MicroQuoteMsg getDefaultInstance() {
       return defaultInstance;
     }
 
-    public SettlementMethod getDefaultInstanceForType() {
+    public MicroQuoteMsg getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -16660,7 +17988,7 @@ public final class ProtocolBuffer {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private SettlementMethod(
+    private MicroQuoteMsg(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -16683,22 +18011,19 @@ public final class ProtocolBuffer {
               }
               break;
             }
-            case 10: {
+            case 8: {
               bitField0_ |= 0x00000001;
-              bitcoinPublicKey_ = input.readBytes();
+              quoteID_ = input.readUInt32();
               break;
             }
-            case 90: {
+            case 18: {
               bitField0_ |= 0x00000002;
-              rippleAddress_ = input.readBytes();
+              applicationID_ = input.readBytes();
               break;
             }
-            case 98: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                acceptedRippleCurrencies_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              acceptedRippleCurrencies_.add(input.readBytes());
+            case 24: {
+              bitField0_ |= 0x00000004;
+              amountRequested_ = input.readInt64();
               break;
             }
           }
@@ -16709,110 +18034,98 @@ public final class ProtocolBuffer {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          acceptedRippleCurrencies_ = java.util.Collections.unmodifiableList(acceptedRippleCurrencies_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMethod_descriptor;
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroQuoteMsg_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMethod_fieldAccessorTable
+      return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroQuoteMsg_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.peercentrum.core.ProtocolBuffer.SettlementMethod.class, org.peercentrum.core.ProtocolBuffer.SettlementMethod.Builder.class);
+              org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg.class, org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<SettlementMethod> PARSER =
-        new com.google.protobuf.AbstractParser<SettlementMethod>() {
-      public SettlementMethod parsePartialFrom(
+    public static com.google.protobuf.Parser<MicroQuoteMsg> PARSER =
+        new com.google.protobuf.AbstractParser<MicroQuoteMsg>() {
+      public MicroQuoteMsg parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SettlementMethod(input, extensionRegistry);
+        return new MicroQuoteMsg(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SettlementMethod> getParserForType() {
+    public com.google.protobuf.Parser<MicroQuoteMsg> getParserForType() {
       return PARSER;
     }
 
     private int bitField0_;
-    // optional bytes bitcoinPublicKey = 1;
-    public static final int BITCOINPUBLICKEY_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString bitcoinPublicKey_;
+    // optional uint32 quoteID = 1;
+    public static final int QUOTEID_FIELD_NUMBER = 1;
+    private int quoteID_;
     /**
-     * <code>optional bytes bitcoinPublicKey = 1;</code>
+     * <code>optional uint32 quoteID = 1;</code>
      *
      * <pre>
-     *Probably more stuff here for micro payment channels
-     *optional bytes bitcoinEscrowAddress=2;
+     *Might be tracked by certain applications, not P2PBlob
      * </pre>
      */
-    public boolean hasBitcoinPublicKey() {
+    public boolean hasQuoteID() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional bytes bitcoinPublicKey = 1;</code>
+     * <code>optional uint32 quoteID = 1;</code>
      *
      * <pre>
-     *Probably more stuff here for micro payment channels
-     *optional bytes bitcoinEscrowAddress=2;
+     *Might be tracked by certain applications, not P2PBlob
      * </pre>
      */
-    public com.google.protobuf.ByteString getBitcoinPublicKey() {
-      return bitcoinPublicKey_;
+    public int getQuoteID() {
+      return quoteID_;
     }
 
-    // optional bytes rippleAddress = 11;
-    public static final int RIPPLEADDRESS_FIELD_NUMBER = 11;
-    private com.google.protobuf.ByteString rippleAddress_;
+    // optional bytes applicationID = 2;
+    public static final int APPLICATIONID_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString applicationID_;
     /**
-     * <code>optional bytes rippleAddress = 11;</code>
+     * <code>optional bytes applicationID = 2;</code>
      */
-    public boolean hasRippleAddress() {
+    public boolean hasApplicationID() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional bytes rippleAddress = 11;</code>
+     * <code>optional bytes applicationID = 2;</code>
      */
-    public com.google.protobuf.ByteString getRippleAddress() {
-      return rippleAddress_;
+    public com.google.protobuf.ByteString getApplicationID() {
+      return applicationID_;
     }
 
-    // repeated bytes acceptedRippleCurrencies = 12;
-    public static final int ACCEPTEDRIPPLECURRENCIES_FIELD_NUMBER = 12;
-    private java.util.List<com.google.protobuf.ByteString> acceptedRippleCurrencies_;
+    // optional int64 amountRequested = 3;
+    public static final int AMOUNTREQUESTED_FIELD_NUMBER = 3;
+    private long amountRequested_;
     /**
-     * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
+     * <code>optional int64 amountRequested = 3;</code>
      */
-    public java.util.List<com.google.protobuf.ByteString>
-        getAcceptedRippleCurrenciesList() {
-      return acceptedRippleCurrencies_;
+    public boolean hasAmountRequested() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
+     * <code>optional int64 amountRequested = 3;</code>
      */
-    public int getAcceptedRippleCurrenciesCount() {
-      return acceptedRippleCurrencies_.size();
-    }
-    /**
-     * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
-     */
-    public com.google.protobuf.ByteString getAcceptedRippleCurrencies(int index) {
-      return acceptedRippleCurrencies_.get(index);
+    public long getAmountRequested() {
+      return amountRequested_;
     }
 
     private void initFields() {
-      bitcoinPublicKey_ = com.google.protobuf.ByteString.EMPTY;
-      rippleAddress_ = com.google.protobuf.ByteString.EMPTY;
-      acceptedRippleCurrencies_ = java.util.Collections.emptyList();
+      quoteID_ = 0;
+      applicationID_ = com.google.protobuf.ByteString.EMPTY;
+      amountRequested_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -16827,13 +18140,13 @@ public final class ProtocolBuffer {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, bitcoinPublicKey_);
+        output.writeUInt32(1, quoteID_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(11, rippleAddress_);
+        output.writeBytes(2, applicationID_);
       }
-      for (int i = 0; i < acceptedRippleCurrencies_.size(); i++) {
-        output.writeBytes(12, acceptedRippleCurrencies_.get(i));
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt64(3, amountRequested_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -16846,20 +18159,15 @@ public final class ProtocolBuffer {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, bitcoinPublicKey_);
+          .computeUInt32Size(1, quoteID_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(11, rippleAddress_);
+          .computeBytesSize(2, applicationID_);
       }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < acceptedRippleCurrencies_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(acceptedRippleCurrencies_.get(i));
-        }
-        size += dataSize;
-        size += 1 * getAcceptedRippleCurrenciesList().size();
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, amountRequested_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -16873,53 +18181,53 @@ public final class ProtocolBuffer {
       return super.writeReplace();
     }
 
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseFrom(byte[] data)
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseFrom(java.io.InputStream input)
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseDelimitedFrom(java.io.InputStream input)
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseDelimitedFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.peercentrum.core.ProtocolBuffer.SettlementMethod parseFrom(
+    public static org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -16928,7 +18236,7 @@ public final class ProtocolBuffer {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.peercentrum.core.ProtocolBuffer.SettlementMethod prototype) {
+    public static Builder newBuilder(org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -16940,24 +18248,29 @@ public final class ProtocolBuffer {
       return builder;
     }
     /**
-     * Protobuf type {@code peercentrum.SettlementMethod}
+     * Protobuf type {@code peercentrum.MicroQuoteMsg}
+     *
+     * <pre>
+     **
+     * This message is returned to the client when the server wants the client to pay.
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.peercentrum.core.ProtocolBuffer.SettlementMethodOrBuilder {
+       implements org.peercentrum.core.ProtocolBuffer.MicroQuoteMsgOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMethod_descriptor;
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroQuoteMsg_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMethod_fieldAccessorTable
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroQuoteMsg_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.peercentrum.core.ProtocolBuffer.SettlementMethod.class, org.peercentrum.core.ProtocolBuffer.SettlementMethod.Builder.class);
+                org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg.class, org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg.Builder.class);
       }
 
-      // Construct using org.peercentrum.core.ProtocolBuffer.SettlementMethod.newBuilder()
+      // Construct using org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -16977,11 +18290,11 @@ public final class ProtocolBuffer {
 
       public Builder clear() {
         super.clear();
-        bitcoinPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+        quoteID_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        rippleAddress_ = com.google.protobuf.ByteString.EMPTY;
+        applicationID_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
-        acceptedRippleCurrencies_ = java.util.Collections.emptyList();
+        amountRequested_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -16992,69 +18305,61 @@ public final class ProtocolBuffer {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_SettlementMethod_descriptor;
+        return org.peercentrum.core.ProtocolBuffer.internal_static_peercentrum_MicroQuoteMsg_descriptor;
       }
 
-      public org.peercentrum.core.ProtocolBuffer.SettlementMethod getDefaultInstanceForType() {
-        return org.peercentrum.core.ProtocolBuffer.SettlementMethod.getDefaultInstance();
+      public org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg.getDefaultInstance();
       }
 
-      public org.peercentrum.core.ProtocolBuffer.SettlementMethod build() {
-        org.peercentrum.core.ProtocolBuffer.SettlementMethod result = buildPartial();
+      public org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg build() {
+        org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.peercentrum.core.ProtocolBuffer.SettlementMethod buildPartial() {
-        org.peercentrum.core.ProtocolBuffer.SettlementMethod result = new org.peercentrum.core.ProtocolBuffer.SettlementMethod(this);
+      public org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg buildPartial() {
+        org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg result = new org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.bitcoinPublicKey_ = bitcoinPublicKey_;
+        result.quoteID_ = quoteID_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.rippleAddress_ = rippleAddress_;
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          acceptedRippleCurrencies_ = java.util.Collections.unmodifiableList(acceptedRippleCurrencies_);
-          bitField0_ = (bitField0_ & ~0x00000004);
+        result.applicationID_ = applicationID_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
-        result.acceptedRippleCurrencies_ = acceptedRippleCurrencies_;
+        result.amountRequested_ = amountRequested_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.peercentrum.core.ProtocolBuffer.SettlementMethod) {
-          return mergeFrom((org.peercentrum.core.ProtocolBuffer.SettlementMethod)other);
+        if (other instanceof org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg) {
+          return mergeFrom((org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.SettlementMethod other) {
-        if (other == org.peercentrum.core.ProtocolBuffer.SettlementMethod.getDefaultInstance()) return this;
-        if (other.hasBitcoinPublicKey()) {
-          setBitcoinPublicKey(other.getBitcoinPublicKey());
+      public Builder mergeFrom(org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg other) {
+        if (other == org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg.getDefaultInstance()) return this;
+        if (other.hasQuoteID()) {
+          setQuoteID(other.getQuoteID());
         }
-        if (other.hasRippleAddress()) {
-          setRippleAddress(other.getRippleAddress());
+        if (other.hasApplicationID()) {
+          setApplicationID(other.getApplicationID());
         }
-        if (!other.acceptedRippleCurrencies_.isEmpty()) {
-          if (acceptedRippleCurrencies_.isEmpty()) {
-            acceptedRippleCurrencies_ = other.acceptedRippleCurrencies_;
-            bitField0_ = (bitField0_ & ~0x00000004);
-          } else {
-            ensureAcceptedRippleCurrenciesIsMutable();
-            acceptedRippleCurrencies_.addAll(other.acceptedRippleCurrencies_);
-          }
-          onChanged();
+        if (other.hasAmountRequested()) {
+          setAmountRequested(other.getAmountRequested());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -17068,11 +18373,11 @@ public final class ProtocolBuffer {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.peercentrum.core.ProtocolBuffer.SettlementMethod parsedMessage = null;
+        org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.peercentrum.core.ProtocolBuffer.SettlementMethod) e.getUnfinishedMessage();
+          parsedMessage = (org.peercentrum.core.ProtocolBuffer.MicroQuoteMsg) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -17083,179 +18388,133 @@ public final class ProtocolBuffer {
       }
       private int bitField0_;
 
-      // optional bytes bitcoinPublicKey = 1;
-      private com.google.protobuf.ByteString bitcoinPublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      // optional uint32 quoteID = 1;
+      private int quoteID_ ;
       /**
-       * <code>optional bytes bitcoinPublicKey = 1;</code>
+       * <code>optional uint32 quoteID = 1;</code>
        *
        * <pre>
-       *Probably more stuff here for micro payment channels
-       *optional bytes bitcoinEscrowAddress=2;
+       *Might be tracked by certain applications, not P2PBlob
        * </pre>
        */
-      public boolean hasBitcoinPublicKey() {
+      public boolean hasQuoteID() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional bytes bitcoinPublicKey = 1;</code>
+       * <code>optional uint32 quoteID = 1;</code>
        *
        * <pre>
-       *Probably more stuff here for micro payment channels
-       *optional bytes bitcoinEscrowAddress=2;
+       *Might be tracked by certain applications, not P2PBlob
        * </pre>
        */
-      public com.google.protobuf.ByteString getBitcoinPublicKey() {
-        return bitcoinPublicKey_;
+      public int getQuoteID() {
+        return quoteID_;
       }
       /**
-       * <code>optional bytes bitcoinPublicKey = 1;</code>
+       * <code>optional uint32 quoteID = 1;</code>
        *
        * <pre>
-       *Probably more stuff here for micro payment channels
-       *optional bytes bitcoinEscrowAddress=2;
+       *Might be tracked by certain applications, not P2PBlob
        * </pre>
        */
-      public Builder setBitcoinPublicKey(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        bitcoinPublicKey_ = value;
+      public Builder setQuoteID(int value) {
+        bitField0_ |= 0x00000001;
+        quoteID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bytes bitcoinPublicKey = 1;</code>
+       * <code>optional uint32 quoteID = 1;</code>
        *
        * <pre>
-       *Probably more stuff here for micro payment channels
-       *optional bytes bitcoinEscrowAddress=2;
+       *Might be tracked by certain applications, not P2PBlob
        * </pre>
        */
-      public Builder clearBitcoinPublicKey() {
+      public Builder clearQuoteID() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        bitcoinPublicKey_ = getDefaultInstance().getBitcoinPublicKey();
+        quoteID_ = 0;
         onChanged();
         return this;
       }
 
-      // optional bytes rippleAddress = 11;
-      private com.google.protobuf.ByteString rippleAddress_ = com.google.protobuf.ByteString.EMPTY;
+      // optional bytes applicationID = 2;
+      private com.google.protobuf.ByteString applicationID_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes rippleAddress = 11;</code>
+       * <code>optional bytes applicationID = 2;</code>
        */
-      public boolean hasRippleAddress() {
+      public boolean hasApplicationID() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional bytes rippleAddress = 11;</code>
+       * <code>optional bytes applicationID = 2;</code>
        */
-      public com.google.protobuf.ByteString getRippleAddress() {
-        return rippleAddress_;
+      public com.google.protobuf.ByteString getApplicationID() {
+        return applicationID_;
       }
       /**
-       * <code>optional bytes rippleAddress = 11;</code>
+       * <code>optional bytes applicationID = 2;</code>
        */
-      public Builder setRippleAddress(com.google.protobuf.ByteString value) {
+      public Builder setApplicationID(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000002;
-        rippleAddress_ = value;
+        applicationID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bytes rippleAddress = 11;</code>
+       * <code>optional bytes applicationID = 2;</code>
        */
-      public Builder clearRippleAddress() {
+      public Builder clearApplicationID() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        rippleAddress_ = getDefaultInstance().getRippleAddress();
+        applicationID_ = getDefaultInstance().getApplicationID();
         onChanged();
         return this;
       }
 
-      // repeated bytes acceptedRippleCurrencies = 12;
-      private java.util.List<com.google.protobuf.ByteString> acceptedRippleCurrencies_ = java.util.Collections.emptyList();
-      private void ensureAcceptedRippleCurrenciesIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          acceptedRippleCurrencies_ = new java.util.ArrayList<com.google.protobuf.ByteString>(acceptedRippleCurrencies_);
-          bitField0_ |= 0x00000004;
-         }
+      // optional int64 amountRequested = 3;
+      private long amountRequested_ ;
+      /**
+       * <code>optional int64 amountRequested = 3;</code>
+       */
+      public boolean hasAmountRequested() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
+       * <code>optional int64 amountRequested = 3;</code>
        */
-      public java.util.List<com.google.protobuf.ByteString>
-          getAcceptedRippleCurrenciesList() {
-        return java.util.Collections.unmodifiableList(acceptedRippleCurrencies_);
+      public long getAmountRequested() {
+        return amountRequested_;
       }
       /**
-       * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
+       * <code>optional int64 amountRequested = 3;</code>
        */
-      public int getAcceptedRippleCurrenciesCount() {
-        return acceptedRippleCurrencies_.size();
-      }
-      /**
-       * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
-       */
-      public com.google.protobuf.ByteString getAcceptedRippleCurrencies(int index) {
-        return acceptedRippleCurrencies_.get(index);
-      }
-      /**
-       * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
-       */
-      public Builder setAcceptedRippleCurrencies(
-          int index, com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureAcceptedRippleCurrenciesIsMutable();
-        acceptedRippleCurrencies_.set(index, value);
+      public Builder setAmountRequested(long value) {
+        bitField0_ |= 0x00000004;
+        amountRequested_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
+       * <code>optional int64 amountRequested = 3;</code>
        */
-      public Builder addAcceptedRippleCurrencies(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureAcceptedRippleCurrenciesIsMutable();
-        acceptedRippleCurrencies_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
-       */
-      public Builder addAllAcceptedRippleCurrencies(
-          java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
-        ensureAcceptedRippleCurrenciesIsMutable();
-        super.addAll(values, acceptedRippleCurrencies_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated bytes acceptedRippleCurrencies = 12;</code>
-       */
-      public Builder clearAcceptedRippleCurrencies() {
-        acceptedRippleCurrencies_ = java.util.Collections.emptyList();
+      public Builder clearAmountRequested() {
         bitField0_ = (bitField0_ & ~0x00000004);
+        amountRequested_ = 0L;
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:peercentrum.SettlementMethod)
+      // @@protoc_insertion_point(builder_scope:peercentrum.MicroQuoteMsg)
     }
 
     static {
-      defaultInstance = new SettlementMethod(true);
+      defaultInstance = new MicroQuoteMsg(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:peercentrum.SettlementMethod)
+    // @@protoc_insertion_point(class_scope:peercentrum.MicroQuoteMsg)
   }
 
   public interface SettlementTermOfServiceByteStorageOrBuilder
@@ -18755,20 +20014,25 @@ public final class ProtocolBuffer {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_peercentrum_P2PBlobHashListMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_SettlementMessage_descriptor;
+    internal_static_peercentrum_SettlementMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_SettlementMessage_fieldAccessorTable;
+      internal_static_peercentrum_SettlementMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_BitcoinSettlementTransaction_descriptor;
+    internal_static_peercentrum_CreateMicroPaymentChannelMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_BitcoinSettlementTransaction_fieldAccessorTable;
+      internal_static_peercentrum_CreateMicroPaymentChannelMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_SettlementMethod_descriptor;
+    internal_static_peercentrum_MicroPaymentUpdateMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_SettlementMethod_fieldAccessorTable;
+      internal_static_peercentrum_MicroPaymentUpdateMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_peercentrum_MicroQuoteMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_peercentrum_MicroQuoteMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_peercentrum_SettlementTermOfServiceByteStorage_descriptor;
   private static
@@ -18788,90 +20052,98 @@ public final class ProtocolBuffer {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\026peercentrum-core.proto\022\013peercentrum\"\330\001" +
-      "\n\rHeaderMessage\0225\n\nsenderInfo\030\001 \001(\0132!.pe" +
-      "ercentrum.SenderInformationMsg\022\025\n\rreques" +
-      "tNumber\030\002 \001(\r\022\025\n\rapplicationId\030\003 \001(\014\022\021\n\t" +
-      "signature\030\004 \001(\014\022&\n\036applicationSpecificBl" +
-      "ockLength\030\005 \001(\r\022\'\n\037applicationSpecificSt" +
-      "reamLength\030\006 \001(\r\"\211\001\n\024SenderInformationMs" +
-      "g\022\021\n\tuserAgent\030\001 \001(\t\022\022\n\nexternalIP\030\002 \001(\t" +
-      "\022\024\n\014externalPort\030\003 \001(\r\022\025\n\rnodePublicKey\030" +
-      "\004 \001(\014\022\035\n\025applicationsSupported\030\005 \003(\014\"\217\001\n",
-      "\016NetworkMessage\022?\n\toperation\030\001 \001(\0162,.pee" +
-      "rcentrum.NetworkMessage.NetworkOperation" +
-      "\"<\n\020NetworkOperation\022\024\n\020CLOSE_CONNECTION" +
-      "\020\000\022\010\n\004PING\020\001\022\010\n\004PONG\020\002\"\200\001\n\rGossipMessage" +
-      "\022=\n\020requestMorePeers\030\001 \001(\0132#.peercentrum" +
-      ".GossipRequestMorePeers\0220\n\005reply\030\002 \001(\0132!" +
-      ".peercentrum.GossipReplyMorePeers\"7\n\026Gos" +
-      "sipRequestMorePeers\022\035\n\025applicationsReque" +
-      "sted\030\001 \003(\014\"\231\002\n\024GossipReplyMorePeers\022=\n\005p" +
-      "eers\030\001 \003(\0132..peercentrum.GossipReplyMore",
-      "Peers.PeerEndpoint\032\301\001\n\014PeerEndpoint\022\020\n\010i" +
-      "dentity\030\001 \001(\014\022M\n\nipEndpoint\030\002 \001(\01329.peer" +
-      "centrum.GossipReplyMorePeers.PeerEndpoin" +
-      "t.IPEndpoint\032-\n\nIPEndpoint\022\021\n\tipaddress\030" +
-      "\001 \001(\t\022\014\n\004port\030\002 \001(\r\032!\n\013TOREndpoint\022\022\n\nTO" +
-      "RAddress\030\001 \001(\t\":\n\017GenericResponse\022\021\n\terr" +
-      "orCode\030\001 \001(\r\022\024\n\014errorMessage\030\002 \001(\t\"\356\002\n\026H" +
-      "ashToPublicKeyMessage\0225\n\017genericResponse" +
-      "\030\001 \001(\0132\034.peercentrum.GenericResponse\0229\n\n" +
-      "proposedTx\030\002 \001(\0132%.peercentrum.H2PKPropo",
-      "sedTransactions\022A\n\020localTransaction\030\003 \001(" +
-      "\0132\'.peercentrum.HashToPublicKeyTransacti" +
-      "on\022\027\n\017membershipQuery\030\004 \001(\014\022\032\n\022membershi" +
-      "pResponse\030\005 \003(\014\0221\n\013dbSyncQuery\030\006 \001(\0132\034.p" +
-      "eercentrum.H2PKDBSyncQuery\0227\n\016dbSyncResp" +
-      "onse\030\007 \001(\0132\037.peercentrum.H2PKDBSyncRespo" +
-      "nse\"\322\001\n\032HashToPublicKeyTransaction\022D\n\top" +
-      "eration\030\001 \001(\01621.peercentrum.HashToPublic" +
-      "KeyTransaction.OPERATION\022\017\n\007address\030\002 \001(" +
-      "\014\022\021\n\tpublicKey\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022",
-      "\022\n\nexpiration\030\005 \001(\r\"#\n\tOPERATION\022\n\n\006APPE" +
-      "ND\020\000\022\n\n\006REMOVE\020\001\"\216\001\n\030H2PKProposedTransac" +
-      "tions\022\027\n\017dbVersionNumber\030\001 \001(\r\022\022\n\npropos" +
-      "edBy\030\002 \001(\014\022E\n\024proposedTransactions\030\003 \003(\013" +
-      "2\'.peercentrum.HashToPublicKeyTransactio" +
-      "n\"/\n\017H2PKDBSyncQuery\022\034\n\024beginDbVersionNu" +
-      "mber\030\001 \001(\r\"\227\001\n\022H2PKDBSyncResponse\022\033\n\023las" +
-      "tDbVersionNumber\030\001 \001(\r\022\027\n\017lastDbHashValu" +
-      "e\030\002 \001(\014\022\033\n\023syncDbVersionNumber\030\003 \001(\r\022.\n\t" +
-      "syncUnits\030\004 \003(\0132\033.peercentrum.H2PKDBSync",
-      "Unit\"?\n\016H2PKDBSyncUnit\022\017\n\007address\030\001 \001(\014\022" +
-      "\034\n\024publicKeysRegistered\030\002 \003(\014\"*\n\014P2PBlob" +
-      "Range\022\r\n\005begin\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"\252\001\n\016P2" +
-      "PBlobRequest\022\025\n\rrequestedHash\030\001 \001(\014\022\031\n\021m" +
-      "aximumBlobLength\030\002 \001(\003\022\027\n\017requestHashLis" +
-      "t\030\003 \001(\010\022\031\n\021requestBlobLength\030\004 \001(\010\0222\n\017re" +
-      "questedRanges\030\005 \003(\0132\031.peercentrum.P2PBlo" +
-      "bRange\"\300\001\n\017P2PBlobResponse\0225\n\017genericRes" +
-      "ponse\030\001 \001(\0132\034.peercentrum.GenericRespons" +
-      "e\0221\n\010hashList\030\002 \001(\0132\037.peercentrum.P2PBlo",
-      "bHashListMsg\022\022\n\nblobLength\030\003 \001(\003\022/\n\tblob" +
-      "Bytes\030\004 \003(\0132\034.peercentrum.P2PBlobBlockMs" +
-      "g\"8\n\017P2PBlobBlockMsg\022\022\n\nblockIndex\030\001 \001(\r" +
-      "\022\021\n\tblobBytes\030\002 \001(\014\"\'\n\022P2PBlobHashListMs" +
-      "g\022\021\n\thashBytes\030\001 \003(\014\"\312\001\n\021SettlementMessa" +
-      "ge\022\037\n\027requestSettlementMethod\030\001 \001(\010\022\035\n\025r" +
-      "equestTermsOfService\030\002 \001(\010\0227\n\020settlement" +
-      "Method\030\025 \001(\0132\035.peercentrum.SettlementMet" +
-      "hod\022<\n\tbitcoinTX\030\026 \001(\0132).peercentrum.Bit" +
-      "coinSettlementTransaction\"O\n\034BitcoinSett",
-      "lementTransaction\022\036\n\026destinationApplicat" +
-      "ion\030\001 \001(\014\022\017\n\007txBytes\030\003 \001(\014\"e\n\020Settlement" +
-      "Method\022\030\n\020bitcoinPublicKey\030\001 \001(\014\022\025\n\rripp" +
-      "leAddress\030\013 \001(\014\022 \n\030acceptedRippleCurrenc" +
-      "ies\030\014 \003(\014\"\241\001\n\"SettlementTermOfServiceByt" +
-      "eStorage\022\035\n\025pricePerBytePerPeriod\030\001 \001(\014\022" +
-      "\036\n\026storagePeriodInSeconds\030\002 \001(\r\022\034\n\024minim" +
-      "umNumberOfBytes\030\003 \001(\003\022\036\n\026recoveryDelayIn" +
-      "Seconds\030\005 \001(\r\"\257\001\n#SettlementTermOfServic" +
-      "eByteTransfer\022\034\n\024priceIncomingPerByte\030\001 ",
-      "\001(\014\022\034\n\024priceOutgoingPerByte\030\002 \001(\014\022%\n\035max" +
-      "imumIncomingBytesPerSecond\030\003 \001(\r\022%\n\035maxi" +
-      "mumOutgoingBytesPerSecond\030\004 \001(\rB&\n\024org.p" +
-      "eercentrum.coreB\016ProtocolBuffer"
+      "\n\026peercentrum-core.proto\022\013peercentrum\032\024p" +
+      "aymentchannel.proto\"\357\001\n\rHeaderMessage\0225\n" +
+      "\nsenderInfo\030\001 \001(\0132!.peercentrum.SenderIn" +
+      "formationMsg\022\025\n\rrequestNumber\030\002 \001(\r\022\025\n\rn" +
+      "odePublicKey\030\007 \001(\014\022\025\n\rapplicationId\030\003 \001(" +
+      "\014\022\021\n\tsignature\030\004 \001(\014\022&\n\036applicationSpeci" +
+      "ficBlockLength\030\005 \001(\r\022\'\n\037applicationSpeci" +
+      "ficStreamLength\030\006 \001(\r\"\211\001\n\024SenderInformat" +
+      "ionMsg\022\021\n\tuserAgent\030\001 \001(\t\022\022\n\nexternalIP\030" +
+      "\002 \001(\t\022\024\n\014externalPort\030\003 \001(\r\022\025\n\rnodePubli",
+      "cKey\030\004 \001(\014\022\035\n\025applicationsSupported\030\005 \003(" +
+      "\014\"\217\001\n\016NetworkMessage\022?\n\toperation\030\001 \001(\0162" +
+      ",.peercentrum.NetworkMessage.NetworkOper" +
+      "ation\"<\n\020NetworkOperation\022\024\n\020CLOSE_CONNE" +
+      "CTION\020\000\022\010\n\004PING\020\001\022\010\n\004PONG\020\002\"\200\001\n\rGossipMe" +
+      "ssage\022=\n\020requestMorePeers\030\001 \001(\0132#.peerce" +
+      "ntrum.GossipRequestMorePeers\0220\n\005reply\030\002 " +
+      "\001(\0132!.peercentrum.GossipReplyMorePeers\"7" +
+      "\n\026GossipRequestMorePeers\022\035\n\025applications" +
+      "Requested\030\001 \003(\014\"\231\002\n\024GossipReplyMorePeers",
+      "\022=\n\005peers\030\001 \003(\0132..peercentrum.GossipRepl" +
+      "yMorePeers.PeerEndpoint\032\301\001\n\014PeerEndpoint" +
+      "\022\020\n\010identity\030\001 \001(\014\022M\n\nipEndpoint\030\002 \001(\01329" +
+      ".peercentrum.GossipReplyMorePeers.PeerEn" +
+      "dpoint.IPEndpoint\032-\n\nIPEndpoint\022\021\n\tipadd" +
+      "ress\030\001 \001(\t\022\014\n\004port\030\002 \001(\r\032!\n\013TOREndpoint\022" +
+      "\022\n\nTORAddress\030\001 \001(\t\":\n\017GenericResponse\022\021" +
+      "\n\terrorCode\030\001 \001(\r\022\024\n\014errorMessage\030\002 \001(\t\"" +
+      "\356\002\n\026HashToPublicKeyMessage\0225\n\017genericRes" +
+      "ponse\030\001 \001(\0132\034.peercentrum.GenericRespons",
+      "e\0229\n\nproposedTx\030\002 \001(\0132%.peercentrum.H2PK" +
+      "ProposedTransactions\022A\n\020localTransaction" +
+      "\030\003 \001(\0132\'.peercentrum.HashToPublicKeyTran" +
+      "saction\022\027\n\017membershipQuery\030\004 \001(\014\022\032\n\022memb" +
+      "ershipResponse\030\005 \003(\014\0221\n\013dbSyncQuery\030\006 \001(" +
+      "\0132\034.peercentrum.H2PKDBSyncQuery\0227\n\016dbSyn" +
+      "cResponse\030\007 \001(\0132\037.peercentrum.H2PKDBSync" +
+      "Response\"\322\001\n\032HashToPublicKeyTransaction\022" +
+      "D\n\toperation\030\001 \001(\01621.peercentrum.HashToP" +
+      "ublicKeyTransaction.OPERATION\022\017\n\007address",
+      "\030\002 \001(\014\022\021\n\tpublicKey\030\003 \001(\014\022\021\n\tsignature\030\004" +
+      " \001(\014\022\022\n\nexpiration\030\005 \001(\r\"#\n\tOPERATION\022\n\n" +
+      "\006APPEND\020\000\022\n\n\006REMOVE\020\001\"\216\001\n\030H2PKProposedTr" +
+      "ansactions\022\027\n\017dbVersionNumber\030\001 \001(\r\022\022\n\np" +
+      "roposedBy\030\002 \001(\014\022E\n\024proposedTransactions\030" +
+      "\003 \003(\0132\'.peercentrum.HashToPublicKeyTrans" +
+      "action\"/\n\017H2PKDBSyncQuery\022\034\n\024beginDbVers" +
+      "ionNumber\030\001 \001(\r\"\227\001\n\022H2PKDBSyncResponse\022\033" +
+      "\n\023lastDbVersionNumber\030\001 \001(\r\022\027\n\017lastDbHas" +
+      "hValue\030\002 \001(\014\022\033\n\023syncDbVersionNumber\030\003 \001(",
+      "\r\022.\n\tsyncUnits\030\004 \003(\0132\033.peercentrum.H2PKD" +
+      "BSyncUnit\"?\n\016H2PKDBSyncUnit\022\017\n\007address\030\001" +
+      " \001(\014\022\034\n\024publicKeysRegistered\030\002 \003(\014\"*\n\014P2" +
+      "PBlobRange\022\r\n\005begin\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"\252" +
+      "\001\n\016P2PBlobRequest\022\025\n\rrequestedHash\030\001 \001(\014" +
+      "\022\031\n\021maximumBlobLength\030\002 \001(\003\022\027\n\017requestHa" +
+      "shList\030\003 \001(\010\022\031\n\021requestBlobLength\030\004 \001(\010\022" +
+      "2\n\017requestedRanges\030\005 \003(\0132\031.peercentrum.P" +
+      "2PBlobRange\"\300\001\n\017P2PBlobResponse\0225\n\017gener" +
+      "icResponse\030\001 \001(\0132\034.peercentrum.GenericRe",
+      "sponse\0221\n\010hashList\030\002 \001(\0132\037.peercentrum.P" +
+      "2PBlobHashListMsg\022\022\n\nblobLength\030\003 \001(\003\022/\n" +
+      "\tblobBytes\030\004 \003(\0132\034.peercentrum.P2PBlobBl" +
+      "ockMsg\"8\n\017P2PBlobBlockMsg\022\022\n\nblockIndex\030" +
+      "\001 \001(\r\022\021\n\tblobBytes\030\002 \001(\014\"\'\n\022P2PBlobHashL" +
+      "istMsg\022\021\n\thashBytes\030\001 \003(\014\"\344\001\n\rSettlement" +
+      "Msg\022O\n\034createMicroPaymentChannelMsg\030\001 \001(" +
+      "\0132).peercentrum.CreateMicroPaymentChanne" +
+      "lMsg\022A\n\025microPaymentUpdateMsg\030\002 \001(\0132\".pe" +
+      "ercentrum.MicroPaymentUpdateMsg\022?\n\020twoWa",
+      "yChannelMsg\030\003 \003(\0132%.paymentchannels.TwoW" +
+      "ayChannelMessage\"\225\001\n\034CreateMicroPaymentC" +
+      "hannelMsg\022\021\n\tchannelID\030\001 \001(\014\022\036\n\026timeLock" +
+      "edFullRefundTX\030\002 \001(\014\022\037\n\027timeLockedFullRe" +
+      "fundSig\030\003 \001(\014\022!\n\031clientSideEscrowPublicK" +
+      "ey\030\004 \001(\014\"\251\001\n\025MicroPaymentUpdateMsg\022\025\n\rpa" +
+      "yingQuoteId\030\001 \001(\r\022\021\n\tchannelID\030\002 \001(\014\022\035\n\025" +
+      "currentMicropaymentTX\030\003 \001(\014\022!\n\031currentMi" +
+      "cropaymentAmount\030\004 \001(\003\022$\n\034currentMicropa" +
+      "ymentSignature\030\005 \001(\014\"P\n\rMicroQuoteMsg\022\017\n",
+      "\007quoteID\030\001 \001(\r\022\025\n\rapplicationID\030\002 \001(\014\022\027\n" +
+      "\017amountRequested\030\003 \001(\003\"\241\001\n\"SettlementTer" +
+      "mOfServiceByteStorage\022\035\n\025pricePerBytePer" +
+      "Period\030\001 \001(\014\022\036\n\026storagePeriodInSeconds\030\002" +
+      " \001(\r\022\034\n\024minimumNumberOfBytes\030\003 \001(\003\022\036\n\026re" +
+      "coveryDelayInSeconds\030\005 \001(\r\"\257\001\n#Settlemen" +
+      "tTermOfServiceByteTransfer\022\034\n\024priceIncom" +
+      "ingPerByte\030\001 \001(\014\022\034\n\024priceOutgoingPerByte" +
+      "\030\002 \001(\014\022%\n\035maximumIncomingBytesPerSecond\030" +
+      "\003 \001(\r\022%\n\035maximumOutgoingBytesPerSecond\030\004",
+      " \001(\rB&\n\024org.peercentrum.coreB\016ProtocolBu" +
+      "ffer"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -18883,7 +20155,7 @@ public final class ProtocolBuffer {
           internal_static_peercentrum_HeaderMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_HeaderMessage_descriptor,
-              new java.lang.String[] { "SenderInfo", "RequestNumber", "ApplicationId", "Signature", "ApplicationSpecificBlockLength", "ApplicationSpecificStreamLength", });
+              new java.lang.String[] { "SenderInfo", "RequestNumber", "NodePublicKey", "ApplicationId", "Signature", "ApplicationSpecificBlockLength", "ApplicationSpecificStreamLength", });
           internal_static_peercentrum_SenderInformationMsg_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_peercentrum_SenderInformationMsg_fieldAccessorTable = new
@@ -19004,32 +20276,38 @@ public final class ProtocolBuffer {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobHashListMsg_descriptor,
               new java.lang.String[] { "HashBytes", });
-          internal_static_peercentrum_SettlementMessage_descriptor =
+          internal_static_peercentrum_SettlementMsg_descriptor =
             getDescriptor().getMessageTypes().get(18);
-          internal_static_peercentrum_SettlementMessage_fieldAccessorTable = new
+          internal_static_peercentrum_SettlementMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_SettlementMessage_descriptor,
-              new java.lang.String[] { "RequestSettlementMethod", "RequestTermsOfService", "SettlementMethod", "BitcoinTX", });
-          internal_static_peercentrum_BitcoinSettlementTransaction_descriptor =
+              internal_static_peercentrum_SettlementMsg_descriptor,
+              new java.lang.String[] { "CreateMicroPaymentChannelMsg", "MicroPaymentUpdateMsg", "TwoWayChannelMsg", });
+          internal_static_peercentrum_CreateMicroPaymentChannelMsg_descriptor =
             getDescriptor().getMessageTypes().get(19);
-          internal_static_peercentrum_BitcoinSettlementTransaction_fieldAccessorTable = new
+          internal_static_peercentrum_CreateMicroPaymentChannelMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_BitcoinSettlementTransaction_descriptor,
-              new java.lang.String[] { "DestinationApplication", "TxBytes", });
-          internal_static_peercentrum_SettlementMethod_descriptor =
+              internal_static_peercentrum_CreateMicroPaymentChannelMsg_descriptor,
+              new java.lang.String[] { "ChannelID", "TimeLockedFullRefundTX", "TimeLockedFullRefundSig", "ClientSideEscrowPublicKey", });
+          internal_static_peercentrum_MicroPaymentUpdateMsg_descriptor =
             getDescriptor().getMessageTypes().get(20);
-          internal_static_peercentrum_SettlementMethod_fieldAccessorTable = new
+          internal_static_peercentrum_MicroPaymentUpdateMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_SettlementMethod_descriptor,
-              new java.lang.String[] { "BitcoinPublicKey", "RippleAddress", "AcceptedRippleCurrencies", });
-          internal_static_peercentrum_SettlementTermOfServiceByteStorage_descriptor =
+              internal_static_peercentrum_MicroPaymentUpdateMsg_descriptor,
+              new java.lang.String[] { "PayingQuoteId", "ChannelID", "CurrentMicropaymentTX", "CurrentMicropaymentAmount", "CurrentMicropaymentSignature", });
+          internal_static_peercentrum_MicroQuoteMsg_descriptor =
             getDescriptor().getMessageTypes().get(21);
+          internal_static_peercentrum_MicroQuoteMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_peercentrum_MicroQuoteMsg_descriptor,
+              new java.lang.String[] { "QuoteID", "ApplicationID", "AmountRequested", });
+          internal_static_peercentrum_SettlementTermOfServiceByteStorage_descriptor =
+            getDescriptor().getMessageTypes().get(22);
           internal_static_peercentrum_SettlementTermOfServiceByteStorage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_SettlementTermOfServiceByteStorage_descriptor,
               new java.lang.String[] { "PricePerBytePerPeriod", "StoragePeriodInSeconds", "MinimumNumberOfBytes", "RecoveryDelayInSeconds", });
           internal_static_peercentrum_SettlementTermOfServiceByteTransfer_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_peercentrum_SettlementTermOfServiceByteTransfer_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_SettlementTermOfServiceByteTransfer_descriptor,
@@ -19040,6 +20318,7 @@ public final class ProtocolBuffer {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          org.bitcoin.paymentchannel.Protos.getDescriptor(),
         }, assigner);
   }
 

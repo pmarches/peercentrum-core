@@ -27,7 +27,7 @@ public class NetworkClientTest {
 //		Hash256 hashKey = ...;
 //		Hash256 hashValue=hashPointerApp.getPointedValue(hashKey).get();
 //		hashPointerApp.updatePointedValue(hashKey, new Hash256()).sync();
-////		client.sendRequestBytes(serverId, NetworkApplication.BNETWORK_APPID, applicationSpecificBytes);
+////		client.sendRequestBytes(serverId, NetworkApplication.NETWORK_APPID, applicationSpecificBytes);
 //	}
 
 //	public void testRippleApp(){
@@ -35,7 +35,7 @@ public class NetworkClientTest {
 //		rippleApp.getBalanceForAddress(address1);
 //	}
 	
-	@Test
+//	@Test
 	public void testNodeGossip() throws Exception{
 		TopLevelConfig serverConfig=new TopLevelConfig();
 		serverConfig.setNodeIdentifier("ServerNode");
@@ -50,10 +50,33 @@ public class NetworkClientTest {
 
 		NodeGossipClient clientSideGossipApp=new NodeGossipClient(client.getLocalNodeId(), client.getNodeDatabase());
 		clientSideGossipApp.exchangeNodes(client, server.getLocalNodeId());
+				
 		client.close();
 		server.stopAcceptingConnections();
 		
 		assertEquals(1, server.nodeDatabase.size());
 		assertEquals(2, clientNodeDatabase.size());
 	}
+	
+	 @Test
+	  public void testPing() throws Exception{
+	    TopLevelConfig serverConfig=new TopLevelConfig();
+	    serverConfig.setNodeIdentifier("ServerNode");
+	    NetworkServer server = new NetworkServer(serverConfig);
+	    server.nodeDatabase.mapNodeIdToAddress(new NodeIdentifier("A new node on port 22".getBytes()), new InetSocketAddress(22));
+	    new NodeGossipApplication(server);
+	    
+	    NodeDatabase clientNodeDatabase = new NodeDatabase(null);
+	    InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", server.getListeningPort());
+	    clientNodeDatabase.mapNodeIdToAddress(server.getLocalNodeId(), serverEndpoint);
+	    NetworkClient client = new NetworkClient(new NodeIdentifier("ClientNode".getBytes()), clientNodeDatabase);
+	    
+	    System.out.println("server port "+server.getListeningPort());
+	    client.ping(server.getLocalNodeId());
+      client.ping(server.getLocalNodeId());
+
+      client.close();
+	    server.stopAcceptingConnections();
+	  }
+
 }

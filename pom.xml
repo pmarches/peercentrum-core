@@ -47,11 +47,6 @@
     	<version>9.2.1.v20140609</version>
     </dependency>
     <dependency>
-    	<groupId>com.google</groupId>
-    	<artifactId>bitcoinj</artifactId>
-    	<version>0.11.3</version>
-    </dependency>
-    <dependency>
     	<groupId>com.googlecode.json-simple</groupId>
     	<artifactId>json-simple</artifactId>
     	<version>1.1</version>
@@ -80,6 +75,17 @@
     	<groupId>org.pmarches.jBlockChainAPI</groupId>
     	<artifactId>org-pmarches-jBlockChainAPI</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.azazar</groupId>
+    	<artifactId>bitcoin-json-rpc-client</artifactId>
+    	<version>1.0</version>
+    	<scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>com.google</groupId>
+    	<artifactId>bitcoinj</artifactId>
+    	<version>0.12-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <build>

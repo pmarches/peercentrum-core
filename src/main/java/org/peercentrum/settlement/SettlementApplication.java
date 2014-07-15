@@ -2,24 +2,19 @@ package org.peercentrum.settlement;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.util.concurrent.Future;
 
+import org.bitcoin.paymentchannel.Protos;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.ProtocolBuffer;
 import org.peercentrum.core.ProtocolBuffer.HeaderMessage.Builder;
 import org.peercentrum.core.ProtocolBuffer.SenderInformationMsg;
-import org.peercentrum.core.ProtocolBuffer.SettlementMethod;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
-import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.bitcoin.core.ECKey;
-import com.google.protobuf.ByteString;
 
 public class SettlementApplication extends BaseApplicationMessageHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SettlementApplication.class);
@@ -31,7 +26,7 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 	public SettlementApplication(NetworkServer server) throws Exception {
 		super(server);
 		SettlementConfig settlementConfig=(SettlementConfig) server.getConfig().getAppConfig(SettlementConfig.class);
-    db=new SettlementDB();
+    db=new SettlementDB(server.getConfig().getFile(settlementConfig.getSettlementDbPath()));
     bitcoinSettlement=new BitcoinSettlement(server.getConfig().getFile(settlementConfig.getBitcoinWalletPath()));
 	}
 
@@ -39,26 +34,26 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 	public HeaderAndPayload generateReponseFromQuery(ChannelHandlerContext ctx, HeaderAndPayload receivedMessage) {
 		LOGGER.debug("settlement generateReponseFromQuery");
 		try {
-			if(receivedMessage.header.hasSenderInfo()==false){
+			if(receivedMessage.header.hasNodePublicKey()==false){
 				return null;
 			}
-			SenderInformationMsg senderInfo = receivedMessage.header.getSenderInfo();
-			NodeIdentifier remoteNodeIdentifier = new NodeIdentifier(senderInfo.getNodePublicKey().toByteArray());
+			NodeIdentifier remoteNodeIdentifier = new NodeIdentifier(receivedMessage.header.getNodePublicKey().toByteArray());
 
-			ProtocolBuffer.SettlementMessage settlementMessage = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, ProtocolBuffer.SettlementMessage.class);
-			if(settlementMessage.hasSettlementMethod()){
-				SettlementMethod remoteSettlementMethod = settlementMessage.getSettlementMethod();
-				recordSettlementMehod(remoteNodeIdentifier, remoteSettlementMethod);
+      ProtocolBuffer.SettlementMsg.Builder topLevelResponse=ProtocolBuffer.SettlementMsg.newBuilder();
+			ProtocolBuffer.SettlementMsg settlementReqMsg = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, ProtocolBuffer.SettlementMsg.class);
+//			if(settlementReqMsg.hasCreateMicroPaymentChannelMsg()){
+//			  ProtocolBuffer.CreateMicroPaymentChannelMsg createChannelMsg=settlementReqMsg.getCreateMicroPaymentChannelMsg();
+//			  bitcoinSettlement.createNewMicroPaymentChannel(createChannelMsg, topLevelResponse);
+//			}
+//			if(settlementReqMsg.hasMicroPaymentUpdateMsg()){
+//			  ProtocolBuffer.MicroPaymentUpdateMsg updateMicroPymtMsg=settlementReqMsg.getMicroPaymentUpdateMsg();
+//			  updateMicropaymentChannel(updateMicroPymtMsg, topLevelResponse);
+//			}
+			if(settlementReqMsg.getTwoWayChannelMsgCount()>0){
+			  for(Protos.TwoWayChannelMessage twoWayMsg : settlementReqMsg.getTwoWayChannelMsgList()){
+			    bitcoinSettlement.handleTwoWayMessage(remoteNodeIdentifier, twoWayMsg, topLevelResponse);
+			  }
 			}
-			
-			ProtocolBuffer.SettlementMessage.Builder topLevelResponse=ProtocolBuffer.SettlementMessage.newBuilder();
-			if(settlementMessage.hasRequestSettlementMethod() && settlementMessage.getRequestSettlementMethod()){
-				ProtocolBuffer.SettlementMethod.Builder localSettlementMethod = getLocalSettlementMethod();
-				topLevelResponse.setSettlementMethod(localSettlementMethod);
-			}
-			
-			//Micro payment handling
-			
 			
 			Builder headerResponse = super.newResponseHeaderForRequest(receivedMessage);
 			ByteBuf payloadBytes=ProtobufByteBufCodec.encodeNoLengthPrefix(topLevelResponse.build());
@@ -69,43 +64,43 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 		}
 	}
 	
-	void recordSettlementMehod(NodeIdentifier remoteNodeIdentifier, SettlementMethod settlementMethod) throws Exception {
-		LOGGER.debug("Recording settlement method for node {} ", remoteNodeIdentifier);
-		if(settlementMethod.hasBitcoinPublicKey()){
-			LOGGER.error("Bitcoin micro-payment settlement not implemented yet :-(");
-			ECKey remoteBitcointPublicKey=new ECKey(null, settlementMethod.getBitcoinPublicKey().toByteArray());
-			db.settlementMethod.setBitcointSettlementMethod(remoteNodeIdentifier, remoteBitcointPublicKey);
-		}
-		if(settlementMethod.hasRippleAddress()){
-//			RippleAddress remoteRippleAddress=new RippleAddress(settlementMethod.getRippleAddress().toByteArray());
-//			rippleSettlement.setSettlementMethod(remoteNodeIdentifier, remoteRippleAddress);
-		}
-	}
+//	void recordSettlementMehod(NodeIdentifier remoteNodeIdentifier, SettlementMethod settlementMethod) throws Exception {
+//		LOGGER.debug("Recording settlement method for node {} ", remoteNodeIdentifier);
+//		if(settlementMethod.hasBitcoinPublicKey()){
+//			LOGGER.error("Bitcoin micro-payment settlement not implemented yet :-(");
+//			ECKey remoteBitcointPublicKey=new ECKey(null, settlementMethod.getBitcoinPublicKey().toByteArray());
+//			db.settlementMethod.setBitcointSettlementMethod(remoteNodeIdentifier, remoteBitcointPublicKey);
+//		}
+//		if(settlementMethod.hasRippleAddress()){
+////			RippleAddress remoteRippleAddress=new RippleAddress(settlementMethod.getRippleAddress().toByteArray());
+////			rippleSettlement.setSettlementMethod(remoteNodeIdentifier, remoteRippleAddress);
+//		}
+//	}
 
-	public void exchangeSettlementAddresses(final NetworkClient client, NodeIdentifier remoteNodeId) throws Exception {
-		ProtocolBuffer.SettlementMessage.Builder topLevelSettlementMsg=ProtocolBuffer.SettlementMessage.newBuilder();
-		topLevelSettlementMsg.setRequestSettlementMethod(true);
-		
-		ProtocolBuffer.SettlementMethod.Builder localSettlementMethod = getLocalSettlementMethod();
-		topLevelSettlementMsg.setSettlementMethod(localSettlementMethod);
-		
-		Future<ProtocolBuffer.SettlementMessage> settlementResponseFuture = client.sendRequest(remoteNodeId, getApplicationId(), topLevelSettlementMsg.build());
-		ProtocolBuffer.SettlementMessage settlementResponse=settlementResponseFuture.get();
-		if(settlementResponse.hasSettlementMethod()){
-			ProtocolBuffer.SettlementMethod remoteSettlementMethod=settlementResponse.getSettlementMethod();
-			recordSettlementMehod(remoteNodeId, remoteSettlementMethod);
-		}
-	}
+//	public void exchangeSettlementAddresses(final NetworkClient client, NodeIdentifier remoteNodeId) throws Exception {
+//		ProtocolBuffer.SettlementMessage.Builder topLevelSettlementMsg=ProtocolBuffer.SettlementMessage.newBuilder();
+//		topLevelSettlementMsg.setRequestSettlementMethod(true);
+//		
+//		ProtocolBuffer.SettlementMethod.Builder localSettlementMethod = getLocalSettlementMethod();
+//		topLevelSettlementMsg.setSettlementMethod(localSettlementMethod);
+//		
+//		Future<ProtocolBuffer.SettlementMessage> settlementResponseFuture = client.sendRequest(remoteNodeId, getApplicationId(), topLevelSettlementMsg.build());
+//		ProtocolBuffer.SettlementMessage settlementResponse=settlementResponseFuture.get();
+//		if(settlementResponse.hasSettlementMethod()){
+//			ProtocolBuffer.SettlementMethod remoteSettlementMethod=settlementResponse.getSettlementMethod();
+//			recordSettlementMehod(remoteNodeId, remoteSettlementMethod);
+//		}
+//	}
+//
+//	protected ProtocolBuffer.SettlementMethod.Builder getLocalSettlementMethod() {
+//		ProtocolBuffer.SettlementMethod.Builder localSettlementMethod=ProtocolBuffer.SettlementMethod.newBuilder();
+//		localSettlementMethod.addAcceptedRippleCurrencies(ByteString.EMPTY);
+////		RippleAddress localRippleAddress=rippleSeed.getPublicRippleAddress();
+////		localSettlementMethod.setRippleAddress(ByteString.copyFrom(localRippleAddress.getBytes()));
+//		return localSettlementMethod;
+//	}
 
-	protected ProtocolBuffer.SettlementMethod.Builder getLocalSettlementMethod() {
-		ProtocolBuffer.SettlementMethod.Builder localSettlementMethod=ProtocolBuffer.SettlementMethod.newBuilder();
-		localSettlementMethod.addAcceptedRippleCurrencies(ByteString.EMPTY);
-//		RippleAddress localRippleAddress=rippleSeed.getPublicRippleAddress();
-//		localSettlementMethod.setRippleAddress(ByteString.copyFrom(localRippleAddress.getBytes()));
-		return localSettlementMethod;
-	}
-
-	@Override
+  @Override
 	public ApplicationIdentifier getApplicationId() {
 		return APP_ID;
 	}

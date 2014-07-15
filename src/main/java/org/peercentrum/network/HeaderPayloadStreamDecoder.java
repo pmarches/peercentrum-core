@@ -8,86 +8,84 @@ import java.util.List;
 
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.ProtocolBuffer;
+import org.peercentrum.core.ProtocolBuffer.HeaderMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 public class HeaderPayloadStreamDecoder extends ByteToMessageDecoder {
-	private static final Logger LOGGER = LoggerFactory.getLogger(HeaderPayloadStreamDecoder.class);
-	HeaderAndPayload pendingHeaderAndPayload;
-	ProtocolBuffer.HeaderMessage pendingHeader;
-	ByteBuf pendingApplicationBlock;
-	int nbBytesLeftToStream;
-	@Override
-	protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-		if(pendingHeader==null){
-			pendingHeader=ProtobufByteBufCodec.decodeWithLengthPrefix(in, ProtocolBuffer.HeaderMessage.class);
-			if(pendingHeader==null){
-				return;
-			}
-			if(pendingHeader.hasApplicationSpecificStreamLength()){
-				nbBytesLeftToStream=pendingHeader.getApplicationSpecificStreamLength();
-			}
-			else{
-				nbBytesLeftToStream=0;
-			}
-		}
-		
-		if(pendingHeader.hasApplicationSpecificBlockLength()){
-			if(pendingApplicationBlock==null){
-				if(in.readableBytes()<pendingHeader.getApplicationSpecificBlockLength()){
-					return;
-				}
-				pendingApplicationBlock=in.readBytes(pendingHeader.getApplicationSpecificBlockLength());
-			}
-		}
+  private static final Logger LOGGER = LoggerFactory.getLogger(HeaderPayloadStreamDecoder.class);
+  ProtocolBuffer.HeaderMessage pendingHeader;
+  int nbBytesLeftToStream;
+  @Override
+  protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+    if(pendingHeader==null){
+      pendingHeader=ProtobufByteBufCodec.decodeWithLengthPrefix(in, ProtocolBuffer.HeaderMessage.class);
+      if(pendingHeader==null){
+        return;
+      }
+      if(pendingHeader.hasApplicationSpecificStreamLength()){
+        nbBytesLeftToStream=pendingHeader.getApplicationSpecificStreamLength();
+      }
+      else{
+        nbBytesLeftToStream=0;
+      }
+    }
 
-		if(pendingHeaderAndPayload==null){ //At this point the header and the blockPayload are known
-			pendingHeaderAndPayload = new HeaderAndPayload(pendingHeader, pendingApplicationBlock);
-			ctx.fireChannelRead(pendingHeaderAndPayload);
-		}
-		
-		int nbByteToStreamInThisPass=Math.min(in.readableBytes(), nbBytesLeftToStream);
-		if(nbByteToStreamInThisPass==0){
-			return;
-		}
-		nbBytesLeftToStream-=nbByteToStreamInThisPass;
+    if(pendingHeader.hasApplicationSpecificBlockLength()){
+      if(pendingHeader.hasApplicationSpecificStreamLength()){
+        throw new Exception("Cannot include a stream with a block");
+      }
+      int appSpecificBlockLength=pendingHeader.getApplicationSpecificBlockLength();
+      if(in.readableBytes()<appSpecificBlockLength){
+        return;
+      }
+      ByteBuf applicationBlock=in.readBytes(appSpecificBlockLength);
+      HeaderMessage headerReadyToBePropagated = pendingHeader;
+      pendingHeader=null;
+      HeaderAndPayload headerAndPayload = new HeaderAndPayload(headerReadyToBePropagated, applicationBlock);
+      ctx.fireChannelRead(headerAndPayload);
+    }
 
-		ByteBuf bytesToStream; //Premature optimization is the root of all evils. But what the heck, it is so much fun!
-		if(nbBytesLeftToStream==0 && nbByteToStreamInThisPass!=in.readableBytes()){
-			bytesToStream=in.readBytes(nbByteToStreamInThisPass); //Split the byteBuf
-		}
-		else{
-			bytesToStream=in;
-		}
-		if(bytesToStream!=Unpooled.EMPTY_BUFFER){
-			BaseStreamHandler streamHandler=BaseStreamHandler.getCurrentStreamHandlerFromContext(ctx);
-			if(streamHandler==null){
-				LOGGER.warn("No stream handler has been set for message "+pendingHeader+" so stream will be discarded");
-			}
-			else{
-				streamHandler.onStreamBytes(bytesToStream);
-			}
-			bytesToStream.readerIndex(bytesToStream.writerIndex()); //Ensure we have consumed all of the stream bytes
-		}
+    int nbByteToStreamInThisPass=Math.min(in.readableBytes(), nbBytesLeftToStream);
+    if(nbByteToStreamInThisPass==0){
+      return;
+    }
+    nbBytesLeftToStream-=nbByteToStreamInThisPass;
 
-		if(nbBytesLeftToStream==0){
-			pendingHeaderAndPayload=null;
-			pendingHeader=null;
-			pendingApplicationBlock=null;
+    ByteBuf bytesToStream; //Premature optimization is the root of all evils. But what the heck, it is so much fun!
+    if(nbBytesLeftToStream==0 && nbByteToStreamInThisPass!=in.readableBytes()){
+      bytesToStream=in.readBytes(nbByteToStreamInThisPass); //Split the byteBuf
+    }
+    else{
+      bytesToStream=in;
+    }
+    if(bytesToStream!=Unpooled.EMPTY_BUFFER){
+      BaseStreamHandler streamHandler=BaseStreamHandler.getCurrentStreamHandlerFromContext(ctx);
+      if(streamHandler==null){
+        LOGGER.warn("No stream handler has been set for message "+pendingHeader+" so stream will be discarded");
+      }
+      else{
+        streamHandler.onStreamBytes(bytesToStream);
+      }
+      bytesToStream.readerIndex(bytesToStream.writerIndex()); //Ensure we have consumed all of the stream bytes
+    }
 
-			BaseStreamHandler streamHandler=BaseStreamHandler.getCurrentStreamHandlerFromContext(ctx);
-			if(streamHandler==null){
-				LOGGER.warn("No stream handler has been set for message "+pendingHeader);
-			}
-			else{
-				streamHandler.onEndStream(ctx);
-			}
+    if(nbBytesLeftToStream==0){
+      pendingHeader=null;
 
-			return;
-		}
-	}
-	
+      BaseStreamHandler streamHandler=BaseStreamHandler.getCurrentStreamHandlerFromContext(ctx);
+      if(streamHandler==null){
+        LOGGER.warn("No stream handler has been set for message "+pendingHeader);
+      }
+      else{
+        streamHandler.onEndStream(ctx);
+      }
+
+      return;
+    }
+  }
+
 
 
 }

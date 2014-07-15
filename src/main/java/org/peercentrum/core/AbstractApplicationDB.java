@@ -9,14 +9,13 @@ public class AbstractApplicationDB  implements AutoCloseable {
   protected SqlJetDb db;
   boolean schemaNeedsToBeCreated;
 
-  public AbstractApplicationDB(String dbPath) throws SqlJetException {
+  public AbstractApplicationDB(File dbFile) throws SqlJetException {
     synchronized(this){
-      if(dbPath==null){
+      if(dbFile==null){
         schemaNeedsToBeCreated=true;
         db = new SqlJetDb(SqlJetDb.IN_MEMORY, true);
       }
       else{
-        File dbFile=new File(dbPath);
         schemaNeedsToBeCreated=dbFile.exists()==false;
         db = new SqlJetDb(dbFile, true);
       }

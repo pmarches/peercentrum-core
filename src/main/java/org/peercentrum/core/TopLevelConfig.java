@@ -2,6 +2,7 @@ package org.peercentrum.core;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.yaml.snakeyaml.Yaml;
@@ -12,7 +13,7 @@ public class TopLevelConfig {
   String nodeIdentifier; //FIXME Temporary, should be derived from the private key...
   String privateKey;
   int listenPort=0;
-  List<?> applications;
+  List<Object> applications;
   boolean enableNAT=false;
   String nodeDatabasePath;
 
@@ -22,6 +23,7 @@ public class TopLevelConfig {
   //Shortcut for unit tests
   public TopLevelConfig(String nodeIdentifier) {
     setNodeIdentifier(nodeIdentifier);
+    applications=new ArrayList<>();
   }
 
   public static TopLevelConfig loadFromFile(File file) throws Exception {
@@ -55,7 +57,7 @@ public class TopLevelConfig {
   public List<?> getApplications() {
     return applications;
   }
-  public void setApplications(List<?> applications) {
+  public void setApplications(List<Object> applications) {
     this.applications = applications;
   }
 
@@ -67,6 +69,10 @@ public class TopLevelConfig {
       }
     }
     return null;
+  }
+
+  public void setAppConfig(Object appConfig) {
+    this.applications.add(appConfig);
   }
 
 
@@ -103,4 +109,5 @@ public class TopLevelConfig {
     }
     return new File(directoryOfConfigFile, fileName);
   }
+
 }
