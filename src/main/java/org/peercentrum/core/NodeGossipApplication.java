@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.google.protobuf.ByteString;
 
 /**
- * FIXME The application should be an aggregate of the client and the server classes. Need to add
+ * FIXME The application should be an aggregate of the client and the server1 classes. Need to add
  * a getClient() and getServer() methods. All the common stuff can go in the application ?
  */
 public class NodeGossipApplication extends BaseApplicationMessageHandler {

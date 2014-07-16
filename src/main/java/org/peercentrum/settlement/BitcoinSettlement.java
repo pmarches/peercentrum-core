@@ -31,7 +31,7 @@ public class BitcoinSettlement {
 //   * <p>The amount of time we request the client lock in their funds.</p>
 //   *
 //   * <p>The value defaults to 24 hours - 60 seconds and should always be greater than 2 hours plus the amount of time
-//   * the channel is expected to be used and smaller than 24 hours minus the client <-> server latency minus some
+//   * the channel is expected to be used and smaller than 24 hours minus the client <-> server1 latency minus some
 //   * factor to account for client clock inaccuracy.</p>
 //   */
 //  public long timeWindow = 24*60*60 - 60;
@@ -220,7 +220,7 @@ public class BitcoinSettlement {
 //      LOGGER.error("Initial payment value was out of range", e);
 //      return;
 //    } catch (InsufficientMoneyException e) {
-//      // This shouldn't happen because the server shouldn't allow itself to get into this situation in the
+//      // This shouldn't happen because the server1 shouldn't allow itself to get into this situation in the
 //      // first place, by specifying a min up front payment.
 //      LOGGER.error("Tried to settle channel and could not afford the fees whilst updating payment", e);
 //      return;

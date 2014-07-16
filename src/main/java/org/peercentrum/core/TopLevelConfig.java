@@ -110,4 +110,10 @@ public class TopLevelConfig {
     return new File(directoryOfConfigFile, fileName);
   }
 
+  public File getDirectory(String string) {
+    File directoryGenerated=getFile(string);
+    directoryGenerated.mkdirs();
+    return directoryGenerated;
+  }
+
 }

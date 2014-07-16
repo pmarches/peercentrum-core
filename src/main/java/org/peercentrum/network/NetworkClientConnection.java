@@ -133,8 +133,9 @@ public class NetworkClientConnection implements Closeable {
     if(pendingRequests.isEmpty()==false){
       LOGGER.error("Closing connection while pending requests still exists: "+pendingRequests.keySet());
     }
-
-    sendRequestBytes(NetworkApplication.NETWORK_APPID, NetworkApplication.getCloseMessageBytes());
+    if(socketChannelFuture.channel().isOpen()){
+      sendRequestBytes(NetworkApplication.NETWORK_APPID, NetworkApplication.getCloseMessageBytes());
+    }
     socketChannelFuture.channel().close().syncUninterruptibly();
     workerGroup.shutdownGracefully(); //FIXME Not our responsability if passed in as argument..
   }

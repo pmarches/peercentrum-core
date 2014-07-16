@@ -20,10 +20,28 @@ public class TestUtilities {
       bitcoin = new BitcoinJSONRPCClient(true);
       bitcoin.getBlockCount(); //Try to trigger exception
     } catch (BitcoinRPCException e) {
-      Runtime.getRuntime().exec("bitcoind --regtest -server -daemon").waitFor();
+      Runtime.getRuntime().exec("bitcoind --regtest -server1 -daemon").waitFor();
       Thread.sleep(1000);
       bitcoin = new BitcoinJSONRPCClient(true);
     }
     return bitcoin;
+  }
+
+  static public void deleteDirectory(File path) {
+    if (path == null){
+      return;
+    }
+    if (path.exists()) {
+      for(File f : path.listFiles()) {
+        if(f.isDirectory()) {
+          deleteDirectory(f);
+          f.delete();
+        }
+        else {
+          f.delete();
+        }
+      }
+      path.delete();
+    }
   }
 }

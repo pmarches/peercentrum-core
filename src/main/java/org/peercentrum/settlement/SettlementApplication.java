@@ -9,7 +9,6 @@ import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.ProtocolBuffer;
 import org.peercentrum.core.ProtocolBuffer.HeaderMessage.Builder;
-import org.peercentrum.core.ProtocolBuffer.SenderInformationMsg;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkServer;

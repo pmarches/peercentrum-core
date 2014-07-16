@@ -2,7 +2,7 @@ package org.peercentrum.settlement;
 
 public class SettlementConfig {
 	String rippleSeed;
-	String bitcoinWalletPath;
+	String bitcoinWalletPath="bitcoin.wallet";
 	String settlementDbPath;
   
 	public String getSettlementDbPath() {

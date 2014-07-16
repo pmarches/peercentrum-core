@@ -6,7 +6,6 @@ import io.netty.buffer.Unpooled;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Hashtable;
 
 import org.peercentrum.h2pk.HashIdentifier;
@@ -38,10 +37,10 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 		}
 	};
 
-	public P2PBlobRepositoryFS(Path repositoryPath) throws Exception {
-		this.repositoryDirectory=repositoryPath.toFile();
+	public P2PBlobRepositoryFS(File repositoryDirectory) throws Exception {
+		this.repositoryDirectory=repositoryDirectory;
 		if(repositoryDirectory.exists()==false){
-			throw new IOException("Repository "+repositoryPath.toAbsolutePath()+" does not exits");
+			throw new IOException("Repository "+repositoryDirectory.toPath().toAbsolutePath()+" does not exits");
 		}
 		
 		try {

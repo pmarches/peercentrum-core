@@ -16442,7 +16442,7 @@ public final class ProtocolBuffer {
      * <code>optional bytes timeLockedFullRefundSig = 3;</code>
      *
      * <pre>
-     *Sent by the server
+     *Sent by the server1
      * </pre>
      */
     boolean hasTimeLockedFullRefundSig();
@@ -16450,7 +16450,7 @@ public final class ProtocolBuffer {
      * <code>optional bytes timeLockedFullRefundSig = 3;</code>
      *
      * <pre>
-     *Sent by the server
+     *Sent by the server1
      * </pre>
      */
     com.google.protobuf.ByteString getTimeLockedFullRefundSig();
@@ -16623,7 +16623,7 @@ public final class ProtocolBuffer {
      * <code>optional bytes timeLockedFullRefundSig = 3;</code>
      *
      * <pre>
-     *Sent by the server
+     *Sent by the server1
      * </pre>
      */
     public boolean hasTimeLockedFullRefundSig() {
@@ -16633,7 +16633,7 @@ public final class ProtocolBuffer {
      * <code>optional bytes timeLockedFullRefundSig = 3;</code>
      *
      * <pre>
-     *Sent by the server
+     *Sent by the server1
      * </pre>
      */
     public com.google.protobuf.ByteString getTimeLockedFullRefundSig() {
@@ -17028,7 +17028,7 @@ public final class ProtocolBuffer {
        * <code>optional bytes timeLockedFullRefundSig = 3;</code>
        *
        * <pre>
-       *Sent by the server
+       *Sent by the server1
        * </pre>
        */
       public boolean hasTimeLockedFullRefundSig() {
@@ -17038,7 +17038,7 @@ public final class ProtocolBuffer {
        * <code>optional bytes timeLockedFullRefundSig = 3;</code>
        *
        * <pre>
-       *Sent by the server
+       *Sent by the server1
        * </pre>
        */
       public com.google.protobuf.ByteString getTimeLockedFullRefundSig() {
@@ -17048,7 +17048,7 @@ public final class ProtocolBuffer {
        * <code>optional bytes timeLockedFullRefundSig = 3;</code>
        *
        * <pre>
-       *Sent by the server
+       *Sent by the server1
        * </pre>
        */
       public Builder setTimeLockedFullRefundSig(com.google.protobuf.ByteString value) {
@@ -17064,7 +17064,7 @@ public final class ProtocolBuffer {
        * <code>optional bytes timeLockedFullRefundSig = 3;</code>
        *
        * <pre>
-       *Sent by the server
+       *Sent by the server1
        * </pre>
        */
       public Builder clearTimeLockedFullRefundSig() {
@@ -17960,7 +17960,7 @@ public final class ProtocolBuffer {
    *
    * <pre>
    **
-   * This message is returned to the client when the server wants the client to pay.
+   * This message is returned to the client when the server1 wants the client to pay.
    * </pre>
    */
   public static final class MicroQuoteMsg extends
@@ -18252,7 +18252,7 @@ public final class ProtocolBuffer {
      *
      * <pre>
      **
-     * This message is returned to the client when the server wants the client to pay.
+     * This message is returned to the client when the server1 wants the client to pay.
      * </pre>
      */
     public static final class Builder extends

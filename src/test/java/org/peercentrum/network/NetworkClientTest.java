@@ -17,11 +17,11 @@ public class NetworkClientTest {
 
 //	@Test
 //	public void testHash2Pointer() {
-//		AsyncSocketServer server = new AsyncSocketServer();
-//		server.addApplicationHandler(new HashToPointerApplication());
+//		AsyncSocketServer server1 = new AsyncSocketServer();
+//		server1.addApplicationHandler(new HashToPointerApplication());
 //		
 //		NetworkClient client = new NetworkClient();
-//		NodeIdentifier serverId=server.getNodeIdentifier();
+//		NodeIdentifier serverId=server1.getNodeIdentifier();
 //		
 //		HashToPointerApplication hashPointerApp=new HashToPointerApplication(client);
 //		Hash256 hashKey = ...;

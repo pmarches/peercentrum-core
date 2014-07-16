@@ -63,7 +63,7 @@ public class NetworkServer { //TODO implement AutoClosable
       ;
     bindChannel = b.bind(config.getListenPort()).sync().channel();
     effectiveListeningPort=((InetSocketAddress) bindChannel.localAddress()).getPort();
-    LOGGER.debug("network server now listening on port {}", effectiveListeningPort);
+    LOGGER.debug("network server1 now listening on port {}", effectiveListeningPort);
   }
 
   public void stopAcceptingConnections() throws InterruptedException{

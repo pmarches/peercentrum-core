@@ -2,8 +2,6 @@ package org.peercentrum.core;
 
 import java.io.File;
 import java.net.InetAddress;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 
 import org.bitlet.weupnp.GatewayDevice;
 import org.bitlet.weupnp.GatewayDiscover;
@@ -49,7 +47,7 @@ public class ServerMain implements Runnable {
 			//TODO Load the applications from the topConfig file, dynamically, resolving dependencies, ... Maybe we need a OSGI container now?
 			new NodeGossipApplication(server);
 			P2PBlobConfig blobConfig=(P2PBlobConfig) topConfig.getAppConfig(P2PBlobConfig.class);
-			Path repositoryPath = FileSystems.getDefault().getPath(blobConfig.getBlobRepositoryPath());
+			File repositoryPath = topConfig.getFile(blobConfig.getBlobRepositoryPath());
 			P2PBlobRepository blobRepository=new P2PBlobRepositoryFS(repositoryPath);
 			new P2PBlobApplication(server, blobRepository);
 			
@@ -84,7 +82,7 @@ public class ServerMain implements Runnable {
 
 //		String externalIPAddress = natDevice.getExternalIPAddress();
 //		LOGGER.debug("Our external address is {}", externalIPAddress);
-//		server.setListeningAddress(externalIPAddress);
+//		server1.setListeningAddress(externalIPAddress);
 
 		final int localPortToMap=server.getListeningPort();
 		LOGGER.debug("Querying device to see if a mapping for port {} already exists", localPortToMap);

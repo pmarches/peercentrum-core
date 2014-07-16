@@ -4,18 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import io.netty.util.concurrent.Future;
 
+import java.io.File;
 import java.net.InetSocketAddress;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 
 import javax.xml.bind.DatatypeConverter;
 
 import org.junit.Test;
-import org.peercentrum.blob.P2PBlobApplication;
-import org.peercentrum.blob.P2PBlobRepositoryFS;
-import org.peercentrum.blob.P2PBlobStandaloneClient;
-import org.peercentrum.blob.P2PBlobStoredBlob;
-import org.peercentrum.blob.P2PBlobStoredBlobMemoryOnly;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
@@ -32,7 +26,7 @@ public class P2PBlobApplicationTest {
 		NodeDatabase sharedNodeDatabase = node1.getNodeDatabase();
 		sharedNodeDatabase.mapNodeIdToAddress(node1.getLocalNodeId(), serverEndpoint);
 
-		Path repositoryPath = FileSystems.getDefault().getPath("testRepo");
+		File repositoryPath = new File("testRepo");
 		P2PBlobRepositoryFS serverSideBlobRepo=new P2PBlobRepositoryFS(repositoryPath);
 		P2PBlobApplication serverSideApp=new P2PBlobApplication(node1, serverSideBlobRepo);
 		

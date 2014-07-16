@@ -6,7 +6,6 @@ import io.netty.util.concurrent.GenericFutureListener;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.List;
 
 import org.bitcoin.paymentchannel.Protos;
@@ -23,7 +22,6 @@ import org.slf4j.LoggerFactory;
 import com.google.bitcoin.core.Coin;
 import com.google.bitcoin.core.ECKey;
 import com.google.bitcoin.core.Sha256Hash;
-import com.google.bitcoin.core.Transaction;
 import com.google.bitcoin.core.WalletExtension;
 import com.google.bitcoin.kits.WalletAppKit;
 import com.google.bitcoin.params.RegTestParams;
@@ -36,16 +34,16 @@ import com.google.common.collect.ImmutableList;
 public class SettlementApplicationClient implements Closeable {
   private static final Logger LOGGER = LoggerFactory.getLogger(SettlementApplicationClient.class);
   
-  
   WalletAppKit clientKit;
   StoredPaymentChannelClientStates clientStoredStates;
   NetworkClient networkClient;
   SettlementMethodTable settlementMethodTable;
   Object paymentChannelIsOpenMonitor=new Object();
+  Object paymentChannelIsClosed=new Object();
   ClientConnection clientHandler=new ClientConnection(){
     @Override
     public void sendToServer(TwoWayChannelMessage twoWayClientMsg) {
-      System.out.println("CLIENT: send to server "+twoWayClientMsg);
+      LOGGER.debug("CLIENT: send to server {}", twoWayClientMsg);
       ProtocolBuffer.SettlementMsg.Builder saRequestMsg=ProtocolBuffer.SettlementMsg.newBuilder();
       saRequestMsg.addTwoWayChannelMsg(twoWayClientMsg);
       Future<SettlementMsg> responseFuture = networkClient.sendRequest(serverNodeId, SettlementApplication.APP_ID, saRequestMsg.build());
@@ -59,7 +57,7 @@ public class SettlementApplicationClient implements Closeable {
           }
           for(Protos.TwoWayChannelMessage twoWayServerMsg : serverResponseMsg.getTwoWayChannelMsgList()){
             LOGGER.debug("Client received response from server {}", twoWayServerMsg);
-            paymentClient.receiveMessage(twoWayServerMsg);
+            paymentChannel.receiveMessage(twoWayServerMsg);
           }
           LOGGER.debug("client Done processing response");
         }
@@ -69,6 +67,10 @@ public class SettlementApplicationClient implements Closeable {
     @Override
     public void destroyConnection(CloseReason reason) {
       System.out.println("CLIENT: destroyConnection "+reason);
+      paymentChannel.connectionClosed();
+      synchronized (paymentChannelIsClosed) {
+        paymentChannelIsClosed.notifyAll();
+      }
     }
 
     @Override
@@ -79,7 +81,7 @@ public class SettlementApplicationClient implements Closeable {
       }
     }
   };
-  private PaymentChannelClient paymentClient;
+  private PaymentChannelClient paymentChannel;
   private NodeIdentifier serverNodeId;
 
   public SettlementApplicationClient(NetworkClient networkClient, TopLevelConfig topConfig, SettlementMethodTable settlementMethodTable) {
@@ -104,30 +106,16 @@ public class SettlementApplicationClient implements Closeable {
     ECKey clientKey=clientKit.wallet().freshReceiveKey();
     Sha256Hash contractId=Sha256Hash.create(otherNode.getBytes());
     serverNodeId=otherNode;
-    paymentClient=new PaymentChannelClient(clientKit.wallet(), clientKey, escrowAmount, contractId, clientHandler);
+    paymentChannel=new PaymentChannelClient(clientKit.wallet(), clientKey, escrowAmount, contractId, clientHandler);
     synchronized(paymentChannelIsOpenMonitor){
-      paymentClient.connectionOpen();
+      paymentChannel.connectionOpen();
       paymentChannelIsOpenMonitor.wait();
     }
   }
 
-  //    BigInteger amountPlusFee = escrowAmount.add(Wallet.SendRequest.DEFAULT_FEE_PER_KB);
-//    
-//    ECKey serverPublicKey=settlementMethodTable.getBitcoinSettlementMethod(otherNode);
-//    
-//    ECKey clientEscrowKey=new ECKey();
-//    long channelExpirationInSeconds=(System.currentTimeMillis()/1000)+(24*60*60);
-//    //  channelExpirationInSeconds=(System.currentTimeMillis()/1000); //FIXME Allow immediate refund for testing purposes
-//    PaymentChannelClientState clientState = new PaymentChannelClientState(clientKit.wallet(), clientEscrowKey,
-//        serverPublicKey, amountPlusFee, channelExpirationInSeconds);
-//    clientState.initiate();
-//    byte[] unsignedRefundTxFromClient = clientState.getIncompleteRefundTransaction().bitcoinSerialize();
-//
-//  }
-
   @Override
   public void close() throws IOException {
-    paymentClient.connectionClosed();
+    paymentChannel.connectionClosed();
     clientKit.stopAsync().awaitTerminated();
   }
 
@@ -136,7 +124,14 @@ public class SettlementApplicationClient implements Closeable {
   }
 
   public void makeMicroPayment(NodeIdentifier localNodeId, ApplicationIdentifier appId, Coin microPaymentAmount) throws Exception {
-    paymentClient.incrementPayment(microPaymentAmount).get();
+    paymentChannel.incrementPayment(microPaymentAmount).get();
     LOGGER.debug("made microPayment of amount {}", microPaymentAmount);
+  }
+
+  public void closePaymentChannel(NodeIdentifier localNodeId) throws InterruptedException {
+    paymentChannel.settle();
+    synchronized(paymentChannelIsClosed){
+      paymentChannelIsClosed.wait();
+    }
   }
 }
