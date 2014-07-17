@@ -15,7 +15,6 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
-import java.io.Closeable;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -31,7 +30,7 @@ import org.slf4j.LoggerFactory;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 
-public class NetworkClientConnection implements Closeable {
+public class NetworkClientConnection implements AutoCloseable {
   private static final Logger LOGGER = LoggerFactory.getLogger(NetworkClientConnection.class);
 
   NioEventLoopGroup workerGroup = new NioEventLoopGroup(); //TODO Pass-in as argument
@@ -129,6 +128,7 @@ public class NetworkClientConnection implements Closeable {
     return responseFuture;
   }
 
+  @Override
   public void close() {
     if(pendingRequests.isEmpty()==false){
       LOGGER.error("Closing connection while pending requests still exists: "+pendingRequests.keySet());

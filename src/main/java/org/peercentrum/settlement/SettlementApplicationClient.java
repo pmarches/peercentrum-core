@@ -15,7 +15,7 @@ import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.ProtocolBuffer;
 import org.peercentrum.core.ProtocolBuffer.SettlementMsg;
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.network.NetworkClient;
+import org.peercentrum.network.NetworkClientConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +36,7 @@ public class SettlementApplicationClient implements Closeable {
   
   WalletAppKit clientKit;
   StoredPaymentChannelClientStates clientStoredStates;
-  NetworkClient networkClient;
+  NetworkClientConnection networkClient;
   SettlementMethodTable settlementMethodTable;
   Object paymentChannelIsOpenMonitor=new Object();
   Object paymentChannelIsClosed=new Object();
@@ -46,7 +46,7 @@ public class SettlementApplicationClient implements Closeable {
       LOGGER.debug("CLIENT: send to server {}", twoWayClientMsg);
       ProtocolBuffer.SettlementMsg.Builder saRequestMsg=ProtocolBuffer.SettlementMsg.newBuilder();
       saRequestMsg.addTwoWayChannelMsg(twoWayClientMsg);
-      Future<SettlementMsg> responseFuture = networkClient.sendRequest(serverNodeId, SettlementApplication.APP_ID, saRequestMsg.build());
+      Future<SettlementMsg> responseFuture = networkClient.sendRequestMsg(SettlementApplication.APP_ID, saRequestMsg.build());
       responseFuture.addListener(new GenericFutureListener<Future<SettlementMsg>>() {
         @Override
         public void operationComplete(Future<SettlementMsg> future) throws Exception {
@@ -82,9 +82,8 @@ public class SettlementApplicationClient implements Closeable {
     }
   };
   private PaymentChannelClient paymentChannel;
-  private NodeIdentifier serverNodeId;
 
-  public SettlementApplicationClient(NetworkClient networkClient, TopLevelConfig topConfig, SettlementMethodTable settlementMethodTable) {
+  public SettlementApplicationClient(NetworkClientConnection networkClient, TopLevelConfig topConfig, SettlementMethodTable settlementMethodTable) {
     this.networkClient=networkClient;
     this.settlementMethodTable=settlementMethodTable;
     RegTestParams params=RegTestParams.get(); //FIXME
@@ -102,10 +101,9 @@ public class SettlementApplicationClient implements Closeable {
     clientKit.startAsync().awaitRunning();
   }
 
-  public void openPaymentChannelTo(NodeIdentifier otherNode, Coin escrowAmount) throws Exception{
+  public void openPaymentChannel(NodeIdentifier otherNode, Coin escrowAmount) throws Exception{
     ECKey clientKey=clientKit.wallet().freshReceiveKey();
     Sha256Hash contractId=Sha256Hash.create(otherNode.getBytes());
-    serverNodeId=otherNode;
     paymentChannel=new PaymentChannelClient(clientKit.wallet(), clientKey, escrowAmount, contractId, clientHandler);
     synchronized(paymentChannelIsOpenMonitor){
       paymentChannel.connectionOpen();
