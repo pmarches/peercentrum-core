@@ -6,7 +6,7 @@ import java.util.List;
 import org.bitcoin.paymentchannel.Protos;
 import org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage;
 import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.core.ProtocolBuffer;
+import org.peercentrum.core.PB;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +58,7 @@ public class BitcoinSettlement {
       LOGGER.debug("SERVER: channelOpen {}", contractHash);
     }
   };
-  ProtocolBuffer.SettlementMsg.Builder pendingTopLevelMsg;
+  PB.SettlementMsg.Builder pendingTopLevelMsg;
 
   private PaymentChannelServer paymentChannelServer;
   
@@ -82,7 +82,7 @@ public class BitcoinSettlement {
     paymentChannelServer.connectionOpen();
   }
 
-  public void handleTwoWayMessage(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, ProtocolBuffer.SettlementMsg.Builder topLevelResponse) throws Exception {
+  public void handleTwoWayMessage(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, PB.SettlementMsg.Builder topLevelResponse) throws Exception {
     if(twoWayMsg.hasType()==false){
       throw new Exception("Missing message type");
     }
@@ -118,7 +118,7 @@ public class BitcoinSettlement {
 //    }
 //  }
 //
-//  private void handleClientVersion(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, ProtocolBuffer.SettlementMsg.Builder topLevelResponse) throws Exception {
+//  private void handleClientVersion(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, PB.SettlementMsg.Builder topLevelResponse) throws Exception {
 //    Protos.ClientVersion clientVersion = twoWayMsg.getClientVersion();
 //    if(clientVersion.hasPreviousChannelContractHash()){
 //      //TODO handle channel re-use?
@@ -140,7 +140,7 @@ public class BitcoinSettlement {
 //    topLevelResponse.setTwoWayChannelMsg(twoWayResponseMsg);
 //  }
 //
-//  private void handleProvideRefund(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, ProtocolBuffer.SettlementMsg.Builder topLevelResponse) throws Exception {
+//  private void handleProvideRefund(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, PB.SettlementMsg.Builder topLevelResponse) throws Exception {
 //    if(twoWayMsg.hasProvideRefund()==false){
 //      throw new Exception("Missing provide refund message");
 //    }
@@ -162,7 +162,7 @@ public class BitcoinSettlement {
 //    topLevelResponse.setTwoWayChannelMsg(twoWayResponseMsg);
 //  }
 //
-//  private void handleReceiveContract(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, final ProtocolBuffer.SettlementMsg.Builder topLevelResponse) throws Exception {
+//  private void handleReceiveContract(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, final PB.SettlementMsg.Builder topLevelResponse) throws Exception {
 //    if(twoWayMsg.hasProvideContract()==false){
 //      throw new Exception("Missing provide contract");
 //    }
@@ -180,7 +180,7 @@ public class BitcoinSettlement {
 //    }, Threading.SAME_THREAD);
 //  }
 //
-//  private void handleUpdatePayment(Protos.UpdatePayment updatePaymentMsg, ProtocolBuffer.SettlementMsg.Builder topLevelResponse) throws Exception {
+//  private void handleUpdatePayment(Protos.UpdatePayment updatePaymentMsg, PB.SettlementMsg.Builder topLevelResponse) throws Exception {
 //    LOGGER.info("Got a payment update");
 //
 //    Coin lastBestPayment = state.getBestValueToMe();
@@ -205,11 +205,11 @@ public class BitcoinSettlement {
 //    }
 //  }
 //
-//  private void handleClose(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, ProtocolBuffer.SettlementMsg.Builder topLevelResponse) throws Exception {
+//  private void handleClose(NodeIdentifier remoteNodeIdentifier, Protos.TwoWayChannelMessage twoWayMsg, PB.SettlementMsg.Builder topLevelResponse) throws Exception {
 //
 //  }
 //
-//  private void multisigContractPropagated(Protos.ProvideContract providedContract, Sha256Hash contractHash, ProtocolBuffer.SettlementMsg.Builder topLevelResponse) {
+//  private void multisigContractPropagated(Protos.ProvideContract providedContract, Sha256Hash contractHash, PB.SettlementMsg.Builder topLevelResponse) {
 //    state.storeChannelInWallet(null);
 //    try {
 //      handleUpdatePayment(providedContract.getInitialPayment(), null);
@@ -261,7 +261,7 @@ public class BitcoinSettlement {
 //    });
 //}
 //
-//  public void createNewMicroPaymentChannel(ProtocolBuffer.CreateMicroPaymentChannelMsg createChannelMsg, ProtocolBuffer.SettlementMsg.Builder topLevelResponse) throws Exception {
+//  public void createNewMicroPaymentChannel(PB.CreateMicroPaymentChannelMsg createChannelMsg, PB.SettlementMsg.Builder topLevelResponse) throws Exception {
 //    if(createChannelMsg.hasTimeLockedFullRefundTX()==false){
 //      throw new Exception("Missing the time locked full refund transaction bytes from the client");
 //    }
@@ -279,7 +279,7 @@ public class BitcoinSettlement {
 //    ECKey clientEscrowKey=ECKey.fromPublicOnly(createChannelMsg.getClientSideEscrowPublicKey().toByteArray());
 //
 //    byte[] fullRefundToClientSignature = serverState.provideRefundTransaction(unsignedFullRefundTX, clientEscrowKey.getPubKey());
-//    ProtocolBuffer.CreateMicroPaymentChannelMsg.Builder createChannelResponseMsg=ProtocolBuffer.CreateMicroPaymentChannelMsg.newBuilder();
+//    PB.CreateMicroPaymentChannelMsg.Builder createChannelResponseMsg=PB.CreateMicroPaymentChannelMsg.newBuilder();
 //    createChannelResponseMsg.setTimeLockedFullRefundSig(ByteString.copyFrom(fullRefundToClientSignature));
 //    topLevelResponse.setCreateMicroPaymentChannelMsg(createChannelResponseMsg);
 //  }

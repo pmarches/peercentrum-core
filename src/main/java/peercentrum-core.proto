@@ -1,7 +1,7 @@
 package peercentrum;
 
 option java_package = "org.peercentrum.core";
-option java_outer_classname = "ProtocolBuffer";
+option java_outer_classname = "PB";
 
 message HeaderMessage {
 	optional SenderInformationMsg senderInfo=1;
@@ -113,30 +113,46 @@ message H2PKDBSyncUnit {
 
 
 //////////////P2PBlob /////////////////
-message P2PBlobRange {
-  optional uint32 begin=1;
-  optional uint32 end=2;
+message P2PBlobRequestMsg {
+	repeated P2PBlobBlobRequestMsg blobRequest=1;
 };
 
-message P2PBlobRequest {
+message P2PBlobBlobRequestMsg {
   optional bytes requestedHash=1;
   //Maybe a maximumBlobHintLength? Malicious blob with huge hint could be a problem?
   
   /*Maximum number of bytes the response may return. If the blobBytes exceed this, 
-    no blobBytes are returned, but the remaining header bytes are returned. If set to 0,
-    no blobBytes will be returned.
+    no P2PBlobResponse.blobBytes are returned, but the other fields are returned. If set to 0,
+    no P2PBlobResponse.blobBytes will be returned. The goal is to avoid the extra back and forth
+    to check the size of the blob before downloading it.
   */
-  optional int64 maximumBlobLength=2;
-  optional bool requestHashList=3;
-  optional bool requestBlobLength=4;
-  repeated P2PBlobRange requestedRanges=5;
+  optional int64 maximumBlobLengthAccepted=2;
+  optional bool requestMetaData=3;       //Asks the server to provide the blob's metadata
+  optional bool requestBlockInventory=5; //Asks the server to provide a list of blocks they have 
+  repeated P2PBlobRangeMsg requestedRanges=6; //What blocks do we want from the server
 };
 
-message P2PBlobResponse {
+message P2PBlobResponseMsg {
   optional GenericResponse genericResponse=1;
-  optional P2PBlobHashListMsg hashList=2;
-  optional int64 blobLength=3;
-  repeated P2PBlobBlockMsg blobBytes=4;
+  optional P2PBlobMetaDataMsg metaData=2;         //Set if P2PBlobRequest.requestHashList is set to true
+  repeated P2PBlobRangeMsg localBlockInventory=3; //Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+  repeated P2PBlobBlockMsg blobBytes=4;   		 //The actual block bytes
+  optional P2PBlobDataTransferQuoteMsg dataTransferQuote=5; //Set only if the server wishes the client to pay
+};
+
+message P2PBlobRangeMsg {
+  optional uint32 begin=1; //Range is inclusive
+  optional uint32 end=2; //Range is inclusive
+};
+
+message P2PBlobMetaDataMsg {
+  optional int64 blobLength=1; //Hash the length as the first element of the blob hash
+  optional int32 blockSize=2;  //This is part of the top level hash too
+  optional P2PBlobHashListMsg hashList=3;
+};
+
+message P2PBlobHashListMsg{
+	repeated bytes hashOfEachBlock=1;
 };
 
 message P2PBlobBlockMsg {
@@ -144,49 +160,20 @@ message P2PBlobBlockMsg {
 	optional bytes blobBytes=2;
 };
 
-message P2PBlobHashListMsg {
-  repeated bytes hashBytes=1;
-};
-
-/////////////// Settlement ////////////////
-
-import "paymentchannel.proto";
-
-message SettlementMsg {
-	optional CreateMicroPaymentChannelMsg createMicroPaymentChannelMsg=1;
-	optional MicroPaymentUpdateMsg microPaymentUpdateMsg=2;	
-	repeated paymentchannels.TwoWayChannelMessage twoWayChannelMsg=3;
-};
-
-message CreateMicroPaymentChannelMsg{
-  optional bytes channelID=1;
-	optional bytes timeLockedFullRefundTX=2;  //Sent by the client
-	optional bytes timeLockedFullRefundSig=3; //Sent by the server
-	optional bytes clientSideEscrowPublicKey=4;
-
-//  optional bytes serverSidePublicKey=4; //Only if no payment channel exists?
-//  optional bytes existingPaymentChannelID=5; //The client already has it...
-//  optional uint32 validUntilTS=6;
-};
-
-message MicroPaymentUpdateMsg {
-  optional uint32 payingQuoteId=1;
-  optional bytes channelID=2;
-	optional bytes currentMicropaymentTX=3; //Sent only once, subsequent updates only the amount and signature
-	optional int64 currentMicropaymentAmount=4; //This should always increase
-	optional bytes currentMicropaymentSignature=5;
-};
-
 /**
  * This message is returned to the client when the server wants the client to pay.
+ * We could make this a lot more complex: Using a  specialized message that represents a quote, which the
+ * client signs (turning it into an invoice). The user can lay claim to bytes of a specified file & whatnot.
+ * Let's start simple by simply sending our prices
  */
-message MicroQuoteMsg {
-  optional uint32 quoteID=1; //Might be tracked by certain applications, not P2PBlob
-  optional bytes applicationID=2;
-  optional int64 amountRequested=3;
+message P2PBlobDataTransferQuoteMsg {
+  optional int64 satoshiPerIncomingGigaByte=1; //Bytes going to the server
+  optional int64 satoshiPerOutgoingGigaByte=2; //Bytes coming from the server
+//  optional uint32 maximumIncomingBytesPerSecond=3;
+//  optional uint32 maximumOutgoingBytesPerSecond=4;
 };
 
-/*** This stuff should go on a per app basis ************/
+/*
 message SettlementTermOfServiceByteStorage {
   optional bytes pricePerBytePerPeriod=1;
   optional uint32 storagePeriodInSeconds=2; //Per Hour, Per day,Per month?
@@ -194,12 +181,14 @@ message SettlementTermOfServiceByteStorage {
   optional int64 minimumNumberOfBytes=3; //To create usage tiers
   optional uint32 recoveryDelayInSeconds=5; //How much time may elapse before we return the data 
 };
+*/
 
-message SettlementTermOfServiceByteTransfer {
-  optional bytes priceIncomingPerByte=1;
-  optional bytes priceOutgoingPerByte=2;
-  optional uint32 maximumIncomingBytesPerSecond=3;
-  optional uint32 maximumOutgoingBytesPerSecond=4;
+/////////////// Settlement ////////////////
+
+import "paymentchannel.proto";
+
+message SettlementMsg {
+	repeated paymentchannels.TwoWayChannelMessage twoWayChannelMsg=1;
 };
 
 

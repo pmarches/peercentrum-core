@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.peercentrum.core.ProtocolBuffer;
+import org.peercentrum.core.PB;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Splitter;
@@ -21,11 +21,10 @@ public class P2PBlobRangeSet {
   public P2PBlobRangeSet() {
   }
 
-  public P2PBlobRangeSet(List<ProtocolBuffer.P2PBlobRange> blobRangesList, int maximumRangePossible) {
-    for(ProtocolBuffer.P2PBlobRange protobufRange : blobRangesList){
+  public P2PBlobRangeSet(List<PB.P2PBlobRangeMsg> blobRangesList) {
+    for(PB.P2PBlobRangeMsg protobufRange : blobRangesList){
       ranges.add(Range.closed(protobufRange.getBegin(), protobufRange.getEnd()));
     }
-    this.ranges.remove(Range.greaterThan(maximumRangePossible));
   }
 
   public P2PBlobRangeSet(int low, int high) {
@@ -49,13 +48,13 @@ public class P2PBlobRangeSet {
     this.ranges=ranges;
   }
 
-  public List<ProtocolBuffer.P2PBlobRange> toP2PBlobRangeMsgList() {
+  public List<PB.P2PBlobRangeMsg> toP2PBlobRangeMsgList() {
     if(ranges.contains(Integer.MAX_VALUE)){
       return Collections.emptyList();
     }
-    List<ProtocolBuffer.P2PBlobRange> listOfRanges=new ArrayList<>();
+    List<PB.P2PBlobRangeMsg> listOfRanges=new ArrayList<>();
     for(Range<Integer> currentRange: ranges.asRanges()){
-      ProtocolBuffer.P2PBlobRange.Builder rangeMsg=ProtocolBuffer.P2PBlobRange.newBuilder();
+      PB.P2PBlobRangeMsg.Builder rangeMsg=PB.P2PBlobRangeMsg.newBuilder();
       rangeMsg.setBegin(currentRange.lowerEndpoint());
       rangeMsg.setEnd(currentRange.upperEndpoint());
       listOfRanges.add(rangeMsg.build());
@@ -130,6 +129,29 @@ public class P2PBlobRangeSet {
     return new P2PBlobRangeSet(constrainedRange);
   }
 
+  public void intersectionThis(P2PBlobRangeSet otherRangeSet) {
+    RangeSet<Integer> intersection=TreeRangeSet.create();
+    for(Range<Integer> otherRange: otherRangeSet.ranges.asRanges()){
+      intersection.addAll(ranges.subRangeSet(otherRange));
+    }
+    ranges=intersection;
+  }
+
+  public P2PBlobRangeSet minus(P2PBlobRangeSet otherRange) {
+    P2PBlobRangeSet result=new P2PBlobRangeSet(ranges);
+    result.ranges.removeAll(otherRange.ranges);
+    return result;
+  }
+
+  public int getCardinality() {
+    int cardinality=0;
+    for(Range<Integer> r: ranges.asRanges()){
+      cardinality+=r.upperEndpoint()-r.lowerEndpoint()+1;
+    }
+    return cardinality;
+  }
+  
+  
   @Override
   public int hashCode() {
     final int prime = 31;

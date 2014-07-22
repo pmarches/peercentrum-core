@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
-import org.peercentrum.core.ProtocolBuffer;
+import org.peercentrum.core.PB;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.spongycastle.crypto.digests.SHA256Digest;
 
@@ -29,8 +29,8 @@ public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 		}
 	}
 
-	public P2PBlobHashList(ProtocolBuffer.P2PBlobHashListMsg hashListMsg) {
-		for(ByteString hashMsg:hashListMsg.getHashBytesList()){
+	public P2PBlobHashList(PB.P2PBlobHashListMsg hashListMsg) {
+		for(ByteString hashMsg:hashListMsg.getHashOfEachBlockList()){
 			add(new HashIdentifier(hashMsg.toByteArray()));
 		}
 	}
@@ -51,10 +51,10 @@ public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 		return topLevelHash;
 	}
 
-	public ProtocolBuffer.P2PBlobHashListMsg toHashListMsg() {
-		ProtocolBuffer.P2PBlobHashListMsg.Builder hashListMsg=ProtocolBuffer.P2PBlobHashListMsg.newBuilder();
+	public PB.P2PBlobHashListMsg toHashListMsg() {
+		PB.P2PBlobHashListMsg.Builder hashListMsg=PB.P2PBlobHashListMsg.newBuilder();
 		for(HashIdentifier currentHash:this){
-			hashListMsg.addHashBytes(currentHash.toByteString());
+			hashListMsg.addHashOfEachBlock(currentHash.toByteString());
 		}
 		return hashListMsg.build();
 	}

@@ -2,7 +2,7 @@ package org.peercentrum.h2pk;
 
 
 import org.peercentrum.consensusprocess.ConsensusTransaction;
-import org.peercentrum.core.ProtocolBuffer;
+import org.peercentrum.core.PB;
 
 import com.google.protobuf.ByteString;
 
@@ -12,11 +12,11 @@ public class HashToPublicKeyTransaction extends ConsensusTransaction implements 
 	HashPointerSignature signature;
 	boolean isAppend;
 	
-	public HashToPublicKeyTransaction(ProtocolBuffer.HashToPublicKeyTransaction TXMsg) {
+	public HashToPublicKeyTransaction(PB.HashToPublicKeyTransaction TXMsg) {
 		address=new HashIdentifier(TXMsg.getAddress().toByteArray());
 		publicKey=new PublicKeyIdentifier(TXMsg.getPublicKey().toByteArray());
 		signature=new HashPointerSignature(TXMsg.getSignature().toByteArray());
-		isAppend=TXMsg.getOperation()==ProtocolBuffer.HashToPublicKeyTransaction.OPERATION.APPEND;
+		isAppend=TXMsg.getOperation()==PB.HashToPublicKeyTransaction.OPERATION.APPEND;
 	}
 	
 	public HashToPublicKeyTransaction(HashIdentifier address, PublicKeyIdentifier publicKey, 
@@ -33,16 +33,16 @@ public class HashToPublicKeyTransaction extends ConsensusTransaction implements 
 				new PublicKeyIdentifier(publicKey.getBytes()), isAppend, new HashPointerSignature(signature.getBytes()));
 	}
 
-	public ProtocolBuffer.HashToPublicKeyTransaction toMessage(){
-		ProtocolBuffer.HashToPublicKeyTransaction.Builder TXMsg=ProtocolBuffer.HashToPublicKeyTransaction.newBuilder();
+	public PB.HashToPublicKeyTransaction toMessage(){
+		PB.HashToPublicKeyTransaction.Builder TXMsg=PB.HashToPublicKeyTransaction.newBuilder();
 		TXMsg.setAddress(ByteString.copyFrom(address.getBytes()));
 		TXMsg.setPublicKey(ByteString.copyFrom(publicKey.getBytes()));
 		TXMsg.setSignature(ByteString.copyFrom(signature.getBytes()));
 		if(isAppend){
-			TXMsg.setOperation(ProtocolBuffer.HashToPublicKeyTransaction.OPERATION.APPEND);
+			TXMsg.setOperation(PB.HashToPublicKeyTransaction.OPERATION.APPEND);
 		}
 		else{
-			TXMsg.setOperation(ProtocolBuffer.HashToPublicKeyTransaction.OPERATION.REMOVE);
+			TXMsg.setOperation(PB.HashToPublicKeyTransaction.OPERATION.REMOVE);
 		}
 		return TXMsg.build();
 	}

@@ -17,35 +17,32 @@ public class SettlementApplicationTest {
   @Test
   public void testPayNode() throws Exception {
     TransientMockNetworkOfNodes mockNodes=new TransientMockNetworkOfNodes();
-    SettlementDB clientSettlementDB=new SettlementDB(null);
     NetworkClientConnection clientToServerConnection = mockNodes.networkClient1.createConnectionToPeer(mockNodes.server1.getLocalNodeId());
-    SettlementApplicationClient settlementClient=new SettlementApplicationClient(clientToServerConnection, mockNodes.client1Config, clientSettlementDB.settlementMethod);
     double clientStartAmount=13.0;
-    mockNodes.fundBitcoinWalletOfNode(settlementClient.clientKit.wallet(), clientStartAmount);
+    mockNodes.fundBitcoinWalletOfNode(mockNodes.settlementClient1.clientKit.wallet(), clientStartAmount);
 
     Coin escrow = Coin.valueOf(0, 10);
     Coin escrowPlusFeeAmount=escrow.add(Transaction.REFERENCE_DEFAULT_MIN_TX_FEE);
     NodeIdentifier contractID = mockNodes.server1.getLocalNodeId();
-    settlementClient.openPaymentChannel(contractID, escrowPlusFeeAmount);
-    assertEquals(escrow, settlementClient.getAmountRemainingInChannel(contractID));
+    mockNodes.settlementClient1.openPaymentChannel(contractID, escrowPlusFeeAmount);
+    assertEquals(escrow, mockNodes.settlementClient1.getAmountRemainingInChannel(contractID));
     Coin expectedBalance=escrow;
     Coin microPaymentAmount=Coin.CENT;
     for(int i=0; i<5; i++){
-      assertEquals(expectedBalance, settlementClient.getAmountRemainingInChannel(contractID));
-      settlementClient.makeMicroPayment(contractID, P2PBlobApplication.APP_ID, microPaymentAmount);
+      assertEquals(expectedBalance, mockNodes.settlementClient1.getAmountRemainingInChannel(contractID));
+      mockNodes.settlementClient1.makeMicroPayment(P2PBlobApplication.APP_ID, microPaymentAmount);
       expectedBalance=expectedBalance.subtract(microPaymentAmount);
     }
-    settlementClient.closePaymentChannel(contractID);
+    mockNodes.settlementClient1.closePaymentChannel(contractID);
 
     Coin expectedNewBalance=Coin.parseCoin(Double.toString(clientStartAmount))
         .subtract(Transaction.REFERENCE_DEFAULT_MIN_TX_FEE)  //The fee to create the contract
         .subtract(Transaction.REFERENCE_DEFAULT_MIN_TX_FEE)  //The fee to get the refund
         .subtract(Coin.valueOf(0, 5));  //The micro payments sum
-    assertEquals(expectedNewBalance, settlementClient.clientKit.wallet().getBalance(BalanceType.ESTIMATED));
+    assertEquals(expectedNewBalance, mockNodes.settlementClient1.clientKit.wallet().getBalance(BalanceType.ESTIMATED));
     
 //    clientSettlementDB.getBalanceOfNode(mockNodes.server1.getLocalNodeId());
-    settlementClient.close();
-    clientSettlementDB.close();
+    mockNodes.shutdown();
     clientToServerConnection.close();
   }
 

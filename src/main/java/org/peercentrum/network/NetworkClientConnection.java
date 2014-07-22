@@ -22,8 +22,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.ProtobufByteBufCodec;
-import org.peercentrum.core.ProtocolBuffer;
-import org.peercentrum.core.ProtocolBuffer.HeaderMessage;
+import org.peercentrum.core.PB;
+import org.peercentrum.core.PB.HeaderMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +37,7 @@ public class NetworkClientConnection implements AutoCloseable {
   ChannelFuture socketChannelFuture;
   AtomicInteger requestCounter = new AtomicInteger();
   ConcurrentHashMap<Integer, DefaultPromise<ByteBuf>> pendingRequests = new  ConcurrentHashMap<>();
-  ProtocolBuffer.SenderInformationMsg senderInfo;
+  PB.SenderInformationMsg senderInfo;
 
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>(){
     protected void initChannel(SocketChannel ch) throws Exception {
@@ -141,7 +141,7 @@ public class NetworkClientConnection implements AutoCloseable {
   }
 
   public void setLocalNodeInfo(NodeIdentifier localNodeId, int localListeningPort) {
-    ProtocolBuffer.SenderInformationMsg.Builder senderInfoBuilder=ProtocolBuffer.SenderInformationMsg.newBuilder();
+    PB.SenderInformationMsg.Builder senderInfoBuilder=PB.SenderInformationMsg.newBuilder();
     senderInfoBuilder.setUserAgent(getClass().getName());
     senderInfoBuilder.setNodePublicKey(ByteString.copyFrom(localNodeId.getBytes()));
     //        senderInfoBuilder.setExternalIP(effectiveListeningPort.getAddress().getHostName());

@@ -8,9 +8,9 @@ import java.util.List;
 
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.core.ProtocolBuffer;
-import org.peercentrum.core.ProtocolBuffer.GenericResponse;
-import org.peercentrum.core.ProtocolBuffer.HashToPublicKeyMessage;
+import org.peercentrum.core.PB;
+import org.peercentrum.core.PB.GenericResponse;
+import org.peercentrum.core.PB.HashToPublicKeyMessage;
 import org.peercentrum.network.NetworkClient;
 
 import com.google.protobuf.ByteString;
@@ -29,7 +29,7 @@ public class HashToPublicKeyStandaloneClient extends NetworkClient {
 		HashPointerSignature signature = new HashPointerSignature("FAKE sig data".getBytes());
 		HashToPublicKeyTransaction txObject=new HashToPublicKeyTransaction(address, publicKey, true, signature);
 		
-		ProtocolBuffer.HashToPublicKeyMessage.Builder appLevelMessage=ProtocolBuffer.HashToPublicKeyMessage.newBuilder();
+		PB.HashToPublicKeyMessage.Builder appLevelMessage=PB.HashToPublicKeyMessage.newBuilder();
 		appLevelMessage.setLocalTransaction(txObject.toMessage());
 		Future<HashToPublicKeyMessage> registrationResponseFuture = sendRequest(remoteHost, HashToPublicKeyApplication.APP_ID, appLevelMessage.build());
 		GenericResponse genericResponse = registrationResponseFuture.get().getGenericResponse();
@@ -39,7 +39,7 @@ public class HashToPublicKeyStandaloneClient extends NetworkClient {
 	}
 	
 	public List<NodeIdentifier> getMembershipForAddress(HashIdentifier address) throws Exception {
-		ProtocolBuffer.HashToPublicKeyMessage.Builder topLevelMessage=ProtocolBuffer.HashToPublicKeyMessage.newBuilder();
+		PB.HashToPublicKeyMessage.Builder topLevelMessage=PB.HashToPublicKeyMessage.newBuilder();
 		topLevelMessage.setMembershipQuery(ByteString.copyFrom(address.getBytes()));
 
 		Future<HashToPublicKeyMessage> registrationResponseFuture = sendRequest(remoteHost, HashToPublicKeyApplication.APP_ID, topLevelMessage.build());

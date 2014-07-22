@@ -59,7 +59,7 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 
 	}
 	
-	protected void importFileIntoRepository(final File nonRepositoryFile) throws Exception {
+	public HashIdentifier importFileIntoRepository(final File nonRepositoryFile) throws Exception {
 		final P2PBlobHashList fileHashList=P2PBlobHashList.createFromFile(nonRepositoryFile);
 		final HashIdentifier topHash=fileHashList.getTopLevelHash();
 		final ByteBuf concatenatedHashes=Unpooled.buffer(fileHashList.size()*P2PBlobHashList.HASH_BYTE_SIZE);
@@ -74,7 +74,8 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 						concatenatedHashes.array(),
 						fileHashList.size(),
 						null,
-						nonRepositoryFile.length());
+						nonRepositoryFile.length(),
+						P2PBlobApplication.BLOCK_SIZE);
 				LOGGER.debug("Added topHash/hashList={}", newRow);
 				return null;
 			}
@@ -84,8 +85,9 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 
 		File hashedFileName=new File(nonRepositoryFile.getParentFile(), topHash.toString()+".blob");
 		if(nonRepositoryFile.renameTo(hashedFileName)==false){
-			LOGGER.error("failed to rename "+nonRepositoryFile+" to "+hashedFileName);
+			throw new Exception("failed to rename "+nonRepositoryFile+" to "+hashedFileName);
 		}
+		return topHash;
 	}
 
 	protected void maybeCreateSchema(boolean schemaNeedsToBeCreated) throws SqlJetException {
@@ -96,7 +98,8 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 					+ "blocksHash BLOB, "
 					+ "numberOfBlocks INTEGER, "
 					+ "rangeLocalBlock TEXT, "
-					+ "blobByteSize INTEGER "
+					+ "blobByteSize INTEGER, "
+          + "blockByteSize INTEGER "
 					+ ");");
 			db.createIndex("CREATE INDEX " + BLOB_META_BLOBHASH_IDX + " ON "+BLOB_META_TABLE_NAME+"(blobHash)");
 			db.commit();
@@ -119,13 +122,15 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 						return null;
 					}
 					long blobByteSize=blobMetaCursor.getInteger("blobByteSize");
+          int blockByteSize=(int) blobMetaCursor.getInteger("blockByteSize");
 					String localBlockRangeStr=blobMetaCursor.getString("rangeLocalBlock");
 					P2PBlobRangeSet localBlockRange=null;
 					if(localBlockRangeStr!=null){
 						localBlockRange=new P2PBlobRangeSet(localBlockRangeStr);
 					}
 					P2PBlobHashList hashList=new P2PBlobHashList(blobMetaCursor.getBlobAsArray("blocksHash"));
-					P2PBlobStoredBlobRepositoryFS status=new P2PBlobStoredBlobRepositoryFS(blobId, hashList, localBlockRange, blobByteSize, P2PBlobRepositoryFS.this);
+					P2PBlobStoredBlobRepositoryFS status=new P2PBlobStoredBlobRepositoryFS(P2PBlobRepositoryFS.this, 
+					    blobId, hashList, localBlockRange, blobByteSize, blockByteSize);
 					cachedTransitStatus.put(blobId, status);
 					return status;
 				}

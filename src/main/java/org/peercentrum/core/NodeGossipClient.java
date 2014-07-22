@@ -26,17 +26,17 @@ public class NodeGossipClient {
   }
   
   public void exchangeNodes(final NetworkClient client, NodeIdentifier peerIdToExchangeWith) throws InterruptedException, ExecutionException {
-    ProtocolBuffer.GossipMessage.Builder gossipReqBuilder=ProtocolBuffer.GossipMessage.newBuilder();
-    gossipReqBuilder.setRequestMorePeers(ProtocolBuffer.GossipRequestMorePeers.getDefaultInstance());
+    PB.GossipMessage.Builder gossipReqBuilder=PB.GossipMessage.newBuilder();
+    gossipReqBuilder.setRequestMorePeers(PB.GossipRequestMorePeers.getDefaultInstance());
     
-    Future<ProtocolBuffer.GossipMessage> responseFuture = client.sendRequest(peerIdToExchangeWith, NodeGossipApplication.GOSSIP_ID, gossipReqBuilder.build());
+    Future<PB.GossipMessage> responseFuture = client.sendRequest(peerIdToExchangeWith, NodeGossipApplication.GOSSIP_ID, gossipReqBuilder.build());
     integrateGossipResponse(responseFuture.get(), client.getNodeDatabase());
   }
 
-  protected void integrateGossipResponse(ProtocolBuffer.GossipMessage response, NodeDatabase nodeDb) {
+  protected void integrateGossipResponse(PB.GossipMessage response, NodeDatabase nodeDb) {
     if(response.hasReply()){
-      ProtocolBuffer.GossipReplyMorePeers gossipReply = response.getReply();
-      for(ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint peer : gossipReply.getPeersList()){
+      PB.GossipReplyMorePeers gossipReply = response.getReply();
+      for(PB.GossipReplyMorePeers.PeerEndpoint peer : gossipReply.getPeersList()){
         NodeIdentifier NodeIdentifier = new NodeIdentifier(peer.getIdentity().toByteArray());
         InetSocketAddress ipEndpoint=new InetSocketAddress(peer.getIpEndpoint().getIpaddress(), peer.getIpEndpoint().getPort());
         nodeDb.mapNodeIdToAddress(NodeIdentifier, ipEndpoint);
@@ -58,9 +58,9 @@ public class NodeGossipClient {
       NetworkClientConnection newConnection = new NetworkClientConnection(this.localNodeId, bootstrapAddress);
       newConnection.setLocalNodeInfo(localNodeId, reachableListeningPort);
       
-      ProtocolBuffer.GossipMessage.Builder gossipReqBuilder=ProtocolBuffer.GossipMessage.newBuilder();
-      gossipReqBuilder.setRequestMorePeers(ProtocolBuffer.GossipRequestMorePeers.getDefaultInstance());
-      ProtocolBuffer.GossipMessage response=newConnection.sendRequestMsg(NodeGossipApplication.GOSSIP_ID, gossipReqBuilder.build()).get();
+      PB.GossipMessage.Builder gossipReqBuilder=PB.GossipMessage.newBuilder();
+      gossipReqBuilder.setRequestMorePeers(PB.GossipRequestMorePeers.getDefaultInstance());
+      PB.GossipMessage response=newConnection.sendRequestMsg(NodeGossipApplication.GOSSIP_ID, gossipReqBuilder.build()).get();
       newConnection.close();
 
       integrateGossipResponse(response, nodeDatabase);

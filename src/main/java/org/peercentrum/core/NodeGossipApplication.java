@@ -54,7 +54,7 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 			LOGGER.debug("generateReponseFromQuery");
 			NodeDatabase nodeDb = server.getNodeDatabase();
 			if(receivedMessage.header.hasSenderInfo()){
-			  ProtocolBuffer.SenderInformationMsg senderInfo = receivedMessage.header.getSenderInfo();
+			  PB.SenderInformationMsg senderInfo = receivedMessage.header.getSenderInfo();
 				LOGGER.debug("Query has senderinfo {}", senderInfo);
 				
 				NodeIdentifier NodeIdentifier = new NodeIdentifier(senderInfo.getNodePublicKey().toByteArray());
@@ -74,19 +74,19 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 				LOGGER.error("Request is missing the application block payload");
 				return null;
 			}
-			ProtocolBuffer.GossipMessage gossipRequest = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, ProtocolBuffer.GossipMessage.class);
+			PB.GossipMessage gossipRequest = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, PB.GossipMessage.class);
 			//TODO Check the application filter
 			if(gossipRequest.hasRequestMorePeers()==false){
 				LOGGER.error("Invalid gossip request");
 				return null;
 			}
-			ProtocolBuffer.HeaderMessage.Builder headerResponse = super.newResponseHeaderForRequest(receivedMessage);
-			ProtocolBuffer.GossipMessage.Builder gossipPayloadBuilder=ProtocolBuffer.GossipMessage.newBuilder();
-			ProtocolBuffer.GossipReplyMorePeers.Builder gossipReplyBuilder=ProtocolBuffer.GossipReplyMorePeers.newBuilder();
+			PB.HeaderMessage.Builder headerResponse = super.newResponseHeaderForRequest(receivedMessage);
+			PB.GossipMessage.Builder gossipPayloadBuilder=PB.GossipMessage.newBuilder();
+			PB.GossipReplyMorePeers.Builder gossipReplyBuilder=PB.GossipReplyMorePeers.newBuilder();
 			for(NodeInformation oneNodeInfo:nodeDb.getAllNodeInformation(50)){
-			  ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.Builder onePeerBuilder = ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.newBuilder();
+			  PB.GossipReplyMorePeers.PeerEndpoint.Builder onePeerBuilder = PB.GossipReplyMorePeers.PeerEndpoint.newBuilder();
 				onePeerBuilder.setIdentity(ByteString.copyFrom(oneNodeInfo.publicKey.getBytes()));
-				onePeerBuilder.setIpEndpoint(ProtocolBuffer.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.newBuilder().setIpaddress(oneNodeInfo.nodeSocketAddress.getHostString()).setPort(oneNodeInfo.nodeSocketAddress.getPort()));
+				onePeerBuilder.setIpEndpoint(PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.newBuilder().setIpaddress(oneNodeInfo.nodeSocketAddress.getHostString()).setPort(oneNodeInfo.nodeSocketAddress.getPort()));
 				gossipReplyBuilder.addPeers(onePeerBuilder.build());
 			}
 			gossipPayloadBuilder.setReply(gossipReplyBuilder);

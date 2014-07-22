@@ -6,10 +6,10 @@ import io.netty.channel.ChannelHandlerContext;
 
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.ProtobufByteBufCodec;
-import org.peercentrum.core.ProtocolBuffer;
-import org.peercentrum.core.ProtocolBuffer.HeaderMessage;
-import org.peercentrum.core.ProtocolBuffer.NetworkMessage;
-import org.peercentrum.core.ProtocolBuffer.NetworkMessage.NetworkOperation;
+import org.peercentrum.core.PB;
+import org.peercentrum.core.PB.HeaderMessage;
+import org.peercentrum.core.PB.NetworkMessage;
+import org.peercentrum.core.PB.NetworkMessage.NetworkOperation;
 
 public class NetworkApplication extends BaseApplicationMessageHandler {
 
@@ -45,18 +45,18 @@ public class NetworkApplication extends BaseApplicationMessageHandler {
 	}
 	
 	public static ByteBuf getCloseMessageBytes(){
-		ProtocolBuffer.NetworkMessage closeMsg=ProtocolBuffer.NetworkMessage.newBuilder()
+		PB.NetworkMessage closeMsg=PB.NetworkMessage.newBuilder()
 				.setOperation(NetworkOperation.CLOSE_CONNECTION).build();
 		return Unpooled.wrappedBuffer(closeMsg.toByteArray());
 	}
 	
 	public static ByteBuf pingMessageBytes=Unpooled.wrappedBuffer(
-	    ProtocolBuffer.NetworkMessage.newBuilder()
+	    PB.NetworkMessage.newBuilder()
       .setOperation(NetworkOperation.PING).build().toByteArray()
 	    );
 
 	public static ByteBuf pongMessageBytes=Unpooled.wrappedBuffer(
-      ProtocolBuffer.NetworkMessage.newBuilder()
+      PB.NetworkMessage.newBuilder()
       .setOperation(NetworkOperation.PONG).build().toByteArray()
       );
 }

@@ -6,10 +6,10 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 
 import org.junit.Test;
-import org.peercentrum.core.ProtocolBuffer.H2PKDBSyncQuery;
-import org.peercentrum.core.ProtocolBuffer.H2PKDBSyncResponse;
-import org.peercentrum.core.ProtocolBuffer.H2PKDBSyncUnit;
-import org.peercentrum.core.ProtocolBuffer.HashToPublicKeyMessage;
+import org.peercentrum.core.PB.H2PKDBSyncQuery;
+import org.peercentrum.core.PB.H2PKDBSyncResponse;
+import org.peercentrum.core.PB.H2PKDBSyncUnit;
+import org.peercentrum.core.PB.HashToPublicKeyMessage;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.h2pk.HashPointerSignature;
 import org.peercentrum.h2pk.HashToPublicKeyDB;

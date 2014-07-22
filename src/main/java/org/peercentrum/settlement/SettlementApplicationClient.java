@@ -12,8 +12,8 @@ import org.bitcoin.paymentchannel.Protos;
 import org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.core.ProtocolBuffer;
-import org.peercentrum.core.ProtocolBuffer.SettlementMsg;
+import org.peercentrum.core.PB;
+import org.peercentrum.core.PB.SettlementMsg;
 import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.network.NetworkClientConnection;
 import org.slf4j.Logger;
@@ -44,13 +44,13 @@ public class SettlementApplicationClient implements Closeable {
     @Override
     public void sendToServer(TwoWayChannelMessage twoWayClientMsg) {
       LOGGER.debug("CLIENT: send to server {}", twoWayClientMsg);
-      ProtocolBuffer.SettlementMsg.Builder saRequestMsg=ProtocolBuffer.SettlementMsg.newBuilder();
+      PB.SettlementMsg.Builder saRequestMsg=PB.SettlementMsg.newBuilder();
       saRequestMsg.addTwoWayChannelMsg(twoWayClientMsg);
       Future<SettlementMsg> responseFuture = networkClient.sendRequestMsg(SettlementApplication.APP_ID, saRequestMsg.build());
       responseFuture.addListener(new GenericFutureListener<Future<SettlementMsg>>() {
         @Override
         public void operationComplete(Future<SettlementMsg> future) throws Exception {
-          ProtocolBuffer.SettlementMsg serverResponseMsg=future.get();
+          PB.SettlementMsg serverResponseMsg=future.get();
           if(serverResponseMsg.getTwoWayChannelMsgCount()==0){
             LOGGER.error("Received a settlement response without a TwoWayChannelMsg");
             return;
@@ -88,7 +88,7 @@ public class SettlementApplicationClient implements Closeable {
     this.settlementMethodTable=settlementMethodTable;
     RegTestParams params=RegTestParams.get(); //FIXME
     File bitcoinDir=topConfig.getFile("bitcoin");
-    clientKit=new WalletAppKit(params, bitcoinDir, "settlementClient") {
+    clientKit=new WalletAppKit(params, bitcoinDir, "settlementClient1") {
       @Override
       protected List<WalletExtension> provideWalletExtensions() throws Exception {
         clientStoredStates = new StoredPaymentChannelClientStates(wallet(), peerGroup());
@@ -113,7 +113,9 @@ public class SettlementApplicationClient implements Closeable {
 
   @Override
   public void close() throws IOException {
-    paymentChannel.connectionClosed();
+    if(paymentChannel!=null){
+      paymentChannel.connectionClosed();
+    }
     clientKit.stopAsync().awaitTerminated();
   }
 
@@ -121,7 +123,7 @@ public class SettlementApplicationClient implements Closeable {
     return clientStoredStates.getBalanceForServer(Sha256Hash.create(remoteNodeId.getBytes()));
   }
 
-  public void makeMicroPayment(NodeIdentifier localNodeId, ApplicationIdentifier appId, Coin microPaymentAmount) throws Exception {
+  public void makeMicroPayment(ApplicationIdentifier appId, Coin microPaymentAmount) throws Exception {
     paymentChannel.incrementPayment(microPaymentAmount).get();
     LOGGER.debug("made microPayment of amount {}", microPaymentAmount);
   }

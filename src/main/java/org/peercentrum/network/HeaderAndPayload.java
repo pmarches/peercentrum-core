@@ -2,8 +2,8 @@ package org.peercentrum.network;
 
 import io.netty.buffer.ByteBuf;
 
-import org.peercentrum.core.ProtocolBuffer;
-import org.peercentrum.core.ProtocolBuffer.HeaderMessage;
+import org.peercentrum.core.PB;
+import org.peercentrum.core.PB.HeaderMessage;
 
 public class HeaderAndPayload {
 	public HeaderAndPayload(HeaderMessage.Builder header, ByteBuf payload) {
@@ -17,6 +17,6 @@ public class HeaderAndPayload {
 		this.payload=applicationBlock;
 	}
 
-	public ProtocolBuffer.HeaderMessage header;
+	public PB.HeaderMessage header;
 	public ByteBuf payload;
 }

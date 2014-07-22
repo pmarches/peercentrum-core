@@ -9,9 +9,9 @@ import java.util.Set;
 import javax.xml.bind.DatatypeConverter;
 
 import org.peercentrum.consensusprocess.ConsensusDB;
-import org.peercentrum.core.ProtocolBuffer;
-import org.peercentrum.core.ProtocolBuffer.H2PKDBSyncResponse;
-import org.peercentrum.core.ProtocolBuffer.H2PKDBSyncUnit;
+import org.peercentrum.core.PB;
+import org.peercentrum.core.PB.H2PKDBSyncResponse;
+import org.peercentrum.core.PB.H2PKDBSyncUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tmatesoft.sqljet.core.SqlJetException;
@@ -166,7 +166,7 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 		}
 	}
 
-	public void generateDbSyncResponse(ProtocolBuffer.H2PKDBSyncQuery dbSyncQuery, ProtocolBuffer.HashToPublicKeyMessage.Builder appLevelResponseBuilder) {
+	public void generateDbSyncResponse(PB.H2PKDBSyncQuery dbSyncQuery, PB.HashToPublicKeyMessage.Builder appLevelResponseBuilder) {
 		H2PKDBSyncResponse.Builder dbSyncResponse=H2PKDBSyncResponse.newBuilder();
 		dbSyncResponse.setLastDbVersionNumber(this.dbVersion.intValue());
 		dbSyncResponse.setSyncDbVersionNumber(this.dbVersion.intValue());
@@ -230,7 +230,7 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 				}
 				deleteAllCursor.close();
 
-				for(ProtocolBuffer.H2PKDBSyncUnit syncUnit: dbSyncResponse.getSyncUnitsList()){
+				for(PB.H2PKDBSyncUnit syncUnit: dbSyncResponse.getSyncUnitsList()){
 					byte[] address=syncUnit.getAddress().toByteArray();
 					for(ByteString publicKey : syncUnit.getPublicKeysRegisteredList()){
 						addressToPKTable.insert(address, publicKey.toByteArray());

@@ -15,7 +15,6 @@ public class TopLevelConfig {
   int listenPort=0;
   List<Object> applications;
   boolean enableNAT=false;
-  String nodeDatabasePath;
 
   public TopLevelConfig() {
   }
@@ -88,13 +87,6 @@ public class TopLevelConfig {
   }
   public boolean getEnableNAT() {
     return this.enableNAT;
-  }
-
-  public String getNodeDatabasePath() {
-    return nodeDatabasePath;
-  }
-  public void setNodeDatabasePath(String nodeDatabasePath) {
-    this.nodeDatabasePath = nodeDatabasePath;
   }
 
   @Override

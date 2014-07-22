@@ -11,7 +11,7 @@ public class P2PBlobStoredBlobMemoryOnly extends P2PBlobStoredBlob {
 	public ByteBuf downloadedAndValidatedBlobContent=Unpooled.buffer();
 
 	public P2PBlobStoredBlobMemoryOnly(HashIdentifier blobHash) {
-		super(blobHash, null, null, -1);
+		super(blobHash, null, null, -1, P2PBlobApplication.BLOCK_SIZE);
 	}
     
 	@Override

@@ -2,6 +2,7 @@ package org.peercentrum.blob;
 
 import java.security.InvalidParameterException;
 
+import org.peercentrum.core.PB;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,15 +19,17 @@ public abstract class P2PBlobStoredBlob {
 	protected P2PBlobRangeSet localBlockRange;
 	protected P2PBlobHashList hashList;
 	protected long blobLengthInBytes;
-
+	protected int blockLength=P2PBlobApplication.BLOCK_SIZE;
+	
 	abstract protected void acceptValidatedBlobBytes(int blockIndex, byte[] blobBlockBytes);
 	abstract public ByteString getBytesRange(long offset, int length) throws Exception;
 
-	public P2PBlobStoredBlob(HashIdentifier blobHash, P2PBlobHashList hashList, P2PBlobRangeSet localBlockRange, long blobByteSize) {
+	public P2PBlobStoredBlob(HashIdentifier blobHash, P2PBlobHashList hashList, P2PBlobRangeSet localBlockRange, long blobByteSize, int blockLength) {
 		this.blobHash=blobHash;
 		this.hashList=hashList;
 		this.localBlockRange=localBlockRange;
 		this.blobLengthInBytes=blobByteSize;
+		this.blockLength=blockLength;
 	}
 	
 	public boolean isBlobDownloadComplete() {
@@ -40,12 +43,6 @@ public abstract class P2PBlobStoredBlob {
 		return localBlockRange.ranges.encloses(fullRange);
 	}
 
-	public void setHashList(P2PBlobHashList hashList) {
-		if(hashList.getTopLevelHash().equals(blobHash)==false){
-			throw new InvalidParameterException("The hashList "+hashList.getTopLevelHash()+" does not compute to the blobHash "+blobHash);
-		}
-		this.hashList=hashList;
-	}
 	public P2PBlobHashList getHashList() {
 		return hashList;
 	}
@@ -70,7 +67,57 @@ public abstract class P2PBlobStoredBlob {
 	}
 	
 	public long getBlobLength() {
+	  if(hasMetaData()==false){
+      throw new NullPointerException("The metadata has to be known in order to determine the BlobLength");
+	  }
 		return blobLengthInBytes;
 	}
+
+	public boolean hasMetaData() {
+    return hashList!=null && blobLengthInBytes!=-1;
+  }
+
+	public int getLengthInBytesOfLastBlock() {
+	  if(hasMetaData()==false){
+	    throw new NullPointerException("The metadata has to be known in order to determine the LengthInBytesOfLastBlock");
+	  }
+    return (int) (blobLengthInBytes%blockLength);
+  }
+	
+  public void setMetaData(PB.P2PBlobMetaDataMsg metaData) throws Exception {
+    if(hashList!=null){
+      LOGGER.warn("We already have the hashList, no need to setMetaData twice..");
+      return;
+    }
+    if(metaData.hasHashList()==false || metaData.hasBlobLength()==false){
+      throw new Exception("metadata '"+metaData+"' is missing fields : ");
+    }
+
+    P2PBlobHashList newHashList = new P2PBlobHashList(metaData.getHashList());
+    if(newHashList.getTopLevelHash().equals(blobHash)==false){
+      throw new InvalidParameterException("The hashList "+hashList.getTopLevelHash()+" does not compute to the blobHash "+blobHash);
+    }
+    this.hashList=newHashList;
+    this.blobLengthInBytes=metaData.getBlobLength();
+    if(metaData.hasBlockSize()){
+      this.blockLength=metaData.getBlockSize();
+    }
+  }
+
+  public P2PBlobRangeSet getLocalRange() {
+    return new P2PBlobRangeSet(0, hashList.size()-1);
+  }
+
+  public long getNumberOfBytesInBlockRange(P2PBlobRangeSet ranges) {
+    int numberOfFullBlocks=ranges.getCardinality();
+    int numberOfBytesInLastBlock=0;
+    if(ranges.ranges.contains(hashList.size()-1)){
+      numberOfBytesInLastBlock=getLengthInBytesOfLastBlock();
+      if(numberOfBytesInLastBlock!=0){
+        numberOfFullBlocks--;
+      }
+    }
+    return numberOfFullBlocks*blockLength+numberOfBytesInLastBlock;
+  }
 
 }

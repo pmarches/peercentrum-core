@@ -12,10 +12,10 @@ import org.peercentrum.consensusprocess.UniqueNodeList;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.ProtobufByteBufCodec;
-import org.peercentrum.core.ProtocolBuffer;
-import org.peercentrum.core.ProtocolBuffer.H2PKDBSyncQuery;
-import org.peercentrum.core.ProtocolBuffer.H2PKProposedTransactions;
-import org.peercentrum.core.ProtocolBuffer.HashToPublicKeyMessage;
+import org.peercentrum.core.PB;
+import org.peercentrum.core.PB.H2PKDBSyncQuery;
+import org.peercentrum.core.PB.H2PKProposedTransactions;
+import org.peercentrum.core.PB.HashToPublicKeyMessage;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkClient;
@@ -52,7 +52,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 					//TODO use generics instead of cast
 					ProposedTransactions<HashToPublicKeyTransaction> proposedTX=ourProposedTx;
 					LOGGER.debug("broadcasting our {} proposed transactions", proposedTX.size());
-					ProtocolBuffer.HashToPublicKeyMessage proposedTXMsg = encodeProposedTXToMsg(proposedTX);
+					PB.HashToPublicKeyMessage proposedTXMsg = encodeProposedTXToMsg(proposedTX);
 					for(NodeIdentifier aValidator:unl){
 						LOGGER.debug("Sending proposedTX to {}", aValidator);
 						networkClient.sendRequest(aValidator, getApplicationId(), proposedTXMsg);
@@ -85,8 +85,8 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 			//TODO We should ask each validator for the hash of the latest DB and compare
 			//TODO Then, we can download the DB with the validated hash
 
-			ProtocolBuffer.HashToPublicKeyMessage.Builder appLevelMsg = ProtocolBuffer.HashToPublicKeyMessage.newBuilder();
-			ProtocolBuffer.H2PKDBSyncQuery.Builder queryMsg=ProtocolBuffer.H2PKDBSyncQuery.newBuilder();
+			PB.HashToPublicKeyMessage.Builder appLevelMsg = PB.HashToPublicKeyMessage.newBuilder();
+			PB.H2PKDBSyncQuery.Builder queryMsg=PB.H2PKDBSyncQuery.newBuilder();
 			boolean requestFullSync=true;
 			if(requestFullSync){
 				queryMsg.setBeginDbVersionNumber(0);
@@ -95,7 +95,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 			NodeIdentifier remoteId=consensus.unl.getOneExcluding(this.server.getLocalNodeId());
 			HashToPublicKeyMessage appLevelResponse = networkClient.sendRequest(remoteId, getApplicationId(), appLevelMsg.build()).get();
 			if(appLevelResponse.hasDbSyncResponse()){
-				ProtocolBuffer.H2PKDBSyncResponse dbSyncResponse = appLevelResponse.getDbSyncResponse();
+				PB.H2PKDBSyncResponse dbSyncResponse = appLevelResponse.getDbSyncResponse();
 				db.integrateSyncUnit(dbSyncResponse);
 			}
 		} catch (Exception e) {
@@ -107,12 +107,12 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 	public HeaderAndPayload generateReponseFromQuery(ChannelHandlerContext ctx, HeaderAndPayload receivedMessage) {
 		try {
 			LOGGER.debug("generateReponseFromQuery");
-			ProtocolBuffer.HashToPublicKeyMessage.Builder appLevelResponseBuilder = ProtocolBuffer.HashToPublicKeyMessage.newBuilder();
+			PB.HashToPublicKeyMessage.Builder appLevelResponseBuilder = PB.HashToPublicKeyMessage.newBuilder();
 
-			ProtocolBuffer.HashToPublicKeyMessage appRequest = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, ProtocolBuffer.HashToPublicKeyMessage.class);
+			PB.HashToPublicKeyMessage appRequest = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, PB.HashToPublicKeyMessage.class);
 			if(appRequest.hasLocalTransaction()){
 				LOGGER.debug("received local transaction");
-				ProtocolBuffer.HashToPublicKeyTransaction localTXMsg = appRequest.getLocalTransaction();
+				PB.HashToPublicKeyTransaction localTXMsg = appRequest.getLocalTransaction();
 				// TODO Convert payload to one of these TX object
 				HashToPublicKeyTransaction localTransaction=new HashToPublicKeyTransaction(localTXMsg);
 				consensus.receiveLocalTransaction(localTransaction);
@@ -139,27 +139,27 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 		}
 	}
 
-	protected ProposedTransactions<HashToPublicKeyTransaction> decodeMsgToProposedTX(ProtocolBuffer.H2PKProposedTransactions proposedTxMsg) {
+	protected ProposedTransactions<HashToPublicKeyTransaction> decodeMsgToProposedTX(PB.H2PKProposedTransactions proposedTxMsg) {
 		UnsignedLong proposalDbVersion=UnsignedLong.valueOf(proposedTxMsg.getDbVersionNumber());
 		NodeIdentifier senderPK=new NodeIdentifier(proposedTxMsg.getProposedBy().toByteArray());
 		ProposedTransactions<HashToPublicKeyTransaction> proposedTransaction=new ProposedTransactions<HashToPublicKeyTransaction>(proposalDbVersion, senderPK);
 
-		List<ProtocolBuffer.HashToPublicKeyTransaction> txMsgList = proposedTxMsg.getProposedTransactionsList();
-		for(ProtocolBuffer.HashToPublicKeyTransaction txMsg:txMsgList){
+		List<PB.HashToPublicKeyTransaction> txMsgList = proposedTxMsg.getProposedTransactionsList();
+		for(PB.HashToPublicKeyTransaction txMsg:txMsgList){
 			proposedTransaction.addTransactions(new HashToPublicKeyTransaction(txMsg));
 		}
 		return proposedTransaction;
 	}
 
 	protected HashToPublicKeyMessage encodeProposedTXToMsg(ProposedTransactions<HashToPublicKeyTransaction> proposedTX) {
-		ProtocolBuffer.H2PKProposedTransactions.Builder proposedTxMsg=ProtocolBuffer.H2PKProposedTransactions.newBuilder();
+		PB.H2PKProposedTransactions.Builder proposedTxMsg=PB.H2PKProposedTransactions.newBuilder();
 		proposedTxMsg.setDbVersionNumber(proposedTX.getDbVersionNumber());
 		proposedTxMsg.setProposedBy(ByteString.copyFrom(proposedTX.getFrom().getBytes()));
 		for(HashToPublicKeyTransaction tx : proposedTX){
 			proposedTxMsg.addProposedTransactions(tx.toMessage());
 		}
 		
-		ProtocolBuffer.HashToPublicKeyMessage.Builder applicationLevelBuilder = ProtocolBuffer.HashToPublicKeyMessage.newBuilder(); 
+		PB.HashToPublicKeyMessage.Builder applicationLevelBuilder = PB.HashToPublicKeyMessage.newBuilder(); 
 		applicationLevelBuilder.setProposedTx(proposedTxMsg);
 		return applicationLevelBuilder.build();
 //		byte[] applicationLevelBytes=applicationLevelBuilder.build().toByteArray();

@@ -6,21 +6,22 @@ import static org.junit.Assert.assertNotNull;
 import java.io.File;
 
 import org.junit.Test;
-import org.peercentrum.core.NodeGossipConfig;
-import org.peercentrum.core.TopLevelConfig;
+import org.peercentrum.blob.P2PBlobConfig;
 
 public class TopLevelConfigTest {
 
 	@Test
 	public void test() throws Exception {
-		TopLevelConfig config = TopLevelConfig.loadFromFile(new File("-topConfig.yaml"));
+		TopLevelConfig config = TopLevelConfig.loadFromFile(new File("peercentrum-config.yaml"));
 		assertNotNull(config);
-		System.out.println(config);
 		assertEquals("Node1", config.getNodeIdentifier());
 		NodeGossipConfig gossipConfig=(NodeGossipConfig) config.getAppConfig(NodeGossipConfig.class);
 		assertNotNull(gossipConfig);
-		assertEquals("127.0.0.1:1234", gossipConfig.getBootstrapEndpoint());
+		assertEquals("66.172.33.39:35460", gossipConfig.getBootstrapEndpoint());
 		assertEquals(new File(".").getCanonicalFile(), config.getBaseDirectory());
+		
+		P2PBlobConfig blobConfig=(P2PBlobConfig) config.getAppConfig(P2PBlobConfig.class);
+		blobConfig.getPriceLimits();
 	}
 
 }

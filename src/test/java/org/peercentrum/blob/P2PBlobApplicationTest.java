@@ -4,43 +4,28 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import io.netty.util.concurrent.Future;
 
-import java.io.File;
-import java.net.InetSocketAddress;
-
-import javax.xml.bind.DatatypeConverter;
-
 import org.junit.Test;
-import org.peercentrum.core.NodeDatabase;
-import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.h2pk.HashIdentifier;
-import org.peercentrum.network.NetworkServer;
+import org.peercentrum.core.TransientMockNetworkOfNodes;
 
 public class P2PBlobApplicationTest {
 
 	@Test
 	public void test() throws Exception {
-		TopLevelConfig node1Config=new TopLevelConfig("Node1");
-		NetworkServer node1 = new NetworkServer(node1Config);
-		InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", node1.getListeningPort());
-		NodeDatabase sharedNodeDatabase = node1.getNodeDatabase();
-		sharedNodeDatabase.mapNodeIdToAddress(node1.getLocalNodeId(), serverEndpoint);
+	  TransientMockNetworkOfNodes mockNodes=new TransientMockNetworkOfNodes();
 
-		File repositoryPath = new File("testRepo");
-		P2PBlobRepositoryFS serverSideBlobRepo=new P2PBlobRepositoryFS(repositoryPath);
-		P2PBlobApplication serverSideApp=new P2PBlobApplication(node1, serverSideBlobRepo);
-		
-		NodeIdentifier clientNodeId=new NodeIdentifier("ClientNode");
-		P2PBlobStandaloneClient client = new P2PBlobStandaloneClient(node1.getLocalNodeId(), clientNodeId, sharedNodeDatabase);
-		HashIdentifier blobIdToDownload=new HashIdentifier(DatatypeConverter.parseHexBinary("B67D1B1F9C750304D9E8A63CD3C077B5C9AC6131BB2C2C874CEAFE53AC69F5F9"));
-		P2PBlobStoredBlobMemoryOnly download=new P2PBlobStoredBlobMemoryOnly(blobIdToDownload);
-		Future<P2PBlobStoredBlob> downloadCompleteFuture=client.downloadAll(download);
-		downloadCompleteFuture.sync();
-		assertNotNull(download.getHashList()); //By default we will download the full blob's hash list
-		assertEquals(761_996, download.downloadedAndValidatedBlobContent.readableBytes());
-		assertEquals(761_996, download.blobLengthInBytes);
-		client.close();
-//		Thread.sleep(3000);
+	  try{
+	    P2PBlobStandaloneClient blobClient = new P2PBlobStandaloneClient(mockNodes.clientToServerConnection, 
+	        mockNodes.client1Config, mockNodes.settlementClient1);
+	    P2PBlobStoredBlobMemoryOnly hellowWorldDownload=new P2PBlobStoredBlobMemoryOnly(mockNodes.helloWorldBlobID);
+	    Future<P2PBlobStoredBlob> hellowWorldDownloadCompleteFuture=blobClient.downloadAll(hellowWorldDownload);
+	    hellowWorldDownloadCompleteFuture.sync();
+	    assertNotNull(hellowWorldDownload.getHashList());
+	    assertEquals(12, hellowWorldDownload.downloadedAndValidatedBlobContent.readableBytes());
+	    assertEquals(12, hellowWorldDownload.blobLengthInBytes);
+	  }
+	  finally{
+      mockNodes.shutdown();
+	  }
 	}
 
 }

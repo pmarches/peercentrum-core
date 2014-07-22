@@ -13,9 +13,9 @@ public class P2PBlobStoredBlobRepositoryFS extends P2PBlobStoredBlob {
 	protected File blobFile;
 	protected P2PBlobRepositoryFS repository;
 
-	public P2PBlobStoredBlobRepositoryFS(HashIdentifier blobHash, P2PBlobHashList hashList,
-			P2PBlobRangeSet localBlockRange, long blobByteSize, P2PBlobRepositoryFS repository) {
-		super(blobHash, hashList, localBlockRange, blobByteSize);
+	public P2PBlobStoredBlobRepositoryFS(P2PBlobRepositoryFS repository, HashIdentifier blobHash, P2PBlobHashList hashList,
+			P2PBlobRangeSet localBlockRange, long blobByteSize, int blockSize) {
+		super(blobHash, hashList, localBlockRange, blobByteSize, blockSize);
 		this.repository=repository;
 	}
 

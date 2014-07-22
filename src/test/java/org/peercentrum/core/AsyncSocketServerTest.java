@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
 import org.peercentrum.core.ApplicationIdentifier;
-import org.peercentrum.core.ProtocolBuffer.HeaderMessage;
+import org.peercentrum.core.PB.HeaderMessage;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkClientConnection;
@@ -110,7 +110,7 @@ public class AsyncSocketServerTest {
 //			receivedHeaderAndPayload(clientChannel);
 //		}
 //		
-//		ProtocolBuffer.NetworkMessage closeMsg=ProtocolBuffer.NetworkMessage.newBuilder()
+//		PB.NetworkMessage closeMsg=PB.NetworkMessage.newBuilder()
 //				.setOperation(NetworkOperation.CLOSE_CONNECTION).build();
 //		sendHeaderAndProtobufMessage(clientChannel, NetworkApplication.NETWORK_APPID, closeMsg);
 //
@@ -138,7 +138,7 @@ public class AsyncSocketServerTest {
 //			}
 //		}
 //		
-//		HeaderMessage header=byteBufToProcolBuffer(headerBytes, ProtocolBuffer.HeaderMessage.newBuilder());
+//		HeaderMessage header=byteBufToProcolBuffer(headerBytes, PB.HeaderMessage.newBuilder());
 //		HeaderAndPayload headerAndPayload= new HeaderAndPayload(header);
 //		headerAndPayload.payload=Unpooled.copiedBuffer(payloadBytes);
 //		return headerAndPayload;
@@ -201,7 +201,7 @@ public class AsyncSocketServerTest {
 //	protected void sendHeaderAndPayload(
 //			java.nio.channels.SocketChannel socketChannel,
 //			ApplicationIdentifier appid, ByteBuf payloadBytesToWrite) throws IOException {
-//		HeaderMessage headerMessage = ProtocolBuffer.HeaderMessage.newBuilder()
+//		HeaderMessage headerMessage = PB.HeaderMessage.newBuilder()
 //				.setApplicationId(ByteString.copyFrom(appid.toByteArray()))
 //				.build();
 //		byte[] headerMessageBytes = headerMessage.toByteArray();

@@ -50,7 +50,7 @@ public class NetworkServer { //TODO implement AutoClosable
   public NetworkServer(TopLevelConfig config) throws InterruptedException {
     this.configuration=config;
     this.thisNodeId=new NodeIdentifier(config.getNodeIdentifier().getBytes());
-    this.nodeDatabase=new NodeDatabase(config.getFile(config.getNodeDatabasePath()));
+    this.nodeDatabase=new NodeDatabase(config.getFile("node.db"));
 
     new NetworkApplication(this);
     ServerBootstrap b = new ServerBootstrap();

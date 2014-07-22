@@ -109,7 +109,7 @@ public class ProtobufByteBufCodec {
 //            offset = 0;
 //        }
 //
-//        return ProtocolBuffer.HeaderMessage.newBuilder().mergeFrom(array, offset, length).build();
+//        return PB.HeaderMessage.newBuilder().mergeFrom(array, offset, length).build();
 //	}
 
 }
