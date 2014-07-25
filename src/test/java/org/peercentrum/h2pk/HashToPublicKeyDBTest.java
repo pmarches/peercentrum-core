@@ -10,11 +10,6 @@ import org.peercentrum.core.PB.H2PKDBSyncQuery;
 import org.peercentrum.core.PB.H2PKDBSyncResponse;
 import org.peercentrum.core.PB.H2PKDBSyncUnit;
 import org.peercentrum.core.PB.HashToPublicKeyMessage;
-import org.peercentrum.h2pk.HashIdentifier;
-import org.peercentrum.h2pk.HashPointerSignature;
-import org.peercentrum.h2pk.HashToPublicKeyDB;
-import org.peercentrum.h2pk.HashToPublicKeyTransaction;
-import org.peercentrum.h2pk.PublicKeyIdentifier;
 
 public class HashToPublicKeyDBTest {
 

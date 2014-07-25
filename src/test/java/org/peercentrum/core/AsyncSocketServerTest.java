@@ -14,7 +14,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
-import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.PB.HeaderMessage;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;

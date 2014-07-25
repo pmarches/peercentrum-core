@@ -1,5 +1,9 @@
 package org.peercentrum.blob;
 
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+
 import io.netty.util.concurrent.DefaultProgressivePromise;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
@@ -8,7 +12,6 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.P2PBlobResponseMsg;
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.network.NetworkClientConnection;
 import org.peercentrum.settlement.SettlementApplicationClient;
 import org.slf4j.Logger;
@@ -70,7 +73,7 @@ public class P2PBlobStandaloneClient {
 				}
 
 				for(PB.P2PBlobBlockMsg blobBlockMsg : response.getBlobBytesList()){
-					maybeAcceptBlobBytes(storedBlobDestination, blobBlockMsg);
+				  storedBlobDestination.maybeAcceptBlobBytes(blobBlockMsg);
 				}
 				
         if(response.hasDataTransferQuote()){
@@ -110,23 +113,25 @@ public class P2PBlobStandaloneClient {
 		return downloadPromise;
 	}
 	
-	public void maybeAcceptBlobBytes(P2PBlobStoredBlob transitStatus, PB.P2PBlobBlockMsg blobBlockMsg) {
-		if(transitStatus.hashList==null){
-			throw new RuntimeException("Need to receive the hashList before accepting blocks");
-		}
-		if(blobBlockMsg.hasBlockIndex()==false || blobBlockMsg.hasBlobBytes()==false){
-			throw new RuntimeException("Missing blockIndex or blockBytes");
-		}
-		int currentBlockIndex=blobBlockMsg.getBlockIndex();
-		byte[] blobBlockBytes=blobBlockMsg.getBlobBytes().toByteArray();
-		
-		HashIdentifier blockHash=transitStatus.hashList.get(currentBlockIndex);
-		HashIdentifier blobBlockBytesHash=P2PBlobHashList.hashBytes(blobBlockBytes, 0 ,blobBlockBytes.length);
-		if(blobBlockBytesHash.equals(blockHash)==false){
-			LOGGER.error("The block "+currentBlockIndex+" does not hash to "+blockHash);
-			return; //Throw exception?
-		}
-		transitStatus.acceptValidatedBlobBytes(currentBlockIndex, blobBlockBytes);
-	}
+  public void upload(P2PBlobUpload upload) throws Exception {
+    PB.P2PBlobRequestMsg.Builder topLevelReq=PB.P2PBlobRequestMsg.newBuilder();
+    PB.P2PBlobUploadRequestMsg.Builder uploadRequest=PB.P2PBlobUploadRequestMsg.newBuilder();
+
+    int numberOfBlocks=upload.getHashList().size();
+    for(int i=0; i<numberOfBlocks; i++){
+      ByteBuffer blockBytes=upload.getBlock(i);
+      PB.P2PBlobBlockMsg.Builder oneBlock=PB.P2PBlobBlockMsg.newBuilder();
+      oneBlock.setBlockIndex(i);
+      oneBlock.setBlobBytes(ByteString.copyFrom(blockBytes));
+      uploadRequest.addBlocks(oneBlock);
+    }
+    PB.P2PBlobMetaDataMsg.Builder metaData=PB.P2PBlobMetaDataMsg.newBuilder();
+    metaData.setBlobLength(upload.getBlobLength());
+    metaData.setBlockSize(upload.getBlockLength());
+    metaData.setHashList(upload.getHashList().toHashListMsg());
+    uploadRequest.setMetaData(metaData);
+    topLevelReq.addUploadRequest(uploadRequest);
+    Future<PB.P2PBlobRequestMsg> responseFuture=connection.sendRequestMsg(P2PBlobApplication.APP_ID, topLevelReq.build());
+  }
 
 }

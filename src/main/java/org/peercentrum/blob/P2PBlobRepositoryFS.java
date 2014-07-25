@@ -8,6 +8,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Hashtable;
 
+import org.peercentrum.core.PB.P2PBlobMetaDataMsg;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -108,7 +109,7 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 	}
 
 	@Override
-	public P2PBlobStoredBlob getStoredBlob(final HashIdentifier blobId){
+	public P2PBlobStoredBlob getStoredBlob(final HashIdentifier blobId) throws Exception{
 		synchronized(cachedTransitStatus){
 			P2PBlobStoredBlobRepositoryFS transitStatus = cachedTransitStatus.get(blobId);
 			if(transitStatus!=null){
@@ -144,5 +145,41 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 			}
 		}
 	}
+
+  @Override
+  public P2PBlobStoredBlob getOrCreateStoredBlob(P2PBlobMetaDataMsg metaData)  throws Exception{
+    P2PBlobHashList hashList=new P2PBlobHashList(metaData.getHashList());
+    P2PBlobStoredBlob theBlob=getStoredBlob(hashList.getTopLevelHash());
+    if(theBlob!=null){
+      return theBlob;
+    }
+    theBlob=new P2PBlobStoredBlobRepositoryFS(this, hashList.getTopLevelHash(), hashList, 
+        new P2PBlobRangeSet(), metaData.getBlobLength(), metaData.getBlockSize());
+    insertStoredBlobMetaData(theBlob);
+    return theBlob;
+  }
+
+  public void insertStoredBlobMetaData(final P2PBlobStoredBlob theBlob) throws SqlJetException {
+    final ByteBuf concatenatedHashes=Unpooled.buffer(theBlob.getNumberOfBlocks()*P2PBlobHashList.HASH_BYTE_SIZE);
+    for(HashIdentifier hashBlock:theBlob.getHashList()){
+      concatenatedHashes.writeBytes(hashBlock.getBytes());
+    }
+    
+    ISqlJetTransaction insertTx=new ISqlJetTransaction() {
+      @Override public Object run(SqlJetDb db) throws SqlJetException {
+        long newRow = blobMetaTable.insert(
+            theBlob.getHashList().getTopLevelHash().getBytes(), 
+            concatenatedHashes.array(),
+            theBlob.getNumberOfBlocks(),
+            null,
+            theBlob.getBlobLength(),
+            theBlob.getBlockLength());
+        LOGGER.debug("Added topHash/hashList={}", newRow);
+        return null;
+      }
+    };
+    db.runWriteTransaction(insertTx);
+    concatenatedHashes.release();
+  }
 
 }

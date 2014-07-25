@@ -3,9 +3,6 @@ package org.peercentrum.core;
 import java.io.File;
 
 import org.junit.Test;
-import org.peercentrum.core.NodeGossipConfig;
-import org.peercentrum.core.ServerMain;
-import org.peercentrum.core.TopLevelConfig;
 
 public class ServerMainTest {
 

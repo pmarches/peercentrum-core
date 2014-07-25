@@ -41,16 +41,16 @@ public class TransientMockNetworkOfNodes {
 
     configureClient1ToServer1Connection();
 
-    Runtime.getRuntime().addShutdownHook(new Thread(){
-      @Override
-      public void run() {
-        try {
-          shutdown();
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-    });
+//    Runtime.getRuntime().addShutdownHook(new Thread(){
+//      @Override
+//      public void run() {
+//        try {
+//          shutdown();
+//        } catch (Exception e) {
+//          e.printStackTrace();
+//        }
+//      }
+//    });
   }
 
   private void configureClient1ToServer1Connection() {

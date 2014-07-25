@@ -10,8 +10,6 @@ import org.peercentrum.core.NodeGossipApplication;
 import org.peercentrum.core.NodeGossipClient;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.network.NetworkClient;
-import org.peercentrum.network.NetworkServer;
 
 public class NetworkClientTest {
 

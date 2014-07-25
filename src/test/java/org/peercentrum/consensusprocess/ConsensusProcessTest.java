@@ -3,11 +3,6 @@ package org.peercentrum.consensusprocess;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import org.peercentrum.consensusprocess.ConsensusDB;
-import org.peercentrum.consensusprocess.ConsensusProcess;
-import org.peercentrum.consensusprocess.ConsensusTransaction;
-import org.peercentrum.consensusprocess.ProposedTransactions;
-import org.peercentrum.consensusprocess.TransactionEvaluator;
 import org.peercentrum.core.NodeIdentifier;
 
 import com.google.common.primitives.UnsignedLong;

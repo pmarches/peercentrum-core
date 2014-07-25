@@ -9,7 +9,6 @@ import java.util.concurrent.CountDownLatch;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.peercentrum.blob.P2PBlobTransferBalanceTable;
 import org.peercentrum.core.NodeIdentifier;
 
 public class P2PBlobBalanceClearingTest {

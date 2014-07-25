@@ -21,9 +21,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.HeaderMessage;
+import org.peercentrum.core.ProtobufByteBufCodec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -130,6 +130,13 @@ public class NetworkClientConnection implements AutoCloseable {
 
   @Override
   public void close() {
+//    while(false==socketChannelFuture.channel().isWritable()){
+//      try {
+//        Thread.sleep(100);
+//      } catch (InterruptedException e) {
+//        e.printStackTrace();
+//      }
+//    }
     if(pendingRequests.isEmpty()==false){
       LOGGER.error("Closing connection while pending requests still exists: "+pendingRequests.keySet());
     }
@@ -138,6 +145,7 @@ public class NetworkClientConnection implements AutoCloseable {
     }
     socketChannelFuture.channel().close().syncUninterruptibly();
     workerGroup.shutdownGracefully(); //FIXME Not our responsability if passed in as argument..
+    LOGGER.debug("Connection closed");
   }
 
   public void setLocalNodeInfo(NodeIdentifier localNodeId, int localListeningPort) {

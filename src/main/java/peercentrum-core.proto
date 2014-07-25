@@ -115,6 +115,13 @@ message H2PKDBSyncUnit {
 //////////////P2PBlob /////////////////
 message P2PBlobRequestMsg {
 	repeated P2PBlobBlobRequestMsg blobRequest=1;
+	repeated P2PBlobUploadRequestMsg uploadRequest=2;
+};
+
+message P2PBlobUploadRequestMsg {
+//  optional bytes blobHash=1;
+  repeated P2PBlobBlockMsg blocks=2;
+  optional P2PBlobMetaDataMsg metaData=3;
 };
 
 message P2PBlobBlobRequestMsg {

@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 
 import org.junit.Test;
-import org.peercentrum.consensusprocess.CandidateTransactionSet;
-import org.peercentrum.consensusprocess.ProposedTransactions;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.h2pk.HashPointerSignature;
 import org.peercentrum.h2pk.HashToPublicKeyTransaction;

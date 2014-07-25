@@ -11707,6 +11707,31 @@ public final class PB {
      */
     org.peercentrum.core.PB.P2PBlobBlobRequestMsgOrBuilder getBlobRequestOrBuilder(
         int index);
+
+    // repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    java.util.List<org.peercentrum.core.PB.P2PBlobUploadRequestMsg> 
+        getUploadRequestList();
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    org.peercentrum.core.PB.P2PBlobUploadRequestMsg getUploadRequest(int index);
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    int getUploadRequestCount();
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    java.util.List<? extends org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder> 
+        getUploadRequestOrBuilderList();
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder getUploadRequestOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code peercentrum.P2PBlobRequestMsg}
@@ -11771,6 +11796,14 @@ public final class PB {
               blobRequest_.add(input.readMessage(org.peercentrum.core.PB.P2PBlobBlobRequestMsg.PARSER, extensionRegistry));
               break;
             }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                uploadRequest_ = new java.util.ArrayList<org.peercentrum.core.PB.P2PBlobUploadRequestMsg>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              uploadRequest_.add(input.readMessage(org.peercentrum.core.PB.P2PBlobUploadRequestMsg.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -11781,6 +11814,9 @@ public final class PB {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           blobRequest_ = java.util.Collections.unmodifiableList(blobRequest_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          uploadRequest_ = java.util.Collections.unmodifiableList(uploadRequest_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -11849,8 +11885,45 @@ public final class PB {
       return blobRequest_.get(index);
     }
 
+    // repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;
+    public static final int UPLOADREQUEST_FIELD_NUMBER = 2;
+    private java.util.List<org.peercentrum.core.PB.P2PBlobUploadRequestMsg> uploadRequest_;
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    public java.util.List<org.peercentrum.core.PB.P2PBlobUploadRequestMsg> getUploadRequestList() {
+      return uploadRequest_;
+    }
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    public java.util.List<? extends org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder> 
+        getUploadRequestOrBuilderList() {
+      return uploadRequest_;
+    }
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    public int getUploadRequestCount() {
+      return uploadRequest_.size();
+    }
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    public org.peercentrum.core.PB.P2PBlobUploadRequestMsg getUploadRequest(int index) {
+      return uploadRequest_.get(index);
+    }
+    /**
+     * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+     */
+    public org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder getUploadRequestOrBuilder(
+        int index) {
+      return uploadRequest_.get(index);
+    }
+
     private void initFields() {
       blobRequest_ = java.util.Collections.emptyList();
+      uploadRequest_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11867,6 +11940,9 @@ public final class PB {
       for (int i = 0; i < blobRequest_.size(); i++) {
         output.writeMessage(1, blobRequest_.get(i));
       }
+      for (int i = 0; i < uploadRequest_.size(); i++) {
+        output.writeMessage(2, uploadRequest_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -11879,6 +11955,10 @@ public final class PB {
       for (int i = 0; i < blobRequest_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, blobRequest_.get(i));
+      }
+      for (int i = 0; i < uploadRequest_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, uploadRequest_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11993,6 +12073,7 @@ public final class PB {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getBlobRequestFieldBuilder();
+          getUploadRequestFieldBuilder();
         }
       }
       private static Builder create() {
@@ -12006,6 +12087,12 @@ public final class PB {
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           blobRequestBuilder_.clear();
+        }
+        if (uploadRequestBuilder_ == null) {
+          uploadRequest_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          uploadRequestBuilder_.clear();
         }
         return this;
       }
@@ -12042,6 +12129,15 @@ public final class PB {
           result.blobRequest_ = blobRequest_;
         } else {
           result.blobRequest_ = blobRequestBuilder_.build();
+        }
+        if (uploadRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            uploadRequest_ = java.util.Collections.unmodifiableList(uploadRequest_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.uploadRequest_ = uploadRequest_;
+        } else {
+          result.uploadRequest_ = uploadRequestBuilder_.build();
         }
         onBuilt();
         return result;
@@ -12081,6 +12177,32 @@ public final class PB {
                    getBlobRequestFieldBuilder() : null;
             } else {
               blobRequestBuilder_.addAllMessages(other.blobRequest_);
+            }
+          }
+        }
+        if (uploadRequestBuilder_ == null) {
+          if (!other.uploadRequest_.isEmpty()) {
+            if (uploadRequest_.isEmpty()) {
+              uploadRequest_ = other.uploadRequest_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureUploadRequestIsMutable();
+              uploadRequest_.addAll(other.uploadRequest_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.uploadRequest_.isEmpty()) {
+            if (uploadRequestBuilder_.isEmpty()) {
+              uploadRequestBuilder_.dispose();
+              uploadRequestBuilder_ = null;
+              uploadRequest_ = other.uploadRequest_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              uploadRequestBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getUploadRequestFieldBuilder() : null;
+            } else {
+              uploadRequestBuilder_.addAllMessages(other.uploadRequest_);
             }
           }
         }
@@ -12351,6 +12473,246 @@ public final class PB {
         return blobRequestBuilder_;
       }
 
+      // repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;
+      private java.util.List<org.peercentrum.core.PB.P2PBlobUploadRequestMsg> uploadRequest_ =
+        java.util.Collections.emptyList();
+      private void ensureUploadRequestIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          uploadRequest_ = new java.util.ArrayList<org.peercentrum.core.PB.P2PBlobUploadRequestMsg>(uploadRequest_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.peercentrum.core.PB.P2PBlobUploadRequestMsg, org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder, org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder> uploadRequestBuilder_;
+
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public java.util.List<org.peercentrum.core.PB.P2PBlobUploadRequestMsg> getUploadRequestList() {
+        if (uploadRequestBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(uploadRequest_);
+        } else {
+          return uploadRequestBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public int getUploadRequestCount() {
+        if (uploadRequestBuilder_ == null) {
+          return uploadRequest_.size();
+        } else {
+          return uploadRequestBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public org.peercentrum.core.PB.P2PBlobUploadRequestMsg getUploadRequest(int index) {
+        if (uploadRequestBuilder_ == null) {
+          return uploadRequest_.get(index);
+        } else {
+          return uploadRequestBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public Builder setUploadRequest(
+          int index, org.peercentrum.core.PB.P2PBlobUploadRequestMsg value) {
+        if (uploadRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUploadRequestIsMutable();
+          uploadRequest_.set(index, value);
+          onChanged();
+        } else {
+          uploadRequestBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public Builder setUploadRequest(
+          int index, org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder builderForValue) {
+        if (uploadRequestBuilder_ == null) {
+          ensureUploadRequestIsMutable();
+          uploadRequest_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          uploadRequestBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public Builder addUploadRequest(org.peercentrum.core.PB.P2PBlobUploadRequestMsg value) {
+        if (uploadRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUploadRequestIsMutable();
+          uploadRequest_.add(value);
+          onChanged();
+        } else {
+          uploadRequestBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public Builder addUploadRequest(
+          int index, org.peercentrum.core.PB.P2PBlobUploadRequestMsg value) {
+        if (uploadRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUploadRequestIsMutable();
+          uploadRequest_.add(index, value);
+          onChanged();
+        } else {
+          uploadRequestBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public Builder addUploadRequest(
+          org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder builderForValue) {
+        if (uploadRequestBuilder_ == null) {
+          ensureUploadRequestIsMutable();
+          uploadRequest_.add(builderForValue.build());
+          onChanged();
+        } else {
+          uploadRequestBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public Builder addUploadRequest(
+          int index, org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder builderForValue) {
+        if (uploadRequestBuilder_ == null) {
+          ensureUploadRequestIsMutable();
+          uploadRequest_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          uploadRequestBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public Builder addAllUploadRequest(
+          java.lang.Iterable<? extends org.peercentrum.core.PB.P2PBlobUploadRequestMsg> values) {
+        if (uploadRequestBuilder_ == null) {
+          ensureUploadRequestIsMutable();
+          super.addAll(values, uploadRequest_);
+          onChanged();
+        } else {
+          uploadRequestBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public Builder clearUploadRequest() {
+        if (uploadRequestBuilder_ == null) {
+          uploadRequest_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          uploadRequestBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public Builder removeUploadRequest(int index) {
+        if (uploadRequestBuilder_ == null) {
+          ensureUploadRequestIsMutable();
+          uploadRequest_.remove(index);
+          onChanged();
+        } else {
+          uploadRequestBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder getUploadRequestBuilder(
+          int index) {
+        return getUploadRequestFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder getUploadRequestOrBuilder(
+          int index) {
+        if (uploadRequestBuilder_ == null) {
+          return uploadRequest_.get(index);  } else {
+          return uploadRequestBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public java.util.List<? extends org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder> 
+           getUploadRequestOrBuilderList() {
+        if (uploadRequestBuilder_ != null) {
+          return uploadRequestBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(uploadRequest_);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder addUploadRequestBuilder() {
+        return getUploadRequestFieldBuilder().addBuilder(
+            org.peercentrum.core.PB.P2PBlobUploadRequestMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder addUploadRequestBuilder(
+          int index) {
+        return getUploadRequestFieldBuilder().addBuilder(
+            index, org.peercentrum.core.PB.P2PBlobUploadRequestMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobUploadRequestMsg uploadRequest = 2;</code>
+       */
+      public java.util.List<org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder> 
+           getUploadRequestBuilderList() {
+        return getUploadRequestFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.peercentrum.core.PB.P2PBlobUploadRequestMsg, org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder, org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder> 
+          getUploadRequestFieldBuilder() {
+        if (uploadRequestBuilder_ == null) {
+          uploadRequestBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.peercentrum.core.PB.P2PBlobUploadRequestMsg, org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder, org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder>(
+                  uploadRequest_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          uploadRequest_ = null;
+        }
+        return uploadRequestBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:peercentrum.P2PBlobRequestMsg)
     }
 
@@ -12360,6 +12722,987 @@ public final class PB {
     }
 
     // @@protoc_insertion_point(class_scope:peercentrum.P2PBlobRequestMsg)
+  }
+
+  public interface P2PBlobUploadRequestMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .peercentrum.P2PBlobBlockMsg blocks = 2;
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    java.util.List<org.peercentrum.core.PB.P2PBlobBlockMsg> 
+        getBlocksList();
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    org.peercentrum.core.PB.P2PBlobBlockMsg getBlocks(int index);
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    int getBlocksCount();
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    java.util.List<? extends org.peercentrum.core.PB.P2PBlobBlockMsgOrBuilder> 
+        getBlocksOrBuilderList();
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    org.peercentrum.core.PB.P2PBlobBlockMsgOrBuilder getBlocksOrBuilder(
+        int index);
+
+    // optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;
+    /**
+     * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+     */
+    boolean hasMetaData();
+    /**
+     * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+     */
+    org.peercentrum.core.PB.P2PBlobMetaDataMsg getMetaData();
+    /**
+     * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+     */
+    org.peercentrum.core.PB.P2PBlobMetaDataMsgOrBuilder getMetaDataOrBuilder();
+  }
+  /**
+   * Protobuf type {@code peercentrum.P2PBlobUploadRequestMsg}
+   */
+  public static final class P2PBlobUploadRequestMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements P2PBlobUploadRequestMsgOrBuilder {
+    // Use P2PBlobUploadRequestMsg.newBuilder() to construct.
+    private P2PBlobUploadRequestMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private P2PBlobUploadRequestMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final P2PBlobUploadRequestMsg defaultInstance;
+    public static P2PBlobUploadRequestMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public P2PBlobUploadRequestMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private P2PBlobUploadRequestMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                blocks_ = new java.util.ArrayList<org.peercentrum.core.PB.P2PBlobBlockMsg>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              blocks_.add(input.readMessage(org.peercentrum.core.PB.P2PBlobBlockMsg.PARSER, extensionRegistry));
+              break;
+            }
+            case 26: {
+              org.peercentrum.core.PB.P2PBlobMetaDataMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = metaData_.toBuilder();
+              }
+              metaData_ = input.readMessage(org.peercentrum.core.PB.P2PBlobMetaDataMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(metaData_);
+                metaData_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          blocks_ = java.util.Collections.unmodifiableList(blocks_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_P2PBlobUploadRequestMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_P2PBlobUploadRequestMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.PB.P2PBlobUploadRequestMsg.class, org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<P2PBlobUploadRequestMsg> PARSER =
+        new com.google.protobuf.AbstractParser<P2PBlobUploadRequestMsg>() {
+      public P2PBlobUploadRequestMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new P2PBlobUploadRequestMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<P2PBlobUploadRequestMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // repeated .peercentrum.P2PBlobBlockMsg blocks = 2;
+    public static final int BLOCKS_FIELD_NUMBER = 2;
+    private java.util.List<org.peercentrum.core.PB.P2PBlobBlockMsg> blocks_;
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    public java.util.List<org.peercentrum.core.PB.P2PBlobBlockMsg> getBlocksList() {
+      return blocks_;
+    }
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    public java.util.List<? extends org.peercentrum.core.PB.P2PBlobBlockMsgOrBuilder> 
+        getBlocksOrBuilderList() {
+      return blocks_;
+    }
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    public int getBlocksCount() {
+      return blocks_.size();
+    }
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    public org.peercentrum.core.PB.P2PBlobBlockMsg getBlocks(int index) {
+      return blocks_.get(index);
+    }
+    /**
+     * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+     *
+     * <pre>
+     *  optional bytes blobHash=1;
+     * </pre>
+     */
+    public org.peercentrum.core.PB.P2PBlobBlockMsgOrBuilder getBlocksOrBuilder(
+        int index) {
+      return blocks_.get(index);
+    }
+
+    // optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;
+    public static final int METADATA_FIELD_NUMBER = 3;
+    private org.peercentrum.core.PB.P2PBlobMetaDataMsg metaData_;
+    /**
+     * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+     */
+    public boolean hasMetaData() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+     */
+    public org.peercentrum.core.PB.P2PBlobMetaDataMsg getMetaData() {
+      return metaData_;
+    }
+    /**
+     * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+     */
+    public org.peercentrum.core.PB.P2PBlobMetaDataMsgOrBuilder getMetaDataOrBuilder() {
+      return metaData_;
+    }
+
+    private void initFields() {
+      blocks_ = java.util.Collections.emptyList();
+      metaData_ = org.peercentrum.core.PB.P2PBlobMetaDataMsg.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < blocks_.size(); i++) {
+        output.writeMessage(2, blocks_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(3, metaData_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < blocks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, blocks_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, metaData_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.P2PBlobUploadRequestMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.PB.P2PBlobUploadRequestMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.P2PBlobUploadRequestMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.PB.P2PBlobUploadRequestMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_P2PBlobUploadRequestMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_P2PBlobUploadRequestMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.PB.P2PBlobUploadRequestMsg.class, org.peercentrum.core.PB.P2PBlobUploadRequestMsg.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.PB.P2PBlobUploadRequestMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getBlocksFieldBuilder();
+          getMetaDataFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (blocksBuilder_ == null) {
+          blocks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          blocksBuilder_.clear();
+        }
+        if (metaDataBuilder_ == null) {
+          metaData_ = org.peercentrum.core.PB.P2PBlobMetaDataMsg.getDefaultInstance();
+        } else {
+          metaDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_P2PBlobUploadRequestMsg_descriptor;
+      }
+
+      public org.peercentrum.core.PB.P2PBlobUploadRequestMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.PB.P2PBlobUploadRequestMsg.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.PB.P2PBlobUploadRequestMsg build() {
+        org.peercentrum.core.PB.P2PBlobUploadRequestMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.PB.P2PBlobUploadRequestMsg buildPartial() {
+        org.peercentrum.core.PB.P2PBlobUploadRequestMsg result = new org.peercentrum.core.PB.P2PBlobUploadRequestMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (blocksBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            blocks_ = java.util.Collections.unmodifiableList(blocks_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.blocks_ = blocks_;
+        } else {
+          result.blocks_ = blocksBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (metaDataBuilder_ == null) {
+          result.metaData_ = metaData_;
+        } else {
+          result.metaData_ = metaDataBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.PB.P2PBlobUploadRequestMsg) {
+          return mergeFrom((org.peercentrum.core.PB.P2PBlobUploadRequestMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.PB.P2PBlobUploadRequestMsg other) {
+        if (other == org.peercentrum.core.PB.P2PBlobUploadRequestMsg.getDefaultInstance()) return this;
+        if (blocksBuilder_ == null) {
+          if (!other.blocks_.isEmpty()) {
+            if (blocks_.isEmpty()) {
+              blocks_ = other.blocks_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureBlocksIsMutable();
+              blocks_.addAll(other.blocks_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.blocks_.isEmpty()) {
+            if (blocksBuilder_.isEmpty()) {
+              blocksBuilder_.dispose();
+              blocksBuilder_ = null;
+              blocks_ = other.blocks_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              blocksBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getBlocksFieldBuilder() : null;
+            } else {
+              blocksBuilder_.addAllMessages(other.blocks_);
+            }
+          }
+        }
+        if (other.hasMetaData()) {
+          mergeMetaData(other.getMetaData());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.PB.P2PBlobUploadRequestMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.PB.P2PBlobUploadRequestMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .peercentrum.P2PBlobBlockMsg blocks = 2;
+      private java.util.List<org.peercentrum.core.PB.P2PBlobBlockMsg> blocks_ =
+        java.util.Collections.emptyList();
+      private void ensureBlocksIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          blocks_ = new java.util.ArrayList<org.peercentrum.core.PB.P2PBlobBlockMsg>(blocks_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.peercentrum.core.PB.P2PBlobBlockMsg, org.peercentrum.core.PB.P2PBlobBlockMsg.Builder, org.peercentrum.core.PB.P2PBlobBlockMsgOrBuilder> blocksBuilder_;
+
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public java.util.List<org.peercentrum.core.PB.P2PBlobBlockMsg> getBlocksList() {
+        if (blocksBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(blocks_);
+        } else {
+          return blocksBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public int getBlocksCount() {
+        if (blocksBuilder_ == null) {
+          return blocks_.size();
+        } else {
+          return blocksBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public org.peercentrum.core.PB.P2PBlobBlockMsg getBlocks(int index) {
+        if (blocksBuilder_ == null) {
+          return blocks_.get(index);
+        } else {
+          return blocksBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public Builder setBlocks(
+          int index, org.peercentrum.core.PB.P2PBlobBlockMsg value) {
+        if (blocksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBlocksIsMutable();
+          blocks_.set(index, value);
+          onChanged();
+        } else {
+          blocksBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public Builder setBlocks(
+          int index, org.peercentrum.core.PB.P2PBlobBlockMsg.Builder builderForValue) {
+        if (blocksBuilder_ == null) {
+          ensureBlocksIsMutable();
+          blocks_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          blocksBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public Builder addBlocks(org.peercentrum.core.PB.P2PBlobBlockMsg value) {
+        if (blocksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBlocksIsMutable();
+          blocks_.add(value);
+          onChanged();
+        } else {
+          blocksBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public Builder addBlocks(
+          int index, org.peercentrum.core.PB.P2PBlobBlockMsg value) {
+        if (blocksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBlocksIsMutable();
+          blocks_.add(index, value);
+          onChanged();
+        } else {
+          blocksBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public Builder addBlocks(
+          org.peercentrum.core.PB.P2PBlobBlockMsg.Builder builderForValue) {
+        if (blocksBuilder_ == null) {
+          ensureBlocksIsMutable();
+          blocks_.add(builderForValue.build());
+          onChanged();
+        } else {
+          blocksBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public Builder addBlocks(
+          int index, org.peercentrum.core.PB.P2PBlobBlockMsg.Builder builderForValue) {
+        if (blocksBuilder_ == null) {
+          ensureBlocksIsMutable();
+          blocks_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          blocksBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public Builder addAllBlocks(
+          java.lang.Iterable<? extends org.peercentrum.core.PB.P2PBlobBlockMsg> values) {
+        if (blocksBuilder_ == null) {
+          ensureBlocksIsMutable();
+          super.addAll(values, blocks_);
+          onChanged();
+        } else {
+          blocksBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public Builder clearBlocks() {
+        if (blocksBuilder_ == null) {
+          blocks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          blocksBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public Builder removeBlocks(int index) {
+        if (blocksBuilder_ == null) {
+          ensureBlocksIsMutable();
+          blocks_.remove(index);
+          onChanged();
+        } else {
+          blocksBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public org.peercentrum.core.PB.P2PBlobBlockMsg.Builder getBlocksBuilder(
+          int index) {
+        return getBlocksFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public org.peercentrum.core.PB.P2PBlobBlockMsgOrBuilder getBlocksOrBuilder(
+          int index) {
+        if (blocksBuilder_ == null) {
+          return blocks_.get(index);  } else {
+          return blocksBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public java.util.List<? extends org.peercentrum.core.PB.P2PBlobBlockMsgOrBuilder> 
+           getBlocksOrBuilderList() {
+        if (blocksBuilder_ != null) {
+          return blocksBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(blocks_);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public org.peercentrum.core.PB.P2PBlobBlockMsg.Builder addBlocksBuilder() {
+        return getBlocksFieldBuilder().addBuilder(
+            org.peercentrum.core.PB.P2PBlobBlockMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public org.peercentrum.core.PB.P2PBlobBlockMsg.Builder addBlocksBuilder(
+          int index) {
+        return getBlocksFieldBuilder().addBuilder(
+            index, org.peercentrum.core.PB.P2PBlobBlockMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.P2PBlobBlockMsg blocks = 2;</code>
+       *
+       * <pre>
+       *  optional bytes blobHash=1;
+       * </pre>
+       */
+      public java.util.List<org.peercentrum.core.PB.P2PBlobBlockMsg.Builder> 
+           getBlocksBuilderList() {
+        return getBlocksFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.peercentrum.core.PB.P2PBlobBlockMsg, org.peercentrum.core.PB.P2PBlobBlockMsg.Builder, org.peercentrum.core.PB.P2PBlobBlockMsgOrBuilder> 
+          getBlocksFieldBuilder() {
+        if (blocksBuilder_ == null) {
+          blocksBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.peercentrum.core.PB.P2PBlobBlockMsg, org.peercentrum.core.PB.P2PBlobBlockMsg.Builder, org.peercentrum.core.PB.P2PBlobBlockMsgOrBuilder>(
+                  blocks_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          blocks_ = null;
+        }
+        return blocksBuilder_;
+      }
+
+      // optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;
+      private org.peercentrum.core.PB.P2PBlobMetaDataMsg metaData_ = org.peercentrum.core.PB.P2PBlobMetaDataMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.P2PBlobMetaDataMsg, org.peercentrum.core.PB.P2PBlobMetaDataMsg.Builder, org.peercentrum.core.PB.P2PBlobMetaDataMsgOrBuilder> metaDataBuilder_;
+      /**
+       * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+       */
+      public boolean hasMetaData() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+       */
+      public org.peercentrum.core.PB.P2PBlobMetaDataMsg getMetaData() {
+        if (metaDataBuilder_ == null) {
+          return metaData_;
+        } else {
+          return metaDataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+       */
+      public Builder setMetaData(org.peercentrum.core.PB.P2PBlobMetaDataMsg value) {
+        if (metaDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          metaData_ = value;
+          onChanged();
+        } else {
+          metaDataBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+       */
+      public Builder setMetaData(
+          org.peercentrum.core.PB.P2PBlobMetaDataMsg.Builder builderForValue) {
+        if (metaDataBuilder_ == null) {
+          metaData_ = builderForValue.build();
+          onChanged();
+        } else {
+          metaDataBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+       */
+      public Builder mergeMetaData(org.peercentrum.core.PB.P2PBlobMetaDataMsg value) {
+        if (metaDataBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              metaData_ != org.peercentrum.core.PB.P2PBlobMetaDataMsg.getDefaultInstance()) {
+            metaData_ =
+              org.peercentrum.core.PB.P2PBlobMetaDataMsg.newBuilder(metaData_).mergeFrom(value).buildPartial();
+          } else {
+            metaData_ = value;
+          }
+          onChanged();
+        } else {
+          metaDataBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+       */
+      public Builder clearMetaData() {
+        if (metaDataBuilder_ == null) {
+          metaData_ = org.peercentrum.core.PB.P2PBlobMetaDataMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          metaDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+       */
+      public org.peercentrum.core.PB.P2PBlobMetaDataMsg.Builder getMetaDataBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getMetaDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+       */
+      public org.peercentrum.core.PB.P2PBlobMetaDataMsgOrBuilder getMetaDataOrBuilder() {
+        if (metaDataBuilder_ != null) {
+          return metaDataBuilder_.getMessageOrBuilder();
+        } else {
+          return metaData_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.P2PBlobMetaDataMsg metaData = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.P2PBlobMetaDataMsg, org.peercentrum.core.PB.P2PBlobMetaDataMsg.Builder, org.peercentrum.core.PB.P2PBlobMetaDataMsgOrBuilder> 
+          getMetaDataFieldBuilder() {
+        if (metaDataBuilder_ == null) {
+          metaDataBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.PB.P2PBlobMetaDataMsg, org.peercentrum.core.PB.P2PBlobMetaDataMsg.Builder, org.peercentrum.core.PB.P2PBlobMetaDataMsgOrBuilder>(
+                  metaData_,
+                  getParentForChildren(),
+                  isClean());
+          metaData_ = null;
+        }
+        return metaDataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.P2PBlobUploadRequestMsg)
+    }
+
+    static {
+      defaultInstance = new P2PBlobUploadRequestMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.P2PBlobUploadRequestMsg)
   }
 
   public interface P2PBlobBlobRequestMsgOrBuilder
@@ -19134,6 +20477,11 @@ public final class PB {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_peercentrum_P2PBlobRequestMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_peercentrum_P2PBlobUploadRequestMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_peercentrum_P2PBlobUploadRequestMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_peercentrum_P2PBlobBlobRequestMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -19234,34 +20582,38 @@ public final class PB {
       "hValue\030\002 \001(\014\022\033\n\023syncDbVersionNumber\030\003 \001(",
       "\r\022.\n\tsyncUnits\030\004 \003(\0132\033.peercentrum.H2PKD" +
       "BSyncUnit\"?\n\016H2PKDBSyncUnit\022\017\n\007address\030\001" +
-      " \001(\014\022\034\n\024publicKeysRegistered\030\002 \003(\014\"L\n\021P2" +
-      "PBlobRequestMsg\0227\n\013blobRequest\030\001 \003(\0132\".p" +
-      "eercentrum.P2PBlobBlobRequestMsg\"\300\001\n\025P2P" +
-      "BlobBlobRequestMsg\022\025\n\rrequestedHash\030\001 \001(" +
-      "\014\022!\n\031maximumBlobLengthAccepted\030\002 \001(\003\022\027\n\017" +
-      "requestMetaData\030\003 \001(\010\022\035\n\025requestBlockInv" +
-      "entory\030\005 \001(\010\0225\n\017requestedRanges\030\006 \003(\0132\034." +
-      "peercentrum.P2PBlobRangeMsg\"\257\002\n\022P2PBlobR",
-      "esponseMsg\0225\n\017genericResponse\030\001 \001(\0132\034.pe" +
-      "ercentrum.GenericResponse\0221\n\010metaData\030\002 " +
-      "\001(\0132\037.peercentrum.P2PBlobMetaDataMsg\0229\n\023" +
-      "localBlockInventory\030\003 \003(\0132\034.peercentrum." +
-      "P2PBlobRangeMsg\022/\n\tblobBytes\030\004 \003(\0132\034.pee" +
-      "rcentrum.P2PBlobBlockMsg\022C\n\021dataTransfer" +
-      "Quote\030\005 \001(\0132(.peercentrum.P2PBlobDataTra" +
-      "nsferQuoteMsg\"-\n\017P2PBlobRangeMsg\022\r\n\005begi" +
-      "n\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"n\n\022P2PBlobMetaDataM" +
-      "sg\022\022\n\nblobLength\030\001 \001(\003\022\021\n\tblockSize\030\002 \001(",
-      "\005\0221\n\010hashList\030\003 \001(\0132\037.peercentrum.P2PBlo" +
-      "bHashListMsg\"-\n\022P2PBlobHashListMsg\022\027\n\017ha" +
-      "shOfEachBlock\030\001 \003(\014\"8\n\017P2PBlobBlockMsg\022\022" +
-      "\n\nblockIndex\030\001 \001(\r\022\021\n\tblobBytes\030\002 \001(\014\"e\n" +
-      "\033P2PBlobDataTransferQuoteMsg\022\"\n\032satoshiP" +
-      "erIncomingGigaByte\030\001 \001(\003\022\"\n\032satoshiPerOu" +
-      "tgoingGigaByte\030\002 \001(\003\"P\n\rSettlementMsg\022?\n" +
-      "\020twoWayChannelMsg\030\001 \003(\0132%.paymentchannel" +
-      "s.TwoWayChannelMessageB\032\n\024org.peercentru" +
-      "m.coreB\002PB"
+      " \001(\014\022\034\n\024publicKeysRegistered\030\002 \003(\014\"\211\001\n\021P" +
+      "2PBlobRequestMsg\0227\n\013blobRequest\030\001 \003(\0132\"." +
+      "peercentrum.P2PBlobBlobRequestMsg\022;\n\rupl" +
+      "oadRequest\030\002 \003(\0132$.peercentrum.P2PBlobUp" +
+      "loadRequestMsg\"z\n\027P2PBlobUploadRequestMs" +
+      "g\022,\n\006blocks\030\002 \003(\0132\034.peercentrum.P2PBlobB" +
+      "lockMsg\0221\n\010metaData\030\003 \001(\0132\037.peercentrum." +
+      "P2PBlobMetaDataMsg\"\300\001\n\025P2PBlobBlobReques",
+      "tMsg\022\025\n\rrequestedHash\030\001 \001(\014\022!\n\031maximumBl" +
+      "obLengthAccepted\030\002 \001(\003\022\027\n\017requestMetaDat" +
+      "a\030\003 \001(\010\022\035\n\025requestBlockInventory\030\005 \001(\010\0225" +
+      "\n\017requestedRanges\030\006 \003(\0132\034.peercentrum.P2" +
+      "PBlobRangeMsg\"\257\002\n\022P2PBlobResponseMsg\0225\n\017" +
+      "genericResponse\030\001 \001(\0132\034.peercentrum.Gene" +
+      "ricResponse\0221\n\010metaData\030\002 \001(\0132\037.peercent" +
+      "rum.P2PBlobMetaDataMsg\0229\n\023localBlockInve" +
+      "ntory\030\003 \003(\0132\034.peercentrum.P2PBlobRangeMs" +
+      "g\022/\n\tblobBytes\030\004 \003(\0132\034.peercentrum.P2PBl",
+      "obBlockMsg\022C\n\021dataTransferQuote\030\005 \001(\0132(." +
+      "peercentrum.P2PBlobDataTransferQuoteMsg\"" +
+      "-\n\017P2PBlobRangeMsg\022\r\n\005begin\030\001 \001(\r\022\013\n\003end" +
+      "\030\002 \001(\r\"n\n\022P2PBlobMetaDataMsg\022\022\n\nblobLeng" +
+      "th\030\001 \001(\003\022\021\n\tblockSize\030\002 \001(\005\0221\n\010hashList\030" +
+      "\003 \001(\0132\037.peercentrum.P2PBlobHashListMsg\"-" +
+      "\n\022P2PBlobHashListMsg\022\027\n\017hashOfEachBlock\030" +
+      "\001 \003(\014\"8\n\017P2PBlobBlockMsg\022\022\n\nblockIndex\030\001" +
+      " \001(\r\022\021\n\tblobBytes\030\002 \001(\014\"e\n\033P2PBlobDataTr" +
+      "ansferQuoteMsg\022\"\n\032satoshiPerIncomingGiga",
+      "Byte\030\001 \001(\003\022\"\n\032satoshiPerOutgoingGigaByte" +
+      "\030\002 \001(\003\"P\n\rSettlementMsg\022?\n\020twoWayChannel" +
+      "Msg\030\001 \003(\0132%.paymentchannels.TwoWayChanne" +
+      "lMessageB\032\n\024org.peercentrum.coreB\002PB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -19369,51 +20721,57 @@ public final class PB {
           internal_static_peercentrum_P2PBlobRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobRequestMsg_descriptor,
-              new java.lang.String[] { "BlobRequest", });
-          internal_static_peercentrum_P2PBlobBlobRequestMsg_descriptor =
+              new java.lang.String[] { "BlobRequest", "UploadRequest", });
+          internal_static_peercentrum_P2PBlobUploadRequestMsg_descriptor =
             getDescriptor().getMessageTypes().get(14);
+          internal_static_peercentrum_P2PBlobUploadRequestMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_peercentrum_P2PBlobUploadRequestMsg_descriptor,
+              new java.lang.String[] { "Blocks", "MetaData", });
+          internal_static_peercentrum_P2PBlobBlobRequestMsg_descriptor =
+            getDescriptor().getMessageTypes().get(15);
           internal_static_peercentrum_P2PBlobBlobRequestMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobBlobRequestMsg_descriptor,
               new java.lang.String[] { "RequestedHash", "MaximumBlobLengthAccepted", "RequestMetaData", "RequestBlockInventory", "RequestedRanges", });
           internal_static_peercentrum_P2PBlobResponseMsg_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_peercentrum_P2PBlobResponseMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobResponseMsg_descriptor,
               new java.lang.String[] { "GenericResponse", "MetaData", "LocalBlockInventory", "BlobBytes", "DataTransferQuote", });
           internal_static_peercentrum_P2PBlobRangeMsg_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_peercentrum_P2PBlobRangeMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobRangeMsg_descriptor,
               new java.lang.String[] { "Begin", "End", });
           internal_static_peercentrum_P2PBlobMetaDataMsg_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_peercentrum_P2PBlobMetaDataMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobMetaDataMsg_descriptor,
               new java.lang.String[] { "BlobLength", "BlockSize", "HashList", });
           internal_static_peercentrum_P2PBlobHashListMsg_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_peercentrum_P2PBlobHashListMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobHashListMsg_descriptor,
               new java.lang.String[] { "HashOfEachBlock", });
           internal_static_peercentrum_P2PBlobBlockMsg_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_peercentrum_P2PBlobBlockMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobBlockMsg_descriptor,
               new java.lang.String[] { "BlockIndex", "BlobBytes", });
           internal_static_peercentrum_P2PBlobDataTransferQuoteMsg_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_peercentrum_P2PBlobDataTransferQuoteMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_P2PBlobDataTransferQuoteMsg_descriptor,
               new java.lang.String[] { "SatoshiPerIncomingGigaByte", "SatoshiPerOutgoingGigaByte", });
           internal_static_peercentrum_SettlementMsg_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_peercentrum_SettlementMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_SettlementMsg_descriptor,

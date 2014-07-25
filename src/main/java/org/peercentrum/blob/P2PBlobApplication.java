@@ -60,7 +60,24 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 	        return new HeaderAndPayload(newResponseHeaderForRequest(receivedRequest), payload);
 	      }
 	      //The request looks sane...
-	      completeResponse(blobReq, appLevelResponse);
+	      respondToBlobDownloadRequest(blobReq, appLevelResponse);
+			}
+			
+			for(PB.P2PBlobUploadRequestMsg uploadBlobReq: request.getUploadRequestList()){
+//			  if(uploadBlobReq.hasBlobHash()==false){
+//			    LOGGER.error("Upload request {} is missing the blob hash.", uploadBlobReq);
+//			    break;
+//			  }
+			  if(uploadBlobReq.hasMetaData()==false){
+          LOGGER.error("Upload request {} is missing the metaData.", uploadBlobReq);
+			    break;
+			  }
+
+			  PB.P2PBlobMetaDataMsg metaData=uploadBlobReq.getMetaData();
+        P2PBlobStoredBlob storedBlob=blobRepository.getOrCreateStoredBlob(metaData);
+			  for(PB.P2PBlobBlockMsg blockMsg: uploadBlobReq.getBlocksList()){
+			    storedBlob.maybeAcceptBlobBytes(blockMsg);
+			  }
 			}
 
 			ByteBuf appSpecificResponseBytes=ProtobufByteBufCodec.encodeNoLengthPrefix(appLevelResponse);
@@ -72,13 +89,13 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 		}
 	}
 
-	private void completeResponse(P2PBlobBlobRequestMsg blobReq, PB.P2PBlobResponseMsg.Builder appLevelResponseBuilder) throws Exception {
+	private void respondToBlobDownloadRequest(P2PBlobBlobRequestMsg blobReq, PB.P2PBlobResponseMsg.Builder appLevelResponseBuilder) throws Exception {
 		HashIdentifier blobHash=new HashIdentifier(blobReq.getRequestedHash().toByteArray());
 		P2PBlobStoredBlob storedBlob=blobRepository.getStoredBlob(blobHash);
 		LOGGER.debug("Got a request for blob hash {}", blobHash);
 		
 		if(storedBlob==null){ //BLOB not found
-      throw new RuntimeException("Not implemented");
+      throw new RuntimeException("BLOB not found Not implemented");
 		}
 		
 		if(storedBlob.isBlobDownloadComplete()==false){

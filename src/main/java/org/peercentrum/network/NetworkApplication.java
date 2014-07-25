@@ -5,11 +5,11 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 
 import org.peercentrum.core.ApplicationIdentifier;
-import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.HeaderMessage;
 import org.peercentrum.core.PB.NetworkMessage;
 import org.peercentrum.core.PB.NetworkMessage.NetworkOperation;
+import org.peercentrum.core.ProtobufByteBufCodec;
 
 public class NetworkApplication extends BaseApplicationMessageHandler {
 

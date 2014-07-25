@@ -21,7 +21,7 @@ public abstract class P2PBlobStoredBlob {
 	protected long blobLengthInBytes;
 	protected int blockLength=P2PBlobApplication.BLOCK_SIZE;
 	
-	abstract protected void acceptValidatedBlobBytes(int blockIndex, byte[] blobBlockBytes);
+	abstract protected void acceptValidatedBlobBytes(int blockIndex, byte[] blobBlockBytes) throws Exception;
 	abstract public ByteString getBytesRange(long offset, int length) throws Exception;
 
 	public P2PBlobStoredBlob(HashIdentifier blobHash, P2PBlobHashList hashList, P2PBlobRangeSet localBlockRange, long blobByteSize, int blockLength) {
@@ -118,6 +118,32 @@ public abstract class P2PBlobStoredBlob {
       }
     }
     return numberOfFullBlocks*blockLength+numberOfBytesInLastBlock;
+  }
+
+  public void maybeAcceptBlobBytes(PB.P2PBlobBlockMsg blobBlockMsg) throws Exception {
+    if(this.hashList==null){
+      throw new RuntimeException("Need to receive the hashList before accepting blocks");
+    }
+    if(blobBlockMsg.hasBlockIndex()==false || blobBlockMsg.hasBlobBytes()==false){
+      throw new RuntimeException("Missing blockIndex or blockBytes");
+    }
+    int currentBlockIndex=blobBlockMsg.getBlockIndex();
+    byte[] blobBlockBytes=blobBlockMsg.getBlobBytes().toByteArray();
+    
+    HashIdentifier blockHash=this.hashList.get(currentBlockIndex);
+    HashIdentifier blobBlockBytesHash=P2PBlobHashList.hashBytes(blobBlockBytes, 0 ,blobBlockBytes.length);
+    if(blobBlockBytesHash.equals(blockHash)==false){
+      LOGGER.error("The block "+currentBlockIndex+" does not hash to "+blockHash);
+      return; //Throw exception?
+    }
+    this.acceptValidatedBlobBytes(currentBlockIndex, blobBlockBytes);
+  }
+  
+  public int getBlockLength() {
+    return this.blockLength;
+  }
+  public int getNumberOfBlocks() {
+    return getHashList().size();
   }
 
 }

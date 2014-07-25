@@ -8,7 +8,6 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 import org.junit.Test;
-import org.peercentrum.consensusprocess.ConsensusThreshold;
 
 public class ConsensusThresholdTest {
 	@Test

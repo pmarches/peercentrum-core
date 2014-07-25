@@ -6,9 +6,9 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 
 import java.util.List;
 
-import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.HeaderMessage;
+import org.peercentrum.core.ProtobufByteBufCodec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

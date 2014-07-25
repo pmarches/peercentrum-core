@@ -4,12 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
-import org.peercentrum.blob.P2PBlobRangeSet;
-import org.peercentrum.core.PB;
-import org.peercentrum.core.PB.P2PBlobRangeMsg;
 
 import com.google.common.collect.Range;
 

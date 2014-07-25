@@ -60,28 +60,21 @@ public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 	}
 
 	//Not sure this should be in this class, ok for now..
-	public static P2PBlobHashList createFromFile(File nonRepositoryFile) throws IOException {
+	public static P2PBlobHashList createFromFileChannel(int blockLength, FileChannel fileChannelToRead) throws IOException {
 		P2PBlobHashList hashList=new P2PBlobHashList();
-		RandomAccessFile RAFToHash=new RandomAccessFile(nonRepositoryFile, "r");
-		FileChannel fileChannel=RAFToHash.getChannel();
 
-		ByteBuffer dataBlock = ByteBuffer.allocate(P2PBlobApplication.BLOCK_SIZE);
+		ByteBuffer dataBlock = ByteBuffer.allocate(blockLength);
 		while(true){
-			int nbBytesRead = fileChannel.read(dataBlock);
-			if(dataBlock.remaining()!=0 && nbBytesRead!=-1){
-				continue;
-			}
+			int nbBytesRead = fileChannelToRead.read(dataBlock);
+      if(nbBytesRead==-1){
+        break;
+      }
 			if(dataBlock.limit()!=0){
 				HashIdentifier blockHash=hashBytes(dataBlock.array(), dataBlock.arrayOffset(), dataBlock.position());
 				hashList.add(blockHash);
 				dataBlock.rewind();
 			}
-			if(nbBytesRead==-1){
-				break;
-			}
 		}
-		fileChannel.close();
-		RAFToHash.close();
 		return hashList;
 	}
 
@@ -97,5 +90,24 @@ public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 		double fractionalNumberOfBlocks=blobByteSize/(double) HASH_BYTE_SIZE;
 		return (int) Math.ceil(fractionalNumberOfBlocks);
 	}
+
+  public static P2PBlobHashList createFromFile(File nonRepositoryFile) throws IOException {
+    RandomAccessFile rafToRead=new RandomAccessFile(nonRepositoryFile, "r");
+    P2PBlobHashList hList=createFromFileChannel(P2PBlobApplication.BLOCK_SIZE, rafToRead.getChannel());
+    rafToRead.close();
+    return hList;
+  }
+
+  public static P2PBlobHashList createFromBytes(int blockSize, byte[] blobContent) {
+    P2PBlobHashList hashList=new P2PBlobHashList();
+    int position=0;
+    while(position<blobContent.length){
+      int nbBytesInBlock=Math.min(blockSize, blobContent.length-position);
+      HashIdentifier blockHash=hashBytes(blobContent, position, nbBytesInBlock);
+      hashList.add(blockHash);
+      position+=blockSize;
+    }
+    return hashList;
+  }
 
 }

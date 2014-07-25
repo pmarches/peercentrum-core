@@ -2,8 +2,6 @@ package org.peercentrum.consensusprocess;
 
 import java.util.concurrent.CyclicBarrier;
 
-import org.peercentrum.consensusprocess.ConsensusThreshold;
-
 public class MockTriggerableThreshold extends ConsensusThreshold {
 	CyclicBarrier thresholdBarrier;
 	CyclicBarrier canWaitforThresholdBarrier;

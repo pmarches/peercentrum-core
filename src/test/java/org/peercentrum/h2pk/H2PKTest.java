@@ -11,10 +11,6 @@ import org.peercentrum.consensusprocess.UniqueNodeList;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.h2pk.HashIdentifier;
-import org.peercentrum.h2pk.HashToPublicKeyApplication;
-import org.peercentrum.h2pk.HashToPublicKeyDB;
-import org.peercentrum.h2pk.HashToPublicKeyStandaloneClient;
 import org.peercentrum.network.NetworkServer;
 
 

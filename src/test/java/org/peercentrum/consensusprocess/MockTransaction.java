@@ -1,6 +1,5 @@
 package org.peercentrum.consensusprocess;
 
-import org.peercentrum.consensusprocess.ConsensusTransaction;
 
 
 
