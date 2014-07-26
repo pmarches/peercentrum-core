@@ -1,6 +1,7 @@
 package org.peercentrum.blob;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -21,8 +22,8 @@ public class P2PBlobStoredBlobRepositoryFS extends P2PBlobStoredBlob {
     this.blobFile=blobFile;
   }
 
-  public P2PBlobStoredBlobRepositoryFS(File blobFile) {
-    super(null, null, null, blobFile.length(), P2PBlobApplication.BLOCK_SIZE);
+  public P2PBlobStoredBlobRepositoryFS(File blobFile) throws IOException {
+    super(null, P2PBlobHashList.createFromFile(blobFile), null, blobFile.length(), P2PBlobApplication.BLOCK_SIZE);
     this.blobFile=blobFile;
   }
 
@@ -61,7 +62,7 @@ public class P2PBlobStoredBlobRepositoryFS extends P2PBlobStoredBlob {
 
     RandomAccessFile rafBlob=new RandomAccessFile(blobFile, "rw");
     FileChannel fileChannel=rafBlob.getChannel();
-    long bytesOffset=blockLayout.getBlockOffset(blockIndex);
+    long bytesOffset=blockLayout.getOffsetOfBlock(blockIndex);
     fileChannel.position(bytesOffset);
     fileChannel.write(blobBlockBytes);
     fileChannel.close();

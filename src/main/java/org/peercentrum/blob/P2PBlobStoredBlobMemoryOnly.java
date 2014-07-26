@@ -24,7 +24,7 @@ public class P2PBlobStoredBlobMemoryOnly extends P2PBlobStoredBlob {
 
   @Override
 	protected void acceptValidatedBlobBytes(int blockIndex, ByteBuffer blobBlockBytes) {
-		int blockStartsAt=(int) blockLayout.getBlockOffset(blockIndex);
+		int blockStartsAt=(int) blockLayout.getOffsetOfBlock(blockIndex);
 		validatedBlobContent.ensureWritable(blockStartsAt+blobBlockBytes.remaining());
 		validatedBlobContent.writerIndex(blockStartsAt);
 		validatedBlobContent.writeBytes(blobBlockBytes);

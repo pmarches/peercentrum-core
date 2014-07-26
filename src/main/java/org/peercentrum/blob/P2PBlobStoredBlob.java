@@ -100,12 +100,12 @@ public abstract class P2PBlobStoredBlob {
     int numberOfFullBlocks=ranges.getCardinality();
     int numberOfBytesInLastBlock=0;
     if(ranges.ranges.contains(hashList.size()-1)){
-      numberOfBytesInLastBlock=blockLayout.getBlockLengthOfLastBlock();
+      numberOfBytesInLastBlock=blockLayout.getLengthOfUnEvenBlock();
       if(numberOfBytesInLastBlock!=0){
         numberOfFullBlocks--;
       }
     }
-    return numberOfFullBlocks*blockLayout.getBlockLength()+numberOfBytesInLastBlock;
+    return numberOfFullBlocks*blockLayout.getLengthOfEvenBlock()+numberOfBytesInLastBlock;
   }
 
   public void maybeAcceptBlobBytes(PB.P2PBlobBlockMsg blobBlockMsg) throws Exception {
@@ -134,8 +134,8 @@ public abstract class P2PBlobStoredBlob {
 
   public void getBlock(int blockIndex, ByteBuffer buffer) throws Exception {
     buffer.clear();
-    buffer.limit(blockLayout.getBlockLength(blockIndex));
-    getBytesRange(blockLayout.getBlockOffset(blockIndex), buffer);
+    buffer.limit(blockLayout.getLengthOfBlock(blockIndex));
+    getBytesRange(blockLayout.getOffsetOfBlock(blockIndex), buffer);
   }
   
 }

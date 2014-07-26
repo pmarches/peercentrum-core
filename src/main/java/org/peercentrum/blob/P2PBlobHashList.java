@@ -103,17 +103,16 @@ public class P2PBlobHashList extends ArrayList<HashIdentifier> {
   public static P2PBlobHashList createFromBytes(int blockSize, byte[] blobContent) {
     P2PBlobHashList hashList=new P2PBlobHashList();
     ByteBuffer bbBlobContent=ByteBuffer.wrap(blobContent);
+    P2PBlobBlockLayout blockLayout=new P2PBlobBlockLayout(blobContent.length, blockSize);
     while(true){
-      int nbBytesInBlock=Math.min(blockSize, bbBlobContent.remaining());
+      int nbBytesInBlock=blockLayout.getLengthOfBlock(hashList.size());
       bbBlobContent.limit(bbBlobContent.position()+nbBytesInBlock);
       HashIdentifier blockHash=hashBytes(bbBlobContent);
       hashList.add(blockHash);
-      if(bbBlobContent.hasRemaining()){
-        bbBlobContent.position(bbBlobContent.position()+nbBytesInBlock);
-      }
-      else{
+      if(bbBlobContent.limit()==bbBlobContent.capacity()){
         break;
       }
+      bbBlobContent.position(bbBlobContent.limit());
     }
     return hashList;
   }

@@ -174,8 +174,8 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
             concatenatedHashes.array(),
             blockLayout.getNumberOfBlocks(),
             null,
-            blockLayout.getBlobLength(),
-            blockLayout.getBlockLength());
+            blockLayout.getLengthOfBlob(),
+            blockLayout.getLengthOfEvenBlock());
         LOGGER.debug("Added topHash/hashList={}", newRow);
         return null;
       }

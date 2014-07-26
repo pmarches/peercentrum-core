@@ -26,6 +26,9 @@ public class P2PBlobHashListTest {
     
     P2PBlobStoredBlob twoBlockMemory=new P2PBlobStoredBlobMemoryOnly(new byte[2*P2PBlobApplication.BLOCK_SIZE]);
     assertEquals("0CC19DD4AC4CFB8E93499A43E86E4310545F0CF73E957823834BE190CDA7835E", twoBlockMemory.getHashList().getTopLevelHash().toString());
+
+    P2PBlobStoredBlob twoAndOneByteBlockMemory=new P2PBlobStoredBlobMemoryOnly(new byte[2*P2PBlobApplication.BLOCK_SIZE+1]);
+    assertEquals("9DDF7D8E177C25FEF467F842335B045EB1047392714399FED3D1CF3F426A9BDF", twoAndOneByteBlockMemory.getHashList().getTopLevelHash().toString());
 }
 
 }

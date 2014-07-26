@@ -9,35 +9,52 @@ public class P2PBlobBlockLayout {
     this.blockLength=blockLength;
   }
   
-  public int getBlockLengthOfLastBlock() {
+  public int getLengthOfUnEvenBlock() {
     return (int) (blobLengthInBytes%blockLength);
   }
 
-  public int getBlockLength() {
+  public int getLengthOfEvenBlock() {
     return blockLength;
   }
 
-  public long getBlobLength() {
+  public long getLengthOfBlob() {
     return blobLengthInBytes;
   }
 
   public int getNumberOfBlocks() {
     int nbBlocks=(int) (blobLengthInBytes/blockLength);
-    if(getBlockLengthOfLastBlock()!=0){
+    if(getLengthOfUnEvenBlock()!=0){
       nbBlocks++;
     }
     return nbBlocks;
   }
 
-  public int getBlockLength(int blockIndex) {
-    if(blockIndex+1==getNumberOfBlocks()){
-      return getBlockLengthOfLastBlock();
-    }
-    return getBlockLength();
+  public int getNumberOfEvenBlocks() {
+    int nbBlocks=(int) (blobLengthInBytes/blockLength);
+    return nbBlocks;
   }
 
-  public long getBlockOffset(int blockIndex) {
-    return blockIndex*getBlockLength();
+  public int getIndexOfUnEvenBlock(){
+    if(getLengthOfUnEvenBlock()==0){
+      return -1; //All blocks are even
+    }
+    int numberOfEvenBlocks=getNumberOfEvenBlocks();
+    return numberOfEvenBlocks;
+  }
+  
+  public int getLengthOfBlock(int blockIndex) {
+    if(blockIndex==getIndexOfUnEvenBlock()){
+      return getLengthOfUnEvenBlock();
+    }
+    else if(blockIndex<0 || blockIndex>getNumberOfEvenBlocks()){
+      throw new IndexOutOfBoundsException();
+    }
+
+    return getLengthOfEvenBlock();
+  }
+
+  public long getOffsetOfBlock(int blockIndex) {
+    return blockIndex*getLengthOfEvenBlock();
   }
 
 }

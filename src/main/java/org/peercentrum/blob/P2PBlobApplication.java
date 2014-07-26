@@ -109,7 +109,7 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 		if(blobReq.hasRequestMetaData() && blobReq.getRequestMetaData()){
 		  PB.P2PBlobMetaDataMsg.Builder metaDataMsg=PB.P2PBlobMetaDataMsg.newBuilder();
 		  metaDataMsg.setHashList(storedBlob.getHashList().toHashListMsg());
-		  metaDataMsg.setBlobLength(storedBlob.getBlockLayout().getBlobLength());
+		  metaDataMsg.setBlobLength(storedBlob.getBlockLayout().getLengthOfBlob());
 		  
       appLevelResponseBuilder.setMetaData(metaDataMsg);
 		}
@@ -124,7 +124,7 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 		}
 		
 		DiscreteIterator di = requestedRanges.discreteIterator();
-		ByteBuffer blockBytes=ByteBuffer.allocateDirect(storedBlob.getBlockLayout().getBlockLength());
+		ByteBuffer blockBytes=ByteBuffer.allocateDirect(storedBlob.getBlockLayout().getLengthOfEvenBlock());
 		while(di.hasNext()){
 			int blockIndex=di.next();
 			PB.P2PBlobBlockMsg.Builder blockMsg=PB.P2PBlobBlockMsg.newBuilder();

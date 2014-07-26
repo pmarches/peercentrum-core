@@ -30,7 +30,7 @@ public class P2PBlobApplicationTest {
     hellowWorldDownloadCompleteFuture.sync();
     assertEquals(mockNodes.helloWorldBlobID, hellowWorldDownload.getHashList().getTopLevelHash());
     assertEquals(12, hellowWorldDownload.validatedBlobContent.readableBytes());
-    assertEquals(12, hellowWorldDownload.getBlockLayout().getBlobLength());
+    assertEquals(12, hellowWorldDownload.getBlockLayout().getLengthOfBlob());
   }
 
   @Test

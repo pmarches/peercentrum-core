@@ -116,7 +116,7 @@ public class P2PBlobStandaloneClient {
     PB.P2PBlobUploadRequestMsg.Builder uploadRequest=PB.P2PBlobUploadRequestMsg.newBuilder();
 
     P2PBlobBlockLayout blockLayout=upload.getBlockLayout();
-    ByteBuffer blockBytes=ByteBuffer.allocateDirect(blockLayout.getBlockLength());
+    ByteBuffer blockBytes=ByteBuffer.allocateDirect(blockLayout.getLengthOfEvenBlock());
     for(int i=0; i<blockLayout.getNumberOfBlocks(); i++){
       upload.getBlock(i, blockBytes);
       PB.P2PBlobBlockMsg.Builder oneBlock=PB.P2PBlobBlockMsg.newBuilder();
@@ -125,8 +125,8 @@ public class P2PBlobStandaloneClient {
       uploadRequest.addBlocks(oneBlock);
     }
     PB.P2PBlobMetaDataMsg.Builder metaData=PB.P2PBlobMetaDataMsg.newBuilder();
-    metaData.setBlobLength(blockLayout.getBlobLength());
-    metaData.setBlockSize(blockLayout.getBlockLength());
+    metaData.setBlobLength(blockLayout.getLengthOfBlob());
+    metaData.setBlockSize(blockLayout.getLengthOfEvenBlock());
     metaData.setHashList(upload.getHashList().toHashListMsg());
     uploadRequest.setMetaData(metaData);
     topLevelReq.addUploadRequest(uploadRequest);
