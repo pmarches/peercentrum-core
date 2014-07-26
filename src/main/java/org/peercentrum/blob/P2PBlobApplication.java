@@ -1,5 +1,7 @@
 package org.peercentrum.blob;
 
+import java.nio.ByteBuffer;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 
@@ -18,6 +20,8 @@ import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.protobuf.ByteString;
 
 public class P2PBlobApplication extends BaseApplicationMessageHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobApplication.class);
@@ -105,7 +109,7 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 		if(blobReq.hasRequestMetaData() && blobReq.getRequestMetaData()){
 		  PB.P2PBlobMetaDataMsg.Builder metaDataMsg=PB.P2PBlobMetaDataMsg.newBuilder();
 		  metaDataMsg.setHashList(storedBlob.getHashList().toHashListMsg());
-		  metaDataMsg.setBlobLength(storedBlob.getBlobLength());
+		  metaDataMsg.setBlobLength(storedBlob.getBlockLayout().getBlobLength());
 		  
       appLevelResponseBuilder.setMetaData(metaDataMsg);
 		}
@@ -120,12 +124,13 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 		}
 		
 		DiscreteIterator di = requestedRanges.discreteIterator();
+		ByteBuffer blockBytes=ByteBuffer.allocateDirect(storedBlob.getBlockLayout().getBlockLength());
 		while(di.hasNext()){
 			int blockIndex=di.next();
-			long offset=blockIndex*BLOCK_SIZE;
 			PB.P2PBlobBlockMsg.Builder blockMsg=PB.P2PBlobBlockMsg.newBuilder();
 			blockMsg.setBlockIndex(blockIndex);
-			blockMsg.setBlobBytes(storedBlob.getBytesRange(offset, BLOCK_SIZE));
+			storedBlob.getBlock(blockIndex, blockBytes);
+			blockMsg.setBlobBytes(ByteString.copyFrom(blockBytes));
 			appLevelResponseBuilder.addBlobBytes(blockMsg);
 		}
 

@@ -12,57 +12,58 @@ import org.slf4j.LoggerFactory;
 import com.google.protobuf.ByteString;
 
 public class P2PBlobStoredBlobRepositoryFS extends P2PBlobStoredBlob {
-  protected P2PBlobRepositoryFS repository;
+  protected File blobFile;
   private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobStoredBlobRepositoryFS.class);
   
-  public P2PBlobStoredBlobRepositoryFS(P2PBlobRepositoryFS repository, HashIdentifier blobHash, P2PBlobHashList hashList,
+  public P2PBlobStoredBlobRepositoryFS(File blobFile, HashIdentifier blobHash, P2PBlobHashList hashList,
       P2PBlobRangeSet localBlockRange, long blobByteSize, int blockSize) {
     super(blobHash, hashList, localBlockRange, blobByteSize, blockSize);
-    this.repository=repository;
+    this.blobFile=blobFile;
+  }
+
+  public P2PBlobStoredBlobRepositoryFS(File blobFile) {
+    super(null, null, null, blobFile.length(), P2PBlobApplication.BLOCK_SIZE);
+    this.blobFile=blobFile;
   }
 
   @Override
   public ByteString getBytesRange(long bytesOffset, int length) throws Exception {
-    File blobFile = getFileFromBlobId();
-    RandomAccessFile rafBlob=new RandomAccessFile(blobFile, "r");
-    FileChannel fileChannel=rafBlob.getChannel();
-    fileChannel.position(bytesOffset);
-
     ByteBuffer dataBlock = ByteBuffer.allocate(length);
-    fileChannel.read(dataBlock);
-    dataBlock.flip();
-    fileChannel.close();
-    rafBlob.close();
+    getBytesRange(bytesOffset, dataBlock);
     return ByteString.copyFrom(dataBlock); //FIXME avoid copying the bytes twice
   }
 
+  @Override
+  public void getBytesRange(long offset, ByteBuffer buffer) throws Exception {
+    RandomAccessFile rafBlob=new RandomAccessFile(blobFile, "r");
+    FileChannel fileChannel=rafBlob.getChannel();
+    fileChannel.position(offset);
 
-  protected File getFileFromBlobId() {
-    File blobFile=new File(repository.repositoryDirectory, super.blobHash.toString()+".blob");
-    return blobFile;
+    fileChannel.read(buffer);
+    buffer.flip();
+    fileChannel.close();
+    rafBlob.close();
   }
 
   /**
    * This function assumes the bytes have been validated against the hashList beforehand.
    */
   @Override
-  protected void acceptValidatedBlobBytes(int blockIndex, byte[] blobBlockBytes) throws Exception {
+  protected void acceptValidatedBlobBytes(int blockIndex, ByteBuffer blobBlockBytes) throws Exception {
     if(isBlobDownloadComplete()){
       LOGGER.warn("Trying to insert bytes {} for blob {} that is already complete", blockIndex, getBlobIdentifier());
       return;
     }
-    //		RangeSet<UnsignedLong> missingBytes = transitStatus.getMissingBytesRange(newDataRange);
     if(localBlockRange.ranges.contains(blockIndex)){
       LOGGER.warn("We already have the block {} for blob {}", blockIndex, getBlobIdentifier());
       return;
     }
 
-    File blobFile = getFileFromBlobId();
-    RandomAccessFile rafBlob=new RandomAccessFile(blobFile, "r");
+    RandomAccessFile rafBlob=new RandomAccessFile(blobFile, "rw");
     FileChannel fileChannel=rafBlob.getChannel();
-    long bytesOffset;
+    long bytesOffset=blockLayout.getBlockOffset(blockIndex);
     fileChannel.position(bytesOffset);
-
+    fileChannel.write(blobBlockBytes);
     fileChannel.close();
     rafBlob.close();
   }

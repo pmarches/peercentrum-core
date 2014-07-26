@@ -1,11 +1,6 @@
 package org.peercentrum.blob;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
 import io.netty.util.concurrent.Future;
 
 import org.junit.AfterClass;
@@ -34,13 +29,13 @@ public class P2PBlobApplicationTest {
     Future<P2PBlobStoredBlob> hellowWorldDownloadCompleteFuture=blobClient.downloadAll(hellowWorldDownload);
     hellowWorldDownloadCompleteFuture.sync();
     assertEquals(mockNodes.helloWorldBlobID, hellowWorldDownload.getHashList().getTopLevelHash());
-    assertEquals(12, hellowWorldDownload.downloadedAndValidatedBlobContent.readableBytes());
-    assertEquals(12, hellowWorldDownload.blobLengthInBytes);
+    assertEquals(12, hellowWorldDownload.validatedBlobContent.readableBytes());
+    assertEquals(12, hellowWorldDownload.getBlockLayout().getBlobLength());
   }
 
   @Test
   public void testUpload() throws Exception {
-    P2PBlobUpload bonjourMondeUpload=new P2PBlobUpload("Bonjour monde!\n".getBytes());
+    P2PBlobStoredBlob bonjourMondeUpload=new P2PBlobStoredBlobMemoryOnly("Bonjour monde!\n".getBytes());
     assertEquals("3EC129755B093D2B403C893D33322D933D7F2C0889F70FBA75662D8319FF08A6", bonjourMondeUpload.getHashList().getTopLevelHash().toString());
     blobClient.upload(bonjourMondeUpload);
     P2PBlobStoredBlob bonjourMondeDownload=new P2PBlobStoredBlobMemoryOnly(bonjourMondeUpload.getHashList().getTopLevelHash());

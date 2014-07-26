@@ -130,8 +130,8 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 						localBlockRange=new P2PBlobRangeSet(localBlockRangeStr);
 					}
 					P2PBlobHashList hashList=new P2PBlobHashList(blobMetaCursor.getBlobAsArray("blocksHash"));
-					P2PBlobStoredBlobRepositoryFS status=new P2PBlobStoredBlobRepositoryFS(P2PBlobRepositoryFS.this, 
-					    blobId, hashList, localBlockRange, blobByteSize, blockByteSize);
+					File blobFile = getBlobFile(blobId);
+          P2PBlobStoredBlobRepositoryFS status=new P2PBlobStoredBlobRepositoryFS(blobFile,blobId, hashList, localBlockRange, blobByteSize, blockByteSize);
 					cachedTransitStatus.put(blobId, status);
 					return status;
 				}
@@ -153,14 +153,16 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
     if(theBlob!=null){
       return theBlob;
     }
-    theBlob=new P2PBlobStoredBlobRepositoryFS(this, hashList.getTopLevelHash(), hashList, 
+    File blobFile = getBlobFile(hashList.getTopLevelHash());
+    theBlob=new P2PBlobStoredBlobRepositoryFS(blobFile , hashList.getTopLevelHash(), hashList, 
         new P2PBlobRangeSet(), metaData.getBlobLength(), metaData.getBlockSize());
     insertStoredBlobMetaData(theBlob);
     return theBlob;
   }
 
   public void insertStoredBlobMetaData(final P2PBlobStoredBlob theBlob) throws SqlJetException {
-    final ByteBuf concatenatedHashes=Unpooled.buffer(theBlob.getNumberOfBlocks()*P2PBlobHashList.HASH_BYTE_SIZE);
+    final P2PBlobBlockLayout blockLayout = theBlob.getBlockLayout();
+    final ByteBuf concatenatedHashes=Unpooled.buffer(blockLayout.getNumberOfBlocks()*P2PBlobHashList.HASH_BYTE_SIZE);
     for(HashIdentifier hashBlock:theBlob.getHashList()){
       concatenatedHashes.writeBytes(hashBlock.getBytes());
     }
@@ -170,16 +172,21 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
         long newRow = blobMetaTable.insert(
             theBlob.getHashList().getTopLevelHash().getBytes(), 
             concatenatedHashes.array(),
-            theBlob.getNumberOfBlocks(),
+            blockLayout.getNumberOfBlocks(),
             null,
-            theBlob.getBlobLength(),
-            theBlob.getBlockLength());
+            blockLayout.getBlobLength(),
+            blockLayout.getBlockLength());
         LOGGER.debug("Added topHash/hashList={}", newRow);
         return null;
       }
     };
     db.runWriteTransaction(insertTx);
     concatenatedHashes.release();
+  }
+
+  private File getBlobFile(final HashIdentifier blobId) {
+    File blobFile=new File(P2PBlobRepositoryFS.this.repositoryDirectory, blobId.toString()+".blob");
+    return blobFile;
   }
 
 }

@@ -1,13 +1,11 @@
 package org.peercentrum.blob;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-
 import io.netty.util.concurrent.DefaultProgressivePromise;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import io.netty.util.concurrent.GlobalEventExecutor;
+
+import java.nio.ByteBuffer;
 
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.P2PBlobResponseMsg;
@@ -113,25 +111,27 @@ public class P2PBlobStandaloneClient {
 		return downloadPromise;
 	}
 	
-  public void upload(P2PBlobUpload upload) throws Exception {
+  public void upload(P2PBlobStoredBlob upload) throws Exception {
     PB.P2PBlobRequestMsg.Builder topLevelReq=PB.P2PBlobRequestMsg.newBuilder();
     PB.P2PBlobUploadRequestMsg.Builder uploadRequest=PB.P2PBlobUploadRequestMsg.newBuilder();
 
-    int numberOfBlocks=upload.getHashList().size();
-    for(int i=0; i<numberOfBlocks; i++){
-      ByteBuffer blockBytes=upload.getBlock(i);
+    P2PBlobBlockLayout blockLayout=upload.getBlockLayout();
+    ByteBuffer blockBytes=ByteBuffer.allocateDirect(blockLayout.getBlockLength());
+    for(int i=0; i<blockLayout.getNumberOfBlocks(); i++){
+      upload.getBlock(i, blockBytes);
       PB.P2PBlobBlockMsg.Builder oneBlock=PB.P2PBlobBlockMsg.newBuilder();
       oneBlock.setBlockIndex(i);
       oneBlock.setBlobBytes(ByteString.copyFrom(blockBytes));
       uploadRequest.addBlocks(oneBlock);
     }
     PB.P2PBlobMetaDataMsg.Builder metaData=PB.P2PBlobMetaDataMsg.newBuilder();
-    metaData.setBlobLength(upload.getBlobLength());
-    metaData.setBlockSize(upload.getBlockLength());
+    metaData.setBlobLength(blockLayout.getBlobLength());
+    metaData.setBlockSize(blockLayout.getBlockLength());
     metaData.setHashList(upload.getHashList().toHashListMsg());
     uploadRequest.setMetaData(metaData);
     topLevelReq.addUploadRequest(uploadRequest);
     Future<PB.P2PBlobRequestMsg> responseFuture=connection.sendRequestMsg(P2PBlobApplication.APP_ID, topLevelReq.build());
+    responseFuture.sync();
   }
 
 }

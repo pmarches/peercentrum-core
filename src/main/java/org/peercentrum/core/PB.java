@@ -17476,9 +17476,9 @@ public final class PB {
   public interface P2PBlobMetaDataMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int64 blobLength = 1;
+    // optional int64 blobLengthInBytes = 1;
     /**
-     * <code>optional int64 blobLength = 1;</code>
+     * <code>optional int64 blobLengthInBytes = 1;</code>
      *
      * <pre>
      *Hash the length as the first element of the blob hash
@@ -17486,7 +17486,7 @@ public final class PB {
      */
     boolean hasBlobLength();
     /**
-     * <code>optional int64 blobLength = 1;</code>
+     * <code>optional int64 blobLengthInBytes = 1;</code>
      *
      * <pre>
      *Hash the length as the first element of the blob hash
@@ -17640,11 +17640,11 @@ public final class PB {
     }
 
     private int bitField0_;
-    // optional int64 blobLength = 1;
+    // optional int64 blobLengthInBytes = 1;
     public static final int BLOBLENGTH_FIELD_NUMBER = 1;
     private long blobLength_;
     /**
-     * <code>optional int64 blobLength = 1;</code>
+     * <code>optional int64 blobLengthInBytes = 1;</code>
      *
      * <pre>
      *Hash the length as the first element of the blob hash
@@ -17654,7 +17654,7 @@ public final class PB {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional int64 blobLength = 1;</code>
+     * <code>optional int64 blobLengthInBytes = 1;</code>
      *
      * <pre>
      *Hash the length as the first element of the blob hash
@@ -17980,10 +17980,10 @@ public final class PB {
       }
       private int bitField0_;
 
-      // optional int64 blobLength = 1;
+      // optional int64 blobLengthInBytes = 1;
       private long blobLength_ ;
       /**
-       * <code>optional int64 blobLength = 1;</code>
+       * <code>optional int64 blobLengthInBytes = 1;</code>
        *
        * <pre>
        *Hash the length as the first element of the blob hash
@@ -17993,7 +17993,7 @@ public final class PB {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional int64 blobLength = 1;</code>
+       * <code>optional int64 blobLengthInBytes = 1;</code>
        *
        * <pre>
        *Hash the length as the first element of the blob hash
@@ -18003,7 +18003,7 @@ public final class PB {
         return blobLength_;
       }
       /**
-       * <code>optional int64 blobLength = 1;</code>
+       * <code>optional int64 blobLengthInBytes = 1;</code>
        *
        * <pre>
        *Hash the length as the first element of the blob hash
@@ -18016,7 +18016,7 @@ public final class PB {
         return this;
       }
       /**
-       * <code>optional int64 blobLength = 1;</code>
+       * <code>optional int64 blobLengthInBytes = 1;</code>
        *
        * <pre>
        *Hash the length as the first element of the blob hash

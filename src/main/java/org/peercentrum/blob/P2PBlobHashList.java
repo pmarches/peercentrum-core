@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import org.peercentrum.core.PB;
@@ -66,11 +68,12 @@ public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 		ByteBuffer dataBlock = ByteBuffer.allocate(blockLength);
 		while(true){
 			int nbBytesRead = fileChannelToRead.read(dataBlock);
-      if(nbBytesRead==-1){
+      if(nbBytesRead==-1 && hashList.isEmpty()==false){
         break;
       }
+      dataBlock.flip();
 			if(dataBlock.limit()!=0){
-				HashIdentifier blockHash=hashBytes(dataBlock.array(), dataBlock.arrayOffset(), dataBlock.position());
+				HashIdentifier blockHash=hashBytes(dataBlock);
 				hashList.add(blockHash);
 				dataBlock.rewind();
 			}
@@ -78,19 +81,18 @@ public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 		return hashList;
 	}
 
-	public static HashIdentifier hashBytes(byte[] dataToHash, int offset, int length){
-		SHA256Digest mda = new SHA256Digest();
-		mda.update(dataToHash, offset, length);
-		byte[] hashBytes = new byte[32];
-		mda.doFinal(hashBytes, 0);
-		return new HashIdentifier(hashBytes);
+	public static HashIdentifier hashBytes(ByteBuffer blobBlockBytes){
+    try {
+      MessageDigest digest = MessageDigest.getInstance("SHA-256");
+      digest.update(blobBlockBytes);
+      byte[] hashBytes = digest.digest();
+      HashIdentifier hid = new HashIdentifier(hashBytes);
+      return hid;
+    } catch (NoSuchAlgorithmException e) {
+      throw new RuntimeException(e);
+    }
 	}
 	
-	public static int getNumberOfBlocksForBlobSize(long blobByteSize) {
-		double fractionalNumberOfBlocks=blobByteSize/(double) HASH_BYTE_SIZE;
-		return (int) Math.ceil(fractionalNumberOfBlocks);
-	}
-
   public static P2PBlobHashList createFromFile(File nonRepositoryFile) throws IOException {
     RandomAccessFile rafToRead=new RandomAccessFile(nonRepositoryFile, "r");
     P2PBlobHashList hList=createFromFileChannel(P2PBlobApplication.BLOCK_SIZE, rafToRead.getChannel());
@@ -100,12 +102,18 @@ public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 
   public static P2PBlobHashList createFromBytes(int blockSize, byte[] blobContent) {
     P2PBlobHashList hashList=new P2PBlobHashList();
-    int position=0;
-    while(position<blobContent.length){
-      int nbBytesInBlock=Math.min(blockSize, blobContent.length-position);
-      HashIdentifier blockHash=hashBytes(blobContent, position, nbBytesInBlock);
+    ByteBuffer bbBlobContent=ByteBuffer.wrap(blobContent);
+    while(true){
+      int nbBytesInBlock=Math.min(blockSize, bbBlobContent.remaining());
+      bbBlobContent.limit(bbBlobContent.position()+nbBytesInBlock);
+      HashIdentifier blockHash=hashBytes(bbBlobContent);
       hashList.add(blockHash);
-      position+=blockSize;
+      if(bbBlobContent.hasRemaining()){
+        bbBlobContent.position(bbBlobContent.position()+nbBytesInBlock);
+      }
+      else{
+        break;
+      }
     }
     return hashList;
   }

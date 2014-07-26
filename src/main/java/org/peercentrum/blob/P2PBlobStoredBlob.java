@@ -1,5 +1,6 @@
 package org.peercentrum.blob;
 
+import java.nio.ByteBuffer;
 import java.security.InvalidParameterException;
 
 import org.peercentrum.core.PB;
@@ -18,18 +19,17 @@ public abstract class P2PBlobStoredBlob {
 	protected HashIdentifier blobHash;
 	protected P2PBlobRangeSet localBlockRange;
 	protected P2PBlobHashList hashList;
-	protected long blobLengthInBytes;
-	protected int blockLength=P2PBlobApplication.BLOCK_SIZE;
+  protected P2PBlobBlockLayout blockLayout;
 	
-	abstract protected void acceptValidatedBlobBytes(int blockIndex, byte[] blobBlockBytes) throws Exception;
+	abstract protected void acceptValidatedBlobBytes(int blockIndex, ByteBuffer blobBlockBytes) throws Exception;
 	abstract public ByteString getBytesRange(long offset, int length) throws Exception;
+  abstract public void getBytesRange(long offset, ByteBuffer buffer) throws Exception;
 
 	public P2PBlobStoredBlob(HashIdentifier blobHash, P2PBlobHashList hashList, P2PBlobRangeSet localBlockRange, long blobByteSize, int blockLength) {
 		this.blobHash=blobHash;
 		this.hashList=hashList;
 		this.localBlockRange=localBlockRange;
-		this.blobLengthInBytes=blobByteSize;
-		this.blockLength=blockLength;
+		this.blockLayout=new P2PBlobBlockLayout(blobByteSize, blockLength);
 	}
 	
 	public boolean isBlobDownloadComplete() {
@@ -66,22 +66,8 @@ public abstract class P2PBlobStoredBlob {
 		return blobHash;
 	}
 	
-	public long getBlobLength() {
-	  if(hasMetaData()==false){
-      throw new NullPointerException("The metadata has to be known in order to determine the BlobLength");
-	  }
-		return blobLengthInBytes;
-	}
-
 	public boolean hasMetaData() {
-    return hashList!=null && blobLengthInBytes!=-1;
-  }
-
-	public int getLengthInBytesOfLastBlock() {
-	  if(hasMetaData()==false){
-	    throw new NullPointerException("The metadata has to be known in order to determine the LengthInBytesOfLastBlock");
-	  }
-    return (int) (blobLengthInBytes%blockLength);
+    return hashList!=null && blockLayout!=null;
   }
 	
   public void setMetaData(PB.P2PBlobMetaDataMsg metaData) throws Exception {
@@ -98,9 +84,11 @@ public abstract class P2PBlobStoredBlob {
       throw new InvalidParameterException("The hashList "+hashList.getTopLevelHash()+" does not compute to the blobHash "+blobHash);
     }
     this.hashList=newHashList;
-    this.blobLengthInBytes=metaData.getBlobLength();
     if(metaData.hasBlockSize()){
-      this.blockLength=metaData.getBlockSize();
+      blockLayout=new P2PBlobBlockLayout(metaData.getBlobLength(), metaData.getBlockSize());
+    }
+    else{
+      blockLayout=new P2PBlobBlockLayout(metaData.getBlobLength(), P2PBlobApplication.BLOCK_SIZE);
     }
   }
 
@@ -112,12 +100,12 @@ public abstract class P2PBlobStoredBlob {
     int numberOfFullBlocks=ranges.getCardinality();
     int numberOfBytesInLastBlock=0;
     if(ranges.ranges.contains(hashList.size()-1)){
-      numberOfBytesInLastBlock=getLengthInBytesOfLastBlock();
+      numberOfBytesInLastBlock=blockLayout.getBlockLengthOfLastBlock();
       if(numberOfBytesInLastBlock!=0){
         numberOfFullBlocks--;
       }
     }
-    return numberOfFullBlocks*blockLength+numberOfBytesInLastBlock;
+    return numberOfFullBlocks*blockLayout.getBlockLength()+numberOfBytesInLastBlock;
   }
 
   public void maybeAcceptBlobBytes(PB.P2PBlobBlockMsg blobBlockMsg) throws Exception {
@@ -128,22 +116,26 @@ public abstract class P2PBlobStoredBlob {
       throw new RuntimeException("Missing blockIndex or blockBytes");
     }
     int currentBlockIndex=blobBlockMsg.getBlockIndex();
-    byte[] blobBlockBytes=blobBlockMsg.getBlobBytes().toByteArray();
+    ByteBuffer blobBlockBytes=blobBlockMsg.getBlobBytes().asReadOnlyByteBuffer();
     
     HashIdentifier blockHash=this.hashList.get(currentBlockIndex);
-    HashIdentifier blobBlockBytesHash=P2PBlobHashList.hashBytes(blobBlockBytes, 0 ,blobBlockBytes.length);
+    HashIdentifier blobBlockBytesHash=P2PBlobHashList.hashBytes(blobBlockBytes);
+    blobBlockBytes.rewind();
     if(blobBlockBytesHash.equals(blockHash)==false){
       LOGGER.error("The block "+currentBlockIndex+" does not hash to "+blockHash);
       return; //Throw exception?
     }
-    this.acceptValidatedBlobBytes(currentBlockIndex, blobBlockBytes);
+    acceptValidatedBlobBytes(currentBlockIndex, blobBlockBytes);
   }
   
-  public int getBlockLength() {
-    return this.blockLength;
-  }
-  public int getNumberOfBlocks() {
-    return getHashList().size();
+  public P2PBlobBlockLayout getBlockLayout() {
+    return blockLayout;
   }
 
+  public void getBlock(int blockIndex, ByteBuffer buffer) throws Exception {
+    buffer.clear();
+    buffer.limit(blockLayout.getBlockLength(blockIndex));
+    getBytesRange(blockLayout.getBlockOffset(blockIndex), buffer);
+  }
+  
 }
