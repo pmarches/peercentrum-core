@@ -9,7 +9,7 @@ import org.peercentrum.blob.P2PBlobRangeSet.DiscreteIterator;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.GenericResponse;
-import org.peercentrum.core.PB.HeaderMessage;
+import org.peercentrum.core.PB.HeaderMsg;
 import org.peercentrum.core.PB.P2PBlobBlobRequestMsg;
 import org.peercentrum.core.PB.P2PBlobRequestMsg;
 import org.peercentrum.core.PB.P2PBlobResponseMsg;
@@ -85,7 +85,7 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 			}
 
 			ByteBuf appSpecificResponseBytes=ProtobufByteBufCodec.encodeNoLengthPrefix(appLevelResponse);
-			HeaderMessage.Builder responseHeader = newResponseHeaderForRequest(receivedRequest);
+			HeaderMsg.Builder responseHeader = newResponseHeaderForRequest(receivedRequest);
 			return new HeaderAndPayload(responseHeader, appSpecificResponseBytes);
 		} catch (Exception e) {
 			LOGGER.error("Failed to generateResponseFromQuery", e);

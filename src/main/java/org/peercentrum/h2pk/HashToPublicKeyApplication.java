@@ -41,6 +41,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 		}
 
 		networkClient=new NetworkClient(nodeServer.getLocalNodeId(), nodeServer.getNodeDatabase());
+		networkClient.setLocalListeniongPort(nodeServer.getListeningPort());
 		this.db=db;
 		txEvaluator=new HashToPublicKeyTXEvaluator(db);
 		final int DB_CLOSECYCLE_PERIOD_MS = 3000;

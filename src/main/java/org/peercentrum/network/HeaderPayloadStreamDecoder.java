@@ -7,7 +7,7 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import java.util.List;
 
 import org.peercentrum.core.PB;
-import org.peercentrum.core.PB.HeaderMessage;
+import org.peercentrum.core.PB.HeaderMsg;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,12 +15,12 @@ import org.slf4j.LoggerFactory;
 
 public class HeaderPayloadStreamDecoder extends ByteToMessageDecoder {
   private static final Logger LOGGER = LoggerFactory.getLogger(HeaderPayloadStreamDecoder.class);
-  PB.HeaderMessage pendingHeader;
+  PB.HeaderMsg pendingHeader;
   int nbBytesLeftToStream;
   @Override
   protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
     if(pendingHeader==null){
-      pendingHeader=ProtobufByteBufCodec.decodeWithLengthPrefix(in, PB.HeaderMessage.class);
+      pendingHeader=ProtobufByteBufCodec.decodeWithLengthPrefix(in, PB.HeaderMsg.class);
       if(pendingHeader==null){
         return;
       }
@@ -41,7 +41,7 @@ public class HeaderPayloadStreamDecoder extends ByteToMessageDecoder {
         return;
       }
       ByteBuf applicationBlock=in.readBytes(appSpecificBlockLength);
-      HeaderMessage headerReadyToBePropagated = pendingHeader;
+      HeaderMsg headerReadyToBePropagated = pendingHeader;
       pendingHeader=null;
       HeaderAndPayload headerAndPayload = new HeaderAndPayload(headerReadyToBePropagated, applicationBlock);
       ctx.fireChannelRead(headerAndPayload);

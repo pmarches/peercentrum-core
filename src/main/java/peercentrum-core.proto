@@ -3,18 +3,16 @@ package peercentrum;
 option java_package = "org.peercentrum.core";
 option java_outer_classname = "PB";
 
-message HeaderMessage {
-	optional SenderInformationMsg senderInfo=1;
+message HeaderMsg {
 	optional uint32 requestNumber=2; 
-  optional bytes nodePublicKey=7; //FIXME
-	optional bytes applicationId=3;
+	optional bytes destinationApplicationId=3;
 	optional bytes signature=4;
 	//Notice there is no payload in the protobuf message. It is simply appended as a multipart message
 	optional uint32 applicationSpecificBlockLength=5;
 	optional uint32 applicationSpecificStreamLength=6;
 };
 
-message SenderInformationMsg { //FIXME Get rid of all this crap, create endpoint message...
+message NodeMetaDataMsg { //FIXME Get rid of all this crap, create endpoint message...
   optional string userAgent=1;
   optional string externalIP=2;
   optional uint32 externalPort=3;
@@ -29,6 +27,7 @@ message NetworkMessage {
 		PONG=2;
 	}
 	optional NetworkOperation operation=1;
+	optional NodeMetaDataMsg nodeMetaData=2;
 };
 
 //Gossip application

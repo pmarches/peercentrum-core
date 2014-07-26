@@ -23,7 +23,8 @@ public class NetworkClient implements Closeable {
 	protected HashMap<NodeIdentifier, NetworkClientConnection> connectionCache=new HashMap<>();
 	protected NodeIdentifier thisNodeId;
 	protected NodeDatabase nodeDatabase;
-
+	protected int localListeningPort=0;
+	
   public NetworkClient(NodeIdentifier thisNodeId, NodeDatabase nodeDatabase) {
 		this.thisNodeId=thisNodeId;
 		this.nodeDatabase=nodeDatabase;
@@ -44,7 +45,7 @@ public class NetworkClient implements Closeable {
 		if(remoteEndpoint==null){
 			throw new RuntimeException("No endpoint found for peer "+remoteId);
 		}
-		NetworkClientConnection newConnection = new NetworkClientConnection(thisNodeId, remoteEndpoint);
+		NetworkClientConnection newConnection = new NetworkClientConnection(thisNodeId, remoteEndpoint, localListeningPort);
 		return newConnection;
 	}
 
@@ -95,5 +96,9 @@ public class NetworkClient implements Closeable {
     NetworkClientConnection connection = maybeOpenConnectionToPeer(nodeToPing);
     Future<ByteBuf> pingResponseFuture = connection.sendRequestBytes(NetworkApplication.NETWORK_APPID, NetworkApplication.pingMessageBytes);
     pingResponseFuture.await(); //TODO add timeout
+  }
+
+  public void setLocalListeniongPort(int listeningPort) {
+    this.localListeningPort=listeningPort;
   }
 }

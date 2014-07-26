@@ -3,20 +3,20 @@ package org.peercentrum.network;
 import io.netty.buffer.ByteBuf;
 
 import org.peercentrum.core.PB;
-import org.peercentrum.core.PB.HeaderMessage;
+import org.peercentrum.core.PB.HeaderMsg;
 
 public class HeaderAndPayload {
-	public HeaderAndPayload(HeaderMessage.Builder header, ByteBuf payload) {
+	public HeaderAndPayload(HeaderMsg.Builder header, ByteBuf payload) {
 		header.setApplicationSpecificBlockLength(payload.readableBytes());
 		this.header=header.build();
 		this.payload=payload;
 	}
 	
-	public HeaderAndPayload(HeaderMessage header, ByteBuf applicationBlock) {
+	public HeaderAndPayload(HeaderMsg header, ByteBuf applicationBlock) {
 		this.header=header;
 		this.payload=applicationBlock;
 	}
 
-	public PB.HeaderMessage header;
+	public PB.HeaderMsg header;
 	public ByteBuf payload;
 }

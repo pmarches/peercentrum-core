@@ -8,22 +8,8 @@ public final class PB {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface HeaderMessageOrBuilder
+  public interface HeaderMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-
-    // optional .peercentrum.SenderInformationMsg senderInfo = 1;
-    /**
-     * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-     */
-    boolean hasSenderInfo();
-    /**
-     * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-     */
-    org.peercentrum.core.PB.SenderInformationMsg getSenderInfo();
-    /**
-     * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-     */
-    org.peercentrum.core.PB.SenderInformationMsgOrBuilder getSenderInfoOrBuilder();
 
     // optional uint32 requestNumber = 2;
     /**
@@ -35,33 +21,15 @@ public final class PB {
      */
     int getRequestNumber();
 
-    // optional bytes nodePublicKey = 7;
+    // optional bytes destinationApplicationId = 3;
     /**
-     * <code>optional bytes nodePublicKey = 7;</code>
-     *
-     * <pre>
-     *FIXME
-     * </pre>
+     * <code>optional bytes destinationApplicationId = 3;</code>
      */
-    boolean hasNodePublicKey();
+    boolean hasDestinationApplicationId();
     /**
-     * <code>optional bytes nodePublicKey = 7;</code>
-     *
-     * <pre>
-     *FIXME
-     * </pre>
+     * <code>optional bytes destinationApplicationId = 3;</code>
      */
-    com.google.protobuf.ByteString getNodePublicKey();
-
-    // optional bytes applicationId = 3;
-    /**
-     * <code>optional bytes applicationId = 3;</code>
-     */
-    boolean hasApplicationId();
-    /**
-     * <code>optional bytes applicationId = 3;</code>
-     */
-    com.google.protobuf.ByteString getApplicationId();
+    com.google.protobuf.ByteString getDestinationApplicationId();
 
     // optional bytes signature = 4;
     /**
@@ -102,24 +70,24 @@ public final class PB {
     int getApplicationSpecificStreamLength();
   }
   /**
-   * Protobuf type {@code peercentrum.HeaderMessage}
+   * Protobuf type {@code peercentrum.HeaderMsg}
    */
-  public static final class HeaderMessage extends
+  public static final class HeaderMsg extends
       com.google.protobuf.GeneratedMessage
-      implements HeaderMessageOrBuilder {
-    // Use HeaderMessage.newBuilder() to construct.
-    private HeaderMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements HeaderMsgOrBuilder {
+    // Use HeaderMsg.newBuilder() to construct.
+    private HeaderMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private HeaderMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private HeaderMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final HeaderMessage defaultInstance;
-    public static HeaderMessage getDefaultInstance() {
+    private static final HeaderMsg defaultInstance;
+    public static HeaderMsg getDefaultInstance() {
       return defaultInstance;
     }
 
-    public HeaderMessage getDefaultInstanceForType() {
+    public HeaderMsg getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -129,7 +97,7 @@ public final class PB {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private HeaderMessage(
+    private HeaderMsg(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -152,47 +120,29 @@ public final class PB {
               }
               break;
             }
-            case 10: {
-              org.peercentrum.core.PB.SenderInformationMsg.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = senderInfo_.toBuilder();
-              }
-              senderInfo_ = input.readMessage(org.peercentrum.core.PB.SenderInformationMsg.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(senderInfo_);
-                senderInfo_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
             case 16: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000001;
               requestNumber_ = input.readUInt32();
               break;
             }
             case 26: {
-              bitField0_ |= 0x00000008;
-              applicationId_ = input.readBytes();
+              bitField0_ |= 0x00000002;
+              destinationApplicationId_ = input.readBytes();
               break;
             }
             case 34: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000004;
               signature_ = input.readBytes();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000008;
               applicationSpecificBlockLength_ = input.readUInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000010;
               applicationSpecificStreamLength_ = input.readUInt32();
-              break;
-            }
-            case 58: {
-              bitField0_ |= 0x00000004;
-              nodePublicKey_ = input.readBytes();
               break;
             }
           }
@@ -209,54 +159,32 @@ public final class PB {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMessage_descriptor;
+      return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMsg_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMessage_fieldAccessorTable
+      return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMsg_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.peercentrum.core.PB.HeaderMessage.class, org.peercentrum.core.PB.HeaderMessage.Builder.class);
+              org.peercentrum.core.PB.HeaderMsg.class, org.peercentrum.core.PB.HeaderMsg.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HeaderMessage> PARSER =
-        new com.google.protobuf.AbstractParser<HeaderMessage>() {
-      public HeaderMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<HeaderMsg> PARSER =
+        new com.google.protobuf.AbstractParser<HeaderMsg>() {
+      public HeaderMsg parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HeaderMessage(input, extensionRegistry);
+        return new HeaderMsg(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HeaderMessage> getParserForType() {
+    public com.google.protobuf.Parser<HeaderMsg> getParserForType() {
       return PARSER;
     }
 
     private int bitField0_;
-    // optional .peercentrum.SenderInformationMsg senderInfo = 1;
-    public static final int SENDERINFO_FIELD_NUMBER = 1;
-    private org.peercentrum.core.PB.SenderInformationMsg senderInfo_;
-    /**
-     * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-     */
-    public boolean hasSenderInfo() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-     */
-    public org.peercentrum.core.PB.SenderInformationMsg getSenderInfo() {
-      return senderInfo_;
-    }
-    /**
-     * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-     */
-    public org.peercentrum.core.PB.SenderInformationMsgOrBuilder getSenderInfoOrBuilder() {
-      return senderInfo_;
-    }
-
     // optional uint32 requestNumber = 2;
     public static final int REQUESTNUMBER_FIELD_NUMBER = 2;
     private int requestNumber_;
@@ -264,7 +192,7 @@ public final class PB {
      * <code>optional uint32 requestNumber = 2;</code>
      */
     public boolean hasRequestNumber() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional uint32 requestNumber = 2;</code>
@@ -273,44 +201,20 @@ public final class PB {
       return requestNumber_;
     }
 
-    // optional bytes nodePublicKey = 7;
-    public static final int NODEPUBLICKEY_FIELD_NUMBER = 7;
-    private com.google.protobuf.ByteString nodePublicKey_;
+    // optional bytes destinationApplicationId = 3;
+    public static final int DESTINATIONAPPLICATIONID_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString destinationApplicationId_;
     /**
-     * <code>optional bytes nodePublicKey = 7;</code>
-     *
-     * <pre>
-     *FIXME
-     * </pre>
+     * <code>optional bytes destinationApplicationId = 3;</code>
      */
-    public boolean hasNodePublicKey() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public boolean hasDestinationApplicationId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional bytes nodePublicKey = 7;</code>
-     *
-     * <pre>
-     *FIXME
-     * </pre>
+     * <code>optional bytes destinationApplicationId = 3;</code>
      */
-    public com.google.protobuf.ByteString getNodePublicKey() {
-      return nodePublicKey_;
-    }
-
-    // optional bytes applicationId = 3;
-    public static final int APPLICATIONID_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString applicationId_;
-    /**
-     * <code>optional bytes applicationId = 3;</code>
-     */
-    public boolean hasApplicationId() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional bytes applicationId = 3;</code>
-     */
-    public com.google.protobuf.ByteString getApplicationId() {
-      return applicationId_;
+    public com.google.protobuf.ByteString getDestinationApplicationId() {
+      return destinationApplicationId_;
     }
 
     // optional bytes signature = 4;
@@ -320,7 +224,7 @@ public final class PB {
      * <code>optional bytes signature = 4;</code>
      */
     public boolean hasSignature() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional bytes signature = 4;</code>
@@ -340,7 +244,7 @@ public final class PB {
      * </pre>
      */
     public boolean hasApplicationSpecificBlockLength() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional uint32 applicationSpecificBlockLength = 5;</code>
@@ -360,7 +264,7 @@ public final class PB {
      * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
      */
     public boolean hasApplicationSpecificStreamLength() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
@@ -370,10 +274,8 @@ public final class PB {
     }
 
     private void initFields() {
-      senderInfo_ = org.peercentrum.core.PB.SenderInformationMsg.getDefaultInstance();
       requestNumber_ = 0;
-      nodePublicKey_ = com.google.protobuf.ByteString.EMPTY;
-      applicationId_ = com.google.protobuf.ByteString.EMPTY;
+      destinationApplicationId_ = com.google.protobuf.ByteString.EMPTY;
       signature_ = com.google.protobuf.ByteString.EMPTY;
       applicationSpecificBlockLength_ = 0;
       applicationSpecificStreamLength_ = 0;
@@ -391,25 +293,19 @@ public final class PB {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, senderInfo_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt32(2, requestNumber_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(3, applicationId_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(4, signature_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeUInt32(5, applicationSpecificBlockLength_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeUInt32(6, applicationSpecificStreamLength_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(3, destinationApplicationId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(7, nodePublicKey_);
+        output.writeBytes(4, signature_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt32(5, applicationSpecificBlockLength_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt32(6, applicationSpecificStreamLength_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -422,31 +318,23 @@ public final class PB {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, senderInfo_);
+          .computeUInt32Size(2, requestNumber_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, requestNumber_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, applicationId_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, signature_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(5, applicationSpecificBlockLength_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(6, applicationSpecificStreamLength_);
+          .computeBytesSize(3, destinationApplicationId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, nodePublicKey_);
+          .computeBytesSize(4, signature_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, applicationSpecificBlockLength_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, applicationSpecificStreamLength_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -460,53 +348,53 @@ public final class PB {
       return super.writeReplace();
     }
 
-    public static org.peercentrum.core.PB.HeaderMessage parseFrom(
+    public static org.peercentrum.core.PB.HeaderMsg parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.peercentrum.core.PB.HeaderMessage parseFrom(
+    public static org.peercentrum.core.PB.HeaderMsg parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.peercentrum.core.PB.HeaderMessage parseFrom(byte[] data)
+    public static org.peercentrum.core.PB.HeaderMsg parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.peercentrum.core.PB.HeaderMessage parseFrom(
+    public static org.peercentrum.core.PB.HeaderMsg parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.peercentrum.core.PB.HeaderMessage parseFrom(java.io.InputStream input)
+    public static org.peercentrum.core.PB.HeaderMsg parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.peercentrum.core.PB.HeaderMessage parseFrom(
+    public static org.peercentrum.core.PB.HeaderMsg parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.peercentrum.core.PB.HeaderMessage parseDelimitedFrom(java.io.InputStream input)
+    public static org.peercentrum.core.PB.HeaderMsg parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.peercentrum.core.PB.HeaderMessage parseDelimitedFrom(
+    public static org.peercentrum.core.PB.HeaderMsg parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.peercentrum.core.PB.HeaderMessage parseFrom(
+    public static org.peercentrum.core.PB.HeaderMsg parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.peercentrum.core.PB.HeaderMessage parseFrom(
+    public static org.peercentrum.core.PB.HeaderMsg parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -515,7 +403,7 @@ public final class PB {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.peercentrum.core.PB.HeaderMessage prototype) {
+    public static Builder newBuilder(org.peercentrum.core.PB.HeaderMsg prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -527,24 +415,24 @@ public final class PB {
       return builder;
     }
     /**
-     * Protobuf type {@code peercentrum.HeaderMessage}
+     * Protobuf type {@code peercentrum.HeaderMsg}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.peercentrum.core.PB.HeaderMessageOrBuilder {
+       implements org.peercentrum.core.PB.HeaderMsgOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMessage_descriptor;
+        return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMsg_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMessage_fieldAccessorTable
+        return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMsg_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.peercentrum.core.PB.HeaderMessage.class, org.peercentrum.core.PB.HeaderMessage.Builder.class);
+                org.peercentrum.core.PB.HeaderMsg.class, org.peercentrum.core.PB.HeaderMsg.Builder.class);
       }
 
-      // Construct using org.peercentrum.core.PB.HeaderMessage.newBuilder()
+      // Construct using org.peercentrum.core.PB.HeaderMsg.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -556,7 +444,6 @@ public final class PB {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getSenderInfoFieldBuilder();
         }
       }
       private static Builder create() {
@@ -565,24 +452,16 @@ public final class PB {
 
       public Builder clear() {
         super.clear();
-        if (senderInfoBuilder_ == null) {
-          senderInfo_ = org.peercentrum.core.PB.SenderInformationMsg.getDefaultInstance();
-        } else {
-          senderInfoBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
         requestNumber_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        destinationApplicationId_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
-        nodePublicKey_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        applicationId_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000008);
         signature_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000004);
         applicationSpecificBlockLength_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         applicationSpecificStreamLength_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -592,55 +471,43 @@ public final class PB {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMessage_descriptor;
+        return org.peercentrum.core.PB.internal_static_peercentrum_HeaderMsg_descriptor;
       }
 
-      public org.peercentrum.core.PB.HeaderMessage getDefaultInstanceForType() {
-        return org.peercentrum.core.PB.HeaderMessage.getDefaultInstance();
+      public org.peercentrum.core.PB.HeaderMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.PB.HeaderMsg.getDefaultInstance();
       }
 
-      public org.peercentrum.core.PB.HeaderMessage build() {
-        org.peercentrum.core.PB.HeaderMessage result = buildPartial();
+      public org.peercentrum.core.PB.HeaderMsg build() {
+        org.peercentrum.core.PB.HeaderMsg result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.peercentrum.core.PB.HeaderMessage buildPartial() {
-        org.peercentrum.core.PB.HeaderMessage result = new org.peercentrum.core.PB.HeaderMessage(this);
+      public org.peercentrum.core.PB.HeaderMsg buildPartial() {
+        org.peercentrum.core.PB.HeaderMsg result = new org.peercentrum.core.PB.HeaderMsg(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        if (senderInfoBuilder_ == null) {
-          result.senderInfo_ = senderInfo_;
-        } else {
-          result.senderInfo_ = senderInfoBuilder_.build();
-        }
+        result.requestNumber_ = requestNumber_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.requestNumber_ = requestNumber_;
+        result.destinationApplicationId_ = destinationApplicationId_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.nodePublicKey_ = nodePublicKey_;
+        result.signature_ = signature_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.applicationId_ = applicationId_;
+        result.applicationSpecificBlockLength_ = applicationSpecificBlockLength_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
-        }
-        result.signature_ = signature_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.applicationSpecificBlockLength_ = applicationSpecificBlockLength_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
         }
         result.applicationSpecificStreamLength_ = applicationSpecificStreamLength_;
         result.bitField0_ = to_bitField0_;
@@ -649,27 +516,21 @@ public final class PB {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.peercentrum.core.PB.HeaderMessage) {
-          return mergeFrom((org.peercentrum.core.PB.HeaderMessage)other);
+        if (other instanceof org.peercentrum.core.PB.HeaderMsg) {
+          return mergeFrom((org.peercentrum.core.PB.HeaderMsg)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.peercentrum.core.PB.HeaderMessage other) {
-        if (other == org.peercentrum.core.PB.HeaderMessage.getDefaultInstance()) return this;
-        if (other.hasSenderInfo()) {
-          mergeSenderInfo(other.getSenderInfo());
-        }
+      public Builder mergeFrom(org.peercentrum.core.PB.HeaderMsg other) {
+        if (other == org.peercentrum.core.PB.HeaderMsg.getDefaultInstance()) return this;
         if (other.hasRequestNumber()) {
           setRequestNumber(other.getRequestNumber());
         }
-        if (other.hasNodePublicKey()) {
-          setNodePublicKey(other.getNodePublicKey());
-        }
-        if (other.hasApplicationId()) {
-          setApplicationId(other.getApplicationId());
+        if (other.hasDestinationApplicationId()) {
+          setDestinationApplicationId(other.getDestinationApplicationId());
         }
         if (other.hasSignature()) {
           setSignature(other.getSignature());
@@ -692,11 +553,11 @@ public final class PB {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.peercentrum.core.PB.HeaderMessage parsedMessage = null;
+        org.peercentrum.core.PB.HeaderMsg parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.peercentrum.core.PB.HeaderMessage) e.getUnfinishedMessage();
+          parsedMessage = (org.peercentrum.core.PB.HeaderMsg) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -707,130 +568,13 @@ public final class PB {
       }
       private int bitField0_;
 
-      // optional .peercentrum.SenderInformationMsg senderInfo = 1;
-      private org.peercentrum.core.PB.SenderInformationMsg senderInfo_ = org.peercentrum.core.PB.SenderInformationMsg.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.PB.SenderInformationMsg, org.peercentrum.core.PB.SenderInformationMsg.Builder, org.peercentrum.core.PB.SenderInformationMsgOrBuilder> senderInfoBuilder_;
-      /**
-       * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-       */
-      public boolean hasSenderInfo() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-       */
-      public org.peercentrum.core.PB.SenderInformationMsg getSenderInfo() {
-        if (senderInfoBuilder_ == null) {
-          return senderInfo_;
-        } else {
-          return senderInfoBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-       */
-      public Builder setSenderInfo(org.peercentrum.core.PB.SenderInformationMsg value) {
-        if (senderInfoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          senderInfo_ = value;
-          onChanged();
-        } else {
-          senderInfoBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-       */
-      public Builder setSenderInfo(
-          org.peercentrum.core.PB.SenderInformationMsg.Builder builderForValue) {
-        if (senderInfoBuilder_ == null) {
-          senderInfo_ = builderForValue.build();
-          onChanged();
-        } else {
-          senderInfoBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-       */
-      public Builder mergeSenderInfo(org.peercentrum.core.PB.SenderInformationMsg value) {
-        if (senderInfoBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              senderInfo_ != org.peercentrum.core.PB.SenderInformationMsg.getDefaultInstance()) {
-            senderInfo_ =
-              org.peercentrum.core.PB.SenderInformationMsg.newBuilder(senderInfo_).mergeFrom(value).buildPartial();
-          } else {
-            senderInfo_ = value;
-          }
-          onChanged();
-        } else {
-          senderInfoBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-       */
-      public Builder clearSenderInfo() {
-        if (senderInfoBuilder_ == null) {
-          senderInfo_ = org.peercentrum.core.PB.SenderInformationMsg.getDefaultInstance();
-          onChanged();
-        } else {
-          senderInfoBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      /**
-       * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-       */
-      public org.peercentrum.core.PB.SenderInformationMsg.Builder getSenderInfoBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getSenderInfoFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-       */
-      public org.peercentrum.core.PB.SenderInformationMsgOrBuilder getSenderInfoOrBuilder() {
-        if (senderInfoBuilder_ != null) {
-          return senderInfoBuilder_.getMessageOrBuilder();
-        } else {
-          return senderInfo_;
-        }
-      }
-      /**
-       * <code>optional .peercentrum.SenderInformationMsg senderInfo = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.PB.SenderInformationMsg, org.peercentrum.core.PB.SenderInformationMsg.Builder, org.peercentrum.core.PB.SenderInformationMsgOrBuilder> 
-          getSenderInfoFieldBuilder() {
-        if (senderInfoBuilder_ == null) {
-          senderInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              org.peercentrum.core.PB.SenderInformationMsg, org.peercentrum.core.PB.SenderInformationMsg.Builder, org.peercentrum.core.PB.SenderInformationMsgOrBuilder>(
-                  senderInfo_,
-                  getParentForChildren(),
-                  isClean());
-          senderInfo_ = null;
-        }
-        return senderInfoBuilder_;
-      }
-
       // optional uint32 requestNumber = 2;
       private int requestNumber_ ;
       /**
        * <code>optional uint32 requestNumber = 2;</code>
        */
       public boolean hasRequestNumber() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional uint32 requestNumber = 2;</code>
@@ -842,7 +586,7 @@ public final class PB {
        * <code>optional uint32 requestNumber = 2;</code>
        */
       public Builder setRequestNumber(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         requestNumber_ = value;
         onChanged();
         return this;
@@ -851,96 +595,44 @@ public final class PB {
        * <code>optional uint32 requestNumber = 2;</code>
        */
       public Builder clearRequestNumber() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         requestNumber_ = 0;
         onChanged();
         return this;
       }
 
-      // optional bytes nodePublicKey = 7;
-      private com.google.protobuf.ByteString nodePublicKey_ = com.google.protobuf.ByteString.EMPTY;
+      // optional bytes destinationApplicationId = 3;
+      private com.google.protobuf.ByteString destinationApplicationId_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes nodePublicKey = 7;</code>
-       *
-       * <pre>
-       *FIXME
-       * </pre>
+       * <code>optional bytes destinationApplicationId = 3;</code>
        */
-      public boolean hasNodePublicKey() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+      public boolean hasDestinationApplicationId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional bytes nodePublicKey = 7;</code>
-       *
-       * <pre>
-       *FIXME
-       * </pre>
+       * <code>optional bytes destinationApplicationId = 3;</code>
        */
-      public com.google.protobuf.ByteString getNodePublicKey() {
-        return nodePublicKey_;
+      public com.google.protobuf.ByteString getDestinationApplicationId() {
+        return destinationApplicationId_;
       }
       /**
-       * <code>optional bytes nodePublicKey = 7;</code>
-       *
-       * <pre>
-       *FIXME
-       * </pre>
+       * <code>optional bytes destinationApplicationId = 3;</code>
        */
-      public Builder setNodePublicKey(com.google.protobuf.ByteString value) {
+      public Builder setDestinationApplicationId(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
-        nodePublicKey_ = value;
+  bitField0_ |= 0x00000002;
+        destinationApplicationId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bytes nodePublicKey = 7;</code>
-       *
-       * <pre>
-       *FIXME
-       * </pre>
+       * <code>optional bytes destinationApplicationId = 3;</code>
        */
-      public Builder clearNodePublicKey() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        nodePublicKey_ = getDefaultInstance().getNodePublicKey();
-        onChanged();
-        return this;
-      }
-
-      // optional bytes applicationId = 3;
-      private com.google.protobuf.ByteString applicationId_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>optional bytes applicationId = 3;</code>
-       */
-      public boolean hasApplicationId() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional bytes applicationId = 3;</code>
-       */
-      public com.google.protobuf.ByteString getApplicationId() {
-        return applicationId_;
-      }
-      /**
-       * <code>optional bytes applicationId = 3;</code>
-       */
-      public Builder setApplicationId(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        applicationId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bytes applicationId = 3;</code>
-       */
-      public Builder clearApplicationId() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        applicationId_ = getDefaultInstance().getApplicationId();
+      public Builder clearDestinationApplicationId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        destinationApplicationId_ = getDefaultInstance().getDestinationApplicationId();
         onChanged();
         return this;
       }
@@ -951,7 +643,7 @@ public final class PB {
        * <code>optional bytes signature = 4;</code>
        */
       public boolean hasSignature() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional bytes signature = 4;</code>
@@ -966,7 +658,7 @@ public final class PB {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000004;
         signature_ = value;
         onChanged();
         return this;
@@ -975,7 +667,7 @@ public final class PB {
        * <code>optional bytes signature = 4;</code>
        */
       public Builder clearSignature() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000004);
         signature_ = getDefaultInstance().getSignature();
         onChanged();
         return this;
@@ -991,7 +683,7 @@ public final class PB {
        * </pre>
        */
       public boolean hasApplicationSpecificBlockLength() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional uint32 applicationSpecificBlockLength = 5;</code>
@@ -1011,7 +703,7 @@ public final class PB {
        * </pre>
        */
       public Builder setApplicationSpecificBlockLength(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000008;
         applicationSpecificBlockLength_ = value;
         onChanged();
         return this;
@@ -1024,7 +716,7 @@ public final class PB {
        * </pre>
        */
       public Builder clearApplicationSpecificBlockLength() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         applicationSpecificBlockLength_ = 0;
         onChanged();
         return this;
@@ -1036,7 +728,7 @@ public final class PB {
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
        */
       public boolean hasApplicationSpecificStreamLength() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
@@ -1048,7 +740,7 @@ public final class PB {
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
        */
       public Builder setApplicationSpecificStreamLength(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000010;
         applicationSpecificStreamLength_ = value;
         onChanged();
         return this;
@@ -1057,24 +749,24 @@ public final class PB {
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
        */
       public Builder clearApplicationSpecificStreamLength() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         applicationSpecificStreamLength_ = 0;
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:peercentrum.HeaderMessage)
+      // @@protoc_insertion_point(builder_scope:peercentrum.HeaderMsg)
     }
 
     static {
-      defaultInstance = new HeaderMessage(true);
+      defaultInstance = new HeaderMsg(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:peercentrum.HeaderMessage)
+    // @@protoc_insertion_point(class_scope:peercentrum.HeaderMsg)
   }
 
-  public interface SenderInformationMsgOrBuilder
+  public interface NodeMetaDataMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // optional string userAgent = 1;
@@ -1142,28 +834,28 @@ public final class PB {
     com.google.protobuf.ByteString getApplicationsSupported(int index);
   }
   /**
-   * Protobuf type {@code peercentrum.SenderInformationMsg}
+   * Protobuf type {@code peercentrum.NodeMetaDataMsg}
    *
    * <pre>
    *FIXME Get rid of all this crap, create endpoint message...
    * </pre>
    */
-  public static final class SenderInformationMsg extends
+  public static final class NodeMetaDataMsg extends
       com.google.protobuf.GeneratedMessage
-      implements SenderInformationMsgOrBuilder {
-    // Use SenderInformationMsg.newBuilder() to construct.
-    private SenderInformationMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements NodeMetaDataMsgOrBuilder {
+    // Use NodeMetaDataMsg.newBuilder() to construct.
+    private NodeMetaDataMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private SenderInformationMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private NodeMetaDataMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final SenderInformationMsg defaultInstance;
-    public static SenderInformationMsg getDefaultInstance() {
+    private static final NodeMetaDataMsg defaultInstance;
+    public static NodeMetaDataMsg getDefaultInstance() {
       return defaultInstance;
     }
 
-    public SenderInformationMsg getDefaultInstanceForType() {
+    public NodeMetaDataMsg getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1173,7 +865,7 @@ public final class PB {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private SenderInformationMsg(
+    private NodeMetaDataMsg(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1241,28 +933,28 @@ public final class PB {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.peercentrum.core.PB.internal_static_peercentrum_SenderInformationMsg_descriptor;
+      return org.peercentrum.core.PB.internal_static_peercentrum_NodeMetaDataMsg_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.peercentrum.core.PB.internal_static_peercentrum_SenderInformationMsg_fieldAccessorTable
+      return org.peercentrum.core.PB.internal_static_peercentrum_NodeMetaDataMsg_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.peercentrum.core.PB.SenderInformationMsg.class, org.peercentrum.core.PB.SenderInformationMsg.Builder.class);
+              org.peercentrum.core.PB.NodeMetaDataMsg.class, org.peercentrum.core.PB.NodeMetaDataMsg.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<SenderInformationMsg> PARSER =
-        new com.google.protobuf.AbstractParser<SenderInformationMsg>() {
-      public SenderInformationMsg parsePartialFrom(
+    public static com.google.protobuf.Parser<NodeMetaDataMsg> PARSER =
+        new com.google.protobuf.AbstractParser<NodeMetaDataMsg>() {
+      public NodeMetaDataMsg parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SenderInformationMsg(input, extensionRegistry);
+        return new NodeMetaDataMsg(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SenderInformationMsg> getParserForType() {
+    public com.google.protobuf.Parser<NodeMetaDataMsg> getParserForType() {
       return PARSER;
     }
 
@@ -1488,53 +1180,53 @@ public final class PB {
       return super.writeReplace();
     }
 
-    public static org.peercentrum.core.PB.SenderInformationMsg parseFrom(
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.peercentrum.core.PB.SenderInformationMsg parseFrom(
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.peercentrum.core.PB.SenderInformationMsg parseFrom(byte[] data)
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.peercentrum.core.PB.SenderInformationMsg parseFrom(
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.peercentrum.core.PB.SenderInformationMsg parseFrom(java.io.InputStream input)
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.peercentrum.core.PB.SenderInformationMsg parseFrom(
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static org.peercentrum.core.PB.SenderInformationMsg parseDelimitedFrom(java.io.InputStream input)
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static org.peercentrum.core.PB.SenderInformationMsg parseDelimitedFrom(
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static org.peercentrum.core.PB.SenderInformationMsg parseFrom(
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static org.peercentrum.core.PB.SenderInformationMsg parseFrom(
+    public static org.peercentrum.core.PB.NodeMetaDataMsg parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1543,7 +1235,7 @@ public final class PB {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.peercentrum.core.PB.SenderInformationMsg prototype) {
+    public static Builder newBuilder(org.peercentrum.core.PB.NodeMetaDataMsg prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1555,7 +1247,7 @@ public final class PB {
       return builder;
     }
     /**
-     * Protobuf type {@code peercentrum.SenderInformationMsg}
+     * Protobuf type {@code peercentrum.NodeMetaDataMsg}
      *
      * <pre>
      *FIXME Get rid of all this crap, create endpoint message...
@@ -1563,20 +1255,20 @@ public final class PB {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.peercentrum.core.PB.SenderInformationMsgOrBuilder {
+       implements org.peercentrum.core.PB.NodeMetaDataMsgOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_SenderInformationMsg_descriptor;
+        return org.peercentrum.core.PB.internal_static_peercentrum_NodeMetaDataMsg_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_SenderInformationMsg_fieldAccessorTable
+        return org.peercentrum.core.PB.internal_static_peercentrum_NodeMetaDataMsg_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.peercentrum.core.PB.SenderInformationMsg.class, org.peercentrum.core.PB.SenderInformationMsg.Builder.class);
+                org.peercentrum.core.PB.NodeMetaDataMsg.class, org.peercentrum.core.PB.NodeMetaDataMsg.Builder.class);
       }
 
-      // Construct using org.peercentrum.core.PB.SenderInformationMsg.newBuilder()
+      // Construct using org.peercentrum.core.PB.NodeMetaDataMsg.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1615,23 +1307,23 @@ public final class PB {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_SenderInformationMsg_descriptor;
+        return org.peercentrum.core.PB.internal_static_peercentrum_NodeMetaDataMsg_descriptor;
       }
 
-      public org.peercentrum.core.PB.SenderInformationMsg getDefaultInstanceForType() {
-        return org.peercentrum.core.PB.SenderInformationMsg.getDefaultInstance();
+      public org.peercentrum.core.PB.NodeMetaDataMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.PB.NodeMetaDataMsg.getDefaultInstance();
       }
 
-      public org.peercentrum.core.PB.SenderInformationMsg build() {
-        org.peercentrum.core.PB.SenderInformationMsg result = buildPartial();
+      public org.peercentrum.core.PB.NodeMetaDataMsg build() {
+        org.peercentrum.core.PB.NodeMetaDataMsg result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.peercentrum.core.PB.SenderInformationMsg buildPartial() {
-        org.peercentrum.core.PB.SenderInformationMsg result = new org.peercentrum.core.PB.SenderInformationMsg(this);
+      public org.peercentrum.core.PB.NodeMetaDataMsg buildPartial() {
+        org.peercentrum.core.PB.NodeMetaDataMsg result = new org.peercentrum.core.PB.NodeMetaDataMsg(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1661,16 +1353,16 @@ public final class PB {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.peercentrum.core.PB.SenderInformationMsg) {
-          return mergeFrom((org.peercentrum.core.PB.SenderInformationMsg)other);
+        if (other instanceof org.peercentrum.core.PB.NodeMetaDataMsg) {
+          return mergeFrom((org.peercentrum.core.PB.NodeMetaDataMsg)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.peercentrum.core.PB.SenderInformationMsg other) {
-        if (other == org.peercentrum.core.PB.SenderInformationMsg.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.peercentrum.core.PB.NodeMetaDataMsg other) {
+        if (other == org.peercentrum.core.PB.NodeMetaDataMsg.getDefaultInstance()) return this;
         if (other.hasUserAgent()) {
           bitField0_ |= 0x00000001;
           userAgent_ = other.userAgent_;
@@ -1709,11 +1401,11 @@ public final class PB {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.peercentrum.core.PB.SenderInformationMsg parsedMessage = null;
+        org.peercentrum.core.PB.NodeMetaDataMsg parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.peercentrum.core.PB.SenderInformationMsg) e.getUnfinishedMessage();
+          parsedMessage = (org.peercentrum.core.PB.NodeMetaDataMsg) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2013,15 +1705,15 @@ public final class PB {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:peercentrum.SenderInformationMsg)
+      // @@protoc_insertion_point(builder_scope:peercentrum.NodeMetaDataMsg)
     }
 
     static {
-      defaultInstance = new SenderInformationMsg(true);
+      defaultInstance = new NodeMetaDataMsg(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:peercentrum.SenderInformationMsg)
+    // @@protoc_insertion_point(class_scope:peercentrum.NodeMetaDataMsg)
   }
 
   public interface NetworkMessageOrBuilder
@@ -2036,6 +1728,20 @@ public final class PB {
      * <code>optional .peercentrum.NetworkMessage.NetworkOperation operation = 1;</code>
      */
     org.peercentrum.core.PB.NetworkMessage.NetworkOperation getOperation();
+
+    // optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;
+    /**
+     * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+     */
+    boolean hasNodeMetaData();
+    /**
+     * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+     */
+    org.peercentrum.core.PB.NodeMetaDataMsg getNodeMetaData();
+    /**
+     * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+     */
+    org.peercentrum.core.PB.NodeMetaDataMsgOrBuilder getNodeMetaDataOrBuilder();
   }
   /**
    * Protobuf type {@code peercentrum.NetworkMessage}
@@ -2097,6 +1803,19 @@ public final class PB {
                 bitField0_ |= 0x00000001;
                 operation_ = value;
               }
+              break;
+            }
+            case 18: {
+              org.peercentrum.core.PB.NodeMetaDataMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = nodeMetaData_.toBuilder();
+              }
+              nodeMetaData_ = input.readMessage(org.peercentrum.core.PB.NodeMetaDataMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(nodeMetaData_);
+                nodeMetaData_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
               break;
             }
           }
@@ -2246,8 +1965,31 @@ public final class PB {
       return operation_;
     }
 
+    // optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;
+    public static final int NODEMETADATA_FIELD_NUMBER = 2;
+    private org.peercentrum.core.PB.NodeMetaDataMsg nodeMetaData_;
+    /**
+     * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+     */
+    public boolean hasNodeMetaData() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+     */
+    public org.peercentrum.core.PB.NodeMetaDataMsg getNodeMetaData() {
+      return nodeMetaData_;
+    }
+    /**
+     * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+     */
+    public org.peercentrum.core.PB.NodeMetaDataMsgOrBuilder getNodeMetaDataOrBuilder() {
+      return nodeMetaData_;
+    }
+
     private void initFields() {
       operation_ = org.peercentrum.core.PB.NetworkMessage.NetworkOperation.CLOSE_CONNECTION;
+      nodeMetaData_ = org.peercentrum.core.PB.NodeMetaDataMsg.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2264,6 +2006,9 @@ public final class PB {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeEnum(1, operation_.getNumber());
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, nodeMetaData_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2276,6 +2021,10 @@ public final class PB {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, operation_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, nodeMetaData_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2385,6 +2134,7 @@ public final class PB {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getNodeMetaDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2395,6 +2145,12 @@ public final class PB {
         super.clear();
         operation_ = org.peercentrum.core.PB.NetworkMessage.NetworkOperation.CLOSE_CONNECTION;
         bitField0_ = (bitField0_ & ~0x00000001);
+        if (nodeMetaDataBuilder_ == null) {
+          nodeMetaData_ = org.peercentrum.core.PB.NodeMetaDataMsg.getDefaultInstance();
+        } else {
+          nodeMetaDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -2427,6 +2183,14 @@ public final class PB {
           to_bitField0_ |= 0x00000001;
         }
         result.operation_ = operation_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (nodeMetaDataBuilder_ == null) {
+          result.nodeMetaData_ = nodeMetaData_;
+        } else {
+          result.nodeMetaData_ = nodeMetaDataBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2445,6 +2209,9 @@ public final class PB {
         if (other == org.peercentrum.core.PB.NetworkMessage.getDefaultInstance()) return this;
         if (other.hasOperation()) {
           setOperation(other.getOperation());
+        }
+        if (other.hasNodeMetaData()) {
+          mergeNodeMetaData(other.getNodeMetaData());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2507,6 +2274,123 @@ public final class PB {
         operation_ = org.peercentrum.core.PB.NetworkMessage.NetworkOperation.CLOSE_CONNECTION;
         onChanged();
         return this;
+      }
+
+      // optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;
+      private org.peercentrum.core.PB.NodeMetaDataMsg nodeMetaData_ = org.peercentrum.core.PB.NodeMetaDataMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.NodeMetaDataMsg, org.peercentrum.core.PB.NodeMetaDataMsg.Builder, org.peercentrum.core.PB.NodeMetaDataMsgOrBuilder> nodeMetaDataBuilder_;
+      /**
+       * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+       */
+      public boolean hasNodeMetaData() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+       */
+      public org.peercentrum.core.PB.NodeMetaDataMsg getNodeMetaData() {
+        if (nodeMetaDataBuilder_ == null) {
+          return nodeMetaData_;
+        } else {
+          return nodeMetaDataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+       */
+      public Builder setNodeMetaData(org.peercentrum.core.PB.NodeMetaDataMsg value) {
+        if (nodeMetaDataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          nodeMetaData_ = value;
+          onChanged();
+        } else {
+          nodeMetaDataBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+       */
+      public Builder setNodeMetaData(
+          org.peercentrum.core.PB.NodeMetaDataMsg.Builder builderForValue) {
+        if (nodeMetaDataBuilder_ == null) {
+          nodeMetaData_ = builderForValue.build();
+          onChanged();
+        } else {
+          nodeMetaDataBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+       */
+      public Builder mergeNodeMetaData(org.peercentrum.core.PB.NodeMetaDataMsg value) {
+        if (nodeMetaDataBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              nodeMetaData_ != org.peercentrum.core.PB.NodeMetaDataMsg.getDefaultInstance()) {
+            nodeMetaData_ =
+              org.peercentrum.core.PB.NodeMetaDataMsg.newBuilder(nodeMetaData_).mergeFrom(value).buildPartial();
+          } else {
+            nodeMetaData_ = value;
+          }
+          onChanged();
+        } else {
+          nodeMetaDataBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+       */
+      public Builder clearNodeMetaData() {
+        if (nodeMetaDataBuilder_ == null) {
+          nodeMetaData_ = org.peercentrum.core.PB.NodeMetaDataMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          nodeMetaDataBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+       */
+      public org.peercentrum.core.PB.NodeMetaDataMsg.Builder getNodeMetaDataBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getNodeMetaDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+       */
+      public org.peercentrum.core.PB.NodeMetaDataMsgOrBuilder getNodeMetaDataOrBuilder() {
+        if (nodeMetaDataBuilder_ != null) {
+          return nodeMetaDataBuilder_.getMessageOrBuilder();
+        } else {
+          return nodeMetaData_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.NodeMetaDataMsg nodeMetaData = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.NodeMetaDataMsg, org.peercentrum.core.PB.NodeMetaDataMsg.Builder, org.peercentrum.core.PB.NodeMetaDataMsgOrBuilder> 
+          getNodeMetaDataFieldBuilder() {
+        if (nodeMetaDataBuilder_ == null) {
+          nodeMetaDataBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.PB.NodeMetaDataMsg, org.peercentrum.core.PB.NodeMetaDataMsg.Builder, org.peercentrum.core.PB.NodeMetaDataMsgOrBuilder>(
+                  nodeMetaData_,
+                  getParentForChildren(),
+                  isClean());
+          nodeMetaData_ = null;
+        }
+        return nodeMetaDataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:peercentrum.NetworkMessage)
@@ -17476,9 +17360,9 @@ public final class PB {
   public interface P2PBlobMetaDataMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int64 blobLengthInBytes = 1;
+    // optional int64 blobLength = 1;
     /**
-     * <code>optional int64 blobLengthInBytes = 1;</code>
+     * <code>optional int64 blobLength = 1;</code>
      *
      * <pre>
      *Hash the length as the first element of the blob hash
@@ -17486,7 +17370,7 @@ public final class PB {
      */
     boolean hasBlobLength();
     /**
-     * <code>optional int64 blobLengthInBytes = 1;</code>
+     * <code>optional int64 blobLength = 1;</code>
      *
      * <pre>
      *Hash the length as the first element of the blob hash
@@ -17640,11 +17524,11 @@ public final class PB {
     }
 
     private int bitField0_;
-    // optional int64 blobLengthInBytes = 1;
+    // optional int64 blobLength = 1;
     public static final int BLOBLENGTH_FIELD_NUMBER = 1;
     private long blobLength_;
     /**
-     * <code>optional int64 blobLengthInBytes = 1;</code>
+     * <code>optional int64 blobLength = 1;</code>
      *
      * <pre>
      *Hash the length as the first element of the blob hash
@@ -17654,7 +17538,7 @@ public final class PB {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional int64 blobLengthInBytes = 1;</code>
+     * <code>optional int64 blobLength = 1;</code>
      *
      * <pre>
      *Hash the length as the first element of the blob hash
@@ -17980,10 +17864,10 @@ public final class PB {
       }
       private int bitField0_;
 
-      // optional int64 blobLengthInBytes = 1;
+      // optional int64 blobLength = 1;
       private long blobLength_ ;
       /**
-       * <code>optional int64 blobLengthInBytes = 1;</code>
+       * <code>optional int64 blobLength = 1;</code>
        *
        * <pre>
        *Hash the length as the first element of the blob hash
@@ -17993,7 +17877,7 @@ public final class PB {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional int64 blobLengthInBytes = 1;</code>
+       * <code>optional int64 blobLength = 1;</code>
        *
        * <pre>
        *Hash the length as the first element of the blob hash
@@ -18003,7 +17887,7 @@ public final class PB {
         return blobLength_;
       }
       /**
-       * <code>optional int64 blobLengthInBytes = 1;</code>
+       * <code>optional int64 blobLength = 1;</code>
        *
        * <pre>
        *Hash the length as the first element of the blob hash
@@ -18016,7 +17900,7 @@ public final class PB {
         return this;
       }
       /**
-       * <code>optional int64 blobLengthInBytes = 1;</code>
+       * <code>optional int64 blobLength = 1;</code>
        *
        * <pre>
        *Hash the length as the first element of the blob hash
@@ -20392,15 +20276,15 @@ public final class PB {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_HeaderMessage_descriptor;
+    internal_static_peercentrum_HeaderMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_HeaderMessage_fieldAccessorTable;
+      internal_static_peercentrum_HeaderMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_SenderInformationMsg_descriptor;
+    internal_static_peercentrum_NodeMetaDataMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_SenderInformationMsg_fieldAccessorTable;
+      internal_static_peercentrum_NodeMetaDataMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_peercentrum_NetworkMessage_descriptor;
   private static
@@ -20531,113 +20415,113 @@ public final class PB {
   static {
     java.lang.String[] descriptorData = {
       "\n\026peercentrum-core.proto\022\013peercentrum\032\024p" +
-      "aymentchannel.proto\"\357\001\n\rHeaderMessage\0225\n" +
-      "\nsenderInfo\030\001 \001(\0132!.peercentrum.SenderIn" +
-      "formationMsg\022\025\n\rrequestNumber\030\002 \001(\r\022\025\n\rn" +
-      "odePublicKey\030\007 \001(\014\022\025\n\rapplicationId\030\003 \001(" +
-      "\014\022\021\n\tsignature\030\004 \001(\014\022&\n\036applicationSpeci" +
-      "ficBlockLength\030\005 \001(\r\022\'\n\037applicationSpeci" +
-      "ficStreamLength\030\006 \001(\r\"\211\001\n\024SenderInformat" +
-      "ionMsg\022\021\n\tuserAgent\030\001 \001(\t\022\022\n\nexternalIP\030" +
-      "\002 \001(\t\022\024\n\014externalPort\030\003 \001(\r\022\025\n\rnodePubli",
-      "cKey\030\004 \001(\014\022\035\n\025applicationsSupported\030\005 \003(" +
-      "\014\"\217\001\n\016NetworkMessage\022?\n\toperation\030\001 \001(\0162" +
-      ",.peercentrum.NetworkMessage.NetworkOper" +
-      "ation\"<\n\020NetworkOperation\022\024\n\020CLOSE_CONNE" +
-      "CTION\020\000\022\010\n\004PING\020\001\022\010\n\004PONG\020\002\"\200\001\n\rGossipMe" +
-      "ssage\022=\n\020requestMorePeers\030\001 \001(\0132#.peerce" +
-      "ntrum.GossipRequestMorePeers\0220\n\005reply\030\002 " +
-      "\001(\0132!.peercentrum.GossipReplyMorePeers\"7" +
-      "\n\026GossipRequestMorePeers\022\035\n\025applications" +
-      "Requested\030\001 \003(\014\"\231\002\n\024GossipReplyMorePeers",
-      "\022=\n\005peers\030\001 \003(\0132..peercentrum.GossipRepl" +
-      "yMorePeers.PeerEndpoint\032\301\001\n\014PeerEndpoint" +
-      "\022\020\n\010identity\030\001 \001(\014\022M\n\nipEndpoint\030\002 \001(\01329" +
-      ".peercentrum.GossipReplyMorePeers.PeerEn" +
-      "dpoint.IPEndpoint\032-\n\nIPEndpoint\022\021\n\tipadd" +
-      "ress\030\001 \001(\t\022\014\n\004port\030\002 \001(\r\032!\n\013TOREndpoint\022" +
-      "\022\n\nTORAddress\030\001 \001(\t\":\n\017GenericResponse\022\021" +
-      "\n\terrorCode\030\001 \001(\r\022\024\n\014errorMessage\030\002 \001(\t\"" +
-      "\356\002\n\026HashToPublicKeyMessage\0225\n\017genericRes" +
-      "ponse\030\001 \001(\0132\034.peercentrum.GenericRespons",
-      "e\0229\n\nproposedTx\030\002 \001(\0132%.peercentrum.H2PK" +
-      "ProposedTransactions\022A\n\020localTransaction" +
-      "\030\003 \001(\0132\'.peercentrum.HashToPublicKeyTran" +
-      "saction\022\027\n\017membershipQuery\030\004 \001(\014\022\032\n\022memb" +
-      "ershipResponse\030\005 \003(\014\0221\n\013dbSyncQuery\030\006 \001(" +
-      "\0132\034.peercentrum.H2PKDBSyncQuery\0227\n\016dbSyn" +
-      "cResponse\030\007 \001(\0132\037.peercentrum.H2PKDBSync" +
-      "Response\"\322\001\n\032HashToPublicKeyTransaction\022" +
-      "D\n\toperation\030\001 \001(\01621.peercentrum.HashToP" +
-      "ublicKeyTransaction.OPERATION\022\017\n\007address",
-      "\030\002 \001(\014\022\021\n\tpublicKey\030\003 \001(\014\022\021\n\tsignature\030\004" +
-      " \001(\014\022\022\n\nexpiration\030\005 \001(\r\"#\n\tOPERATION\022\n\n" +
-      "\006APPEND\020\000\022\n\n\006REMOVE\020\001\"\216\001\n\030H2PKProposedTr" +
-      "ansactions\022\027\n\017dbVersionNumber\030\001 \001(\r\022\022\n\np" +
-      "roposedBy\030\002 \001(\014\022E\n\024proposedTransactions\030" +
-      "\003 \003(\0132\'.peercentrum.HashToPublicKeyTrans" +
-      "action\"/\n\017H2PKDBSyncQuery\022\034\n\024beginDbVers" +
-      "ionNumber\030\001 \001(\r\"\227\001\n\022H2PKDBSyncResponse\022\033" +
-      "\n\023lastDbVersionNumber\030\001 \001(\r\022\027\n\017lastDbHas" +
-      "hValue\030\002 \001(\014\022\033\n\023syncDbVersionNumber\030\003 \001(",
-      "\r\022.\n\tsyncUnits\030\004 \003(\0132\033.peercentrum.H2PKD" +
-      "BSyncUnit\"?\n\016H2PKDBSyncUnit\022\017\n\007address\030\001" +
-      " \001(\014\022\034\n\024publicKeysRegistered\030\002 \003(\014\"\211\001\n\021P" +
-      "2PBlobRequestMsg\0227\n\013blobRequest\030\001 \003(\0132\"." +
-      "peercentrum.P2PBlobBlobRequestMsg\022;\n\rupl" +
-      "oadRequest\030\002 \003(\0132$.peercentrum.P2PBlobUp" +
-      "loadRequestMsg\"z\n\027P2PBlobUploadRequestMs" +
-      "g\022,\n\006blocks\030\002 \003(\0132\034.peercentrum.P2PBlobB" +
-      "lockMsg\0221\n\010metaData\030\003 \001(\0132\037.peercentrum." +
-      "P2PBlobMetaDataMsg\"\300\001\n\025P2PBlobBlobReques",
-      "tMsg\022\025\n\rrequestedHash\030\001 \001(\014\022!\n\031maximumBl" +
-      "obLengthAccepted\030\002 \001(\003\022\027\n\017requestMetaDat" +
-      "a\030\003 \001(\010\022\035\n\025requestBlockInventory\030\005 \001(\010\0225" +
-      "\n\017requestedRanges\030\006 \003(\0132\034.peercentrum.P2" +
-      "PBlobRangeMsg\"\257\002\n\022P2PBlobResponseMsg\0225\n\017" +
-      "genericResponse\030\001 \001(\0132\034.peercentrum.Gene" +
-      "ricResponse\0221\n\010metaData\030\002 \001(\0132\037.peercent" +
-      "rum.P2PBlobMetaDataMsg\0229\n\023localBlockInve" +
-      "ntory\030\003 \003(\0132\034.peercentrum.P2PBlobRangeMs" +
-      "g\022/\n\tblobBytes\030\004 \003(\0132\034.peercentrum.P2PBl",
-      "obBlockMsg\022C\n\021dataTransferQuote\030\005 \001(\0132(." +
-      "peercentrum.P2PBlobDataTransferQuoteMsg\"" +
-      "-\n\017P2PBlobRangeMsg\022\r\n\005begin\030\001 \001(\r\022\013\n\003end" +
-      "\030\002 \001(\r\"n\n\022P2PBlobMetaDataMsg\022\022\n\nblobLeng" +
-      "th\030\001 \001(\003\022\021\n\tblockSize\030\002 \001(\005\0221\n\010hashList\030" +
-      "\003 \001(\0132\037.peercentrum.P2PBlobHashListMsg\"-" +
-      "\n\022P2PBlobHashListMsg\022\027\n\017hashOfEachBlock\030" +
-      "\001 \003(\014\"8\n\017P2PBlobBlockMsg\022\022\n\nblockIndex\030\001" +
-      " \001(\r\022\021\n\tblobBytes\030\002 \001(\014\"e\n\033P2PBlobDataTr" +
-      "ansferQuoteMsg\022\"\n\032satoshiPerIncomingGiga",
-      "Byte\030\001 \001(\003\022\"\n\032satoshiPerOutgoingGigaByte" +
-      "\030\002 \001(\003\"P\n\rSettlementMsg\022?\n\020twoWayChannel" +
-      "Msg\030\001 \003(\0132%.paymentchannels.TwoWayChanne" +
-      "lMessageB\032\n\024org.peercentrum.coreB\002PB"
+      "aymentchannel.proto\"\250\001\n\tHeaderMsg\022\025\n\rreq" +
+      "uestNumber\030\002 \001(\r\022 \n\030destinationApplicati" +
+      "onId\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022&\n\036applica" +
+      "tionSpecificBlockLength\030\005 \001(\r\022\'\n\037applica" +
+      "tionSpecificStreamLength\030\006 \001(\r\"\204\001\n\017NodeM" +
+      "etaDataMsg\022\021\n\tuserAgent\030\001 \001(\t\022\022\n\nexterna" +
+      "lIP\030\002 \001(\t\022\024\n\014externalPort\030\003 \001(\r\022\025\n\rnodeP" +
+      "ublicKey\030\004 \001(\014\022\035\n\025applicationsSupported\030" +
+      "\005 \003(\014\"\303\001\n\016NetworkMessage\022?\n\toperation\030\001 ",
+      "\001(\0162,.peercentrum.NetworkMessage.Network" +
+      "Operation\0222\n\014nodeMetaData\030\002 \001(\0132\034.peerce" +
+      "ntrum.NodeMetaDataMsg\"<\n\020NetworkOperatio" +
+      "n\022\024\n\020CLOSE_CONNECTION\020\000\022\010\n\004PING\020\001\022\010\n\004PON" +
+      "G\020\002\"\200\001\n\rGossipMessage\022=\n\020requestMorePeer" +
+      "s\030\001 \001(\0132#.peercentrum.GossipRequestMoreP" +
+      "eers\0220\n\005reply\030\002 \001(\0132!.peercentrum.Gossip" +
+      "ReplyMorePeers\"7\n\026GossipRequestMorePeers" +
+      "\022\035\n\025applicationsRequested\030\001 \003(\014\"\231\002\n\024Goss" +
+      "ipReplyMorePeers\022=\n\005peers\030\001 \003(\0132..peerce",
+      "ntrum.GossipReplyMorePeers.PeerEndpoint\032" +
+      "\301\001\n\014PeerEndpoint\022\020\n\010identity\030\001 \001(\014\022M\n\nip" +
+      "Endpoint\030\002 \001(\01329.peercentrum.GossipReply" +
+      "MorePeers.PeerEndpoint.IPEndpoint\032-\n\nIPE" +
+      "ndpoint\022\021\n\tipaddress\030\001 \001(\t\022\014\n\004port\030\002 \001(\r" +
+      "\032!\n\013TOREndpoint\022\022\n\nTORAddress\030\001 \001(\t\":\n\017G" +
+      "enericResponse\022\021\n\terrorCode\030\001 \001(\r\022\024\n\014err" +
+      "orMessage\030\002 \001(\t\"\356\002\n\026HashToPublicKeyMessa" +
+      "ge\0225\n\017genericResponse\030\001 \001(\0132\034.peercentru" +
+      "m.GenericResponse\0229\n\nproposedTx\030\002 \001(\0132%.",
+      "peercentrum.H2PKProposedTransactions\022A\n\020" +
+      "localTransaction\030\003 \001(\0132\'.peercentrum.Has" +
+      "hToPublicKeyTransaction\022\027\n\017membershipQue" +
+      "ry\030\004 \001(\014\022\032\n\022membershipResponse\030\005 \003(\014\0221\n\013" +
+      "dbSyncQuery\030\006 \001(\0132\034.peercentrum.H2PKDBSy" +
+      "ncQuery\0227\n\016dbSyncResponse\030\007 \001(\0132\037.peerce" +
+      "ntrum.H2PKDBSyncResponse\"\322\001\n\032HashToPubli" +
+      "cKeyTransaction\022D\n\toperation\030\001 \001(\01621.pee" +
+      "rcentrum.HashToPublicKeyTransaction.OPER" +
+      "ATION\022\017\n\007address\030\002 \001(\014\022\021\n\tpublicKey\030\003 \001(",
+      "\014\022\021\n\tsignature\030\004 \001(\014\022\022\n\nexpiration\030\005 \001(\r" +
+      "\"#\n\tOPERATION\022\n\n\006APPEND\020\000\022\n\n\006REMOVE\020\001\"\216\001" +
+      "\n\030H2PKProposedTransactions\022\027\n\017dbVersionN" +
+      "umber\030\001 \001(\r\022\022\n\nproposedBy\030\002 \001(\014\022E\n\024propo" +
+      "sedTransactions\030\003 \003(\0132\'.peercentrum.Hash" +
+      "ToPublicKeyTransaction\"/\n\017H2PKDBSyncQuer" +
+      "y\022\034\n\024beginDbVersionNumber\030\001 \001(\r\"\227\001\n\022H2PK" +
+      "DBSyncResponse\022\033\n\023lastDbVersionNumber\030\001 " +
+      "\001(\r\022\027\n\017lastDbHashValue\030\002 \001(\014\022\033\n\023syncDbVe" +
+      "rsionNumber\030\003 \001(\r\022.\n\tsyncUnits\030\004 \003(\0132\033.p",
+      "eercentrum.H2PKDBSyncUnit\"?\n\016H2PKDBSyncU" +
+      "nit\022\017\n\007address\030\001 \001(\014\022\034\n\024publicKeysRegist" +
+      "ered\030\002 \003(\014\"\211\001\n\021P2PBlobRequestMsg\0227\n\013blob" +
+      "Request\030\001 \003(\0132\".peercentrum.P2PBlobBlobR" +
+      "equestMsg\022;\n\ruploadRequest\030\002 \003(\0132$.peerc" +
+      "entrum.P2PBlobUploadRequestMsg\"z\n\027P2PBlo" +
+      "bUploadRequestMsg\022,\n\006blocks\030\002 \003(\0132\034.peer" +
+      "centrum.P2PBlobBlockMsg\0221\n\010metaData\030\003 \001(" +
+      "\0132\037.peercentrum.P2PBlobMetaDataMsg\"\300\001\n\025P" +
+      "2PBlobBlobRequestMsg\022\025\n\rrequestedHash\030\001 ",
+      "\001(\014\022!\n\031maximumBlobLengthAccepted\030\002 \001(\003\022\027" +
+      "\n\017requestMetaData\030\003 \001(\010\022\035\n\025requestBlockI" +
+      "nventory\030\005 \001(\010\0225\n\017requestedRanges\030\006 \003(\0132" +
+      "\034.peercentrum.P2PBlobRangeMsg\"\257\002\n\022P2PBlo" +
+      "bResponseMsg\0225\n\017genericResponse\030\001 \001(\0132\034." +
+      "peercentrum.GenericResponse\0221\n\010metaData\030" +
+      "\002 \001(\0132\037.peercentrum.P2PBlobMetaDataMsg\0229" +
+      "\n\023localBlockInventory\030\003 \003(\0132\034.peercentru" +
+      "m.P2PBlobRangeMsg\022/\n\tblobBytes\030\004 \003(\0132\034.p" +
+      "eercentrum.P2PBlobBlockMsg\022C\n\021dataTransf",
+      "erQuote\030\005 \001(\0132(.peercentrum.P2PBlobDataT" +
+      "ransferQuoteMsg\"-\n\017P2PBlobRangeMsg\022\r\n\005be" +
+      "gin\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"n\n\022P2PBlobMetaDat" +
+      "aMsg\022\022\n\nblobLength\030\001 \001(\003\022\021\n\tblockSize\030\002 " +
+      "\001(\005\0221\n\010hashList\030\003 \001(\0132\037.peercentrum.P2PB" +
+      "lobHashListMsg\"-\n\022P2PBlobHashListMsg\022\027\n\017" +
+      "hashOfEachBlock\030\001 \003(\014\"8\n\017P2PBlobBlockMsg" +
+      "\022\022\n\nblockIndex\030\001 \001(\r\022\021\n\tblobBytes\030\002 \001(\014\"" +
+      "e\n\033P2PBlobDataTransferQuoteMsg\022\"\n\032satosh" +
+      "iPerIncomingGigaByte\030\001 \001(\003\022\"\n\032satoshiPer",
+      "OutgoingGigaByte\030\002 \001(\003\"P\n\rSettlementMsg\022" +
+      "?\n\020twoWayChannelMsg\030\001 \003(\0132%.paymentchann" +
+      "els.TwoWayChannelMessageB\032\n\024org.peercent" +
+      "rum.coreB\002PB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_peercentrum_HeaderMessage_descriptor =
+          internal_static_peercentrum_HeaderMsg_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_peercentrum_HeaderMessage_fieldAccessorTable = new
+          internal_static_peercentrum_HeaderMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_HeaderMessage_descriptor,
-              new java.lang.String[] { "SenderInfo", "RequestNumber", "NodePublicKey", "ApplicationId", "Signature", "ApplicationSpecificBlockLength", "ApplicationSpecificStreamLength", });
-          internal_static_peercentrum_SenderInformationMsg_descriptor =
+              internal_static_peercentrum_HeaderMsg_descriptor,
+              new java.lang.String[] { "RequestNumber", "DestinationApplicationId", "Signature", "ApplicationSpecificBlockLength", "ApplicationSpecificStreamLength", });
+          internal_static_peercentrum_NodeMetaDataMsg_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_peercentrum_SenderInformationMsg_fieldAccessorTable = new
+          internal_static_peercentrum_NodeMetaDataMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_SenderInformationMsg_descriptor,
+              internal_static_peercentrum_NodeMetaDataMsg_descriptor,
               new java.lang.String[] { "UserAgent", "ExternalIP", "ExternalPort", "NodePublicKey", "ApplicationsSupported", });
           internal_static_peercentrum_NetworkMessage_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_peercentrum_NetworkMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_NetworkMessage_descriptor,
-              new java.lang.String[] { "Operation", });
+              new java.lang.String[] { "Operation", "NodeMetaData", });
           internal_static_peercentrum_GossipMessage_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_peercentrum_GossipMessage_fieldAccessorTable = new

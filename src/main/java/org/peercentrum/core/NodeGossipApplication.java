@@ -3,8 +3,6 @@ package org.peercentrum.core;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 
-import java.net.InetSocketAddress;
-
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkServer;
@@ -53,22 +51,6 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 		try {
 			LOGGER.debug("generateReponseFromQuery");
 			NodeDatabase nodeDb = server.getNodeDatabase();
-			if(receivedMessage.header.hasSenderInfo()){
-			  PB.SenderInformationMsg senderInfo = receivedMessage.header.getSenderInfo();
-				LOGGER.debug("Query has senderinfo {}", senderInfo);
-				
-				NodeIdentifier NodeIdentifier = new NodeIdentifier(senderInfo.getNodePublicKey().toByteArray());
-
-				String externalIP;
-				if(senderInfo.hasExternalIP()){
-					externalIP=senderInfo.getExternalIP();
-				}
-				else{
-					externalIP=((InetSocketAddress)ctx.channel().remoteAddress()).getHostName();
-				}
-				InetSocketAddress ipEndpoint=new InetSocketAddress(externalIP, senderInfo.getExternalPort());
-				nodeDb.mapNodeIdToAddress(NodeIdentifier, ipEndpoint);
-			}
 			
 			if(receivedMessage.header.hasApplicationSpecificBlockLength()==false){
 				LOGGER.error("Request is missing the application block payload");
@@ -80,7 +62,7 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 				LOGGER.error("Invalid gossip request");
 				return null;
 			}
-			PB.HeaderMessage.Builder headerResponse = super.newResponseHeaderForRequest(receivedMessage);
+			PB.HeaderMsg.Builder headerResponse = super.newResponseHeaderForRequest(receivedMessage);
 			PB.GossipMessage.Builder gossipPayloadBuilder=PB.GossipMessage.newBuilder();
 			PB.GossipReplyMorePeers.Builder gossipReplyBuilder=PB.GossipReplyMorePeers.newBuilder();
 			for(NodeInformation oneNodeInfo:nodeDb.getAllNodeInformation(50)){

@@ -96,7 +96,7 @@ public class ProtobufByteBufCodec {
 		return decodeNoLengthPrefix(protoBufMessageBytes, messageClass);
 	}
 
-//	public static HeaderMessage protobufBytesToMessage(ByteBuf protoBufMessageBytes) throws InvalidProtocolBufferException {
+//	public static HeaderMsg protobufBytesToMessage(ByteBuf protoBufMessageBytes) throws InvalidProtocolBufferException {
 //        final byte[] array;
 //        final int offset;
 //        final int length = protoBufMessageBytes.readableBytes();
@@ -109,7 +109,7 @@ public class ProtobufByteBufCodec {
 //            offset = 0;
 //        }
 //
-//        return PB.HeaderMessage.newBuilder().mergeFrom(array, offset, length).build();
+//        return PB.HeaderMsg.newBuilder().mergeFrom(array, offset, length).build();
 //	}
 
 }

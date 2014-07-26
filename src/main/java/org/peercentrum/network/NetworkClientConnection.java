@@ -22,7 +22,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
-import org.peercentrum.core.PB.HeaderMessage;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +36,8 @@ public class NetworkClientConnection implements AutoCloseable {
   ChannelFuture socketChannelFuture;
   AtomicInteger requestCounter = new AtomicInteger();
   ConcurrentHashMap<Integer, DefaultPromise<ByteBuf>> pendingRequests = new  ConcurrentHashMap<>();
-  PB.SenderInformationMsg senderInfo;
+  NodeIdentifier localNodeId;
+  NodeIdentifier remoteNodeId;
 
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>(){
     protected void initChannel(SocketChannel ch) throws Exception {
@@ -67,9 +67,9 @@ public class NetworkClientConnection implements AutoCloseable {
     };
   };
 
-  NodeIdentifier localNodeId;
+  public NetworkClientConnection(NodeIdentifier localNodeId, InetSocketAddress serverAddress, final int localListeningPort) {
+    this.localNodeId=localNodeId;
 
-  public NetworkClientConnection(NodeIdentifier localNodeId, InetSocketAddress serverAddress) {
     Bootstrap b = new Bootstrap();
     b.group(workerGroup);
     b.channel(NioSocketChannel.class);
@@ -77,18 +77,38 @@ public class NetworkClientConnection implements AutoCloseable {
     b.handler(channelInitializer);
 
     socketChannelFuture = b.connect(serverAddress);
-    this.localNodeId=localNodeId;
+    socketChannelFuture.addListener(new GenericFutureListener<Future<? super Void>>() {
+      @Override public void operationComplete(Future<? super Void> future) throws Exception {
+        sendLocalNodeMetaData(localListeningPort);
+      }
+    });
+  }
+
+  protected void sendLocalNodeMetaData(int localListeningPort){
+    PB.NodeMetaDataMsg.Builder nodeMetaDataBuilder=PB.NodeMetaDataMsg.newBuilder();
+    nodeMetaDataBuilder.setUserAgent(getClass().getName());
+//        nodeMetaDataBuilder.setExternalIP(effectiveListeningPort.getAddress().getHostName());
+    if(localListeningPort!=0){
+      nodeMetaDataBuilder.setExternalPort(localListeningPort);          
+    }
+    if(localNodeId!=null){
+      nodeMetaDataBuilder.setNodePublicKey(ByteString.copyFrom(this.localNodeId.getBytes()));
+    }
+    PB.NodeMetaDataMsg nodeMetaData=nodeMetaDataBuilder.build();
+    Future<PB.NodeMetaDataMsg> remoteNodeMetaDataResponseF = sendRequestMsg(NetworkApplication.NETWORK_APPID, nodeMetaData);
+    remoteNodeMetaDataResponseF.addListener(new GenericFutureListener<Future<PB.NodeMetaDataMsg>>() {
+      @Override public void operationComplete(Future<PB.NodeMetaDataMsg> future) throws Exception {
+        PB.NodeMetaDataMsg remoteNodeMetaDataMsg=future.get();
+        if(remoteNodeMetaDataMsg.hasNodePublicKey()){
+          remoteNodeId=new NodeIdentifier(remoteNodeMetaDataMsg.getNodePublicKey().toByteArray());
+        }
+      }
+    });
   }
 
   public Future<ByteBuf> sendRequestBytes(ApplicationIdentifier destinationApp, ByteBuf applicationSpecificBytesToSend) {
-    HeaderMessage.Builder headerBuilder=HeaderMessage.newBuilder();
-    headerBuilder.setApplicationId(ByteString.copyFrom(destinationApp.getBytes()));
-    if(senderInfo!=null){
-      headerBuilder.setSenderInfo(senderInfo);
-    }
-    if(localNodeId!=null){
-      headerBuilder.setNodePublicKey(ByteString.copyFrom(this.localNodeId.getBytes()));
-    }
+    PB.HeaderMsg.Builder headerBuilder=PB.HeaderMsg.newBuilder();
+    headerBuilder.setDestinationApplicationId(ByteString.copyFrom(destinationApp.getBytes()));
 
     int thisRequestNumber=requestCounter.incrementAndGet();
     headerBuilder.setRequestNumber(thisRequestNumber);
@@ -96,7 +116,7 @@ public class NetworkClientConnection implements AutoCloseable {
     pendingRequests.put(thisRequestNumber, responseFuture);
 
     HeaderAndPayload headerAndPayload = new HeaderAndPayload(headerBuilder, applicationSpecificBytesToSend);
-    socketChannelFuture.syncUninterruptibly(); //wait for connection to be up
+    socketChannelFuture.syncUninterruptibly(); //wait for connection to be up //FIXME Is the Sync right???
     socketChannelFuture.channel().writeAndFlush(headerAndPayload).syncUninterruptibly();
     socketChannelFuture.channel().read();
     return responseFuture;
@@ -146,17 +166,6 @@ public class NetworkClientConnection implements AutoCloseable {
     socketChannelFuture.channel().close().syncUninterruptibly();
     workerGroup.shutdownGracefully(); //FIXME Not our responsability if passed in as argument..
     LOGGER.debug("Connection closed");
-  }
-
-  public void setLocalNodeInfo(NodeIdentifier localNodeId, int localListeningPort) {
-    PB.SenderInformationMsg.Builder senderInfoBuilder=PB.SenderInformationMsg.newBuilder();
-    senderInfoBuilder.setUserAgent(getClass().getName());
-    senderInfoBuilder.setNodePublicKey(ByteString.copyFrom(localNodeId.getBytes()));
-    //        senderInfoBuilder.setExternalIP(effectiveListeningPort.getAddress().getHostName());
-    if(localListeningPort!=0){
-      senderInfoBuilder.setExternalPort(localListeningPort);          
-    }
-    this.senderInfo=senderInfoBuilder.build();
   }
 
 }

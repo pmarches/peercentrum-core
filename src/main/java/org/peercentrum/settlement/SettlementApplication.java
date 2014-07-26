@@ -7,7 +7,7 @@ import org.bitcoin.paymentchannel.Protos;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
-import org.peercentrum.core.PB.HeaderMessage.Builder;
+import org.peercentrum.core.PB.HeaderMsg.Builder;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
@@ -32,10 +32,7 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 	public HeaderAndPayload generateReponseFromQuery(ChannelHandlerContext ctx, HeaderAndPayload receivedMessage) {
 		LOGGER.debug("settlement generateReponseFromQuery");
 		try {
-			if(receivedMessage.header.hasNodePublicKey()==false){
-				return null;
-			}
-			NodeIdentifier remoteNodeIdentifier = new NodeIdentifier(receivedMessage.header.getNodePublicKey().toByteArray());
+			NodeIdentifier remoteNodeIdentifier=super.getRemoteNodeIdentifier(ctx);
 
       PB.SettlementMsg.Builder topLevelResponse=PB.SettlementMsg.newBuilder();
 			PB.SettlementMsg settlementReqMsg = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, PB.SettlementMsg.class);

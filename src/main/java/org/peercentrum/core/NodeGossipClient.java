@@ -55,8 +55,7 @@ public class NodeGossipClient {
       InetSocketAddress bootstrapAddress=new InetSocketAddress(addressAndPort[0], Integer.parseInt(addressAndPort[1]));
       LOGGER.debug("bootstrap is {}", bootstrapAddress);
 
-      NetworkClientConnection newConnection = new NetworkClientConnection(this.localNodeId, bootstrapAddress);
-      newConnection.setLocalNodeInfo(localNodeId, reachableListeningPort);
+      NetworkClientConnection newConnection = new NetworkClientConnection(this.localNodeId, bootstrapAddress, reachableListeningPort);
       
       PB.GossipMessage.Builder gossipReqBuilder=PB.GossipMessage.newBuilder();
       gossipReqBuilder.setRequestMorePeers(PB.GossipRequestMorePeers.getDefaultInstance());

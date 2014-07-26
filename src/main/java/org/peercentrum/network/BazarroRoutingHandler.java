@@ -24,7 +24,7 @@ class RoutingHandler extends ChannelInboundHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		MDC.put("NodeId", server.thisNodeId.toString());
 		HeaderAndPayload currentHeaderAndPayload = (HeaderAndPayload) msg;
-		ApplicationIdentifier appIdReceived = new ApplicationIdentifier(currentHeaderAndPayload.header.getApplicationId().toByteArray());
+		ApplicationIdentifier appIdReceived = new ApplicationIdentifier(currentHeaderAndPayload.header.getDestinationApplicationId().toByteArray());
 		BaseApplicationMessageHandler applicationHandler=server.getApplicationHandler(appIdReceived);
 		if(applicationHandler!=null){
 			HeaderAndPayload response = applicationHandler.generateReponseFromQuery(ctx, currentHeaderAndPayload);
