@@ -2,6 +2,7 @@ package org.peercentrum.network;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -67,8 +68,9 @@ public class NetworkClientConnection implements AutoCloseable {
     };
   };
 
-  public NetworkClientConnection(NodeIdentifier localNodeId, InetSocketAddress serverAddress, final int localListeningPort) {
+  public NetworkClientConnection(NodeIdentifier localNodeId, NodeIdentifier remoteId, InetSocketAddress serverAddress, final int localListeningPort) {
     this.localNodeId=localNodeId;
+    this.remoteNodeId=remoteId;
 
     Bootstrap b = new Bootstrap();
     b.group(workerGroup);
@@ -94,26 +96,39 @@ public class NetworkClientConnection implements AutoCloseable {
     if(localNodeId!=null){
       nodeMetaDataBuilder.setNodePublicKey(ByteString.copyFrom(this.localNodeId.getBytes()));
     }
-    PB.NodeMetaDataMsg nodeMetaData=nodeMetaDataBuilder.build();
-    Future<PB.NodeMetaDataMsg> remoteNodeMetaDataResponseF = sendRequestMsg(NetworkApplication.NETWORK_APPID, nodeMetaData);
-    remoteNodeMetaDataResponseF.addListener(new GenericFutureListener<Future<PB.NodeMetaDataMsg>>() {
-      @Override public void operationComplete(Future<PB.NodeMetaDataMsg> future) throws Exception {
-        PB.NodeMetaDataMsg remoteNodeMetaDataMsg=future.get();
+    PB.NetworkMessage.Builder networkMsg=PB.NetworkMessage.newBuilder();
+    networkMsg.setNodeMetaData(nodeMetaDataBuilder);
+    Future<PB.NetworkMessage> remoteNodeMetaDataResponseF = sendRequestMsg(NetworkApplication.NETWORK_APPID, networkMsg.build());
+    remoteNodeMetaDataResponseF.addListener(new GenericFutureListener<Future<PB.NetworkMessage>>() {
+      @Override public void operationComplete(Future<PB.NetworkMessage> future) throws Exception {
+        PB.NodeMetaDataMsg remoteNodeMetaDataMsg=future.get().getNodeMetaData();
         if(remoteNodeMetaDataMsg.hasNodePublicKey()){
-          remoteNodeId=new NodeIdentifier(remoteNodeMetaDataMsg.getNodePublicKey().toByteArray());
+          NodeIdentifier remoteNodeIdReceived=new NodeIdentifier(remoteNodeMetaDataMsg.getNodePublicKey().toByteArray());
+          if(remoteNodeIdReceived.equals(remoteNodeId)==false){
+            throw new Exception("We were expecting to connect to node "+remoteNodeId+", but connected to node "+remoteNodeIdReceived);
+          }
         }
       }
     });
   }
 
   public Future<ByteBuf> sendRequestBytes(ApplicationIdentifier destinationApp, ByteBuf applicationSpecificBytesToSend) {
+    return sendRequestBytes(destinationApp, applicationSpecificBytesToSend, true);
+  }
+  
+  public Future<ByteBuf> sendRequestBytes(ApplicationIdentifier destinationApp, ByteBuf applicationSpecificBytesToSend, boolean expectResponse) {
     PB.HeaderMsg.Builder headerBuilder=PB.HeaderMsg.newBuilder();
     headerBuilder.setDestinationApplicationId(ByteString.copyFrom(destinationApp.getBytes()));
 
     int thisRequestNumber=requestCounter.incrementAndGet();
     headerBuilder.setRequestNumber(thisRequestNumber);
     DefaultPromise<ByteBuf> responseFuture = new DefaultPromise<ByteBuf>(socketChannelFuture.channel().eventLoop());
-    pendingRequests.put(thisRequestNumber, responseFuture);
+    if(expectResponse){
+      pendingRequests.put(thisRequestNumber, responseFuture);
+    }
+    else{
+      responseFuture.setSuccess(Unpooled.EMPTY_BUFFER);
+    }
 
     HeaderAndPayload headerAndPayload = new HeaderAndPayload(headerBuilder, applicationSpecificBytesToSend);
     socketChannelFuture.syncUninterruptibly(); //wait for connection to be up //FIXME Is the Sync right???
@@ -166,6 +181,11 @@ public class NetworkClientConnection implements AutoCloseable {
     socketChannelFuture.channel().close().syncUninterruptibly();
     workerGroup.shutdownGracefully(); //FIXME Not our responsability if passed in as argument..
     LOGGER.debug("Connection closed");
+  }
+
+  public void ping() {
+    Future<ByteBuf> pingResponseFuture = sendRequestBytes(NetworkApplication.NETWORK_APPID, NetworkApplication.pingMessageBytes);
+    pingResponseFuture.awaitUninterruptibly(); //TODO Add timeout
   }
 
 }

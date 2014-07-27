@@ -37,9 +37,12 @@ public class NodeGossipClient {
     if(response.hasReply()){
       PB.GossipReplyMorePeers gossipReply = response.getReply();
       for(PB.GossipReplyMorePeers.PeerEndpoint peer : gossipReply.getPeersList()){
-        NodeIdentifier NodeIdentifier = new NodeIdentifier(peer.getIdentity().toByteArray());
+        NodeIdentifier nodeIdentifier = new NodeIdentifier(peer.getIdentity().toByteArray());
+        if(nodeIdentifier.equals(this.localNodeId)){
+          continue;//Ignore echo
+        }
         InetSocketAddress ipEndpoint=new InetSocketAddress(peer.getIpEndpoint().getIpaddress(), peer.getIpEndpoint().getPort());
-        nodeDb.mapNodeIdToAddress(NodeIdentifier, ipEndpoint);
+        nodeDb.mapNodeIdToAddress(nodeIdentifier, ipEndpoint);
       }
     }
   }
@@ -47,15 +50,16 @@ public class NodeGossipClient {
   public void bootstrapGossiping(String bootstrapEndpoint) throws Exception {
     if(bootstrapEndpoint!=null){
       LOGGER.info("Starting bootstrap with {}", bootstrapEndpoint);
-      String[] addressAndPort=bootstrapEndpoint.split(":");
-      if(addressAndPort==null || addressAndPort.length!=2){
+      String[] nodeIDAddressAndPort=bootstrapEndpoint.split(":");
+      if(nodeIDAddressAndPort==null || nodeIDAddressAndPort.length!=3){
         LOGGER.error("bootstrap entry has not been recognized {}", bootstrapEndpoint);
         return;
       }
-      InetSocketAddress bootstrapAddress=new InetSocketAddress(addressAndPort[0], Integer.parseInt(addressAndPort[1]));
+      NodeIdentifier bootStrapNodeId=new NodeIdentifier(nodeIDAddressAndPort[0]);
+      InetSocketAddress bootstrapAddress=new InetSocketAddress(nodeIDAddressAndPort[1], Integer.parseInt(nodeIDAddressAndPort[2]));
       LOGGER.debug("bootstrap is {}", bootstrapAddress);
 
-      NetworkClientConnection newConnection = new NetworkClientConnection(this.localNodeId, bootstrapAddress, reachableListeningPort);
+      NetworkClientConnection newConnection = new NetworkClientConnection(this.localNodeId, bootStrapNodeId, bootstrapAddress, reachableListeningPort);
       
       PB.GossipMessage.Builder gossipReqBuilder=PB.GossipMessage.newBuilder();
       gossipReqBuilder.setRequestMorePeers(PB.GossipRequestMorePeers.getDefaultInstance());

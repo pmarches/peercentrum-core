@@ -5,7 +5,7 @@ listenPort: 0    #Set to 0 to select any open port at startup
 enableNAT: true
 applications: 
   - !!org.peercentrum.core.NodeGossipConfig
-    bootstrapEndpoint: 66.172.33.39:35460
+    bootstrapEndpoint: node1:66.172.33.39:35460
   
   - !!org.peercentrum.h2pk.HashToPublicKeyConfig
     validatorIdentifiers:

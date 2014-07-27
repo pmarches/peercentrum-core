@@ -1,10 +1,10 @@
 package org.peercentrum.network;
 
-import java.net.InetSocketAddress;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
+
+import java.net.InetSocketAddress;
 
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
@@ -19,8 +19,8 @@ public class NetworkApplication extends BaseApplicationMessageHandler {
   private static final Logger LOGGER = LoggerFactory.getLogger(NetworkApplication.class);
   
 
-	public NetworkApplication(NetworkServer clientOrServer) {
-		super(clientOrServer);
+	public NetworkApplication(NetworkServer server) {
+		super(server);
 	}
 
 	@Override
@@ -32,13 +32,18 @@ public class NetworkApplication extends BaseApplicationMessageHandler {
 //					System.out.println("Got a close request from the client");
 					ctx.close();
 				}
+
         if(networkMessage.getOperation()==PB.NetworkMessage.NetworkOperation.PING){
           PB.HeaderMsg.Builder responseHeader = super.newResponseHeaderForRequest(receivedMessage);
           return new HeaderAndPayload(responseHeader, pongMessageBytes);
         }
-        if(networkMessage.hasNodeMetaData()){
-          handleReceiveNodeMetaData(ctx, networkMessage);
-        }
+			}
+			else if(networkMessage.hasNodeMetaData()){
+        PB.HeaderMsg.Builder responseHeader = super.newResponseHeaderForRequest(receivedMessage);
+			  return handleReceiveNodeMetaData(ctx, responseHeader, networkMessage);
+			}
+			else{
+			  LOGGER.warn("Unhandled network message");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -46,26 +51,29 @@ public class NetworkApplication extends BaseApplicationMessageHandler {
 		return null;
 	}
 
-  private void handleReceiveNodeMetaData(ChannelHandlerContext ctx, PB.NetworkMessage networkMessage) {
-    PB.NodeMetaDataMsg nodeMetaDataMsg = networkMessage.getNodeMetaData();
-    if(nodeMetaDataMsg.hasNodePublicKey()){ //Do we allow anonymous clients? How to encrypt the comm if we do not have a public key?
-      NodeIdentifier remoteNodeId=new NodeIdentifier(nodeMetaDataMsg.getNodePublicKey().toByteArray());
+  private HeaderAndPayload handleReceiveNodeMetaData(ChannelHandlerContext ctx, PB.HeaderMsg.Builder responseHeader, PB.NetworkMessage networkMessage) {
+    PB.NodeMetaDataMsg receivedNodeMetaDataMsg = networkMessage.getNodeMetaData();
+    LOGGER.debug("Query has nodeMetaData {}", receivedNodeMetaDataMsg);
+    if(receivedNodeMetaDataMsg.hasNodePublicKey()){ //Do we allow anonymous clients? How to encrypt the comm if we do not have a public key?
+      NodeIdentifier remoteNodeId=new NodeIdentifier(receivedNodeMetaDataMsg.getNodePublicKey().toByteArray());
       super.setRemoteNodeIdentifier(ctx, remoteNodeId);
-    }
-    
-    LOGGER.debug("Query has nodeMetaData {}", nodeMetaDataMsg);
-    
-    NodeIdentifier NodeIdentifier = new NodeIdentifier(nodeMetaDataMsg.getNodePublicKey().toByteArray());
 
-    String externalIP;
-    if(nodeMetaDataMsg.hasExternalIP()){
-      externalIP=nodeMetaDataMsg.getExternalIP();
+      String clientExternalIP;
+      if(receivedNodeMetaDataMsg.hasExternalIP()){
+        clientExternalIP=receivedNodeMetaDataMsg.getExternalIP();
+      }
+      else{
+        clientExternalIP=((InetSocketAddress)ctx.channel().remoteAddress()).getHostName();
+      }
+      InetSocketAddress ipEndpoint=new InetSocketAddress(clientExternalIP, receivedNodeMetaDataMsg.getExternalPort());
+      server.getNodeDatabase().mapNodeIdToAddress(remoteNodeId, ipEndpoint);
     }
-    else{
-      externalIP=((InetSocketAddress)ctx.channel().remoteAddress()).getHostName();
-    }
-    InetSocketAddress ipEndpoint=new InetSocketAddress(externalIP, nodeMetaDataMsg.getExternalPort());
-    server.getNodeDatabase().mapNodeIdToAddress(NodeIdentifier, ipEndpoint);
+
+    PB.NetworkMessage.Builder repliedNetworkMsg=PB.NetworkMessage.newBuilder();
+    PB.NodeMetaDataMsg.Builder repliedNodeMetaDataMsg=PB.NodeMetaDataMsg.newBuilder();
+    repliedNodeMetaDataMsg.setNodePublicKey(server.getLocalNodeId().toByteString());
+    repliedNetworkMsg.setNodeMetaData(repliedNodeMetaDataMsg);
+    return new HeaderAndPayload(responseHeader, Unpooled.wrappedBuffer(repliedNetworkMsg.build().toByteArray()));
   }
 
 	@Override

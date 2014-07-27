@@ -21,20 +21,15 @@ public class NodeDatabase implements AutoCloseable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NodeDatabase.class);
 
 	static final String NODE_INFO_TABLE_NAME = "NODE_INFO";
-
 	static final String NODE_APPLICATION_TABLE_NAME = "NODE_APPLICATION";
-
 //	static final String NODE_APPLICATION_INDEX_NAME = "NODE_ID_APP";
 	static final String ENDPOINT_ADDRESS_FN = "endPointAddress";
 	static final String ENDPOINT_PORT_FN = "endPointPort";
 	static final String NODE_ID_FN = "nodeId";
-
 	
-//	Hashtable<NodeIdentifier, NodeInformation> idToPeer=new Hashtable<>();
 	protected SqlJetDb db;
-
-	ISqlJetTable nodeInfoTable;
-	ISqlJetTable nodeApplicationTable;
+	protected ISqlJetTable nodeInfoTable;
+	protected ISqlJetTable nodeApplicationTable;
 	
 	public NodeDatabase(File nodeDatabasePath) {
 		try {
@@ -76,15 +71,15 @@ public class NodeDatabase implements AutoCloseable {
 	}
 
 	//TODO Add some checks to ensure we do not map stale IP/Port info.. 
-	public void mapNodeIdToAddress(final NodeIdentifier NodeIdentifier, final InetSocketAddress nodeSocketAddress) {
+	public void mapNodeIdToAddress(final NodeIdentifier nodeIdentifier, final InetSocketAddress nodeSocketAddress) {
 //		NodeInformation info = new NodeInformation(NodeIdentifier, nodeSocketAddress);
 //		LOGGER.debug("Mapped {} to {}", NodeIdentifier, nodeSocketAddress);
 //		idToPeer.put(NodeIdentifier, info);
 		ISqlJetTransaction updateEndpointTx=new ISqlJetTransaction() {
 			@Override public Object run(SqlJetDb db) throws SqlJetException {
-				ISqlJetCursor nodeInfoCursor = nodeInfoTable.lookup(null, NodeIdentifier.getBytes());
+				ISqlJetCursor nodeInfoCursor = nodeInfoTable.lookup(null, nodeIdentifier.getBytes());
 				if(nodeInfoCursor.eof()){
-					nodeInfoTable.insert(NodeIdentifier.getBytes(), nodeSocketAddress.getHostString(), nodeSocketAddress.getPort());
+					nodeInfoTable.insert(nodeIdentifier.getBytes(), nodeSocketAddress.getHostString(), nodeSocketAddress.getPort());
 				}
 				else{
 					Map<String, Object> fieldsToUpdate=new HashMap<>();

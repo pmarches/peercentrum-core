@@ -38,7 +38,7 @@ public class NetworkClientTest {
 		TopLevelConfig serverConfig=new TopLevelConfig();
 		serverConfig.setNodeIdentifier("ServerNode");
 		NetworkServer server = new NetworkServer(serverConfig);
-		server.nodeDatabase.mapNodeIdToAddress(new NodeIdentifier("A new node on port 22".getBytes()), new InetSocketAddress(22));
+		server.nodeDatabase.mapNodeIdToAddress(new NodeIdentifier("A third node on port 2222".getBytes()), new InetSocketAddress(2222));
 		new NodeGossipApplication(server);
 		
 		NodeDatabase clientNodeDatabase = new NodeDatabase(null);
@@ -52,7 +52,7 @@ public class NetworkClientTest {
 		client.close();
 		server.stopAcceptingConnections();
 		
-		assertEquals(1, server.nodeDatabase.size());
+		assertEquals(2, server.nodeDatabase.size());
 		assertEquals(2, clientNodeDatabase.size());
 	}
 	
@@ -69,8 +69,10 @@ public class NetworkClientTest {
 	    clientNodeDatabase.mapNodeIdToAddress(server.getLocalNodeId(), serverEndpoint);
 	    NetworkClient client = new NetworkClient(new NodeIdentifier("ClientNode".getBytes()), clientNodeDatabase);
 	    
-	    client.ping(server.getLocalNodeId());
-      client.ping(server.getLocalNodeId());
+	    NetworkClientConnection connection=client.maybeOpenConnectionToPeer(server.getLocalNodeId());
+	    connection.ping();
+	    connection.ping();
+	    assertEquals(server.getLocalNodeId(), connection.remoteNodeId);
 
       client.close();
 	    server.stopAcceptingConnections();
