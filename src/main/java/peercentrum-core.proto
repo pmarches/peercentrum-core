@@ -12,6 +12,9 @@ message HeaderMsg {
 	optional uint32 applicationSpecificStreamLength=6;
 };
 
+message CryptoHandShakeMsg {
+};
+
 message NodeMetaDataMsg { //FIXME Get rid of all this crap, create endpoint message...
   optional string userAgent=1;
   optional string externalIP=2;

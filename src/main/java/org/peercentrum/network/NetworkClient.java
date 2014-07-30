@@ -14,18 +14,17 @@ import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.MessageLite;
 
-public class NetworkClient implements Closeable {
+public class NetworkClient extends NetworkBase implements Closeable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NetworkClient.class);
 	
 	//TODO maybe use a good caching library for this cache?
 	//FIXME This cache will work only for a small number of nodes! 
 	protected HashMap<NodeIdentifier, NetworkClientConnection> connectionCache=new HashMap<>();
-	protected NodeIdentifier thisNodeId;
 	protected NodeDatabase nodeDatabase;
 	protected int localListeningPort=0;
 	
-  public NetworkClient(NodeIdentifier thisNodeId, NodeDatabase nodeDatabase) {
-		this.thisNodeId=thisNodeId;
+  public NetworkClient(NodeIdentity localIdentity, NodeDatabase nodeDatabase) throws Exception {
+    super(localIdentity);
 		this.nodeDatabase=nodeDatabase;
 	}
 
@@ -39,17 +38,17 @@ public class NetworkClient implements Closeable {
 		}
 	}
 	
-	public NetworkClientConnection createConnectionToPeer(NodeIdentifier remoteId){
+	public NetworkClientConnection createConnectionToPeer(NodeIdentifier remoteId) throws Exception{
 		InetSocketAddress remoteEndpoint=nodeDatabase.getEndpointByIdentifier(remoteId);
 		if(remoteEndpoint==null){
 			throw new RuntimeException("No endpoint found for peer "+remoteId);
 		}
-		NetworkClientConnection newConnection = new NetworkClientConnection(thisNodeId, remoteId, remoteEndpoint, localListeningPort);
+		NetworkClientConnection newConnection = new NetworkClientConnection(this, remoteId, remoteEndpoint, localListeningPort);
 		return newConnection;
 	}
 
-	public NetworkClientConnection maybeOpenConnectionToPeer(NodeIdentifier remoteId) {
-		if(remoteId.equals(thisNodeId)){
+	public NetworkClientConnection maybeOpenConnectionToPeer(NodeIdentifier remoteId) throws Exception {
+		if(remoteId.equals(nodeIdentity.getIdentifier())){
 			return null;
 		}
 		synchronized(connectionCache){
@@ -66,12 +65,12 @@ public class NetworkClient implements Closeable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends MessageLite> Future<T> sendRequest(NodeIdentifier peerIdToExchangeWith, ApplicationIdentifier applicationId, final T protobufMessage) {
+	public <T extends MessageLite> Future<T> sendRequest(NodeIdentifier peerIdToExchangeWith, ApplicationIdentifier applicationId, final T protobufMessage) throws Exception {
 		return (Future<T>) sendRequest(peerIdToExchangeWith, applicationId, protobufMessage, protobufMessage.getClass());
 	}
 	
-	public <T extends MessageLite> Future<T> sendRequest(NodeIdentifier peerIdToExchangeWith, ApplicationIdentifier applicationId, final MessageLite protobufRequest, Class<T> appSpecificResponseClass) {
-		if(peerIdToExchangeWith.equals(thisNodeId)){
+	public <T extends MessageLite> Future<T> sendRequest(NodeIdentifier peerIdToExchangeWith, ApplicationIdentifier applicationId, final MessageLite protobufRequest, Class<T> appSpecificResponseClass) throws Exception {
+		if(peerIdToExchangeWith.equals(nodeIdentity.getIdentifier())){
 			LOGGER.warn("Trying to send network request to our own node?");
 			return null;
 		}
@@ -86,10 +85,6 @@ public class NetworkClient implements Closeable {
 	public NodeDatabase getNodeDatabase(){
 	  return nodeDatabase;
 	}
-
-  public NodeIdentifier getLocalNodeId() {
-    return this.thisNodeId;
-  }
 
   public void setLocalListeniongPort(int listeningPort) {
     this.localListeningPort=listeningPort;

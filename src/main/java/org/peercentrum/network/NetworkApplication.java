@@ -71,7 +71,7 @@ public class NetworkApplication extends BaseApplicationMessageHandler {
 
     PB.NetworkMessage.Builder repliedNetworkMsg=PB.NetworkMessage.newBuilder();
     PB.NodeMetaDataMsg.Builder repliedNodeMetaDataMsg=PB.NodeMetaDataMsg.newBuilder();
-    repliedNodeMetaDataMsg.setNodePublicKey(server.getLocalNodeId().toByteString());
+    repliedNodeMetaDataMsg.setNodePublicKey(server.getNodeIdentifier().toByteString());
     repliedNetworkMsg.setNodeMetaData(repliedNodeMetaDataMsg);
     return new HeaderAndPayload(responseHeader, Unpooled.wrappedBuffer(repliedNetworkMsg.build().toByteArray()));
   }

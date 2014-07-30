@@ -97,7 +97,7 @@ public class TopLevelConfig {
 
   public File getFile(String fileName) {
     if(directoryOfConfigFile==null || fileName==null){
-      return null;
+      throw new NullPointerException("The config file directory must have been initialized");
     }
     return new File(directoryOfConfigFile, fileName);
   }

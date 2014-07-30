@@ -34,19 +34,19 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 	HashToPublicKeyDB db;
 	NetworkClient networkClient;
 		
-	public HashToPublicKeyApplication(NetworkServer nodeServer, HashToPublicKeyDB db, UniqueNodeList unl) {
+	public HashToPublicKeyApplication(NetworkServer nodeServer, HashToPublicKeyDB db, UniqueNodeList unl) throws Exception {
 		super(nodeServer);
 		if(unl==null){
 			throw new NullPointerException("NULL UNL not allowed");
 		}
 
-		networkClient=new NetworkClient(nodeServer.getLocalNodeId(), nodeServer.getNodeDatabase());
+		networkClient=new NetworkClient(nodeServer.getLocalIdentity(), nodeServer.getNodeDatabase());
 		networkClient.setLocalListeniongPort(nodeServer.getListeningPort());
 		this.db=db;
 		txEvaluator=new HashToPublicKeyTXEvaluator(db);
 		final int DB_CLOSECYCLE_PERIOD_MS = 3000;
 		ConsensusThreshold consensusThreshold=new ConsensusThreshold(50, 100, 10, DB_CLOSECYCLE_PERIOD_MS/5);
-		consensus=new ConsensusProcess(nodeServer.getLocalNodeId(), txEvaluator, unl, db, consensusThreshold) {
+		consensus=new ConsensusProcess(nodeServer.getNodeIdentifier(), txEvaluator, unl, db, consensusThreshold) {
 			@Override
 			protected void broadcastProposedTransactions(ProposedTransactions ourProposedTx) {
 				try {
@@ -77,7 +77,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 			}
 			dbCloseProcess=new Thread(consensus.stepDatabaseCloseProcess);
 		}
-		dbCloseProcess.setName(super.server.getLocalNodeId().toString());
+		dbCloseProcess.setName(super.server.getNodeIdentifier().toString());
 		dbCloseProcess.start();
 	}
 	
@@ -93,7 +93,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 				queryMsg.setBeginDbVersionNumber(0);
 			}
 			appLevelMsg.setDbSyncQuery(queryMsg.build());
-			NodeIdentifier remoteId=consensus.unl.getOneExcluding(this.server.getLocalNodeId());
+			NodeIdentifier remoteId=consensus.unl.getOneExcluding(this.server.getNodeIdentifier());
 			HashToPublicKeyMessage appLevelResponse = networkClient.sendRequest(remoteId, getApplicationId(), appLevelMsg.build()).get();
 			if(appLevelResponse.hasDbSyncResponse()){
 				PB.H2PKDBSyncResponse dbSyncResponse = appLevelResponse.getDbSyncResponse();

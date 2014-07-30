@@ -54,7 +54,7 @@
     <dependency>
     	<groupId>io.netty</groupId>
     	<artifactId>netty-all</artifactId>
-    	<version>4.0.18.Final</version>
+    	<version>4.0.21.Final</version>
     </dependency>
     <dependency>
     	<groupId>com.google.protobuf</groupId>
@@ -86,6 +86,16 @@
     	<groupId>com.google</groupId>
     	<artifactId>bitcoinj</artifactId>
     	<version>0.12-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.bouncycastle</groupId>
+    	<artifactId>bcprov-jdk15on</artifactId>
+    	<version>1.50</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.bouncycastle</groupId>
+    	<artifactId>bcpkix-jdk15on</artifactId>
+    	<version>1.50</version>
     </dependency>
   </dependencies>
   <build>

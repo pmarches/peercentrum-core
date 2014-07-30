@@ -9,16 +9,17 @@ import org.peercentrum.consensusprocess.ConsensusThreshold;
 import org.peercentrum.consensusprocess.MockTriggerableThreshold;
 import org.peercentrum.consensusprocess.UniqueNodeList;
 import org.peercentrum.core.NodeDatabase;
-import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
+import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkServer;
+import org.peercentrum.network.NodeIdentity;
 
 
 public class H2PKTest {
 	@Test
 	public void test() throws Exception {
 		final int NB_NODES=3;
-		NodeIdentifier clientNodeId=new NodeIdentifier("ClientNode");
+		NetworkClient networkClient=null;
 		HashToPublicKeyStandaloneClient client=null;
 		UniqueNodeList sharedUNL = new UniqueNodeList();
 		NodeDatabase sharedNodeDatabase = new NodeDatabase(null);
@@ -28,18 +29,18 @@ public class H2PKTest {
 			TopLevelConfig topConfig=new TopLevelConfig("Node"+i);
 			NetworkServer nodeServer = new NetworkServer(topConfig);
 			InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", nodeServer.getListeningPort());
-			sharedNodeDatabase.mapNodeIdToAddress(nodeServer.getLocalNodeId(), serverEndpoint);
-			sharedUNL.addValidatorNode(nodeServer.getLocalNodeId());
+			sharedNodeDatabase.mapNodeIdToAddress(nodeServer.getNodeIdentifier(), serverEndpoint);
+			sharedUNL.addValidatorNode(nodeServer.getNodeIdentifier());
 			HashToPublicKeyDB db=new HashToPublicKeyDB();
 			apps[i]=new HashToPublicKeyApplication(nodeServer, db, sharedUNL);
 //			apps[i].consensus.consensusThreshold=mockThreshold;
 			if(client==null){
-				client=new HashToPublicKeyStandaloneClient(nodeServer.getLocalNodeId(), clientNodeId, sharedNodeDatabase);
+				networkClient=new NetworkClient(new NodeIdentity(topConfig), sharedNodeDatabase);
+        client=new HashToPublicKeyStandaloneClient(networkClient, nodeServer.getNodeIdentifier());
 			}
 		}
 		HashIdentifier address=new HashIdentifier();
-		client.registerForAddress(address, clientNodeId);
-		client.close();
+		client.registerForAddress(address, networkClient.getNodeIdentifier());
 		for(HashToPublicKeyApplication app : apps){
 			app.startDBCloseProcess(0);
 		}

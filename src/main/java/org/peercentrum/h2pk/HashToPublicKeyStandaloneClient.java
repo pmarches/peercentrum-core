@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.GenericResponse;
@@ -15,11 +14,12 @@ import org.peercentrum.network.NetworkClient;
 
 import com.google.protobuf.ByteString;
 
-public class HashToPublicKeyStandaloneClient extends NetworkClient {
+public class HashToPublicKeyStandaloneClient {
 	private NodeIdentifier remoteHost;
+  private NetworkClient client;
 
-	public HashToPublicKeyStandaloneClient(NodeIdentifier remoteHost, NodeIdentifier thisNodeIdentifier, NodeDatabase nodeDb) {
-		super(thisNodeIdentifier, nodeDb);
+	public HashToPublicKeyStandaloneClient(NetworkClient client, NodeIdentifier remoteHost) {
+		this.client=client;
 		this.remoteHost=remoteHost;
 	}
 	
@@ -31,7 +31,7 @@ public class HashToPublicKeyStandaloneClient extends NetworkClient {
 		
 		PB.HashToPublicKeyMessage.Builder appLevelMessage=PB.HashToPublicKeyMessage.newBuilder();
 		appLevelMessage.setLocalTransaction(txObject.toMessage());
-		Future<HashToPublicKeyMessage> registrationResponseFuture = sendRequest(remoteHost, HashToPublicKeyApplication.APP_ID, appLevelMessage.build());
+		Future<HashToPublicKeyMessage> registrationResponseFuture = client.sendRequest(remoteHost, HashToPublicKeyApplication.APP_ID, appLevelMessage.build());
 		GenericResponse genericResponse = registrationResponseFuture.get().getGenericResponse();
 		if(genericResponse!=null && genericResponse.getErrorCode()!=0){
 			throw new Exception("registration of address "+address+" failed because "+genericResponse.getErrorMessage()+". error code "+genericResponse.getErrorCode());
@@ -42,7 +42,7 @@ public class HashToPublicKeyStandaloneClient extends NetworkClient {
 		PB.HashToPublicKeyMessage.Builder topLevelMessage=PB.HashToPublicKeyMessage.newBuilder();
 		topLevelMessage.setMembershipQuery(ByteString.copyFrom(address.getBytes()));
 
-		Future<HashToPublicKeyMessage> registrationResponseFuture = sendRequest(remoteHost, HashToPublicKeyApplication.APP_ID, topLevelMessage.build());
+		Future<HashToPublicKeyMessage> registrationResponseFuture = client.sendRequest(remoteHost, HashToPublicKeyApplication.APP_ID, topLevelMessage.build());
 		GenericResponse genericResponse = registrationResponseFuture.get().getGenericResponse();
 		if(genericResponse!=null && genericResponse.getErrorCode()!=0){
 			throw new Exception("failed to get membership of address "+address+" because "+genericResponse.getErrorMessage()+". error code "+genericResponse.getErrorCode());

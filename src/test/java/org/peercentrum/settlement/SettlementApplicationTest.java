@@ -17,13 +17,13 @@ public class SettlementApplicationTest {
   @Test
   public void testPayNode() throws Exception {
     TransientMockNetworkOfNodes mockNodes=new TransientMockNetworkOfNodes();
-    NetworkClientConnection clientToServerConnection = mockNodes.networkClient1.createConnectionToPeer(mockNodes.server1.getLocalNodeId());
+    NetworkClientConnection clientToServerConnection = mockNodes.networkClient1.createConnectionToPeer(mockNodes.server1.getNodeIdentifier());
     double clientStartAmount=13.0;
     mockNodes.fundBitcoinWalletOfNode(mockNodes.settlementClient1.clientKit.wallet(), clientStartAmount);
 
     Coin escrow = Coin.valueOf(0, 10);
     Coin escrowPlusFeeAmount=escrow.add(Transaction.REFERENCE_DEFAULT_MIN_TX_FEE);
-    NodeIdentifier contractID = mockNodes.server1.getLocalNodeId();
+    NodeIdentifier contractID = mockNodes.server1.getNodeIdentifier();
     mockNodes.settlementClient1.openPaymentChannel(contractID, escrowPlusFeeAmount);
     assertEquals(escrow, mockNodes.settlementClient1.getAmountRemainingInChannel(contractID));
     Coin expectedBalance=escrow;

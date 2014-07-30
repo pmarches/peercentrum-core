@@ -22,7 +22,7 @@ class RoutingHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-		MDC.put("NodeId", server.thisNodeId.toString());
+		MDC.put("NodeId", server.getNodeIdentifier().toString());
 		HeaderAndPayload currentHeaderAndPayload = (HeaderAndPayload) msg;
 		ApplicationIdentifier appIdReceived = new ApplicationIdentifier(currentHeaderAndPayload.header.getDestinationApplicationId().toByteArray());
 		BaseApplicationMessageHandler applicationHandler=server.getApplicationHandler(appIdReceived);

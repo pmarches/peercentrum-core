@@ -5,6 +5,7 @@ import io.netty.channel.ChannelHandlerContext;
 
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
+import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +22,10 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 
 	NodeGossipClient client;
   
-	public NodeGossipApplication(NetworkServer server) {
+	public NodeGossipApplication(NetworkServer server) throws Exception {
 		super(server);
-		client=new NodeGossipClient(server.getLocalNodeId(), server.getNodeDatabase());
+		NetworkClient networkClient = new NetworkClient(server.getLocalIdentity(), server.getNodeDatabase());
+		client=new NodeGossipClient(networkClient);
 		client.reachableListeningPort=server.getListeningPort();
 		if(server.getNodeDatabase().size()==0){
 			try {

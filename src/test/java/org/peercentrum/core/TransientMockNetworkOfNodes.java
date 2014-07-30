@@ -11,6 +11,7 @@ import org.peercentrum.h2pk.HashToPublicKeyConfig;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkClientConnection;
 import org.peercentrum.network.NetworkServer;
+import org.peercentrum.network.NodeIdentity;
 import org.peercentrum.settlement.SettlementApplication;
 import org.peercentrum.settlement.SettlementApplicationClient;
 import org.peercentrum.settlement.SettlementConfig;
@@ -53,8 +54,8 @@ public class TransientMockNetworkOfNodes {
 //    });
   }
 
-  private void configureClient1ToServer1Connection() {
-    clientToServerConnection=networkClient1.createConnectionToPeer(server1.getLocalNodeId());
+  private void configureClient1ToServer1Connection() throws Exception {
+    clientToServerConnection=networkClient1.createConnectionToPeer(server1.getNodeIdentifier());
     settlementClient1=new SettlementApplicationClient(clientToServerConnection, client1Config, client1SettlementDB.settlementMethod);
   }
 
@@ -77,8 +78,8 @@ public class TransientMockNetworkOfNodes {
   private void configureClient() throws Exception {
     client1Config=generateConfiguration("clientNode1");
     NodeDatabase clientNodeDatabase=new NodeDatabase(null);
-    networkClient1=new NetworkClient(new NodeIdentifier(client1Config.getNodeIdentifier()), clientNodeDatabase);
-    networkClient1.getNodeDatabase().mapNodeIdToAddress(server1.getLocalNodeId(), new InetSocketAddress(server1.getListeningPort()));
+    networkClient1=new NetworkClient(new NodeIdentity(client1Config), clientNodeDatabase);
+    networkClient1.getNodeDatabase().mapNodeIdToAddress(server1.getNodeIdentifier(), new InetSocketAddress(server1.getListeningPort()));
 
     client1SettlementDB=new SettlementDB(null);
   }

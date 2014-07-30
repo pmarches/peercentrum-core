@@ -11,6 +11,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.ssl.SslHandler;
 import io.netty.util.concurrent.DefaultPromise;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
@@ -39,9 +40,13 @@ public class NetworkClientConnection implements AutoCloseable {
   ConcurrentHashMap<Integer, DefaultPromise<ByteBuf>> pendingRequests = new  ConcurrentHashMap<>();
   NodeIdentifier localNodeId;
   NodeIdentifier remoteNodeId;
+  ECDSASslContext sslCtx;
+  InetSocketAddress serverEndpoint;
 
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>(){
     protected void initChannel(SocketChannel ch) throws Exception {
+      SslHandler sslHandler=sslCtx.newHandler();
+      ch.pipeline().addLast(sslHandler);
       //    		ch.pipeline().addLast(new TraceHandler("Before client bytes decoder"));
       ch.pipeline().addLast(new HeaderPayloadStreamDecoder());
       //    		ch.pipeline().addLast(new TraceHandler("Before client message handler"));
@@ -68,9 +73,10 @@ public class NetworkClientConnection implements AutoCloseable {
     };
   };
 
-  public NetworkClientConnection(NodeIdentifier localNodeId, NodeIdentifier remoteId, InetSocketAddress serverAddress, final int localListeningPort) {
-    this.localNodeId=localNodeId;
+  public NetworkClientConnection(NetworkClient networkClient, NodeIdentifier remoteId, InetSocketAddress serverAddress, final int localListeningPort) throws Exception {
     this.remoteNodeId=remoteId;
+    this.serverEndpoint=serverAddress;
+    this.sslCtx = new ECDSASslContext(networkClient.nodeIdentity, networkClient.myTrustManagerFactory.getTrustManagers(), true);
 
     Bootstrap b = new Bootstrap();
     b.group(workerGroup);
@@ -89,7 +95,7 @@ public class NetworkClientConnection implements AutoCloseable {
   protected void sendLocalNodeMetaData(int localListeningPort){
     PB.NodeMetaDataMsg.Builder nodeMetaDataBuilder=PB.NodeMetaDataMsg.newBuilder();
     nodeMetaDataBuilder.setUserAgent(getClass().getName());
-//        nodeMetaDataBuilder.setExternalIP(effectiveListeningPort.getAddress().getHostName());
+    //        nodeMetaDataBuilder.setExternalIP(effectiveListeningPort.getAddress().getHostName());
     if(localListeningPort!=0){
       nodeMetaDataBuilder.setExternalPort(localListeningPort);          
     }
@@ -115,7 +121,7 @@ public class NetworkClientConnection implements AutoCloseable {
   public Future<ByteBuf> sendRequestBytes(ApplicationIdentifier destinationApp, ByteBuf applicationSpecificBytesToSend) {
     return sendRequestBytes(destinationApp, applicationSpecificBytesToSend, true);
   }
-  
+
   public Future<ByteBuf> sendRequestBytes(ApplicationIdentifier destinationApp, ByteBuf applicationSpecificBytesToSend, boolean expectResponse) {
     PB.HeaderMsg.Builder headerBuilder=PB.HeaderMsg.newBuilder();
     headerBuilder.setDestinationApplicationId(ByteString.copyFrom(destinationApp.getBytes()));
@@ -132,7 +138,7 @@ public class NetworkClientConnection implements AutoCloseable {
 
     HeaderAndPayload headerAndPayload = new HeaderAndPayload(headerBuilder, applicationSpecificBytesToSend);
     socketChannelFuture.syncUninterruptibly(); //wait for connection to be up //FIXME Is the Sync right???
-    socketChannelFuture.channel().writeAndFlush(headerAndPayload).syncUninterruptibly();
+    socketChannelFuture.channel().writeAndFlush(headerAndPayload);
     socketChannelFuture.channel().read();
     return responseFuture;
   }
@@ -165,13 +171,13 @@ public class NetworkClientConnection implements AutoCloseable {
 
   @Override
   public void close() {
-//    while(false==socketChannelFuture.channel().isWritable()){
-//      try {
-//        Thread.sleep(100);
-//      } catch (InterruptedException e) {
-//        e.printStackTrace();
-//      }
-//    }
+    //    while(false==socketChannelFuture.channel().isWritable()){
+    //      try {
+    //        Thread.sleep(100);
+    //      } catch (InterruptedException e) {
+    //        e.printStackTrace();
+    //      }
+    //    }
     if(pendingRequests.isEmpty()==false){
       LOGGER.error("Closing connection while pending requests still exists: "+pendingRequests.keySet());
     }

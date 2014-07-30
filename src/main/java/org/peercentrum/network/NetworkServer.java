@@ -16,12 +16,11 @@ import java.util.Hashtable;
 
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeDatabase;
-import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class NetworkServer { //TODO implement AutoClosable
+public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   private static final Logger LOGGER = LoggerFactory.getLogger(NetworkServer.class);
 
   DefaultEventExecutorGroup applicationWorkerGroup = new DefaultEventExecutorGroup(2);
@@ -31,11 +30,13 @@ public class NetworkServer { //TODO implement AutoClosable
   Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler> allApplicationHandler=new Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler>();
   protected int effectiveListeningPort;
   protected NodeDatabase nodeDatabase;
-  protected NodeIdentifier thisNodeId;
+  protected ECDSASslContext sslCtx;
 
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
+      ch.pipeline().addLast(sslCtx.newHandler());
+
       ch.pipeline().addLast("idleStateHandler", new IdleStateHandler(60, 30, 0));
 //      ch.pipeline().addLast(new TraceHandler("Before anything"));
       ch.pipeline().addLast(new HeaderPayloadStreamDecoder());
@@ -47,10 +48,11 @@ public class NetworkServer { //TODO implement AutoClosable
     }
   };
 
-  public NetworkServer(TopLevelConfig config) throws InterruptedException {
+  public NetworkServer(TopLevelConfig config) throws Exception {
+    super(new NodeIdentity(config));
     this.configuration=config;
-    this.thisNodeId=new NodeIdentifier(config.getNodeIdentifier().getBytes());
     this.nodeDatabase=new NodeDatabase(config.getFile("node.db"));
+    this.sslCtx = new ECDSASslContext(nodeIdentity, myTrustManagerFactory.getTrustManagers(), false);
 
     new NetworkApplication(this);
     ServerBootstrap b = new ServerBootstrap();
@@ -99,7 +101,7 @@ public class NetworkServer { //TODO implement AutoClosable
     return nodeDatabase;
   }
 
-  public NodeIdentifier getLocalNodeId(){
-    return thisNodeId;
+  public NodeIdentity getLocalIdentity() {
+    return this.nodeIdentity;
   }
 }
