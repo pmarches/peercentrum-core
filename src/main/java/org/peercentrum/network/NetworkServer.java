@@ -30,12 +30,12 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler> allApplicationHandler=new Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler>();
   protected int effectiveListeningPort;
   protected NodeDatabase nodeDatabase;
-  protected ECDSASslContext sslCtx;
+  protected ECDSASslContext serverSideSSLContext;
 
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
-      ch.pipeline().addLast(sslCtx.newHandler());
+      ch.pipeline().addLast(serverSideSSLContext.newHandler());
 
       ch.pipeline().addLast("idleStateHandler", new IdleStateHandler(60, 30, 0));
 //      ch.pipeline().addLast(new TraceHandler("Before anything"));
@@ -52,7 +52,7 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
     super(new NodeIdentity(config));
     this.configuration=config;
     this.nodeDatabase=new NodeDatabase(config.getFile("node.db"));
-    this.sslCtx = new ECDSASslContext(nodeIdentity, myTrustManagerFactory.getTrustManagers(), false);
+    this.serverSideSSLContext = new ECDSASslContext(nodeIdentity, new CheckSelfSignedNodeIdTrustManager(null), false);
 
     new NetworkApplication(this);
     ServerBootstrap b = new ServerBootstrap();

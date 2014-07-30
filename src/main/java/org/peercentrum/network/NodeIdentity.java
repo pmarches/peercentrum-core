@@ -14,18 +14,15 @@ import java.math.BigInteger;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
-import java.security.Provider;
 import java.security.SecureRandom;
+import java.security.Security;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.ECParameterSpec;
-import java.security.spec.EllipticCurve;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -35,19 +32,26 @@ import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
+import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
 
 public class NodeIdentity {
-  static final Provider BC_PROVIDER = new BouncyCastleProvider();
+//  static final Provider BC_PROVIDER = new BouncyCastleProvider();
+  static final String BC_PROVIDER = "BC";
   protected File localCertificateFile, localPrivateKeyFile;
   KeyPair localKeypair;
   SecureRandom random;
   X509Certificate cert;
   private NodeIdentifier localId;
+  
+  static {
+    Security.addProvider(new BouncyCastleProvider());
+  }
 
   public NodeIdentity(TopLevelConfig config) throws Exception {
     localCertificateFile=config.getFile("localCertificate.crt");
@@ -58,7 +62,7 @@ public class NodeIdentity {
       generateCertificate();
       saveKeyPairAndCertificateToFile();
     }
-    localId=new NodeIdentifier(config.getNodeIdentifier().getBytes());  //FIXME
+    localId=new NodeIdentifier(localKeypair.getPublic().getEncoded());
   }
 
   private void saveKeyPairAndCertificateToFile() throws Exception {
@@ -99,14 +103,27 @@ public class NodeIdentity {
     X509CertificateHolder certHolder = certificateBuilder.build(signer);
     cert = new JcaX509CertificateConverter().setProvider(BC_PROVIDER).getCertificate(certHolder);
 
-//    cert.verify(localKeypair.getPublic(), "SHA256withECDSA");
+//    if(certHolder.isSignatureValid(new JcaContentVerifierProviderBuilder().setProvider(BC_PROVIDER).build(localKeypair.getPublic()))==false){
+//      throw new Exception("Verification failed");
+//    }
+    cert.verify(localKeypair.getPublic(), "BC");
   }
 
   public void generateKeyPair(){
     try {
+      System.out.println(Arrays.asList(Security.getProviders()));
+      boolean useJDKOnly=false;
+      if(useJDKOnly){
         KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC");
         keyGen.initialize(256, random);
         localKeypair = keyGen.generateKeyPair();
+      }
+      else{
+        ECParameterSpec ecSpec = ECNamedCurveTable.getParameterSpec("secp256k1");
+        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC", BC_PROVIDER);
+        keyGen.initialize(ecSpec, random);
+        localKeypair = keyGen.generateKeyPair();
+      }
     } catch (Exception e) {
       throw new Error(e);
     }

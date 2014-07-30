@@ -76,7 +76,7 @@ public class NetworkClientConnection implements AutoCloseable {
   public NetworkClientConnection(NetworkClient networkClient, NodeIdentifier remoteId, InetSocketAddress serverAddress, final int localListeningPort) throws Exception {
     this.remoteNodeId=remoteId;
     this.serverEndpoint=serverAddress;
-    this.sslCtx = new ECDSASslContext(networkClient.nodeIdentity, networkClient.myTrustManagerFactory.getTrustManagers(), true);
+    this.sslCtx = new ECDSASslContext(networkClient.nodeIdentity, new CheckSelfSignedNodeIdTrustManager(remoteId), true);
 
     Bootstrap b = new Bootstrap();
     b.group(workerGroup);

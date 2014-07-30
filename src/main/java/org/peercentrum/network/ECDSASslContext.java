@@ -9,13 +9,11 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLException;
-import javax.net.ssl.SSLSessionContext;
 import javax.net.ssl.TrustManager;
 
 
 public class ECDSASslContext {
   private static final String[] TLS_VERSIONS = new String[]{"TLSv1.2"};
-  protected SSLContext sslContext;
   protected SSLEngine sslEngine;
 
   public static final String[] SUPPORTED_CIPHER_SUITE = new String[]{
@@ -24,10 +22,7 @@ public class ECDSASslContext {
     //      "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
   };
 
-  public ECDSASslContext(NodeIdentity nodeIdentity, TrustManager[] trustManager, boolean isClient) throws Exception {
-    long sessionCacheSize=0;
-    long sessionTimeout=0;
-
+  public ECDSASslContext(NodeIdentity nodeIdentity, TrustManager trustManager, boolean isClient) throws Exception {
     try {
       KeyStore keyStore = KeyStore.getInstance("JKS");
       keyStore.load(null, null);
@@ -43,25 +38,26 @@ public class ECDSASslContext {
       kmf.init(keyStore, keyStorePassword.toCharArray());
 
       // Initialize the SSLContext to work with our key managers.
-      sslContext=SSLContext.getInstance(TLS_VERSIONS[0]);
-      sslContext.init(kmf.getKeyManagers(), trustManager, null);
+      SSLContext sslContext=SSLContext.getInstance(TLS_VERSIONS[0]);
+      sslContext.init(kmf.getKeyManagers(), new TrustManager[]{trustManager}, null);
       sslEngine = sslContext.createSSLEngine();
       sslEngine.setUseClientMode(isClient);
       sslEngine.setNeedClientAuth(true);
       sslEngine.setEnabledCipherSuites(SUPPORTED_CIPHER_SUITE);
       sslEngine.setEnabledProtocols(TLS_VERSIONS);
 
-      SSLSessionContext sessCtx = sslContext.getServerSessionContext();
-      if (sessionCacheSize > 0) {
-        sessCtx.setSessionCacheSize((int) Math.min(sessionCacheSize, Integer.MAX_VALUE));
-      }
-      if (sessionTimeout > 0) {
-        sessCtx.setSessionTimeout((int) Math.min(sessionTimeout, Integer.MAX_VALUE));
-      }
+//      long sessionCacheSize=0;
+//      long sessionTimeout=0;
+//      SSLSessionContext sessCtx = sslContext.getServerSessionContext();
+//      if (sessionCacheSize > 0) {
+//        sessCtx.setSessionCacheSize((int) Math.min(sessionCacheSize, Integer.MAX_VALUE));
+//      }
+//      if (sessionTimeout > 0) {
+//        sessCtx.setSessionTimeout((int) Math.min(sessionTimeout, Integer.MAX_VALUE));
+//      }
     } catch (Exception e) {
       throw new SSLException("failed to initialize the server-side SSL context", e);
     }
-
   }
 
   public SslHandler newHandler() {
