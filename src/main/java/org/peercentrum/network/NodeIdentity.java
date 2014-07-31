@@ -41,14 +41,14 @@ import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
 
 public class NodeIdentity {
-//  static final Provider BC_PROVIDER = new BouncyCastleProvider();
+  //  static final Provider BC_PROVIDER = new BouncyCastleProvider();
   static final String BC_PROVIDER = "BC";
   protected File localCertificateFile, localPrivateKeyFile;
   KeyPair localKeypair;
   SecureRandom random;
   X509Certificate cert;
   private NodeIdentifier localId;
-  
+
   static {
     Security.addProvider(new BouncyCastleProvider());
   }
@@ -103,27 +103,18 @@ public class NodeIdentity {
     X509CertificateHolder certHolder = certificateBuilder.build(signer);
     cert = new JcaX509CertificateConverter().setProvider(BC_PROVIDER).getCertificate(certHolder);
 
-//    if(certHolder.isSignatureValid(new JcaContentVerifierProviderBuilder().setProvider(BC_PROVIDER).build(localKeypair.getPublic()))==false){
-//      throw new Exception("Verification failed");
-//    }
-    cert.verify(localKeypair.getPublic(), "BC");
+    //    if(certHolder.isSignatureValid(new JcaContentVerifierProviderBuilder().setProvider(BC_PROVIDER).build(localKeypair.getPublic()))==false){
+    //      throw new Exception("Verification failed");
+    //    }
+    cert.verify(localKeypair.getPublic(), BC_PROVIDER);
   }
 
   public void generateKeyPair(){
     try {
-      System.out.println(Arrays.asList(Security.getProviders()));
-      boolean useJDKOnly=false;
-      if(useJDKOnly){
-        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC");
-        keyGen.initialize(256, random);
-        localKeypair = keyGen.generateKeyPair();
-      }
-      else{
-        ECParameterSpec ecSpec = ECNamedCurveTable.getParameterSpec("secp256k1");
-        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC", BC_PROVIDER);
-        keyGen.initialize(ecSpec, random);
-        localKeypair = keyGen.generateKeyPair();
-      }
+      ECParameterSpec ecSpec = ECNamedCurveTable.getParameterSpec("secp256k1");
+      KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC", BC_PROVIDER);
+      keyGen.initialize(ecSpec, random);
+      localKeypair = keyGen.generateKeyPair();
     } catch (Exception e) {
       throw new Error(e);
     }

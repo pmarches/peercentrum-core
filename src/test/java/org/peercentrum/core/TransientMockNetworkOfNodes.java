@@ -59,7 +59,7 @@ public class TransientMockNetworkOfNodes {
     settlementClient1=new SettlementApplicationClient(clientToServerConnection, client1Config, client1SettlementDB.settlementMethod);
   }
 
-  private void configureServer() throws InterruptedException, Exception {
+  private void configureServer() throws Exception {
     server1Config=generateConfiguration("serverNode1");
     server1=new NetworkServer(server1Config);
 
@@ -69,7 +69,12 @@ public class TransientMockNetworkOfNodes {
 
     P2PBlobRepositoryFS blobRepoFS=new P2PBlobRepositoryFS(blobRepoDir);
     P2PBlobApplication p2pBlobApp=new P2PBlobApplication(server1, blobRepoFS);
+    new NodeGossipApplication(server1);
 
+//    P2PBlobStoredBlob theBlob=new P2PBlobStoredBlobMemoryOnly("Hello world!".getBytes());
+//    theBlob=blobRepoFS.createStoredBlob(theBlob.getHashList(), theBlob.getBlockLayout().getLengthOfBlob(), theBlob.getBlockLayout().getLengthOfEvenBlock());
+//    theBlob=blobRepoFS.importBlobBytes("Hello world!".getBytes());
+//    helloWorldBlobID=theBlob.getBlobIdentifier();
     File hellowWorldFile=new File(blobRepoDir, "Hello world.txt");
     Files.append("Hello world!", hellowWorldFile, Charsets.UTF_8);
     helloWorldBlobID=blobRepoFS.importFileIntoRepository(hellowWorldFile);
@@ -107,9 +112,10 @@ public class TransientMockNetworkOfNodes {
   }
  
   private TopLevelConfig generateConfiguration(String nodeName) {
-    TopLevelConfig generatedConfig=new TopLevelConfig(nodeName);
+    TopLevelConfig generatedConfig=new TopLevelConfig();
     generatedConfig.setAppConfig(new SettlementConfig());
     generatedConfig.setAppConfig(new NodeGossipConfig());
+    generatedConfig.useEncryption=true;
     P2PBlobConfig p2pConfig=new P2PBlobConfig();
     p2pConfig.transferPricingPerGigabyte=new Integer(1);
     generatedConfig.setAppConfig(p2pConfig);

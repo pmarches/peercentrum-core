@@ -18,7 +18,6 @@ import org.peercentrum.core.PB.HashToPublicKeyMessage;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
-import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +31,6 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 	ConsensusProcess consensus;
 	HashToPublicKeyTXEvaluator txEvaluator;
 	HashToPublicKeyDB db;
-	NetworkClient networkClient;
 		
 	public HashToPublicKeyApplication(NetworkServer nodeServer, HashToPublicKeyDB db, UniqueNodeList unl) throws Exception {
 		super(nodeServer);
@@ -40,8 +38,6 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 			throw new NullPointerException("NULL UNL not allowed");
 		}
 
-		networkClient=new NetworkClient(nodeServer.getLocalIdentity(), nodeServer.getNodeDatabase());
-		networkClient.setLocalListeniongPort(nodeServer.getListeningPort());
 		this.db=db;
 		txEvaluator=new HashToPublicKeyTXEvaluator(db);
 		final int DB_CLOSECYCLE_PERIOD_MS = 3000;
@@ -56,7 +52,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 					PB.HashToPublicKeyMessage proposedTXMsg = encodeProposedTXToMsg(proposedTX);
 					for(NodeIdentifier aValidator:unl){
 						LOGGER.debug("Sending proposedTX to {}", aValidator);
-						networkClient.sendRequest(aValidator, getApplicationId(), proposedTXMsg);
+						server.networkClient.sendRequest(aValidator, getApplicationId(), proposedTXMsg);
 					}
 				} catch (Exception e) {
 					LOGGER.error("Failed to broadcast proposed TX "+ourProposedTx, e);
@@ -94,7 +90,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 			}
 			appLevelMsg.setDbSyncQuery(queryMsg.build());
 			NodeIdentifier remoteId=consensus.unl.getOneExcluding(this.server.getNodeIdentifier());
-			HashToPublicKeyMessage appLevelResponse = networkClient.sendRequest(remoteId, getApplicationId(), appLevelMsg.build()).get();
+			HashToPublicKeyMessage appLevelResponse = server.networkClient.sendRequest(remoteId, getApplicationId(), appLevelMsg.build()).get();
 			if(appLevelResponse.hasDbSyncResponse()){
 				PB.H2PKDBSyncResponse dbSyncResponse = appLevelResponse.getDbSyncResponse();
 				db.integrateSyncUnit(dbSyncResponse);

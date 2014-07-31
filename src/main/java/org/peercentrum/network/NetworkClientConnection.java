@@ -42,10 +42,31 @@ public class NetworkClientConnection implements AutoCloseable {
   NodeIdentifier remoteNodeId;
   ECDSASslContext sslCtx;
   InetSocketAddress serverEndpoint;
+  private boolean useEncryption;
+
+  public NetworkClientConnection(NetworkClient networkClient, NodeIdentifier remoteId, InetSocketAddress serverAddress, final int localListeningPort) throws Exception {
+    this.remoteNodeId=remoteId;
+    this.serverEndpoint=serverAddress;
+    this.sslCtx = new ECDSASslContext(networkClient.nodeIdentity, new CheckSelfSignedNodeIdTrustManager(remoteId));
+    this.useEncryption=networkClient.useEncryption;
+    
+    Bootstrap b = new Bootstrap();
+    b.group(workerGroup);
+    b.channel(NioSocketChannel.class);
+    b.option(ChannelOption.SO_KEEPALIVE, true);
+    b.handler(channelInitializer);
+
+    socketChannelFuture = b.connect(serverAddress);
+    socketChannelFuture.addListener(new GenericFutureListener<Future<? super Void>>() {
+      @Override public void operationComplete(Future<? super Void> future) throws Exception {
+        sendLocalNodeMetaData(localListeningPort);
+      }
+    });
+  }
 
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>(){
     protected void initChannel(SocketChannel ch) throws Exception {
-      SslHandler sslHandler=sslCtx.newHandler();
+      SslHandler sslHandler=sslCtx.newHandler(useEncryption, true);
       ch.pipeline().addLast(sslHandler);
       //    		ch.pipeline().addLast(new TraceHandler("Before client bytes decoder"));
       ch.pipeline().addLast(new HeaderPayloadStreamDecoder());
@@ -72,25 +93,6 @@ public class NetworkClientConnection implements AutoCloseable {
       cause.printStackTrace();
     };
   };
-
-  public NetworkClientConnection(NetworkClient networkClient, NodeIdentifier remoteId, InetSocketAddress serverAddress, final int localListeningPort) throws Exception {
-    this.remoteNodeId=remoteId;
-    this.serverEndpoint=serverAddress;
-    this.sslCtx = new ECDSASslContext(networkClient.nodeIdentity, new CheckSelfSignedNodeIdTrustManager(remoteId), true);
-
-    Bootstrap b = new Bootstrap();
-    b.group(workerGroup);
-    b.channel(NioSocketChannel.class);
-    b.option(ChannelOption.SO_KEEPALIVE, true);
-    b.handler(channelInitializer);
-
-    socketChannelFuture = b.connect(serverAddress);
-    socketChannelFuture.addListener(new GenericFutureListener<Future<? super Void>>() {
-      @Override public void operationComplete(Future<? super Void> future) throws Exception {
-        sendLocalNodeMetaData(localListeningPort);
-      }
-    });
-  }
 
   protected void sendLocalNodeMetaData(int localListeningPort){
     PB.NodeMetaDataMsg.Builder nodeMetaDataBuilder=PB.NodeMetaDataMsg.newBuilder();

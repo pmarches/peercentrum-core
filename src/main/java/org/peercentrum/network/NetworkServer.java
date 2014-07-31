@@ -42,6 +42,31 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   protected int effectiveListeningPort;
   protected NodeDatabase nodeDatabase;
   protected ECDSASslContext serverSideSSLContext;
+  public NetworkClient networkClient;
+
+  public NetworkServer(TopLevelConfig config) throws Exception {
+    super(new NodeIdentity(config));
+    this.configuration=config;
+    this.nodeDatabase=new NodeDatabase(config.getFile("node.db"));
+    this.serverSideSSLContext = new ECDSASslContext(nodeIdentity, new CheckSelfSignedNodeIdTrustManager(null));
+
+    new NetworkApplication(this);
+    ServerBootstrap b = new ServerBootstrap();
+    b.group(nioWorkerGroup)
+      .channel(NioServerSocketChannel.class)
+      .childHandler(channelInitializer)
+      .option(ChannelOption.SO_BACKLOG, 128)
+      .childOption(ChannelOption.SO_KEEPALIVE, true)
+//      .childOption(ChannelOption.ALLOW_HALF_CLOSURE, true)
+      ;
+    bindChannel = b.bind(config.getListenPort()).sync().channel();
+    effectiveListeningPort=((InetSocketAddress) bindChannel.localAddress()).getPort();
+    LOGGER.debug("network server1 now listening on port {}", effectiveListeningPort);
+    
+    networkClient=new NetworkClient(getLocalIdentity(), getNodeDatabase());
+    networkClient.setLocalListeningPort(getListeningPort());
+    networkClient.useEncryption=config.useEncryption;
+  }
 
   private GenericFutureListener<Future<Channel>> onSslHandshakeCompletes=new GenericFutureListener<Future<Channel>>() {
     @Override
@@ -57,7 +82,7 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
-      SslHandler sslHandler=serverSideSSLContext.newHandler();
+      SslHandler sslHandler=serverSideSSLContext.newHandler(NetworkServer.this.configuration.useEncryption, false);
       sslHandler.handshakeFuture().addListener(onSslHandshakeCompletes);
       ch.pipeline().addLast(TLS_HANDLER_NAME, sslHandler);
 
@@ -71,26 +96,6 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
       ch.pipeline().addLast(new ChunkedWriteHandler());
     }
   };
-
-  public NetworkServer(TopLevelConfig config) throws Exception {
-    super(new NodeIdentity(config));
-    this.configuration=config;
-    this.nodeDatabase=new NodeDatabase(config.getFile("node.db"));
-    this.serverSideSSLContext = new ECDSASslContext(nodeIdentity, new CheckSelfSignedNodeIdTrustManager(null), false);
-
-    new NetworkApplication(this);
-    ServerBootstrap b = new ServerBootstrap();
-    b.group(nioWorkerGroup)
-      .channel(NioServerSocketChannel.class)
-      .childHandler(channelInitializer)
-      .option(ChannelOption.SO_BACKLOG, 128)
-      .childOption(ChannelOption.SO_KEEPALIVE, true)
-//      .childOption(ChannelOption.ALLOW_HALF_CLOSURE, true)
-      ;
-    bindChannel = b.bind(config.getListenPort()).sync().channel();
-    effectiveListeningPort=((InetSocketAddress) bindChannel.localAddress()).getPort();
-    LOGGER.debug("network server1 now listening on port {}", effectiveListeningPort);
-  }
 
   public void stopAcceptingConnections() throws InterruptedException{
     bindChannel.close().sync();

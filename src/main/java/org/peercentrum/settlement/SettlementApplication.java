@@ -24,8 +24,6 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 	
 	public SettlementApplication(NetworkServer server) throws Exception {
 		super(server);
-    db=new SettlementDB(server.getConfig().getFile("settlement.db"));
-    bitcoinSettlement=new BitcoinSettlement(server.getConfig().getFile("bitcoin.wallet"));
 	}
 
 	@Override
@@ -46,7 +44,7 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 //			}
 			if(settlementReqMsg.getTwoWayChannelMsgCount()>0){
 			  for(Protos.TwoWayChannelMessage twoWayMsg : settlementReqMsg.getTwoWayChannelMsgList()){
-			    bitcoinSettlement.handleTwoWayMessage(remoteNodeIdentifier, twoWayMsg, topLevelResponse);
+			    getBitcoinSettlement().handleTwoWayMessage(remoteNodeIdentifier, twoWayMsg, topLevelResponse);
 			  }
 			}
 			
@@ -57,6 +55,14 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 			LOGGER.error("Exception when decoding settlement message ", e);
 			return null;
 		}
+	}
+	
+	protected BitcoinSettlement getBitcoinSettlement() throws Exception{
+	  if(bitcoinSettlement==null){
+	    db=new SettlementDB(server.getConfig().getFile("settlement.db"));
+	    bitcoinSettlement=new BitcoinSettlement(server.getConfig().getFile("bitcoin.wallet"));
+	  }
+	  return bitcoinSettlement;
 	}
 	
 //	void recordSettlementMehod(NodeIdentifier remoteNodeIdentifier, SettlementMethod settlementMethod) throws Exception {

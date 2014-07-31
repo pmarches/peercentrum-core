@@ -56,7 +56,7 @@ public class AsyncSocketServerTest {
 	@Test
 	public void testAsyncSocketServer() throws Exception {
 		ResourceLeakDetector.setLevel(Level.ADVANCED);
-		TopLevelConfig topConfig=new TopLevelConfig("server1");
+		TopLevelConfig topConfig=new TopLevelConfig();
 		final NetworkServer server = new NetworkServer(topConfig);
 		final CountDownLatch serverDoneBarrier = new CountDownLatch(NB_CLIENTS*NUMBER_OF_MESSAGE);
 		MessageEchoApp serverSideCountingHandler=new MessageEchoApp(server, serverDoneBarrier);

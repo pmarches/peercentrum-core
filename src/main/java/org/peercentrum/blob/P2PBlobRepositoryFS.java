@@ -8,7 +8,6 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Hashtable;
 
-import org.peercentrum.core.PB.P2PBlobMetaDataMsg;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -147,20 +146,20 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 	}
 
   @Override
-  public P2PBlobStoredBlob getOrCreateStoredBlob(P2PBlobMetaDataMsg metaData)  throws Exception{
-    P2PBlobHashList hashList=new P2PBlobHashList(metaData.getHashList());
+  public P2PBlobStoredBlob createStoredBlob(P2PBlobHashList hashList, long blobLength, int blockSize) throws Exception {
     P2PBlobStoredBlob theBlob=getStoredBlob(hashList.getTopLevelHash());
     if(theBlob!=null){
       return theBlob;
     }
     File blobFile = getBlobFile(hashList.getTopLevelHash());
     theBlob=new P2PBlobStoredBlobRepositoryFS(blobFile , hashList.getTopLevelHash(), hashList, 
-        new P2PBlobRangeSet(), metaData.getBlobLength(), metaData.getBlockSize());
+        new P2PBlobRangeSet(), blobLength, blockSize);
     insertStoredBlobMetaData(theBlob);
     return theBlob;
   }
 
-  public void insertStoredBlobMetaData(final P2PBlobStoredBlob theBlob) throws SqlJetException {
+
+  protected void insertStoredBlobMetaData(final P2PBlobStoredBlob theBlob) throws SqlJetException {
     final P2PBlobBlockLayout blockLayout = theBlob.getBlockLayout();
     final ByteBuf concatenatedHashes=Unpooled.buffer(blockLayout.getNumberOfBlocks()*P2PBlobHashList.HASH_BYTE_SIZE);
     for(HashIdentifier hashBlock:theBlob.getHashList()){

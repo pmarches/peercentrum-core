@@ -20,6 +20,7 @@ public class P2PBlobStoredBlobMemoryOnly extends P2PBlobStoredBlob {
     super(null, P2PBlobHashList.createFromBytes(P2PBlobApplication.BLOCK_SIZE, fullBlobContent),
         null, fullBlobContent.length, P2PBlobApplication.BLOCK_SIZE);
     validatedBlobContent.writeBytes(fullBlobContent);
+    blobHash=hashList.getTopLevelHash();
   }
 
   @Override

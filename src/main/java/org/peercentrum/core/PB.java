@@ -31,16 +31,6 @@ public final class PB {
      */
     com.google.protobuf.ByteString getDestinationApplicationId();
 
-    // optional bytes signature = 4;
-    /**
-     * <code>optional bytes signature = 4;</code>
-     */
-    boolean hasSignature();
-    /**
-     * <code>optional bytes signature = 4;</code>
-     */
-    com.google.protobuf.ByteString getSignature();
-
     // optional uint32 applicationSpecificBlockLength = 5;
     /**
      * <code>optional uint32 applicationSpecificBlockLength = 5;</code>
@@ -130,18 +120,13 @@ public final class PB {
               destinationApplicationId_ = input.readBytes();
               break;
             }
-            case 34: {
-              bitField0_ |= 0x00000004;
-              signature_ = input.readBytes();
-              break;
-            }
             case 40: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000004;
               applicationSpecificBlockLength_ = input.readUInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000008;
               applicationSpecificStreamLength_ = input.readUInt32();
               break;
             }
@@ -217,22 +202,6 @@ public final class PB {
       return destinationApplicationId_;
     }
 
-    // optional bytes signature = 4;
-    public static final int SIGNATURE_FIELD_NUMBER = 4;
-    private com.google.protobuf.ByteString signature_;
-    /**
-     * <code>optional bytes signature = 4;</code>
-     */
-    public boolean hasSignature() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional bytes signature = 4;</code>
-     */
-    public com.google.protobuf.ByteString getSignature() {
-      return signature_;
-    }
-
     // optional uint32 applicationSpecificBlockLength = 5;
     public static final int APPLICATIONSPECIFICBLOCKLENGTH_FIELD_NUMBER = 5;
     private int applicationSpecificBlockLength_;
@@ -244,7 +213,7 @@ public final class PB {
      * </pre>
      */
     public boolean hasApplicationSpecificBlockLength() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional uint32 applicationSpecificBlockLength = 5;</code>
@@ -264,7 +233,7 @@ public final class PB {
      * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
      */
     public boolean hasApplicationSpecificStreamLength() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
@@ -276,7 +245,6 @@ public final class PB {
     private void initFields() {
       requestNumber_ = 0;
       destinationApplicationId_ = com.google.protobuf.ByteString.EMPTY;
-      signature_ = com.google.protobuf.ByteString.EMPTY;
       applicationSpecificBlockLength_ = 0;
       applicationSpecificStreamLength_ = 0;
     }
@@ -299,12 +267,9 @@ public final class PB {
         output.writeBytes(3, destinationApplicationId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(4, signature_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(5, applicationSpecificBlockLength_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(6, applicationSpecificStreamLength_);
       }
       getUnknownFields().writeTo(output);
@@ -326,13 +291,9 @@ public final class PB {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, signature_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(5, applicationSpecificBlockLength_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(6, applicationSpecificStreamLength_);
       }
@@ -456,12 +417,10 @@ public final class PB {
         bitField0_ = (bitField0_ & ~0x00000001);
         destinationApplicationId_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
-        signature_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
         applicationSpecificBlockLength_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         applicationSpecificStreamLength_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -501,13 +460,9 @@ public final class PB {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.signature_ = signature_;
+        result.applicationSpecificBlockLength_ = applicationSpecificBlockLength_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
-        }
-        result.applicationSpecificBlockLength_ = applicationSpecificBlockLength_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
         }
         result.applicationSpecificStreamLength_ = applicationSpecificStreamLength_;
         result.bitField0_ = to_bitField0_;
@@ -531,9 +486,6 @@ public final class PB {
         }
         if (other.hasDestinationApplicationId()) {
           setDestinationApplicationId(other.getDestinationApplicationId());
-        }
-        if (other.hasSignature()) {
-          setSignature(other.getSignature());
         }
         if (other.hasApplicationSpecificBlockLength()) {
           setApplicationSpecificBlockLength(other.getApplicationSpecificBlockLength());
@@ -637,42 +589,6 @@ public final class PB {
         return this;
       }
 
-      // optional bytes signature = 4;
-      private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>optional bytes signature = 4;</code>
-       */
-      public boolean hasSignature() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional bytes signature = 4;</code>
-       */
-      public com.google.protobuf.ByteString getSignature() {
-        return signature_;
-      }
-      /**
-       * <code>optional bytes signature = 4;</code>
-       */
-      public Builder setSignature(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        signature_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bytes signature = 4;</code>
-       */
-      public Builder clearSignature() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        signature_ = getDefaultInstance().getSignature();
-        onChanged();
-        return this;
-      }
-
       // optional uint32 applicationSpecificBlockLength = 5;
       private int applicationSpecificBlockLength_ ;
       /**
@@ -683,7 +599,7 @@ public final class PB {
        * </pre>
        */
       public boolean hasApplicationSpecificBlockLength() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional uint32 applicationSpecificBlockLength = 5;</code>
@@ -703,7 +619,7 @@ public final class PB {
        * </pre>
        */
       public Builder setApplicationSpecificBlockLength(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         applicationSpecificBlockLength_ = value;
         onChanged();
         return this;
@@ -716,7 +632,7 @@ public final class PB {
        * </pre>
        */
       public Builder clearApplicationSpecificBlockLength() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         applicationSpecificBlockLength_ = 0;
         onChanged();
         return this;
@@ -728,7 +644,7 @@ public final class PB {
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
        */
       public boolean hasApplicationSpecificStreamLength() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
@@ -740,7 +656,7 @@ public final class PB {
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
        */
       public Builder setApplicationSpecificStreamLength(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         applicationSpecificStreamLength_ = value;
         onChanged();
         return this;
@@ -749,7 +665,7 @@ public final class PB {
        * <code>optional uint32 applicationSpecificStreamLength = 6;</code>
        */
       public Builder clearApplicationSpecificStreamLength() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         applicationSpecificStreamLength_ = 0;
         onChanged();
         return this;
@@ -20645,89 +20561,88 @@ public final class PB {
   static {
     java.lang.String[] descriptorData = {
       "\n\026peercentrum-core.proto\022\013peercentrum\032\024p" +
-      "aymentchannel.proto\"\250\001\n\tHeaderMsg\022\025\n\rreq" +
+      "aymentchannel.proto\"\225\001\n\tHeaderMsg\022\025\n\rreq" +
       "uestNumber\030\002 \001(\r\022 \n\030destinationApplicati" +
-      "onId\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022&\n\036applica" +
-      "tionSpecificBlockLength\030\005 \001(\r\022\'\n\037applica" +
-      "tionSpecificStreamLength\030\006 \001(\r\"\024\n\022Crypto" +
-      "HandShakeMsg\"m\n\017NodeMetaDataMsg\022\021\n\tuserA" +
-      "gent\030\001 \001(\t\022\022\n\nexternalIP\030\002 \001(\t\022\024\n\014extern" +
-      "alPort\030\003 \001(\r\022\035\n\025applicationsSupported\030\005 " +
-      "\003(\014\"\303\001\n\016NetworkMessage\022?\n\toperation\030\001 \001(",
-      "\0162,.peercentrum.NetworkMessage.NetworkOp" +
-      "eration\0222\n\014nodeMetaData\030\002 \001(\0132\034.peercent" +
-      "rum.NodeMetaDataMsg\"<\n\020NetworkOperation\022" +
-      "\024\n\020CLOSE_CONNECTION\020\000\022\010\n\004PING\020\001\022\010\n\004PONG\020" +
-      "\002\"\200\001\n\rGossipMessage\022=\n\020requestMorePeers\030" +
-      "\001 \001(\0132#.peercentrum.GossipRequestMorePee" +
-      "rs\0220\n\005reply\030\002 \001(\0132!.peercentrum.GossipRe" +
-      "plyMorePeers\"7\n\026GossipRequestMorePeers\022\035" +
-      "\n\025applicationsRequested\030\001 \003(\014\"\231\002\n\024Gossip" +
-      "ReplyMorePeers\022=\n\005peers\030\001 \003(\0132..peercent",
-      "rum.GossipReplyMorePeers.PeerEndpoint\032\301\001" +
-      "\n\014PeerEndpoint\022\020\n\010identity\030\001 \001(\014\022M\n\nipEn" +
-      "dpoint\030\002 \001(\01329.peercentrum.GossipReplyMo" +
-      "rePeers.PeerEndpoint.IPEndpoint\032-\n\nIPEnd" +
-      "point\022\021\n\tipaddress\030\001 \001(\t\022\014\n\004port\030\002 \001(\r\032!" +
-      "\n\013TOREndpoint\022\022\n\nTORAddress\030\001 \001(\t\":\n\017Gen" +
-      "ericResponse\022\021\n\terrorCode\030\001 \001(\r\022\024\n\014error" +
-      "Message\030\002 \001(\t\"\356\002\n\026HashToPublicKeyMessage" +
-      "\0225\n\017genericResponse\030\001 \001(\0132\034.peercentrum." +
-      "GenericResponse\0229\n\nproposedTx\030\002 \001(\0132%.pe",
-      "ercentrum.H2PKProposedTransactions\022A\n\020lo" +
-      "calTransaction\030\003 \001(\0132\'.peercentrum.HashT" +
-      "oPublicKeyTransaction\022\027\n\017membershipQuery" +
-      "\030\004 \001(\014\022\032\n\022membershipResponse\030\005 \003(\014\0221\n\013db" +
-      "SyncQuery\030\006 \001(\0132\034.peercentrum.H2PKDBSync" +
-      "Query\0227\n\016dbSyncResponse\030\007 \001(\0132\037.peercent" +
-      "rum.H2PKDBSyncResponse\"\322\001\n\032HashToPublicK" +
-      "eyTransaction\022D\n\toperation\030\001 \001(\01621.peerc" +
-      "entrum.HashToPublicKeyTransaction.OPERAT" +
-      "ION\022\017\n\007address\030\002 \001(\014\022\021\n\tpublicKey\030\003 \001(\014\022",
-      "\021\n\tsignature\030\004 \001(\014\022\022\n\nexpiration\030\005 \001(\r\"#" +
-      "\n\tOPERATION\022\n\n\006APPEND\020\000\022\n\n\006REMOVE\020\001\"\216\001\n\030" +
-      "H2PKProposedTransactions\022\027\n\017dbVersionNum" +
-      "ber\030\001 \001(\r\022\022\n\nproposedBy\030\002 \001(\014\022E\n\024propose" +
-      "dTransactions\030\003 \003(\0132\'.peercentrum.HashTo" +
-      "PublicKeyTransaction\"/\n\017H2PKDBSyncQuery\022" +
-      "\034\n\024beginDbVersionNumber\030\001 \001(\r\"\227\001\n\022H2PKDB" +
-      "SyncResponse\022\033\n\023lastDbVersionNumber\030\001 \001(" +
-      "\r\022\027\n\017lastDbHashValue\030\002 \001(\014\022\033\n\023syncDbVers" +
-      "ionNumber\030\003 \001(\r\022.\n\tsyncUnits\030\004 \003(\0132\033.pee",
-      "rcentrum.H2PKDBSyncUnit\"?\n\016H2PKDBSyncUni" +
-      "t\022\017\n\007address\030\001 \001(\014\022\034\n\024publicKeysRegister" +
-      "ed\030\002 \003(\014\"\211\001\n\021P2PBlobRequestMsg\0227\n\013blobRe" +
-      "quest\030\001 \003(\0132\".peercentrum.P2PBlobBlobReq" +
-      "uestMsg\022;\n\ruploadRequest\030\002 \003(\0132$.peercen" +
-      "trum.P2PBlobUploadRequestMsg\"z\n\027P2PBlobU" +
-      "ploadRequestMsg\022,\n\006blocks\030\002 \003(\0132\034.peerce" +
-      "ntrum.P2PBlobBlockMsg\0221\n\010metaData\030\003 \001(\0132" +
-      "\037.peercentrum.P2PBlobMetaDataMsg\"\300\001\n\025P2P" +
-      "BlobBlobRequestMsg\022\025\n\rrequestedHash\030\001 \001(",
-      "\014\022!\n\031maximumBlobLengthAccepted\030\002 \001(\003\022\027\n\017" +
-      "requestMetaData\030\003 \001(\010\022\035\n\025requestBlockInv" +
-      "entory\030\005 \001(\010\0225\n\017requestedRanges\030\006 \003(\0132\034." +
-      "peercentrum.P2PBlobRangeMsg\"\257\002\n\022P2PBlobR" +
-      "esponseMsg\0225\n\017genericResponse\030\001 \001(\0132\034.pe" +
-      "ercentrum.GenericResponse\0221\n\010metaData\030\002 " +
-      "\001(\0132\037.peercentrum.P2PBlobMetaDataMsg\0229\n\023" +
-      "localBlockInventory\030\003 \003(\0132\034.peercentrum." +
-      "P2PBlobRangeMsg\022/\n\tblobBytes\030\004 \003(\0132\034.pee" +
-      "rcentrum.P2PBlobBlockMsg\022C\n\021dataTransfer",
-      "Quote\030\005 \001(\0132(.peercentrum.P2PBlobDataTra" +
-      "nsferQuoteMsg\"-\n\017P2PBlobRangeMsg\022\r\n\005begi" +
-      "n\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"n\n\022P2PBlobMetaDataM" +
-      "sg\022\022\n\nblobLength\030\001 \001(\003\022\021\n\tblockSize\030\002 \001(" +
-      "\005\0221\n\010hashList\030\003 \001(\0132\037.peercentrum.P2PBlo" +
-      "bHashListMsg\"-\n\022P2PBlobHashListMsg\022\027\n\017ha" +
-      "shOfEachBlock\030\001 \003(\014\"8\n\017P2PBlobBlockMsg\022\022" +
-      "\n\nblockIndex\030\001 \001(\r\022\021\n\tblobBytes\030\002 \001(\014\"e\n" +
-      "\033P2PBlobDataTransferQuoteMsg\022\"\n\032satoshiP" +
-      "erIncomingGigaByte\030\001 \001(\003\022\"\n\032satoshiPerOu",
-      "tgoingGigaByte\030\002 \001(\003\"P\n\rSettlementMsg\022?\n" +
-      "\020twoWayChannelMsg\030\001 \003(\0132%.paymentchannel" +
-      "s.TwoWayChannelMessageB\032\n\024org.peercentru" +
-      "m.coreB\002PB"
+      "onId\030\003 \001(\014\022&\n\036applicationSpecificBlockLe" +
+      "ngth\030\005 \001(\r\022\'\n\037applicationSpecificStreamL" +
+      "ength\030\006 \001(\r\"\024\n\022CryptoHandShakeMsg\"m\n\017Nod" +
+      "eMetaDataMsg\022\021\n\tuserAgent\030\001 \001(\t\022\022\n\nexter" +
+      "nalIP\030\002 \001(\t\022\024\n\014externalPort\030\003 \001(\r\022\035\n\025app" +
+      "licationsSupported\030\005 \003(\014\"\303\001\n\016NetworkMess" +
+      "age\022?\n\toperation\030\001 \001(\0162,.peercentrum.Net",
+      "workMessage.NetworkOperation\0222\n\014nodeMeta" +
+      "Data\030\002 \001(\0132\034.peercentrum.NodeMetaDataMsg" +
+      "\"<\n\020NetworkOperation\022\024\n\020CLOSE_CONNECTION" +
+      "\020\000\022\010\n\004PING\020\001\022\010\n\004PONG\020\002\"\200\001\n\rGossipMessage" +
+      "\022=\n\020requestMorePeers\030\001 \001(\0132#.peercentrum" +
+      ".GossipRequestMorePeers\0220\n\005reply\030\002 \001(\0132!" +
+      ".peercentrum.GossipReplyMorePeers\"7\n\026Gos" +
+      "sipRequestMorePeers\022\035\n\025applicationsReque" +
+      "sted\030\001 \003(\014\"\231\002\n\024GossipReplyMorePeers\022=\n\005p" +
+      "eers\030\001 \003(\0132..peercentrum.GossipReplyMore",
+      "Peers.PeerEndpoint\032\301\001\n\014PeerEndpoint\022\020\n\010i" +
+      "dentity\030\001 \001(\014\022M\n\nipEndpoint\030\002 \001(\01329.peer" +
+      "centrum.GossipReplyMorePeers.PeerEndpoin" +
+      "t.IPEndpoint\032-\n\nIPEndpoint\022\021\n\tipaddress\030" +
+      "\001 \001(\t\022\014\n\004port\030\002 \001(\r\032!\n\013TOREndpoint\022\022\n\nTO" +
+      "RAddress\030\001 \001(\t\":\n\017GenericResponse\022\021\n\terr" +
+      "orCode\030\001 \001(\r\022\024\n\014errorMessage\030\002 \001(\t\"\356\002\n\026H" +
+      "ashToPublicKeyMessage\0225\n\017genericResponse" +
+      "\030\001 \001(\0132\034.peercentrum.GenericResponse\0229\n\n" +
+      "proposedTx\030\002 \001(\0132%.peercentrum.H2PKPropo",
+      "sedTransactions\022A\n\020localTransaction\030\003 \001(" +
+      "\0132\'.peercentrum.HashToPublicKeyTransacti" +
+      "on\022\027\n\017membershipQuery\030\004 \001(\014\022\032\n\022membershi" +
+      "pResponse\030\005 \003(\014\0221\n\013dbSyncQuery\030\006 \001(\0132\034.p" +
+      "eercentrum.H2PKDBSyncQuery\0227\n\016dbSyncResp" +
+      "onse\030\007 \001(\0132\037.peercentrum.H2PKDBSyncRespo" +
+      "nse\"\322\001\n\032HashToPublicKeyTransaction\022D\n\top" +
+      "eration\030\001 \001(\01621.peercentrum.HashToPublic" +
+      "KeyTransaction.OPERATION\022\017\n\007address\030\002 \001(" +
+      "\014\022\021\n\tpublicKey\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022",
+      "\022\n\nexpiration\030\005 \001(\r\"#\n\tOPERATION\022\n\n\006APPE" +
+      "ND\020\000\022\n\n\006REMOVE\020\001\"\216\001\n\030H2PKProposedTransac" +
+      "tions\022\027\n\017dbVersionNumber\030\001 \001(\r\022\022\n\npropos" +
+      "edBy\030\002 \001(\014\022E\n\024proposedTransactions\030\003 \003(\013" +
+      "2\'.peercentrum.HashToPublicKeyTransactio" +
+      "n\"/\n\017H2PKDBSyncQuery\022\034\n\024beginDbVersionNu" +
+      "mber\030\001 \001(\r\"\227\001\n\022H2PKDBSyncResponse\022\033\n\023las" +
+      "tDbVersionNumber\030\001 \001(\r\022\027\n\017lastDbHashValu" +
+      "e\030\002 \001(\014\022\033\n\023syncDbVersionNumber\030\003 \001(\r\022.\n\t" +
+      "syncUnits\030\004 \003(\0132\033.peercentrum.H2PKDBSync",
+      "Unit\"?\n\016H2PKDBSyncUnit\022\017\n\007address\030\001 \001(\014\022" +
+      "\034\n\024publicKeysRegistered\030\002 \003(\014\"\211\001\n\021P2PBlo" +
+      "bRequestMsg\0227\n\013blobRequest\030\001 \003(\0132\".peerc" +
+      "entrum.P2PBlobBlobRequestMsg\022;\n\ruploadRe" +
+      "quest\030\002 \003(\0132$.peercentrum.P2PBlobUploadR" +
+      "equestMsg\"z\n\027P2PBlobUploadRequestMsg\022,\n\006" +
+      "blocks\030\002 \003(\0132\034.peercentrum.P2PBlobBlockM" +
+      "sg\0221\n\010metaData\030\003 \001(\0132\037.peercentrum.P2PBl" +
+      "obMetaDataMsg\"\300\001\n\025P2PBlobBlobRequestMsg\022" +
+      "\025\n\rrequestedHash\030\001 \001(\014\022!\n\031maximumBlobLen",
+      "gthAccepted\030\002 \001(\003\022\027\n\017requestMetaData\030\003 \001" +
+      "(\010\022\035\n\025requestBlockInventory\030\005 \001(\010\0225\n\017req" +
+      "uestedRanges\030\006 \003(\0132\034.peercentrum.P2PBlob" +
+      "RangeMsg\"\257\002\n\022P2PBlobResponseMsg\0225\n\017gener" +
+      "icResponse\030\001 \001(\0132\034.peercentrum.GenericRe" +
+      "sponse\0221\n\010metaData\030\002 \001(\0132\037.peercentrum.P" +
+      "2PBlobMetaDataMsg\0229\n\023localBlockInventory" +
+      "\030\003 \003(\0132\034.peercentrum.P2PBlobRangeMsg\022/\n\t" +
+      "blobBytes\030\004 \003(\0132\034.peercentrum.P2PBlobBlo" +
+      "ckMsg\022C\n\021dataTransferQuote\030\005 \001(\0132(.peerc",
+      "entrum.P2PBlobDataTransferQuoteMsg\"-\n\017P2" +
+      "PBlobRangeMsg\022\r\n\005begin\030\001 \001(\r\022\013\n\003end\030\002 \001(" +
+      "\r\"n\n\022P2PBlobMetaDataMsg\022\022\n\nblobLength\030\001 " +
+      "\001(\003\022\021\n\tblockSize\030\002 \001(\005\0221\n\010hashList\030\003 \001(\013" +
+      "2\037.peercentrum.P2PBlobHashListMsg\"-\n\022P2P" +
+      "BlobHashListMsg\022\027\n\017hashOfEachBlock\030\001 \003(\014" +
+      "\"8\n\017P2PBlobBlockMsg\022\022\n\nblockIndex\030\001 \001(\r\022" +
+      "\021\n\tblobBytes\030\002 \001(\014\"e\n\033P2PBlobDataTransfe" +
+      "rQuoteMsg\022\"\n\032satoshiPerIncomingGigaByte\030" +
+      "\001 \001(\003\022\"\n\032satoshiPerOutgoingGigaByte\030\002 \001(",
+      "\003\"P\n\rSettlementMsg\022?\n\020twoWayChannelMsg\030\001" +
+      " \003(\0132%.paymentchannels.TwoWayChannelMess" +
+      "ageB\032\n\024org.peercentrum.coreB\002PB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -20739,7 +20654,7 @@ public final class PB {
           internal_static_peercentrum_HeaderMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_HeaderMsg_descriptor,
-              new java.lang.String[] { "RequestNumber", "DestinationApplicationId", "Signature", "ApplicationSpecificBlockLength", "ApplicationSpecificStreamLength", });
+              new java.lang.String[] { "RequestNumber", "DestinationApplicationId", "ApplicationSpecificBlockLength", "ApplicationSpecificStreamLength", });
           internal_static_peercentrum_CryptoHandShakeMsg_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_peercentrum_CryptoHandShakeMsg_fieldAccessorTable = new

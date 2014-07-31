@@ -3,25 +3,10 @@ package org.peercentrum.blob;
 import static org.junit.Assert.assertEquals;
 import io.netty.util.concurrent.Future;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.peercentrum.core.TransientMockNetworkOfNodes;
+import org.peercentrum.BaseTestWithMockNetwork;
 
-public class P2PBlobApplicationTest {
-  static TransientMockNetworkOfNodes mockNodes;
-  static P2PBlobStandaloneClient blobClient;
-
-  @BeforeClass
-  public static void setupNetwork() throws Exception{
-    mockNodes=new TransientMockNetworkOfNodes();
-    blobClient = new P2PBlobStandaloneClient(mockNodes.clientToServerConnection, mockNodes.client1Config, mockNodes.settlementClient1);
-  }
-
-  @AfterClass
-  public static void shutdownNetwork() throws Exception{
-    mockNodes.shutdown();
-  }
+public class P2PBlobApplicationTest extends BaseTestWithMockNetwork {
 
   @Test
   public void testDownload() throws Exception {

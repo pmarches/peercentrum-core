@@ -22,6 +22,7 @@ public class NetworkClient extends NetworkBase implements Closeable {
 	protected HashMap<NodeIdentifier, NetworkClientConnection> connectionCache=new HashMap<>();
 	protected NodeDatabase nodeDatabase;
 	protected int localListeningPort=0;
+  public boolean useEncryption=true;
 	
   public NetworkClient(NodeIdentity localIdentity, NodeDatabase nodeDatabase) throws Exception {
     super(localIdentity);
@@ -86,7 +87,7 @@ public class NetworkClient extends NetworkBase implements Closeable {
 	  return nodeDatabase;
 	}
 
-  public void setLocalListeniongPort(int listeningPort) {
+  public void setLocalListeningPort(int listeningPort) {
     this.localListeningPort=listeningPort;
   }
 }

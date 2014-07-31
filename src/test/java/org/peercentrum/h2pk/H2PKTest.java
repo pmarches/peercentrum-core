@@ -26,7 +26,7 @@ public class H2PKTest {
 		HashToPublicKeyApplication[] apps=new HashToPublicKeyApplication[NB_NODES]; 
 		ConsensusThreshold mockThreshold=new MockTriggerableThreshold(1, NB_NODES);
 		for(int i=0; i<NB_NODES; i++){
-			TopLevelConfig topConfig=new TopLevelConfig("Node"+i);
+			TopLevelConfig topConfig=new TopLevelConfig();
 			NetworkServer nodeServer = new NetworkServer(topConfig);
 			InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", nodeServer.getListeningPort());
 			sharedNodeDatabase.mapNodeIdToAddress(nodeServer.getNodeIdentifier(), serverEndpoint);

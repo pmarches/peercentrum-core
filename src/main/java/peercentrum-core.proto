@@ -6,13 +6,9 @@ option java_outer_classname = "PB";
 message HeaderMsg {
 	optional uint32 requestNumber=2; 
 	optional bytes destinationApplicationId=3;
-	optional bytes signature=4;
 	//Notice there is no payload in the protobuf message. It is simply appended as a multipart message
 	optional uint32 applicationSpecificBlockLength=5;
 	optional uint32 applicationSpecificStreamLength=6;
-};
-
-message CryptoHandShakeMsg {
 };
 
 message NodeMetaDataMsg { //FIXME Get rid of all this crap, create endpoint message...

@@ -14,7 +14,6 @@ public class TopLevelConfigTest {
 	public void test() throws Exception {
 		TopLevelConfig config = TopLevelConfig.loadFromFile(new File("peercentrum-config.yaml"));
 		assertNotNull(config);
-		assertEquals("Node1", config.getNodeIdentifier());
 		NodeGossipConfig gossipConfig=(NodeGossipConfig) config.getAppConfig(NodeGossipConfig.class);
 		assertNotNull(gossipConfig);
 		assertEquals("66.172.33.39:35460", gossipConfig.getBootstrapEndpoint());

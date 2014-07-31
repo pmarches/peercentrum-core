@@ -68,17 +68,21 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 			}
 			
 			for(PB.P2PBlobUploadRequestMsg uploadBlobReq: request.getUploadRequestList()){
-//			  if(uploadBlobReq.hasBlobHash()==false){
-//			    LOGGER.error("Upload request {} is missing the blob hash.", uploadBlobReq);
-//			    break;
-//			  }
 			  if(uploadBlobReq.hasMetaData()==false){
           LOGGER.error("Upload request {} is missing the metaData.", uploadBlobReq);
 			    break;
 			  }
-
 			  PB.P2PBlobMetaDataMsg metaData=uploadBlobReq.getMetaData();
-        P2PBlobStoredBlob storedBlob=blobRepository.getOrCreateStoredBlob(metaData);
+			  if(metaData.hasHashList()==false){
+			    LOGGER.error("Upload request {} is missing the hashList.", uploadBlobReq);
+			    break;
+			  }
+			  P2PBlobHashList hashList=new P2PBlobHashList(metaData.getHashList());
+
+			  P2PBlobStoredBlob storedBlob=blobRepository.getStoredBlob(hashList.getTopLevelHash());
+			  if(storedBlob==null){
+			    storedBlob=blobRepository.createStoredBlob(hashList, metaData.getBlobLength(), metaData.getBlockSize());
+			  }
 			  for(PB.P2PBlobBlockMsg blockMsg: uploadBlobReq.getBlocksList()){
 			    storedBlob.maybeAcceptBlobBytes(blockMsg);
 			  }

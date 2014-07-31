@@ -10,40 +10,16 @@ import org.yaml.snakeyaml.Yaml;
 public class TopLevelConfig {
   File directoryOfConfigFile;	
 
-  String nodeIdentifier; //FIXME Temporary, should be derived from the private key...
-  String privateKey;
   int listenPort=0;
-  List<Object> applications;
+  List<Object> applications=new ArrayList<>();
   boolean enableNAT=false;
-
-  public TopLevelConfig() {
-  }
-
-  //Shortcut for unit tests
-  public TopLevelConfig(String nodeIdentifier) {
-    setNodeIdentifier(nodeIdentifier);
-    applications=new ArrayList<>();
-  }
-
+  public boolean useEncryption=true;
+  
   public static TopLevelConfig loadFromFile(File file) throws Exception {
     Yaml yaml = new Yaml();
     TopLevelConfig config= (TopLevelConfig) yaml.load(new FileInputStream(file));
     config.setBaseDirectory(file.getAbsoluteFile().getParentFile().getCanonicalFile());
     return config;
-  }
-
-  public String getNodeIdentifier() {
-    return nodeIdentifier;
-  }
-  public void setNodeIdentifier(String nodeIdentifier) {
-    this.nodeIdentifier = nodeIdentifier;
-  }
-
-  public String getPrivateKey() {
-    return privateKey;
-  }
-  public void setPrivateKey(String privateKey) {
-    this.privateKey = privateKey;
   }
 
   public int getListenPort() {
@@ -91,7 +67,7 @@ public class TopLevelConfig {
 
   @Override
   public String toString() {
-    return "Config [nodeIdentifier=" + nodeIdentifier + ", privateKey=" + privateKey + ", listenPort="
+    return "Config [listenPort="
         + listenPort + ", applications=" + applications + "]";
   }
 
