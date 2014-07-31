@@ -30,7 +30,7 @@ public class TransientMockNetworkOfNodes {
   public TopLevelConfig client1Config;
   public NetworkClient networkClient1;
   public BitcoinJSONRPCClient bitcoind = TestUtilities.getBitcoindRegtest();
-  public NetworkClientConnection clientToServerConnection;
+  public NetworkClientConnection client1ToServer1Connection;
   public SettlementDB client1SettlementDB;
   public SettlementApplicationClient settlementClient1;
   public HashIdentifier helloWorldBlobID;
@@ -55,8 +55,8 @@ public class TransientMockNetworkOfNodes {
   }
 
   private void configureClient1ToServer1Connection() throws Exception {
-    clientToServerConnection=networkClient1.createConnectionToPeer(server1.getNodeIdentifier());
-    settlementClient1=new SettlementApplicationClient(clientToServerConnection, client1Config, client1SettlementDB.settlementMethod);
+    client1ToServer1Connection=networkClient1.createConnectionToPeer(server1.getNodeIdentifier());
+    settlementClient1=new SettlementApplicationClient(client1ToServer1Connection, client1Config, client1SettlementDB.settlementMethod);
   }
 
   private void configureServer() throws Exception {
@@ -93,7 +93,7 @@ public class TransientMockNetworkOfNodes {
     settlementClient1.close();
     client1SettlementDB.close();
     
-    clientToServerConnection.close();
+    client1ToServer1Connection.close();
     
     server1.stopAcceptingConnections();
     networkClient1.close();

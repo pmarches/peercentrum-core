@@ -13,7 +13,7 @@ public abstract class BaseTestWithMockNetwork {
   public static void setupNetwork() throws Exception{
     if(mockNodes==null){
       mockNodes=new TransientMockNetworkOfNodes();
-      blobClient = new P2PBlobStandaloneClient(mockNodes.clientToServerConnection, mockNodes.client1Config, mockNodes.settlementClient1);
+      blobClient = new P2PBlobStandaloneClient(mockNodes.client1ToServer1Connection, mockNodes.client1Config, mockNodes.settlementClient1);
     }
   }
 
