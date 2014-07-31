@@ -2,26 +2,37 @@ package org.peercentrum.network;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.ssl.SslHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.IdleStateHandler;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 import java.net.InetSocketAddress;
 import java.util.Hashtable;
 
+import javax.security.cert.X509Certificate;
+
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeDatabase;
+import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
+  private static final String TLS_HANDLER_NAME = "tls";
   private static final Logger LOGGER = LoggerFactory.getLogger(NetworkServer.class);
+  protected static final AttributeKey<NodeIdentifier> REMOTE_NODE_ID_ATTR = AttributeKey.valueOf("REMOTE_NODE_ID");
 
   DefaultEventExecutorGroup applicationWorkerGroup = new DefaultEventExecutorGroup(2);
   NioEventLoopGroup nioWorkerGroup = new NioEventLoopGroup();
@@ -32,10 +43,23 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   protected NodeDatabase nodeDatabase;
   protected ECDSASslContext serverSideSSLContext;
 
+  private GenericFutureListener<Future<Channel>> onSslHandshakeCompletes=new GenericFutureListener<Future<Channel>>() {
+    @Override
+    public void operationComplete(Future<Channel> future) throws Exception {
+      SocketChannel channel = (SocketChannel) future.get();
+      SslHandler sslHandler=(SslHandler) channel.pipeline().get(TLS_HANDLER_NAME);
+      X509Certificate[] remoteCertificate = sslHandler.engine().getSession().getPeerCertificateChain();
+      NodeIdentifier remoteNodeId=new NodeIdentifier(remoteCertificate[0].getPublicKey().getEncoded());
+      setRemoteNodeIdentifier(channel, remoteNodeId);
+    }
+  };
+
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
-      ch.pipeline().addLast(serverSideSSLContext.newHandler());
+      SslHandler sslHandler=serverSideSSLContext.newHandler();
+      sslHandler.handshakeFuture().addListener(onSslHandshakeCompletes);
+      ch.pipeline().addLast(TLS_HANDLER_NAME, sslHandler);
 
       ch.pipeline().addLast("idleStateHandler", new IdleStateHandler(60, 30, 0));
 //      ch.pipeline().addLast(new TraceHandler("Before anything"));
@@ -104,4 +128,15 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   public NodeIdentity getLocalIdentity() {
     return this.nodeIdentity;
   }
+  
+  public NodeIdentifier getRemoteNodeIdentifier(ChannelHandlerContext ctx) {
+    Attribute<NodeIdentifier> nodeIdHolder = ctx.channel().attr(REMOTE_NODE_ID_ATTR);
+    return nodeIdHolder.get();
+  }
+
+  public void setRemoteNodeIdentifier(Channel channel, NodeIdentifier remoteNodeId) {
+    Attribute<NodeIdentifier> nodeIdHolder = channel.attr(REMOTE_NODE_ID_ATTR);
+    nodeIdHolder.set(remoteNodeId);
+  }
+
 }

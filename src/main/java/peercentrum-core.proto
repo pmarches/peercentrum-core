@@ -19,7 +19,6 @@ message NodeMetaDataMsg { //FIXME Get rid of all this crap, create endpoint mess
   optional string userAgent=1;
   optional string externalIP=2;
   optional uint32 externalPort=3;
-  optional bytes nodePublicKey=4;
   repeated bytes applicationsSupported=5;
 };
 

@@ -99,23 +99,9 @@ public class NetworkClientConnection implements AutoCloseable {
     if(localListeningPort!=0){
       nodeMetaDataBuilder.setExternalPort(localListeningPort);          
     }
-    if(localNodeId!=null){
-      nodeMetaDataBuilder.setNodePublicKey(ByteString.copyFrom(this.localNodeId.getBytes()));
-    }
     PB.NetworkMessage.Builder networkMsg=PB.NetworkMessage.newBuilder();
     networkMsg.setNodeMetaData(nodeMetaDataBuilder);
     Future<PB.NetworkMessage> remoteNodeMetaDataResponseF = sendRequestMsg(NetworkApplication.NETWORK_APPID, networkMsg.build());
-    remoteNodeMetaDataResponseF.addListener(new GenericFutureListener<Future<PB.NetworkMessage>>() {
-      @Override public void operationComplete(Future<PB.NetworkMessage> future) throws Exception {
-        PB.NodeMetaDataMsg remoteNodeMetaDataMsg=future.get().getNodeMetaData();
-        if(remoteNodeMetaDataMsg.hasNodePublicKey()){
-          NodeIdentifier remoteNodeIdReceived=new NodeIdentifier(remoteNodeMetaDataMsg.getNodePublicKey().toByteArray());
-          if(remoteNodeIdReceived.equals(remoteNodeId)==false){
-            throw new Exception("We were expecting to connect to node "+remoteNodeId+", but connected to node "+remoteNodeIdReceived);
-          }
-        }
-      }
-    });
   }
 
   public Future<ByteBuf> sendRequestBytes(ApplicationIdentifier destinationApp, ByteBuf applicationSpecificBytesToSend) {

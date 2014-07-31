@@ -7,7 +7,6 @@ import io.netty.channel.ChannelHandlerContext;
 import java.net.InetSocketAddress;
 
 import org.peercentrum.core.ApplicationIdentifier;
-import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.NetworkMessage;
 import org.peercentrum.core.ProtobufByteBufCodec;
@@ -54,24 +53,20 @@ public class NetworkApplication extends BaseApplicationMessageHandler {
   private HeaderAndPayload handleReceiveNodeMetaData(ChannelHandlerContext ctx, PB.HeaderMsg.Builder responseHeader, PB.NetworkMessage networkMessage) {
     PB.NodeMetaDataMsg receivedNodeMetaDataMsg = networkMessage.getNodeMetaData();
     LOGGER.debug("Query has nodeMetaData {}", receivedNodeMetaDataMsg);
-    if(receivedNodeMetaDataMsg.hasNodePublicKey()){ //Do we allow anonymous clients? How to encrypt the comm if we do not have a public key?
-      NodeIdentifier remoteNodeId=new NodeIdentifier(receivedNodeMetaDataMsg.getNodePublicKey().toByteArray());
-      super.setRemoteNodeIdentifier(ctx, remoteNodeId);
-
-      String clientExternalIP;
-      if(receivedNodeMetaDataMsg.hasExternalIP()){
-        clientExternalIP=receivedNodeMetaDataMsg.getExternalIP();
-      }
-      else{
-        clientExternalIP=((InetSocketAddress)ctx.channel().remoteAddress()).getHostName();
-      }
-      InetSocketAddress ipEndpoint=new InetSocketAddress(clientExternalIP, receivedNodeMetaDataMsg.getExternalPort());
-      server.getNodeDatabase().mapNodeIdToAddress(remoteNodeId, ipEndpoint);
+    String clientExternalIP;
+    if(receivedNodeMetaDataMsg.hasExternalIP()){
+      clientExternalIP=receivedNodeMetaDataMsg.getExternalIP();
     }
+    else{
+      clientExternalIP=((InetSocketAddress)ctx.channel().remoteAddress()).getHostName();
+    }
+    InetSocketAddress ipEndpoint=new InetSocketAddress(clientExternalIP, receivedNodeMetaDataMsg.getExternalPort());
+    server.getNodeDatabase().mapNodeIdToAddress(server.getRemoteNodeIdentifier(ctx), ipEndpoint);
 
+
+    //FIXME, nothing to reply!
     PB.NetworkMessage.Builder repliedNetworkMsg=PB.NetworkMessage.newBuilder();
     PB.NodeMetaDataMsg.Builder repliedNodeMetaDataMsg=PB.NodeMetaDataMsg.newBuilder();
-    repliedNodeMetaDataMsg.setNodePublicKey(server.getNodeIdentifier().toByteString());
     repliedNetworkMsg.setNodeMetaData(repliedNodeMetaDataMsg);
     return new HeaderAndPayload(responseHeader, Unpooled.wrappedBuffer(repliedNetworkMsg.build().toByteArray()));
   }

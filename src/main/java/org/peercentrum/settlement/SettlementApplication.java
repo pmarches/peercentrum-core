@@ -32,7 +32,7 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 	public HeaderAndPayload generateReponseFromQuery(ChannelHandlerContext ctx, HeaderAndPayload receivedMessage) {
 		LOGGER.debug("settlement generateReponseFromQuery");
 		try {
-			NodeIdentifier remoteNodeIdentifier=super.getRemoteNodeIdentifier(ctx);
+			NodeIdentifier remoteNodeIdentifier=server.getRemoteNodeIdentifier(ctx);
 
       PB.SettlementMsg.Builder topLevelResponse=PB.SettlementMsg.newBuilder();
 			PB.SettlementMsg settlementReqMsg = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, PB.SettlementMsg.class);

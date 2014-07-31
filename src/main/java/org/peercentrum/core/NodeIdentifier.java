@@ -1,5 +1,7 @@
 package org.peercentrum.core;
 
+import javax.xml.bind.DatatypeConverter;
+
 import org.peercentrum.h2pk.PublicKeyIdentifier;
 
 
@@ -17,6 +19,6 @@ public class NodeIdentifier extends PublicKeyIdentifier {
 	
 	@Override
 	public String toString() {
-		return new String(binaryValue);
+		return DatatypeConverter.printHexBinary(binaryValue);
 	}
 }
