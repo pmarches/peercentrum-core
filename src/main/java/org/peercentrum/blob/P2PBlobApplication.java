@@ -26,7 +26,7 @@ import com.google.protobuf.ByteString;
 public class P2PBlobApplication extends BaseApplicationMessageHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobApplication.class);
 	public static final ApplicationIdentifier APP_ID=new ApplicationIdentifier(P2PBlobApplication.class.getSimpleName().getBytes());
-	public static final int BLOCK_SIZE = 256*1024;
+	public static final int DEFAULT_BLOCK_SIZE = 256*1024;
 
 	protected P2PBlobRepository blobRepository;
 	
@@ -120,11 +120,11 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 
 		P2PBlobRangeSet requestedRanges;
 		if(blobReq.getRequestedRangesCount()==0){
-      requestedRanges=storedBlob.getLocalRange(); //Provide everything we have
+      requestedRanges=storedBlob.getLocalBlockRange(); //Provide everything we have
 		}
 		else{
       requestedRanges=new P2PBlobRangeSet(blobReq.getRequestedRangesList());
-      requestedRanges.intersectionThis(storedBlob.getLocalRange());
+      requestedRanges.intersectionThis(storedBlob.getLocalBlockRange());
 		}
 		
 		DiscreteIterator di = requestedRanges.discreteIterator();

@@ -13,12 +13,12 @@ public class P2PBlobStoredBlobMemoryOnly extends P2PBlobStoredBlob {
 	public ByteBuf validatedBlobContent=Unpooled.buffer();
 
 	public P2PBlobStoredBlobMemoryOnly(HashIdentifier blobHash) {
-		super(blobHash, null, null, -1, P2PBlobApplication.BLOCK_SIZE);
+		super(blobHash, null, null, -1, P2PBlobApplication.DEFAULT_BLOCK_SIZE);
 	}
     
 	public P2PBlobStoredBlobMemoryOnly(byte[] fullBlobContent) {
-    super(null, P2PBlobHashList.createFromBytes(P2PBlobApplication.BLOCK_SIZE, fullBlobContent),
-        null, fullBlobContent.length, P2PBlobApplication.BLOCK_SIZE);
+    super(null, P2PBlobHashList.createFromBytes(P2PBlobApplication.DEFAULT_BLOCK_SIZE, fullBlobContent),
+        null, fullBlobContent.length, P2PBlobApplication.DEFAULT_BLOCK_SIZE);
     validatedBlobContent.writeBytes(fullBlobContent);
     blobHash=hashList.getTopLevelHash();
   }

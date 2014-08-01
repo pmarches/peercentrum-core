@@ -122,9 +122,6 @@ public class TransientMockNetworkOfNodes {
     generatedConfig.setAppConfig(new HashToPublicKeyConfig());
     File generatedBaseDir=Files.createTempDir();
     generatedConfig.setBaseDirectory(generatedBaseDir);
-    //TODO Generate P2PBlob repo content
-    //TODO Create bitcoin wallet and fund it
-    //
     return generatedConfig;
   }
 }

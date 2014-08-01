@@ -95,7 +95,7 @@ public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 	
   public static P2PBlobHashList createFromFile(File nonRepositoryFile) throws IOException {
     RandomAccessFile rafToRead=new RandomAccessFile(nonRepositoryFile, "r");
-    P2PBlobHashList hList=createFromFileChannel(P2PBlobApplication.BLOCK_SIZE, rafToRead.getChannel());
+    P2PBlobHashList hList=createFromFileChannel(P2PBlobApplication.DEFAULT_BLOCK_SIZE, rafToRead.getChannel());
     rafToRead.close();
     return hList;
   }

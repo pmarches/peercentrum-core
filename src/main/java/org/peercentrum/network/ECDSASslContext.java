@@ -14,17 +14,17 @@ import javax.net.ssl.TrustManager;
 
 
 public class ECDSASslContext {
-  private static final String[] TLS_VERSIONS = new String[]{"TLSv1.2"};
+  private static final String[] TLS_VERSIONS = {"TLSv1.2"};
   private KeyManager[] keyManagers;
   private TrustManager[] trustManagers;
 
-  public static final String[] ENCRYPTED_CIPHER_SUITE = new String[]{
+  public static final String[] ENCRYPTED_CIPHER_SUITE = {
     "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256",
     //      "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
     //      "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
   };
 
-  public static final String[] NON_ENCRYPTED_CIPHER_SUITE = new String[]{
+  public static final String[] NON_ENCRYPTED_CIPHER_SUITE = {
     "TLS_ECDHE_ECDSA_WITH_NULL_SHA", //For DEBUG purposes only
   };
 

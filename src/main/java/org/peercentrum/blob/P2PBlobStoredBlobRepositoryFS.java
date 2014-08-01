@@ -23,7 +23,7 @@ public class P2PBlobStoredBlobRepositoryFS extends P2PBlobStoredBlob {
   }
 
   public P2PBlobStoredBlobRepositoryFS(File blobFile) throws IOException {
-    super(null, P2PBlobHashList.createFromFile(blobFile), null, blobFile.length(), P2PBlobApplication.BLOCK_SIZE);
+    super(null, P2PBlobHashList.createFromFile(blobFile), null, blobFile.length(), P2PBlobApplication.DEFAULT_BLOCK_SIZE);
     this.blobFile=blobFile;
   }
 

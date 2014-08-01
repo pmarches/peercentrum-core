@@ -21,13 +21,13 @@ public class P2PBlobHashListTest {
     P2PBlobStoredBlob bonjourMondeUpload=new P2PBlobStoredBlobMemoryOnly("Bonjour monde!\n".getBytes());
     assertEquals("3EC129755B093D2B403C893D33322D933D7F2C0889F70FBA75662D8319FF08A6", bonjourMondeUpload.getHashList().getTopLevelHash().toString());
     
-    P2PBlobStoredBlob oneBlockMemory=new P2PBlobStoredBlobMemoryOnly(new byte[P2PBlobApplication.BLOCK_SIZE]);
+    P2PBlobStoredBlob oneBlockMemory=new P2PBlobStoredBlobMemoryOnly(new byte[P2PBlobApplication.DEFAULT_BLOCK_SIZE]);
     assertEquals("C67554C8836DD666772CA9EECCC27BDE97704632FD4CA9BB898D775216CC18CF", oneBlockMemory.getHashList().getTopLevelHash().toString());
     
-    P2PBlobStoredBlob twoBlockMemory=new P2PBlobStoredBlobMemoryOnly(new byte[2*P2PBlobApplication.BLOCK_SIZE]);
+    P2PBlobStoredBlob twoBlockMemory=new P2PBlobStoredBlobMemoryOnly(new byte[2*P2PBlobApplication.DEFAULT_BLOCK_SIZE]);
     assertEquals("0CC19DD4AC4CFB8E93499A43E86E4310545F0CF73E957823834BE190CDA7835E", twoBlockMemory.getHashList().getTopLevelHash().toString());
 
-    P2PBlobStoredBlob twoAndOneByteBlockMemory=new P2PBlobStoredBlobMemoryOnly(new byte[2*P2PBlobApplication.BLOCK_SIZE+1]);
+    P2PBlobStoredBlob twoAndOneByteBlockMemory=new P2PBlobStoredBlobMemoryOnly(new byte[2*P2PBlobApplication.DEFAULT_BLOCK_SIZE+1]);
     assertEquals("9DDF7D8E177C25FEF467F842335B045EB1047392714399FED3D1CF3F426A9BDF", twoAndOneByteBlockMemory.getHashList().getTopLevelHash().toString());
 }
 

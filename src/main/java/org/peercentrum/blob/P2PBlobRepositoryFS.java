@@ -75,7 +75,7 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 						fileHashList.size(),
 						null,
 						nonRepositoryFile.length(),
-						P2PBlobApplication.BLOCK_SIZE);
+						P2PBlobApplication.DEFAULT_BLOCK_SIZE);
 				LOGGER.debug("Added topHash/hashList={}", newRow);
 				return null;
 			}

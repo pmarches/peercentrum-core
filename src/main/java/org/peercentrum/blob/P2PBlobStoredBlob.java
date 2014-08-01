@@ -88,11 +88,11 @@ public abstract class P2PBlobStoredBlob {
       blockLayout=new P2PBlobBlockLayout(metaData.getBlobLength(), metaData.getBlockSize());
     }
     else{
-      blockLayout=new P2PBlobBlockLayout(metaData.getBlobLength(), P2PBlobApplication.BLOCK_SIZE);
+      blockLayout=new P2PBlobBlockLayout(metaData.getBlobLength(), P2PBlobApplication.DEFAULT_BLOCK_SIZE);
     }
   }
 
-  public P2PBlobRangeSet getLocalRange() {
+  public P2PBlobRangeSet getLocalBlockRange() {
     return new P2PBlobRangeSet(0, hashList.size()-1);
   }
 

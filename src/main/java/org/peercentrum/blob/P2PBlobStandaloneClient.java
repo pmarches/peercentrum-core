@@ -85,7 +85,7 @@ public class P2PBlobStandaloneClient {
           }
           else{
             P2PBlobRangeSet serverSideBlockInventory = new P2PBlobRangeSet(response.getLocalBlockInventoryList());
-            P2PBlobRangeSet blocksWeAreMissing=serverSideBlockInventory.minus(storedBlobDestination.getLocalRange());
+            P2PBlobRangeSet blocksWeAreMissing=serverSideBlockInventory.minus(storedBlobDestination.getLocalBlockRange());
             LOGGER.debug("blocksWeAreMissing={}", blocksWeAreMissing);
             
             //Determine how much data we are asking
