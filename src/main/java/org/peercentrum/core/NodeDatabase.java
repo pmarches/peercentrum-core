@@ -72,7 +72,7 @@ public class NodeDatabase implements AutoCloseable {
 
 	//TODO Add some checks to ensure we do not map stale IP/Port info.. 
 	public void mapNodeIdToAddress(final NodeIdentifier nodeIdentifier, final InetSocketAddress nodeSocketAddress) {
-//		NodeInformation info = new NodeInformation(NodeIdentifier, nodeSocketAddress);
+//		NodeMetaData info = new NodeMetaData(NodeIdentifier, nodeSocketAddress);
 //		LOGGER.debug("Mapped {} to {}", NodeIdentifier, nodeSocketAddress);
 //		idToPeer.put(NodeIdentifier, info);
 		ISqlJetTransaction updateEndpointTx=new ISqlJetTransaction() {
@@ -139,17 +139,17 @@ public class NodeDatabase implements AutoCloseable {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<NodeInformation> getAllNodeInformation(final int maxNumberOfNodes){
+	public List<NodeMetaData> getAllNodeInformation(final int maxNumberOfNodes){
 		ISqlJetTransaction getAllNodesTx=new ISqlJetTransaction() {
 			@Override public Object run(SqlJetDb db) throws SqlJetException {
-				ArrayList<NodeInformation> listOfNodeInfo=new ArrayList<>();
+				ArrayList<NodeMetaData> listOfNodeInfo=new ArrayList<>();
 				ISqlJetCursor allNodesCursor = nodeInfoTable.scope(nodeInfoTable.getPrimaryKeyIndexName(), null, null);
 				for(int i=0; i<maxNumberOfNodes && allNodesCursor.eof()==false; i++){
 					InetSocketAddress endPoint=new InetSocketAddress(allNodesCursor.getString(ENDPOINT_ADDRESS_FN), 
 							(int) allNodesCursor.getInteger(ENDPOINT_PORT_FN));
 					
 					NodeIdentifier nodeId=new NodeIdentifier(allNodesCursor.getBlobAsArray(NODE_ID_FN));
-					NodeInformation currentBNI=new NodeInformation(nodeId, endPoint);
+					NodeMetaData currentBNI=new NodeMetaData(nodeId, endPoint);
 					listOfNodeInfo.add(currentBNI);
 					
 					allNodesCursor.next();
@@ -159,14 +159,14 @@ public class NodeDatabase implements AutoCloseable {
 			}
 		};
 		try {
-			return (List<NodeInformation>) db.runReadTransaction(getAllNodesTx);
+			return (List<NodeMetaData>) db.runReadTransaction(getAllNodesTx);
 		} catch (SqlJetException e) {
 			LOGGER.error("DB error", e);
 			throw new RuntimeException(e);
 		}
 	}
 //	@Override
-//	public Iterator<NodeInformation> iterator() {
+//	public Iterator<NodeMetaData> iterator() {
 //		return idToPeer.values().iterator();
 //	}
 

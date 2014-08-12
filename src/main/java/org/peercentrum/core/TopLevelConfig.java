@@ -13,7 +13,7 @@ public class TopLevelConfig {
   int listenPort=0;
   List<Object> applications=new ArrayList<>();
   boolean enableNAT=false;
-  public boolean useEncryption=true;
+  public boolean encryptConnection=true;
   
   public static TopLevelConfig loadFromFile(File file) throws Exception {
     Yaml yaml = new Yaml();

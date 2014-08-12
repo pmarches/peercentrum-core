@@ -33,7 +33,7 @@ public class NodeGossipClient {
   protected void integrateGossipResponse(PB.GossipMessage response, NodeDatabase nodeDb) {
     if(response.hasReply()){
       PB.GossipReplyMorePeers gossipReply = response.getReply();
-      for(PB.GossipReplyMorePeers.PeerEndpoint peer : gossipReply.getPeersList()){
+      for(PB.PeerEndpointMsg peer : gossipReply.getPeersList()){
         NodeIdentifier nodeIdentifier = new NodeIdentifier(peer.getIdentity().toByteArray());
         if(nodeIdentifier.equals(this.client.getNodeIdentifier())){
           continue;//Ignore echo

@@ -6,6 +6,7 @@ import java.net.InetSocketAddress;
 import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.blob.P2PBlobConfig;
 import org.peercentrum.blob.P2PBlobRepositoryFS;
+import org.peercentrum.dht.DHTApplication;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.h2pk.HashToPublicKeyConfig;
 import org.peercentrum.network.NetworkClient;
@@ -34,6 +35,8 @@ public class TransientMockNetworkOfNodes {
   public SettlementDB client1SettlementDB;
   public SettlementApplicationClient settlementClient1;
   public HashIdentifier helloWorldBlobID;
+  public NodeIdentifier commonNodeId=new NodeIdentifier("12345678901234561234567890123456".getBytes());
+  public NodeIdentifier serverSideOnlyNodeId=new NodeIdentifier("22345678901234561234567890123456".getBytes());
 
   public TransientMockNetworkOfNodes() throws Exception {
     //TODO make the different service lazy loaded to speed up tests
@@ -62,15 +65,16 @@ public class TransientMockNetworkOfNodes {
   private void configureServer() throws Exception {
     server1Config=generateConfiguration("serverNode1");
     server1=new NetworkServer(server1Config);
-
+    server1.getNodeDatabase().mapNodeIdToAddress(commonNodeId, InetSocketAddress.createUnresolved("commonNode.com", 1234));
+    server1.getNodeDatabase().mapNodeIdToAddress(serverSideOnlyNodeId, InetSocketAddress.createUnresolved("serverOnlyNode.com", 1234));
+    
     SettlementApplication settlementApp=new SettlementApplication(server1);
+    new NodeGossipApplication(server1);
+    new DHTApplication(server1);
 
     File blobRepoDir=server1Config.getDirectory("blobRepo");
-
     P2PBlobRepositoryFS blobRepoFS=new P2PBlobRepositoryFS(blobRepoDir);
     P2PBlobApplication p2pBlobApp=new P2PBlobApplication(server1, blobRepoFS);
-    new NodeGossipApplication(server1);
-
 //    P2PBlobStoredBlob theBlob=new P2PBlobStoredBlobMemoryOnly("Hello world!".getBytes());
 //    theBlob=blobRepoFS.createStoredBlob(theBlob.getHashList(), theBlob.getBlockLayout().getLengthOfBlob(), theBlob.getBlockLayout().getLengthOfEvenBlock());
 //    theBlob=blobRepoFS.importBlobBytes("Hello world!".getBytes());
@@ -84,7 +88,8 @@ public class TransientMockNetworkOfNodes {
     client1Config=generateConfiguration("clientNode1");
     NodeDatabase clientNodeDatabase=new NodeDatabase(null);
     networkClient1=new NetworkClient(new NodeIdentity(client1Config), clientNodeDatabase);
-    networkClient1.getNodeDatabase().mapNodeIdToAddress(server1.getNodeIdentifier(), new InetSocketAddress(server1.getListeningPort()));
+    clientNodeDatabase.mapNodeIdToAddress(server1.getNodeIdentifier(), new InetSocketAddress(server1.getListeningPort()));
+    clientNodeDatabase.mapNodeIdToAddress(commonNodeId, InetSocketAddress.createUnresolved("commonNode.com", 1234));
 
     client1SettlementDB=new SettlementDB(null);
   }
@@ -115,7 +120,6 @@ public class TransientMockNetworkOfNodes {
     TopLevelConfig generatedConfig=new TopLevelConfig();
     generatedConfig.setAppConfig(new SettlementConfig());
     generatedConfig.setAppConfig(new NodeGossipConfig());
-    generatedConfig.useEncryption=true;
     P2PBlobConfig p2pConfig=new P2PBlobConfig();
     p2pConfig.transferPricingPerGigabyte=new Integer(1);
     generatedConfig.setAppConfig(p2pConfig);

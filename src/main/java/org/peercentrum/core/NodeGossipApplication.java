@@ -65,10 +65,10 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 			PB.HeaderMsg.Builder headerResponse = super.newResponseHeaderForRequest(receivedMessage);
 			PB.GossipMessage.Builder gossipPayloadBuilder=PB.GossipMessage.newBuilder();
 			PB.GossipReplyMorePeers.Builder gossipReplyBuilder=PB.GossipReplyMorePeers.newBuilder();
-			for(NodeInformation oneNodeInfo:nodeDb.getAllNodeInformation(50)){
-			  PB.GossipReplyMorePeers.PeerEndpoint.Builder onePeerBuilder = PB.GossipReplyMorePeers.PeerEndpoint.newBuilder();
+			for(NodeMetaData oneNodeInfo:nodeDb.getAllNodeInformation(50)){
+			  PB.PeerEndpointMsg.Builder onePeerBuilder = PB.PeerEndpointMsg.newBuilder();
 				onePeerBuilder.setIdentity(ByteString.copyFrom(oneNodeInfo.publicKey.getBytes()));
-				onePeerBuilder.setIpEndpoint(PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.newBuilder().setIpaddress(oneNodeInfo.nodeSocketAddress.getHostString()).setPort(oneNodeInfo.nodeSocketAddress.getPort()));
+				onePeerBuilder.setIpEndpoint(PB.PeerEndpointMsg.IPEndpointMsg.newBuilder().setIpaddress(oneNodeInfo.nodeSocketAddress.getHostString()).setPort(oneNodeInfo.nodeSocketAddress.getPort()));
 				gossipReplyBuilder.addPeers(onePeerBuilder.build());
 			}
 			gossipPayloadBuilder.setReply(gossipReplyBuilder);

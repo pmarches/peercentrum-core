@@ -682,315 +682,6 @@ public final class PB {
     // @@protoc_insertion_point(class_scope:peercentrum.HeaderMsg)
   }
 
-  public interface CryptoHandShakeMsgOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code peercentrum.CryptoHandShakeMsg}
-   */
-  public static final class CryptoHandShakeMsg extends
-      com.google.protobuf.GeneratedMessage
-      implements CryptoHandShakeMsgOrBuilder {
-    // Use CryptoHandShakeMsg.newBuilder() to construct.
-    private CryptoHandShakeMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private CryptoHandShakeMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final CryptoHandShakeMsg defaultInstance;
-    public static CryptoHandShakeMsg getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public CryptoHandShakeMsg getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CryptoHandShakeMsg(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.peercentrum.core.PB.internal_static_peercentrum_CryptoHandShakeMsg_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.peercentrum.core.PB.internal_static_peercentrum_CryptoHandShakeMsg_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.peercentrum.core.PB.CryptoHandShakeMsg.class, org.peercentrum.core.PB.CryptoHandShakeMsg.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<CryptoHandShakeMsg> PARSER =
-        new com.google.protobuf.AbstractParser<CryptoHandShakeMsg>() {
-      public CryptoHandShakeMsg parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CryptoHandShakeMsg(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CryptoHandShakeMsg> getParserForType() {
-      return PARSER;
-    }
-
-    private void initFields() {
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static org.peercentrum.core.PB.CryptoHandShakeMsg parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.peercentrum.core.PB.CryptoHandShakeMsg prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code peercentrum.CryptoHandShakeMsg}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.peercentrum.core.PB.CryptoHandShakeMsgOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_CryptoHandShakeMsg_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_CryptoHandShakeMsg_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.peercentrum.core.PB.CryptoHandShakeMsg.class, org.peercentrum.core.PB.CryptoHandShakeMsg.Builder.class);
-      }
-
-      // Construct using org.peercentrum.core.PB.CryptoHandShakeMsg.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_CryptoHandShakeMsg_descriptor;
-      }
-
-      public org.peercentrum.core.PB.CryptoHandShakeMsg getDefaultInstanceForType() {
-        return org.peercentrum.core.PB.CryptoHandShakeMsg.getDefaultInstance();
-      }
-
-      public org.peercentrum.core.PB.CryptoHandShakeMsg build() {
-        org.peercentrum.core.PB.CryptoHandShakeMsg result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.peercentrum.core.PB.CryptoHandShakeMsg buildPartial() {
-        org.peercentrum.core.PB.CryptoHandShakeMsg result = new org.peercentrum.core.PB.CryptoHandShakeMsg(this);
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.peercentrum.core.PB.CryptoHandShakeMsg) {
-          return mergeFrom((org.peercentrum.core.PB.CryptoHandShakeMsg)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.peercentrum.core.PB.CryptoHandShakeMsg other) {
-        if (other == org.peercentrum.core.PB.CryptoHandShakeMsg.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.peercentrum.core.PB.CryptoHandShakeMsg parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.peercentrum.core.PB.CryptoHandShakeMsg) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:peercentrum.CryptoHandShakeMsg)
-    }
-
-    static {
-      defaultInstance = new CryptoHandShakeMsg(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:peercentrum.CryptoHandShakeMsg)
-  }
-
   public interface NodeMetaDataMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -3769,29 +3460,29 @@ public final class PB {
   public interface GossipReplyMorePeersOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;
+    // repeated .peercentrum.PeerEndpointMsg peers = 1;
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
-    java.util.List<org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint> 
+    java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> 
         getPeersList();
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
-    org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint getPeers(int index);
+    org.peercentrum.core.PB.PeerEndpointMsg getPeers(int index);
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
     int getPeersCount();
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
-    java.util.List<? extends org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder> 
+    java.util.List<? extends org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> 
         getPeersOrBuilderList();
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
-    org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder getPeersOrBuilder(
+    org.peercentrum.core.PB.PeerEndpointMsgOrBuilder getPeersOrBuilder(
         int index);
   }
   /**
@@ -3847,10 +3538,10 @@ public final class PB {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                peers_ = new java.util.ArrayList<org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint>();
+                peers_ = new java.util.ArrayList<org.peercentrum.core.PB.PeerEndpointMsg>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              peers_.add(input.readMessage(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.PARSER, extensionRegistry));
+              peers_.add(input.readMessage(org.peercentrum.core.PB.PeerEndpointMsg.PARSER, extensionRegistry));
               break;
             }
           }
@@ -3895,1652 +3586,38 @@ public final class PB {
       return PARSER;
     }
 
-    public interface PeerEndpointOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
-
-      // optional bytes identity = 1;
-      /**
-       * <code>optional bytes identity = 1;</code>
-       */
-      boolean hasIdentity();
-      /**
-       * <code>optional bytes identity = 1;</code>
-       */
-      com.google.protobuf.ByteString getIdentity();
-
-      // optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;
-      /**
-       * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-       */
-      boolean hasIpEndpoint();
-      /**
-       * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-       */
-      org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint getIpEndpoint();
-      /**
-       * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-       */
-      org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder getIpEndpointOrBuilder();
-    }
-    /**
-     * Protobuf type {@code peercentrum.GossipReplyMorePeers.PeerEndpoint}
-     */
-    public static final class PeerEndpoint extends
-        com.google.protobuf.GeneratedMessage
-        implements PeerEndpointOrBuilder {
-      // Use PeerEndpoint.newBuilder() to construct.
-      private PeerEndpoint(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
-      }
-      private PeerEndpoint(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-      private static final PeerEndpoint defaultInstance;
-      public static PeerEndpoint getDefaultInstance() {
-        return defaultInstance;
-      }
-
-      public PeerEndpoint getDefaultInstanceForType() {
-        return defaultInstance;
-      }
-
-      private final com.google.protobuf.UnknownFieldSet unknownFields;
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-          getUnknownFields() {
-        return this.unknownFields;
-      }
-      private PeerEndpoint(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!parseUnknownField(input, unknownFields,
-                                       extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-              case 10: {
-                bitField0_ |= 0x00000001;
-                identity_ = input.readBytes();
-                break;
-              }
-              case 18: {
-                org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder subBuilder = null;
-                if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                  subBuilder = ipEndpoint_.toBuilder();
-                }
-                ipEndpoint_ = input.readMessage(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.PARSER, extensionRegistry);
-                if (subBuilder != null) {
-                  subBuilder.mergeFrom(ipEndpoint_);
-                  ipEndpoint_ = subBuilder.buildPartial();
-                }
-                bitField0_ |= 0x00000002;
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.class, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder.class);
-      }
-
-      public static com.google.protobuf.Parser<PeerEndpoint> PARSER =
-          new com.google.protobuf.AbstractParser<PeerEndpoint>() {
-        public PeerEndpoint parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PeerEndpoint(input, extensionRegistry);
-        }
-      };
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<PeerEndpoint> getParserForType() {
-        return PARSER;
-      }
-
-      public interface IPEndpointOrBuilder
-          extends com.google.protobuf.MessageOrBuilder {
-
-        // optional string ipaddress = 1;
-        /**
-         * <code>optional string ipaddress = 1;</code>
-         */
-        boolean hasIpaddress();
-        /**
-         * <code>optional string ipaddress = 1;</code>
-         */
-        java.lang.String getIpaddress();
-        /**
-         * <code>optional string ipaddress = 1;</code>
-         */
-        com.google.protobuf.ByteString
-            getIpaddressBytes();
-
-        // optional uint32 port = 2;
-        /**
-         * <code>optional uint32 port = 2;</code>
-         */
-        boolean hasPort();
-        /**
-         * <code>optional uint32 port = 2;</code>
-         */
-        int getPort();
-      }
-      /**
-       * Protobuf type {@code peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint}
-       */
-      public static final class IPEndpoint extends
-          com.google.protobuf.GeneratedMessage
-          implements IPEndpointOrBuilder {
-        // Use IPEndpoint.newBuilder() to construct.
-        private IPEndpoint(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-          super(builder);
-          this.unknownFields = builder.getUnknownFields();
-        }
-        private IPEndpoint(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-        private static final IPEndpoint defaultInstance;
-        public static IPEndpoint getDefaultInstance() {
-          return defaultInstance;
-        }
-
-        public IPEndpoint getDefaultInstanceForType() {
-          return defaultInstance;
-        }
-
-        private final com.google.protobuf.UnknownFieldSet unknownFields;
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
-            getUnknownFields() {
-          return this.unknownFields;
-        }
-        private IPEndpoint(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          initFields();
-          int mutable_bitField0_ = 0;
-          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-              com.google.protobuf.UnknownFieldSet.newBuilder();
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                default: {
-                  if (!parseUnknownField(input, unknownFields,
-                                         extensionRegistry, tag)) {
-                    done = true;
-                  }
-                  break;
-                }
-                case 10: {
-                  bitField0_ |= 0x00000001;
-                  ipaddress_ = input.readBytes();
-                  break;
-                }
-                case 16: {
-                  bitField0_ |= 0x00000002;
-                  port_ = input.readUInt32();
-                  break;
-                }
-              }
-            }
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(this);
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this);
-          } finally {
-            this.unknownFields = unknownFields.build();
-            makeExtensionsImmutable();
-          }
-        }
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
-        }
-
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.class, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder.class);
-        }
-
-        public static com.google.protobuf.Parser<IPEndpoint> PARSER =
-            new com.google.protobuf.AbstractParser<IPEndpoint>() {
-          public IPEndpoint parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-            return new IPEndpoint(input, extensionRegistry);
-          }
-        };
-
-        @java.lang.Override
-        public com.google.protobuf.Parser<IPEndpoint> getParserForType() {
-          return PARSER;
-        }
-
-        private int bitField0_;
-        // optional string ipaddress = 1;
-        public static final int IPADDRESS_FIELD_NUMBER = 1;
-        private java.lang.Object ipaddress_;
-        /**
-         * <code>optional string ipaddress = 1;</code>
-         */
-        public boolean hasIpaddress() {
-          return ((bitField0_ & 0x00000001) == 0x00000001);
-        }
-        /**
-         * <code>optional string ipaddress = 1;</code>
-         */
-        public java.lang.String getIpaddress() {
-          java.lang.Object ref = ipaddress_;
-          if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-          } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            if (bs.isValidUtf8()) {
-              ipaddress_ = s;
-            }
-            return s;
-          }
-        }
-        /**
-         * <code>optional string ipaddress = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-            getIpaddressBytes() {
-          java.lang.Object ref = ipaddress_;
-          if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            ipaddress_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-
-        // optional uint32 port = 2;
-        public static final int PORT_FIELD_NUMBER = 2;
-        private int port_;
-        /**
-         * <code>optional uint32 port = 2;</code>
-         */
-        public boolean hasPort() {
-          return ((bitField0_ & 0x00000002) == 0x00000002);
-        }
-        /**
-         * <code>optional uint32 port = 2;</code>
-         */
-        public int getPort() {
-          return port_;
-        }
-
-        private void initFields() {
-          ipaddress_ = "";
-          port_ = 0;
-        }
-        private byte memoizedIsInitialized = -1;
-        public final boolean isInitialized() {
-          byte isInitialized = memoizedIsInitialized;
-          if (isInitialized != -1) return isInitialized == 1;
-
-          memoizedIsInitialized = 1;
-          return true;
-        }
-
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                            throws java.io.IOException {
-          getSerializedSize();
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            output.writeBytes(1, getIpaddressBytes());
-          }
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            output.writeUInt32(2, port_);
-          }
-          getUnknownFields().writeTo(output);
-        }
-
-        private int memoizedSerializedSize = -1;
-        public int getSerializedSize() {
-          int size = memoizedSerializedSize;
-          if (size != -1) return size;
-
-          size = 0;
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            size += com.google.protobuf.CodedOutputStream
-              .computeBytesSize(1, getIpaddressBytes());
-          }
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            size += com.google.protobuf.CodedOutputStream
-              .computeUInt32Size(2, port_);
-          }
-          size += getUnknownFields().getSerializedSize();
-          memoizedSerializedSize = size;
-          return size;
-        }
-
-        private static final long serialVersionUID = 0L;
-        @java.lang.Override
-        protected java.lang.Object writeReplace()
-            throws java.io.ObjectStreamException {
-          return super.writeReplace();
-        }
-
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
-            com.google.protobuf.ByteString data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
-            byte[] data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return PARSER.parseFrom(input);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return PARSER.parseFrom(input, extensionRegistry);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return PARSER.parseDelimitedFrom(input);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseDelimitedFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return PARSER.parseDelimitedFrom(input, extensionRegistry);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-          return PARSER.parseFrom(input);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parseFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return PARSER.parseFrom(input, extensionRegistry);
-        }
-
-        public static Builder newBuilder() { return Builder.create(); }
-        public Builder newBuilderForType() { return newBuilder(); }
-        public static Builder newBuilder(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint prototype) {
-          return newBuilder().mergeFrom(prototype);
-        }
-        public Builder toBuilder() { return newBuilder(this); }
-
-        @java.lang.Override
-        protected Builder newBuilderForType(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          Builder builder = new Builder(parent);
-          return builder;
-        }
-        /**
-         * Protobuf type {@code peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint}
-         */
-        public static final class Builder extends
-            com.google.protobuf.GeneratedMessage.Builder<Builder>
-           implements org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder {
-          public static final com.google.protobuf.Descriptors.Descriptor
-              getDescriptor() {
-            return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
-          }
-
-          protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-              internalGetFieldAccessorTable() {
-            return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable
-                .ensureFieldAccessorsInitialized(
-                    org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.class, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder.class);
-          }
-
-          // Construct using org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.newBuilder()
-          private Builder() {
-            maybeForceBuilderInitialization();
-          }
-
-          private Builder(
-              com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-            super(parent);
-            maybeForceBuilderInitialization();
-          }
-          private void maybeForceBuilderInitialization() {
-            if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-            }
-          }
-          private static Builder create() {
-            return new Builder();
-          }
-
-          public Builder clear() {
-            super.clear();
-            ipaddress_ = "";
-            bitField0_ = (bitField0_ & ~0x00000001);
-            port_ = 0;
-            bitField0_ = (bitField0_ & ~0x00000002);
-            return this;
-          }
-
-          public Builder clone() {
-            return create().mergeFrom(buildPartial());
-          }
-
-          public com.google.protobuf.Descriptors.Descriptor
-              getDescriptorForType() {
-            return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
-          }
-
-          public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint getDefaultInstanceForType() {
-            return org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
-          }
-
-          public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint build() {
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint result = buildPartial();
-            if (!result.isInitialized()) {
-              throw newUninitializedMessageException(result);
-            }
-            return result;
-          }
-
-          public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint buildPartial() {
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint result = new org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint(this);
-            int from_bitField0_ = bitField0_;
-            int to_bitField0_ = 0;
-            if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-              to_bitField0_ |= 0x00000001;
-            }
-            result.ipaddress_ = ipaddress_;
-            if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-              to_bitField0_ |= 0x00000002;
-            }
-            result.port_ = port_;
-            result.bitField0_ = to_bitField0_;
-            onBuilt();
-            return result;
-          }
-
-          public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint) {
-              return mergeFrom((org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint)other);
-            } else {
-              super.mergeFrom(other);
-              return this;
-            }
-          }
-
-          public Builder mergeFrom(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint other) {
-            if (other == org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance()) return this;
-            if (other.hasIpaddress()) {
-              bitField0_ |= 0x00000001;
-              ipaddress_ = other.ipaddress_;
-              onChanged();
-            }
-            if (other.hasPort()) {
-              setPort(other.getPort());
-            }
-            this.mergeUnknownFields(other.getUnknownFields());
-            return this;
-          }
-
-          public final boolean isInitialized() {
-            return true;
-          }
-
-          public Builder mergeFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint parsedMessage = null;
-            try {
-              parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint) e.getUnfinishedMessage();
-              throw e;
-            } finally {
-              if (parsedMessage != null) {
-                mergeFrom(parsedMessage);
-              }
-            }
-            return this;
-          }
-          private int bitField0_;
-
-          // optional string ipaddress = 1;
-          private java.lang.Object ipaddress_ = "";
-          /**
-           * <code>optional string ipaddress = 1;</code>
-           */
-          public boolean hasIpaddress() {
-            return ((bitField0_ & 0x00000001) == 0x00000001);
-          }
-          /**
-           * <code>optional string ipaddress = 1;</code>
-           */
-          public java.lang.String getIpaddress() {
-            java.lang.Object ref = ipaddress_;
-            if (!(ref instanceof java.lang.String)) {
-              java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                  .toStringUtf8();
-              ipaddress_ = s;
-              return s;
-            } else {
-              return (java.lang.String) ref;
-            }
-          }
-          /**
-           * <code>optional string ipaddress = 1;</code>
-           */
-          public com.google.protobuf.ByteString
-              getIpaddressBytes() {
-            java.lang.Object ref = ipaddress_;
-            if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (java.lang.String) ref);
-              ipaddress_ = b;
-              return b;
-            } else {
-              return (com.google.protobuf.ByteString) ref;
-            }
-          }
-          /**
-           * <code>optional string ipaddress = 1;</code>
-           */
-          public Builder setIpaddress(
-              java.lang.String value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-            ipaddress_ = value;
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>optional string ipaddress = 1;</code>
-           */
-          public Builder clearIpaddress() {
-            bitField0_ = (bitField0_ & ~0x00000001);
-            ipaddress_ = getDefaultInstance().getIpaddress();
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>optional string ipaddress = 1;</code>
-           */
-          public Builder setIpaddressBytes(
-              com.google.protobuf.ByteString value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-            ipaddress_ = value;
-            onChanged();
-            return this;
-          }
-
-          // optional uint32 port = 2;
-          private int port_ ;
-          /**
-           * <code>optional uint32 port = 2;</code>
-           */
-          public boolean hasPort() {
-            return ((bitField0_ & 0x00000002) == 0x00000002);
-          }
-          /**
-           * <code>optional uint32 port = 2;</code>
-           */
-          public int getPort() {
-            return port_;
-          }
-          /**
-           * <code>optional uint32 port = 2;</code>
-           */
-          public Builder setPort(int value) {
-            bitField0_ |= 0x00000002;
-            port_ = value;
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>optional uint32 port = 2;</code>
-           */
-          public Builder clearPort() {
-            bitField0_ = (bitField0_ & ~0x00000002);
-            port_ = 0;
-            onChanged();
-            return this;
-          }
-
-          // @@protoc_insertion_point(builder_scope:peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint)
-        }
-
-        static {
-          defaultInstance = new IPEndpoint(true);
-          defaultInstance.initFields();
-        }
-
-        // @@protoc_insertion_point(class_scope:peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint)
-      }
-
-      public interface TOREndpointOrBuilder
-          extends com.google.protobuf.MessageOrBuilder {
-
-        // optional string TORAddress = 1;
-        /**
-         * <code>optional string TORAddress = 1;</code>
-         */
-        boolean hasTORAddress();
-        /**
-         * <code>optional string TORAddress = 1;</code>
-         */
-        java.lang.String getTORAddress();
-        /**
-         * <code>optional string TORAddress = 1;</code>
-         */
-        com.google.protobuf.ByteString
-            getTORAddressBytes();
-      }
-      /**
-       * Protobuf type {@code peercentrum.GossipReplyMorePeers.PeerEndpoint.TOREndpoint}
-       */
-      public static final class TOREndpoint extends
-          com.google.protobuf.GeneratedMessage
-          implements TOREndpointOrBuilder {
-        // Use TOREndpoint.newBuilder() to construct.
-        private TOREndpoint(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-          super(builder);
-          this.unknownFields = builder.getUnknownFields();
-        }
-        private TOREndpoint(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-        private static final TOREndpoint defaultInstance;
-        public static TOREndpoint getDefaultInstance() {
-          return defaultInstance;
-        }
-
-        public TOREndpoint getDefaultInstanceForType() {
-          return defaultInstance;
-        }
-
-        private final com.google.protobuf.UnknownFieldSet unknownFields;
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
-            getUnknownFields() {
-          return this.unknownFields;
-        }
-        private TOREndpoint(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          initFields();
-          int mutable_bitField0_ = 0;
-          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-              com.google.protobuf.UnknownFieldSet.newBuilder();
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                default: {
-                  if (!parseUnknownField(input, unknownFields,
-                                         extensionRegistry, tag)) {
-                    done = true;
-                  }
-                  break;
-                }
-                case 10: {
-                  bitField0_ |= 0x00000001;
-                  tORAddress_ = input.readBytes();
-                  break;
-                }
-              }
-            }
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(this);
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(
-                e.getMessage()).setUnfinishedMessage(this);
-          } finally {
-            this.unknownFields = unknownFields.build();
-            makeExtensionsImmutable();
-          }
-        }
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
-        }
-
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.class, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.Builder.class);
-        }
-
-        public static com.google.protobuf.Parser<TOREndpoint> PARSER =
-            new com.google.protobuf.AbstractParser<TOREndpoint>() {
-          public TOREndpoint parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-            return new TOREndpoint(input, extensionRegistry);
-          }
-        };
-
-        @java.lang.Override
-        public com.google.protobuf.Parser<TOREndpoint> getParserForType() {
-          return PARSER;
-        }
-
-        private int bitField0_;
-        // optional string TORAddress = 1;
-        public static final int TORADDRESS_FIELD_NUMBER = 1;
-        private java.lang.Object tORAddress_;
-        /**
-         * <code>optional string TORAddress = 1;</code>
-         */
-        public boolean hasTORAddress() {
-          return ((bitField0_ & 0x00000001) == 0x00000001);
-        }
-        /**
-         * <code>optional string TORAddress = 1;</code>
-         */
-        public java.lang.String getTORAddress() {
-          java.lang.Object ref = tORAddress_;
-          if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-          } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            if (bs.isValidUtf8()) {
-              tORAddress_ = s;
-            }
-            return s;
-          }
-        }
-        /**
-         * <code>optional string TORAddress = 1;</code>
-         */
-        public com.google.protobuf.ByteString
-            getTORAddressBytes() {
-          java.lang.Object ref = tORAddress_;
-          if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            tORAddress_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-
-        private void initFields() {
-          tORAddress_ = "";
-        }
-        private byte memoizedIsInitialized = -1;
-        public final boolean isInitialized() {
-          byte isInitialized = memoizedIsInitialized;
-          if (isInitialized != -1) return isInitialized == 1;
-
-          memoizedIsInitialized = 1;
-          return true;
-        }
-
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                            throws java.io.IOException {
-          getSerializedSize();
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            output.writeBytes(1, getTORAddressBytes());
-          }
-          getUnknownFields().writeTo(output);
-        }
-
-        private int memoizedSerializedSize = -1;
-        public int getSerializedSize() {
-          int size = memoizedSerializedSize;
-          if (size != -1) return size;
-
-          size = 0;
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            size += com.google.protobuf.CodedOutputStream
-              .computeBytesSize(1, getTORAddressBytes());
-          }
-          size += getUnknownFields().getSerializedSize();
-          memoizedSerializedSize = size;
-          return size;
-        }
-
-        private static final long serialVersionUID = 0L;
-        @java.lang.Override
-        protected java.lang.Object writeReplace()
-            throws java.io.ObjectStreamException {
-          return super.writeReplace();
-        }
-
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
-            com.google.protobuf.ByteString data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
-            byte[] data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return PARSER.parseFrom(input);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return PARSER.parseFrom(input, extensionRegistry);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return PARSER.parseDelimitedFrom(input);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseDelimitedFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return PARSER.parseDelimitedFrom(input, extensionRegistry);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-          return PARSER.parseFrom(input);
-        }
-        public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parseFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return PARSER.parseFrom(input, extensionRegistry);
-        }
-
-        public static Builder newBuilder() { return Builder.create(); }
-        public Builder newBuilderForType() { return newBuilder(); }
-        public static Builder newBuilder(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint prototype) {
-          return newBuilder().mergeFrom(prototype);
-        }
-        public Builder toBuilder() { return newBuilder(this); }
-
-        @java.lang.Override
-        protected Builder newBuilderForType(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          Builder builder = new Builder(parent);
-          return builder;
-        }
-        /**
-         * Protobuf type {@code peercentrum.GossipReplyMorePeers.PeerEndpoint.TOREndpoint}
-         */
-        public static final class Builder extends
-            com.google.protobuf.GeneratedMessage.Builder<Builder>
-           implements org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpointOrBuilder {
-          public static final com.google.protobuf.Descriptors.Descriptor
-              getDescriptor() {
-            return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
-          }
-
-          protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-              internalGetFieldAccessorTable() {
-            return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable
-                .ensureFieldAccessorsInitialized(
-                    org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.class, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.Builder.class);
-          }
-
-          // Construct using org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.newBuilder()
-          private Builder() {
-            maybeForceBuilderInitialization();
-          }
-
-          private Builder(
-              com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-            super(parent);
-            maybeForceBuilderInitialization();
-          }
-          private void maybeForceBuilderInitialization() {
-            if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-            }
-          }
-          private static Builder create() {
-            return new Builder();
-          }
-
-          public Builder clear() {
-            super.clear();
-            tORAddress_ = "";
-            bitField0_ = (bitField0_ & ~0x00000001);
-            return this;
-          }
-
-          public Builder clone() {
-            return create().mergeFrom(buildPartial());
-          }
-
-          public com.google.protobuf.Descriptors.Descriptor
-              getDescriptorForType() {
-            return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
-          }
-
-          public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint getDefaultInstanceForType() {
-            return org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.getDefaultInstance();
-          }
-
-          public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint build() {
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint result = buildPartial();
-            if (!result.isInitialized()) {
-              throw newUninitializedMessageException(result);
-            }
-            return result;
-          }
-
-          public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint buildPartial() {
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint result = new org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint(this);
-            int from_bitField0_ = bitField0_;
-            int to_bitField0_ = 0;
-            if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-              to_bitField0_ |= 0x00000001;
-            }
-            result.tORAddress_ = tORAddress_;
-            result.bitField0_ = to_bitField0_;
-            onBuilt();
-            return result;
-          }
-
-          public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint) {
-              return mergeFrom((org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint)other);
-            } else {
-              super.mergeFrom(other);
-              return this;
-            }
-          }
-
-          public Builder mergeFrom(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint other) {
-            if (other == org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint.getDefaultInstance()) return this;
-            if (other.hasTORAddress()) {
-              bitField0_ |= 0x00000001;
-              tORAddress_ = other.tORAddress_;
-              onChanged();
-            }
-            this.mergeUnknownFields(other.getUnknownFields());
-            return this;
-          }
-
-          public final boolean isInitialized() {
-            return true;
-          }
-
-          public Builder mergeFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint parsedMessage = null;
-            try {
-              parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.TOREndpoint) e.getUnfinishedMessage();
-              throw e;
-            } finally {
-              if (parsedMessage != null) {
-                mergeFrom(parsedMessage);
-              }
-            }
-            return this;
-          }
-          private int bitField0_;
-
-          // optional string TORAddress = 1;
-          private java.lang.Object tORAddress_ = "";
-          /**
-           * <code>optional string TORAddress = 1;</code>
-           */
-          public boolean hasTORAddress() {
-            return ((bitField0_ & 0x00000001) == 0x00000001);
-          }
-          /**
-           * <code>optional string TORAddress = 1;</code>
-           */
-          public java.lang.String getTORAddress() {
-            java.lang.Object ref = tORAddress_;
-            if (!(ref instanceof java.lang.String)) {
-              java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                  .toStringUtf8();
-              tORAddress_ = s;
-              return s;
-            } else {
-              return (java.lang.String) ref;
-            }
-          }
-          /**
-           * <code>optional string TORAddress = 1;</code>
-           */
-          public com.google.protobuf.ByteString
-              getTORAddressBytes() {
-            java.lang.Object ref = tORAddress_;
-            if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (java.lang.String) ref);
-              tORAddress_ = b;
-              return b;
-            } else {
-              return (com.google.protobuf.ByteString) ref;
-            }
-          }
-          /**
-           * <code>optional string TORAddress = 1;</code>
-           */
-          public Builder setTORAddress(
-              java.lang.String value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-            tORAddress_ = value;
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>optional string TORAddress = 1;</code>
-           */
-          public Builder clearTORAddress() {
-            bitField0_ = (bitField0_ & ~0x00000001);
-            tORAddress_ = getDefaultInstance().getTORAddress();
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>optional string TORAddress = 1;</code>
-           */
-          public Builder setTORAddressBytes(
-              com.google.protobuf.ByteString value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-            tORAddress_ = value;
-            onChanged();
-            return this;
-          }
-
-          // @@protoc_insertion_point(builder_scope:peercentrum.GossipReplyMorePeers.PeerEndpoint.TOREndpoint)
-        }
-
-        static {
-          defaultInstance = new TOREndpoint(true);
-          defaultInstance.initFields();
-        }
-
-        // @@protoc_insertion_point(class_scope:peercentrum.GossipReplyMorePeers.PeerEndpoint.TOREndpoint)
-      }
-
-      private int bitField0_;
-      // optional bytes identity = 1;
-      public static final int IDENTITY_FIELD_NUMBER = 1;
-      private com.google.protobuf.ByteString identity_;
-      /**
-       * <code>optional bytes identity = 1;</code>
-       */
-      public boolean hasIdentity() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional bytes identity = 1;</code>
-       */
-      public com.google.protobuf.ByteString getIdentity() {
-        return identity_;
-      }
-
-      // optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;
-      public static final int IPENDPOINT_FIELD_NUMBER = 2;
-      private org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint_;
-      /**
-       * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-       */
-      public boolean hasIpEndpoint() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-       */
-      public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint getIpEndpoint() {
-        return ipEndpoint_;
-      }
-      /**
-       * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-       */
-      public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder getIpEndpointOrBuilder() {
-        return ipEndpoint_;
-      }
-
-      private void initFields() {
-        identity_ = com.google.protobuf.ByteString.EMPTY;
-        ipEndpoint_ = org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
-      }
-      private byte memoizedIsInitialized = -1;
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        getSerializedSize();
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, identity_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeMessage(2, ipEndpoint_);
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      private int memoizedSerializedSize = -1;
-      public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, identity_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(2, ipEndpoint_);
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
-      }
-
-      private static final long serialVersionUID = 0L;
-      @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
-      }
-
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input);
-      }
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
-      }
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
-      }
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
-      }
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input);
-      }
-      public static org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
-      }
-
-      public static Builder newBuilder() { return Builder.create(); }
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint prototype) {
-        return newBuilder().mergeFrom(prototype);
-      }
-      public Builder toBuilder() { return newBuilder(this); }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code peercentrum.GossipReplyMorePeers.PeerEndpoint}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_descriptor;
-        }
-
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.class, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder.class);
-        }
-
-        // Construct using org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-            getIpEndpointFieldBuilder();
-          }
-        }
-        private static Builder create() {
-          return new Builder();
-        }
-
-        public Builder clear() {
-          super.clear();
-          identity_ = com.google.protobuf.ByteString.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000001);
-          if (ipEndpointBuilder_ == null) {
-            ipEndpoint_ = org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
-          } else {
-            ipEndpointBuilder_.clear();
-          }
-          bitField0_ = (bitField0_ & ~0x00000002);
-          return this;
-        }
-
-        public Builder clone() {
-          return create().mergeFrom(buildPartial());
-        }
-
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_descriptor;
-        }
-
-        public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint getDefaultInstanceForType() {
-          return org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.getDefaultInstance();
-        }
-
-        public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint build() {
-          org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint buildPartial() {
-          org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint result = new org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint(this);
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-            to_bitField0_ |= 0x00000001;
-          }
-          result.identity_ = identity_;
-          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-            to_bitField0_ |= 0x00000002;
-          }
-          if (ipEndpointBuilder_ == null) {
-            result.ipEndpoint_ = ipEndpoint_;
-          } else {
-            result.ipEndpoint_ = ipEndpointBuilder_.build();
-          }
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
-        }
-
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint) {
-            return mergeFrom((org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint other) {
-          if (other == org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.getDefaultInstance()) return this;
-          if (other.hasIdentity()) {
-            setIdentity(other.getIdentity());
-          }
-          if (other.hasIpEndpoint()) {
-            mergeIpEndpoint(other.getIpEndpoint());
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
-        }
-
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-        private int bitField0_;
-
-        // optional bytes identity = 1;
-        private com.google.protobuf.ByteString identity_ = com.google.protobuf.ByteString.EMPTY;
-        /**
-         * <code>optional bytes identity = 1;</code>
-         */
-        public boolean hasIdentity() {
-          return ((bitField0_ & 0x00000001) == 0x00000001);
-        }
-        /**
-         * <code>optional bytes identity = 1;</code>
-         */
-        public com.google.protobuf.ByteString getIdentity() {
-          return identity_;
-        }
-        /**
-         * <code>optional bytes identity = 1;</code>
-         */
-        public Builder setIdentity(com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-          identity_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional bytes identity = 1;</code>
-         */
-        public Builder clearIdentity() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          identity_ = getDefaultInstance().getIdentity();
-          onChanged();
-          return this;
-        }
-
-        // optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;
-        private org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint_ = org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
-        private com.google.protobuf.SingleFieldBuilder<
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder> ipEndpointBuilder_;
-        /**
-         * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-         */
-        public boolean hasIpEndpoint() {
-          return ((bitField0_ & 0x00000002) == 0x00000002);
-        }
-        /**
-         * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-         */
-        public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint getIpEndpoint() {
-          if (ipEndpointBuilder_ == null) {
-            return ipEndpoint_;
-          } else {
-            return ipEndpointBuilder_.getMessage();
-          }
-        }
-        /**
-         * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-         */
-        public Builder setIpEndpoint(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint value) {
-          if (ipEndpointBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ipEndpoint_ = value;
-            onChanged();
-          } else {
-            ipEndpointBuilder_.setMessage(value);
-          }
-          bitField0_ |= 0x00000002;
-          return this;
-        }
-        /**
-         * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-         */
-        public Builder setIpEndpoint(
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder builderForValue) {
-          if (ipEndpointBuilder_ == null) {
-            ipEndpoint_ = builderForValue.build();
-            onChanged();
-          } else {
-            ipEndpointBuilder_.setMessage(builderForValue.build());
-          }
-          bitField0_ |= 0x00000002;
-          return this;
-        }
-        /**
-         * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-         */
-        public Builder mergeIpEndpoint(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint value) {
-          if (ipEndpointBuilder_ == null) {
-            if (((bitField0_ & 0x00000002) == 0x00000002) &&
-                ipEndpoint_ != org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance()) {
-              ipEndpoint_ =
-                org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.newBuilder(ipEndpoint_).mergeFrom(value).buildPartial();
-            } else {
-              ipEndpoint_ = value;
-            }
-            onChanged();
-          } else {
-            ipEndpointBuilder_.mergeFrom(value);
-          }
-          bitField0_ |= 0x00000002;
-          return this;
-        }
-        /**
-         * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-         */
-        public Builder clearIpEndpoint() {
-          if (ipEndpointBuilder_ == null) {
-            ipEndpoint_ = org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.getDefaultInstance();
-            onChanged();
-          } else {
-            ipEndpointBuilder_.clear();
-          }
-          bitField0_ = (bitField0_ & ~0x00000002);
-          return this;
-        }
-        /**
-         * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-         */
-        public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder getIpEndpointBuilder() {
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return getIpEndpointFieldBuilder().getBuilder();
-        }
-        /**
-         * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-         */
-        public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder getIpEndpointOrBuilder() {
-          if (ipEndpointBuilder_ != null) {
-            return ipEndpointBuilder_.getMessageOrBuilder();
-          } else {
-            return ipEndpoint_;
-          }
-        }
-        /**
-         * <code>optional .peercentrum.GossipReplyMorePeers.PeerEndpoint.IPEndpoint ipEndpoint = 2;</code>
-         */
-        private com.google.protobuf.SingleFieldBuilder<
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder> 
-            getIpEndpointFieldBuilder() {
-          if (ipEndpointBuilder_ == null) {
-            ipEndpointBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpoint.Builder, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.IPEndpointOrBuilder>(
-                    ipEndpoint_,
-                    getParentForChildren(),
-                    isClean());
-            ipEndpoint_ = null;
-          }
-          return ipEndpointBuilder_;
-        }
-
-        // @@protoc_insertion_point(builder_scope:peercentrum.GossipReplyMorePeers.PeerEndpoint)
-      }
-
-      static {
-        defaultInstance = new PeerEndpoint(true);
-        defaultInstance.initFields();
-      }
-
-      // @@protoc_insertion_point(class_scope:peercentrum.GossipReplyMorePeers.PeerEndpoint)
-    }
-
-    // repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;
+    // repeated .peercentrum.PeerEndpointMsg peers = 1;
     public static final int PEERS_FIELD_NUMBER = 1;
-    private java.util.List<org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint> peers_;
+    private java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> peers_;
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
-    public java.util.List<org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint> getPeersList() {
+    public java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> getPeersList() {
       return peers_;
     }
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
-    public java.util.List<? extends org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder> 
+    public java.util.List<? extends org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> 
         getPeersOrBuilderList() {
       return peers_;
     }
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
     public int getPeersCount() {
       return peers_.size();
     }
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
-    public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint getPeers(int index) {
+    public org.peercentrum.core.PB.PeerEndpointMsg getPeers(int index) {
       return peers_.get(index);
     }
     /**
-     * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
      */
-    public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder getPeersOrBuilder(
+    public org.peercentrum.core.PB.PeerEndpointMsgOrBuilder getPeersOrBuilder(
         int index) {
       return peers_.get(index);
     }
@@ -5803,23 +3880,23 @@ public final class PB {
       }
       private int bitField0_;
 
-      // repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;
-      private java.util.List<org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint> peers_ =
+      // repeated .peercentrum.PeerEndpointMsg peers = 1;
+      private java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> peers_ =
         java.util.Collections.emptyList();
       private void ensurePeersIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          peers_ = new java.util.ArrayList<org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint>(peers_);
+          peers_ = new java.util.ArrayList<org.peercentrum.core.PB.PeerEndpointMsg>(peers_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder> peersBuilder_;
+          org.peercentrum.core.PB.PeerEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> peersBuilder_;
 
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
-      public java.util.List<org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint> getPeersList() {
+      public java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> getPeersList() {
         if (peersBuilder_ == null) {
           return java.util.Collections.unmodifiableList(peers_);
         } else {
@@ -5827,7 +3904,7 @@ public final class PB {
         }
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
       public int getPeersCount() {
         if (peersBuilder_ == null) {
@@ -5837,9 +3914,9 @@ public final class PB {
         }
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
-      public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint getPeers(int index) {
+      public org.peercentrum.core.PB.PeerEndpointMsg getPeers(int index) {
         if (peersBuilder_ == null) {
           return peers_.get(index);
         } else {
@@ -5847,10 +3924,10 @@ public final class PB {
         }
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
       public Builder setPeers(
-          int index, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint value) {
+          int index, org.peercentrum.core.PB.PeerEndpointMsg value) {
         if (peersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5864,10 +3941,10 @@ public final class PB {
         return this;
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
       public Builder setPeers(
-          int index, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder builderForValue) {
+          int index, org.peercentrum.core.PB.PeerEndpointMsg.Builder builderForValue) {
         if (peersBuilder_ == null) {
           ensurePeersIsMutable();
           peers_.set(index, builderForValue.build());
@@ -5878,9 +3955,9 @@ public final class PB {
         return this;
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
-      public Builder addPeers(org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint value) {
+      public Builder addPeers(org.peercentrum.core.PB.PeerEndpointMsg value) {
         if (peersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5894,10 +3971,10 @@ public final class PB {
         return this;
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
       public Builder addPeers(
-          int index, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint value) {
+          int index, org.peercentrum.core.PB.PeerEndpointMsg value) {
         if (peersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5911,10 +3988,10 @@ public final class PB {
         return this;
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
       public Builder addPeers(
-          org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder builderForValue) {
+          org.peercentrum.core.PB.PeerEndpointMsg.Builder builderForValue) {
         if (peersBuilder_ == null) {
           ensurePeersIsMutable();
           peers_.add(builderForValue.build());
@@ -5925,10 +4002,10 @@ public final class PB {
         return this;
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
       public Builder addPeers(
-          int index, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder builderForValue) {
+          int index, org.peercentrum.core.PB.PeerEndpointMsg.Builder builderForValue) {
         if (peersBuilder_ == null) {
           ensurePeersIsMutable();
           peers_.add(index, builderForValue.build());
@@ -5939,10 +4016,10 @@ public final class PB {
         return this;
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
       public Builder addAllPeers(
-          java.lang.Iterable<? extends org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint> values) {
+          java.lang.Iterable<? extends org.peercentrum.core.PB.PeerEndpointMsg> values) {
         if (peersBuilder_ == null) {
           ensurePeersIsMutable();
           super.addAll(values, peers_);
@@ -5953,7 +4030,7 @@ public final class PB {
         return this;
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
       public Builder clearPeers() {
         if (peersBuilder_ == null) {
@@ -5966,7 +4043,7 @@ public final class PB {
         return this;
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
       public Builder removePeers(int index) {
         if (peersBuilder_ == null) {
@@ -5979,16 +4056,16 @@ public final class PB {
         return this;
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
-      public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder getPeersBuilder(
+      public org.peercentrum.core.PB.PeerEndpointMsg.Builder getPeersBuilder(
           int index) {
         return getPeersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
-      public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder getPeersOrBuilder(
+      public org.peercentrum.core.PB.PeerEndpointMsgOrBuilder getPeersOrBuilder(
           int index) {
         if (peersBuilder_ == null) {
           return peers_.get(index);  } else {
@@ -5996,9 +4073,9 @@ public final class PB {
         }
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
-      public java.util.List<? extends org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder> 
+      public java.util.List<? extends org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> 
            getPeersOrBuilderList() {
         if (peersBuilder_ != null) {
           return peersBuilder_.getMessageOrBuilderList();
@@ -6007,33 +4084,33 @@ public final class PB {
         }
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
-      public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder addPeersBuilder() {
+      public org.peercentrum.core.PB.PeerEndpointMsg.Builder addPeersBuilder() {
         return getPeersFieldBuilder().addBuilder(
-            org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.getDefaultInstance());
+            org.peercentrum.core.PB.PeerEndpointMsg.getDefaultInstance());
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
-      public org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder addPeersBuilder(
+      public org.peercentrum.core.PB.PeerEndpointMsg.Builder addPeersBuilder(
           int index) {
         return getPeersFieldBuilder().addBuilder(
-            index, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.getDefaultInstance());
+            index, org.peercentrum.core.PB.PeerEndpointMsg.getDefaultInstance());
       }
       /**
-       * <code>repeated .peercentrum.GossipReplyMorePeers.PeerEndpoint peers = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg peers = 1;</code>
        */
-      public java.util.List<org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder> 
+      public java.util.List<org.peercentrum.core.PB.PeerEndpointMsg.Builder> 
            getPeersBuilderList() {
         return getPeersFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder> 
+          org.peercentrum.core.PB.PeerEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> 
           getPeersFieldBuilder() {
         if (peersBuilder_ == null) {
           peersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpoint.Builder, org.peercentrum.core.PB.GossipReplyMorePeers.PeerEndpointOrBuilder>(
+              org.peercentrum.core.PB.PeerEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsgOrBuilder>(
                   peers_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -6052,6 +4129,1620 @@ public final class PB {
     }
 
     // @@protoc_insertion_point(class_scope:peercentrum.GossipReplyMorePeers)
+  }
+
+  public interface PeerEndpointMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional bytes identity = 1;
+    /**
+     * <code>optional bytes identity = 1;</code>
+     */
+    boolean hasIdentity();
+    /**
+     * <code>optional bytes identity = 1;</code>
+     */
+    com.google.protobuf.ByteString getIdentity();
+
+    // optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;
+    /**
+     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     */
+    boolean hasIpEndpoint();
+    /**
+     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     */
+    org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg getIpEndpoint();
+    /**
+     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     */
+    org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder getIpEndpointOrBuilder();
+  }
+  /**
+   * Protobuf type {@code peercentrum.PeerEndpointMsg}
+   */
+  public static final class PeerEndpointMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements PeerEndpointMsgOrBuilder {
+    // Use PeerEndpointMsg.newBuilder() to construct.
+    private PeerEndpointMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private PeerEndpointMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final PeerEndpointMsg defaultInstance;
+    public static PeerEndpointMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public PeerEndpointMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PeerEndpointMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              identity_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = ipEndpoint_.toBuilder();
+              }
+              ipEndpoint_ = input.readMessage(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ipEndpoint_);
+                ipEndpoint_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.PB.PeerEndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<PeerEndpointMsg> PARSER =
+        new com.google.protobuf.AbstractParser<PeerEndpointMsg>() {
+      public PeerEndpointMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PeerEndpointMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PeerEndpointMsg> getParserForType() {
+      return PARSER;
+    }
+
+    public interface IPEndpointMsgOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+
+      // optional string ipaddress = 1;
+      /**
+       * <code>optional string ipaddress = 1;</code>
+       */
+      boolean hasIpaddress();
+      /**
+       * <code>optional string ipaddress = 1;</code>
+       */
+      java.lang.String getIpaddress();
+      /**
+       * <code>optional string ipaddress = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getIpaddressBytes();
+
+      // optional uint32 port = 2;
+      /**
+       * <code>optional uint32 port = 2;</code>
+       */
+      boolean hasPort();
+      /**
+       * <code>optional uint32 port = 2;</code>
+       */
+      int getPort();
+    }
+    /**
+     * Protobuf type {@code peercentrum.PeerEndpointMsg.IPEndpointMsg}
+     */
+    public static final class IPEndpointMsg extends
+        com.google.protobuf.GeneratedMessage
+        implements IPEndpointMsgOrBuilder {
+      // Use IPEndpointMsg.newBuilder() to construct.
+      private IPEndpointMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
+      }
+      private IPEndpointMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final IPEndpointMsg defaultInstance;
+      public static IPEndpointMsg getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public IPEndpointMsg getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private IPEndpointMsg(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 10: {
+                bitField0_ |= 0x00000001;
+                ipaddress_ = input.readBytes();
+                break;
+              }
+              case 16: {
+                bitField0_ |= 0x00000002;
+                port_ = input.readUInt32();
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<IPEndpointMsg> PARSER =
+          new com.google.protobuf.AbstractParser<IPEndpointMsg>() {
+        public IPEndpointMsg parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new IPEndpointMsg(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<IPEndpointMsg> getParserForType() {
+        return PARSER;
+      }
+
+      private int bitField0_;
+      // optional string ipaddress = 1;
+      public static final int IPADDRESS_FIELD_NUMBER = 1;
+      private java.lang.Object ipaddress_;
+      /**
+       * <code>optional string ipaddress = 1;</code>
+       */
+      public boolean hasIpaddress() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string ipaddress = 1;</code>
+       */
+      public java.lang.String getIpaddress() {
+        java.lang.Object ref = ipaddress_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            ipaddress_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>optional string ipaddress = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIpaddressBytes() {
+        java.lang.Object ref = ipaddress_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ipaddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      // optional uint32 port = 2;
+      public static final int PORT_FIELD_NUMBER = 2;
+      private int port_;
+      /**
+       * <code>optional uint32 port = 2;</code>
+       */
+      public boolean hasPort() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional uint32 port = 2;</code>
+       */
+      public int getPort() {
+        return port_;
+      }
+
+      private void initFields() {
+        ipaddress_ = "";
+        port_ = 0;
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeBytes(1, getIpaddressBytes());
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeUInt32(2, port_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(1, getIpaddressBytes());
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, port_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code peercentrum.PeerEndpointMsg.IPEndpointMsg}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder.class);
+        }
+
+        // Construct using org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          ipaddress_ = "";
+          bitField0_ = (bitField0_ & ~0x00000001);
+          port_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000002);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor;
+        }
+
+        public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg getDefaultInstanceForType() {
+          return org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+        }
+
+        public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg build() {
+          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg buildPartial() {
+          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg result = new org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.ipaddress_ = ipaddress_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.port_ = port_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg) {
+            return mergeFrom((org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg other) {
+          if (other == org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance()) return this;
+          if (other.hasIpaddress()) {
+            bitField0_ |= 0x00000001;
+            ipaddress_ = other.ipaddress_;
+            onChanged();
+          }
+          if (other.hasPort()) {
+            setPort(other.getPort());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        // optional string ipaddress = 1;
+        private java.lang.Object ipaddress_ = "";
+        /**
+         * <code>optional string ipaddress = 1;</code>
+         */
+        public boolean hasIpaddress() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        /**
+         * <code>optional string ipaddress = 1;</code>
+         */
+        public java.lang.String getIpaddress() {
+          java.lang.Object ref = ipaddress_;
+          if (!(ref instanceof java.lang.String)) {
+            java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                .toStringUtf8();
+            ipaddress_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>optional string ipaddress = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIpaddressBytes() {
+          java.lang.Object ref = ipaddress_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            ipaddress_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>optional string ipaddress = 1;</code>
+         */
+        public Builder setIpaddress(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          ipaddress_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string ipaddress = 1;</code>
+         */
+        public Builder clearIpaddress() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          ipaddress_ = getDefaultInstance().getIpaddress();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string ipaddress = 1;</code>
+         */
+        public Builder setIpaddressBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          ipaddress_ = value;
+          onChanged();
+          return this;
+        }
+
+        // optional uint32 port = 2;
+        private int port_ ;
+        /**
+         * <code>optional uint32 port = 2;</code>
+         */
+        public boolean hasPort() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>optional uint32 port = 2;</code>
+         */
+        public int getPort() {
+          return port_;
+        }
+        /**
+         * <code>optional uint32 port = 2;</code>
+         */
+        public Builder setPort(int value) {
+          bitField0_ |= 0x00000002;
+          port_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional uint32 port = 2;</code>
+         */
+        public Builder clearPort() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          port_ = 0;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:peercentrum.PeerEndpointMsg.IPEndpointMsg)
+      }
+
+      static {
+        defaultInstance = new IPEndpointMsg(true);
+        defaultInstance.initFields();
+      }
+
+      // @@protoc_insertion_point(class_scope:peercentrum.PeerEndpointMsg.IPEndpointMsg)
+    }
+
+    public interface TOREndpointMsgOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+
+      // optional string TORAddress = 1;
+      /**
+       * <code>optional string TORAddress = 1;</code>
+       */
+      boolean hasTORAddress();
+      /**
+       * <code>optional string TORAddress = 1;</code>
+       */
+      java.lang.String getTORAddress();
+      /**
+       * <code>optional string TORAddress = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getTORAddressBytes();
+    }
+    /**
+     * Protobuf type {@code peercentrum.PeerEndpointMsg.TOREndpointMsg}
+     */
+    public static final class TOREndpointMsg extends
+        com.google.protobuf.GeneratedMessage
+        implements TOREndpointMsgOrBuilder {
+      // Use TOREndpointMsg.newBuilder() to construct.
+      private TOREndpointMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
+      }
+      private TOREndpointMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final TOREndpointMsg defaultInstance;
+      public static TOREndpointMsg getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public TOREndpointMsg getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private TOREndpointMsg(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 10: {
+                bitField0_ |= 0x00000001;
+                tORAddress_ = input.readBytes();
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<TOREndpointMsg> PARSER =
+          new com.google.protobuf.AbstractParser<TOREndpointMsg>() {
+        public TOREndpointMsg parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new TOREndpointMsg(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<TOREndpointMsg> getParserForType() {
+        return PARSER;
+      }
+
+      private int bitField0_;
+      // optional string TORAddress = 1;
+      public static final int TORADDRESS_FIELD_NUMBER = 1;
+      private java.lang.Object tORAddress_;
+      /**
+       * <code>optional string TORAddress = 1;</code>
+       */
+      public boolean hasTORAddress() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string TORAddress = 1;</code>
+       */
+      public java.lang.String getTORAddress() {
+        java.lang.Object ref = tORAddress_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            tORAddress_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>optional string TORAddress = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTORAddressBytes() {
+        java.lang.Object ref = tORAddress_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          tORAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private void initFields() {
+        tORAddress_ = "";
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeBytes(1, getTORAddressBytes());
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(1, getTORAddressBytes());
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code peercentrum.PeerEndpointMsg.TOREndpointMsg}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsgOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg.Builder.class);
+        }
+
+        // Construct using org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          tORAddress_ = "";
+          bitField0_ = (bitField0_ & ~0x00000001);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_descriptor;
+        }
+
+        public org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg getDefaultInstanceForType() {
+          return org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg.getDefaultInstance();
+        }
+
+        public org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg build() {
+          org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg buildPartial() {
+          org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg result = new org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.tORAddress_ = tORAddress_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg) {
+            return mergeFrom((org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg other) {
+          if (other == org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg.getDefaultInstance()) return this;
+          if (other.hasTORAddress()) {
+            bitField0_ |= 0x00000001;
+            tORAddress_ = other.tORAddress_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (org.peercentrum.core.PB.PeerEndpointMsg.TOREndpointMsg) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        // optional string TORAddress = 1;
+        private java.lang.Object tORAddress_ = "";
+        /**
+         * <code>optional string TORAddress = 1;</code>
+         */
+        public boolean hasTORAddress() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        /**
+         * <code>optional string TORAddress = 1;</code>
+         */
+        public java.lang.String getTORAddress() {
+          java.lang.Object ref = tORAddress_;
+          if (!(ref instanceof java.lang.String)) {
+            java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                .toStringUtf8();
+            tORAddress_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>optional string TORAddress = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTORAddressBytes() {
+          java.lang.Object ref = tORAddress_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            tORAddress_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>optional string TORAddress = 1;</code>
+         */
+        public Builder setTORAddress(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          tORAddress_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string TORAddress = 1;</code>
+         */
+        public Builder clearTORAddress() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          tORAddress_ = getDefaultInstance().getTORAddress();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string TORAddress = 1;</code>
+         */
+        public Builder setTORAddressBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          tORAddress_ = value;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:peercentrum.PeerEndpointMsg.TOREndpointMsg)
+      }
+
+      static {
+        defaultInstance = new TOREndpointMsg(true);
+        defaultInstance.initFields();
+      }
+
+      // @@protoc_insertion_point(class_scope:peercentrum.PeerEndpointMsg.TOREndpointMsg)
+    }
+
+    private int bitField0_;
+    // optional bytes identity = 1;
+    public static final int IDENTITY_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString identity_;
+    /**
+     * <code>optional bytes identity = 1;</code>
+     */
+    public boolean hasIdentity() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional bytes identity = 1;</code>
+     */
+    public com.google.protobuf.ByteString getIdentity() {
+      return identity_;
+    }
+
+    // optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;
+    public static final int IPENDPOINT_FIELD_NUMBER = 2;
+    private org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg ipEndpoint_;
+    /**
+     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     */
+    public boolean hasIpEndpoint() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     */
+    public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg getIpEndpoint() {
+      return ipEndpoint_;
+    }
+    /**
+     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     */
+    public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder getIpEndpointOrBuilder() {
+      return ipEndpoint_;
+    }
+
+    private void initFields() {
+      identity_ = com.google.protobuf.ByteString.EMPTY;
+      ipEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, identity_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, ipEndpoint_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, identity_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, ipEndpoint_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.PeerEndpointMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.PB.PeerEndpointMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.PeerEndpointMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.PB.PeerEndpointMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.PB.PeerEndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.PB.PeerEndpointMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIpEndpointFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        identity_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (ipEndpointBuilder_ == null) {
+          ipEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+        } else {
+          ipEndpointBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_descriptor;
+      }
+
+      public org.peercentrum.core.PB.PeerEndpointMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.PB.PeerEndpointMsg.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.PB.PeerEndpointMsg build() {
+        org.peercentrum.core.PB.PeerEndpointMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.PB.PeerEndpointMsg buildPartial() {
+        org.peercentrum.core.PB.PeerEndpointMsg result = new org.peercentrum.core.PB.PeerEndpointMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.identity_ = identity_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (ipEndpointBuilder_ == null) {
+          result.ipEndpoint_ = ipEndpoint_;
+        } else {
+          result.ipEndpoint_ = ipEndpointBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.PB.PeerEndpointMsg) {
+          return mergeFrom((org.peercentrum.core.PB.PeerEndpointMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.PB.PeerEndpointMsg other) {
+        if (other == org.peercentrum.core.PB.PeerEndpointMsg.getDefaultInstance()) return this;
+        if (other.hasIdentity()) {
+          setIdentity(other.getIdentity());
+        }
+        if (other.hasIpEndpoint()) {
+          mergeIpEndpoint(other.getIpEndpoint());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.PB.PeerEndpointMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.PB.PeerEndpointMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional bytes identity = 1;
+      private com.google.protobuf.ByteString identity_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes identity = 1;</code>
+       */
+      public boolean hasIdentity() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional bytes identity = 1;</code>
+       */
+      public com.google.protobuf.ByteString getIdentity() {
+        return identity_;
+      }
+      /**
+       * <code>optional bytes identity = 1;</code>
+       */
+      public Builder setIdentity(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        identity_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes identity = 1;</code>
+       */
+      public Builder clearIdentity() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        identity_ = getDefaultInstance().getIdentity();
+        onChanged();
+        return this;
+      }
+
+      // optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;
+      private org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg ipEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder> ipEndpointBuilder_;
+      /**
+       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       */
+      public boolean hasIpEndpoint() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       */
+      public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg getIpEndpoint() {
+        if (ipEndpointBuilder_ == null) {
+          return ipEndpoint_;
+        } else {
+          return ipEndpointBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       */
+      public Builder setIpEndpoint(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg value) {
+        if (ipEndpointBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ipEndpoint_ = value;
+          onChanged();
+        } else {
+          ipEndpointBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       */
+      public Builder setIpEndpoint(
+          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder builderForValue) {
+        if (ipEndpointBuilder_ == null) {
+          ipEndpoint_ = builderForValue.build();
+          onChanged();
+        } else {
+          ipEndpointBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       */
+      public Builder mergeIpEndpoint(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg value) {
+        if (ipEndpointBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              ipEndpoint_ != org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance()) {
+            ipEndpoint_ =
+              org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.newBuilder(ipEndpoint_).mergeFrom(value).buildPartial();
+          } else {
+            ipEndpoint_ = value;
+          }
+          onChanged();
+        } else {
+          ipEndpointBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       */
+      public Builder clearIpEndpoint() {
+        if (ipEndpointBuilder_ == null) {
+          ipEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          ipEndpointBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       */
+      public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder getIpEndpointBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getIpEndpointFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       */
+      public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder getIpEndpointOrBuilder() {
+        if (ipEndpointBuilder_ != null) {
+          return ipEndpointBuilder_.getMessageOrBuilder();
+        } else {
+          return ipEndpoint_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder> 
+          getIpEndpointFieldBuilder() {
+        if (ipEndpointBuilder_ == null) {
+          ipEndpointBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder>(
+                  ipEndpoint_,
+                  getParentForChildren(),
+                  isClean());
+          ipEndpoint_ = null;
+        }
+        return ipEndpointBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.PeerEndpointMsg)
+    }
+
+    static {
+      defaultInstance = new PeerEndpointMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.PeerEndpointMsg)
   }
 
   public interface GenericResponseOrBuilder
@@ -20416,16 +20107,3059 @@ public final class PB {
     // @@protoc_insertion_point(class_scope:peercentrum.SettlementMsg)
   }
 
+  public interface DHTTopLevelMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional .peercentrum.DHTPingMsg ping = 1;
+    /**
+     * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+     */
+    boolean hasPing();
+    /**
+     * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+     */
+    org.peercentrum.core.PB.DHTPingMsg getPing();
+    /**
+     * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+     */
+    org.peercentrum.core.PB.DHTPingMsgOrBuilder getPingOrBuilder();
+
+    // optional .peercentrum.DHTFindMsg find = 2;
+    /**
+     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    boolean hasFind();
+    /**
+     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    org.peercentrum.core.PB.DHTFindMsg getFind();
+    /**
+     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    org.peercentrum.core.PB.DHTFindMsgOrBuilder getFindOrBuilder();
+
+    // optional .peercentrum.DHTFoundMsg found = 3;
+    /**
+     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    boolean hasFound();
+    /**
+     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    org.peercentrum.core.PB.DHTFoundMsg getFound();
+    /**
+     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    org.peercentrum.core.PB.DHTFoundMsgOrBuilder getFoundOrBuilder();
+
+    // optional .peercentrum.DHTStoreValueMsg storeValue = 4;
+    /**
+     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    boolean hasStoreValue();
+    /**
+     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    org.peercentrum.core.PB.DHTStoreValueMsg getStoreValue();
+    /**
+     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder getStoreValueOrBuilder();
+  }
+  /**
+   * Protobuf type {@code peercentrum.DHTTopLevelMsg}
+   *
+   * <pre>
+   *&#47;/////////////// DHT ////////////////////
+   * </pre>
+   */
+  public static final class DHTTopLevelMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements DHTTopLevelMsgOrBuilder {
+    // Use DHTTopLevelMsg.newBuilder() to construct.
+    private DHTTopLevelMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DHTTopLevelMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DHTTopLevelMsg defaultInstance;
+    public static DHTTopLevelMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DHTTopLevelMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DHTTopLevelMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              org.peercentrum.core.PB.DHTPingMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = ping_.toBuilder();
+              }
+              ping_ = input.readMessage(org.peercentrum.core.PB.DHTPingMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ping_);
+                ping_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              org.peercentrum.core.PB.DHTFindMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = find_.toBuilder();
+              }
+              find_ = input.readMessage(org.peercentrum.core.PB.DHTFindMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(find_);
+                find_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              org.peercentrum.core.PB.DHTFoundMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = found_.toBuilder();
+              }
+              found_ = input.readMessage(org.peercentrum.core.PB.DHTFoundMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(found_);
+                found_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              org.peercentrum.core.PB.DHTStoreValueMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = storeValue_.toBuilder();
+              }
+              storeValue_ = input.readMessage(org.peercentrum.core.PB.DHTStoreValueMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(storeValue_);
+                storeValue_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTTopLevelMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTTopLevelMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.PB.DHTTopLevelMsg.class, org.peercentrum.core.PB.DHTTopLevelMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DHTTopLevelMsg> PARSER =
+        new com.google.protobuf.AbstractParser<DHTTopLevelMsg>() {
+      public DHTTopLevelMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DHTTopLevelMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DHTTopLevelMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional .peercentrum.DHTPingMsg ping = 1;
+    public static final int PING_FIELD_NUMBER = 1;
+    private org.peercentrum.core.PB.DHTPingMsg ping_;
+    /**
+     * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+     */
+    public boolean hasPing() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+     */
+    public org.peercentrum.core.PB.DHTPingMsg getPing() {
+      return ping_;
+    }
+    /**
+     * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+     */
+    public org.peercentrum.core.PB.DHTPingMsgOrBuilder getPingOrBuilder() {
+      return ping_;
+    }
+
+    // optional .peercentrum.DHTFindMsg find = 2;
+    public static final int FIND_FIELD_NUMBER = 2;
+    private org.peercentrum.core.PB.DHTFindMsg find_;
+    /**
+     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    public boolean hasFind() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    public org.peercentrum.core.PB.DHTFindMsg getFind() {
+      return find_;
+    }
+    /**
+     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    public org.peercentrum.core.PB.DHTFindMsgOrBuilder getFindOrBuilder() {
+      return find_;
+    }
+
+    // optional .peercentrum.DHTFoundMsg found = 3;
+    public static final int FOUND_FIELD_NUMBER = 3;
+    private org.peercentrum.core.PB.DHTFoundMsg found_;
+    /**
+     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    public boolean hasFound() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    public org.peercentrum.core.PB.DHTFoundMsg getFound() {
+      return found_;
+    }
+    /**
+     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    public org.peercentrum.core.PB.DHTFoundMsgOrBuilder getFoundOrBuilder() {
+      return found_;
+    }
+
+    // optional .peercentrum.DHTStoreValueMsg storeValue = 4;
+    public static final int STOREVALUE_FIELD_NUMBER = 4;
+    private org.peercentrum.core.PB.DHTStoreValueMsg storeValue_;
+    /**
+     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    public boolean hasStoreValue() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    public org.peercentrum.core.PB.DHTStoreValueMsg getStoreValue() {
+      return storeValue_;
+    }
+    /**
+     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    public org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder getStoreValueOrBuilder() {
+      return storeValue_;
+    }
+
+    private void initFields() {
+      ping_ = org.peercentrum.core.PB.DHTPingMsg.getDefaultInstance();
+      find_ = org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance();
+      found_ = org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance();
+      storeValue_ = org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, ping_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, find_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, found_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, storeValue_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, ping_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, find_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, found_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, storeValue_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTTopLevelMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.PB.DHTTopLevelMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.DHTTopLevelMsg}
+     *
+     * <pre>
+     *&#47;/////////////// DHT ////////////////////
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.PB.DHTTopLevelMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTTopLevelMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTTopLevelMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.PB.DHTTopLevelMsg.class, org.peercentrum.core.PB.DHTTopLevelMsg.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.PB.DHTTopLevelMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getPingFieldBuilder();
+          getFindFieldBuilder();
+          getFoundFieldBuilder();
+          getStoreValueFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (pingBuilder_ == null) {
+          ping_ = org.peercentrum.core.PB.DHTPingMsg.getDefaultInstance();
+        } else {
+          pingBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (findBuilder_ == null) {
+          find_ = org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance();
+        } else {
+          findBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (foundBuilder_ == null) {
+          found_ = org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance();
+        } else {
+          foundBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (storeValueBuilder_ == null) {
+          storeValue_ = org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance();
+        } else {
+          storeValueBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTTopLevelMsg_descriptor;
+      }
+
+      public org.peercentrum.core.PB.DHTTopLevelMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.PB.DHTTopLevelMsg.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.PB.DHTTopLevelMsg build() {
+        org.peercentrum.core.PB.DHTTopLevelMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.PB.DHTTopLevelMsg buildPartial() {
+        org.peercentrum.core.PB.DHTTopLevelMsg result = new org.peercentrum.core.PB.DHTTopLevelMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (pingBuilder_ == null) {
+          result.ping_ = ping_;
+        } else {
+          result.ping_ = pingBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (findBuilder_ == null) {
+          result.find_ = find_;
+        } else {
+          result.find_ = findBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (foundBuilder_ == null) {
+          result.found_ = found_;
+        } else {
+          result.found_ = foundBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (storeValueBuilder_ == null) {
+          result.storeValue_ = storeValue_;
+        } else {
+          result.storeValue_ = storeValueBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.PB.DHTTopLevelMsg) {
+          return mergeFrom((org.peercentrum.core.PB.DHTTopLevelMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.PB.DHTTopLevelMsg other) {
+        if (other == org.peercentrum.core.PB.DHTTopLevelMsg.getDefaultInstance()) return this;
+        if (other.hasPing()) {
+          mergePing(other.getPing());
+        }
+        if (other.hasFind()) {
+          mergeFind(other.getFind());
+        }
+        if (other.hasFound()) {
+          mergeFound(other.getFound());
+        }
+        if (other.hasStoreValue()) {
+          mergeStoreValue(other.getStoreValue());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.PB.DHTTopLevelMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.PB.DHTTopLevelMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional .peercentrum.DHTPingMsg ping = 1;
+      private org.peercentrum.core.PB.DHTPingMsg ping_ = org.peercentrum.core.PB.DHTPingMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.DHTPingMsg, org.peercentrum.core.PB.DHTPingMsg.Builder, org.peercentrum.core.PB.DHTPingMsgOrBuilder> pingBuilder_;
+      /**
+       * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+       */
+      public boolean hasPing() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+       */
+      public org.peercentrum.core.PB.DHTPingMsg getPing() {
+        if (pingBuilder_ == null) {
+          return ping_;
+        } else {
+          return pingBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+       */
+      public Builder setPing(org.peercentrum.core.PB.DHTPingMsg value) {
+        if (pingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ping_ = value;
+          onChanged();
+        } else {
+          pingBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+       */
+      public Builder setPing(
+          org.peercentrum.core.PB.DHTPingMsg.Builder builderForValue) {
+        if (pingBuilder_ == null) {
+          ping_ = builderForValue.build();
+          onChanged();
+        } else {
+          pingBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+       */
+      public Builder mergePing(org.peercentrum.core.PB.DHTPingMsg value) {
+        if (pingBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              ping_ != org.peercentrum.core.PB.DHTPingMsg.getDefaultInstance()) {
+            ping_ =
+              org.peercentrum.core.PB.DHTPingMsg.newBuilder(ping_).mergeFrom(value).buildPartial();
+          } else {
+            ping_ = value;
+          }
+          onChanged();
+        } else {
+          pingBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+       */
+      public Builder clearPing() {
+        if (pingBuilder_ == null) {
+          ping_ = org.peercentrum.core.PB.DHTPingMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          pingBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+       */
+      public org.peercentrum.core.PB.DHTPingMsg.Builder getPingBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getPingFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+       */
+      public org.peercentrum.core.PB.DHTPingMsgOrBuilder getPingOrBuilder() {
+        if (pingBuilder_ != null) {
+          return pingBuilder_.getMessageOrBuilder();
+        } else {
+          return ping_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.DHTPingMsg ping = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.DHTPingMsg, org.peercentrum.core.PB.DHTPingMsg.Builder, org.peercentrum.core.PB.DHTPingMsgOrBuilder> 
+          getPingFieldBuilder() {
+        if (pingBuilder_ == null) {
+          pingBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.PB.DHTPingMsg, org.peercentrum.core.PB.DHTPingMsg.Builder, org.peercentrum.core.PB.DHTPingMsgOrBuilder>(
+                  ping_,
+                  getParentForChildren(),
+                  isClean());
+          ping_ = null;
+        }
+        return pingBuilder_;
+      }
+
+      // optional .peercentrum.DHTFindMsg find = 2;
+      private org.peercentrum.core.PB.DHTFindMsg find_ = org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.DHTFindMsg, org.peercentrum.core.PB.DHTFindMsg.Builder, org.peercentrum.core.PB.DHTFindMsgOrBuilder> findBuilder_;
+      /**
+       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public boolean hasFind() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public org.peercentrum.core.PB.DHTFindMsg getFind() {
+        if (findBuilder_ == null) {
+          return find_;
+        } else {
+          return findBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public Builder setFind(org.peercentrum.core.PB.DHTFindMsg value) {
+        if (findBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          find_ = value;
+          onChanged();
+        } else {
+          findBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public Builder setFind(
+          org.peercentrum.core.PB.DHTFindMsg.Builder builderForValue) {
+        if (findBuilder_ == null) {
+          find_ = builderForValue.build();
+          onChanged();
+        } else {
+          findBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public Builder mergeFind(org.peercentrum.core.PB.DHTFindMsg value) {
+        if (findBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              find_ != org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance()) {
+            find_ =
+              org.peercentrum.core.PB.DHTFindMsg.newBuilder(find_).mergeFrom(value).buildPartial();
+          } else {
+            find_ = value;
+          }
+          onChanged();
+        } else {
+          findBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public Builder clearFind() {
+        if (findBuilder_ == null) {
+          find_ = org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          findBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public org.peercentrum.core.PB.DHTFindMsg.Builder getFindBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getFindFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public org.peercentrum.core.PB.DHTFindMsgOrBuilder getFindOrBuilder() {
+        if (findBuilder_ != null) {
+          return findBuilder_.getMessageOrBuilder();
+        } else {
+          return find_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.DHTFindMsg, org.peercentrum.core.PB.DHTFindMsg.Builder, org.peercentrum.core.PB.DHTFindMsgOrBuilder> 
+          getFindFieldBuilder() {
+        if (findBuilder_ == null) {
+          findBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.PB.DHTFindMsg, org.peercentrum.core.PB.DHTFindMsg.Builder, org.peercentrum.core.PB.DHTFindMsgOrBuilder>(
+                  find_,
+                  getParentForChildren(),
+                  isClean());
+          find_ = null;
+        }
+        return findBuilder_;
+      }
+
+      // optional .peercentrum.DHTFoundMsg found = 3;
+      private org.peercentrum.core.PB.DHTFoundMsg found_ = org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.DHTFoundMsg, org.peercentrum.core.PB.DHTFoundMsg.Builder, org.peercentrum.core.PB.DHTFoundMsgOrBuilder> foundBuilder_;
+      /**
+       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public boolean hasFound() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public org.peercentrum.core.PB.DHTFoundMsg getFound() {
+        if (foundBuilder_ == null) {
+          return found_;
+        } else {
+          return foundBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public Builder setFound(org.peercentrum.core.PB.DHTFoundMsg value) {
+        if (foundBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          found_ = value;
+          onChanged();
+        } else {
+          foundBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public Builder setFound(
+          org.peercentrum.core.PB.DHTFoundMsg.Builder builderForValue) {
+        if (foundBuilder_ == null) {
+          found_ = builderForValue.build();
+          onChanged();
+        } else {
+          foundBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public Builder mergeFound(org.peercentrum.core.PB.DHTFoundMsg value) {
+        if (foundBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              found_ != org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance()) {
+            found_ =
+              org.peercentrum.core.PB.DHTFoundMsg.newBuilder(found_).mergeFrom(value).buildPartial();
+          } else {
+            found_ = value;
+          }
+          onChanged();
+        } else {
+          foundBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public Builder clearFound() {
+        if (foundBuilder_ == null) {
+          found_ = org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          foundBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public org.peercentrum.core.PB.DHTFoundMsg.Builder getFoundBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getFoundFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public org.peercentrum.core.PB.DHTFoundMsgOrBuilder getFoundOrBuilder() {
+        if (foundBuilder_ != null) {
+          return foundBuilder_.getMessageOrBuilder();
+        } else {
+          return found_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.DHTFoundMsg, org.peercentrum.core.PB.DHTFoundMsg.Builder, org.peercentrum.core.PB.DHTFoundMsgOrBuilder> 
+          getFoundFieldBuilder() {
+        if (foundBuilder_ == null) {
+          foundBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.PB.DHTFoundMsg, org.peercentrum.core.PB.DHTFoundMsg.Builder, org.peercentrum.core.PB.DHTFoundMsgOrBuilder>(
+                  found_,
+                  getParentForChildren(),
+                  isClean());
+          found_ = null;
+        }
+        return foundBuilder_;
+      }
+
+      // optional .peercentrum.DHTStoreValueMsg storeValue = 4;
+      private org.peercentrum.core.PB.DHTStoreValueMsg storeValue_ = org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.DHTStoreValueMsg, org.peercentrum.core.PB.DHTStoreValueMsg.Builder, org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder> storeValueBuilder_;
+      /**
+       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public boolean hasStoreValue() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public org.peercentrum.core.PB.DHTStoreValueMsg getStoreValue() {
+        if (storeValueBuilder_ == null) {
+          return storeValue_;
+        } else {
+          return storeValueBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public Builder setStoreValue(org.peercentrum.core.PB.DHTStoreValueMsg value) {
+        if (storeValueBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          storeValue_ = value;
+          onChanged();
+        } else {
+          storeValueBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public Builder setStoreValue(
+          org.peercentrum.core.PB.DHTStoreValueMsg.Builder builderForValue) {
+        if (storeValueBuilder_ == null) {
+          storeValue_ = builderForValue.build();
+          onChanged();
+        } else {
+          storeValueBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public Builder mergeStoreValue(org.peercentrum.core.PB.DHTStoreValueMsg value) {
+        if (storeValueBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              storeValue_ != org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance()) {
+            storeValue_ =
+              org.peercentrum.core.PB.DHTStoreValueMsg.newBuilder(storeValue_).mergeFrom(value).buildPartial();
+          } else {
+            storeValue_ = value;
+          }
+          onChanged();
+        } else {
+          storeValueBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public Builder clearStoreValue() {
+        if (storeValueBuilder_ == null) {
+          storeValue_ = org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          storeValueBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public org.peercentrum.core.PB.DHTStoreValueMsg.Builder getStoreValueBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getStoreValueFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder getStoreValueOrBuilder() {
+        if (storeValueBuilder_ != null) {
+          return storeValueBuilder_.getMessageOrBuilder();
+        } else {
+          return storeValue_;
+        }
+      }
+      /**
+       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          org.peercentrum.core.PB.DHTStoreValueMsg, org.peercentrum.core.PB.DHTStoreValueMsg.Builder, org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder> 
+          getStoreValueFieldBuilder() {
+        if (storeValueBuilder_ == null) {
+          storeValueBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.PB.DHTStoreValueMsg, org.peercentrum.core.PB.DHTStoreValueMsg.Builder, org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder>(
+                  storeValue_,
+                  getParentForChildren(),
+                  isClean());
+          storeValue_ = null;
+        }
+        return storeValueBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.DHTTopLevelMsg)
+    }
+
+    static {
+      defaultInstance = new DHTTopLevelMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.DHTTopLevelMsg)
+  }
+
+  public interface DHTPingMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code peercentrum.DHTPingMsg}
+   */
+  public static final class DHTPingMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements DHTPingMsgOrBuilder {
+    // Use DHTPingMsg.newBuilder() to construct.
+    private DHTPingMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DHTPingMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DHTPingMsg defaultInstance;
+    public static DHTPingMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DHTPingMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DHTPingMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTPingMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTPingMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.PB.DHTPingMsg.class, org.peercentrum.core.PB.DHTPingMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DHTPingMsg> PARSER =
+        new com.google.protobuf.AbstractParser<DHTPingMsg>() {
+      public DHTPingMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DHTPingMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DHTPingMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.PB.DHTPingMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTPingMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTPingMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTPingMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTPingMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTPingMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTPingMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTPingMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTPingMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTPingMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.PB.DHTPingMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.DHTPingMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.PB.DHTPingMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTPingMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTPingMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.PB.DHTPingMsg.class, org.peercentrum.core.PB.DHTPingMsg.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.PB.DHTPingMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTPingMsg_descriptor;
+      }
+
+      public org.peercentrum.core.PB.DHTPingMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.PB.DHTPingMsg.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.PB.DHTPingMsg build() {
+        org.peercentrum.core.PB.DHTPingMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.PB.DHTPingMsg buildPartial() {
+        org.peercentrum.core.PB.DHTPingMsg result = new org.peercentrum.core.PB.DHTPingMsg(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.PB.DHTPingMsg) {
+          return mergeFrom((org.peercentrum.core.PB.DHTPingMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.PB.DHTPingMsg other) {
+        if (other == org.peercentrum.core.PB.DHTPingMsg.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.PB.DHTPingMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.PB.DHTPingMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.DHTPingMsg)
+    }
+
+    static {
+      defaultInstance = new DHTPingMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.DHTPingMsg)
+  }
+
+  public interface DHTFindMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional bytes keyCriteria = 1;
+    /**
+     * <code>optional bytes keyCriteria = 1;</code>
+     */
+    boolean hasKeyCriteria();
+    /**
+     * <code>optional bytes keyCriteria = 1;</code>
+     */
+    com.google.protobuf.ByteString getKeyCriteria();
+
+    // optional bytes nodeCriteria = 2;
+    /**
+     * <code>optional bytes nodeCriteria = 2;</code>
+     */
+    boolean hasNodeCriteria();
+    /**
+     * <code>optional bytes nodeCriteria = 2;</code>
+     */
+    com.google.protobuf.ByteString getNodeCriteria();
+
+    // optional uint32 numberOfNodesRequested = 3;
+    /**
+     * <code>optional uint32 numberOfNodesRequested = 3;</code>
+     */
+    boolean hasNumberOfNodesRequested();
+    /**
+     * <code>optional uint32 numberOfNodesRequested = 3;</code>
+     */
+    int getNumberOfNodesRequested();
+  }
+  /**
+   * Protobuf type {@code peercentrum.DHTFindMsg}
+   */
+  public static final class DHTFindMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements DHTFindMsgOrBuilder {
+    // Use DHTFindMsg.newBuilder() to construct.
+    private DHTFindMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DHTFindMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DHTFindMsg defaultInstance;
+    public static DHTFindMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DHTFindMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DHTFindMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              keyCriteria_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              nodeCriteria_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              numberOfNodesRequested_ = input.readUInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTFindMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTFindMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.PB.DHTFindMsg.class, org.peercentrum.core.PB.DHTFindMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DHTFindMsg> PARSER =
+        new com.google.protobuf.AbstractParser<DHTFindMsg>() {
+      public DHTFindMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DHTFindMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DHTFindMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional bytes keyCriteria = 1;
+    public static final int KEYCRITERIA_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString keyCriteria_;
+    /**
+     * <code>optional bytes keyCriteria = 1;</code>
+     */
+    public boolean hasKeyCriteria() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional bytes keyCriteria = 1;</code>
+     */
+    public com.google.protobuf.ByteString getKeyCriteria() {
+      return keyCriteria_;
+    }
+
+    // optional bytes nodeCriteria = 2;
+    public static final int NODECRITERIA_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString nodeCriteria_;
+    /**
+     * <code>optional bytes nodeCriteria = 2;</code>
+     */
+    public boolean hasNodeCriteria() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bytes nodeCriteria = 2;</code>
+     */
+    public com.google.protobuf.ByteString getNodeCriteria() {
+      return nodeCriteria_;
+    }
+
+    // optional uint32 numberOfNodesRequested = 3;
+    public static final int NUMBEROFNODESREQUESTED_FIELD_NUMBER = 3;
+    private int numberOfNodesRequested_;
+    /**
+     * <code>optional uint32 numberOfNodesRequested = 3;</code>
+     */
+    public boolean hasNumberOfNodesRequested() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint32 numberOfNodesRequested = 3;</code>
+     */
+    public int getNumberOfNodesRequested() {
+      return numberOfNodesRequested_;
+    }
+
+    private void initFields() {
+      keyCriteria_ = com.google.protobuf.ByteString.EMPTY;
+      nodeCriteria_ = com.google.protobuf.ByteString.EMPTY;
+      numberOfNodesRequested_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, keyCriteria_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, nodeCriteria_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(3, numberOfNodesRequested_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, keyCriteria_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, nodeCriteria_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, numberOfNodesRequested_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.PB.DHTFindMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTFindMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTFindMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTFindMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTFindMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTFindMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTFindMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTFindMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTFindMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTFindMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.PB.DHTFindMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.DHTFindMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.PB.DHTFindMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTFindMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTFindMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.PB.DHTFindMsg.class, org.peercentrum.core.PB.DHTFindMsg.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.PB.DHTFindMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        keyCriteria_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        nodeCriteria_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        numberOfNodesRequested_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTFindMsg_descriptor;
+      }
+
+      public org.peercentrum.core.PB.DHTFindMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.PB.DHTFindMsg build() {
+        org.peercentrum.core.PB.DHTFindMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.PB.DHTFindMsg buildPartial() {
+        org.peercentrum.core.PB.DHTFindMsg result = new org.peercentrum.core.PB.DHTFindMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.keyCriteria_ = keyCriteria_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.nodeCriteria_ = nodeCriteria_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.numberOfNodesRequested_ = numberOfNodesRequested_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.PB.DHTFindMsg) {
+          return mergeFrom((org.peercentrum.core.PB.DHTFindMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.PB.DHTFindMsg other) {
+        if (other == org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance()) return this;
+        if (other.hasKeyCriteria()) {
+          setKeyCriteria(other.getKeyCriteria());
+        }
+        if (other.hasNodeCriteria()) {
+          setNodeCriteria(other.getNodeCriteria());
+        }
+        if (other.hasNumberOfNodesRequested()) {
+          setNumberOfNodesRequested(other.getNumberOfNodesRequested());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.PB.DHTFindMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.PB.DHTFindMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional bytes keyCriteria = 1;
+      private com.google.protobuf.ByteString keyCriteria_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes keyCriteria = 1;</code>
+       */
+      public boolean hasKeyCriteria() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional bytes keyCriteria = 1;</code>
+       */
+      public com.google.protobuf.ByteString getKeyCriteria() {
+        return keyCriteria_;
+      }
+      /**
+       * <code>optional bytes keyCriteria = 1;</code>
+       */
+      public Builder setKeyCriteria(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        keyCriteria_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes keyCriteria = 1;</code>
+       */
+      public Builder clearKeyCriteria() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        keyCriteria_ = getDefaultInstance().getKeyCriteria();
+        onChanged();
+        return this;
+      }
+
+      // optional bytes nodeCriteria = 2;
+      private com.google.protobuf.ByteString nodeCriteria_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes nodeCriteria = 2;</code>
+       */
+      public boolean hasNodeCriteria() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional bytes nodeCriteria = 2;</code>
+       */
+      public com.google.protobuf.ByteString getNodeCriteria() {
+        return nodeCriteria_;
+      }
+      /**
+       * <code>optional bytes nodeCriteria = 2;</code>
+       */
+      public Builder setNodeCriteria(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        nodeCriteria_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes nodeCriteria = 2;</code>
+       */
+      public Builder clearNodeCriteria() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nodeCriteria_ = getDefaultInstance().getNodeCriteria();
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 numberOfNodesRequested = 3;
+      private int numberOfNodesRequested_ ;
+      /**
+       * <code>optional uint32 numberOfNodesRequested = 3;</code>
+       */
+      public boolean hasNumberOfNodesRequested() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint32 numberOfNodesRequested = 3;</code>
+       */
+      public int getNumberOfNodesRequested() {
+        return numberOfNodesRequested_;
+      }
+      /**
+       * <code>optional uint32 numberOfNodesRequested = 3;</code>
+       */
+      public Builder setNumberOfNodesRequested(int value) {
+        bitField0_ |= 0x00000004;
+        numberOfNodesRequested_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 numberOfNodesRequested = 3;</code>
+       */
+      public Builder clearNumberOfNodesRequested() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        numberOfNodesRequested_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.DHTFindMsg)
+    }
+
+    static {
+      defaultInstance = new DHTFindMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.DHTFindMsg)
+  }
+
+  public interface DHTFoundMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated bytes closestNodes = 1;
+    /**
+     * <code>repeated bytes closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    java.util.List<com.google.protobuf.ByteString> getClosestNodesList();
+    /**
+     * <code>repeated bytes closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    int getClosestNodesCount();
+    /**
+     * <code>repeated bytes closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    com.google.protobuf.ByteString getClosestNodes(int index);
+
+    // optional bytes value = 2;
+    /**
+     * <code>optional bytes value = 2;</code>
+     */
+    boolean hasValue();
+    /**
+     * <code>optional bytes value = 2;</code>
+     */
+    com.google.protobuf.ByteString getValue();
+  }
+  /**
+   * Protobuf type {@code peercentrum.DHTFoundMsg}
+   */
+  public static final class DHTFoundMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements DHTFoundMsgOrBuilder {
+    // Use DHTFoundMsg.newBuilder() to construct.
+    private DHTFoundMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DHTFoundMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DHTFoundMsg defaultInstance;
+    public static DHTFoundMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DHTFoundMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DHTFoundMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                closestNodes_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              closestNodes_.add(input.readBytes());
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000001;
+              value_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          closestNodes_ = java.util.Collections.unmodifiableList(closestNodes_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTFoundMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTFoundMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.PB.DHTFoundMsg.class, org.peercentrum.core.PB.DHTFoundMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DHTFoundMsg> PARSER =
+        new com.google.protobuf.AbstractParser<DHTFoundMsg>() {
+      public DHTFoundMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DHTFoundMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DHTFoundMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // repeated bytes closestNodes = 1;
+    public static final int CLOSESTNODES_FIELD_NUMBER = 1;
+    private java.util.List<com.google.protobuf.ByteString> closestNodes_;
+    /**
+     * <code>repeated bytes closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    public java.util.List<com.google.protobuf.ByteString>
+        getClosestNodesList() {
+      return closestNodes_;
+    }
+    /**
+     * <code>repeated bytes closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    public int getClosestNodesCount() {
+      return closestNodes_.size();
+    }
+    /**
+     * <code>repeated bytes closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    public com.google.protobuf.ByteString getClosestNodes(int index) {
+      return closestNodes_.get(index);
+    }
+
+    // optional bytes value = 2;
+    public static final int VALUE_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString value_;
+    /**
+     * <code>optional bytes value = 2;</code>
+     */
+    public boolean hasValue() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional bytes value = 2;</code>
+     */
+    public com.google.protobuf.ByteString getValue() {
+      return value_;
+    }
+
+    private void initFields() {
+      closestNodes_ = java.util.Collections.emptyList();
+      value_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < closestNodes_.size(); i++) {
+        output.writeBytes(1, closestNodes_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(2, value_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < closestNodes_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(closestNodes_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getClosestNodesList().size();
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, value_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.PB.DHTFoundMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTFoundMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTFoundMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTFoundMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTFoundMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTFoundMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTFoundMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTFoundMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTFoundMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTFoundMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.PB.DHTFoundMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.DHTFoundMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.PB.DHTFoundMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTFoundMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTFoundMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.PB.DHTFoundMsg.class, org.peercentrum.core.PB.DHTFoundMsg.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.PB.DHTFoundMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        closestNodes_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        value_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTFoundMsg_descriptor;
+      }
+
+      public org.peercentrum.core.PB.DHTFoundMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.PB.DHTFoundMsg build() {
+        org.peercentrum.core.PB.DHTFoundMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.PB.DHTFoundMsg buildPartial() {
+        org.peercentrum.core.PB.DHTFoundMsg result = new org.peercentrum.core.PB.DHTFoundMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          closestNodes_ = java.util.Collections.unmodifiableList(closestNodes_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.closestNodes_ = closestNodes_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.value_ = value_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.PB.DHTFoundMsg) {
+          return mergeFrom((org.peercentrum.core.PB.DHTFoundMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.PB.DHTFoundMsg other) {
+        if (other == org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance()) return this;
+        if (!other.closestNodes_.isEmpty()) {
+          if (closestNodes_.isEmpty()) {
+            closestNodes_ = other.closestNodes_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureClosestNodesIsMutable();
+            closestNodes_.addAll(other.closestNodes_);
+          }
+          onChanged();
+        }
+        if (other.hasValue()) {
+          setValue(other.getValue());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.PB.DHTFoundMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.PB.DHTFoundMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated bytes closestNodes = 1;
+      private java.util.List<com.google.protobuf.ByteString> closestNodes_ = java.util.Collections.emptyList();
+      private void ensureClosestNodesIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          closestNodes_ = new java.util.ArrayList<com.google.protobuf.ByteString>(closestNodes_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated bytes closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public java.util.List<com.google.protobuf.ByteString>
+          getClosestNodesList() {
+        return java.util.Collections.unmodifiableList(closestNodes_);
+      }
+      /**
+       * <code>repeated bytes closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public int getClosestNodesCount() {
+        return closestNodes_.size();
+      }
+      /**
+       * <code>repeated bytes closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public com.google.protobuf.ByteString getClosestNodes(int index) {
+        return closestNodes_.get(index);
+      }
+      /**
+       * <code>repeated bytes closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public Builder setClosestNodes(
+          int index, com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureClosestNodesIsMutable();
+        closestNodes_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public Builder addClosestNodes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureClosestNodesIsMutable();
+        closestNodes_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public Builder addAllClosestNodes(
+          java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
+        ensureClosestNodesIsMutable();
+        super.addAll(values, closestNodes_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public Builder clearClosestNodes() {
+        closestNodes_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      // optional bytes value = 2;
+      private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes value = 2;</code>
+       */
+      public boolean hasValue() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional bytes value = 2;</code>
+       */
+      public com.google.protobuf.ByteString getValue() {
+        return value_;
+      }
+      /**
+       * <code>optional bytes value = 2;</code>
+       */
+      public Builder setValue(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes value = 2;</code>
+       */
+      public Builder clearValue() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        value_ = getDefaultInstance().getValue();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.DHTFoundMsg)
+    }
+
+    static {
+      defaultInstance = new DHTFoundMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.DHTFoundMsg)
+  }
+
+  public interface DHTStoreValueMsgOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional bytes key = 1;
+    /**
+     * <code>optional bytes key = 1;</code>
+     */
+    boolean hasKey();
+    /**
+     * <code>optional bytes key = 1;</code>
+     */
+    com.google.protobuf.ByteString getKey();
+
+    // optional bytes value = 2;
+    /**
+     * <code>optional bytes value = 2;</code>
+     */
+    boolean hasValue();
+    /**
+     * <code>optional bytes value = 2;</code>
+     */
+    com.google.protobuf.ByteString getValue();
+  }
+  /**
+   * Protobuf type {@code peercentrum.DHTStoreValueMsg}
+   */
+  public static final class DHTStoreValueMsg extends
+      com.google.protobuf.GeneratedMessage
+      implements DHTStoreValueMsgOrBuilder {
+    // Use DHTStoreValueMsg.newBuilder() to construct.
+    private DHTStoreValueMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DHTStoreValueMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DHTStoreValueMsg defaultInstance;
+    public static DHTStoreValueMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DHTStoreValueMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DHTStoreValueMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              key_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              value_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTStoreValueMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.peercentrum.core.PB.internal_static_peercentrum_DHTStoreValueMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.peercentrum.core.PB.DHTStoreValueMsg.class, org.peercentrum.core.PB.DHTStoreValueMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DHTStoreValueMsg> PARSER =
+        new com.google.protobuf.AbstractParser<DHTStoreValueMsg>() {
+      public DHTStoreValueMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DHTStoreValueMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DHTStoreValueMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional bytes key = 1;
+    public static final int KEY_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString key_;
+    /**
+     * <code>optional bytes key = 1;</code>
+     */
+    public boolean hasKey() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional bytes key = 1;</code>
+     */
+    public com.google.protobuf.ByteString getKey() {
+      return key_;
+    }
+
+    // optional bytes value = 2;
+    public static final int VALUE_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString value_;
+    /**
+     * <code>optional bytes value = 2;</code>
+     */
+    public boolean hasValue() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bytes value = 2;</code>
+     */
+    public com.google.protobuf.ByteString getValue() {
+      return value_;
+    }
+
+    private void initFields() {
+      key_ = com.google.protobuf.ByteString.EMPTY;
+      value_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, key_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, value_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, key_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, value_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static org.peercentrum.core.PB.DHTStoreValueMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.peercentrum.core.PB.DHTStoreValueMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code peercentrum.DHTStoreValueMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTStoreValueMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTStoreValueMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.peercentrum.core.PB.DHTStoreValueMsg.class, org.peercentrum.core.PB.DHTStoreValueMsg.Builder.class);
+      }
+
+      // Construct using org.peercentrum.core.PB.DHTStoreValueMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        key_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        value_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.peercentrum.core.PB.internal_static_peercentrum_DHTStoreValueMsg_descriptor;
+      }
+
+      public org.peercentrum.core.PB.DHTStoreValueMsg getDefaultInstanceForType() {
+        return org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance();
+      }
+
+      public org.peercentrum.core.PB.DHTStoreValueMsg build() {
+        org.peercentrum.core.PB.DHTStoreValueMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.peercentrum.core.PB.DHTStoreValueMsg buildPartial() {
+        org.peercentrum.core.PB.DHTStoreValueMsg result = new org.peercentrum.core.PB.DHTStoreValueMsg(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.key_ = key_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.value_ = value_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.peercentrum.core.PB.DHTStoreValueMsg) {
+          return mergeFrom((org.peercentrum.core.PB.DHTStoreValueMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.peercentrum.core.PB.DHTStoreValueMsg other) {
+        if (other == org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance()) return this;
+        if (other.hasKey()) {
+          setKey(other.getKey());
+        }
+        if (other.hasValue()) {
+          setValue(other.getValue());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.peercentrum.core.PB.DHTStoreValueMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.peercentrum.core.PB.DHTStoreValueMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional bytes key = 1;
+      private com.google.protobuf.ByteString key_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes key = 1;</code>
+       */
+      public boolean hasKey() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional bytes key = 1;</code>
+       */
+      public com.google.protobuf.ByteString getKey() {
+        return key_;
+      }
+      /**
+       * <code>optional bytes key = 1;</code>
+       */
+      public Builder setKey(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes key = 1;</code>
+       */
+      public Builder clearKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        key_ = getDefaultInstance().getKey();
+        onChanged();
+        return this;
+      }
+
+      // optional bytes value = 2;
+      private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes value = 2;</code>
+       */
+      public boolean hasValue() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional bytes value = 2;</code>
+       */
+      public com.google.protobuf.ByteString getValue() {
+        return value_;
+      }
+      /**
+       * <code>optional bytes value = 2;</code>
+       */
+      public Builder setValue(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes value = 2;</code>
+       */
+      public Builder clearValue() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        value_ = getDefaultInstance().getValue();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:peercentrum.DHTStoreValueMsg)
+    }
+
+    static {
+      defaultInstance = new DHTStoreValueMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:peercentrum.DHTStoreValueMsg)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_peercentrum_HeaderMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_peercentrum_HeaderMsg_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_CryptoHandShakeMsg_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_CryptoHandShakeMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_peercentrum_NodeMetaDataMsg_descriptor;
   private static
@@ -20452,20 +23186,20 @@ public final class PB {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_peercentrum_GossipReplyMorePeers_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_descriptor;
+    internal_static_peercentrum_PeerEndpointMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_fieldAccessorTable;
+      internal_static_peercentrum_PeerEndpointMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor;
+    internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable;
+      internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor;
+    internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable;
+      internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_peercentrum_GenericResponse_descriptor;
   private static
@@ -20551,6 +23285,31 @@ public final class PB {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_peercentrum_SettlementMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_peercentrum_DHTTopLevelMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_peercentrum_DHTTopLevelMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_peercentrum_DHTPingMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_peercentrum_DHTPingMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_peercentrum_DHTFindMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_peercentrum_DHTFindMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_peercentrum_DHTFoundMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_peercentrum_DHTFoundMsg_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_peercentrum_DHTStoreValueMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_peercentrum_DHTStoreValueMsg_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -20565,84 +23324,93 @@ public final class PB {
       "uestNumber\030\002 \001(\r\022 \n\030destinationApplicati" +
       "onId\030\003 \001(\014\022&\n\036applicationSpecificBlockLe" +
       "ngth\030\005 \001(\r\022\'\n\037applicationSpecificStreamL" +
-      "ength\030\006 \001(\r\"\024\n\022CryptoHandShakeMsg\"m\n\017Nod" +
-      "eMetaDataMsg\022\021\n\tuserAgent\030\001 \001(\t\022\022\n\nexter" +
-      "nalIP\030\002 \001(\t\022\024\n\014externalPort\030\003 \001(\r\022\035\n\025app" +
-      "licationsSupported\030\005 \003(\014\"\303\001\n\016NetworkMess" +
-      "age\022?\n\toperation\030\001 \001(\0162,.peercentrum.Net",
-      "workMessage.NetworkOperation\0222\n\014nodeMeta" +
-      "Data\030\002 \001(\0132\034.peercentrum.NodeMetaDataMsg" +
-      "\"<\n\020NetworkOperation\022\024\n\020CLOSE_CONNECTION" +
-      "\020\000\022\010\n\004PING\020\001\022\010\n\004PONG\020\002\"\200\001\n\rGossipMessage" +
-      "\022=\n\020requestMorePeers\030\001 \001(\0132#.peercentrum" +
-      ".GossipRequestMorePeers\0220\n\005reply\030\002 \001(\0132!" +
-      ".peercentrum.GossipReplyMorePeers\"7\n\026Gos" +
-      "sipRequestMorePeers\022\035\n\025applicationsReque" +
-      "sted\030\001 \003(\014\"\231\002\n\024GossipReplyMorePeers\022=\n\005p" +
-      "eers\030\001 \003(\0132..peercentrum.GossipReplyMore",
-      "Peers.PeerEndpoint\032\301\001\n\014PeerEndpoint\022\020\n\010i" +
-      "dentity\030\001 \001(\014\022M\n\nipEndpoint\030\002 \001(\01329.peer" +
-      "centrum.GossipReplyMorePeers.PeerEndpoin" +
-      "t.IPEndpoint\032-\n\nIPEndpoint\022\021\n\tipaddress\030" +
-      "\001 \001(\t\022\014\n\004port\030\002 \001(\r\032!\n\013TOREndpoint\022\022\n\nTO" +
-      "RAddress\030\001 \001(\t\":\n\017GenericResponse\022\021\n\terr" +
-      "orCode\030\001 \001(\r\022\024\n\014errorMessage\030\002 \001(\t\"\356\002\n\026H" +
-      "ashToPublicKeyMessage\0225\n\017genericResponse" +
-      "\030\001 \001(\0132\034.peercentrum.GenericResponse\0229\n\n" +
-      "proposedTx\030\002 \001(\0132%.peercentrum.H2PKPropo",
-      "sedTransactions\022A\n\020localTransaction\030\003 \001(" +
-      "\0132\'.peercentrum.HashToPublicKeyTransacti" +
-      "on\022\027\n\017membershipQuery\030\004 \001(\014\022\032\n\022membershi" +
-      "pResponse\030\005 \003(\014\0221\n\013dbSyncQuery\030\006 \001(\0132\034.p" +
-      "eercentrum.H2PKDBSyncQuery\0227\n\016dbSyncResp" +
-      "onse\030\007 \001(\0132\037.peercentrum.H2PKDBSyncRespo" +
-      "nse\"\322\001\n\032HashToPublicKeyTransaction\022D\n\top" +
-      "eration\030\001 \001(\01621.peercentrum.HashToPublic" +
-      "KeyTransaction.OPERATION\022\017\n\007address\030\002 \001(" +
-      "\014\022\021\n\tpublicKey\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022",
-      "\022\n\nexpiration\030\005 \001(\r\"#\n\tOPERATION\022\n\n\006APPE" +
-      "ND\020\000\022\n\n\006REMOVE\020\001\"\216\001\n\030H2PKProposedTransac" +
-      "tions\022\027\n\017dbVersionNumber\030\001 \001(\r\022\022\n\npropos" +
-      "edBy\030\002 \001(\014\022E\n\024proposedTransactions\030\003 \003(\013" +
-      "2\'.peercentrum.HashToPublicKeyTransactio" +
-      "n\"/\n\017H2PKDBSyncQuery\022\034\n\024beginDbVersionNu" +
-      "mber\030\001 \001(\r\"\227\001\n\022H2PKDBSyncResponse\022\033\n\023las" +
-      "tDbVersionNumber\030\001 \001(\r\022\027\n\017lastDbHashValu" +
-      "e\030\002 \001(\014\022\033\n\023syncDbVersionNumber\030\003 \001(\r\022.\n\t" +
-      "syncUnits\030\004 \003(\0132\033.peercentrum.H2PKDBSync",
-      "Unit\"?\n\016H2PKDBSyncUnit\022\017\n\007address\030\001 \001(\014\022" +
-      "\034\n\024publicKeysRegistered\030\002 \003(\014\"\211\001\n\021P2PBlo" +
-      "bRequestMsg\0227\n\013blobRequest\030\001 \003(\0132\".peerc" +
-      "entrum.P2PBlobBlobRequestMsg\022;\n\ruploadRe" +
-      "quest\030\002 \003(\0132$.peercentrum.P2PBlobUploadR" +
-      "equestMsg\"z\n\027P2PBlobUploadRequestMsg\022,\n\006" +
-      "blocks\030\002 \003(\0132\034.peercentrum.P2PBlobBlockM" +
-      "sg\0221\n\010metaData\030\003 \001(\0132\037.peercentrum.P2PBl" +
-      "obMetaDataMsg\"\300\001\n\025P2PBlobBlobRequestMsg\022" +
-      "\025\n\rrequestedHash\030\001 \001(\014\022!\n\031maximumBlobLen",
-      "gthAccepted\030\002 \001(\003\022\027\n\017requestMetaData\030\003 \001" +
-      "(\010\022\035\n\025requestBlockInventory\030\005 \001(\010\0225\n\017req" +
-      "uestedRanges\030\006 \003(\0132\034.peercentrum.P2PBlob" +
-      "RangeMsg\"\257\002\n\022P2PBlobResponseMsg\0225\n\017gener" +
-      "icResponse\030\001 \001(\0132\034.peercentrum.GenericRe" +
-      "sponse\0221\n\010metaData\030\002 \001(\0132\037.peercentrum.P" +
-      "2PBlobMetaDataMsg\0229\n\023localBlockInventory" +
-      "\030\003 \003(\0132\034.peercentrum.P2PBlobRangeMsg\022/\n\t" +
-      "blobBytes\030\004 \003(\0132\034.peercentrum.P2PBlobBlo" +
-      "ckMsg\022C\n\021dataTransferQuote\030\005 \001(\0132(.peerc",
-      "entrum.P2PBlobDataTransferQuoteMsg\"-\n\017P2" +
-      "PBlobRangeMsg\022\r\n\005begin\030\001 \001(\r\022\013\n\003end\030\002 \001(" +
-      "\r\"n\n\022P2PBlobMetaDataMsg\022\022\n\nblobLength\030\001 " +
-      "\001(\003\022\021\n\tblockSize\030\002 \001(\005\0221\n\010hashList\030\003 \001(\013" +
-      "2\037.peercentrum.P2PBlobHashListMsg\"-\n\022P2P" +
-      "BlobHashListMsg\022\027\n\017hashOfEachBlock\030\001 \003(\014" +
-      "\"8\n\017P2PBlobBlockMsg\022\022\n\nblockIndex\030\001 \001(\r\022" +
-      "\021\n\tblobBytes\030\002 \001(\014\"e\n\033P2PBlobDataTransfe" +
-      "rQuoteMsg\022\"\n\032satoshiPerIncomingGigaByte\030" +
-      "\001 \001(\003\022\"\n\032satoshiPerOutgoingGigaByte\030\002 \001(",
-      "\003\"P\n\rSettlementMsg\022?\n\020twoWayChannelMsg\030\001" +
-      " \003(\0132%.paymentchannels.TwoWayChannelMess" +
-      "ageB\032\n\024org.peercentrum.coreB\002PB"
+      "ength\030\006 \001(\r\"m\n\017NodeMetaDataMsg\022\021\n\tuserAg" +
+      "ent\030\001 \001(\t\022\022\n\nexternalIP\030\002 \001(\t\022\024\n\014externa" +
+      "lPort\030\003 \001(\r\022\035\n\025applicationsSupported\030\005 \003" +
+      "(\014\"\303\001\n\016NetworkMessage\022?\n\toperation\030\001 \001(\016" +
+      "2,.peercentrum.NetworkMessage.NetworkOpe",
+      "ration\0222\n\014nodeMetaData\030\002 \001(\0132\034.peercentr" +
+      "um.NodeMetaDataMsg\"<\n\020NetworkOperation\022\024" +
+      "\n\020CLOSE_CONNECTION\020\000\022\010\n\004PING\020\001\022\010\n\004PONG\020\002" +
+      "\"\200\001\n\rGossipMessage\022=\n\020requestMorePeers\030\001" +
+      " \001(\0132#.peercentrum.GossipRequestMorePeer" +
+      "s\0220\n\005reply\030\002 \001(\0132!.peercentrum.GossipRep" +
+      "lyMorePeers\"7\n\026GossipRequestMorePeers\022\035\n" +
+      "\025applicationsRequested\030\001 \003(\014\"C\n\024GossipRe" +
+      "plyMorePeers\022+\n\005peers\030\001 \003(\0132\034.peercentru" +
+      "m.PeerEndpointMsg\"\273\001\n\017PeerEndpointMsg\022\020\n",
+      "\010identity\030\001 \001(\014\022>\n\nipEndpoint\030\002 \001(\0132*.pe" +
+      "ercentrum.PeerEndpointMsg.IPEndpointMsg\032" +
+      "0\n\rIPEndpointMsg\022\021\n\tipaddress\030\001 \001(\t\022\014\n\004p" +
+      "ort\030\002 \001(\r\032$\n\016TOREndpointMsg\022\022\n\nTORAddres" +
+      "s\030\001 \001(\t\":\n\017GenericResponse\022\021\n\terrorCode\030" +
+      "\001 \001(\r\022\024\n\014errorMessage\030\002 \001(\t\"\356\002\n\026HashToPu" +
+      "blicKeyMessage\0225\n\017genericResponse\030\001 \001(\0132" +
+      "\034.peercentrum.GenericResponse\0229\n\npropose" +
+      "dTx\030\002 \001(\0132%.peercentrum.H2PKProposedTran" +
+      "sactions\022A\n\020localTransaction\030\003 \001(\0132\'.pee",
+      "rcentrum.HashToPublicKeyTransaction\022\027\n\017m" +
+      "embershipQuery\030\004 \001(\014\022\032\n\022membershipRespon" +
+      "se\030\005 \003(\014\0221\n\013dbSyncQuery\030\006 \001(\0132\034.peercent" +
+      "rum.H2PKDBSyncQuery\0227\n\016dbSyncResponse\030\007 " +
+      "\001(\0132\037.peercentrum.H2PKDBSyncResponse\"\322\001\n" +
+      "\032HashToPublicKeyTransaction\022D\n\toperation" +
+      "\030\001 \001(\01621.peercentrum.HashToPublicKeyTran" +
+      "saction.OPERATION\022\017\n\007address\030\002 \001(\014\022\021\n\tpu" +
+      "blicKey\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022\022\n\nexpi" +
+      "ration\030\005 \001(\r\"#\n\tOPERATION\022\n\n\006APPEND\020\000\022\n\n",
+      "\006REMOVE\020\001\"\216\001\n\030H2PKProposedTransactions\022\027" +
+      "\n\017dbVersionNumber\030\001 \001(\r\022\022\n\nproposedBy\030\002 " +
+      "\001(\014\022E\n\024proposedTransactions\030\003 \003(\0132\'.peer" +
+      "centrum.HashToPublicKeyTransaction\"/\n\017H2" +
+      "PKDBSyncQuery\022\034\n\024beginDbVersionNumber\030\001 " +
+      "\001(\r\"\227\001\n\022H2PKDBSyncResponse\022\033\n\023lastDbVers" +
+      "ionNumber\030\001 \001(\r\022\027\n\017lastDbHashValue\030\002 \001(\014" +
+      "\022\033\n\023syncDbVersionNumber\030\003 \001(\r\022.\n\tsyncUni" +
+      "ts\030\004 \003(\0132\033.peercentrum.H2PKDBSyncUnit\"?\n" +
+      "\016H2PKDBSyncUnit\022\017\n\007address\030\001 \001(\014\022\034\n\024publ",
+      "icKeysRegistered\030\002 \003(\014\"\211\001\n\021P2PBlobReques" +
+      "tMsg\0227\n\013blobRequest\030\001 \003(\0132\".peercentrum." +
+      "P2PBlobBlobRequestMsg\022;\n\ruploadRequest\030\002" +
+      " \003(\0132$.peercentrum.P2PBlobUploadRequestM" +
+      "sg\"z\n\027P2PBlobUploadRequestMsg\022,\n\006blocks\030" +
+      "\002 \003(\0132\034.peercentrum.P2PBlobBlockMsg\0221\n\010m" +
+      "etaData\030\003 \001(\0132\037.peercentrum.P2PBlobMetaD" +
+      "ataMsg\"\300\001\n\025P2PBlobBlobRequestMsg\022\025\n\rrequ" +
+      "estedHash\030\001 \001(\014\022!\n\031maximumBlobLengthAcce" +
+      "pted\030\002 \001(\003\022\027\n\017requestMetaData\030\003 \001(\010\022\035\n\025r",
+      "equestBlockInventory\030\005 \001(\010\0225\n\017requestedR" +
+      "anges\030\006 \003(\0132\034.peercentrum.P2PBlobRangeMs" +
+      "g\"\257\002\n\022P2PBlobResponseMsg\0225\n\017genericRespo" +
+      "nse\030\001 \001(\0132\034.peercentrum.GenericResponse\022" +
+      "1\n\010metaData\030\002 \001(\0132\037.peercentrum.P2PBlobM" +
+      "etaDataMsg\0229\n\023localBlockInventory\030\003 \003(\0132" +
+      "\034.peercentrum.P2PBlobRangeMsg\022/\n\tblobByt" +
+      "es\030\004 \003(\0132\034.peercentrum.P2PBlobBlockMsg\022C" +
+      "\n\021dataTransferQuote\030\005 \001(\0132(.peercentrum." +
+      "P2PBlobDataTransferQuoteMsg\"-\n\017P2PBlobRa",
+      "ngeMsg\022\r\n\005begin\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"n\n\022P2" +
+      "PBlobMetaDataMsg\022\022\n\nblobLength\030\001 \001(\003\022\021\n\t" +
+      "blockSize\030\002 \001(\005\0221\n\010hashList\030\003 \001(\0132\037.peer" +
+      "centrum.P2PBlobHashListMsg\"-\n\022P2PBlobHas" +
+      "hListMsg\022\027\n\017hashOfEachBlock\030\001 \003(\014\"8\n\017P2P" +
+      "BlobBlockMsg\022\022\n\nblockIndex\030\001 \001(\r\022\021\n\tblob" +
+      "Bytes\030\002 \001(\014\"e\n\033P2PBlobDataTransferQuoteM" +
+      "sg\022\"\n\032satoshiPerIncomingGigaByte\030\001 \001(\003\022\"" +
+      "\n\032satoshiPerOutgoingGigaByte\030\002 \001(\003\"P\n\rSe" +
+      "ttlementMsg\022?\n\020twoWayChannelMsg\030\001 \003(\0132%.",
+      "paymentchannels.TwoWayChannelMessage\"\272\001\n" +
+      "\016DHTTopLevelMsg\022%\n\004ping\030\001 \001(\0132\027.peercent" +
+      "rum.DHTPingMsg\022%\n\004find\030\002 \001(\0132\027.peercentr" +
+      "um.DHTFindMsg\022\'\n\005found\030\003 \001(\0132\030.peercentr" +
+      "um.DHTFoundMsg\0221\n\nstoreValue\030\004 \001(\0132\035.pee" +
+      "rcentrum.DHTStoreValueMsg\"\014\n\nDHTPingMsg\"" +
+      "W\n\nDHTFindMsg\022\023\n\013keyCriteria\030\001 \001(\014\022\024\n\014no" +
+      "deCriteria\030\002 \001(\014\022\036\n\026numberOfNodesRequest" +
+      "ed\030\003 \001(\r\"2\n\013DHTFoundMsg\022\024\n\014closestNodes\030" +
+      "\001 \003(\014\022\r\n\005value\030\002 \001(\014\".\n\020DHTStoreValueMsg",
+      "\022\013\n\003key\030\001 \001(\014\022\r\n\005value\030\002 \001(\014B\032\n\024org.peer" +
+      "centrum.coreB\002PB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -20655,59 +23423,53 @@ public final class PB {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_HeaderMsg_descriptor,
               new java.lang.String[] { "RequestNumber", "DestinationApplicationId", "ApplicationSpecificBlockLength", "ApplicationSpecificStreamLength", });
-          internal_static_peercentrum_CryptoHandShakeMsg_descriptor =
-            getDescriptor().getMessageTypes().get(1);
-          internal_static_peercentrum_CryptoHandShakeMsg_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_CryptoHandShakeMsg_descriptor,
-              new java.lang.String[] { });
           internal_static_peercentrum_NodeMetaDataMsg_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(1);
           internal_static_peercentrum_NodeMetaDataMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_NodeMetaDataMsg_descriptor,
               new java.lang.String[] { "UserAgent", "ExternalIP", "ExternalPort", "ApplicationsSupported", });
           internal_static_peercentrum_NetworkMessage_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_peercentrum_NetworkMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_NetworkMessage_descriptor,
               new java.lang.String[] { "Operation", "NodeMetaData", });
           internal_static_peercentrum_GossipMessage_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_peercentrum_GossipMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_GossipMessage_descriptor,
               new java.lang.String[] { "RequestMorePeers", "Reply", });
           internal_static_peercentrum_GossipRequestMorePeers_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_peercentrum_GossipRequestMorePeers_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_GossipRequestMorePeers_descriptor,
               new java.lang.String[] { "ApplicationsRequested", });
           internal_static_peercentrum_GossipReplyMorePeers_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_peercentrum_GossipReplyMorePeers_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_GossipReplyMorePeers_descriptor,
               new java.lang.String[] { "Peers", });
-          internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_descriptor =
-            internal_static_peercentrum_GossipReplyMorePeers_descriptor.getNestedTypes().get(0);
-          internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_fieldAccessorTable = new
+          internal_static_peercentrum_PeerEndpointMsg_descriptor =
+            getDescriptor().getMessageTypes().get(6);
+          internal_static_peercentrum_PeerEndpointMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_descriptor,
+              internal_static_peercentrum_PeerEndpointMsg_descriptor,
               new java.lang.String[] { "Identity", "IpEndpoint", });
-          internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor =
-            internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_descriptor.getNestedTypes().get(0);
-          internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_fieldAccessorTable = new
+          internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor =
+            internal_static_peercentrum_PeerEndpointMsg_descriptor.getNestedTypes().get(0);
+          internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_IPEndpoint_descriptor,
+              internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor,
               new java.lang.String[] { "Ipaddress", "Port", });
-          internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor =
-            internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_descriptor.getNestedTypes().get(1);
-          internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_fieldAccessorTable = new
+          internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_descriptor =
+            internal_static_peercentrum_PeerEndpointMsg_descriptor.getNestedTypes().get(1);
+          internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_GossipReplyMorePeers_PeerEndpoint_TOREndpoint_descriptor,
+              internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_descriptor,
               new java.lang.String[] { "TORAddress", });
           internal_static_peercentrum_GenericResponse_descriptor =
             getDescriptor().getMessageTypes().get(7);
@@ -20811,6 +23573,36 @@ public final class PB {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_SettlementMsg_descriptor,
               new java.lang.String[] { "TwoWayChannelMsg", });
+          internal_static_peercentrum_DHTTopLevelMsg_descriptor =
+            getDescriptor().getMessageTypes().get(24);
+          internal_static_peercentrum_DHTTopLevelMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_peercentrum_DHTTopLevelMsg_descriptor,
+              new java.lang.String[] { "Ping", "Find", "Found", "StoreValue", });
+          internal_static_peercentrum_DHTPingMsg_descriptor =
+            getDescriptor().getMessageTypes().get(25);
+          internal_static_peercentrum_DHTPingMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_peercentrum_DHTPingMsg_descriptor,
+              new java.lang.String[] { });
+          internal_static_peercentrum_DHTFindMsg_descriptor =
+            getDescriptor().getMessageTypes().get(26);
+          internal_static_peercentrum_DHTFindMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_peercentrum_DHTFindMsg_descriptor,
+              new java.lang.String[] { "KeyCriteria", "NodeCriteria", "NumberOfNodesRequested", });
+          internal_static_peercentrum_DHTFoundMsg_descriptor =
+            getDescriptor().getMessageTypes().get(27);
+          internal_static_peercentrum_DHTFoundMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_peercentrum_DHTFoundMsg_descriptor,
+              new java.lang.String[] { "ClosestNodes", "Value", });
+          internal_static_peercentrum_DHTStoreValueMsg_descriptor =
+            getDescriptor().getMessageTypes().get(28);
+          internal_static_peercentrum_DHTStoreValueMsg_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_peercentrum_DHTStoreValueMsg_descriptor,
+              new java.lang.String[] { "Key", "Value", });
           return null;
         }
       };

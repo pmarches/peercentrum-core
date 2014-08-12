@@ -65,7 +65,7 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
     
     networkClient=new NetworkClient(getLocalIdentity(), getNodeDatabase());
     networkClient.setLocalListeningPort(getListeningPort());
-    networkClient.useEncryption=config.useEncryption;
+    networkClient.useEncryption=config.encryptConnection;
   }
 
   private GenericFutureListener<Future<Channel>> onSslHandshakeCompletes=new GenericFutureListener<Future<Channel>>() {
@@ -82,7 +82,7 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
-      SslHandler sslHandler=serverSideSSLContext.newHandler(NetworkServer.this.configuration.useEncryption, false);
+      SslHandler sslHandler=serverSideSSLContext.newHandler(NetworkServer.this.configuration.encryptConnection, false);
       sslHandler.handshakeFuture().addListener(onSslHandshakeCompletes);
       ch.pipeline().addLast(TLS_HANDLER_NAME, sslHandler);
 

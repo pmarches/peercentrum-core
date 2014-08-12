@@ -2,8 +2,8 @@ package org.peercentrum.core;
 
 import java.net.InetSocketAddress;
 
-public class NodeInformation {
-	public NodeInformation(NodeIdentifier NodeIdentifier, InetSocketAddress nodeSocketAddress) {
+public class NodeMetaData {
+	public NodeMetaData(NodeIdentifier NodeIdentifier, InetSocketAddress nodeSocketAddress) {
 		this.publicKey=NodeIdentifier;
 		this.nodeSocketAddress=nodeSocketAddress;
 	}

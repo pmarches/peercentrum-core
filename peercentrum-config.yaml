@@ -1,7 +1,7 @@
 !!org.peercentrum.core.TopLevelConfig
 listenPort: 0    #Set to 0 to select any open port at startup
 enableNAT: true
-useEncryption: true #For debugging purposes only
+encryptConnection: true #For debugging purposes only
 applications: 
   - !!org.peercentrum.core.NodeGossipConfig
     bootstrapEndpoint: node1:66.172.33.39:35460

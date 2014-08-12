@@ -39,18 +39,19 @@ message GossipRequestMorePeers {
 };
 
 message GossipReplyMorePeers {
-	message PeerEndpoint {
-		message IPEndpoint {
-			optional string ipaddress=1;
-			optional uint32 port=2;
-		};
-		message TOREndpoint {
-			optional string TORAddress=1;
-		};
-		optional bytes identity=1;
-		optional IPEndpoint ipEndpoint=2;
-	}
-	repeated PeerEndpoint peers=1;
+	repeated PeerEndpointMsg peers=1;
+};
+
+message PeerEndpointMsg {
+	message IPEndpointMsg {
+		optional string ipaddress=1;
+		optional uint32 port=2;
+	};
+	message TOREndpointMsg {
+		optional string TORAddress=1;
+	};
+	optional bytes identity=1;
+	optional IPEndpointMsg ipEndpoint=2;
 };
 
 message GenericResponse {
@@ -196,3 +197,31 @@ message SettlementMsg {
 };
 
 
+////////////////// DHT ////////////////////
+message DHTTopLevelMsg {
+  optional DHTPingMsg ping=1;
+
+  optional DHTFindMsg find=2;
+  optional DHTFoundMsg found=3;
+	
+	optional DHTStoreValueMsg storeValue=4;
+};
+
+message DHTPingMsg {
+};
+
+message DHTFindMsg {
+  optional bytes keyCriteria=1;
+  optional bytes nodeCriteria=2;
+  optional uint32 numberOfNodesRequested=3;
+};
+
+message DHTFoundMsg {
+  repeated bytes closestNodes=1; //Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+  optional bytes value=2;
+};
+
+message DHTStoreValueMsg {
+  optional bytes key=1;
+  optional bytes value=2;
+};
