@@ -51,13 +51,13 @@ public class DHTApplication extends BaseApplicationMessageHandler {
     nodesTable=db.getTable(NODES_TABLE_NAME);
 
     //TODO Or load the kBuckets from server.getNodeDatabase() ?
-    ISqlJetCursor nodesCursor = nodesTable.open();
-    while(nodesCursor.eof()==false){
-      byte[] currentNodeId=nodesCursor.getBlobAsArray(0);
-      dhtClient.buckets.maybeAdd(new KIdentifier(currentNodeId));
-      nodesCursor.next();
-    }
-    nodesCursor.close();
+//    ISqlJetCursor nodesCursor = nodesTable.open();
+//    while(nodesCursor.eof()==false){
+//      byte[] currentNodeId=nodesCursor.getBlobAsArray(0);
+//      dhtClient.buckets.maybeAdd(new KIdentifier(currentNodeId));
+//      nodesCursor.next();
+//    }
+//    nodesCursor.close();
   }
 
   static {

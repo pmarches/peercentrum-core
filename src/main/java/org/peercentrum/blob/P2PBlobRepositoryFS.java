@@ -40,7 +40,7 @@ public class P2PBlobRepositoryFS extends P2PBlobRepository {
 	public P2PBlobRepositoryFS(File repositoryDirectory) throws Exception {
 		this.repositoryDirectory=repositoryDirectory;
 		if(repositoryDirectory.exists()==false){
-			throw new IOException("Repository "+repositoryDirectory.toPath().toAbsolutePath()+" does not exits");
+		  repositoryDirectory.mkdirs();
 		}
 		
 		try {

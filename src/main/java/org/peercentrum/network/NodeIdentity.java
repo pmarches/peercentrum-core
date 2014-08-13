@@ -1,14 +1,9 @@
 package org.peercentrum.network;
 
-import io.netty.buffer.Unpooled;
-import io.netty.handler.codec.base64.Base64;
-import io.netty.util.CharsetUtil;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.OutputStream;
+import java.io.FileWriter;
 import java.math.BigInteger;
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -32,6 +27,7 @@ import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
+import org.bouncycastle.openssl.PEMWriter;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.bouncycastle.util.io.pem.PemObject;
@@ -43,15 +39,15 @@ import org.slf4j.LoggerFactory;
 
 public class NodeIdentity {
   private static final Logger LOGGER = LoggerFactory.getLogger(NodeIdentity.class);
-  
   static final String BC_PROVIDER = "BC";
+  static ECParameterSpec ecSpec = ECNamedCurveTable.getParameterSpec("secp256k1");
+
   protected File localCertificateFile, localPrivateKeyFile;
   KeyPair localKeypair;
   SecureRandom random;
-  X509Certificate cert;
   private NodeIdentifier localId;
+  private X509Certificate cert;
   private Certificate[] localCertificateChainArray;
-  static ECParameterSpec ecSpec = ECNamedCurveTable.getParameterSpec("secp256k1");
 
   static {
     Security.addProvider(new BouncyCastleProvider());
@@ -77,39 +73,14 @@ public class NodeIdentity {
     PemReader certificatePEMReader=new PemReader(new FileReader(this.localCertificateFile));
     PemObject certificatePEM=certificatePEMReader.readPemObject();
     certificatePEMReader.close();
-//    //For whatever reason PemReader is not accessible from outside their package
-//    Class pemReaderClass=Class.forName("io.netty.handler.ssl.PemReader");
-//    Method readCertificateMethod = pemReaderClass.getDeclaredMethod("readCertificates", File.class);
-//    readCertificateMethod.setAccessible(true);
-//    ByteBuf[] certs = (ByteBuf[]) readCertificateMethod.invoke(null, localCertificateFile);
-
     CertificateFactory cf = CertificateFactory.getInstance("X.509");
-    localCertificateChainArray=new Certificate[]{cf.generateCertificate(new ByteArrayInputStream(certificatePEM.getContent()))};
-//    List<Certificate> localCertificateChain = new ArrayList<Certificate>();
-    try {
-//      for (ByteBuf buf: certs) {
-//        localCertificateChain.add(cf.generateCertificate(new ByteBufInputStream(buf)));
-//      }
-    } finally {
-//      for (ByteBuf buf: certs) {
-//        buf.release();
-//      }
-    }
-//    localCertificateChainArray=localCertificateChain.toArray(new Certificate[localCertificateChain.size()]);
+    this.cert = (X509Certificate) cf.generateCertificate(new ByteArrayInputStream(certificatePEM.getContent()));
+    localCertificateChainArray=new Certificate[]{cert};
 
 
-    PemReader reader=new PemReader(new FileReader(this.localPrivateKeyFile));
-    PemObject privateKeyPEM=reader.readPemObject();
-    reader.close();
-
-//    //For whatever reason PemReader is not accessible from outside their package
-//    Method readPrivateKeyMethod = pemReaderClass.getDeclaredMethod("readPrivateKey", File.class);
-//    readPrivateKeyMethod.setAccessible(true);
-//    ByteBuf encodedKeyBuf = (ByteBuf) readPrivateKeyMethod.invoke(null, localPrivateKeyFile);
-//    //    ByteBuf encodedKeyBuf = PemReader.readPrivateKey(localPrivateKeyFile);
-//    byte[] encodedKey = new byte[encodedKeyBuf.readableBytes()];
-//    encodedKeyBuf.readBytes(encodedKey).release();
-    
+    PemReader privateKeyReader=new PemReader(new FileReader(this.localPrivateKeyFile));
+    PemObject privateKeyPEM=privateKeyReader.readPemObject();
+    privateKeyReader.close();
     PKCS8EncodedKeySpec encodedKeySpec = new PKCS8EncodedKeySpec(privateKeyPEM.getContent());
     KeyFactory ecKeyFactory = KeyFactory.getInstance("EC", BC_PROVIDER);
     PrivateKey localPrivateECKey = ecKeyFactory.generatePrivate(encodedKeySpec);
@@ -119,29 +90,15 @@ public class NodeIdentity {
   }
 
   protected void saveKeyPairAndCertificateToFile() throws Exception {
-    String keyText = "-----BEGIN PRIVATE KEY-----\n" +
-        Base64.encode(Unpooled.wrappedBuffer(localKeypair.getPrivate().getEncoded()), true).toString(CharsetUtil.US_ASCII) +
-        "\n-----END PRIVATE KEY-----\n";
+    //Encode in PEM format, the format prefered by openssl
+    PEMWriter pemWriter=new PEMWriter(new FileWriter(localPrivateKeyFile));
+    pemWriter.writeObject(localKeypair.getPrivate());
+    pemWriter.close();
 
-    OutputStream keyOutStream = new FileOutputStream(localPrivateKeyFile);
-    try {
-      keyOutStream.write(keyText.getBytes(CharsetUtil.US_ASCII));
-    } finally {
-      keyOutStream.close();
-    }
-
-    // Encode the certificate into a CRT file.
-    String certText = "-----BEGIN CERTIFICATE-----\n" +
-        Base64.encode(Unpooled.wrappedBuffer(cert.getEncoded()), true).toString(CharsetUtil.US_ASCII) +
-        "\n-----END CERTIFICATE-----\n";
-
-    OutputStream certOut = new FileOutputStream(localCertificateFile);
-    try {
-      certOut.write(certText.getBytes(CharsetUtil.US_ASCII));
-    } finally {
-      certOut.close();
-    }
-    System.err.println("Saved to "+localCertificateFile.getAbsolutePath());
+    PEMWriter certificateWriter=new PEMWriter(new FileWriter(localCertificateFile));
+    certificateWriter.writeObject(cert);
+    certificateWriter.close();
+    LOGGER.info("Saved to "+localCertificateFile.getAbsolutePath());
   }
 
   private void generateCertificate() throws Exception {
@@ -160,10 +117,12 @@ public class NodeIdentity {
     //      throw new Exception("Verification failed");
     //    }
     cert.verify(localKeypair.getPublic(), BC_PROVIDER);
+    localCertificateChainArray=new Certificate[] {cert};
   }
 
   public void generateKeyPair(){
     try {
+      LOGGER.info("Generating new keypair");
       KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC", BC_PROVIDER);
       keyGen.initialize(ecSpec, random);
       localKeypair = keyGen.generateKeyPair();
