@@ -1,15 +1,20 @@
 package org.peercentrum.network;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.handler.codec.base64.Base64;
+import io.netty.util.CharsetUtil;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
-import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.Security;
 import java.security.cert.Certificate;
@@ -24,9 +29,11 @@ import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
+import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.openssl.PEMWriter;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
@@ -36,6 +43,8 @@ import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TopLevelConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.common.io.Files;
 
 public class NodeIdentity {
   private static final Logger LOGGER = LoggerFactory.getLogger(NodeIdentity.class);
@@ -65,8 +74,6 @@ public class NodeIdentity {
     else{
       loadKeyPairAndCertificateFromFile();
     }
-    
-    localId=new NodeIdentifier(localKeypair.getPublic().getEncoded());
   }
 
   protected void loadKeyPairAndCertificateFromFile() throws Exception {
@@ -78,22 +85,55 @@ public class NodeIdentity {
     localCertificateChainArray=new Certificate[]{cert};
 
 
-    PemReader privateKeyReader=new PemReader(new FileReader(this.localPrivateKeyFile));
-    PemObject privateKeyPEM=privateKeyReader.readPemObject();
-    privateKeyReader.close();
-    PKCS8EncodedKeySpec encodedKeySpec = new PKCS8EncodedKeySpec(privateKeyPEM.getContent());
+    PKCS8EncodedKeySpec encodedKeySpec;
+    if(false){
+      PemReader privateKeyReader=new PemReader(new FileReader(this.localPrivateKeyFile));
+      PemObject privateKeyPEM=privateKeyReader.readPemObject();
+      privateKeyReader.close();
+      encodedKeySpec = new PKCS8EncodedKeySpec(privateKeyPEM.getContent());
+    }
+    else if(true){
+      PEMParser privateKeyParser=new PEMParser(new FileReader(this.localPrivateKeyFile));
+      PemObject privateKeyPEM=privateKeyParser.readPemObject();
+      privateKeyParser.close();
+      encodedKeySpec = new PKCS8EncodedKeySpec(privateKeyPEM.getContent());
+    }
+    else{
+      //For whatever reason PemReader is not accessible from outside their package
+      Class pemReaderClass=Class.forName("io.netty.handler.ssl.PemReader");
+      Method readPrivateKeyMethod = pemReaderClass.getDeclaredMethod("readPrivateKey", File.class);
+      readPrivateKeyMethod.setAccessible(true);
+      ByteBuf encodedKeyBuf = (ByteBuf) readPrivateKeyMethod.invoke(null, localPrivateKeyFile);
+      //    ByteBuf encodedKeyBuf = PemReader.readPrivateKey(localPrivateKeyFile);
+      byte[] encodedKey = new byte[encodedKeyBuf.readableBytes()];
+      encodedKeyBuf.readBytes(encodedKey).release();
+      encodedKeySpec = new PKCS8EncodedKeySpec(encodedKey);
+    }
     KeyFactory ecKeyFactory = KeyFactory.getInstance("EC", BC_PROVIDER);
     PrivateKey localPrivateECKey = ecKeyFactory.generatePrivate(encodedKeySpec);
-    PublicKey localPublicECKey = localCertificateChainArray[0].getPublicKey();
+    BCECPublicKey localPublicECKey = (BCECPublicKey) localCertificateChainArray[0].getPublicKey();
+    localPublicECKey.setPointFormat("COMPRESSESED");
     localKeypair=new KeyPair(localPublicECKey, localPrivateECKey);
-    LOGGER.debug("Loaded identity "+localKeypair.getPublic());
+    localId=new NodeIdentifier(localPublicECKey.getEncoded());
+    LOGGER.debug("Loaded identity "+localPublicECKey);
+    LOGGER.debug("Loaded identity "+localId);
   }
 
   protected void saveKeyPairAndCertificateToFile() throws Exception {
     //Encode in PEM format, the format prefered by openssl
-    PEMWriter pemWriter=new PEMWriter(new FileWriter(localPrivateKeyFile));
-    pemWriter.writeObject(localKeypair.getPrivate());
-    pemWriter.close();
+    if(false){
+      PEMWriter pemWriter=new PEMWriter(new FileWriter(localPrivateKeyFile));
+      pemWriter.writeObject(localKeypair.getPrivate());
+      pemWriter.close();
+    }
+    else{
+      String keyText = "-----BEGIN EC PRIVATE KEY-----\n" +
+          Base64.encode(Unpooled.wrappedBuffer(localKeypair.getPrivate().getEncoded()), true).toString(CharsetUtil.US_ASCII) +
+          "\n-----END EC PRIVATE KEY-----\n";
+      Files.write(keyText, localPrivateKeyFile, CharsetUtil.US_ASCII);
+
+      Files.write(localId.toString(), new File(localPrivateKeyFile.getParentFile(), "localPublic.hash"), CharsetUtil.US_ASCII);
+    }
 
     PEMWriter certificateWriter=new PEMWriter(new FileWriter(localCertificateFile));
     certificateWriter.writeObject(cert);
@@ -126,6 +166,7 @@ public class NodeIdentity {
       KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC", BC_PROVIDER);
       keyGen.initialize(ecSpec, random);
       localKeypair = keyGen.generateKeyPair();
+      localId=new NodeIdentifier(localKeypair.getPublic().getEncoded());
     } catch (Exception e) {
       throw new Error(e);
     }

@@ -42,7 +42,7 @@ public class CheckSelfSignedNodeIdTrustManager implements X509TrustManager {
       if(expectedNodeId!=null){
         NodeIdentifier nodeIdOnCertificate=new NodeIdentifier(chain[0].getPublicKey().getEncoded());
         if(expectedNodeId.equals(nodeIdOnCertificate)==false){
-          throw new CertificateException("The certificate is valid, but we were expecting to connect to node "+expectedNodeId);
+          throw new CertificateException("The certificate is valid for node "+nodeIdOnCertificate+", but we were expecting to connect to node "+expectedNodeId);
         }
       }
     } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | SignatureException e) {

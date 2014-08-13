@@ -30,7 +30,6 @@ public class ServerMain implements Runnable {
 			return;
 		}
 		TopLevelConfig config = TopLevelConfig.loadFromFile(new File(args[0]));
-		config.setEnableNAT(true);
 		ServerMain serverMain = new ServerMain(config);
 		serverMain.run();
 		Thread.sleep(Long.MAX_VALUE);

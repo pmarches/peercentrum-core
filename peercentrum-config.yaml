@@ -4,7 +4,7 @@ enableNAT: true
 encryptConnection: true #For debugging purposes only
 applications: 
   - !!org.peercentrum.core.NodeGossipConfig
-    bootstrapEndpoint: node1:66.172.33.39:35460
+    bootstrapEndpoint: 3056301006072A8648CE3D020106052B8104000A0342000449971C8F256C329EB3C860BB69C2723F98D10123B0ECC5F2790131475E159E630DDB761175111EEE6830CA26DDCCC102B2CE1BE0AC5372B55D91A5672822C2FB:66.172.33.39:35460
   
   - !!org.peercentrum.h2pk.HashToPublicKeyConfig
     validatorIdentifiers:

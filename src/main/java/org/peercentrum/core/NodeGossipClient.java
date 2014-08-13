@@ -52,6 +52,7 @@ public class NodeGossipClient {
         LOGGER.error("bootstrap entry has not been recognized {}", bootstrapEndpoint);
         return;
       }
+      
       NodeIdentifier bootStrapNodeId=new NodeIdentifier(nodeIDAddressAndPort[0]);
       InetSocketAddress bootstrapAddress=new InetSocketAddress(nodeIDAddressAndPort[1], Integer.parseInt(nodeIDAddressAndPort[2]));
       LOGGER.debug("bootstrap is {}", bootstrapAddress);

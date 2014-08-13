@@ -61,7 +61,7 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
       ;
     bindChannel = b.bind(config.getListenPort()).sync().channel();
     effectiveListeningPort=((InetSocketAddress) bindChannel.localAddress()).getPort();
-    LOGGER.debug("network server1 now listening on port {}", effectiveListeningPort);
+    LOGGER.debug("server "+super.getNodeIdentifier()+" now listening on port {}", effectiveListeningPort);
     
     networkClient=new NetworkClient(getLocalIdentity(), getNodeDatabase());
     networkClient.setLocalListeningPort(getListeningPort());

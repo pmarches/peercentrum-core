@@ -20,7 +20,11 @@ public class Identifier {
 		this.binaryValue=binaryValue;
 	}
 	
-	public byte[] getBytes(){
+	public Identifier(String humanReadableIdentifier) {
+	  this.binaryValue=DatatypeConverter.parseHexBinary(humanReadableIdentifier);
+  }
+
+  public byte[] getBytes(){
 		return binaryValue;
 	}
 

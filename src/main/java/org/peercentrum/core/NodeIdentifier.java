@@ -1,13 +1,11 @@
 package org.peercentrum.core;
 
-import javax.xml.bind.DatatypeConverter;
-
 import org.peercentrum.h2pk.PublicKeyIdentifier;
 
 
 public class NodeIdentifier extends PublicKeyIdentifier {
 	public NodeIdentifier(String humanReadableIdentifier){
-		super(humanReadableIdentifier.getBytes());
+		super(humanReadableIdentifier);
 	}
 	
 	public NodeIdentifier(byte[] binaryIdentifier){
@@ -15,10 +13,5 @@ public class NodeIdentifier extends PublicKeyIdentifier {
 		if(binaryIdentifier==null || binaryIdentifier.length==0){
 			throw new RuntimeException("invalid identifier");
 		}
-	}
-	
-	@Override
-	public String toString() {
-		return DatatypeConverter.printHexBinary(binaryValue);
 	}
 }

@@ -38,7 +38,9 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 	
 	private void bootstrapGossiping() throws Exception {
 	  NodeGossipConfig gossipConfig=(NodeGossipConfig) server.getConfig().getAppConfig(NodeGossipConfig.class);
-	  client.bootstrapGossiping(gossipConfig.getBootstrapEndpoint());
+	  if(gossipConfig!=null){
+	    client.bootstrapGossiping(gossipConfig.getBootstrapEndpoint());
+	  }
   }
 
   @Override
