@@ -12,6 +12,7 @@ import java.util.Arrays;
 
 import javax.net.ssl.X509TrustManager;
 
+import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.peercentrum.core.NodeIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +40,9 @@ public class CheckSelfSignedNodeIdTrustManager implements X509TrustManager {
       chain[0].checkValidity();
       chain[0].verify(chain[0].getPublicKey(), "BC"); //Ensure the certificate has been self-signed
 
-      if(expectedNodeId!=null){
-        NodeIdentifier nodeIdOnCertificate=new NodeIdentifier(chain[0].getPublicKey().getEncoded());
+      if(expectedNodeId!=null){ //expectedNodeId will be null on the server side..
+        BCECPublicKey publicKeyOnCertificate=(BCECPublicKey) chain[0].getPublicKey();
+        NodeIdentifier nodeIdOnCertificate=new NodeIdentifier(publicKeyOnCertificate.getQ().getEncoded(true));
         if(expectedNodeId.equals(nodeIdOnCertificate)==false){
           throw new CertificateException("The certificate is valid for node "+nodeIdOnCertificate+", but we were expecting to connect to node "+expectedNodeId);
         }

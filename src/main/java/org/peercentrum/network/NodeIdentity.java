@@ -29,6 +29,7 @@ import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPrivateKey;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -49,14 +50,15 @@ import com.google.common.io.Files;
 public class NodeIdentity {
   private static final Logger LOGGER = LoggerFactory.getLogger(NodeIdentity.class);
   static final String BC_PROVIDER = "BC";
-  static ECParameterSpec ecSpec = ECNamedCurveTable.getParameterSpec("secp256k1");
+  static ECParameterSpec secp256k1 = ECNamedCurveTable.getParameterSpec("secp256k1");
 
   protected File localCertificateFile, localPrivateKeyFile;
-  KeyPair localKeypair;
   SecureRandom random;
   private NodeIdentifier localId;
   private X509Certificate cert;
   private Certificate[] localCertificateChainArray;
+  private BCECPublicKey localPublicECKey;
+  private BCECPrivateKey localPrivateECKey;
 
   static {
     Security.addProvider(new BouncyCastleProvider());
@@ -110,11 +112,10 @@ public class NodeIdentity {
       encodedKeySpec = new PKCS8EncodedKeySpec(encodedKey);
     }
     KeyFactory ecKeyFactory = KeyFactory.getInstance("EC", BC_PROVIDER);
-    PrivateKey localPrivateECKey = ecKeyFactory.generatePrivate(encodedKeySpec);
-    BCECPublicKey localPublicECKey = (BCECPublicKey) localCertificateChainArray[0].getPublicKey();
-    localPublicECKey.setPointFormat("COMPRESSESED");
-    localKeypair=new KeyPair(localPublicECKey, localPrivateECKey);
-    localId=new NodeIdentifier(localPublicECKey.getEncoded());
+    localPrivateECKey = (BCECPrivateKey) ecKeyFactory.generatePrivate(encodedKeySpec);
+    localPublicECKey = (BCECPublicKey) localCertificateChainArray[0].getPublicKey();
+
+    localId=new NodeIdentifier(localPublicECKey.getQ().getEncoded(true));
     LOGGER.debug("Loaded identity "+localPublicECKey);
     LOGGER.debug("Loaded identity "+localId);
   }
@@ -123,12 +124,12 @@ public class NodeIdentity {
     //Encode in PEM format, the format prefered by openssl
     if(false){
       PEMWriter pemWriter=new PEMWriter(new FileWriter(localPrivateKeyFile));
-      pemWriter.writeObject(localKeypair.getPrivate());
+      pemWriter.writeObject(localPrivateECKey);
       pemWriter.close();
     }
     else{
       String keyText = "-----BEGIN EC PRIVATE KEY-----\n" +
-          Base64.encode(Unpooled.wrappedBuffer(localKeypair.getPrivate().getEncoded()), true).toString(CharsetUtil.US_ASCII) +
+          Base64.encode(Unpooled.wrappedBuffer(localPrivateECKey.getEncoded()), true).toString(CharsetUtil.US_ASCII) +
           "\n-----END EC PRIVATE KEY-----\n";
       Files.write(keyText, localPrivateKeyFile, CharsetUtil.US_ASCII);
 
@@ -147,16 +148,16 @@ public class NodeIdentity {
     NOT_AFTER.add(Calendar.YEAR, 100);
     X500Name subjectAndIssuer= new X500Name("CN=peercentrum node");
     X509v3CertificateBuilder certificateBuilder = new JcaX509v3CertificateBuilder(
-        subjectAndIssuer, new BigInteger(64, random), NOT_BEFORE, NOT_AFTER.getTime(), subjectAndIssuer, localKeypair.getPublic());
+        subjectAndIssuer, new BigInteger(64, random), NOT_BEFORE, NOT_AFTER.getTime(), subjectAndIssuer, localPublicECKey);
 
-    ContentSigner signer = new JcaContentSignerBuilder("SHA256withECDSA").setProvider(BC_PROVIDER).build(localKeypair.getPrivate());
+    ContentSigner signer = new JcaContentSignerBuilder("SHA256withECDSA").setProvider(BC_PROVIDER).build(localPrivateECKey);
     X509CertificateHolder certHolder = certificateBuilder.build(signer);
     cert = new JcaX509CertificateConverter().setProvider(BC_PROVIDER).getCertificate(certHolder);
 
     //    if(certHolder.isSignatureValid(new JcaContentVerifierProviderBuilder().setProvider(BC_PROVIDER).build(localKeypair.getPublic()))==false){
     //      throw new Exception("Verification failed");
     //    }
-    cert.verify(localKeypair.getPublic(), BC_PROVIDER);
+    cert.verify(localPublicECKey, BC_PROVIDER);
     localCertificateChainArray=new Certificate[] {cert};
   }
 
@@ -164,9 +165,11 @@ public class NodeIdentity {
     try {
       LOGGER.info("Generating new keypair");
       KeyPairGenerator keyGen = KeyPairGenerator.getInstance("EC", BC_PROVIDER);
-      keyGen.initialize(ecSpec, random);
-      localKeypair = keyGen.generateKeyPair();
-      localId=new NodeIdentifier(localKeypair.getPublic().getEncoded());
+      keyGen.initialize(secp256k1, random);
+      KeyPair localKeypair = keyGen.generateKeyPair();
+      localPrivateECKey=(BCECPrivateKey) localKeypair.getPrivate();
+      localPublicECKey=(BCECPublicKey) localKeypair.getPublic();
+      localId=new NodeIdentifier(localPublicECKey.getQ().getEncoded(true));
     } catch (Exception e) {
       throw new Error(e);
     }
@@ -177,7 +180,7 @@ public class NodeIdentity {
   }
 
   public PrivateKey getNodePrivateKey() throws Exception {
-    return localKeypair.getPrivate();
+    return localPrivateECKey;
   }
 
   public Certificate[] getNodeCertificate() throws Exception {
