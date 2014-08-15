@@ -15,6 +15,7 @@ import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.Security;
 import java.security.cert.Certificate;
@@ -50,7 +51,7 @@ import com.google.common.io.Files;
 public class NodeIdentity {
   private static final Logger LOGGER = LoggerFactory.getLogger(NodeIdentity.class);
   static final String BC_PROVIDER = "BC";
-  static ECParameterSpec secp256k1 = ECNamedCurveTable.getParameterSpec("secp256k1");
+  public static ECParameterSpec secp256k1 = ECNamedCurveTable.getParameterSpec("secp256k1");
 
   protected File localCertificateFile, localPrivateKeyFile;
   SecureRandom random;
@@ -65,10 +66,12 @@ public class NodeIdentity {
   }
 
   public NodeIdentity(TopLevelConfig config) throws Exception {
-    localCertificateFile=config.getFile("localCertificate.crt");
-    localPrivateKeyFile=config.getFile("localPrivateKey.pem");
+    if(config!=null){
+      localCertificateFile=config.getFile("localCertificate.crt");
+      localPrivateKeyFile=config.getFile("localPrivateKey.pem");
+    }
     random = SecureRandom.getInstance("SHA1PRNG");
-    if(localCertificateFile.exists()==false){
+    if(localCertificateFile==null || localCertificateFile.exists()==false){
       generateKeyPair();
       generateCertificate();
       saveKeyPairAndCertificateToFile();
@@ -115,12 +118,16 @@ public class NodeIdentity {
     localPrivateECKey = (BCECPrivateKey) ecKeyFactory.generatePrivate(encodedKeySpec);
     localPublicECKey = (BCECPublicKey) localCertificateChainArray[0].getPublicKey();
 
-    localId=new NodeIdentifier(localPublicECKey.getQ().getEncoded(true));
+    localId=new NodeIdentifier(localPublicECKey);
     LOGGER.debug("Loaded identity "+localPublicECKey);
     LOGGER.debug("Loaded identity "+localId);
   }
 
   protected void saveKeyPairAndCertificateToFile() throws Exception {
+    if(localPrivateKeyFile==null){
+      LOGGER.info("not saving private key nor certificate");
+      return;
+    }
     //Encode in PEM format, the format prefered by openssl
     if(false){
       PEMWriter pemWriter=new PEMWriter(new FileWriter(localPrivateKeyFile));
@@ -169,7 +176,7 @@ public class NodeIdentity {
       KeyPair localKeypair = keyGen.generateKeyPair();
       localPrivateECKey=(BCECPrivateKey) localKeypair.getPrivate();
       localPublicECKey=(BCECPublicKey) localKeypair.getPublic();
-      localId=new NodeIdentifier(localPublicECKey.getQ().getEncoded(true));
+      localId=new NodeIdentifier(localPublicECKey);
     } catch (Exception e) {
       throw new Error(e);
     }
@@ -179,12 +186,16 @@ public class NodeIdentity {
     return localId;
   }
 
-  public PrivateKey getNodePrivateKey() throws Exception {
+  public PrivateKey getPrivateKey() throws Exception {
     return localPrivateECKey;
   }
 
   public Certificate[] getNodeCertificate() throws Exception {
     return localCertificateChainArray;
+  }
+
+  public PublicKey getPublicKey() {
+    return localPublicECKey;
   }
 
 }

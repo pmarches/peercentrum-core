@@ -201,10 +201,10 @@ message SettlementMsg {
 message DHTTopLevelMsg {
   optional DHTPingMsg ping=1;
 
-  optional DHTFindMsg find=2;
-  optional DHTFoundMsg found=3;
+  repeated DHTFindMsg find=2;
+  repeated DHTFoundMsg found=3;
 	
-	optional DHTStoreValueMsg storeValue=4;
+	repeated DHTStoreValueMsg storeValue=4;
 };
 
 message DHTPingMsg {
@@ -224,4 +224,6 @@ message DHTFoundMsg {
 message DHTStoreValueMsg {
   optional bytes key=1;
   optional bytes value=2;
+  optional uint32 nonce=3; //Ever increasing, prevents replay attacks
+  optional bytes signature=4;
 };

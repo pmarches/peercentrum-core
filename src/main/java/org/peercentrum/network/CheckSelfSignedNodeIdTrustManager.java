@@ -34,7 +34,7 @@ public class CheckSelfSignedNodeIdTrustManager implements X509TrustManager {
 
   private void verifyCertificate(X509Certificate[] chain) throws CertificateException {
     if(chain.length!=1){
-      throw new CertificateException("Was expecting a single self-signed certificate, got "+chain.length+" instead");
+      throw new CertificateException("Was expecting a single self-signed certificate, got "+chain.length+" certificates instead");
     }
     try {
       chain[0].checkValidity();
@@ -42,7 +42,7 @@ public class CheckSelfSignedNodeIdTrustManager implements X509TrustManager {
 
       if(expectedNodeId!=null){ //expectedNodeId will be null on the server side..
         BCECPublicKey publicKeyOnCertificate=(BCECPublicKey) chain[0].getPublicKey();
-        NodeIdentifier nodeIdOnCertificate=new NodeIdentifier(publicKeyOnCertificate.getQ().getEncoded(true));
+        NodeIdentifier nodeIdOnCertificate=new NodeIdentifier(publicKeyOnCertificate);
         if(expectedNodeId.equals(nodeIdOnCertificate)==false){
           throw new CertificateException("The certificate is valid for node "+nodeIdOnCertificate+", but we were expecting to connect to node "+expectedNodeId);
         }

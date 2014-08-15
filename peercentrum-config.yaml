@@ -9,7 +9,7 @@ applications:
   - !!org.peercentrum.h2pk.HashToPublicKeyConfig
     validatorIdentifiers:
       - 123456789
-      - qwertyuiop
+      - 0349971C8F256C329EB3C860BB69C2723F98D10123B0ECC5F2790131475E15FFFF
 
   - !!org.peercentrum.blob.P2PBlobConfig
     #maximumStorageAllowed: 100M

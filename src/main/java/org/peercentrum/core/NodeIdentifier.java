@@ -1,5 +1,6 @@
 package org.peercentrum.core;
 
+import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.peercentrum.h2pk.PublicKeyIdentifier;
 
 
@@ -14,4 +15,8 @@ public class NodeIdentifier extends PublicKeyIdentifier {
 			throw new RuntimeException("invalid identifier");
 		}
 	}
+
+  public NodeIdentifier(BCECPublicKey publicKeyOnCertificate) {
+    this(publicKeyOnCertificate.getQ().getEncoded(true));
+  }
 }

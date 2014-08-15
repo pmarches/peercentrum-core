@@ -20124,47 +20124,80 @@ public final class PB {
      */
     org.peercentrum.core.PB.DHTPingMsgOrBuilder getPingOrBuilder();
 
-    // optional .peercentrum.DHTFindMsg find = 2;
+    // repeated .peercentrum.DHTFindMsg find = 2;
     /**
-     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
      */
-    boolean hasFind();
+    java.util.List<org.peercentrum.core.PB.DHTFindMsg> 
+        getFindList();
     /**
-     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
      */
-    org.peercentrum.core.PB.DHTFindMsg getFind();
+    org.peercentrum.core.PB.DHTFindMsg getFind(int index);
     /**
-     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
      */
-    org.peercentrum.core.PB.DHTFindMsgOrBuilder getFindOrBuilder();
+    int getFindCount();
+    /**
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    java.util.List<? extends org.peercentrum.core.PB.DHTFindMsgOrBuilder> 
+        getFindOrBuilderList();
+    /**
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    org.peercentrum.core.PB.DHTFindMsgOrBuilder getFindOrBuilder(
+        int index);
 
-    // optional .peercentrum.DHTFoundMsg found = 3;
+    // repeated .peercentrum.DHTFoundMsg found = 3;
     /**
-     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
      */
-    boolean hasFound();
+    java.util.List<org.peercentrum.core.PB.DHTFoundMsg> 
+        getFoundList();
     /**
-     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
      */
-    org.peercentrum.core.PB.DHTFoundMsg getFound();
+    org.peercentrum.core.PB.DHTFoundMsg getFound(int index);
     /**
-     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
      */
-    org.peercentrum.core.PB.DHTFoundMsgOrBuilder getFoundOrBuilder();
+    int getFoundCount();
+    /**
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    java.util.List<? extends org.peercentrum.core.PB.DHTFoundMsgOrBuilder> 
+        getFoundOrBuilderList();
+    /**
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    org.peercentrum.core.PB.DHTFoundMsgOrBuilder getFoundOrBuilder(
+        int index);
 
-    // optional .peercentrum.DHTStoreValueMsg storeValue = 4;
+    // repeated .peercentrum.DHTStoreValueMsg storeValue = 4;
     /**
-     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
      */
-    boolean hasStoreValue();
+    java.util.List<org.peercentrum.core.PB.DHTStoreValueMsg> 
+        getStoreValueList();
     /**
-     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
      */
-    org.peercentrum.core.PB.DHTStoreValueMsg getStoreValue();
+    org.peercentrum.core.PB.DHTStoreValueMsg getStoreValue(int index);
     /**
-     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
      */
-    org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder getStoreValueOrBuilder();
+    int getStoreValueCount();
+    /**
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    java.util.List<? extends org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder> 
+        getStoreValueOrBuilderList();
+    /**
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder getStoreValueOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code peercentrum.DHTTopLevelMsg}
@@ -20235,42 +20268,27 @@ public final class PB {
               break;
             }
             case 18: {
-              org.peercentrum.core.PB.DHTFindMsg.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = find_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                find_ = new java.util.ArrayList<org.peercentrum.core.PB.DHTFindMsg>();
+                mutable_bitField0_ |= 0x00000002;
               }
-              find_ = input.readMessage(org.peercentrum.core.PB.DHTFindMsg.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(find_);
-                find_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
+              find_.add(input.readMessage(org.peercentrum.core.PB.DHTFindMsg.PARSER, extensionRegistry));
               break;
             }
             case 26: {
-              org.peercentrum.core.PB.DHTFoundMsg.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = found_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                found_ = new java.util.ArrayList<org.peercentrum.core.PB.DHTFoundMsg>();
+                mutable_bitField0_ |= 0x00000004;
               }
-              found_ = input.readMessage(org.peercentrum.core.PB.DHTFoundMsg.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(found_);
-                found_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
+              found_.add(input.readMessage(org.peercentrum.core.PB.DHTFoundMsg.PARSER, extensionRegistry));
               break;
             }
             case 34: {
-              org.peercentrum.core.PB.DHTStoreValueMsg.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = storeValue_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                storeValue_ = new java.util.ArrayList<org.peercentrum.core.PB.DHTStoreValueMsg>();
+                mutable_bitField0_ |= 0x00000008;
               }
-              storeValue_ = input.readMessage(org.peercentrum.core.PB.DHTStoreValueMsg.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(storeValue_);
-                storeValue_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000008;
+              storeValue_.add(input.readMessage(org.peercentrum.core.PB.DHTStoreValueMsg.PARSER, extensionRegistry));
               break;
             }
           }
@@ -20281,6 +20299,15 @@ public final class PB {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          find_ = java.util.Collections.unmodifiableList(find_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          found_ = java.util.Collections.unmodifiableList(found_);
+        }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          storeValue_ = java.util.Collections.unmodifiableList(storeValue_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -20335,77 +20362,119 @@ public final class PB {
       return ping_;
     }
 
-    // optional .peercentrum.DHTFindMsg find = 2;
+    // repeated .peercentrum.DHTFindMsg find = 2;
     public static final int FIND_FIELD_NUMBER = 2;
-    private org.peercentrum.core.PB.DHTFindMsg find_;
+    private java.util.List<org.peercentrum.core.PB.DHTFindMsg> find_;
     /**
-     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
      */
-    public boolean hasFind() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
-     */
-    public org.peercentrum.core.PB.DHTFindMsg getFind() {
+    public java.util.List<org.peercentrum.core.PB.DHTFindMsg> getFindList() {
       return find_;
     }
     /**
-     * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
      */
-    public org.peercentrum.core.PB.DHTFindMsgOrBuilder getFindOrBuilder() {
+    public java.util.List<? extends org.peercentrum.core.PB.DHTFindMsgOrBuilder> 
+        getFindOrBuilderList() {
       return find_;
+    }
+    /**
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    public int getFindCount() {
+      return find_.size();
+    }
+    /**
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    public org.peercentrum.core.PB.DHTFindMsg getFind(int index) {
+      return find_.get(index);
+    }
+    /**
+     * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+     */
+    public org.peercentrum.core.PB.DHTFindMsgOrBuilder getFindOrBuilder(
+        int index) {
+      return find_.get(index);
     }
 
-    // optional .peercentrum.DHTFoundMsg found = 3;
+    // repeated .peercentrum.DHTFoundMsg found = 3;
     public static final int FOUND_FIELD_NUMBER = 3;
-    private org.peercentrum.core.PB.DHTFoundMsg found_;
+    private java.util.List<org.peercentrum.core.PB.DHTFoundMsg> found_;
     /**
-     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
      */
-    public boolean hasFound() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
-     */
-    public org.peercentrum.core.PB.DHTFoundMsg getFound() {
+    public java.util.List<org.peercentrum.core.PB.DHTFoundMsg> getFoundList() {
       return found_;
     }
     /**
-     * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
      */
-    public org.peercentrum.core.PB.DHTFoundMsgOrBuilder getFoundOrBuilder() {
+    public java.util.List<? extends org.peercentrum.core.PB.DHTFoundMsgOrBuilder> 
+        getFoundOrBuilderList() {
       return found_;
+    }
+    /**
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    public int getFoundCount() {
+      return found_.size();
+    }
+    /**
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    public org.peercentrum.core.PB.DHTFoundMsg getFound(int index) {
+      return found_.get(index);
+    }
+    /**
+     * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+     */
+    public org.peercentrum.core.PB.DHTFoundMsgOrBuilder getFoundOrBuilder(
+        int index) {
+      return found_.get(index);
     }
 
-    // optional .peercentrum.DHTStoreValueMsg storeValue = 4;
+    // repeated .peercentrum.DHTStoreValueMsg storeValue = 4;
     public static final int STOREVALUE_FIELD_NUMBER = 4;
-    private org.peercentrum.core.PB.DHTStoreValueMsg storeValue_;
+    private java.util.List<org.peercentrum.core.PB.DHTStoreValueMsg> storeValue_;
     /**
-     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
      */
-    public boolean hasStoreValue() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
-     */
-    public org.peercentrum.core.PB.DHTStoreValueMsg getStoreValue() {
+    public java.util.List<org.peercentrum.core.PB.DHTStoreValueMsg> getStoreValueList() {
       return storeValue_;
     }
     /**
-     * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
      */
-    public org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder getStoreValueOrBuilder() {
+    public java.util.List<? extends org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder> 
+        getStoreValueOrBuilderList() {
       return storeValue_;
+    }
+    /**
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    public int getStoreValueCount() {
+      return storeValue_.size();
+    }
+    /**
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    public org.peercentrum.core.PB.DHTStoreValueMsg getStoreValue(int index) {
+      return storeValue_.get(index);
+    }
+    /**
+     * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+     */
+    public org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder getStoreValueOrBuilder(
+        int index) {
+      return storeValue_.get(index);
     }
 
     private void initFields() {
       ping_ = org.peercentrum.core.PB.DHTPingMsg.getDefaultInstance();
-      find_ = org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance();
-      found_ = org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance();
-      storeValue_ = org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance();
+      find_ = java.util.Collections.emptyList();
+      found_ = java.util.Collections.emptyList();
+      storeValue_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -20422,14 +20491,14 @@ public final class PB {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(1, ping_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, find_);
+      for (int i = 0; i < find_.size(); i++) {
+        output.writeMessage(2, find_.get(i));
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, found_);
+      for (int i = 0; i < found_.size(); i++) {
+        output.writeMessage(3, found_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, storeValue_);
+      for (int i = 0; i < storeValue_.size(); i++) {
+        output.writeMessage(4, storeValue_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -20444,17 +20513,17 @@ public final class PB {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, ping_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      for (int i = 0; i < find_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, find_);
+          .computeMessageSize(2, find_.get(i));
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      for (int i = 0; i < found_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, found_);
+          .computeMessageSize(3, found_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      for (int i = 0; i < storeValue_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, storeValue_);
+          .computeMessageSize(4, storeValue_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -20587,23 +20656,23 @@ public final class PB {
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         if (findBuilder_ == null) {
-          find_ = org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance();
+          find_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           findBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         if (foundBuilder_ == null) {
-          found_ = org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance();
+          found_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           foundBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
         if (storeValueBuilder_ == null) {
-          storeValue_ = org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance();
+          storeValue_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           storeValueBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -20640,26 +20709,29 @@ public final class PB {
         } else {
           result.ping_ = pingBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         if (findBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            find_ = java.util.Collections.unmodifiableList(find_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
           result.find_ = find_;
         } else {
           result.find_ = findBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         if (foundBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            found_ = java.util.Collections.unmodifiableList(found_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
           result.found_ = found_;
         } else {
           result.found_ = foundBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         if (storeValueBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            storeValue_ = java.util.Collections.unmodifiableList(storeValue_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
           result.storeValue_ = storeValue_;
         } else {
           result.storeValue_ = storeValueBuilder_.build();
@@ -20683,14 +20755,83 @@ public final class PB {
         if (other.hasPing()) {
           mergePing(other.getPing());
         }
-        if (other.hasFind()) {
-          mergeFind(other.getFind());
+        if (findBuilder_ == null) {
+          if (!other.find_.isEmpty()) {
+            if (find_.isEmpty()) {
+              find_ = other.find_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureFindIsMutable();
+              find_.addAll(other.find_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.find_.isEmpty()) {
+            if (findBuilder_.isEmpty()) {
+              findBuilder_.dispose();
+              findBuilder_ = null;
+              find_ = other.find_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              findBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getFindFieldBuilder() : null;
+            } else {
+              findBuilder_.addAllMessages(other.find_);
+            }
+          }
         }
-        if (other.hasFound()) {
-          mergeFound(other.getFound());
+        if (foundBuilder_ == null) {
+          if (!other.found_.isEmpty()) {
+            if (found_.isEmpty()) {
+              found_ = other.found_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureFoundIsMutable();
+              found_.addAll(other.found_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.found_.isEmpty()) {
+            if (foundBuilder_.isEmpty()) {
+              foundBuilder_.dispose();
+              foundBuilder_ = null;
+              found_ = other.found_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              foundBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getFoundFieldBuilder() : null;
+            } else {
+              foundBuilder_.addAllMessages(other.found_);
+            }
+          }
         }
-        if (other.hasStoreValue()) {
-          mergeStoreValue(other.getStoreValue());
+        if (storeValueBuilder_ == null) {
+          if (!other.storeValue_.isEmpty()) {
+            if (storeValue_.isEmpty()) {
+              storeValue_ = other.storeValue_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureStoreValueIsMutable();
+              storeValue_.addAll(other.storeValue_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.storeValue_.isEmpty()) {
+            if (storeValueBuilder_.isEmpty()) {
+              storeValueBuilder_.dispose();
+              storeValueBuilder_ = null;
+              storeValue_ = other.storeValue_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              storeValueBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getStoreValueFieldBuilder() : null;
+            } else {
+              storeValueBuilder_.addAllMessages(other.storeValue_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -20836,116 +20977,239 @@ public final class PB {
         return pingBuilder_;
       }
 
-      // optional .peercentrum.DHTFindMsg find = 2;
-      private org.peercentrum.core.PB.DHTFindMsg find_ = org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.PB.DHTFindMsg, org.peercentrum.core.PB.DHTFindMsg.Builder, org.peercentrum.core.PB.DHTFindMsgOrBuilder> findBuilder_;
-      /**
-       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
-       */
-      public boolean hasFind() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+      // repeated .peercentrum.DHTFindMsg find = 2;
+      private java.util.List<org.peercentrum.core.PB.DHTFindMsg> find_ =
+        java.util.Collections.emptyList();
+      private void ensureFindIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          find_ = new java.util.ArrayList<org.peercentrum.core.PB.DHTFindMsg>(find_);
+          bitField0_ |= 0x00000002;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.peercentrum.core.PB.DHTFindMsg, org.peercentrum.core.PB.DHTFindMsg.Builder, org.peercentrum.core.PB.DHTFindMsgOrBuilder> findBuilder_;
+
       /**
-       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
        */
-      public org.peercentrum.core.PB.DHTFindMsg getFind() {
+      public java.util.List<org.peercentrum.core.PB.DHTFindMsg> getFindList() {
         if (findBuilder_ == null) {
-          return find_;
+          return java.util.Collections.unmodifiableList(find_);
         } else {
-          return findBuilder_.getMessage();
+          return findBuilder_.getMessageList();
         }
       }
       /**
-       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
        */
-      public Builder setFind(org.peercentrum.core.PB.DHTFindMsg value) {
+      public int getFindCount() {
+        if (findBuilder_ == null) {
+          return find_.size();
+        } else {
+          return findBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public org.peercentrum.core.PB.DHTFindMsg getFind(int index) {
+        if (findBuilder_ == null) {
+          return find_.get(index);
+        } else {
+          return findBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public Builder setFind(
+          int index, org.peercentrum.core.PB.DHTFindMsg value) {
         if (findBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          find_ = value;
+          ensureFindIsMutable();
+          find_.set(index, value);
           onChanged();
         } else {
-          findBuilder_.setMessage(value);
+          findBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
        */
       public Builder setFind(
+          int index, org.peercentrum.core.PB.DHTFindMsg.Builder builderForValue) {
+        if (findBuilder_ == null) {
+          ensureFindIsMutable();
+          find_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          findBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public Builder addFind(org.peercentrum.core.PB.DHTFindMsg value) {
+        if (findBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFindIsMutable();
+          find_.add(value);
+          onChanged();
+        } else {
+          findBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public Builder addFind(
+          int index, org.peercentrum.core.PB.DHTFindMsg value) {
+        if (findBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFindIsMutable();
+          find_.add(index, value);
+          onChanged();
+        } else {
+          findBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public Builder addFind(
           org.peercentrum.core.PB.DHTFindMsg.Builder builderForValue) {
         if (findBuilder_ == null) {
-          find_ = builderForValue.build();
+          ensureFindIsMutable();
+          find_.add(builderForValue.build());
           onChanged();
         } else {
-          findBuilder_.setMessage(builderForValue.build());
+          findBuilder_.addMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
        */
-      public Builder mergeFind(org.peercentrum.core.PB.DHTFindMsg value) {
+      public Builder addFind(
+          int index, org.peercentrum.core.PB.DHTFindMsg.Builder builderForValue) {
         if (findBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              find_ != org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance()) {
-            find_ =
-              org.peercentrum.core.PB.DHTFindMsg.newBuilder(find_).mergeFrom(value).buildPartial();
-          } else {
-            find_ = value;
-          }
+          ensureFindIsMutable();
+          find_.add(index, builderForValue.build());
           onChanged();
         } else {
-          findBuilder_.mergeFrom(value);
+          findBuilder_.addMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public Builder addAllFind(
+          java.lang.Iterable<? extends org.peercentrum.core.PB.DHTFindMsg> values) {
+        if (findBuilder_ == null) {
+          ensureFindIsMutable();
+          super.addAll(values, find_);
+          onChanged();
+        } else {
+          findBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
        */
       public Builder clearFind() {
         if (findBuilder_ == null) {
-          find_ = org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance();
+          find_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           findBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
        */
-      public org.peercentrum.core.PB.DHTFindMsg.Builder getFindBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getFindFieldBuilder().getBuilder();
+      public Builder removeFind(int index) {
+        if (findBuilder_ == null) {
+          ensureFindIsMutable();
+          find_.remove(index);
+          onChanged();
+        } else {
+          findBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
        */
-      public org.peercentrum.core.PB.DHTFindMsgOrBuilder getFindOrBuilder() {
-        if (findBuilder_ != null) {
-          return findBuilder_.getMessageOrBuilder();
-        } else {
-          return find_;
+      public org.peercentrum.core.PB.DHTFindMsg.Builder getFindBuilder(
+          int index) {
+        return getFindFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public org.peercentrum.core.PB.DHTFindMsgOrBuilder getFindOrBuilder(
+          int index) {
+        if (findBuilder_ == null) {
+          return find_.get(index);  } else {
+          return findBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>optional .peercentrum.DHTFindMsg find = 2;</code>
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      public java.util.List<? extends org.peercentrum.core.PB.DHTFindMsgOrBuilder> 
+           getFindOrBuilderList() {
+        if (findBuilder_ != null) {
+          return findBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(find_);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public org.peercentrum.core.PB.DHTFindMsg.Builder addFindBuilder() {
+        return getFindFieldBuilder().addBuilder(
+            org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public org.peercentrum.core.PB.DHTFindMsg.Builder addFindBuilder(
+          int index) {
+        return getFindFieldBuilder().addBuilder(
+            index, org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFindMsg find = 2;</code>
+       */
+      public java.util.List<org.peercentrum.core.PB.DHTFindMsg.Builder> 
+           getFindBuilderList() {
+        return getFindFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.peercentrum.core.PB.DHTFindMsg, org.peercentrum.core.PB.DHTFindMsg.Builder, org.peercentrum.core.PB.DHTFindMsgOrBuilder> 
           getFindFieldBuilder() {
         if (findBuilder_ == null) {
-          findBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          findBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.peercentrum.core.PB.DHTFindMsg, org.peercentrum.core.PB.DHTFindMsg.Builder, org.peercentrum.core.PB.DHTFindMsgOrBuilder>(
                   find_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
           find_ = null;
@@ -20953,116 +21217,239 @@ public final class PB {
         return findBuilder_;
       }
 
-      // optional .peercentrum.DHTFoundMsg found = 3;
-      private org.peercentrum.core.PB.DHTFoundMsg found_ = org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.PB.DHTFoundMsg, org.peercentrum.core.PB.DHTFoundMsg.Builder, org.peercentrum.core.PB.DHTFoundMsgOrBuilder> foundBuilder_;
-      /**
-       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
-       */
-      public boolean hasFound() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+      // repeated .peercentrum.DHTFoundMsg found = 3;
+      private java.util.List<org.peercentrum.core.PB.DHTFoundMsg> found_ =
+        java.util.Collections.emptyList();
+      private void ensureFoundIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          found_ = new java.util.ArrayList<org.peercentrum.core.PB.DHTFoundMsg>(found_);
+          bitField0_ |= 0x00000004;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.peercentrum.core.PB.DHTFoundMsg, org.peercentrum.core.PB.DHTFoundMsg.Builder, org.peercentrum.core.PB.DHTFoundMsgOrBuilder> foundBuilder_;
+
       /**
-       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
        */
-      public org.peercentrum.core.PB.DHTFoundMsg getFound() {
+      public java.util.List<org.peercentrum.core.PB.DHTFoundMsg> getFoundList() {
         if (foundBuilder_ == null) {
-          return found_;
+          return java.util.Collections.unmodifiableList(found_);
         } else {
-          return foundBuilder_.getMessage();
+          return foundBuilder_.getMessageList();
         }
       }
       /**
-       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
        */
-      public Builder setFound(org.peercentrum.core.PB.DHTFoundMsg value) {
+      public int getFoundCount() {
+        if (foundBuilder_ == null) {
+          return found_.size();
+        } else {
+          return foundBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public org.peercentrum.core.PB.DHTFoundMsg getFound(int index) {
+        if (foundBuilder_ == null) {
+          return found_.get(index);
+        } else {
+          return foundBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public Builder setFound(
+          int index, org.peercentrum.core.PB.DHTFoundMsg value) {
         if (foundBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          found_ = value;
+          ensureFoundIsMutable();
+          found_.set(index, value);
           onChanged();
         } else {
-          foundBuilder_.setMessage(value);
+          foundBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
        */
       public Builder setFound(
+          int index, org.peercentrum.core.PB.DHTFoundMsg.Builder builderForValue) {
+        if (foundBuilder_ == null) {
+          ensureFoundIsMutable();
+          found_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          foundBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public Builder addFound(org.peercentrum.core.PB.DHTFoundMsg value) {
+        if (foundBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFoundIsMutable();
+          found_.add(value);
+          onChanged();
+        } else {
+          foundBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public Builder addFound(
+          int index, org.peercentrum.core.PB.DHTFoundMsg value) {
+        if (foundBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFoundIsMutable();
+          found_.add(index, value);
+          onChanged();
+        } else {
+          foundBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public Builder addFound(
           org.peercentrum.core.PB.DHTFoundMsg.Builder builderForValue) {
         if (foundBuilder_ == null) {
-          found_ = builderForValue.build();
+          ensureFoundIsMutable();
+          found_.add(builderForValue.build());
           onChanged();
         } else {
-          foundBuilder_.setMessage(builderForValue.build());
+          foundBuilder_.addMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
        */
-      public Builder mergeFound(org.peercentrum.core.PB.DHTFoundMsg value) {
+      public Builder addFound(
+          int index, org.peercentrum.core.PB.DHTFoundMsg.Builder builderForValue) {
         if (foundBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              found_ != org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance()) {
-            found_ =
-              org.peercentrum.core.PB.DHTFoundMsg.newBuilder(found_).mergeFrom(value).buildPartial();
-          } else {
-            found_ = value;
-          }
+          ensureFoundIsMutable();
+          found_.add(index, builderForValue.build());
           onChanged();
         } else {
-          foundBuilder_.mergeFrom(value);
+          foundBuilder_.addMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public Builder addAllFound(
+          java.lang.Iterable<? extends org.peercentrum.core.PB.DHTFoundMsg> values) {
+        if (foundBuilder_ == null) {
+          ensureFoundIsMutable();
+          super.addAll(values, found_);
+          onChanged();
+        } else {
+          foundBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
        */
       public Builder clearFound() {
         if (foundBuilder_ == null) {
-          found_ = org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance();
+          found_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           foundBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
        */
-      public org.peercentrum.core.PB.DHTFoundMsg.Builder getFoundBuilder() {
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return getFoundFieldBuilder().getBuilder();
+      public Builder removeFound(int index) {
+        if (foundBuilder_ == null) {
+          ensureFoundIsMutable();
+          found_.remove(index);
+          onChanged();
+        } else {
+          foundBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
        */
-      public org.peercentrum.core.PB.DHTFoundMsgOrBuilder getFoundOrBuilder() {
-        if (foundBuilder_ != null) {
-          return foundBuilder_.getMessageOrBuilder();
-        } else {
-          return found_;
+      public org.peercentrum.core.PB.DHTFoundMsg.Builder getFoundBuilder(
+          int index) {
+        return getFoundFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public org.peercentrum.core.PB.DHTFoundMsgOrBuilder getFoundOrBuilder(
+          int index) {
+        if (foundBuilder_ == null) {
+          return found_.get(index);  } else {
+          return foundBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>optional .peercentrum.DHTFoundMsg found = 3;</code>
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      public java.util.List<? extends org.peercentrum.core.PB.DHTFoundMsgOrBuilder> 
+           getFoundOrBuilderList() {
+        if (foundBuilder_ != null) {
+          return foundBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(found_);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public org.peercentrum.core.PB.DHTFoundMsg.Builder addFoundBuilder() {
+        return getFoundFieldBuilder().addBuilder(
+            org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public org.peercentrum.core.PB.DHTFoundMsg.Builder addFoundBuilder(
+          int index) {
+        return getFoundFieldBuilder().addBuilder(
+            index, org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.DHTFoundMsg found = 3;</code>
+       */
+      public java.util.List<org.peercentrum.core.PB.DHTFoundMsg.Builder> 
+           getFoundBuilderList() {
+        return getFoundFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.peercentrum.core.PB.DHTFoundMsg, org.peercentrum.core.PB.DHTFoundMsg.Builder, org.peercentrum.core.PB.DHTFoundMsgOrBuilder> 
           getFoundFieldBuilder() {
         if (foundBuilder_ == null) {
-          foundBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          foundBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.peercentrum.core.PB.DHTFoundMsg, org.peercentrum.core.PB.DHTFoundMsg.Builder, org.peercentrum.core.PB.DHTFoundMsgOrBuilder>(
                   found_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           found_ = null;
@@ -21070,116 +21457,239 @@ public final class PB {
         return foundBuilder_;
       }
 
-      // optional .peercentrum.DHTStoreValueMsg storeValue = 4;
-      private org.peercentrum.core.PB.DHTStoreValueMsg storeValue_ = org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.PB.DHTStoreValueMsg, org.peercentrum.core.PB.DHTStoreValueMsg.Builder, org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder> storeValueBuilder_;
-      /**
-       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
-       */
-      public boolean hasStoreValue() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+      // repeated .peercentrum.DHTStoreValueMsg storeValue = 4;
+      private java.util.List<org.peercentrum.core.PB.DHTStoreValueMsg> storeValue_ =
+        java.util.Collections.emptyList();
+      private void ensureStoreValueIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          storeValue_ = new java.util.ArrayList<org.peercentrum.core.PB.DHTStoreValueMsg>(storeValue_);
+          bitField0_ |= 0x00000008;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.peercentrum.core.PB.DHTStoreValueMsg, org.peercentrum.core.PB.DHTStoreValueMsg.Builder, org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder> storeValueBuilder_;
+
       /**
-       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
        */
-      public org.peercentrum.core.PB.DHTStoreValueMsg getStoreValue() {
+      public java.util.List<org.peercentrum.core.PB.DHTStoreValueMsg> getStoreValueList() {
         if (storeValueBuilder_ == null) {
-          return storeValue_;
+          return java.util.Collections.unmodifiableList(storeValue_);
         } else {
-          return storeValueBuilder_.getMessage();
+          return storeValueBuilder_.getMessageList();
         }
       }
       /**
-       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
        */
-      public Builder setStoreValue(org.peercentrum.core.PB.DHTStoreValueMsg value) {
+      public int getStoreValueCount() {
+        if (storeValueBuilder_ == null) {
+          return storeValue_.size();
+        } else {
+          return storeValueBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public org.peercentrum.core.PB.DHTStoreValueMsg getStoreValue(int index) {
+        if (storeValueBuilder_ == null) {
+          return storeValue_.get(index);
+        } else {
+          return storeValueBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public Builder setStoreValue(
+          int index, org.peercentrum.core.PB.DHTStoreValueMsg value) {
         if (storeValueBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          storeValue_ = value;
+          ensureStoreValueIsMutable();
+          storeValue_.set(index, value);
           onChanged();
         } else {
-          storeValueBuilder_.setMessage(value);
+          storeValueBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
        */
       public Builder setStoreValue(
+          int index, org.peercentrum.core.PB.DHTStoreValueMsg.Builder builderForValue) {
+        if (storeValueBuilder_ == null) {
+          ensureStoreValueIsMutable();
+          storeValue_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          storeValueBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public Builder addStoreValue(org.peercentrum.core.PB.DHTStoreValueMsg value) {
+        if (storeValueBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStoreValueIsMutable();
+          storeValue_.add(value);
+          onChanged();
+        } else {
+          storeValueBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public Builder addStoreValue(
+          int index, org.peercentrum.core.PB.DHTStoreValueMsg value) {
+        if (storeValueBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStoreValueIsMutable();
+          storeValue_.add(index, value);
+          onChanged();
+        } else {
+          storeValueBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public Builder addStoreValue(
           org.peercentrum.core.PB.DHTStoreValueMsg.Builder builderForValue) {
         if (storeValueBuilder_ == null) {
-          storeValue_ = builderForValue.build();
+          ensureStoreValueIsMutable();
+          storeValue_.add(builderForValue.build());
           onChanged();
         } else {
-          storeValueBuilder_.setMessage(builderForValue.build());
+          storeValueBuilder_.addMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
        */
-      public Builder mergeStoreValue(org.peercentrum.core.PB.DHTStoreValueMsg value) {
+      public Builder addStoreValue(
+          int index, org.peercentrum.core.PB.DHTStoreValueMsg.Builder builderForValue) {
         if (storeValueBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              storeValue_ != org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance()) {
-            storeValue_ =
-              org.peercentrum.core.PB.DHTStoreValueMsg.newBuilder(storeValue_).mergeFrom(value).buildPartial();
-          } else {
-            storeValue_ = value;
-          }
+          ensureStoreValueIsMutable();
+          storeValue_.add(index, builderForValue.build());
           onChanged();
         } else {
-          storeValueBuilder_.mergeFrom(value);
+          storeValueBuilder_.addMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public Builder addAllStoreValue(
+          java.lang.Iterable<? extends org.peercentrum.core.PB.DHTStoreValueMsg> values) {
+        if (storeValueBuilder_ == null) {
+          ensureStoreValueIsMutable();
+          super.addAll(values, storeValue_);
+          onChanged();
+        } else {
+          storeValueBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
        */
       public Builder clearStoreValue() {
         if (storeValueBuilder_ == null) {
-          storeValue_ = org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance();
+          storeValue_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           storeValueBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       /**
-       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
        */
-      public org.peercentrum.core.PB.DHTStoreValueMsg.Builder getStoreValueBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return getStoreValueFieldBuilder().getBuilder();
+      public Builder removeStoreValue(int index) {
+        if (storeValueBuilder_ == null) {
+          ensureStoreValueIsMutable();
+          storeValue_.remove(index);
+          onChanged();
+        } else {
+          storeValueBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
        */
-      public org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder getStoreValueOrBuilder() {
-        if (storeValueBuilder_ != null) {
-          return storeValueBuilder_.getMessageOrBuilder();
-        } else {
-          return storeValue_;
+      public org.peercentrum.core.PB.DHTStoreValueMsg.Builder getStoreValueBuilder(
+          int index) {
+        return getStoreValueFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder getStoreValueOrBuilder(
+          int index) {
+        if (storeValueBuilder_ == null) {
+          return storeValue_.get(index);  } else {
+          return storeValueBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>optional .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      public java.util.List<? extends org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder> 
+           getStoreValueOrBuilderList() {
+        if (storeValueBuilder_ != null) {
+          return storeValueBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(storeValue_);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public org.peercentrum.core.PB.DHTStoreValueMsg.Builder addStoreValueBuilder() {
+        return getStoreValueFieldBuilder().addBuilder(
+            org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public org.peercentrum.core.PB.DHTStoreValueMsg.Builder addStoreValueBuilder(
+          int index) {
+        return getStoreValueFieldBuilder().addBuilder(
+            index, org.peercentrum.core.PB.DHTStoreValueMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.DHTStoreValueMsg storeValue = 4;</code>
+       */
+      public java.util.List<org.peercentrum.core.PB.DHTStoreValueMsg.Builder> 
+           getStoreValueBuilderList() {
+        return getStoreValueFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
           org.peercentrum.core.PB.DHTStoreValueMsg, org.peercentrum.core.PB.DHTStoreValueMsg.Builder, org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder> 
           getStoreValueFieldBuilder() {
         if (storeValueBuilder_ == null) {
-          storeValueBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          storeValueBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               org.peercentrum.core.PB.DHTStoreValueMsg, org.peercentrum.core.PB.DHTStoreValueMsg.Builder, org.peercentrum.core.PB.DHTStoreValueMsgOrBuilder>(
                   storeValue_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           storeValue_ = null;
@@ -22694,6 +23204,34 @@ public final class PB {
      * <code>optional bytes value = 2;</code>
      */
     com.google.protobuf.ByteString getValue();
+
+    // optional uint32 nonce = 3;
+    /**
+     * <code>optional uint32 nonce = 3;</code>
+     *
+     * <pre>
+     *Ever increasing, prevents replay attacks
+     * </pre>
+     */
+    boolean hasNonce();
+    /**
+     * <code>optional uint32 nonce = 3;</code>
+     *
+     * <pre>
+     *Ever increasing, prevents replay attacks
+     * </pre>
+     */
+    int getNonce();
+
+    // optional bytes signature = 4;
+    /**
+     * <code>optional bytes signature = 4;</code>
+     */
+    boolean hasSignature();
+    /**
+     * <code>optional bytes signature = 4;</code>
+     */
+    com.google.protobuf.ByteString getSignature();
   }
   /**
    * Protobuf type {@code peercentrum.DHTStoreValueMsg}
@@ -22754,6 +23292,16 @@ public final class PB {
             case 18: {
               bitField0_ |= 0x00000002;
               value_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              nonce_ = input.readUInt32();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              signature_ = input.readBytes();
               break;
             }
           }
@@ -22828,9 +23376,51 @@ public final class PB {
       return value_;
     }
 
+    // optional uint32 nonce = 3;
+    public static final int NONCE_FIELD_NUMBER = 3;
+    private int nonce_;
+    /**
+     * <code>optional uint32 nonce = 3;</code>
+     *
+     * <pre>
+     *Ever increasing, prevents replay attacks
+     * </pre>
+     */
+    public boolean hasNonce() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint32 nonce = 3;</code>
+     *
+     * <pre>
+     *Ever increasing, prevents replay attacks
+     * </pre>
+     */
+    public int getNonce() {
+      return nonce_;
+    }
+
+    // optional bytes signature = 4;
+    public static final int SIGNATURE_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString signature_;
+    /**
+     * <code>optional bytes signature = 4;</code>
+     */
+    public boolean hasSignature() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional bytes signature = 4;</code>
+     */
+    public com.google.protobuf.ByteString getSignature() {
+      return signature_;
+    }
+
     private void initFields() {
       key_ = com.google.protobuf.ByteString.EMPTY;
       value_ = com.google.protobuf.ByteString.EMPTY;
+      nonce_ = 0;
+      signature_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -22850,6 +23440,12 @@ public final class PB {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, value_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(3, nonce_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, signature_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -22866,6 +23462,14 @@ public final class PB {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, value_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, nonce_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, signature_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -22987,6 +23591,10 @@ public final class PB {
         bitField0_ = (bitField0_ & ~0x00000001);
         value_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
+        nonce_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        signature_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -23023,6 +23631,14 @@ public final class PB {
           to_bitField0_ |= 0x00000002;
         }
         result.value_ = value_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.nonce_ = nonce_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.signature_ = signature_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -23044,6 +23660,12 @@ public final class PB {
         }
         if (other.hasValue()) {
           setValue(other.getValue());
+        }
+        if (other.hasNonce()) {
+          setNonce(other.getNonce());
+        }
+        if (other.hasSignature()) {
+          setSignature(other.getSignature());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -23140,6 +23762,91 @@ public final class PB {
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000002);
         value_ = getDefaultInstance().getValue();
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 nonce = 3;
+      private int nonce_ ;
+      /**
+       * <code>optional uint32 nonce = 3;</code>
+       *
+       * <pre>
+       *Ever increasing, prevents replay attacks
+       * </pre>
+       */
+      public boolean hasNonce() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint32 nonce = 3;</code>
+       *
+       * <pre>
+       *Ever increasing, prevents replay attacks
+       * </pre>
+       */
+      public int getNonce() {
+        return nonce_;
+      }
+      /**
+       * <code>optional uint32 nonce = 3;</code>
+       *
+       * <pre>
+       *Ever increasing, prevents replay attacks
+       * </pre>
+       */
+      public Builder setNonce(int value) {
+        bitField0_ |= 0x00000004;
+        nonce_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 nonce = 3;</code>
+       *
+       * <pre>
+       *Ever increasing, prevents replay attacks
+       * </pre>
+       */
+      public Builder clearNonce() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        nonce_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional bytes signature = 4;
+      private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes signature = 4;</code>
+       */
+      public boolean hasSignature() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional bytes signature = 4;</code>
+       */
+      public com.google.protobuf.ByteString getSignature() {
+        return signature_;
+      }
+      /**
+       * <code>optional bytes signature = 4;</code>
+       */
+      public Builder setSignature(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        signature_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes signature = 4;</code>
+       */
+      public Builder clearSignature() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        signature_ = getDefaultInstance().getSignature();
         onChanged();
         return this;
       }
@@ -23401,16 +24108,17 @@ public final class PB {
       "ttlementMsg\022?\n\020twoWayChannelMsg\030\001 \003(\0132%.",
       "paymentchannels.TwoWayChannelMessage\"\272\001\n" +
       "\016DHTTopLevelMsg\022%\n\004ping\030\001 \001(\0132\027.peercent" +
-      "rum.DHTPingMsg\022%\n\004find\030\002 \001(\0132\027.peercentr" +
-      "um.DHTFindMsg\022\'\n\005found\030\003 \001(\0132\030.peercentr" +
-      "um.DHTFoundMsg\0221\n\nstoreValue\030\004 \001(\0132\035.pee" +
+      "rum.DHTPingMsg\022%\n\004find\030\002 \003(\0132\027.peercentr" +
+      "um.DHTFindMsg\022\'\n\005found\030\003 \003(\0132\030.peercentr" +
+      "um.DHTFoundMsg\0221\n\nstoreValue\030\004 \003(\0132\035.pee" +
       "rcentrum.DHTStoreValueMsg\"\014\n\nDHTPingMsg\"" +
       "W\n\nDHTFindMsg\022\023\n\013keyCriteria\030\001 \001(\014\022\024\n\014no" +
       "deCriteria\030\002 \001(\014\022\036\n\026numberOfNodesRequest" +
       "ed\030\003 \001(\r\"2\n\013DHTFoundMsg\022\024\n\014closestNodes\030" +
-      "\001 \003(\014\022\r\n\005value\030\002 \001(\014\".\n\020DHTStoreValueMsg",
-      "\022\013\n\003key\030\001 \001(\014\022\r\n\005value\030\002 \001(\014B\032\n\024org.peer" +
-      "centrum.coreB\002PB"
+      "\001 \003(\014\022\r\n\005value\030\002 \001(\014\"P\n\020DHTStoreValueMsg",
+      "\022\013\n\003key\030\001 \001(\014\022\r\n\005value\030\002 \001(\014\022\r\n\005nonce\030\003 " +
+      "\001(\r\022\021\n\tsignature\030\004 \001(\014B\032\n\024org.peercentru" +
+      "m.coreB\002PB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -23602,7 +24310,7 @@ public final class PB {
           internal_static_peercentrum_DHTStoreValueMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_DHTStoreValueMsg_descriptor,
-              new java.lang.String[] { "Key", "Value", });
+              new java.lang.String[] { "Key", "Value", "Nonce", "Signature", });
           return null;
         }
       };
