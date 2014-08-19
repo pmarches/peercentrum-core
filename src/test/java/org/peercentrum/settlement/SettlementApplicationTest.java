@@ -3,9 +3,9 @@ package org.peercentrum.settlement;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.peercentrum.TransientMockNetworkOfNodes;
 import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.core.TransientMockNetworkOfNodes;
 import org.peercentrum.network.NetworkClientConnection;
 
 import com.google.bitcoin.core.Coin;

@@ -8,7 +8,7 @@ import java.util.List;
 import org.yaml.snakeyaml.Yaml;
 
 public class TopLevelConfig {
-  File directoryOfConfigFile;	
+  public File directoryOfConfigFile;	
 
   int listenPort=0;
   List<Object> applications=new ArrayList<>();

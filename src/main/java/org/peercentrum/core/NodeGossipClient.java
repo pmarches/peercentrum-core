@@ -38,7 +38,7 @@ public class NodeGossipClient {
         if(nodeIdentifier.equals(this.client.getNodeIdentifier())){
           continue;//Ignore echo
         }
-        InetSocketAddress ipEndpoint=new InetSocketAddress(peer.getIpEndpoint().getIpaddress(), peer.getIpEndpoint().getPort());
+        InetSocketAddress ipEndpoint=new InetSocketAddress(peer.getIpEndpoint().getIpAddress(), peer.getIpEndpoint().getPort());
         nodeDb.mapNodeIdToAddress(nodeIdentifier, ipEndpoint);
       }
     }

@@ -1,0 +1,9 @@
+!!org.peercentrum.core.TopLevelConfig
+listenPort: 0    #Set to 0 to select any open port at startup
+enableNAT: false
+encryptConnection: false #For debugging purposes only
+applications: 
+
+  - !!org.peercentrum.blob.P2PBlobConfig
+    #maximumStorageAllowed: 100M
+    transferPricingPerGigabyte: 16129 #About 0.10 USD per GB (amazon charges 0.12)

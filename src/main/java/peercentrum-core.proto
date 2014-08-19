@@ -44,7 +44,7 @@ message GossipReplyMorePeers {
 
 message PeerEndpointMsg {
 	message IPEndpointMsg {
-		optional string ipaddress=1;
+		optional string ipAddress=1;
 		optional uint32 port=2;
 	};
 	message TOREndpointMsg {
@@ -84,6 +84,7 @@ message HashToPublicKeyTransaction {
   optional bytes publicKey=3;
   optional bytes signature=4;
   optional uint32 expiration=5;
+  optional uint32 nonce=6;
 };
 
 message H2PKProposedTransactions {
@@ -212,12 +213,11 @@ message DHTPingMsg {
 
 message DHTFindMsg {
   optional bytes keyCriteria=1;
-  optional bytes nodeCriteria=2;
-  optional uint32 numberOfNodesRequested=3;
+  optional uint32 numberOfNodesRequested=2;
 };
 
 message DHTFoundMsg {
-  repeated bytes closestNodes=1; //Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+  repeated PeerEndpointMsg closestNodes=1; //Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
   optional bytes value=2;
 };
 

@@ -182,4 +182,7 @@ public class NetworkClientConnection implements AutoCloseable {
     pingResponseFuture.awaitUninterruptibly(); //TODO Add timeout
   }
 
+  public NodeIdentifier getRemoteNodeId(){
+    return remoteNodeId;
+  }
 }

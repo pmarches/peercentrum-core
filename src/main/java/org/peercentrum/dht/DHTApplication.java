@@ -5,6 +5,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.io.File;
+import java.net.InetSocketAddress;
 import java.util.List;
 
 import org.bouncycastle.util.Arrays;
@@ -82,9 +83,10 @@ public class DHTApplication extends BaseApplicationMessageHandler {
         return new HeaderAndPayload(responseHeader, PONG_MESSAGE_BYTES);
       }
       else if(dhtTopLevelMsg.getFindCount()!=0){
-        for(int i=0; i<dhtTopLevelMsg.getFindCount(); i++){
-          handleFindMsg(topLevelResponseMsg, dhtTopLevelMsg.getFind(i));
+        if(dhtTopLevelMsg.getFindCount()>1){
+          LOGGER.warn("Multiple find not implemented yet, searching only for the first one");
         }
+        handleFindMsg(topLevelResponseMsg, dhtTopLevelMsg.getFind(0));
         return new HeaderAndPayload(responseHeader, Unpooled.wrappedBuffer(topLevelResponseMsg.build().toByteArray()));
       }
       else if(dhtTopLevelMsg.getStoreValueCount()!=0){
@@ -100,38 +102,51 @@ public class DHTApplication extends BaseApplicationMessageHandler {
   }
 
   protected void handleFindMsg(PB.DHTTopLevelMsg.Builder topLevelResponseMsg, PB.DHTFindMsg findMsg) throws Exception {
-    if(findMsg.hasKeyCriteria()==findMsg.hasNodeCriteria()){
+    if(findMsg.hasKeyCriteria()==false){
       throw new Exception("Missing or conflicting search criteria in findMsg "+findMsg);
     }
-    int numberOfNodesRequested=3;
+    int numberOfNodesRequested=KBucket.K_BUCKET_SIZE;
     if(findMsg.hasNumberOfNodesRequested()){
       numberOfNodesRequested=findMsg.getNumberOfNodesRequested();
     }
 
     PB.DHTFoundMsg.Builder foundMsg=PB.DHTFoundMsg.newBuilder();
-    if(findMsg.hasKeyCriteria()){
-      byte[] searchKey=findMsg.getKeyCriteria().toByteArray();
-      ISqlJetCursor valuesCursor = dhtValueTable.lookup(DHT_VALUE_TABLE_NAME, searchKey);
-      if(valuesCursor.eof()==false){
-        byte[] valueFound=valuesCursor.getBlobAsArray(0);
-        foundMsg.setValue(ByteString.copyFrom(valueFound));
+    final byte[] searchKey=findMsg.getKeyCriteria().toByteArray();
+    byte[] valueFoundInDb=(byte[]) db.runReadTransaction(new ISqlJetTransaction() {
+      @Override
+      public Object run(SqlJetDb db) throws SqlJetException {
+        ISqlJetCursor valuesCursor = dhtValueTable.lookup(INDEX_KEY, searchKey);
+        byte[] valueFound=null;
+        if(valuesCursor.eof()==false){
+          valueFound=valuesCursor.getBlobAsArray("value");
+        }
+        valuesCursor.close();
+        return valueFound;
       }
-      else{
-        populateClosestNodeTo(searchKey, numberOfNodesRequested, foundMsg);
-      }
-      valuesCursor.close();
+    });
+    if(valueFoundInDb==null){
+      populateClosestNodeTo(searchKey, numberOfNodesRequested, foundMsg);
     }
-    else if(findMsg.hasNodeCriteria()){
-      byte[] nodeSearched=findMsg.getNodeCriteria().toByteArray();
-      populateClosestNodeTo(nodeSearched, numberOfNodesRequested, foundMsg);
+    else{
+      foundMsg.setValue(ByteString.copyFrom(valueFoundInDb));
     }
+
     topLevelResponseMsg.addFound(foundMsg);
   }
 
   protected void populateClosestNodeTo(byte[] nodeIdToFind, int numberOfNodesRequested, PB.DHTFoundMsg.Builder foundMsg) {
-    List<KIdentifier> closest=dhtClient.getClosestNodeTo(new KIdentifier(nodeIdToFind), numberOfNodesRequested);
+    List<KIdentifier> closest=dhtClient.buckets.getClosestNodeTo(new KIdentifier(nodeIdToFind), numberOfNodesRequested);
     for(KIdentifier oneId : closest){
-      foundMsg.addClosestNodes(ByteString.copyFrom(oneId.getBytes()));
+      PB.PeerEndpointMsg.Builder peerEndpointMsg=PB.PeerEndpointMsg.newBuilder();
+      peerEndpointMsg.setIdentity(ByteString.copyFrom(oneId.getBytes()));
+
+      InetSocketAddress socketAddress = server.getNodeDatabase().getEndpointByIdentifier(new NodeIdentifier(oneId.getBytes()));
+      PB.PeerEndpointMsg.IPEndpointMsg.Builder ipEndpointBuilder=PB.PeerEndpointMsg.IPEndpointMsg.newBuilder();
+      ipEndpointBuilder.setIpAddress(socketAddress.getHostName());
+      ipEndpointBuilder.setPort(socketAddress.getPort());
+      peerEndpointMsg.setIpEndpoint(ipEndpointBuilder);
+
+      foundMsg.addClosestNodes(peerEndpointMsg);
     }
   }
 
@@ -162,6 +177,11 @@ public class DHTApplication extends BaseApplicationMessageHandler {
     }
     final long nonceInMessage=UnsignedInts.toLong(storeValueMsg.getNonce());
     
+    storeKeyValue(key, value, nonceInMessage);
+    //TODO Add status message?
+  }
+
+  public void storeKeyValue(final byte[] key, final byte[] value, final long nonceInMessage) throws SqlJetException {
     db.runWriteTransaction(new ISqlJetTransaction() {
       @Override public Object run(SqlJetDb db) throws SqlJetException {
         ISqlJetCursor existingKeyCursor = dhtValueTable.lookup(INDEX_KEY, key);
@@ -181,7 +201,6 @@ public class DHTApplication extends BaseApplicationMessageHandler {
         return null;
       }
     });
-    //TODO Add status message?
   }
 
   @Override
@@ -190,9 +209,13 @@ public class DHTApplication extends BaseApplicationMessageHandler {
   }
 
   private void createSchema() throws SqlJetException {
-    db.createTable("CREATE TABLE "+DHT_VALUE_TABLE_NAME+"(key BLOB, value BLOB);");
-    db.createIndex("CREATE INDEX "+INDEX_KEY+" ON "+DHT_VALUE_TABLE_NAME+"(key)");
+    db.createTable("CREATE TABLE "+DHT_VALUE_TABLE_NAME+"(key BLOB, nonce INTEGER, value BLOB);");
+    db.createIndex("CREATE UNIQUE INDEX "+INDEX_KEY+" ON "+DHT_VALUE_TABLE_NAME+"(key)");
     db.createTable("CREATE TABLE "+NODES_TABLE_NAME+"(nodeId BLOB);");
+  }
+
+  public DHTClient getDHTClient() {
+    return this.dhtClient;
   }
 
 }

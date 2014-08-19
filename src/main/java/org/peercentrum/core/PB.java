@@ -4269,20 +4269,20 @@ public final class PB {
     public interface IPEndpointMsgOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
-      // optional string ipaddress = 1;
+      // optional string ipAddress = 1;
       /**
-       * <code>optional string ipaddress = 1;</code>
+       * <code>optional string ipAddress = 1;</code>
        */
-      boolean hasIpaddress();
+      boolean hasIpAddress();
       /**
-       * <code>optional string ipaddress = 1;</code>
+       * <code>optional string ipAddress = 1;</code>
        */
-      java.lang.String getIpaddress();
+      java.lang.String getIpAddress();
       /**
-       * <code>optional string ipaddress = 1;</code>
+       * <code>optional string ipAddress = 1;</code>
        */
       com.google.protobuf.ByteString
-          getIpaddressBytes();
+          getIpAddressBytes();
 
       // optional uint32 port = 2;
       /**
@@ -4347,7 +4347,7 @@ public final class PB {
               }
               case 10: {
                 bitField0_ |= 0x00000001;
-                ipaddress_ = input.readBytes();
+                ipAddress_ = input.readBytes();
                 break;
               }
               case 16: {
@@ -4395,20 +4395,20 @@ public final class PB {
       }
 
       private int bitField0_;
-      // optional string ipaddress = 1;
+      // optional string ipAddress = 1;
       public static final int IPADDRESS_FIELD_NUMBER = 1;
-      private java.lang.Object ipaddress_;
+      private java.lang.Object ipAddress_;
       /**
-       * <code>optional string ipaddress = 1;</code>
+       * <code>optional string ipAddress = 1;</code>
        */
-      public boolean hasIpaddress() {
+      public boolean hasIpAddress() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional string ipaddress = 1;</code>
+       * <code>optional string ipAddress = 1;</code>
        */
-      public java.lang.String getIpaddress() {
-        java.lang.Object ref = ipaddress_;
+      public java.lang.String getIpAddress() {
+        java.lang.Object ref = ipAddress_;
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
@@ -4416,22 +4416,22 @@ public final class PB {
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            ipaddress_ = s;
+            ipAddress_ = s;
           }
           return s;
         }
       }
       /**
-       * <code>optional string ipaddress = 1;</code>
+       * <code>optional string ipAddress = 1;</code>
        */
       public com.google.protobuf.ByteString
-          getIpaddressBytes() {
-        java.lang.Object ref = ipaddress_;
+          getIpAddressBytes() {
+        java.lang.Object ref = ipAddress_;
         if (ref instanceof java.lang.String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          ipaddress_ = b;
+          ipAddress_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -4455,7 +4455,7 @@ public final class PB {
       }
 
       private void initFields() {
-        ipaddress_ = "";
+        ipAddress_ = "";
         port_ = 0;
       }
       private byte memoizedIsInitialized = -1;
@@ -4471,7 +4471,7 @@ public final class PB {
                           throws java.io.IOException {
         getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getIpaddressBytes());
+          output.writeBytes(1, getIpAddressBytes());
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           output.writeUInt32(2, port_);
@@ -4487,7 +4487,7 @@ public final class PB {
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getIpaddressBytes());
+            .computeBytesSize(1, getIpAddressBytes());
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
@@ -4609,7 +4609,7 @@ public final class PB {
 
         public Builder clear() {
           super.clear();
-          ipaddress_ = "";
+          ipAddress_ = "";
           bitField0_ = (bitField0_ & ~0x00000001);
           port_ = 0;
           bitField0_ = (bitField0_ & ~0x00000002);
@@ -4644,7 +4644,7 @@ public final class PB {
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
             to_bitField0_ |= 0x00000001;
           }
-          result.ipaddress_ = ipaddress_;
+          result.ipAddress_ = ipAddress_;
           if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
             to_bitField0_ |= 0x00000002;
           }
@@ -4665,9 +4665,9 @@ public final class PB {
 
         public Builder mergeFrom(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg other) {
           if (other == org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance()) return this;
-          if (other.hasIpaddress()) {
+          if (other.hasIpAddress()) {
             bitField0_ |= 0x00000001;
-            ipaddress_ = other.ipaddress_;
+            ipAddress_ = other.ipAddress_;
             onChanged();
           }
           if (other.hasPort()) {
@@ -4700,76 +4700,76 @@ public final class PB {
         }
         private int bitField0_;
 
-        // optional string ipaddress = 1;
-        private java.lang.Object ipaddress_ = "";
+        // optional string ipAddress = 1;
+        private java.lang.Object ipAddress_ = "";
         /**
-         * <code>optional string ipaddress = 1;</code>
+         * <code>optional string ipAddress = 1;</code>
          */
-        public boolean hasIpaddress() {
+        public boolean hasIpAddress() {
           return ((bitField0_ & 0x00000001) == 0x00000001);
         }
         /**
-         * <code>optional string ipaddress = 1;</code>
+         * <code>optional string ipAddress = 1;</code>
          */
-        public java.lang.String getIpaddress() {
-          java.lang.Object ref = ipaddress_;
+        public java.lang.String getIpAddress() {
+          java.lang.Object ref = ipAddress_;
           if (!(ref instanceof java.lang.String)) {
             java.lang.String s = ((com.google.protobuf.ByteString) ref)
                 .toStringUtf8();
-            ipaddress_ = s;
+            ipAddress_ = s;
             return s;
           } else {
             return (java.lang.String) ref;
           }
         }
         /**
-         * <code>optional string ipaddress = 1;</code>
+         * <code>optional string ipAddress = 1;</code>
          */
         public com.google.protobuf.ByteString
-            getIpaddressBytes() {
-          java.lang.Object ref = ipaddress_;
+            getIpAddressBytes() {
+          java.lang.Object ref = ipAddress_;
           if (ref instanceof String) {
             com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
-            ipaddress_ = b;
+            ipAddress_ = b;
             return b;
           } else {
             return (com.google.protobuf.ByteString) ref;
           }
         }
         /**
-         * <code>optional string ipaddress = 1;</code>
+         * <code>optional string ipAddress = 1;</code>
          */
-        public Builder setIpaddress(
+        public Builder setIpAddress(
             java.lang.String value) {
           if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-          ipaddress_ = value;
+          ipAddress_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>optional string ipaddress = 1;</code>
+         * <code>optional string ipAddress = 1;</code>
          */
-        public Builder clearIpaddress() {
+        public Builder clearIpAddress() {
           bitField0_ = (bitField0_ & ~0x00000001);
-          ipaddress_ = getDefaultInstance().getIpaddress();
+          ipAddress_ = getDefaultInstance().getIpAddress();
           onChanged();
           return this;
         }
         /**
-         * <code>optional string ipaddress = 1;</code>
+         * <code>optional string ipAddress = 1;</code>
          */
-        public Builder setIpaddressBytes(
+        public Builder setIpAddressBytes(
             com.google.protobuf.ByteString value) {
           if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-          ipaddress_ = value;
+          ipAddress_ = value;
           onChanged();
           return this;
         }
@@ -7918,6 +7918,16 @@ public final class PB {
      * <code>optional uint32 expiration = 5;</code>
      */
     int getExpiration();
+
+    // optional uint32 nonce = 6;
+    /**
+     * <code>optional uint32 nonce = 6;</code>
+     */
+    boolean hasNonce();
+    /**
+     * <code>optional uint32 nonce = 6;</code>
+     */
+    int getNonce();
   }
   /**
    * Protobuf type {@code peercentrum.HashToPublicKeyTransaction}
@@ -7999,6 +8009,11 @@ public final class PB {
             case 40: {
               bitField0_ |= 0x00000010;
               expiration_ = input.readUInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              nonce_ = input.readUInt32();
               break;
             }
           }
@@ -8203,12 +8218,29 @@ public final class PB {
       return expiration_;
     }
 
+    // optional uint32 nonce = 6;
+    public static final int NONCE_FIELD_NUMBER = 6;
+    private int nonce_;
+    /**
+     * <code>optional uint32 nonce = 6;</code>
+     */
+    public boolean hasNonce() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional uint32 nonce = 6;</code>
+     */
+    public int getNonce() {
+      return nonce_;
+    }
+
     private void initFields() {
       operation_ = org.peercentrum.core.PB.HashToPublicKeyTransaction.OPERATION.APPEND;
       address_ = com.google.protobuf.ByteString.EMPTY;
       publicKey_ = com.google.protobuf.ByteString.EMPTY;
       signature_ = com.google.protobuf.ByteString.EMPTY;
       expiration_ = 0;
+      nonce_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8236,6 +8268,9 @@ public final class PB {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeUInt32(5, expiration_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeUInt32(6, nonce_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -8265,6 +8300,10 @@ public final class PB {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(5, expiration_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, nonce_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8392,6 +8431,8 @@ public final class PB {
         bitField0_ = (bitField0_ & ~0x00000008);
         expiration_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        nonce_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -8440,6 +8481,10 @@ public final class PB {
           to_bitField0_ |= 0x00000010;
         }
         result.expiration_ = expiration_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.nonce_ = nonce_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8470,6 +8515,9 @@ public final class PB {
         }
         if (other.hasExpiration()) {
           setExpiration(other.getExpiration());
+        }
+        if (other.hasNonce()) {
+          setNonce(other.getNonce());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -8671,6 +8719,39 @@ public final class PB {
       public Builder clearExpiration() {
         bitField0_ = (bitField0_ & ~0x00000010);
         expiration_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 nonce = 6;
+      private int nonce_ ;
+      /**
+       * <code>optional uint32 nonce = 6;</code>
+       */
+      public boolean hasNonce() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional uint32 nonce = 6;</code>
+       */
+      public int getNonce() {
+        return nonce_;
+      }
+      /**
+       * <code>optional uint32 nonce = 6;</code>
+       */
+      public Builder setNonce(int value) {
+        bitField0_ |= 0x00000020;
+        nonce_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 nonce = 6;</code>
+       */
+      public Builder clearNonce() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        nonce_ = 0;
         onChanged();
         return this;
       }
@@ -22030,23 +22111,13 @@ public final class PB {
      */
     com.google.protobuf.ByteString getKeyCriteria();
 
-    // optional bytes nodeCriteria = 2;
+    // optional uint32 numberOfNodesRequested = 2;
     /**
-     * <code>optional bytes nodeCriteria = 2;</code>
-     */
-    boolean hasNodeCriteria();
-    /**
-     * <code>optional bytes nodeCriteria = 2;</code>
-     */
-    com.google.protobuf.ByteString getNodeCriteria();
-
-    // optional uint32 numberOfNodesRequested = 3;
-    /**
-     * <code>optional uint32 numberOfNodesRequested = 3;</code>
+     * <code>optional uint32 numberOfNodesRequested = 2;</code>
      */
     boolean hasNumberOfNodesRequested();
     /**
-     * <code>optional uint32 numberOfNodesRequested = 3;</code>
+     * <code>optional uint32 numberOfNodesRequested = 2;</code>
      */
     int getNumberOfNodesRequested();
   }
@@ -22106,13 +22177,8 @@ public final class PB {
               keyCriteria_ = input.readBytes();
               break;
             }
-            case 18: {
+            case 16: {
               bitField0_ |= 0x00000002;
-              nodeCriteria_ = input.readBytes();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
               numberOfNodesRequested_ = input.readUInt32();
               break;
             }
@@ -22172,33 +22238,17 @@ public final class PB {
       return keyCriteria_;
     }
 
-    // optional bytes nodeCriteria = 2;
-    public static final int NODECRITERIA_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString nodeCriteria_;
+    // optional uint32 numberOfNodesRequested = 2;
+    public static final int NUMBEROFNODESREQUESTED_FIELD_NUMBER = 2;
+    private int numberOfNodesRequested_;
     /**
-     * <code>optional bytes nodeCriteria = 2;</code>
+     * <code>optional uint32 numberOfNodesRequested = 2;</code>
      */
-    public boolean hasNodeCriteria() {
+    public boolean hasNumberOfNodesRequested() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional bytes nodeCriteria = 2;</code>
-     */
-    public com.google.protobuf.ByteString getNodeCriteria() {
-      return nodeCriteria_;
-    }
-
-    // optional uint32 numberOfNodesRequested = 3;
-    public static final int NUMBEROFNODESREQUESTED_FIELD_NUMBER = 3;
-    private int numberOfNodesRequested_;
-    /**
-     * <code>optional uint32 numberOfNodesRequested = 3;</code>
-     */
-    public boolean hasNumberOfNodesRequested() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional uint32 numberOfNodesRequested = 3;</code>
+     * <code>optional uint32 numberOfNodesRequested = 2;</code>
      */
     public int getNumberOfNodesRequested() {
       return numberOfNodesRequested_;
@@ -22206,7 +22256,6 @@ public final class PB {
 
     private void initFields() {
       keyCriteria_ = com.google.protobuf.ByteString.EMPTY;
-      nodeCriteria_ = com.google.protobuf.ByteString.EMPTY;
       numberOfNodesRequested_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -22225,10 +22274,7 @@ public final class PB {
         output.writeBytes(1, keyCriteria_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, nodeCriteria_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, numberOfNodesRequested_);
+        output.writeUInt32(2, numberOfNodesRequested_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -22245,11 +22291,7 @@ public final class PB {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, nodeCriteria_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, numberOfNodesRequested_);
+          .computeUInt32Size(2, numberOfNodesRequested_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -22369,10 +22411,8 @@ public final class PB {
         super.clear();
         keyCriteria_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
-        nodeCriteria_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000002);
         numberOfNodesRequested_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -22408,10 +22448,6 @@ public final class PB {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.nodeCriteria_ = nodeCriteria_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.numberOfNodesRequested_ = numberOfNodesRequested_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -22431,9 +22467,6 @@ public final class PB {
         if (other == org.peercentrum.core.PB.DHTFindMsg.getDefaultInstance()) return this;
         if (other.hasKeyCriteria()) {
           setKeyCriteria(other.getKeyCriteria());
-        }
-        if (other.hasNodeCriteria()) {
-          setNodeCriteria(other.getNodeCriteria());
         }
         if (other.hasNumberOfNodesRequested()) {
           setNumberOfNodesRequested(other.getNumberOfNodesRequested());
@@ -22501,70 +22534,34 @@ public final class PB {
         return this;
       }
 
-      // optional bytes nodeCriteria = 2;
-      private com.google.protobuf.ByteString nodeCriteria_ = com.google.protobuf.ByteString.EMPTY;
+      // optional uint32 numberOfNodesRequested = 2;
+      private int numberOfNodesRequested_ ;
       /**
-       * <code>optional bytes nodeCriteria = 2;</code>
+       * <code>optional uint32 numberOfNodesRequested = 2;</code>
        */
-      public boolean hasNodeCriteria() {
+      public boolean hasNumberOfNodesRequested() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional bytes nodeCriteria = 2;</code>
-       */
-      public com.google.protobuf.ByteString getNodeCriteria() {
-        return nodeCriteria_;
-      }
-      /**
-       * <code>optional bytes nodeCriteria = 2;</code>
-       */
-      public Builder setNodeCriteria(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        nodeCriteria_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bytes nodeCriteria = 2;</code>
-       */
-      public Builder clearNodeCriteria() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        nodeCriteria_ = getDefaultInstance().getNodeCriteria();
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 numberOfNodesRequested = 3;
-      private int numberOfNodesRequested_ ;
-      /**
-       * <code>optional uint32 numberOfNodesRequested = 3;</code>
-       */
-      public boolean hasNumberOfNodesRequested() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional uint32 numberOfNodesRequested = 3;</code>
+       * <code>optional uint32 numberOfNodesRequested = 2;</code>
        */
       public int getNumberOfNodesRequested() {
         return numberOfNodesRequested_;
       }
       /**
-       * <code>optional uint32 numberOfNodesRequested = 3;</code>
+       * <code>optional uint32 numberOfNodesRequested = 2;</code>
        */
       public Builder setNumberOfNodesRequested(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         numberOfNodesRequested_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 numberOfNodesRequested = 3;</code>
+       * <code>optional uint32 numberOfNodesRequested = 2;</code>
        */
       public Builder clearNumberOfNodesRequested() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         numberOfNodesRequested_ = 0;
         onChanged();
         return this;
@@ -22584,17 +22581,26 @@ public final class PB {
   public interface DHTFoundMsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated bytes closestNodes = 1;
+    // repeated .peercentrum.PeerEndpointMsg closestNodes = 1;
     /**
-     * <code>repeated bytes closestNodes = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
      *
      * <pre>
      *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
      * </pre>
      */
-    java.util.List<com.google.protobuf.ByteString> getClosestNodesList();
+    java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> 
+        getClosestNodesList();
     /**
-     * <code>repeated bytes closestNodes = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    org.peercentrum.core.PB.PeerEndpointMsg getClosestNodes(int index);
+    /**
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
      *
      * <pre>
      *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
@@ -22602,13 +22608,23 @@ public final class PB {
      */
     int getClosestNodesCount();
     /**
-     * <code>repeated bytes closestNodes = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
      *
      * <pre>
      *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
      * </pre>
      */
-    com.google.protobuf.ByteString getClosestNodes(int index);
+    java.util.List<? extends org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> 
+        getClosestNodesOrBuilderList();
+    /**
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    org.peercentrum.core.PB.PeerEndpointMsgOrBuilder getClosestNodesOrBuilder(
+        int index);
 
     // optional bytes value = 2;
     /**
@@ -22673,10 +22689,10 @@ public final class PB {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                closestNodes_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+                closestNodes_ = new java.util.ArrayList<org.peercentrum.core.PB.PeerEndpointMsg>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              closestNodes_.add(input.readBytes());
+              closestNodes_.add(input.readMessage(org.peercentrum.core.PB.PeerEndpointMsg.PARSER, extensionRegistry));
               break;
             }
             case 18: {
@@ -22727,22 +22743,32 @@ public final class PB {
     }
 
     private int bitField0_;
-    // repeated bytes closestNodes = 1;
+    // repeated .peercentrum.PeerEndpointMsg closestNodes = 1;
     public static final int CLOSESTNODES_FIELD_NUMBER = 1;
-    private java.util.List<com.google.protobuf.ByteString> closestNodes_;
+    private java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> closestNodes_;
     /**
-     * <code>repeated bytes closestNodes = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
      *
      * <pre>
      *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
      * </pre>
      */
-    public java.util.List<com.google.protobuf.ByteString>
-        getClosestNodesList() {
+    public java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> getClosestNodesList() {
       return closestNodes_;
     }
     /**
-     * <code>repeated bytes closestNodes = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    public java.util.List<? extends org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> 
+        getClosestNodesOrBuilderList() {
+      return closestNodes_;
+    }
+    /**
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
      *
      * <pre>
      *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
@@ -22752,13 +22778,24 @@ public final class PB {
       return closestNodes_.size();
     }
     /**
-     * <code>repeated bytes closestNodes = 1;</code>
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
      *
      * <pre>
      *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
      * </pre>
      */
-    public com.google.protobuf.ByteString getClosestNodes(int index) {
+    public org.peercentrum.core.PB.PeerEndpointMsg getClosestNodes(int index) {
+      return closestNodes_.get(index);
+    }
+    /**
+     * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+     *
+     * <pre>
+     *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+     * </pre>
+     */
+    public org.peercentrum.core.PB.PeerEndpointMsgOrBuilder getClosestNodesOrBuilder(
+        int index) {
       return closestNodes_.get(index);
     }
 
@@ -22795,7 +22832,7 @@ public final class PB {
                         throws java.io.IOException {
       getSerializedSize();
       for (int i = 0; i < closestNodes_.size(); i++) {
-        output.writeBytes(1, closestNodes_.get(i));
+        output.writeMessage(1, closestNodes_.get(i));
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeBytes(2, value_);
@@ -22809,14 +22846,9 @@ public final class PB {
       if (size != -1) return size;
 
       size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < closestNodes_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(closestNodes_.get(i));
-        }
-        size += dataSize;
-        size += 1 * getClosestNodesList().size();
+      for (int i = 0; i < closestNodes_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, closestNodes_.get(i));
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -22930,6 +22962,7 @@ public final class PB {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getClosestNodesFieldBuilder();
         }
       }
       private static Builder create() {
@@ -22938,8 +22971,12 @@ public final class PB {
 
       public Builder clear() {
         super.clear();
-        closestNodes_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        if (closestNodesBuilder_ == null) {
+          closestNodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          closestNodesBuilder_.clear();
+        }
         value_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
@@ -22970,11 +23007,15 @@ public final class PB {
         org.peercentrum.core.PB.DHTFoundMsg result = new org.peercentrum.core.PB.DHTFoundMsg(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          closestNodes_ = java.util.Collections.unmodifiableList(closestNodes_);
-          bitField0_ = (bitField0_ & ~0x00000001);
+        if (closestNodesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            closestNodes_ = java.util.Collections.unmodifiableList(closestNodes_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.closestNodes_ = closestNodes_;
+        } else {
+          result.closestNodes_ = closestNodesBuilder_.build();
         }
-        result.closestNodes_ = closestNodes_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000001;
         }
@@ -22995,15 +23036,31 @@ public final class PB {
 
       public Builder mergeFrom(org.peercentrum.core.PB.DHTFoundMsg other) {
         if (other == org.peercentrum.core.PB.DHTFoundMsg.getDefaultInstance()) return this;
-        if (!other.closestNodes_.isEmpty()) {
-          if (closestNodes_.isEmpty()) {
-            closestNodes_ = other.closestNodes_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureClosestNodesIsMutable();
-            closestNodes_.addAll(other.closestNodes_);
+        if (closestNodesBuilder_ == null) {
+          if (!other.closestNodes_.isEmpty()) {
+            if (closestNodes_.isEmpty()) {
+              closestNodes_ = other.closestNodes_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureClosestNodesIsMutable();
+              closestNodes_.addAll(other.closestNodes_);
+            }
+            onChanged();
           }
-          onChanged();
+        } else {
+          if (!other.closestNodes_.isEmpty()) {
+            if (closestNodesBuilder_.isEmpty()) {
+              closestNodesBuilder_.dispose();
+              closestNodesBuilder_ = null;
+              closestNodes_ = other.closestNodes_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              closestNodesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getClosestNodesFieldBuilder() : null;
+            } else {
+              closestNodesBuilder_.addAllMessages(other.closestNodes_);
+            }
+          }
         }
         if (other.hasValue()) {
           setValue(other.getValue());
@@ -23035,104 +23092,316 @@ public final class PB {
       }
       private int bitField0_;
 
-      // repeated bytes closestNodes = 1;
-      private java.util.List<com.google.protobuf.ByteString> closestNodes_ = java.util.Collections.emptyList();
+      // repeated .peercentrum.PeerEndpointMsg closestNodes = 1;
+      private java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> closestNodes_ =
+        java.util.Collections.emptyList();
       private void ensureClosestNodesIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          closestNodes_ = new java.util.ArrayList<com.google.protobuf.ByteString>(closestNodes_);
+          closestNodes_ = new java.util.ArrayList<org.peercentrum.core.PB.PeerEndpointMsg>(closestNodes_);
           bitField0_ |= 0x00000001;
          }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.peercentrum.core.PB.PeerEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> closestNodesBuilder_;
+
       /**
-       * <code>repeated bytes closestNodes = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
        *
        * <pre>
        *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
        * </pre>
        */
-      public java.util.List<com.google.protobuf.ByteString>
-          getClosestNodesList() {
-        return java.util.Collections.unmodifiableList(closestNodes_);
+      public java.util.List<org.peercentrum.core.PB.PeerEndpointMsg> getClosestNodesList() {
+        if (closestNodesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(closestNodes_);
+        } else {
+          return closestNodesBuilder_.getMessageList();
+        }
       }
       /**
-       * <code>repeated bytes closestNodes = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
        *
        * <pre>
        *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
        * </pre>
        */
       public int getClosestNodesCount() {
-        return closestNodes_.size();
+        if (closestNodesBuilder_ == null) {
+          return closestNodes_.size();
+        } else {
+          return closestNodesBuilder_.getCount();
+        }
       }
       /**
-       * <code>repeated bytes closestNodes = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
        *
        * <pre>
        *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
        * </pre>
        */
-      public com.google.protobuf.ByteString getClosestNodes(int index) {
-        return closestNodes_.get(index);
+      public org.peercentrum.core.PB.PeerEndpointMsg getClosestNodes(int index) {
+        if (closestNodesBuilder_ == null) {
+          return closestNodes_.get(index);
+        } else {
+          return closestNodesBuilder_.getMessage(index);
+        }
       }
       /**
-       * <code>repeated bytes closestNodes = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
        *
        * <pre>
        *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
        * </pre>
        */
       public Builder setClosestNodes(
-          int index, com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureClosestNodesIsMutable();
-        closestNodes_.set(index, value);
-        onChanged();
+          int index, org.peercentrum.core.PB.PeerEndpointMsg value) {
+        if (closestNodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureClosestNodesIsMutable();
+          closestNodes_.set(index, value);
+          onChanged();
+        } else {
+          closestNodesBuilder_.setMessage(index, value);
+        }
         return this;
       }
       /**
-       * <code>repeated bytes closestNodes = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
        *
        * <pre>
        *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
        * </pre>
        */
-      public Builder addClosestNodes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureClosestNodesIsMutable();
-        closestNodes_.add(value);
-        onChanged();
+      public Builder setClosestNodes(
+          int index, org.peercentrum.core.PB.PeerEndpointMsg.Builder builderForValue) {
+        if (closestNodesBuilder_ == null) {
+          ensureClosestNodesIsMutable();
+          closestNodes_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          closestNodesBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       /**
-       * <code>repeated bytes closestNodes = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public Builder addClosestNodes(org.peercentrum.core.PB.PeerEndpointMsg value) {
+        if (closestNodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureClosestNodesIsMutable();
+          closestNodes_.add(value);
+          onChanged();
+        } else {
+          closestNodesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public Builder addClosestNodes(
+          int index, org.peercentrum.core.PB.PeerEndpointMsg value) {
+        if (closestNodesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureClosestNodesIsMutable();
+          closestNodes_.add(index, value);
+          onChanged();
+        } else {
+          closestNodesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public Builder addClosestNodes(
+          org.peercentrum.core.PB.PeerEndpointMsg.Builder builderForValue) {
+        if (closestNodesBuilder_ == null) {
+          ensureClosestNodesIsMutable();
+          closestNodes_.add(builderForValue.build());
+          onChanged();
+        } else {
+          closestNodesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public Builder addClosestNodes(
+          int index, org.peercentrum.core.PB.PeerEndpointMsg.Builder builderForValue) {
+        if (closestNodesBuilder_ == null) {
+          ensureClosestNodesIsMutable();
+          closestNodes_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          closestNodesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
        *
        * <pre>
        *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
        * </pre>
        */
       public Builder addAllClosestNodes(
-          java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
-        ensureClosestNodesIsMutable();
-        super.addAll(values, closestNodes_);
-        onChanged();
+          java.lang.Iterable<? extends org.peercentrum.core.PB.PeerEndpointMsg> values) {
+        if (closestNodesBuilder_ == null) {
+          ensureClosestNodesIsMutable();
+          super.addAll(values, closestNodes_);
+          onChanged();
+        } else {
+          closestNodesBuilder_.addAllMessages(values);
+        }
         return this;
       }
       /**
-       * <code>repeated bytes closestNodes = 1;</code>
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
        *
        * <pre>
        *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
        * </pre>
        */
       public Builder clearClosestNodes() {
-        closestNodes_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
+        if (closestNodesBuilder_ == null) {
+          closestNodes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          closestNodesBuilder_.clear();
+        }
         return this;
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public Builder removeClosestNodes(int index) {
+        if (closestNodesBuilder_ == null) {
+          ensureClosestNodesIsMutable();
+          closestNodes_.remove(index);
+          onChanged();
+        } else {
+          closestNodesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public org.peercentrum.core.PB.PeerEndpointMsg.Builder getClosestNodesBuilder(
+          int index) {
+        return getClosestNodesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public org.peercentrum.core.PB.PeerEndpointMsgOrBuilder getClosestNodesOrBuilder(
+          int index) {
+        if (closestNodesBuilder_ == null) {
+          return closestNodes_.get(index);  } else {
+          return closestNodesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public java.util.List<? extends org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> 
+           getClosestNodesOrBuilderList() {
+        if (closestNodesBuilder_ != null) {
+          return closestNodesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(closestNodes_);
+        }
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public org.peercentrum.core.PB.PeerEndpointMsg.Builder addClosestNodesBuilder() {
+        return getClosestNodesFieldBuilder().addBuilder(
+            org.peercentrum.core.PB.PeerEndpointMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public org.peercentrum.core.PB.PeerEndpointMsg.Builder addClosestNodesBuilder(
+          int index) {
+        return getClosestNodesFieldBuilder().addBuilder(
+            index, org.peercentrum.core.PB.PeerEndpointMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .peercentrum.PeerEndpointMsg closestNodes = 1;</code>
+       *
+       * <pre>
+       *Number of elements should not exceed DHTFindMsg.numberOfNodesRequested
+       * </pre>
+       */
+      public java.util.List<org.peercentrum.core.PB.PeerEndpointMsg.Builder> 
+           getClosestNodesBuilderList() {
+        return getClosestNodesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          org.peercentrum.core.PB.PeerEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsgOrBuilder> 
+          getClosestNodesFieldBuilder() {
+        if (closestNodesBuilder_ == null) {
+          closestNodesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              org.peercentrum.core.PB.PeerEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsgOrBuilder>(
+                  closestNodes_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          closestNodes_ = null;
+        }
+        return closestNodesBuilder_;
       }
 
       // optional bytes value = 2;
@@ -24048,7 +24317,7 @@ public final class PB {
       "m.PeerEndpointMsg\"\273\001\n\017PeerEndpointMsg\022\020\n",
       "\010identity\030\001 \001(\014\022>\n\nipEndpoint\030\002 \001(\0132*.pe" +
       "ercentrum.PeerEndpointMsg.IPEndpointMsg\032" +
-      "0\n\rIPEndpointMsg\022\021\n\tipaddress\030\001 \001(\t\022\014\n\004p" +
+      "0\n\rIPEndpointMsg\022\021\n\tipAddress\030\001 \001(\t\022\014\n\004p" +
       "ort\030\002 \001(\r\032$\n\016TOREndpointMsg\022\022\n\nTORAddres" +
       "s\030\001 \001(\t\":\n\017GenericResponse\022\021\n\terrorCode\030" +
       "\001 \001(\r\022\024\n\014errorMessage\030\002 \001(\t\"\356\002\n\026HashToPu" +
@@ -24060,65 +24329,65 @@ public final class PB {
       "embershipQuery\030\004 \001(\014\022\032\n\022membershipRespon" +
       "se\030\005 \003(\014\0221\n\013dbSyncQuery\030\006 \001(\0132\034.peercent" +
       "rum.H2PKDBSyncQuery\0227\n\016dbSyncResponse\030\007 " +
-      "\001(\0132\037.peercentrum.H2PKDBSyncResponse\"\322\001\n" +
+      "\001(\0132\037.peercentrum.H2PKDBSyncResponse\"\341\001\n" +
       "\032HashToPublicKeyTransaction\022D\n\toperation" +
       "\030\001 \001(\01621.peercentrum.HashToPublicKeyTran" +
       "saction.OPERATION\022\017\n\007address\030\002 \001(\014\022\021\n\tpu" +
       "blicKey\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022\022\n\nexpi" +
-      "ration\030\005 \001(\r\"#\n\tOPERATION\022\n\n\006APPEND\020\000\022\n\n",
-      "\006REMOVE\020\001\"\216\001\n\030H2PKProposedTransactions\022\027" +
-      "\n\017dbVersionNumber\030\001 \001(\r\022\022\n\nproposedBy\030\002 " +
-      "\001(\014\022E\n\024proposedTransactions\030\003 \003(\0132\'.peer" +
-      "centrum.HashToPublicKeyTransaction\"/\n\017H2" +
-      "PKDBSyncQuery\022\034\n\024beginDbVersionNumber\030\001 " +
-      "\001(\r\"\227\001\n\022H2PKDBSyncResponse\022\033\n\023lastDbVers" +
-      "ionNumber\030\001 \001(\r\022\027\n\017lastDbHashValue\030\002 \001(\014" +
-      "\022\033\n\023syncDbVersionNumber\030\003 \001(\r\022.\n\tsyncUni" +
-      "ts\030\004 \003(\0132\033.peercentrum.H2PKDBSyncUnit\"?\n" +
-      "\016H2PKDBSyncUnit\022\017\n\007address\030\001 \001(\014\022\034\n\024publ",
-      "icKeysRegistered\030\002 \003(\014\"\211\001\n\021P2PBlobReques" +
-      "tMsg\0227\n\013blobRequest\030\001 \003(\0132\".peercentrum." +
-      "P2PBlobBlobRequestMsg\022;\n\ruploadRequest\030\002" +
-      " \003(\0132$.peercentrum.P2PBlobUploadRequestM" +
-      "sg\"z\n\027P2PBlobUploadRequestMsg\022,\n\006blocks\030" +
-      "\002 \003(\0132\034.peercentrum.P2PBlobBlockMsg\0221\n\010m" +
-      "etaData\030\003 \001(\0132\037.peercentrum.P2PBlobMetaD" +
-      "ataMsg\"\300\001\n\025P2PBlobBlobRequestMsg\022\025\n\rrequ" +
-      "estedHash\030\001 \001(\014\022!\n\031maximumBlobLengthAcce" +
-      "pted\030\002 \001(\003\022\027\n\017requestMetaData\030\003 \001(\010\022\035\n\025r",
-      "equestBlockInventory\030\005 \001(\010\0225\n\017requestedR" +
-      "anges\030\006 \003(\0132\034.peercentrum.P2PBlobRangeMs" +
-      "g\"\257\002\n\022P2PBlobResponseMsg\0225\n\017genericRespo" +
-      "nse\030\001 \001(\0132\034.peercentrum.GenericResponse\022" +
-      "1\n\010metaData\030\002 \001(\0132\037.peercentrum.P2PBlobM" +
-      "etaDataMsg\0229\n\023localBlockInventory\030\003 \003(\0132" +
-      "\034.peercentrum.P2PBlobRangeMsg\022/\n\tblobByt" +
-      "es\030\004 \003(\0132\034.peercentrum.P2PBlobBlockMsg\022C" +
-      "\n\021dataTransferQuote\030\005 \001(\0132(.peercentrum." +
-      "P2PBlobDataTransferQuoteMsg\"-\n\017P2PBlobRa",
-      "ngeMsg\022\r\n\005begin\030\001 \001(\r\022\013\n\003end\030\002 \001(\r\"n\n\022P2" +
-      "PBlobMetaDataMsg\022\022\n\nblobLength\030\001 \001(\003\022\021\n\t" +
-      "blockSize\030\002 \001(\005\0221\n\010hashList\030\003 \001(\0132\037.peer" +
-      "centrum.P2PBlobHashListMsg\"-\n\022P2PBlobHas" +
-      "hListMsg\022\027\n\017hashOfEachBlock\030\001 \003(\014\"8\n\017P2P" +
-      "BlobBlockMsg\022\022\n\nblockIndex\030\001 \001(\r\022\021\n\tblob" +
-      "Bytes\030\002 \001(\014\"e\n\033P2PBlobDataTransferQuoteM" +
-      "sg\022\"\n\032satoshiPerIncomingGigaByte\030\001 \001(\003\022\"" +
-      "\n\032satoshiPerOutgoingGigaByte\030\002 \001(\003\"P\n\rSe" +
-      "ttlementMsg\022?\n\020twoWayChannelMsg\030\001 \003(\0132%.",
-      "paymentchannels.TwoWayChannelMessage\"\272\001\n" +
-      "\016DHTTopLevelMsg\022%\n\004ping\030\001 \001(\0132\027.peercent" +
-      "rum.DHTPingMsg\022%\n\004find\030\002 \003(\0132\027.peercentr" +
-      "um.DHTFindMsg\022\'\n\005found\030\003 \003(\0132\030.peercentr" +
-      "um.DHTFoundMsg\0221\n\nstoreValue\030\004 \003(\0132\035.pee" +
-      "rcentrum.DHTStoreValueMsg\"\014\n\nDHTPingMsg\"" +
-      "W\n\nDHTFindMsg\022\023\n\013keyCriteria\030\001 \001(\014\022\024\n\014no" +
-      "deCriteria\030\002 \001(\014\022\036\n\026numberOfNodesRequest" +
-      "ed\030\003 \001(\r\"2\n\013DHTFoundMsg\022\024\n\014closestNodes\030" +
-      "\001 \003(\014\022\r\n\005value\030\002 \001(\014\"P\n\020DHTStoreValueMsg",
-      "\022\013\n\003key\030\001 \001(\014\022\r\n\005value\030\002 \001(\014\022\r\n\005nonce\030\003 " +
-      "\001(\r\022\021\n\tsignature\030\004 \001(\014B\032\n\024org.peercentru" +
-      "m.coreB\002PB"
+      "ration\030\005 \001(\r\022\r\n\005nonce\030\006 \001(\r\"#\n\tOPERATION",
+      "\022\n\n\006APPEND\020\000\022\n\n\006REMOVE\020\001\"\216\001\n\030H2PKPropose" +
+      "dTransactions\022\027\n\017dbVersionNumber\030\001 \001(\r\022\022" +
+      "\n\nproposedBy\030\002 \001(\014\022E\n\024proposedTransactio" +
+      "ns\030\003 \003(\0132\'.peercentrum.HashToPublicKeyTr" +
+      "ansaction\"/\n\017H2PKDBSyncQuery\022\034\n\024beginDbV" +
+      "ersionNumber\030\001 \001(\r\"\227\001\n\022H2PKDBSyncRespons" +
+      "e\022\033\n\023lastDbVersionNumber\030\001 \001(\r\022\027\n\017lastDb" +
+      "HashValue\030\002 \001(\014\022\033\n\023syncDbVersionNumber\030\003" +
+      " \001(\r\022.\n\tsyncUnits\030\004 \003(\0132\033.peercentrum.H2" +
+      "PKDBSyncUnit\"?\n\016H2PKDBSyncUnit\022\017\n\007addres",
+      "s\030\001 \001(\014\022\034\n\024publicKeysRegistered\030\002 \003(\014\"\211\001" +
+      "\n\021P2PBlobRequestMsg\0227\n\013blobRequest\030\001 \003(\013" +
+      "2\".peercentrum.P2PBlobBlobRequestMsg\022;\n\r" +
+      "uploadRequest\030\002 \003(\0132$.peercentrum.P2PBlo" +
+      "bUploadRequestMsg\"z\n\027P2PBlobUploadReques" +
+      "tMsg\022,\n\006blocks\030\002 \003(\0132\034.peercentrum.P2PBl" +
+      "obBlockMsg\0221\n\010metaData\030\003 \001(\0132\037.peercentr" +
+      "um.P2PBlobMetaDataMsg\"\300\001\n\025P2PBlobBlobReq" +
+      "uestMsg\022\025\n\rrequestedHash\030\001 \001(\014\022!\n\031maximu" +
+      "mBlobLengthAccepted\030\002 \001(\003\022\027\n\017requestMeta",
+      "Data\030\003 \001(\010\022\035\n\025requestBlockInventory\030\005 \001(" +
+      "\010\0225\n\017requestedRanges\030\006 \003(\0132\034.peercentrum" +
+      ".P2PBlobRangeMsg\"\257\002\n\022P2PBlobResponseMsg\022" +
+      "5\n\017genericResponse\030\001 \001(\0132\034.peercentrum.G" +
+      "enericResponse\0221\n\010metaData\030\002 \001(\0132\037.peerc" +
+      "entrum.P2PBlobMetaDataMsg\0229\n\023localBlockI" +
+      "nventory\030\003 \003(\0132\034.peercentrum.P2PBlobRang" +
+      "eMsg\022/\n\tblobBytes\030\004 \003(\0132\034.peercentrum.P2" +
+      "PBlobBlockMsg\022C\n\021dataTransferQuote\030\005 \001(\013" +
+      "2(.peercentrum.P2PBlobDataTransferQuoteM",
+      "sg\"-\n\017P2PBlobRangeMsg\022\r\n\005begin\030\001 \001(\r\022\013\n\003" +
+      "end\030\002 \001(\r\"n\n\022P2PBlobMetaDataMsg\022\022\n\nblobL" +
+      "ength\030\001 \001(\003\022\021\n\tblockSize\030\002 \001(\005\0221\n\010hashLi" +
+      "st\030\003 \001(\0132\037.peercentrum.P2PBlobHashListMs" +
+      "g\"-\n\022P2PBlobHashListMsg\022\027\n\017hashOfEachBlo" +
+      "ck\030\001 \003(\014\"8\n\017P2PBlobBlockMsg\022\022\n\nblockInde" +
+      "x\030\001 \001(\r\022\021\n\tblobBytes\030\002 \001(\014\"e\n\033P2PBlobDat" +
+      "aTransferQuoteMsg\022\"\n\032satoshiPerIncomingG" +
+      "igaByte\030\001 \001(\003\022\"\n\032satoshiPerOutgoingGigaB" +
+      "yte\030\002 \001(\003\"P\n\rSettlementMsg\022?\n\020twoWayChan",
+      "nelMsg\030\001 \003(\0132%.paymentchannels.TwoWayCha" +
+      "nnelMessage\"\272\001\n\016DHTTopLevelMsg\022%\n\004ping\030\001" +
+      " \001(\0132\027.peercentrum.DHTPingMsg\022%\n\004find\030\002 " +
+      "\003(\0132\027.peercentrum.DHTFindMsg\022\'\n\005found\030\003 " +
+      "\003(\0132\030.peercentrum.DHTFoundMsg\0221\n\nstoreVa" +
+      "lue\030\004 \003(\0132\035.peercentrum.DHTStoreValueMsg" +
+      "\"\014\n\nDHTPingMsg\"A\n\nDHTFindMsg\022\023\n\013keyCrite" +
+      "ria\030\001 \001(\014\022\036\n\026numberOfNodesRequested\030\002 \001(" +
+      "\r\"P\n\013DHTFoundMsg\0222\n\014closestNodes\030\001 \003(\0132\034" +
+      ".peercentrum.PeerEndpointMsg\022\r\n\005value\030\002 ",
+      "\001(\014\"P\n\020DHTStoreValueMsg\022\013\n\003key\030\001 \001(\014\022\r\n\005" +
+      "value\030\002 \001(\014\022\r\n\005nonce\030\003 \001(\r\022\021\n\tsignature\030" +
+      "\004 \001(\014B\032\n\024org.peercentrum.coreB\002PB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -24172,7 +24441,7 @@ public final class PB {
           internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor,
-              new java.lang.String[] { "Ipaddress", "Port", });
+              new java.lang.String[] { "IpAddress", "Port", });
           internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_descriptor =
             internal_static_peercentrum_PeerEndpointMsg_descriptor.getNestedTypes().get(1);
           internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_fieldAccessorTable = new
@@ -24196,7 +24465,7 @@ public final class PB {
           internal_static_peercentrum_HashToPublicKeyTransaction_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_HashToPublicKeyTransaction_descriptor,
-              new java.lang.String[] { "Operation", "Address", "PublicKey", "Signature", "Expiration", });
+              new java.lang.String[] { "Operation", "Address", "PublicKey", "Signature", "Expiration", "Nonce", });
           internal_static_peercentrum_H2PKProposedTransactions_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_peercentrum_H2PKProposedTransactions_fieldAccessorTable = new
@@ -24298,7 +24567,7 @@ public final class PB {
           internal_static_peercentrum_DHTFindMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_DHTFindMsg_descriptor,
-              new java.lang.String[] { "KeyCriteria", "NodeCriteria", "NumberOfNodesRequested", });
+              new java.lang.String[] { "KeyCriteria", "NumberOfNodesRequested", });
           internal_static_peercentrum_DHTFoundMsg_descriptor =
             getDescriptor().getMessageTypes().get(27);
           internal_static_peercentrum_DHTFoundMsg_fieldAccessorTable = new

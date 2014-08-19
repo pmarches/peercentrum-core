@@ -3,7 +3,6 @@ package org.peercentrum;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.peercentrum.blob.P2PBlobStandaloneClient;
-import org.peercentrum.core.TransientMockNetworkOfNodes;
 
 public abstract class BaseTestWithMockNetwork {
   public static TransientMockNetworkOfNodes mockNodes;

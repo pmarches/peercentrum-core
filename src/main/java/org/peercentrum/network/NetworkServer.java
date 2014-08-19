@@ -126,6 +126,10 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
     return effectiveListeningPort;
   }
 
+  public InetSocketAddress getListeningAddress() {
+    return (InetSocketAddress) bindChannel.localAddress();
+  }
+
   public NodeDatabase getNodeDatabase(){
     return nodeDatabase;
   }
@@ -143,5 +147,7 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
     Attribute<NodeIdentifier> nodeIdHolder = channel.attr(REMOTE_NODE_ID_ATTR);
     nodeIdHolder.set(remoteNodeId);
   }
+
+
 
 }

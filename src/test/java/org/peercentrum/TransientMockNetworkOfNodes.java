@@ -1,4 +1,4 @@
-package org.peercentrum.core;
+package org.peercentrum;
 
 import java.io.File;
 import java.net.InetSocketAddress;
@@ -6,6 +6,12 @@ import java.net.InetSocketAddress;
 import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.blob.P2PBlobConfig;
 import org.peercentrum.blob.P2PBlobRepositoryFS;
+import org.peercentrum.core.NodeDatabase;
+import org.peercentrum.core.NodeGossipApplication;
+import org.peercentrum.core.NodeGossipConfig;
+import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.TestUtilities;
+import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.dht.DHTApplication;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.h2pk.HashToPublicKeyConfig;

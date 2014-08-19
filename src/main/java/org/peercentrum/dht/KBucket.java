@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.TreeSet;
 
 public class KBucket {  
-  final int K_BUCKET_SIZE=20;
+  public static final int K_BUCKET_SIZE=20;
   TreeSet<KIdentifier> nodes=new TreeSet<>();
   public void maybeAdd(KIdentifier newNode) {
     if(nodes.size()>=K_BUCKET_SIZE){
-      //TODO Check for overflow and send to replacement cache
+      //TODO Check for overflow and send to replacement cache in kBuckets (not here)
       throw new Error("Not implemented");
     }
     nodes.add(newNode);
@@ -58,5 +58,11 @@ public class KBucket {
       }
     }
     return closestMatches;
+  }
+
+  public void maybeAddAll(List<KIdentifier> idList) {
+    for(KIdentifier id : idList){
+      maybeAdd(id);
+    }
   }
 }

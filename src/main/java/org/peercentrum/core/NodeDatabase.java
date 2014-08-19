@@ -179,4 +179,18 @@ public class NodeDatabase implements AutoCloseable {
 			throw new RuntimeException(e);
 		}
 	}
+
+  public void reset() throws SqlJetException {
+    db.runWriteTransaction(new ISqlJetTransaction() {
+      @Override
+      public Object run(SqlJetDb db) throws SqlJetException {
+        ISqlJetCursor delteCursor = nodeInfoTable.open();
+        while(delteCursor.eof()==false){
+          delteCursor.delete();
+        }
+        return null;
+      }
+    });
+  }
+
 }

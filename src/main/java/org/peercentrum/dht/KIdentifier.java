@@ -3,6 +3,7 @@ package org.peercentrum.dht;
 import java.util.BitSet;
 
 import org.peercentrum.core.Identifier;
+import org.peercentrum.core.NodeIdentifier;
 
 import com.google.common.primitives.UnsignedBytes;
 
@@ -17,6 +18,10 @@ public class KIdentifier extends Identifier implements Comparable<KIdentifier> {
 
   /*junit*/ KIdentifier(int i) {
     this(new byte[] {0,(byte) i,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  }
+
+  public KIdentifier(NodeIdentifier nodeIdentifier) {
+    this(nodeIdentifier.getBytes());
   }
 
   public int getKDistance(KIdentifier other){
@@ -38,5 +43,15 @@ public class KIdentifier extends Identifier implements Comparable<KIdentifier> {
       }
     }
     return 0;
+  }
+
+  public NodeIdentifier asNodeId() {
+    return new NodeIdentifier(this.binaryValue);
+  }
+  
+  @Override
+  public String toString() {
+    String fullId=super.toString();
+    return fullId.substring(0,4)+"..."+fullId.substring(28, 32);
   }
 }
