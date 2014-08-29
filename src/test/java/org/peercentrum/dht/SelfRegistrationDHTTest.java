@@ -38,8 +38,6 @@ public class SelfRegistrationDHTTest {
     assertTrue(searchStoredKey1.get().isDone());
     assertFalse(searchStoredKey1.get().foundNode);
     assertNotNull(searchStoredKey1.get().foundValue);
-
-//    DefaultPromise<List<KIdentifier>> content111=client.findNodeWithContent(new KIdentifier("DEAD_BEEF"));
   }
 
 }
