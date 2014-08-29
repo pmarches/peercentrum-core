@@ -58,15 +58,6 @@ public abstract class DHTApplication extends BaseApplicationMessageHandler {
     }
     dhtValueTable=db.getTable(DHT_VALUE_TABLE_NAME);
     nodesTable=db.getTable(NODES_TABLE_NAME);
-
-    //TODO Or load the kBuckets from server.getNodeDatabase() ?
-//    ISqlJetCursor nodesCursor = nodesTable.open();
-//    while(nodesCursor.eof()==false){
-//      byte[] currentNodeId=nodesCursor.getBlobAsArray(0);
-//      dhtClient.buckets.maybeAdd(new KIdentifier(currentNodeId));
-//      nodesCursor.next();
-//    }
-//    nodesCursor.close();
   }
 
   static {
@@ -145,10 +136,10 @@ public abstract class DHTApplication extends BaseApplicationMessageHandler {
       peerEndpointMsg.setIdentity(ByteString.copyFrom(oneId.getBytes()));
 
       InetSocketAddress socketAddress = server.getNodeDatabase().getEndpointByIdentifier(new NodeIdentifier(oneId.getBytes()));
-      PB.PeerEndpointMsg.IPEndpointMsg.Builder ipEndpointBuilder=PB.PeerEndpointMsg.IPEndpointMsg.newBuilder();
+      PB.PeerEndpointMsg.TLSEndpointMsg.Builder ipEndpointBuilder=PB.PeerEndpointMsg.TLSEndpointMsg.newBuilder();
       ipEndpointBuilder.setIpAddress(socketAddress.getHostName());
       ipEndpointBuilder.setPort(socketAddress.getPort());
-      peerEndpointMsg.setIpEndpoint(ipEndpointBuilder);
+      peerEndpointMsg.setTlsEndpoint(ipEndpointBuilder);
 
       foundMsg.addClosestNodes(peerEndpointMsg);
     }

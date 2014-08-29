@@ -43,7 +43,7 @@ message GossipReplyMorePeers {
 };
 
 message PeerEndpointMsg {
-	message IPEndpointMsg {
+	message TLSEndpointMsg {
 		optional string ipAddress=1;
 		optional uint32 port=2;
 	};
@@ -51,7 +51,7 @@ message PeerEndpointMsg {
 		optional string TORAddress=1;
 	};
 	optional bytes identity=1;
-	optional IPEndpointMsg ipEndpoint=2;
+	optional TLSEndpointMsg tlsEndpoint=2;
 };
 
 message GenericResponse {

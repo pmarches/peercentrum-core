@@ -1,9 +1,8 @@
 package org.peercentrum.network;
 
-import java.io.File;
-
 import org.junit.Test;
-import org.peercentrum.core.TopLevelConfig;
+import org.peercentrum.core.NodeDatabase;
+import org.peercentrum.core.NullConfig;
 
 public class NetworkClientTest {
 
@@ -38,21 +37,16 @@ public class NetworkClientTest {
   //		assertEquals(2, mockNodes.networkClient1.nodeDatabase.size());
   //	}
 
-  class NullConfig extends TopLevelConfig{
-    @Override
-    public File getFile(String fileName) {
-      return null;
-    }
-  }
-  
   @Test
   public void testPing() throws Exception{
     NetworkServer server1=new NetworkServer(new NullConfig());
-    NetworkServer server2=new NetworkServer(new NullConfig());
-    server1.nodeDatabase.mapNodeIdToAddress(server2.getNodeIdentifier(), server2.getListeningAddress());
-    NetworkClientConnection connection1To2 = server1.networkClient.createConnectionToPeer(server2.getNodeIdentifier());
+    NetworkClient client=new NetworkClient(new NodeIdentity(new NullConfig()), new NodeDatabase(null));
+    client.nodeDatabase.mapNodeIdToAddress(server1.getNodeIdentifier(), server1.getListeningAddress());
+    NetworkClientConnection connection1To2 = client.createConnectionToPeer(server1.getNodeIdentifier());
     connection1To2.ping();
     connection1To2.close();
+    server1.stopAcceptingConnections();
+    client.close();
   }
 
 }

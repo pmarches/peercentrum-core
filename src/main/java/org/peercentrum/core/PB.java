@@ -4144,19 +4144,19 @@ public final class PB {
      */
     com.google.protobuf.ByteString getIdentity();
 
-    // optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;
+    // optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;
     /**
-     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
      */
-    boolean hasIpEndpoint();
+    boolean hasTlsEndpoint();
     /**
-     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
      */
-    org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg getIpEndpoint();
+    org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg getTlsEndpoint();
     /**
-     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
      */
-    org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder getIpEndpointOrBuilder();
+    org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsgOrBuilder getTlsEndpointOrBuilder();
   }
   /**
    * Protobuf type {@code peercentrum.PeerEndpointMsg}
@@ -4215,14 +4215,14 @@ public final class PB {
               break;
             }
             case 18: {
-              org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder subBuilder = null;
+              org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = ipEndpoint_.toBuilder();
+                subBuilder = tlsEndpoint_.toBuilder();
               }
-              ipEndpoint_ = input.readMessage(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.PARSER, extensionRegistry);
+              tlsEndpoint_ = input.readMessage(org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(ipEndpoint_);
-                ipEndpoint_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(tlsEndpoint_);
+                tlsEndpoint_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000002;
               break;
@@ -4266,7 +4266,7 @@ public final class PB {
       return PARSER;
     }
 
-    public interface IPEndpointMsgOrBuilder
+    public interface TLSEndpointMsgOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
       // optional string ipAddress = 1;
@@ -4295,24 +4295,24 @@ public final class PB {
       int getPort();
     }
     /**
-     * Protobuf type {@code peercentrum.PeerEndpointMsg.IPEndpointMsg}
+     * Protobuf type {@code peercentrum.PeerEndpointMsg.TLSEndpointMsg}
      */
-    public static final class IPEndpointMsg extends
+    public static final class TLSEndpointMsg extends
         com.google.protobuf.GeneratedMessage
-        implements IPEndpointMsgOrBuilder {
-      // Use IPEndpointMsg.newBuilder() to construct.
-      private IPEndpointMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        implements TLSEndpointMsgOrBuilder {
+      // Use TLSEndpointMsg.newBuilder() to construct.
+      private TLSEndpointMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
         this.unknownFields = builder.getUnknownFields();
       }
-      private IPEndpointMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+      private TLSEndpointMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-      private static final IPEndpointMsg defaultInstance;
-      public static IPEndpointMsg getDefaultInstance() {
+      private static final TLSEndpointMsg defaultInstance;
+      public static TLSEndpointMsg getDefaultInstance() {
         return defaultInstance;
       }
 
-      public IPEndpointMsg getDefaultInstanceForType() {
+      public TLSEndpointMsg getDefaultInstanceForType() {
         return defaultInstance;
       }
 
@@ -4322,7 +4322,7 @@ public final class PB {
           getUnknownFields() {
         return this.unknownFields;
       }
-      private IPEndpointMsg(
+      private TLSEndpointMsg(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4369,28 +4369,28 @@ public final class PB {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor;
+        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_fieldAccessorTable
+        return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder.class);
+                org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.Builder.class);
       }
 
-      public static com.google.protobuf.Parser<IPEndpointMsg> PARSER =
-          new com.google.protobuf.AbstractParser<IPEndpointMsg>() {
-        public IPEndpointMsg parsePartialFrom(
+      public static com.google.protobuf.Parser<TLSEndpointMsg> PARSER =
+          new com.google.protobuf.AbstractParser<TLSEndpointMsg>() {
+        public TLSEndpointMsg parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new IPEndpointMsg(input, extensionRegistry);
+          return new TLSEndpointMsg(input, extensionRegistry);
         }
       };
 
       @java.lang.Override
-      public com.google.protobuf.Parser<IPEndpointMsg> getParserForType() {
+      public com.google.protobuf.Parser<TLSEndpointMsg> getParserForType() {
         return PARSER;
       }
 
@@ -4505,53 +4505,53 @@ public final class PB {
         return super.writeReplace();
       }
 
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(byte[] data)
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(java.io.InputStream input)
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseFrom(input, extensionRegistry);
       }
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseDelimitedFrom(java.io.InputStream input)
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input);
       }
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseDelimitedFrom(
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return PARSER.parseFrom(input);
       }
-      public static org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parseFrom(
+      public static org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -4560,7 +4560,7 @@ public final class PB {
 
       public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg prototype) {
+      public static Builder newBuilder(org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg prototype) {
         return newBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() { return newBuilder(this); }
@@ -4572,24 +4572,24 @@ public final class PB {
         return builder;
       }
       /**
-       * Protobuf type {@code peercentrum.PeerEndpointMsg.IPEndpointMsg}
+       * Protobuf type {@code peercentrum.PeerEndpointMsg.TLSEndpointMsg}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder {
+         implements org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsgOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor;
+          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_fieldAccessorTable
+          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder.class);
+                  org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.class, org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.Builder.class);
         }
 
-        // Construct using org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.newBuilder()
+        // Construct using org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -4622,23 +4622,23 @@ public final class PB {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor;
+          return org.peercentrum.core.PB.internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_descriptor;
         }
 
-        public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg getDefaultInstanceForType() {
-          return org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+        public org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg getDefaultInstanceForType() {
+          return org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.getDefaultInstance();
         }
 
-        public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg build() {
-          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg result = buildPartial();
+        public org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg build() {
+          org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg buildPartial() {
-          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg result = new org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg(this);
+        public org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg buildPartial() {
+          org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg result = new org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4655,16 +4655,16 @@ public final class PB {
         }
 
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg) {
-            return mergeFrom((org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg)other);
+          if (other instanceof org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg) {
+            return mergeFrom((org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg other) {
-          if (other == org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg other) {
+          if (other == org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.getDefaultInstance()) return this;
           if (other.hasIpAddress()) {
             bitField0_ |= 0x00000001;
             ipAddress_ = other.ipAddress_;
@@ -4685,11 +4685,11 @@ public final class PB {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg parsedMessage = null;
+          org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg) e.getUnfinishedMessage();
+            parsedMessage = (org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg) e.getUnfinishedMessage();
             throw e;
           } finally {
             if (parsedMessage != null) {
@@ -4807,15 +4807,15 @@ public final class PB {
           return this;
         }
 
-        // @@protoc_insertion_point(builder_scope:peercentrum.PeerEndpointMsg.IPEndpointMsg)
+        // @@protoc_insertion_point(builder_scope:peercentrum.PeerEndpointMsg.TLSEndpointMsg)
       }
 
       static {
-        defaultInstance = new IPEndpointMsg(true);
+        defaultInstance = new TLSEndpointMsg(true);
         defaultInstance.initFields();
       }
 
-      // @@protoc_insertion_point(class_scope:peercentrum.PeerEndpointMsg.IPEndpointMsg)
+      // @@protoc_insertion_point(class_scope:peercentrum.PeerEndpointMsg.TLSEndpointMsg)
     }
 
     public interface TOREndpointMsgOrBuilder
@@ -5306,31 +5306,31 @@ public final class PB {
       return identity_;
     }
 
-    // optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;
-    public static final int IPENDPOINT_FIELD_NUMBER = 2;
-    private org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg ipEndpoint_;
+    // optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;
+    public static final int TLSENDPOINT_FIELD_NUMBER = 2;
+    private org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint_;
     /**
-     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
      */
-    public boolean hasIpEndpoint() {
+    public boolean hasTlsEndpoint() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
      */
-    public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg getIpEndpoint() {
-      return ipEndpoint_;
+    public org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg getTlsEndpoint() {
+      return tlsEndpoint_;
     }
     /**
-     * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+     * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
      */
-    public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder getIpEndpointOrBuilder() {
-      return ipEndpoint_;
+    public org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsgOrBuilder getTlsEndpointOrBuilder() {
+      return tlsEndpoint_;
     }
 
     private void initFields() {
       identity_ = com.google.protobuf.ByteString.EMPTY;
-      ipEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+      tlsEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5348,7 +5348,7 @@ public final class PB {
         output.writeBytes(1, identity_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, ipEndpoint_);
+        output.writeMessage(2, tlsEndpoint_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5365,7 +5365,7 @@ public final class PB {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, ipEndpoint_);
+          .computeMessageSize(2, tlsEndpoint_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5475,7 +5475,7 @@ public final class PB {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIpEndpointFieldBuilder();
+          getTlsEndpointFieldBuilder();
         }
       }
       private static Builder create() {
@@ -5486,10 +5486,10 @@ public final class PB {
         super.clear();
         identity_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (ipEndpointBuilder_ == null) {
-          ipEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+        if (tlsEndpointBuilder_ == null) {
+          tlsEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.getDefaultInstance();
         } else {
-          ipEndpointBuilder_.clear();
+          tlsEndpointBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
@@ -5527,10 +5527,10 @@ public final class PB {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        if (ipEndpointBuilder_ == null) {
-          result.ipEndpoint_ = ipEndpoint_;
+        if (tlsEndpointBuilder_ == null) {
+          result.tlsEndpoint_ = tlsEndpoint_;
         } else {
-          result.ipEndpoint_ = ipEndpointBuilder_.build();
+          result.tlsEndpoint_ = tlsEndpointBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -5551,8 +5551,8 @@ public final class PB {
         if (other.hasIdentity()) {
           setIdentity(other.getIdentity());
         }
-        if (other.hasIpEndpoint()) {
-          mergeIpEndpoint(other.getIpEndpoint());
+        if (other.hasTlsEndpoint()) {
+          mergeTlsEndpoint(other.getTlsEndpoint());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5617,121 +5617,121 @@ public final class PB {
         return this;
       }
 
-      // optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;
-      private org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg ipEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+      // optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;
+      private org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder> ipEndpointBuilder_;
+          org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsgOrBuilder> tlsEndpointBuilder_;
       /**
-       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
        */
-      public boolean hasIpEndpoint() {
+      public boolean hasTlsEndpoint() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
        */
-      public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg getIpEndpoint() {
-        if (ipEndpointBuilder_ == null) {
-          return ipEndpoint_;
+      public org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg getTlsEndpoint() {
+        if (tlsEndpointBuilder_ == null) {
+          return tlsEndpoint_;
         } else {
-          return ipEndpointBuilder_.getMessage();
+          return tlsEndpointBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
        */
-      public Builder setIpEndpoint(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg value) {
-        if (ipEndpointBuilder_ == null) {
+      public Builder setTlsEndpoint(org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg value) {
+        if (tlsEndpointBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ipEndpoint_ = value;
+          tlsEndpoint_ = value;
           onChanged();
         } else {
-          ipEndpointBuilder_.setMessage(value);
+          tlsEndpointBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
        */
-      public Builder setIpEndpoint(
-          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder builderForValue) {
-        if (ipEndpointBuilder_ == null) {
-          ipEndpoint_ = builderForValue.build();
+      public Builder setTlsEndpoint(
+          org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.Builder builderForValue) {
+        if (tlsEndpointBuilder_ == null) {
+          tlsEndpoint_ = builderForValue.build();
           onChanged();
         } else {
-          ipEndpointBuilder_.setMessage(builderForValue.build());
+          tlsEndpointBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
        */
-      public Builder mergeIpEndpoint(org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg value) {
-        if (ipEndpointBuilder_ == null) {
+      public Builder mergeTlsEndpoint(org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg value) {
+        if (tlsEndpointBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              ipEndpoint_ != org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance()) {
-            ipEndpoint_ =
-              org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.newBuilder(ipEndpoint_).mergeFrom(value).buildPartial();
+              tlsEndpoint_ != org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.getDefaultInstance()) {
+            tlsEndpoint_ =
+              org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.newBuilder(tlsEndpoint_).mergeFrom(value).buildPartial();
           } else {
-            ipEndpoint_ = value;
+            tlsEndpoint_ = value;
           }
           onChanged();
         } else {
-          ipEndpointBuilder_.mergeFrom(value);
+          tlsEndpointBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
        */
-      public Builder clearIpEndpoint() {
-        if (ipEndpointBuilder_ == null) {
-          ipEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.getDefaultInstance();
+      public Builder clearTlsEndpoint() {
+        if (tlsEndpointBuilder_ == null) {
+          tlsEndpoint_ = org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.getDefaultInstance();
           onChanged();
         } else {
-          ipEndpointBuilder_.clear();
+          tlsEndpointBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
-       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
        */
-      public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder getIpEndpointBuilder() {
+      public org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.Builder getTlsEndpointBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
-        return getIpEndpointFieldBuilder().getBuilder();
+        return getTlsEndpointFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
        */
-      public org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder getIpEndpointOrBuilder() {
-        if (ipEndpointBuilder_ != null) {
-          return ipEndpointBuilder_.getMessageOrBuilder();
+      public org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsgOrBuilder getTlsEndpointOrBuilder() {
+        if (tlsEndpointBuilder_ != null) {
+          return tlsEndpointBuilder_.getMessageOrBuilder();
         } else {
-          return ipEndpoint_;
+          return tlsEndpoint_;
         }
       }
       /**
-       * <code>optional .peercentrum.PeerEndpointMsg.IPEndpointMsg ipEndpoint = 2;</code>
+       * <code>optional .peercentrum.PeerEndpointMsg.TLSEndpointMsg tlsEndpoint = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder> 
-          getIpEndpointFieldBuilder() {
-        if (ipEndpointBuilder_ == null) {
-          ipEndpointBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsg.IPEndpointMsgOrBuilder>(
-                  ipEndpoint_,
+          org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsgOrBuilder> 
+          getTlsEndpointFieldBuilder() {
+        if (tlsEndpointBuilder_ == null) {
+          tlsEndpointBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg, org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsg.Builder, org.peercentrum.core.PB.PeerEndpointMsg.TLSEndpointMsgOrBuilder>(
+                  tlsEndpoint_,
                   getParentForChildren(),
                   isClean());
-          ipEndpoint_ = null;
+          tlsEndpoint_ = null;
         }
-        return ipEndpointBuilder_;
+        return tlsEndpointBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:peercentrum.PeerEndpointMsg)
@@ -23464,16 +23464,6 @@ public final class PB {
      */
     com.google.protobuf.ByteString getKey();
 
-    // optional bytes value = 2;
-    /**
-     * <code>optional bytes value = 2;</code>
-     */
-    boolean hasValue();
-    /**
-     * <code>optional bytes value = 2;</code>
-     */
-    com.google.protobuf.ByteString getValue();
-
     // optional uint32 nonce = 3;
     /**
      * <code>optional uint32 nonce = 3;</code>
@@ -23492,18 +23482,40 @@ public final class PB {
      */
     int getNonce();
 
-    // optional bytes signature = 4;
+    // optional bytes value = 4;
     /**
-     * <code>optional bytes signature = 4;</code>
+     * <code>optional bytes value = 4;</code>
+     */
+    boolean hasValue();
+    /**
+     * <code>optional bytes value = 4;</code>
+     */
+    com.google.protobuf.ByteString getValue();
+
+    // optional bytes signature = 5;
+    /**
+     * <code>optional bytes signature = 5;</code>
+     *
+     * <pre>
+     *The signature needs to also cover the application ID, otherwise you end up with cross-application replay attacks
+     * </pre>
      */
     boolean hasSignature();
     /**
-     * <code>optional bytes signature = 4;</code>
+     * <code>optional bytes signature = 5;</code>
+     *
+     * <pre>
+     *The signature needs to also cover the application ID, otherwise you end up with cross-application replay attacks
+     * </pre>
      */
     com.google.protobuf.ByteString getSignature();
   }
   /**
    * Protobuf type {@code peercentrum.DHTStoreValueMsg}
+   *
+   * <pre>
+   *This is more akin to a transaction than a command.
+   * </pre>
    */
   public static final class DHTStoreValueMsg extends
       com.google.protobuf.GeneratedMessage
@@ -23558,17 +23570,17 @@ public final class PB {
               key_ = input.readBytes();
               break;
             }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              value_ = input.readBytes();
-              break;
-            }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000002;
               nonce_ = input.readUInt32();
               break;
             }
             case 34: {
+              bitField0_ |= 0x00000004;
+              value_ = input.readBytes();
+              break;
+            }
+            case 42: {
               bitField0_ |= 0x00000008;
               signature_ = input.readBytes();
               break;
@@ -23629,22 +23641,6 @@ public final class PB {
       return key_;
     }
 
-    // optional bytes value = 2;
-    public static final int VALUE_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString value_;
-    /**
-     * <code>optional bytes value = 2;</code>
-     */
-    public boolean hasValue() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional bytes value = 2;</code>
-     */
-    public com.google.protobuf.ByteString getValue() {
-      return value_;
-    }
-
     // optional uint32 nonce = 3;
     public static final int NONCE_FIELD_NUMBER = 3;
     private int nonce_;
@@ -23656,7 +23652,7 @@ public final class PB {
      * </pre>
      */
     public boolean hasNonce() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional uint32 nonce = 3;</code>
@@ -23669,17 +23665,41 @@ public final class PB {
       return nonce_;
     }
 
-    // optional bytes signature = 4;
-    public static final int SIGNATURE_FIELD_NUMBER = 4;
+    // optional bytes value = 4;
+    public static final int VALUE_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString value_;
+    /**
+     * <code>optional bytes value = 4;</code>
+     */
+    public boolean hasValue() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bytes value = 4;</code>
+     */
+    public com.google.protobuf.ByteString getValue() {
+      return value_;
+    }
+
+    // optional bytes signature = 5;
+    public static final int SIGNATURE_FIELD_NUMBER = 5;
     private com.google.protobuf.ByteString signature_;
     /**
-     * <code>optional bytes signature = 4;</code>
+     * <code>optional bytes signature = 5;</code>
+     *
+     * <pre>
+     *The signature needs to also cover the application ID, otherwise you end up with cross-application replay attacks
+     * </pre>
      */
     public boolean hasSignature() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional bytes signature = 4;</code>
+     * <code>optional bytes signature = 5;</code>
+     *
+     * <pre>
+     *The signature needs to also cover the application ID, otherwise you end up with cross-application replay attacks
+     * </pre>
      */
     public com.google.protobuf.ByteString getSignature() {
       return signature_;
@@ -23687,8 +23707,8 @@ public final class PB {
 
     private void initFields() {
       key_ = com.google.protobuf.ByteString.EMPTY;
-      value_ = com.google.protobuf.ByteString.EMPTY;
       nonce_ = 0;
+      value_ = com.google.protobuf.ByteString.EMPTY;
       signature_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
@@ -23707,13 +23727,13 @@ public final class PB {
         output.writeBytes(1, key_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, value_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeUInt32(3, nonce_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(4, value_);
+      }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, signature_);
+        output.writeBytes(5, signature_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -23730,15 +23750,15 @@ public final class PB {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, value_);
+          .computeUInt32Size(3, nonce_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, nonce_);
+          .computeBytesSize(4, value_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, signature_);
+          .computeBytesSize(5, signature_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -23820,6 +23840,10 @@ public final class PB {
     }
     /**
      * Protobuf type {@code peercentrum.DHTStoreValueMsg}
+     *
+     * <pre>
+     *This is more akin to a transaction than a command.
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -23858,9 +23882,9 @@ public final class PB {
         super.clear();
         key_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
-        value_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000002);
         nonce_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        value_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
         signature_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -23899,11 +23923,11 @@ public final class PB {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.value_ = value_;
+        result.nonce_ = nonce_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.nonce_ = nonce_;
+        result.value_ = value_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
@@ -23927,11 +23951,11 @@ public final class PB {
         if (other.hasKey()) {
           setKey(other.getKey());
         }
-        if (other.hasValue()) {
-          setValue(other.getValue());
-        }
         if (other.hasNonce()) {
           setNonce(other.getNonce());
+        }
+        if (other.hasValue()) {
+          setValue(other.getValue());
         }
         if (other.hasSignature()) {
           setSignature(other.getSignature());
@@ -23999,42 +24023,6 @@ public final class PB {
         return this;
       }
 
-      // optional bytes value = 2;
-      private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>optional bytes value = 2;</code>
-       */
-      public boolean hasValue() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional bytes value = 2;</code>
-       */
-      public com.google.protobuf.ByteString getValue() {
-        return value_;
-      }
-      /**
-       * <code>optional bytes value = 2;</code>
-       */
-      public Builder setValue(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        value_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bytes value = 2;</code>
-       */
-      public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        value_ = getDefaultInstance().getValue();
-        onChanged();
-        return this;
-      }
-
       // optional uint32 nonce = 3;
       private int nonce_ ;
       /**
@@ -24045,7 +24033,7 @@ public final class PB {
        * </pre>
        */
       public boolean hasNonce() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional uint32 nonce = 3;</code>
@@ -24065,7 +24053,7 @@ public final class PB {
        * </pre>
        */
       public Builder setNonce(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         nonce_ = value;
         onChanged();
         return this;
@@ -24078,28 +24066,76 @@ public final class PB {
        * </pre>
        */
       public Builder clearNonce() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         nonce_ = 0;
         onChanged();
         return this;
       }
 
-      // optional bytes signature = 4;
+      // optional bytes value = 4;
+      private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes value = 4;</code>
+       */
+      public boolean hasValue() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional bytes value = 4;</code>
+       */
+      public com.google.protobuf.ByteString getValue() {
+        return value_;
+      }
+      /**
+       * <code>optional bytes value = 4;</code>
+       */
+      public Builder setValue(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes value = 4;</code>
+       */
+      public Builder clearValue() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        value_ = getDefaultInstance().getValue();
+        onChanged();
+        return this;
+      }
+
+      // optional bytes signature = 5;
       private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes signature = 4;</code>
+       * <code>optional bytes signature = 5;</code>
+       *
+       * <pre>
+       *The signature needs to also cover the application ID, otherwise you end up with cross-application replay attacks
+       * </pre>
        */
       public boolean hasSignature() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional bytes signature = 4;</code>
+       * <code>optional bytes signature = 5;</code>
+       *
+       * <pre>
+       *The signature needs to also cover the application ID, otherwise you end up with cross-application replay attacks
+       * </pre>
        */
       public com.google.protobuf.ByteString getSignature() {
         return signature_;
       }
       /**
-       * <code>optional bytes signature = 4;</code>
+       * <code>optional bytes signature = 5;</code>
+       *
+       * <pre>
+       *The signature needs to also cover the application ID, otherwise you end up with cross-application replay attacks
+       * </pre>
        */
       public Builder setSignature(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -24111,7 +24147,11 @@ public final class PB {
         return this;
       }
       /**
-       * <code>optional bytes signature = 4;</code>
+       * <code>optional bytes signature = 5;</code>
+       *
+       * <pre>
+       *The signature needs to also cover the application ID, otherwise you end up with cross-application replay attacks
+       * </pre>
        */
       public Builder clearSignature() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -24167,10 +24207,10 @@ public final class PB {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_peercentrum_PeerEndpointMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor;
+    internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_fieldAccessorTable;
+      internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_descriptor;
   private static
@@ -24314,80 +24354,80 @@ public final class PB {
       "lyMorePeers\"7\n\026GossipRequestMorePeers\022\035\n" +
       "\025applicationsRequested\030\001 \003(\014\"C\n\024GossipRe" +
       "plyMorePeers\022+\n\005peers\030\001 \003(\0132\034.peercentru" +
-      "m.PeerEndpointMsg\"\273\001\n\017PeerEndpointMsg\022\020\n",
-      "\010identity\030\001 \001(\014\022>\n\nipEndpoint\030\002 \001(\0132*.pe" +
-      "ercentrum.PeerEndpointMsg.IPEndpointMsg\032" +
-      "0\n\rIPEndpointMsg\022\021\n\tipAddress\030\001 \001(\t\022\014\n\004p" +
-      "ort\030\002 \001(\r\032$\n\016TOREndpointMsg\022\022\n\nTORAddres" +
-      "s\030\001 \001(\t\":\n\017GenericResponse\022\021\n\terrorCode\030" +
-      "\001 \001(\r\022\024\n\014errorMessage\030\002 \001(\t\"\356\002\n\026HashToPu" +
-      "blicKeyMessage\0225\n\017genericResponse\030\001 \001(\0132" +
-      "\034.peercentrum.GenericResponse\0229\n\npropose" +
-      "dTx\030\002 \001(\0132%.peercentrum.H2PKProposedTran" +
-      "sactions\022A\n\020localTransaction\030\003 \001(\0132\'.pee",
-      "rcentrum.HashToPublicKeyTransaction\022\027\n\017m" +
-      "embershipQuery\030\004 \001(\014\022\032\n\022membershipRespon" +
-      "se\030\005 \003(\014\0221\n\013dbSyncQuery\030\006 \001(\0132\034.peercent" +
-      "rum.H2PKDBSyncQuery\0227\n\016dbSyncResponse\030\007 " +
-      "\001(\0132\037.peercentrum.H2PKDBSyncResponse\"\341\001\n" +
-      "\032HashToPublicKeyTransaction\022D\n\toperation" +
-      "\030\001 \001(\01621.peercentrum.HashToPublicKeyTran" +
-      "saction.OPERATION\022\017\n\007address\030\002 \001(\014\022\021\n\tpu" +
-      "blicKey\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022\022\n\nexpi" +
-      "ration\030\005 \001(\r\022\r\n\005nonce\030\006 \001(\r\"#\n\tOPERATION",
-      "\022\n\n\006APPEND\020\000\022\n\n\006REMOVE\020\001\"\216\001\n\030H2PKPropose" +
-      "dTransactions\022\027\n\017dbVersionNumber\030\001 \001(\r\022\022" +
-      "\n\nproposedBy\030\002 \001(\014\022E\n\024proposedTransactio" +
-      "ns\030\003 \003(\0132\'.peercentrum.HashToPublicKeyTr" +
-      "ansaction\"/\n\017H2PKDBSyncQuery\022\034\n\024beginDbV" +
-      "ersionNumber\030\001 \001(\r\"\227\001\n\022H2PKDBSyncRespons" +
-      "e\022\033\n\023lastDbVersionNumber\030\001 \001(\r\022\027\n\017lastDb" +
-      "HashValue\030\002 \001(\014\022\033\n\023syncDbVersionNumber\030\003" +
-      " \001(\r\022.\n\tsyncUnits\030\004 \003(\0132\033.peercentrum.H2" +
-      "PKDBSyncUnit\"?\n\016H2PKDBSyncUnit\022\017\n\007addres",
-      "s\030\001 \001(\014\022\034\n\024publicKeysRegistered\030\002 \003(\014\"\211\001" +
-      "\n\021P2PBlobRequestMsg\0227\n\013blobRequest\030\001 \003(\013" +
-      "2\".peercentrum.P2PBlobBlobRequestMsg\022;\n\r" +
-      "uploadRequest\030\002 \003(\0132$.peercentrum.P2PBlo" +
-      "bUploadRequestMsg\"z\n\027P2PBlobUploadReques" +
-      "tMsg\022,\n\006blocks\030\002 \003(\0132\034.peercentrum.P2PBl" +
-      "obBlockMsg\0221\n\010metaData\030\003 \001(\0132\037.peercentr" +
-      "um.P2PBlobMetaDataMsg\"\300\001\n\025P2PBlobBlobReq" +
-      "uestMsg\022\025\n\rrequestedHash\030\001 \001(\014\022!\n\031maximu" +
-      "mBlobLengthAccepted\030\002 \001(\003\022\027\n\017requestMeta",
-      "Data\030\003 \001(\010\022\035\n\025requestBlockInventory\030\005 \001(" +
-      "\010\0225\n\017requestedRanges\030\006 \003(\0132\034.peercentrum" +
-      ".P2PBlobRangeMsg\"\257\002\n\022P2PBlobResponseMsg\022" +
-      "5\n\017genericResponse\030\001 \001(\0132\034.peercentrum.G" +
-      "enericResponse\0221\n\010metaData\030\002 \001(\0132\037.peerc" +
-      "entrum.P2PBlobMetaDataMsg\0229\n\023localBlockI" +
-      "nventory\030\003 \003(\0132\034.peercentrum.P2PBlobRang" +
-      "eMsg\022/\n\tblobBytes\030\004 \003(\0132\034.peercentrum.P2" +
-      "PBlobBlockMsg\022C\n\021dataTransferQuote\030\005 \001(\013" +
-      "2(.peercentrum.P2PBlobDataTransferQuoteM",
-      "sg\"-\n\017P2PBlobRangeMsg\022\r\n\005begin\030\001 \001(\r\022\013\n\003" +
-      "end\030\002 \001(\r\"n\n\022P2PBlobMetaDataMsg\022\022\n\nblobL" +
-      "ength\030\001 \001(\003\022\021\n\tblockSize\030\002 \001(\005\0221\n\010hashLi" +
-      "st\030\003 \001(\0132\037.peercentrum.P2PBlobHashListMs" +
-      "g\"-\n\022P2PBlobHashListMsg\022\027\n\017hashOfEachBlo" +
-      "ck\030\001 \003(\014\"8\n\017P2PBlobBlockMsg\022\022\n\nblockInde" +
-      "x\030\001 \001(\r\022\021\n\tblobBytes\030\002 \001(\014\"e\n\033P2PBlobDat" +
-      "aTransferQuoteMsg\022\"\n\032satoshiPerIncomingG" +
-      "igaByte\030\001 \001(\003\022\"\n\032satoshiPerOutgoingGigaB" +
-      "yte\030\002 \001(\003\"P\n\rSettlementMsg\022?\n\020twoWayChan",
-      "nelMsg\030\001 \003(\0132%.paymentchannels.TwoWayCha" +
-      "nnelMessage\"\272\001\n\016DHTTopLevelMsg\022%\n\004ping\030\001" +
-      " \001(\0132\027.peercentrum.DHTPingMsg\022%\n\004find\030\002 " +
-      "\003(\0132\027.peercentrum.DHTFindMsg\022\'\n\005found\030\003 " +
-      "\003(\0132\030.peercentrum.DHTFoundMsg\0221\n\nstoreVa" +
-      "lue\030\004 \003(\0132\035.peercentrum.DHTStoreValueMsg" +
-      "\"\014\n\nDHTPingMsg\"A\n\nDHTFindMsg\022\023\n\013keyCrite" +
-      "ria\030\001 \001(\014\022\036\n\026numberOfNodesRequested\030\002 \001(" +
-      "\r\"P\n\013DHTFoundMsg\0222\n\014closestNodes\030\001 \003(\0132\034" +
-      ".peercentrum.PeerEndpointMsg\022\r\n\005value\030\002 ",
-      "\001(\014\"P\n\020DHTStoreValueMsg\022\013\n\003key\030\001 \001(\014\022\r\n\005" +
-      "value\030\002 \001(\014\022\r\n\005nonce\030\003 \001(\r\022\021\n\tsignature\030" +
-      "\004 \001(\014B\032\n\024org.peercentrum.coreB\002PB"
+      "m.PeerEndpointMsg\"\276\001\n\017PeerEndpointMsg\022\020\n",
+      "\010identity\030\001 \001(\014\022@\n\013tlsEndpoint\030\002 \001(\0132+.p" +
+      "eercentrum.PeerEndpointMsg.TLSEndpointMs" +
+      "g\0321\n\016TLSEndpointMsg\022\021\n\tipAddress\030\001 \001(\t\022\014" +
+      "\n\004port\030\002 \001(\r\032$\n\016TOREndpointMsg\022\022\n\nTORAdd" +
+      "ress\030\001 \001(\t\":\n\017GenericResponse\022\021\n\terrorCo" +
+      "de\030\001 \001(\r\022\024\n\014errorMessage\030\002 \001(\t\"\356\002\n\026HashT" +
+      "oPublicKeyMessage\0225\n\017genericResponse\030\001 \001" +
+      "(\0132\034.peercentrum.GenericResponse\0229\n\nprop" +
+      "osedTx\030\002 \001(\0132%.peercentrum.H2PKProposedT" +
+      "ransactions\022A\n\020localTransaction\030\003 \001(\0132\'.",
+      "peercentrum.HashToPublicKeyTransaction\022\027" +
+      "\n\017membershipQuery\030\004 \001(\014\022\032\n\022membershipRes" +
+      "ponse\030\005 \003(\014\0221\n\013dbSyncQuery\030\006 \001(\0132\034.peerc" +
+      "entrum.H2PKDBSyncQuery\0227\n\016dbSyncResponse" +
+      "\030\007 \001(\0132\037.peercentrum.H2PKDBSyncResponse\"" +
+      "\341\001\n\032HashToPublicKeyTransaction\022D\n\toperat" +
+      "ion\030\001 \001(\01621.peercentrum.HashToPublicKeyT" +
+      "ransaction.OPERATION\022\017\n\007address\030\002 \001(\014\022\021\n" +
+      "\tpublicKey\030\003 \001(\014\022\021\n\tsignature\030\004 \001(\014\022\022\n\ne" +
+      "xpiration\030\005 \001(\r\022\r\n\005nonce\030\006 \001(\r\"#\n\tOPERAT",
+      "ION\022\n\n\006APPEND\020\000\022\n\n\006REMOVE\020\001\"\216\001\n\030H2PKProp" +
+      "osedTransactions\022\027\n\017dbVersionNumber\030\001 \001(" +
+      "\r\022\022\n\nproposedBy\030\002 \001(\014\022E\n\024proposedTransac" +
+      "tions\030\003 \003(\0132\'.peercentrum.HashToPublicKe" +
+      "yTransaction\"/\n\017H2PKDBSyncQuery\022\034\n\024begin" +
+      "DbVersionNumber\030\001 \001(\r\"\227\001\n\022H2PKDBSyncResp" +
+      "onse\022\033\n\023lastDbVersionNumber\030\001 \001(\r\022\027\n\017las" +
+      "tDbHashValue\030\002 \001(\014\022\033\n\023syncDbVersionNumbe" +
+      "r\030\003 \001(\r\022.\n\tsyncUnits\030\004 \003(\0132\033.peercentrum" +
+      ".H2PKDBSyncUnit\"?\n\016H2PKDBSyncUnit\022\017\n\007add",
+      "ress\030\001 \001(\014\022\034\n\024publicKeysRegistered\030\002 \003(\014" +
+      "\"\211\001\n\021P2PBlobRequestMsg\0227\n\013blobRequest\030\001 " +
+      "\003(\0132\".peercentrum.P2PBlobBlobRequestMsg\022" +
+      ";\n\ruploadRequest\030\002 \003(\0132$.peercentrum.P2P" +
+      "BlobUploadRequestMsg\"z\n\027P2PBlobUploadReq" +
+      "uestMsg\022,\n\006blocks\030\002 \003(\0132\034.peercentrum.P2" +
+      "PBlobBlockMsg\0221\n\010metaData\030\003 \001(\0132\037.peerce" +
+      "ntrum.P2PBlobMetaDataMsg\"\300\001\n\025P2PBlobBlob" +
+      "RequestMsg\022\025\n\rrequestedHash\030\001 \001(\014\022!\n\031max" +
+      "imumBlobLengthAccepted\030\002 \001(\003\022\027\n\017requestM",
+      "etaData\030\003 \001(\010\022\035\n\025requestBlockInventory\030\005" +
+      " \001(\010\0225\n\017requestedRanges\030\006 \003(\0132\034.peercent" +
+      "rum.P2PBlobRangeMsg\"\257\002\n\022P2PBlobResponseM" +
+      "sg\0225\n\017genericResponse\030\001 \001(\0132\034.peercentru" +
+      "m.GenericResponse\0221\n\010metaData\030\002 \001(\0132\037.pe" +
+      "ercentrum.P2PBlobMetaDataMsg\0229\n\023localBlo" +
+      "ckInventory\030\003 \003(\0132\034.peercentrum.P2PBlobR" +
+      "angeMsg\022/\n\tblobBytes\030\004 \003(\0132\034.peercentrum" +
+      ".P2PBlobBlockMsg\022C\n\021dataTransferQuote\030\005 " +
+      "\001(\0132(.peercentrum.P2PBlobDataTransferQuo",
+      "teMsg\"-\n\017P2PBlobRangeMsg\022\r\n\005begin\030\001 \001(\r\022" +
+      "\013\n\003end\030\002 \001(\r\"n\n\022P2PBlobMetaDataMsg\022\022\n\nbl" +
+      "obLength\030\001 \001(\003\022\021\n\tblockSize\030\002 \001(\005\0221\n\010has" +
+      "hList\030\003 \001(\0132\037.peercentrum.P2PBlobHashLis" +
+      "tMsg\"-\n\022P2PBlobHashListMsg\022\027\n\017hashOfEach" +
+      "Block\030\001 \003(\014\"8\n\017P2PBlobBlockMsg\022\022\n\nblockI" +
+      "ndex\030\001 \001(\r\022\021\n\tblobBytes\030\002 \001(\014\"e\n\033P2PBlob" +
+      "DataTransferQuoteMsg\022\"\n\032satoshiPerIncomi" +
+      "ngGigaByte\030\001 \001(\003\022\"\n\032satoshiPerOutgoingGi" +
+      "gaByte\030\002 \001(\003\"P\n\rSettlementMsg\022?\n\020twoWayC",
+      "hannelMsg\030\001 \003(\0132%.paymentchannels.TwoWay" +
+      "ChannelMessage\"\272\001\n\016DHTTopLevelMsg\022%\n\004pin" +
+      "g\030\001 \001(\0132\027.peercentrum.DHTPingMsg\022%\n\004find" +
+      "\030\002 \003(\0132\027.peercentrum.DHTFindMsg\022\'\n\005found" +
+      "\030\003 \003(\0132\030.peercentrum.DHTFoundMsg\0221\n\nstor" +
+      "eValue\030\004 \003(\0132\035.peercentrum.DHTStoreValue" +
+      "Msg\"\014\n\nDHTPingMsg\"A\n\nDHTFindMsg\022\023\n\013keyCr" +
+      "iteria\030\001 \001(\014\022\036\n\026numberOfNodesRequested\030\002" +
+      " \001(\r\"P\n\013DHTFoundMsg\0222\n\014closestNodes\030\001 \003(" +
+      "\0132\034.peercentrum.PeerEndpointMsg\022\r\n\005value",
+      "\030\002 \001(\014\"P\n\020DHTStoreValueMsg\022\013\n\003key\030\001 \001(\014\022" +
+      "\r\n\005nonce\030\003 \001(\r\022\r\n\005value\030\004 \001(\014\022\021\n\tsignatu" +
+      "re\030\005 \001(\014B\032\n\024org.peercentrum.coreB\002PB"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -24435,12 +24475,12 @@ public final class PB {
           internal_static_peercentrum_PeerEndpointMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_PeerEndpointMsg_descriptor,
-              new java.lang.String[] { "Identity", "IpEndpoint", });
-          internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor =
+              new java.lang.String[] { "Identity", "TlsEndpoint", });
+          internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_descriptor =
             internal_static_peercentrum_PeerEndpointMsg_descriptor.getNestedTypes().get(0);
-          internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_fieldAccessorTable = new
+          internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_peercentrum_PeerEndpointMsg_IPEndpointMsg_descriptor,
+              internal_static_peercentrum_PeerEndpointMsg_TLSEndpointMsg_descriptor,
               new java.lang.String[] { "IpAddress", "Port", });
           internal_static_peercentrum_PeerEndpointMsg_TOREndpointMsg_descriptor =
             internal_static_peercentrum_PeerEndpointMsg_descriptor.getNestedTypes().get(1);
@@ -24579,7 +24619,7 @@ public final class PB {
           internal_static_peercentrum_DHTStoreValueMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_peercentrum_DHTStoreValueMsg_descriptor,
-              new java.lang.String[] { "Key", "Value", "Nonce", "Signature", });
+              new java.lang.String[] { "Key", "Nonce", "Value", "Signature", });
           return null;
         }
       };

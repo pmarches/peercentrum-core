@@ -29,8 +29,17 @@ public class DHTClient {
     this.localNodeId=new KIdentifier(networkClient.getNodeIdentifier().getBytes());
     this.networkClient=networkClient;
     this.buckets=new KBuckets(localNodeId);
-    buckets.populateFromNodeDatabase(networkClient.getNodeDatabase()); //FIXME replace with self lookup
     this.dhtApplicationID=dhtApplicationID;
+    performSelfLookup();
+  }
+
+  protected void performSelfLookup() {
+    //TODO Load the KBucket from file (if available) to avoid doing all of these lookups
+    if(buckets.size()==0){
+      buckets.populateFromNodeDatabase(networkClient.getNodeDatabase());
+    }
+    
+    searchNetwork(localNodeId); //This will populate the 
   }
 
   public void receivedMessageFrom(KIdentifier remoteNodeIdentifier) {
@@ -81,9 +90,9 @@ public class DHTClient {
         }
         for(PB.PeerEndpointMsg closeNode: foundMsg.getClosestNodesList()){
           KIdentifier closeId=new KIdentifier(closeNode.getIdentity().toByteArray());
-          if(closeNode.hasIpEndpoint()){
-            PB.PeerEndpointMsg.IPEndpointMsg ipEndpointMsg=closeNode.getIpEndpoint();
-            InetSocketAddress ipEndpoint=InetSocketAddress.createUnresolved(ipEndpointMsg.getIpAddress(), ipEndpointMsg.getPort());
+          if(closeNode.hasTlsEndpoint()){
+            PB.PeerEndpointMsg.TLSEndpointMsg TLSEndpointMsg=closeNode.getTlsEndpoint();
+            InetSocketAddress ipEndpoint=InetSocketAddress.createUnresolved(TLSEndpointMsg.getIpAddress(), TLSEndpointMsg.getPort());
             networkClient.getNodeDatabase().mapNodeIdToAddress(closeId.asNodeId(), ipEndpoint);
           }
           search.addClosestNodes(closeId);

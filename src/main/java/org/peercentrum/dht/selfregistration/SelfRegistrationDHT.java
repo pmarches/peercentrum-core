@@ -45,6 +45,7 @@ public class SelfRegistrationDHT extends DHTApplication {
       NodeIdentifier signerId=new NodeIdentifier(key);
       if(sig.isSignatureValid(dataToVerify, signerId.getPublicKey())==false){
         LOGGER.error("Failed to validate signature of message {}", storeValueMsg);
+        return false;
       }
     } catch (Exception e) {
       LOGGER.error("", e);

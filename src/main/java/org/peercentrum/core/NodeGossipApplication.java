@@ -70,7 +70,7 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 			for(NodeMetaData oneNodeInfo:nodeDb.getAllNodeInformation(50)){
 			  PB.PeerEndpointMsg.Builder onePeerBuilder = PB.PeerEndpointMsg.newBuilder();
 				onePeerBuilder.setIdentity(ByteString.copyFrom(oneNodeInfo.publicKey.getBytes()));
-				onePeerBuilder.setIpEndpoint(PB.PeerEndpointMsg.IPEndpointMsg.newBuilder().setIpAddress(oneNodeInfo.nodeSocketAddress.getHostString()).setPort(oneNodeInfo.nodeSocketAddress.getPort()));
+				onePeerBuilder.setTlsEndpoint(PB.PeerEndpointMsg.TLSEndpointMsg.newBuilder().setIpAddress(oneNodeInfo.nodeSocketAddress.getHostString()).setPort(oneNodeInfo.nodeSocketAddress.getPort()));
 				gossipReplyBuilder.addPeers(onePeerBuilder.build());
 			}
 			gossipPayloadBuilder.setReply(gossipReplyBuilder);
