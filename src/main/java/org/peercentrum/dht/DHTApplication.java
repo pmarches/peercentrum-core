@@ -7,13 +7,13 @@ import io.netty.channel.ChannelHandlerContext;
 import java.io.File;
 import java.net.InetSocketAddress;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import org.bouncycastle.util.Arrays;
-import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
+import org.peercentrum.core.PB.DHTStoreValueMsg;
 import org.peercentrum.core.ProtobufByteBufCodec;
-import org.peercentrum.core.Signature;
+import org.peercentrum.dht.selfregistration.SelfRegistrationEntry;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkServer;
@@ -28,8 +28,7 @@ import org.tmatesoft.sqljet.core.table.SqlJetDb;
 import com.google.common.primitives.UnsignedInts;
 import com.google.protobuf.ByteString;
 
-public class DHTApplication extends BaseApplicationMessageHandler {
-  public static ApplicationIdentifier APP_ID=new ApplicationIdentifier(DHTApplication.class.getName().getBytes());
+public abstract class DHTApplication extends BaseApplicationMessageHandler {
   private static final Logger LOGGER = LoggerFactory.getLogger(DHTApplication.class);
   private static final ByteBuf PONG_MESSAGE_BYTES;
   private static final String DHT_VALUE_TABLE_NAME = "dhtValue";
@@ -41,10 +40,15 @@ public class DHTApplication extends BaseApplicationMessageHandler {
   protected SqlJetDb db;
   protected ISqlJetTable dhtValueTable;
   protected ISqlJetTable nodesTable;
-  
+
+  public enum OVERFLOW_HANDLING{
+    LIFO,
+    FIFO
+  }
+
   public DHTApplication(NetworkServer server) throws Exception {
     super(server);
-    dhtClient=new DHTClient(server.networkClient);
+    dhtClient=new DHTClient(server.networkClient, getApplicationId());
     File serverFile=server.getConfig().getFile("DHT.db");
     boolean dbExists=serverFile.exists();
     db = new SqlJetDb(serverFile, true);
@@ -165,23 +169,19 @@ public class DHTApplication extends BaseApplicationMessageHandler {
     if(key.length!=32){
       throw new Exception("The store message "+storeValueMsg+" does not have a key of proper length");
     }
-    byte[] dataToVerify=Arrays.concatenate(key, value);
-    Signature sig=new Signature(storeValueMsg.getSignature().toByteArray());
-    NodeIdentifier signerId=new NodeIdentifier(key);
-    if(sig.isSignatureValid(dataToVerify, signerId.getPublicKey())==false){
-      throw new Exception("Failed to validate signature of message "+storeValueMsg);
-    }
-    
     if(storeValueMsg.hasNonce()==false){
       throw new Exception("Nonce is missing "+storeValueMsg);
     }
     final long nonceInMessage=UnsignedInts.toLong(storeValueMsg.getNonce());
-    
-    storeKeyValue(key, value, nonceInMessage);
+
+    if(isTransactionValid(storeValueMsg)){
+      storeKeyValue(key, value, nonceInMessage);
+    }
     //TODO Add status message?
   }
 
   public void storeKeyValue(final byte[] key, final byte[] value, final long nonceInMessage) throws SqlJetException {
+    //FIXME Need to store the appID or have a different table per DHT app
     db.runWriteTransaction(new ISqlJetTransaction() {
       @Override public Object run(SqlJetDb db) throws SqlJetException {
         ISqlJetCursor existingKeyCursor = dhtValueTable.lookup(INDEX_KEY, key);
@@ -203,11 +203,6 @@ public class DHTApplication extends BaseApplicationMessageHandler {
     });
   }
 
-  @Override
-  public ApplicationIdentifier getApplicationId() {
-    return APP_ID;
-  }
-
   private void createSchema() throws SqlJetException {
     db.createTable("CREATE TABLE "+DHT_VALUE_TABLE_NAME+"(key BLOB, nonce INTEGER, value BLOB);");
     db.createIndex("CREATE UNIQUE INDEX "+INDEX_KEY+" ON "+DHT_VALUE_TABLE_NAME+"(key)");
@@ -218,4 +213,25 @@ public class DHTApplication extends BaseApplicationMessageHandler {
     return this.dhtClient;
   }
 
+  protected void setEntryTimeToLive(int i, TimeUnit days) {
+    // TODO Auto-generated method stub
+    
+  }
+
+  protected void setEntryMaximumCardinality(int i) {
+    // TODO Auto-generated method stub
+    
+  }
+
+  protected void setEntryOverflowHandling(OVERFLOW_HANDLING lifo) {
+    // TODO Auto-generated method stub
+  }
+
+  public void onEntryValueOverflow(SelfRegistrationEntry entry){
+  }
+
+  public void onEntryTimeToLiveExpired(SelfRegistrationEntry entry){
+  }
+
+  abstract public boolean isTransactionValid(DHTStoreValueMsg storeValueMsg);
 }

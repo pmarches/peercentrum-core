@@ -12,7 +12,7 @@ import org.peercentrum.core.NodeGossipConfig;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.TestUtilities;
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.dht.DHTApplication;
+import org.peercentrum.dht.selfregistration.SelfRegistrationDHT;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.h2pk.HashToPublicKeyConfig;
 import org.peercentrum.network.NetworkClient;
@@ -76,7 +76,7 @@ public class TransientMockNetworkOfNodes {
     
     SettlementApplication settlementApp=new SettlementApplication(server1);
     new NodeGossipApplication(server1);
-    new DHTApplication(server1);
+    new SelfRegistrationDHT(server1);
 
     File blobRepoDir=server1Config.getDirectory("blobRepo");
     P2PBlobRepositoryFS blobRepoFS=new P2PBlobRepositoryFS(blobRepoDir);

@@ -1,7 +1,6 @@
 package org.peercentrum.dht;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -67,7 +66,7 @@ public class KBuckets {
   }
 
   public List<KIdentifier> getClosestMatch(int numberOfMatchesToFind) {
-    ArrayList<KIdentifier> closestMatches=new ArrayList<>();
+    ArrayList<KIdentifier> closestMatches=new ArrayList<>(numberOfMatchesToFind);
     for(KBucket currentBucket : kBucketPerBitsOfDifference){
       if(currentBucket==null){
         continue;

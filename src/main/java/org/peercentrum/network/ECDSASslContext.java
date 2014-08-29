@@ -36,12 +36,7 @@ public class ECDSASslContext {
       String keyStorePassword="";
       keyStore.setKeyEntry("key", nodeIdentity.getPrivateKey(), keyStorePassword.toCharArray(), nodeIdentity.getNodeCertificate());
 
-      // Set up key manager factory to use our key store
-      String keyManagementAlgorithm = Security.getProperty("ssl.KeyManagerFactory.algorithm");
-      if (keyManagementAlgorithm == null) {
-        keyManagementAlgorithm = "SunX509";
-      }
-      KeyManagerFactory kmf = KeyManagerFactory.getInstance(keyManagementAlgorithm);
+      KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
       kmf.init(keyStore, keyStorePassword.toCharArray());
       keyManagers=kmf.getKeyManagers();
 

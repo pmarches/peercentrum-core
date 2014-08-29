@@ -47,6 +47,7 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   public NetworkServer(TopLevelConfig config) throws Exception {
     super(new NodeIdentity(config));
     this.configuration=config;
+    this.nodeDatabase=new NodeDatabase(null);
     this.nodeDatabase=new NodeDatabase(config.getFile("node.db"));
     this.serverSideSSLContext = new ECDSASslContext(nodeIdentity, new CheckSelfSignedNodeIdTrustManager(null));
 

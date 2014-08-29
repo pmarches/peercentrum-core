@@ -7,6 +7,7 @@ import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.NodeMetaData;
 import org.peercentrum.core.PB;
@@ -22,19 +23,21 @@ public class DHTClient {
   KBuckets buckets;
   ArrayList<NodeMetaData> replacementCache;
   protected NetworkClient networkClient;
+  protected ApplicationIdentifier dhtApplicationID;
 
-  public DHTClient(NetworkClient networkClient) {
+  public DHTClient(NetworkClient networkClient, ApplicationIdentifier dhtApplicationID) {
     this.localNodeId=new KIdentifier(networkClient.getNodeIdentifier().getBytes());
     this.networkClient=networkClient;
     this.buckets=new KBuckets(localNodeId);
-    buckets.populateFromNodeDatabase(networkClient.getNodeDatabase());
+    buckets.populateFromNodeDatabase(networkClient.getNodeDatabase()); //FIXME replace with self lookup
+    this.dhtApplicationID=dhtApplicationID;
   }
 
   public void receivedMessageFrom(KIdentifier remoteNodeIdentifier) {
     // TODO Update the node's statistics
   }
 
-  public DefaultPromise<DHTSearch> searchNetworkForNode(final KIdentifier idToSearch) {
+  public DefaultPromise<DHTSearch> searchNetwork(final KIdentifier idToSearch) {
     DHTSearch search=new DHTSearch(idToSearch);
     DefaultPromise<DHTSearch> promise = new DefaultPromise<DHTSearch>(){  
     };
@@ -49,7 +52,7 @@ public class DHTClient {
     return promise;
   }
 
-  private void performOneSearchIteration(DHTSearch search) {
+  protected void performOneSearchIteration(DHTSearch search) {
     List<KIdentifier> thisIterationOfClosest=search.getNextIterationOfClosestNodes();
     if(thisIterationOfClosest.isEmpty()){
       search.failed();
@@ -64,7 +67,7 @@ public class DHTClient {
     //TODO Make this parallel
     for(KIdentifier node:thisIterationOfClosest){
       try (NetworkClientConnection conn=networkClient.createConnectionToPeer(new NodeIdentifier(node.getBytes()))) {
-        Future<PB.DHTTopLevelMsg> found = conn.sendRequestMsg(DHTApplication.APP_ID, topMsg.build());
+        Future<PB.DHTTopLevelMsg> found = conn.sendRequestMsg(dhtApplicationID, topMsg.build());
         PB.DHTTopLevelMsg response=found.get();
         receivedMessageFrom(node);
         

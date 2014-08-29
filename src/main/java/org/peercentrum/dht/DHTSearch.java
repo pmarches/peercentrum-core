@@ -30,6 +30,8 @@ public class DHTSearch {
   }
 
   public List<KIdentifier> getNextIterationOfClosestNodes() {
+    //FIXME remove the nodes from the bucket
+    //FIXME This works ok with lots of nodes, but in the test scenario we have less than KBucket.K_BUCKET_SIZE nodes, hence
     List<KIdentifier> currentBestNodes=searchBuckets.getClosestMatch(KBucket.K_BUCKET_SIZE);
     return currentBestNodes;
   }

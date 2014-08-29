@@ -221,9 +221,9 @@ message DHTFoundMsg {
   optional bytes value=2;
 };
 
-message DHTStoreValueMsg {
+message DHTStoreValueMsg { //This is more akin to a transaction than a command.
   optional bytes key=1;
-  optional bytes value=2;
   optional uint32 nonce=3; //Ever increasing, prevents replay attacks
-  optional bytes signature=4;
+  optional bytes value=4;
+  optional bytes signature=5; //The signature needs to also cover the application ID, otherwise you end up with cross-application replay attacks
 };

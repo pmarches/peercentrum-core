@@ -8,6 +8,7 @@ import java.security.NoSuchProviderException;
 import java.security.SignatureException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.security.interfaces.ECPublicKey;
 import java.util.Arrays;
 
 import javax.net.ssl.X509TrustManager;
@@ -41,7 +42,7 @@ public class CheckSelfSignedNodeIdTrustManager implements X509TrustManager {
       chain[0].verify(chain[0].getPublicKey(), "BC"); //Ensure the certificate has been self-signed
 
       if(expectedNodeId!=null){ //expectedNodeId will be null on the server side..
-        BCECPublicKey publicKeyOnCertificate=(BCECPublicKey) chain[0].getPublicKey();
+        BCECPublicKey publicKeyOnCertificate=new BCECPublicKey((ECPublicKey) chain[0].getPublicKey(), null);
         NodeIdentifier nodeIdOnCertificate=new NodeIdentifier(publicKeyOnCertificate);
         if(expectedNodeId.equals(nodeIdOnCertificate)==false){
           throw new CertificateException("The certificate is valid for node "+nodeIdOnCertificate+", but we were expecting to connect to node "+expectedNodeId);

@@ -85,7 +85,7 @@ public class NodeIdentity {
     PemReader certificatePEMReader=new PemReader(new FileReader(this.localCertificateFile));
     PemObject certificatePEM=certificatePEMReader.readPemObject();
     certificatePEMReader.close();
-    CertificateFactory cf = CertificateFactory.getInstance("X.509");
+    CertificateFactory cf = CertificateFactory.getInstance("X.509", "BC");
     this.cert = (X509Certificate) cf.generateCertificate(new ByteArrayInputStream(certificatePEM.getContent()));
     localCertificateChainArray=new Certificate[]{cert};
 

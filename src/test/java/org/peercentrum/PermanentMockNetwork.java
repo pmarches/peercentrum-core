@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.dht.DHTApplication;
+import org.peercentrum.dht.selfregistration.SelfRegistrationDHT;
 import org.peercentrum.network.NetworkServer;
 import org.tmatesoft.sqljet.core.SqlJetException;
 
@@ -23,7 +24,7 @@ public class PermanentMockNetwork {
     
     configureLinksBetweenNodes();
     for(int i=0; i<NB_MOCK_NODES; i++){
-      dht[i]=new DHTApplication(server[i]); //FIXME This is crap.
+      dht[i]=new SelfRegistrationDHT(server[i]); //FIXME This is crap.
     }
     configureDHTValues();
   }
