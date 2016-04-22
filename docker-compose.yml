@@ -1,0 +1,16 @@
+version: '2'
+services:
+  bootstrapernode:
+    image: pmarches/peercentrum
+    volumes:
+      - ./permanentMockNetwork.testdata/connectingNode/:/runtime
+    ports:
+      - "35460:35460"
+
+  node1:
+    image: pmarches/peercentrum
+    volumes:
+      - ./permanentMockNetwork.testdata/node6/:/runtime:ro
+    depends_on:
+      - bootstrapernode
+    
