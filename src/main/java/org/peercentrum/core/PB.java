@@ -7935,7 +7935,7 @@ public final class PB {
   public static final class HashToPublicKeyTransaction extends
       com.google.protobuf.GeneratedMessage
       implements HashToPublicKeyTransactionOrBuilder {
-    // Use HashToPublicKeyTransaction.newBuilder() to construct.
+    // Use QueueTransaction.newBuilder() to construct.
     private HashToPublicKeyTransaction(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();

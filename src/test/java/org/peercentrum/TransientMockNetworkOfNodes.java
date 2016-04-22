@@ -3,6 +3,7 @@ package org.peercentrum;
 import java.io.File;
 import java.net.InetSocketAddress;
 
+import org.bitcoinj.core.Wallet;
 import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.blob.P2PBlobConfig;
 import org.peercentrum.blob.P2PBlobRepositoryFS;
@@ -24,11 +25,10 @@ import org.peercentrum.settlement.SettlementApplicationClient;
 import org.peercentrum.settlement.SettlementConfig;
 import org.peercentrum.settlement.SettlementDB;
 
-import com.azazar.bitcoin.jsonrpcclient.BitcoinException;
-import com.azazar.bitcoin.jsonrpcclient.BitcoinJSONRPCClient;
-import com.google.bitcoin.core.Wallet;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
+
+import wf.bitcoin.javabitcoindrpcclient.BitcoinJSONRPCClient;
 
 public class TransientMockNetworkOfNodes {
   public TopLevelConfig server1Config;
@@ -112,12 +112,12 @@ public class TransientMockNetworkOfNodes {
     TestUtilities.deleteDirectory(client1Config.directoryOfConfigFile);
   }
 
-  public void fundBitcoinWalletOfNode(Wallet walletToFund, double fundingAmount) throws BitcoinException{
+  public void fundBitcoinWalletOfNode(Wallet walletToFund, double fundingAmount) throws Exception{
 //    ListenableFuture<Coin> balanceFuture = walletToFund.getBalanceFuture(amountPlusFee, Wallet.BalanceType.AVAILABLE);
 //    if (!balanceFuture.isDone()) {
       String clientAddress=walletToFund.currentReceiveAddress().toString();
       bitcoind.sendToAddress(clientAddress, fundingAmount);
-      bitcoind.setGenerate(true, 1);
+      bitcoind.setGenerate(true);
 //      Futures.getUnchecked(balanceFuture);  // Wait.
 //    }
   }

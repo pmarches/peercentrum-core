@@ -1,8 +1,5 @@
 package org.peercentrum.settlement;
 
-import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.GenericFutureListener;
-
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +7,16 @@ import java.util.List;
 
 import org.bitcoin.paymentchannel.Protos;
 import org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage;
+import org.bitcoinj.core.Coin;
+import org.bitcoinj.core.ECKey;
+import org.bitcoinj.core.Sha256Hash;
+import org.bitcoinj.core.WalletExtension;
+import org.bitcoinj.kits.WalletAppKit;
+import org.bitcoinj.params.RegTestParams;
+import org.bitcoinj.protocols.channels.IPaymentChannelClient.ClientConnection;
+import org.bitcoinj.protocols.channels.PaymentChannelClient;
+import org.bitcoinj.protocols.channels.PaymentChannelCloseException.CloseReason;
+import org.bitcoinj.protocols.channels.StoredPaymentChannelClientStates;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
@@ -19,17 +26,10 @@ import org.peercentrum.network.NetworkClientConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.bitcoin.core.Coin;
-import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.Sha256Hash;
-import com.google.bitcoin.core.WalletExtension;
-import com.google.bitcoin.kits.WalletAppKit;
-import com.google.bitcoin.params.RegTestParams;
-import com.google.bitcoin.protocols.channels.IPaymentChannelClient.ClientConnection;
-import com.google.bitcoin.protocols.channels.PaymentChannelClient;
-import com.google.bitcoin.protocols.channels.PaymentChannelCloseException.CloseReason;
-import com.google.bitcoin.protocols.channels.StoredPaymentChannelClientStates;
 import com.google.common.collect.ImmutableList;
+
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 public class SettlementApplicationClient implements Closeable {
   private static final Logger LOGGER = LoggerFactory.getLogger(SettlementApplicationClient.class);
@@ -79,6 +79,12 @@ public class SettlementApplicationClient implements Closeable {
       synchronized (paymentChannelIsOpenMonitor) {
         paymentChannelIsOpenMonitor.notifyAll();
       }
+    }
+
+    @Override
+    public boolean acceptExpireTime(long expireTime) {
+      System.out.println("CLIENT: acceptExpireTime "+expireTime);
+      return false;
     }
   };
   private PaymentChannelClient paymentChannel;

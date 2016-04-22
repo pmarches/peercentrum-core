@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>org.bitlet</groupId>
 			<artifactId>weupnp</artifactId>
-			<version>0.1.3-SNAPSHOT</version>
+			<version>0.1.4</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -73,15 +73,14 @@
 			<version>1.13</version>
 		</dependency>
 		<dependency>
-			<groupId>com.azazar</groupId>
-			<artifactId>bitcoin-json-rpc-client</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
+			<groupId>wf.bitcoin</groupId>
+			<artifactId>JavaBitcoindRpcClient</artifactId>
+			<version>0.9.9</version>
 		</dependency>
 		<dependency>
-			<groupId>com.google</groupId>
-			<artifactId>bitcoinj</artifactId>
-			<version>0.12-SNAPSHOT</version>
+			<groupId>org.bitcoinj</groupId>
+			<artifactId>bitcoinj-core</artifactId>
+			<version>0.13.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.bouncycastle</groupId>

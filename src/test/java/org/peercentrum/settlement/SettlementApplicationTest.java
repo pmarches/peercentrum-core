@@ -2,15 +2,14 @@ package org.peercentrum.settlement;
 
 import static org.junit.Assert.assertEquals;
 
+import org.bitcoinj.core.Coin;
+import org.bitcoinj.core.Transaction;
+import org.bitcoinj.core.Wallet.BalanceType;
 import org.junit.Test;
 import org.peercentrum.TransientMockNetworkOfNodes;
 import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.network.NetworkClientConnection;
-
-import com.google.bitcoin.core.Coin;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.Wallet.BalanceType;
 
 public class SettlementApplicationTest {
 

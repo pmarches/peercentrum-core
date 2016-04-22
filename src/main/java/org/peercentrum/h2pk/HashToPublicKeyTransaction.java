@@ -65,7 +65,7 @@ public class HashToPublicKeyTransaction extends ConsensusTransaction implements 
 
 	@Override
 	public String toString() {
-		return "HashToPublicKeyTransaction [address=" + address + ", publicKey=" + publicKey + ", signature="
+		return "QueueTransaction [address=" + address + ", publicKey=" + publicKey + ", signature="
 				+ signature + ", isAppend=" + isAppend + "]";
 	}
 

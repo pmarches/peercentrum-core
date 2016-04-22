@@ -1,12 +1,8 @@
 package org.peercentrum.blob;
 
-import io.netty.util.concurrent.DefaultProgressivePromise;
-import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.GenericFutureListener;
-import io.netty.util.concurrent.GlobalEventExecutor;
-
 import java.nio.ByteBuffer;
 
+import org.bitcoinj.core.Coin;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.P2PBlobResponseMsg;
 import org.peercentrum.core.TopLevelConfig;
@@ -15,8 +11,12 @@ import org.peercentrum.settlement.SettlementApplicationClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.bitcoin.core.Coin;
 import com.google.protobuf.ByteString;
+
+import io.netty.util.concurrent.DefaultProgressivePromise;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
+import io.netty.util.concurrent.GlobalEventExecutor;
 
 public class P2PBlobStandaloneClient {
 	private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobStandaloneClient.class);

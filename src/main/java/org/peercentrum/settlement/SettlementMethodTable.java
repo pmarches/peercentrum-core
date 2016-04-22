@@ -1,5 +1,6 @@
 package org.peercentrum.settlement;
 
+import org.bitcoinj.core.ECKey;
 import org.peercentrum.core.AbstractApplicationDB;
 import org.peercentrum.core.AbstractApplicationTable;
 import org.peercentrum.core.NodeIdentifier;
@@ -11,8 +12,6 @@ import org.tmatesoft.sqljet.core.table.ISqlJetCursor;
 import org.tmatesoft.sqljet.core.table.ISqlJetTable;
 import org.tmatesoft.sqljet.core.table.ISqlJetTransaction;
 import org.tmatesoft.sqljet.core.table.SqlJetDb;
-
-import com.google.bitcoin.core.ECKey;
 
 public class SettlementMethodTable extends AbstractApplicationTable {
   private static final Logger LOGGER = LoggerFactory.getLogger(SettlementMethodTable.class);

@@ -5,22 +5,24 @@ import java.util.List;
 
 import org.bitcoin.paymentchannel.Protos;
 import org.bitcoin.paymentchannel.Protos.TwoWayChannelMessage;
+import org.bitcoinj.core.Coin;
+import org.bitcoinj.core.NetworkParameters;
+import org.bitcoinj.core.Sha256Hash;
+import org.bitcoinj.core.WalletExtension;
+import org.bitcoinj.kits.WalletAppKit;
+import org.bitcoinj.params.RegTestParams;
+import org.bitcoinj.protocols.channels.PaymentChannelCloseException.CloseReason;
+import org.bitcoinj.protocols.channels.PaymentChannelServer;
+import org.bitcoinj.protocols.channels.PaymentChannelServer.ServerConnection;
+import org.bitcoinj.protocols.channels.StoredPaymentChannelServerStates;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.bitcoin.core.Coin;
-import com.google.bitcoin.core.NetworkParameters;
-import com.google.bitcoin.core.Sha256Hash;
-import com.google.bitcoin.core.WalletExtension;
-import com.google.bitcoin.kits.WalletAppKit;
-import com.google.bitcoin.params.RegTestParams;
-import com.google.bitcoin.protocols.channels.PaymentChannelCloseException.CloseReason;
-import com.google.bitcoin.protocols.channels.PaymentChannelServer;
-import com.google.bitcoin.protocols.channels.PaymentChannelServer.ServerConnection;
-import com.google.bitcoin.protocols.channels.StoredPaymentChannelServerStates;
 import com.google.common.collect.ImmutableList;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.protobuf.ByteString;
 
 public class BitcoinSettlement {
   private static final Logger LOGGER = LoggerFactory.getLogger(BitcoinSettlement.class);
@@ -45,17 +47,19 @@ public class BitcoinSettlement {
       LOGGER.debug("SERVER: sendToClient {}", msg);
       pendingTopLevelMsg.addTwoWayChannelMsg(msg);
     }
-    
-    @Override public void paymentIncrease(Coin by, Coin to) {
-      LOGGER.debug("SERVER: paymentIncrease by={} to={}", by, to);
-    }
-    
+        
     @Override public void destroyConnection(CloseReason reason) {
       LOGGER.debug("SERVER: destroyConnection because {}", reason);
     }
     
     @Override public void channelOpen(Sha256Hash contractHash) {
       LOGGER.debug("SERVER: channelOpen {}", contractHash);
+    }
+
+    @Override
+    public ListenableFuture<ByteString> paymentIncrease(Coin by, Coin to, ByteString info) {
+      LOGGER.debug("SERVER: paymentIncrease by={} to={}", by, to);
+      return null;
     }
   };
   PB.SettlementMsg.Builder pendingTopLevelMsg;

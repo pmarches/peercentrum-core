@@ -2,8 +2,8 @@ package org.peercentrum.core;
 
 import java.io.File;
 
-import com.azazar.bitcoin.jsonrpcclient.BitcoinJSONRPCClient;
-import com.azazar.bitcoin.jsonrpcclient.BitcoinRPCException;
+import wf.bitcoin.javabitcoindrpcclient.BitcoinJSONRPCClient;
+import wf.bitcoin.javabitcoindrpcclient.BitcoinRPCException;
 
 public class TestUtilities {
   public static TopLevelConfig getConfig(String whatNode) throws Exception{

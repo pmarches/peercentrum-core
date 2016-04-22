@@ -1,12 +1,6 @@
 package org.peercentrum.core;
 
 import static org.junit.Assert.assertEquals;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.util.ResourceLeakDetector;
-import io.netty.util.ResourceLeakDetector.Level;
-import io.netty.util.concurrent.Future;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.CountDownLatch;
@@ -19,6 +13,13 @@ import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkClientConnection;
 import org.peercentrum.network.NetworkServer;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.util.ResourceLeakDetector;
+import io.netty.util.ResourceLeakDetector.Level;
+import io.netty.util.concurrent.Future;
 
 public class AsyncSocketServerTest {
 	final int NB_CLIENTS=10;

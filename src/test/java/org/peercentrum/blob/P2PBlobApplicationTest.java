@@ -1,10 +1,11 @@
 package org.peercentrum.blob;
 
 import static org.junit.Assert.assertEquals;
-import io.netty.util.concurrent.Future;
 
 import org.junit.Test;
 import org.peercentrum.BaseTestWithMockNetwork;
+
+import io.netty.util.concurrent.Future;
 
 public class P2PBlobApplicationTest extends BaseTestWithMockNetwork {
 

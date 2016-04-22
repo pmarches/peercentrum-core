@@ -3,7 +3,6 @@ package org.peercentrum;
 import java.io.File;
 
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.dht.DHTApplication;
 import org.peercentrum.dht.selfregistration.SelfRegistrationDHT;
 import org.peercentrum.network.NetworkServer;
 import org.tmatesoft.sqljet.core.SqlJetException;
@@ -11,7 +10,7 @@ import org.tmatesoft.sqljet.core.SqlJetException;
 public class PermanentMockNetwork {
   private static final int NB_MOCK_NODES = 6;
   public NetworkServer server[]=new NetworkServer[NB_MOCK_NODES];
-  private DHTApplication[] dht=new DHTApplication[NB_MOCK_NODES];
+  private SelfRegistrationDHT[] dht=new SelfRegistrationDHT[NB_MOCK_NODES];
   public static final byte[] STORED_KEY1="12345678901234567890123456789012".getBytes();
   public static final byte[] STORED_VALUE1 = "Hello world".getBytes();
   
