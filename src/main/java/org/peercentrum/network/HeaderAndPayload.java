@@ -1,9 +1,9 @@
 package org.peercentrum.network;
 
-import io.netty.buffer.ByteBuf;
-
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.HeaderMsg;
+
+import io.netty.buffer.ByteBuf;
 
 public class HeaderAndPayload {
 	public HeaderAndPayload(HeaderMsg.Builder header, ByteBuf payload) {

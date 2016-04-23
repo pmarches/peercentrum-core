@@ -1,4 +1,4 @@
-package org.peercentrum.core;
+package org.peercentrum.core.nodegossip;
 
 public class NodeGossipConfig {
 	String bootstrapEndpoint;

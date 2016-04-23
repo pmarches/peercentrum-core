@@ -1,5 +1,19 @@
 package org.peercentrum.network;
 
+import java.net.InetSocketAddress;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.peercentrum.core.ApplicationIdentifier;
+import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.PB;
+import org.peercentrum.core.ProtobufByteBufCodec;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.protobuf.ByteString;
+import com.google.protobuf.MessageLite;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -16,20 +30,6 @@ import io.netty.util.concurrent.DefaultPromise;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import io.netty.util.concurrent.GlobalEventExecutor;
-
-import java.net.InetSocketAddress;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import org.peercentrum.core.ApplicationIdentifier;
-import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.core.PB;
-import org.peercentrum.core.ProtobufByteBufCodec;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.protobuf.ByteString;
-import com.google.protobuf.MessageLite;
 
 public class NetworkClientConnection implements AutoCloseable {
   private static final Logger LOGGER = LoggerFactory.getLogger(NetworkClientConnection.class);

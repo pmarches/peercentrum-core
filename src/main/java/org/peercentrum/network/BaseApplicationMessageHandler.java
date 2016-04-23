@@ -1,10 +1,10 @@
 package org.peercentrum.network;
 
-import io.netty.channel.ChannelHandlerContext;
-
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.HeaderMsg;
+
+import io.netty.channel.ChannelHandlerContext;
 
 public abstract class BaseApplicationMessageHandler {
 	protected NetworkServer server;

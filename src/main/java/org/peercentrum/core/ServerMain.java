@@ -10,6 +10,7 @@ import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.blob.P2PBlobConfig;
 import org.peercentrum.blob.P2PBlobRepository;
 import org.peercentrum.blob.P2PBlobRepositoryFS;
+import org.peercentrum.core.nodegossip.NodeGossipApplication;
 import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

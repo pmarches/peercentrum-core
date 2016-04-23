@@ -1,11 +1,11 @@
 package org.peercentrum.network;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public abstract class BaseStreamHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(BaseStreamHandler.class);

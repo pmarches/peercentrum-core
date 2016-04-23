@@ -1,5 +1,17 @@
 package org.peercentrum.network;
 
+import java.net.InetSocketAddress;
+import java.util.Hashtable;
+
+import javax.security.cert.X509Certificate;
+
+import org.peercentrum.core.ApplicationIdentifier;
+import org.peercentrum.core.NodeDatabase;
+import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.TopLevelConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -16,18 +28,6 @@ import io.netty.util.AttributeKey;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
-
-import java.net.InetSocketAddress;
-import java.util.Hashtable;
-
-import javax.security.cert.X509Certificate;
-
-import org.peercentrum.core.ApplicationIdentifier;
-import org.peercentrum.core.NodeDatabase;
-import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.core.TopLevelConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   private static final String TLS_HANDLER_NAME = "tls";

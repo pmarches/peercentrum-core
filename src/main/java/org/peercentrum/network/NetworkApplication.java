@@ -1,9 +1,5 @@
 package org.peercentrum.network;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
-
 import java.net.InetSocketAddress;
 
 import org.peercentrum.core.ApplicationIdentifier;
@@ -12,6 +8,10 @@ import org.peercentrum.core.PB.NetworkMessage;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
 
 public class NetworkApplication extends BaseApplicationMessageHandler {
   public static final ApplicationIdentifier NETWORK_APPID=new ApplicationIdentifier(NetworkApplication.class.getName().getBytes());

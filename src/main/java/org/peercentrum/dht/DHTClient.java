@@ -1,8 +1,5 @@
 package org.peercentrum.dht;
 
-import io.netty.util.concurrent.DefaultPromise;
-import io.netty.util.concurrent.Future;
-
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +12,9 @@ import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkClientConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.netty.util.concurrent.DefaultPromise;
+import io.netty.util.concurrent.Future;
 
 public class DHTClient {
   private static final Logger LOGGER = LoggerFactory.getLogger(DHTClient.class);

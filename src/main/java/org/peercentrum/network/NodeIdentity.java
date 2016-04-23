@@ -1,10 +1,5 @@
 package org.peercentrum.network;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.handler.codec.base64.Base64;
-import io.netty.util.CharsetUtil;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
@@ -47,6 +42,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.io.Files;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.handler.codec.base64.Base64;
+import io.netty.util.CharsetUtil;
 
 public class NodeIdentity {
   private static final Logger LOGGER = LoggerFactory.getLogger(NodeIdentity.class);

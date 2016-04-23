@@ -1,8 +1,5 @@
 package org.peercentrum.blob;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -17,6 +14,9 @@ import org.peercentrum.h2pk.HashIdentifier;
 import org.spongycastle.crypto.digests.SHA256Digest;
 
 import com.google.protobuf.ByteString;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 
 public class P2PBlobHashList extends ArrayList<HashIdentifier> {
 	public static final int HASH_BYTE_SIZE = 32; //Number of bytes per hash

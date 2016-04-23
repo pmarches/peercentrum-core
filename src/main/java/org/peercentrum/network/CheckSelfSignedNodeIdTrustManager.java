@@ -1,7 +1,5 @@
 package org.peercentrum.network;
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
@@ -17,6 +15,8 @@ import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.peercentrum.core.NodeIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.netty.util.internal.EmptyArrays;
 
 public class CheckSelfSignedNodeIdTrustManager implements X509TrustManager {
   private static final Logger LOGGER = LoggerFactory.getLogger(CheckSelfSignedNodeIdTrustManager.class);

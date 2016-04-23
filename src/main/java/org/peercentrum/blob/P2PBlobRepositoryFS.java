@@ -1,11 +1,7 @@
 package org.peercentrum.blob;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-
 import java.io.File;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.Hashtable;
 
 import org.peercentrum.h2pk.HashIdentifier;
@@ -17,6 +13,9 @@ import org.tmatesoft.sqljet.core.table.ISqlJetCursor;
 import org.tmatesoft.sqljet.core.table.ISqlJetTable;
 import org.tmatesoft.sqljet.core.table.ISqlJetTransaction;
 import org.tmatesoft.sqljet.core.table.SqlJetDb;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 
 public class P2PBlobRepositoryFS extends P2PBlobRepository {
 	private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobRepositoryFS.class);

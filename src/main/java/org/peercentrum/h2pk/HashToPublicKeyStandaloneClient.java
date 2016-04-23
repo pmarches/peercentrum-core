@@ -1,7 +1,5 @@
 package org.peercentrum.h2pk;
 
-import io.netty.util.concurrent.Future;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +11,8 @@ import org.peercentrum.core.PB.HashToPublicKeyMessage;
 import org.peercentrum.network.NetworkClient;
 
 import com.google.protobuf.ByteString;
+
+import io.netty.util.concurrent.Future;
 
 public class HashToPublicKeyStandaloneClient {
 	private NodeIdentifier remoteHost;

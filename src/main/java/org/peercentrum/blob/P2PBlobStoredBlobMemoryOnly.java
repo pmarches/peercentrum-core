@@ -2,12 +2,12 @@ package org.peercentrum.blob;
 
 import java.nio.ByteBuffer;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-
 import org.peercentrum.h2pk.HashIdentifier;
 
 import com.google.protobuf.ByteString;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 
 public class P2PBlobStoredBlobMemoryOnly extends P2PBlobStoredBlob {
 	public ByteBuf validatedBlobContent=Unpooled.buffer();

@@ -1,8 +1,5 @@
 package org.peercentrum.h2pk;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-
 import java.util.List;
 
 import org.peercentrum.consensusprocess.ConsensusProcess;
@@ -24,6 +21,9 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.primitives.UnsignedLong;
 import com.google.protobuf.ByteString;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
 
 public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(HashToPublicKeyApplication.class);

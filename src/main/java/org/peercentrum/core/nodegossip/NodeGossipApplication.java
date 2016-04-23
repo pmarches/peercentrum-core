@@ -1,8 +1,10 @@
-package org.peercentrum.core;
+package org.peercentrum.core.nodegossip;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-
+import org.peercentrum.core.ApplicationIdentifier;
+import org.peercentrum.core.NodeDatabase;
+import org.peercentrum.core.NodeMetaData;
+import org.peercentrum.core.PB;
+import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkServer;
@@ -10,6 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.ByteString;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
 
 /**
  * FIXME The application should be an aggregate of the client and the server1 classes. Need to add

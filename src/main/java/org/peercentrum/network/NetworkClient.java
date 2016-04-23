@@ -1,7 +1,5 @@
 package org.peercentrum.network;
 
-import io.netty.util.concurrent.Future;
-
 import java.io.Closeable;
 import java.net.InetSocketAddress;
 import java.util.HashMap;
@@ -13,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.MessageLite;
+
+import io.netty.util.concurrent.Future;
 
 public class NetworkClient extends NetworkBase implements Closeable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NetworkClient.class);

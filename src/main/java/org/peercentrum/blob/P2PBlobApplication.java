@@ -2,9 +2,6 @@ package org.peercentrum.blob;
 
 import java.nio.ByteBuffer;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-
 import org.peercentrum.blob.P2PBlobRangeSet.DiscreteIterator;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.PB;
@@ -22,6 +19,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.ByteString;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
 
 public class P2PBlobApplication extends BaseApplicationMessageHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobApplication.class);

@@ -1,10 +1,10 @@
 package org.peercentrum.network;
 
+import org.peercentrum.core.ProtobufByteBufCodec;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
-
-import org.peercentrum.core.ProtobufByteBufCodec;
 
 public class HeaderAndPayloadToBytesEncoder extends MessageToByteEncoder<HeaderAndPayload> {
 	@Override

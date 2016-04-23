@@ -1,13 +1,16 @@
-package org.peercentrum.core;
-
-import io.netty.util.concurrent.Future;
+package org.peercentrum.core.nodegossip;
 
 import java.net.InetSocketAddress;
 
+import org.peercentrum.core.NodeDatabase;
+import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.PB;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkClientConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.netty.util.concurrent.Future;
 
 public class NodeGossipClient {
   private static final Logger LOGGER = LoggerFactory.getLogger(NodeGossipClient.class);

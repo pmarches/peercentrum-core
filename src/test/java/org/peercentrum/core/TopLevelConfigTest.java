@@ -7,6 +7,7 @@ import java.io.File;
 
 import org.junit.Test;
 import org.peercentrum.blob.P2PBlobConfig;
+import org.peercentrum.core.nodegossip.NodeGossipConfig;
 
 public class TopLevelConfigTest {
 
