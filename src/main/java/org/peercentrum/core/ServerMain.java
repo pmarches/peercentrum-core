@@ -45,6 +45,7 @@ public class ServerMain implements Runnable {
 			}
 
 			//TODO Load the applications from the topConfig file, dynamically, resolving dependencies, ... Maybe we need a OSGI container now?
+			//TODO Add application lifecycle OSGI or custom...
 			new NodeGossipApplication(server);
 			P2PBlobConfig blobConfig=(P2PBlobConfig) topConfig.getAppConfig(P2PBlobConfig.class);
 			File repositoryPath = topConfig.getFile("blobRepository");

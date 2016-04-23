@@ -8,4 +8,6 @@ ADD target/org-peercentrum-core-1.1-SNAPSHOT.jar /pc/
 ADD target/dependency/ /pc/
 #COPY peercentrum-config.yaml /runtime/
 
+WORKDIR /runtime
+
 CMD ["java", "-jar", "/pc/org-peercentrum-core-1.1-SNAPSHOT.jar", "/runtime/peercentrum-config.yaml"]

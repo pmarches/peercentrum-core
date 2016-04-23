@@ -31,8 +31,8 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 		client=new NodeGossipClient(server.networkClient);
 		client.reachableListeningPort=server.getListeningPort();
 		if(server.getNodeDatabase().size()==0){
+      LOGGER.info("Node database is empty, will try to bootstrap, if possible");
 			try {
-				LOGGER.info("Node database is empty, will try to bootstrap, if possible");
 				bootstrapGossiping();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -43,7 +43,11 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 	
 	private void bootstrapGossiping() throws Exception {
 	  NodeGossipConfig gossipConfig=(NodeGossipConfig) server.getConfig().getAppConfig(NodeGossipConfig.class);
-	  if(gossipConfig!=null){
+	  if(gossipConfig==null){
+	    LOGGER.warn("There exists no '"+NodeGossipConfig.class.getName()+"' configuration, let's hope we are well known..");
+	  }
+	  else{
+	    LOGGER.debug("The gossip bootstrap endpoint looks like this '"+gossipConfig.getBootstrapEndpoint()+"'");
 	    client.bootstrapGossiping(gossipConfig.getBootstrapEndpoint());
 	  }
   }

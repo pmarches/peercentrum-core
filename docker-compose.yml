@@ -10,7 +10,13 @@ services:
   node1:
     image: pmarches/peercentrum
     volumes:
-      - ./permanentMockNetwork.testdata/node6/:/runtime:ro
+      - ./permanentMockNetwork.testdata/node1/:/runtime
     depends_on:
       - bootstrapernode
-    
+
+  node2:
+    image: pmarches/peercentrum
+    volumes:
+      - ./permanentMockNetwork.testdata/node2/:/runtime
+    depends_on:
+      - bootstrapernode
