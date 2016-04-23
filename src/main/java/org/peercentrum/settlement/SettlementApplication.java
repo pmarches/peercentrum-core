@@ -59,8 +59,8 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 	
 	protected BitcoinSettlement getBitcoinSettlement() throws Exception{
 	  if(bitcoinSettlement==null){
-	    db=new SettlementDB(server.getConfig().getFile("settlement.db"));
-	    bitcoinSettlement=new BitcoinSettlement(server.getConfig().getFile("bitcoin.wallet"));
+	    db=new SettlementDB(server.getConfig().getFileRelativeFromConfigDirectory("settlement.db"));
+	    bitcoinSettlement=new BitcoinSettlement(server.getConfig().getFileRelativeFromConfigDirectory("bitcoin.wallet"));
 	  }
 	  return bitcoinSettlement;
 	}

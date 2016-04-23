@@ -71,15 +71,15 @@ public class TopLevelConfig {
         + listenPort + ", applications=" + applications + "]";
   }
 
-  public File getFile(String fileName) {
+  public File getFileRelativeFromConfigDirectory(String fileName) {
     if(directoryOfConfigFile==null || fileName==null){
-      throw new NullPointerException("The config file directory must have been initialized");
+      throw new NullPointerException("The config file directory must have been initialized before trying to get '"+fileName+"'");
     }
     return new File(directoryOfConfigFile, fileName);
   }
 
   public File getDirectory(String string) {
-    File directoryGenerated=getFile(string);
+    File directoryGenerated=getFileRelativeFromConfigDirectory(string);
     directoryGenerated.mkdirs();
     return directoryGenerated;
   }

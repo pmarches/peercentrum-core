@@ -44,13 +44,7 @@ public class ServerMain implements Runnable {
 				enableNATInboundConnections();
 			}
 
-			//TODO Load the applications from the topConfig file, dynamically, resolving dependencies, ... Maybe we need a OSGI container now?
-			//TODO Add application lifecycle OSGI or custom...
-			new NodeGossipApplication(server);
-			P2PBlobConfig blobConfig=(P2PBlobConfig) topConfig.getAppConfig(P2PBlobConfig.class);
-			File repositoryPath = topConfig.getFile("blobRepository");
-			P2PBlobRepository blobRepository=new P2PBlobRepositoryFS(repositoryPath);
-			new P2PBlobApplication(server, blobRepository);
+			startApplications();
 			
 			Runtime.getRuntime().addShutdownHook(new Thread(){
 				@Override
@@ -67,6 +61,17 @@ public class ServerMain implements Runnable {
 			LOGGER.error("Exception in main", e);
 		}
 	}
+
+  private void startApplications() throws Exception {
+    //TODO Load the applications from the topConfig file, dynamically, resolving dependencies, ... Maybe we need a OSGI container now?
+    //TODO Add application lifecycle OSGI or custom...
+    new NodeGossipApplication(server);
+
+    P2PBlobConfig blobConfig=(P2PBlobConfig) topConfig.getAppConfig(P2PBlobConfig.class);
+    File repositoryPath = topConfig.getFileRelativeFromConfigDirectory("blobRepository");
+    P2PBlobRepository blobRepository=new P2PBlobRepositoryFS(repositoryPath);
+    new P2PBlobApplication(server, blobRepository);
+  }
 
 	
 	protected void enableNATInboundConnections() throws Exception {

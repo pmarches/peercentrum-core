@@ -67,8 +67,8 @@ public class NodeIdentity {
 
   public NodeIdentity(TopLevelConfig config) throws Exception {
     if(config!=null){
-      localCertificateFile=config.getFile("localCertificate.crt");
-      localPrivateKeyFile=config.getFile("localPrivateKey.pem");
+      localCertificateFile=config.getFileRelativeFromConfigDirectory("localCertificate.crt");
+      localPrivateKeyFile=config.getFileRelativeFromConfigDirectory("localPrivateKey.pem");
     }
     random = SecureRandom.getInstance("SHA1PRNG");
     if(localCertificateFile==null || localCertificateFile.exists()==false){

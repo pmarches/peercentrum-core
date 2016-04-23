@@ -93,7 +93,7 @@ public class SettlementApplicationClient implements Closeable {
     this.networkClient=networkClient;
     this.settlementMethodTable=settlementMethodTable;
     RegTestParams params=RegTestParams.get(); //FIXME
-    File bitcoinDir=topConfig.getFile("bitcoin");
+    File bitcoinDir=topConfig.getFileRelativeFromConfigDirectory("bitcoin");
     clientKit=new WalletAppKit(params, bitcoinDir, "settlementClient1") {
       @Override
       protected List<WalletExtension> provideWalletExtensions() throws Exception {

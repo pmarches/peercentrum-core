@@ -45,7 +45,7 @@ public class SelfRegistrationDHT extends DHTApplication {
     setEntryMaximumCardinality(1000);
     setEntryOverflowHandling(OverflowHandling.LIFO); //LIFO or FIFO    
 
-    File serverFile=server.getConfig().getFile("DHT.db");
+    File serverFile=server.getConfig().getFileRelativeFromConfigDirectory("DHT.db");
     boolean dbExists=serverFile.exists();
     db = new SqlJetDb(serverFile, true);
     db.open();
