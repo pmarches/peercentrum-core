@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.NodeIPEndpoint;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.slf4j.Logger;
@@ -39,15 +40,14 @@ public class NetworkClientConnection implements AutoCloseable {
   AtomicInteger requestCounter = new AtomicInteger();
   ConcurrentHashMap<Integer, DefaultPromise<ByteBuf>> pendingRequests = new  ConcurrentHashMap<>();
   NodeIdentifier localNodeId;
-  NodeIdentifier remoteNodeId;
+  NodeIPEndpoint remoteEndpoint;
   ECDSASslContext sslCtx;
   InetSocketAddress serverEndpoint;
   private boolean useEncryption;
 
-  public NetworkClientConnection(NetworkClient networkClient, NodeIdentifier remoteId, InetSocketAddress serverAddress, final int localListeningPort) throws Exception {
-    this.remoteNodeId=remoteId;
-    this.serverEndpoint=serverAddress;
-    this.sslCtx = new ECDSASslContext(networkClient.nodeIdentity, new CheckSelfSignedNodeIdTrustManager(remoteId));
+  public NetworkClientConnection(NetworkClient networkClient, NodeIPEndpoint remoteEndpoint, final int localListeningPort) throws Exception {
+    this.remoteEndpoint=remoteEndpoint;
+    this.sslCtx = new ECDSASslContext(networkClient.nodeIdentity, new CheckSelfSignedNodeIdTrustManager(remoteEndpoint.getNodeId()));
     this.useEncryption=networkClient.useEncryption;
     
     Bootstrap b = new Bootstrap();
@@ -56,7 +56,7 @@ public class NetworkClientConnection implements AutoCloseable {
     b.option(ChannelOption.SO_KEEPALIVE, true);
     b.handler(channelInitializer);
 
-    socketChannelFuture = b.connect(serverAddress);
+    socketChannelFuture = b.connect(remoteEndpoint.getAddress());
     socketChannelFuture.addListener(new GenericFutureListener<Future<? super Void>>() {
       @Override public void operationComplete(Future<? super Void> future) throws Exception {
         sendLocalNodeMetaData(localListeningPort);
@@ -183,6 +183,6 @@ public class NetworkClientConnection implements AutoCloseable {
   }
 
   public NodeIdentifier getRemoteNodeId(){
-    return remoteNodeId;
+    return remoteEndpoint.getNodeId();
   }
 }

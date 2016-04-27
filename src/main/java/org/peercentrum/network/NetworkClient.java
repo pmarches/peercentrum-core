@@ -7,6 +7,7 @@ import java.util.HashMap;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.NodeIPEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,11 +41,11 @@ public class NetworkClient extends NetworkBase implements Closeable {
 	}
 	
 	public NetworkClientConnection createConnectionToPeer(NodeIdentifier remoteId) throws Exception{
-		InetSocketAddress remoteEndpoint=nodeDatabase.getEndpointByIdentifier(remoteId);
+		InetSocketAddress remoteEndpoint=nodeDatabase.getEndpointByNodeIdentifier(remoteId);
 		if(remoteEndpoint==null){
 			throw new RuntimeException("No endpoint found for peer "+remoteId);
 		}
-		NetworkClientConnection newConnection = new NetworkClientConnection(this, remoteId, remoteEndpoint, localListeningPort);
+		NetworkClientConnection newConnection = new NetworkClientConnection(this, new NodeIPEndpoint(remoteId, remoteEndpoint), localListeningPort);
 		return newConnection;
 	}
 

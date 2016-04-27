@@ -62,8 +62,8 @@ public class AsyncSocketServerTest {
 		final CountDownLatch serverDoneBarrier = new CountDownLatch(NB_CLIENTS*NUMBER_OF_MESSAGE);
 		MessageEchoApp serverSideCountingHandler=new MessageEchoApp(server, serverDoneBarrier);
 		
-		InetSocketAddress serverEndpoint=new InetSocketAddress(server.getListeningPort());
-		final NetworkClientConnection connection = new NetworkClientConnection(null, server.getNodeIdentifier(), serverEndpoint, 0);
+		NodeIPEndpoint serverEndpoint=new NodeIPEndpoint(server.getNodeIdentifier(), new InetSocketAddress(server.getListeningPort()));
+		final NetworkClientConnection connection = new NetworkClientConnection(null, serverEndpoint, 0);
 		final CountDownLatch clientsDoneBarrier = new CountDownLatch(NB_CLIENTS);
 		for(int i=0; i<NB_CLIENTS; i++){
 			new Thread(){ @Override public void run() {

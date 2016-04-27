@@ -73,7 +73,7 @@ public class NodeDatabase implements AutoCloseable {
 	//TODO Add some checks to ensure we do not map stale IP/Port info.. 
 	public void mapNodeIdToAddress(final NodeIdentifier nodeIdentifier, final InetSocketAddress nodeSocketAddress) {
 //		NodeMetaData info = new NodeMetaData(NodeIdentifier, nodeSocketAddress);
-//		LOGGER.debug("Mapped {} to {}", NodeIdentifier, nodeSocketAddress);
+		LOGGER.debug("Mapped {} to {}", nodeIdentifier, nodeSocketAddress);
 //		idToPeer.put(NodeIdentifier, info);
 		ISqlJetTransaction updateEndpointTx=new ISqlJetTransaction() {
 			@Override public Object run(SqlJetDb db) throws SqlJetException {
@@ -117,7 +117,7 @@ public class NodeDatabase implements AutoCloseable {
 		}
 	}
 
-	public InetSocketAddress getEndpointByIdentifier(final NodeIdentifier remoteID) {
+	public InetSocketAddress getEndpointByNodeIdentifier(final NodeIdentifier remoteID) {
 		try {
 			ISqlJetTransaction getEndpointTx=new ISqlJetTransaction() {
 				@Override public Object run(SqlJetDb db) throws SqlJetException {

@@ -4,6 +4,7 @@ import java.net.InetSocketAddress;
 
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.NodeIPEndpoint;
 import org.peercentrum.core.PB;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkClientConnection;
@@ -47,20 +48,10 @@ public class NodeGossipClient {
     }
   }
 
-  public void bootstrapGossiping(String bootstrapEndpoint) throws Exception {
+  public void bootstrapGossiping(NodeIPEndpoint bootstrapEndpoint) throws Exception {
     if(bootstrapEndpoint!=null){
       LOGGER.info("Starting bootstrap with {}", bootstrapEndpoint);
-      String[] nodeIDAddressAndPort=bootstrapEndpoint.split(":");
-      if(nodeIDAddressAndPort==null || nodeIDAddressAndPort.length!=3){
-        LOGGER.error("bootstrap entry has not been recognized {}", bootstrapEndpoint);
-        return;
-      }
-      
-      NodeIdentifier bootStrapNodeId=new NodeIdentifier(nodeIDAddressAndPort[0]);
-      InetSocketAddress bootstrapAddress=new InetSocketAddress(nodeIDAddressAndPort[1], Integer.parseInt(nodeIDAddressAndPort[2]));
-      LOGGER.debug("bootstrap is {}", bootstrapAddress);
-
-      NetworkClientConnection newConnection = new NetworkClientConnection(client, bootStrapNodeId, bootstrapAddress, reachableListeningPort);
+      NetworkClientConnection newConnection = new NetworkClientConnection(client, bootstrapEndpoint, reachableListeningPort);
       
       PB.GossipMessage.Builder gossipReqBuilder=PB.GossipMessage.newBuilder();
       gossipReqBuilder.setRequestMorePeers(PB.GossipRequestMorePeers.getDefaultInstance());

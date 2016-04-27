@@ -78,18 +78,18 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 //		}
 //	}
 
-//	public void exchangeSettlementAddresses(final NetworkClient client, NodeIdentifier remoteNodeId) throws Exception {
+//	public void exchangeSettlementAddresses(final NetworkClient client, NodeIdentifier remoteEndpoint) throws Exception {
 //		PB.SettlementMessage.Builder topLevelSettlementMsg=PB.SettlementMessage.newBuilder();
 //		topLevelSettlementMsg.setRequestSettlementMethod(true);
 //		
 //		PB.SettlementMethod.Builder localSettlementMethod = getLocalSettlementMethod();
 //		topLevelSettlementMsg.setSettlementMethod(localSettlementMethod);
 //		
-//		Future<PB.SettlementMessage> settlementResponseFuture = client.sendRequest(remoteNodeId, getApplicationId(), topLevelSettlementMsg.build());
+//		Future<PB.SettlementMessage> settlementResponseFuture = client.sendRequest(remoteEndpoint, getApplicationId(), topLevelSettlementMsg.build());
 //		PB.SettlementMessage settlementResponse=settlementResponseFuture.get();
 //		if(settlementResponse.hasSettlementMethod()){
 //			PB.SettlementMethod remoteSettlementMethod=settlementResponse.getSettlementMethod();
-//			recordSettlementMehod(remoteNodeId, remoteSettlementMethod);
+//			recordSettlementMehod(remoteEndpoint, remoteSettlementMethod);
 //		}
 //	}
 //

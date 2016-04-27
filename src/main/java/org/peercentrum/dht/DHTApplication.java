@@ -84,7 +84,7 @@ public abstract class DHTApplication extends BaseApplicationMessageHandler {
       PB.PeerEndpointMsg.Builder peerEndpointMsg=PB.PeerEndpointMsg.newBuilder();
       peerEndpointMsg.setIdentity(ByteString.copyFrom(oneId.getBytes()));
 
-      InetSocketAddress socketAddress = server.getNodeDatabase().getEndpointByIdentifier(new NodeIdentifier(oneId.getBytes()));
+      InetSocketAddress socketAddress = server.getNodeDatabase().getEndpointByNodeIdentifier(new NodeIdentifier(oneId.getBytes()));
       PB.PeerEndpointMsg.TLSEndpointMsg.Builder ipEndpointBuilder=PB.PeerEndpointMsg.TLSEndpointMsg.newBuilder();
       ipEndpointBuilder.setIpAddress(socketAddress.getHostName());
       ipEndpointBuilder.setPort(socketAddress.getPort());

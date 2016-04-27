@@ -3,6 +3,7 @@ package org.peercentrum.core.nodegossip;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeMetaData;
+import org.peercentrum.core.NodeIPEndpoint;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.network.BaseApplicationMessageHandler;
@@ -20,7 +21,7 @@ import io.netty.channel.ChannelHandlerContext;
  * FIXME The application should be an aggregate of the client and the server1 classes. Need to add
  * a getClient() and getServer() methods. All the common stuff can go in the application ?
  */
-public class NodeGossipApplication extends BaseApplicationMessageHandler {
+public class NodeGossipApplication extends BaseApplicationMessageHandler implements Runnable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NodeGossipApplication.class);
 	public static final ApplicationIdentifier GOSSIP_ID=new ApplicationIdentifier((NodeGossipApplication.class.getSimpleName()+"_APP_ID").getBytes()); 
 
@@ -30,15 +31,6 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 		super(server);
 		client=new NodeGossipClient(server.networkClient);
 		client.reachableListeningPort=server.getListeningPort();
-		if(server.getNodeDatabase().size()==0){
-      LOGGER.info("Node database is empty, will try to bootstrap, if possible");
-			try {
-				bootstrapGossiping();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 	}
 	
 	private void bootstrapGossiping() throws Exception {
@@ -48,7 +40,8 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 	  }
 	  else{
 	    LOGGER.debug("The gossip bootstrap endpoint looks like this '"+gossipConfig.getBootstrapEndpoint()+"'");
-	    client.bootstrapGossiping(gossipConfig.getBootstrapEndpoint());
+	    NodeIPEndpoint bootstrapEndPoint=NodeIPEndpoint.parseFromString(gossipConfig.getBootstrapEndpoint());
+	    client.bootstrapGossiping(bootstrapEndPoint);
 	  }
   }
 
@@ -90,5 +83,17 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler {
 			return null;
 		}
 	}
+
+  @Override
+  public void run() {
+    if(server.getNodeDatabase().size()==0){
+      LOGGER.info("Node database is empty, will try to bootstrap, if possible");
+      try {
+        bootstrapGossiping();
+      } catch (Exception e) {
+        LOGGER.error("Exception during bootstrap gossiping", e);
+      }
+    }
+  }
 
 }
