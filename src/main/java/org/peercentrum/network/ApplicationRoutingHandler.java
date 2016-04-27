@@ -11,12 +11,12 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
 
-class RoutingHandler extends ChannelInboundHandlerAdapter {
-	private static final Logger LOGGER = LoggerFactory.getLogger(RoutingHandler.class);
+class ApplicationRoutingHandler extends ChannelInboundHandlerAdapter {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationRoutingHandler.class);
 	
 	protected NetworkServer server;
 
-	public RoutingHandler(NetworkServer server) {
+	public ApplicationRoutingHandler(NetworkServer server) {
 		this.server=server;
 	}
 

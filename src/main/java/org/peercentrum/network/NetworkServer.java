@@ -85,7 +85,7 @@ public class NetworkServer { //TODO implement AutoClosable
 //      ch.pipeline().addLast(new TraceHandler("Before anything"));
       ch.pipeline().addLast(new HeaderPayloadStreamDecoder());
 //      ch.pipeline().addLast(new TraceHandler("Before routing"));
-      ch.pipeline().addLast(applicationWorkerGroup, new RoutingHandler(NetworkServer.this));
+      ch.pipeline().addLast(applicationWorkerGroup, new ApplicationRoutingHandler(NetworkServer.this));
 
       ch.pipeline().addLast(new HeaderAndPayloadToBytesEncoder());
       ch.pipeline().addLast(new ChunkedWriteHandler());
