@@ -64,7 +64,7 @@ public class TransientMockNetworkOfNodes {
   }
 
   private void configureClient1ToServer1Connection() throws Exception {
-    client1ToServer1Connection=networkClient1.createConnectionToPeer(server1.getNodeIdentifier());
+    client1ToServer1Connection=networkClient1.createConnectionToPeer(server1.getLocalIdentifier());
     settlementClient1=new SettlementApplicationClient(client1ToServer1Connection, client1Config, client1SettlementDB.settlementMethod);
   }
 
@@ -94,7 +94,7 @@ public class TransientMockNetworkOfNodes {
     client1Config=generateConfiguration("clientNode1");
     NodeDatabase clientNodeDatabase=new NodeDatabase(null);
     networkClient1=new NetworkClient(new NodeIdentity(client1Config), clientNodeDatabase);
-    clientNodeDatabase.mapNodeIdToAddress(server1.getNodeIdentifier(), new InetSocketAddress(server1.getNetworkServer().getListeningPort()));
+    clientNodeDatabase.mapNodeIdToAddress(server1.getLocalIdentifier(), new InetSocketAddress(server1.getNetworkServer().getListeningPort()));
     clientNodeDatabase.mapNodeIdToAddress(commonNodeId, InetSocketAddress.createUnresolved("commonNode.com", 1234));
 
     client1SettlementDB=new SettlementDB(null);

@@ -29,14 +29,14 @@ public class H2PKTest {
 			TopLevelConfig topConfig=new TopLevelConfig();
 			ServerMain nodeServer = new ServerMain(topConfig);
 			InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", nodeServer.getNetworkServer().getListeningPort());
-			sharedNodeDatabase.mapNodeIdToAddress(nodeServer.getNodeIdentifier(), serverEndpoint);
-			sharedUNL.addValidatorNode(nodeServer.getNodeIdentifier());
+			sharedNodeDatabase.mapNodeIdToAddress(nodeServer.getLocalIdentifier(), serverEndpoint);
+			sharedUNL.addValidatorNode(nodeServer.getLocalIdentifier());
 			HashToPublicKeyDB db=new HashToPublicKeyDB();
 			apps[i]=new HashToPublicKeyApplication(nodeServer, db, sharedUNL);
 //			apps[i].consensus.consensusThreshold=mockThreshold;
 			if(client==null){
 				networkClient=new NetworkClient(new NodeIdentity(topConfig), sharedNodeDatabase);
-        client=new HashToPublicKeyStandaloneClient(networkClient, nodeServer.getNodeIdentifier());
+        client=new HashToPublicKeyStandaloneClient(networkClient, nodeServer.getLocalIdentifier());
 			}
 		}
 		HashIdentifier address=new HashIdentifier();

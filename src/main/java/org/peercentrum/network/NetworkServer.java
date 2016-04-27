@@ -1,9 +1,13 @@
 package org.peercentrum.network;
 
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
 import javax.security.cert.X509Certificate;
 
+import org.bitlet.weupnp.GatewayDevice;
+import org.bitlet.weupnp.GatewayDiscover;
+import org.bitlet.weupnp.PortMappingEntry;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.ServerMain;
 import org.slf4j.Logger;
@@ -53,6 +57,10 @@ public class NetworkServer { //TODO implement AutoClosable
     bindChannel = b.bind(serverMain.getConfig().getListenPort()).sync().channel();
     effectiveListeningPort=((InetSocketAddress) bindChannel.localAddress()).getPort();
     LOGGER.debug("networkServer "+serverMain.getLocalIdentity().getIdentifier()+" now listening on port {}", effectiveListeningPort);
+    
+    if(serverMain.getConfig().getEnableNAT()){
+      enableNATInboundConnections();
+    }
   }
 
   private GenericFutureListener<Future<Channel>> onSslHandshakeCompletes=new GenericFutureListener<Future<Channel>>() {
@@ -91,6 +99,49 @@ public class NetworkServer { //TODO implement AutoClosable
     applicationWorkerGroup.shutdownGracefully();
     //		nioWorkerGroup.awaitTermination(1000, TimeUnit.DAYS);
     //		applicationWorkerGroup.awaitTermination(1000, TimeUnit.DAYS);
+  }
+
+  protected void enableNATInboundConnections() throws Exception {
+    GatewayDiscover discover = new GatewayDiscover();
+    LOGGER.debug("Looking for gateway devices");
+    discover.discover();
+    final GatewayDevice natDevice = discover.getValidGateway();
+    if (null != natDevice) {
+      LOGGER.debug("Gateway device found {} {} ", natDevice.getModelName(), natDevice.getModelDescription());
+    } else {
+      LOGGER.debug("No valid gateway device found, doing nothing.");
+      return;
+    }
+
+//    String externalIPAddress = natDevice.getExternalIPAddress();
+//    LOGGER.debug("Our external address is {}", externalIPAddress);
+//    server1.setListeningAddress(externalIPAddress);
+
+    final int localPortToMap=getListeningPort();
+    LOGGER.debug("Querying device to see if a mapping for port {} already exists", localPortToMap);
+
+    PortMappingEntry portMapping = new PortMappingEntry();
+    if (natDevice.getSpecificPortMappingEntry(localPortToMap, "TCP", portMapping)) {
+      LOGGER.error("Port {} was already mapped by {}. Aborting...", localPortToMap, portMapping.getPortMappingDescription()); //TODO Maybe we should retry with another port number. Do not forget to update the local gossip info with the new port
+    } else {
+      LOGGER.debug("External port {} is available, sending mapping request", localPortToMap);
+      InetAddress localAddress = natDevice.getLocalAddress();
+      if (natDevice.addPortMapping(localPortToMap, localPortToMap, localAddress.getHostAddress(), "TCP", getClass().getName())) {
+        LOGGER.info("Port mapping successfull");
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+          public void run() {
+            try {
+              LOGGER.debug("deleting port mapping {}", localPortToMap);
+              natDevice.deletePortMapping(localPortToMap, "TCP");
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+          };
+        });
+      } else {
+        LOGGER.error("Port mapping failed");
+      }
+    }
   }
 
   public int getListeningPort() {

@@ -42,8 +42,8 @@ public class NetworkClientTest {
   public void testPing() throws Exception{
     ServerMain server1=new ServerMain(new NullConfig());
     NetworkClient client=new NetworkClient(new NodeIdentity(new NullConfig()), new NodeDatabase(null));
-    client.nodeDatabase.mapNodeIdToAddress(server1.getNodeIdentifier(), server1.getNetworkServer().getListeningAddress());
-    NetworkClientConnection connection1To2 = client.createConnectionToPeer(server1.getNodeIdentifier());
+    client.nodeDatabase.mapNodeIdToAddress(server1.getLocalIdentifier(), server1.getNetworkServer().getListeningAddress());
+    NetworkClientConnection connection1To2 = client.createConnectionToPeer(server1.getLocalIdentifier());
     connection1To2.ping();
     connection1To2.close();
     server1.getNetworkServer().stopAcceptingConnections();

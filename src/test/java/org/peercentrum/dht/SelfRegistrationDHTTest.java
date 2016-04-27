@@ -24,7 +24,7 @@ public class SelfRegistrationDHTTest {
     
 //    assertEquals(dht0.dhtClient.buckets.size(), mockNetwork.server[0].getNodeDatabase().size());
     
-    KIdentifier server1=new KIdentifier(mockNetwork.server[1].getNodeIdentifier());
+    KIdentifier server1=new KIdentifier(mockNetwork.server[1].getLocalIdentifier());
     List<KIdentifier> oneNode=client0.buckets.getClosestNodeTo(server1, 3);
     assertEquals(1, oneNode.size());
     DefaultPromise<DHTSearch> searchNode0 = client0.searchNetwork(server1);
@@ -32,7 +32,7 @@ public class SelfRegistrationDHTTest {
     assertTrue(searchNode0.get().foundNode);
     assertNull(searchNode0.get().foundValue);
     
-    KIdentifier server5=new KIdentifier(mockNetwork.server[5].getNodeIdentifier());
+    KIdentifier server5=new KIdentifier(mockNetwork.server[5].getLocalIdentifier());
     DefaultPromise<DHTSearch> searchNode5 = client0.searchNetwork(server5);
     assertTrue(searchNode5.get().isDone());
     assertTrue(searchNode5.get().foundNode);

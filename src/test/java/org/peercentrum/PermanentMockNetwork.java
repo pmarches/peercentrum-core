@@ -33,12 +33,12 @@ public class PermanentMockNetwork {
   }
 
   private void configureLinksBetweenNodes() {
-    server[0].getNodeDatabase().mapNodeIdToAddress(server[1].getNodeIdentifier(), server[1].getNetworkServer().getListeningAddress());
-    server[1].getNodeDatabase().mapNodeIdToAddress(server[0].getNodeIdentifier(), server[0].getNetworkServer().getListeningAddress());
+    server[0].getNodeDatabase().mapNodeIdToAddress(server[1].getLocalIdentifier(), server[1].getNetworkServer().getListeningAddress());
+    server[1].getNodeDatabase().mapNodeIdToAddress(server[0].getLocalIdentifier(), server[0].getNetworkServer().getListeningAddress());
 
-    server[1].getNodeDatabase().mapNodeIdToAddress(server[2].getNodeIdentifier(), server[2].getNetworkServer().getListeningAddress());
-    server[2].getNodeDatabase().mapNodeIdToAddress(server[3].getNodeIdentifier(), server[3].getNetworkServer().getListeningAddress());
-    server[3].getNodeDatabase().mapNodeIdToAddress(server[4].getNodeIdentifier(), server[4].getNetworkServer().getListeningAddress());
-    server[3].getNodeDatabase().mapNodeIdToAddress(server[5].getNodeIdentifier(), server[5].getNetworkServer().getListeningAddress());
+    server[1].getNodeDatabase().mapNodeIdToAddress(server[2].getLocalIdentifier(), server[2].getNetworkServer().getListeningAddress());
+    server[2].getNodeDatabase().mapNodeIdToAddress(server[3].getLocalIdentifier(), server[3].getNetworkServer().getListeningAddress());
+    server[3].getNodeDatabase().mapNodeIdToAddress(server[4].getLocalIdentifier(), server[4].getNetworkServer().getListeningAddress());
+    server[3].getNodeDatabase().mapNodeIdToAddress(server[5].getLocalIdentifier(), server[5].getNetworkServer().getListeningAddress());
   }
 }

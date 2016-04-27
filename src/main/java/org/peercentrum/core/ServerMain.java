@@ -1,12 +1,8 @@
 package org.peercentrum.core;
 
 import java.io.File;
-import java.net.InetAddress;
 import java.util.Hashtable;
 
-import org.bitlet.weupnp.GatewayDevice;
-import org.bitlet.weupnp.GatewayDiscover;
-import org.bitlet.weupnp.PortMappingEntry;
 import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.blob.P2PBlobConfig;
 import org.peercentrum.blob.P2PBlobRepository;
@@ -56,11 +52,6 @@ public class ServerMain implements Runnable {
 
 	public void run() {
 		try {
-
-			if(topConfig.getEnableNAT()){
-				enableNATInboundConnections();
-			}
-
 			startApplications();
 			
 			Runtime.getRuntime().addShutdownHook(new Thread(){
@@ -90,48 +81,6 @@ public class ServerMain implements Runnable {
   }
 
 	
-	protected void enableNATInboundConnections() throws Exception {
-		GatewayDiscover discover = new GatewayDiscover();
-		LOGGER.debug("Looking for gateway devices");
-		discover.discover();
-		final GatewayDevice natDevice = discover.getValidGateway();
-		if (null != natDevice) {
-			LOGGER.debug("Gateway device found {} {} ", natDevice.getModelName(), natDevice.getModelDescription());
-		} else {
-			LOGGER.debug("No valid gateway device found, doing nothing.");
-			return;
-		}
-
-//		String externalIPAddress = natDevice.getExternalIPAddress();
-//		LOGGER.debug("Our external address is {}", externalIPAddress);
-//		server1.setListeningAddress(externalIPAddress);
-
-		final int localPortToMap=networkServer.getListeningPort();
-		LOGGER.debug("Querying device to see if a mapping for port {} already exists", localPortToMap);
-
-		PortMappingEntry portMapping = new PortMappingEntry();
-		if (natDevice.getSpecificPortMappingEntry(localPortToMap, "TCP", portMapping)) {
-			LOGGER.error("Port {} was already mapped by {}. Aborting...", localPortToMap, portMapping.getPortMappingDescription()); //TODO Maybe we should retry with another port number. Do not forget to update the local gossip info with the new port
-		} else {
-			LOGGER.debug("External port {} is available, sending mapping request", localPortToMap);
-			InetAddress localAddress = natDevice.getLocalAddress();
-			if (natDevice.addPortMapping(localPortToMap, localPortToMap, localAddress.getHostAddress(), "TCP", getClass().getName())) {
-				LOGGER.info("Port mapping successfull");
-				Runtime.getRuntime().addShutdownHook(new Thread(){
-					public void run() {
-						try {
-							LOGGER.debug("deleting port mapping {}", localPortToMap);
-							natDevice.deletePortMapping(localPortToMap, "TCP");
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					};
-				});
-			} else {
-				LOGGER.error("Port mapping failed");
-			}
-		}
-	}
 	
   public NodeDatabase getNodeDatabase(){
     return nodeDatabase;
@@ -161,7 +110,7 @@ public class ServerMain implements Runnable {
     return nodeIdentity;
   }
 
-  public NodeIdentifier getNodeIdentifier() {
+  public NodeIdentifier getLocalIdentifier() {
     return nodeIdentity.getIdentifier();
   }
 
