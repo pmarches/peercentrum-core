@@ -41,7 +41,7 @@ public class CheckSelfSignedNodeIdTrustManager implements X509TrustManager {
       chain[0].checkValidity();
       chain[0].verify(chain[0].getPublicKey(), "BC"); //Ensure the certificate has been self-signed
 
-      if(expectedNodeId!=null){ //expectedNodeId will be null on the server side..
+      if(expectedNodeId!=null){ //expectedNodeId will be null on the networkServer side..
         BCECPublicKey publicKeyOnCertificate=new BCECPublicKey((ECPublicKey) chain[0].getPublicKey(), null);
         NodeIdentifier nodeIdOnCertificate=new NodeIdentifier(publicKeyOnCertificate);
         if(expectedNodeId.equals(nodeIdOnCertificate)==false){
@@ -55,7 +55,7 @@ public class CheckSelfSignedNodeIdTrustManager implements X509TrustManager {
 
   @Override
   public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-    LOGGER.debug("Client will check if server can be trusted "+Arrays.asList(chain)+" "+authType);
+    LOGGER.debug("Client will check if networkServer can be trusted "+Arrays.asList(chain)+" "+authType);
     if(expectedNodeId==null){
       throw new CertificateException("The client needs to know in advance what is the expected node id");
     }

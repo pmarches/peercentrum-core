@@ -5,8 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.peercentrum.core.ApplicationIdentifier;
-import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.NodeIPEndpoint;
+import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.slf4j.Logger;
@@ -47,7 +47,7 @@ public class NetworkClientConnection implements AutoCloseable {
 
   public NetworkClientConnection(NetworkClient networkClient, NodeIPEndpoint remoteEndpoint, final int localListeningPort) throws Exception {
     this.remoteEndpoint=remoteEndpoint;
-    this.sslCtx = new ECDSASslContext(networkClient.nodeIdentity, new CheckSelfSignedNodeIdTrustManager(remoteEndpoint.getNodeId()));
+    this.sslCtx = new ECDSASslContext(networkClient.localIdentity, new CheckSelfSignedNodeIdTrustManager(remoteEndpoint.getNodeId()));
     this.useEncryption=networkClient.useEncryption;
     
     Bootstrap b = new Bootstrap();

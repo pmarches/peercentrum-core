@@ -7,10 +7,10 @@ import org.bouncycastle.util.Arrays;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
+import org.peercentrum.core.ServerMain;
 import org.peercentrum.core.Signature;
 import org.peercentrum.dht.DHTApplication;
 import org.peercentrum.dht.KBucket;
-import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tmatesoft.sqljet.core.SqlJetException;
@@ -39,13 +39,13 @@ public class SelfRegistrationDHT extends DHTApplication {
   protected SqlJetDb db;
   protected ISqlJetTable dhtValueTable;
 
-  public SelfRegistrationDHT(NetworkServer server) throws Exception {
-    super(server);
+  public SelfRegistrationDHT(ServerMain serverMain) throws Exception {
+    super(serverMain);
     setEntryTimeToLive(1, TimeUnit.DAYS);
     setEntryMaximumCardinality(1000);
     setEntryOverflowHandling(OverflowHandling.LIFO); //LIFO or FIFO    
 
-    File serverFile=server.getConfig().getFileRelativeFromConfigDirectory("DHT.db");
+    File serverFile=serverMain.getConfig().getFileRelativeFromConfigDirectory("DHT.db");
     boolean dbExists=serverFile.exists();
     db = new SqlJetDb(serverFile, true);
     db.open();

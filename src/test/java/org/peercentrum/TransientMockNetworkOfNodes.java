@@ -9,6 +9,7 @@ import org.peercentrum.blob.P2PBlobConfig;
 import org.peercentrum.blob.P2PBlobRepositoryFS;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.ServerMain;
 import org.peercentrum.core.TestUtilities;
 import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.core.nodegossip.NodeGossipApplication;
@@ -18,7 +19,6 @@ import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.h2pk.HashToPublicKeyConfig;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkClientConnection;
-import org.peercentrum.network.NetworkServer;
 import org.peercentrum.network.NodeIdentity;
 import org.peercentrum.settlement.SettlementApplication;
 import org.peercentrum.settlement.SettlementApplicationClient;
@@ -32,7 +32,7 @@ import wf.bitcoin.javabitcoindrpcclient.BitcoinJSONRPCClient;
 
 public class TransientMockNetworkOfNodes {
   public TopLevelConfig server1Config;
-  public NetworkServer server1;
+  public ServerMain server1;
 
   public TopLevelConfig client1Config;
   public NetworkClient networkClient1;
@@ -70,7 +70,7 @@ public class TransientMockNetworkOfNodes {
 
   private void configureServer() throws Exception {
     server1Config=generateConfiguration("serverNode1");
-    server1=new NetworkServer(server1Config);
+    server1=new ServerMain(server1Config);
     server1.getNodeDatabase().mapNodeIdToAddress(commonNodeId, InetSocketAddress.createUnresolved("commonNode.com", 1234));
     server1.getNodeDatabase().mapNodeIdToAddress(serverSideOnlyNodeId, InetSocketAddress.createUnresolved("serverOnlyNode.com", 1234));
     
@@ -94,7 +94,7 @@ public class TransientMockNetworkOfNodes {
     client1Config=generateConfiguration("clientNode1");
     NodeDatabase clientNodeDatabase=new NodeDatabase(null);
     networkClient1=new NetworkClient(new NodeIdentity(client1Config), clientNodeDatabase);
-    clientNodeDatabase.mapNodeIdToAddress(server1.getNodeIdentifier(), new InetSocketAddress(server1.getListeningPort()));
+    clientNodeDatabase.mapNodeIdToAddress(server1.getNodeIdentifier(), new InetSocketAddress(server1.getNetworkServer().getListeningPort()));
     clientNodeDatabase.mapNodeIdToAddress(commonNodeId, InetSocketAddress.createUnresolved("commonNode.com", 1234));
 
     client1SettlementDB=new SettlementDB(null);
@@ -106,7 +106,7 @@ public class TransientMockNetworkOfNodes {
     
     client1ToServer1Connection.close();
     
-    server1.stopAcceptingConnections();
+    server1.getNetworkServer().stopAcceptingConnections();
     networkClient1.close();
     TestUtilities.deleteDirectory(server1.getConfig().directoryOfConfigFile);
     TestUtilities.deleteDirectory(client1Config.directoryOfConfigFile);

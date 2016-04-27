@@ -81,7 +81,7 @@ public class P2PBlobStandaloneClient {
           }
           else if(response.getLocalBlockInventoryCount()==0){
             LOGGER.error("Missing block inventory from response {}", response);
-            //The server is asking for money even tough he does not have blocks?
+            //The networkServer is asking for money even tough he does not have blocks?
           }
           else{
             P2PBlobRangeSet serverSideBlockInventory = new P2PBlobRangeSet(response.getLocalBlockInventoryList());

@@ -13,9 +13,9 @@ import org.peercentrum.core.PB.H2PKDBSyncQuery;
 import org.peercentrum.core.PB.H2PKProposedTransactions;
 import org.peercentrum.core.PB.HashToPublicKeyMessage;
 import org.peercentrum.core.ProtobufByteBufCodec;
+import org.peercentrum.core.ServerMain;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
-import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,8 +32,8 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 	HashToPublicKeyTXEvaluator txEvaluator;
 	HashToPublicKeyDB db;
 		
-	public HashToPublicKeyApplication(NetworkServer nodeServer, HashToPublicKeyDB db, UniqueNodeList unl) throws Exception {
-		super(nodeServer);
+	public HashToPublicKeyApplication(ServerMain serverMain, HashToPublicKeyDB db, UniqueNodeList unl) throws Exception {
+		super(serverMain);
 		if(unl==null){
 			throw new NullPointerException("NULL UNL not allowed");
 		}
@@ -42,7 +42,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 		txEvaluator=new HashToPublicKeyTXEvaluator(db);
 		final int DB_CLOSECYCLE_PERIOD_MS = 3000;
 		ConsensusThreshold consensusThreshold=new ConsensusThreshold(50, 100, 10, DB_CLOSECYCLE_PERIOD_MS/5);
-		consensus=new ConsensusProcess(nodeServer.getNodeIdentifier(), txEvaluator, unl, db, consensusThreshold) {
+		consensus=new ConsensusProcess(serverMain.getLocalIdentity().getIdentifier(), txEvaluator, unl, db, consensusThreshold) {
 			@Override
 			protected void broadcastProposedTransactions(ProposedTransactions ourProposedTx) {
 				try {
@@ -52,7 +52,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 					PB.HashToPublicKeyMessage proposedTXMsg = encodeProposedTXToMsg(proposedTX);
 					for(NodeIdentifier aValidator:unl){
 						LOGGER.debug("Sending proposedTX to {}", aValidator);
-						server.networkClient.sendRequest(aValidator, getApplicationId(), proposedTXMsg);
+						serverMain.getNetworkClient().sendRequest(aValidator, getApplicationId(), proposedTXMsg);
 					}
 				} catch (Exception e) {
 					LOGGER.error("Failed to broadcast proposed TX "+ourProposedTx, e);
@@ -73,7 +73,7 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 			}
 			dbCloseProcess=new Thread(consensus.stepDatabaseCloseProcess);
 		}
-		dbCloseProcess.setName(super.server.getNodeIdentifier().toString());
+		dbCloseProcess.setName(serverMain.getLocalIdentity().getIdentifier().toString());
 		dbCloseProcess.start();
 	}
 	
@@ -89,8 +89,8 @@ public class HashToPublicKeyApplication extends BaseApplicationMessageHandler {
 				queryMsg.setBeginDbVersionNumber(0);
 			}
 			appLevelMsg.setDbSyncQuery(queryMsg.build());
-			NodeIdentifier remoteId=consensus.unl.getOneExcluding(this.server.getNodeIdentifier());
-			HashToPublicKeyMessage appLevelResponse = server.networkClient.sendRequest(remoteId, getApplicationId(), appLevelMsg.build()).get();
+			NodeIdentifier remoteId=consensus.unl.getOneExcluding(this.serverMain.getLocalIdentity().getIdentifier());
+			HashToPublicKeyMessage appLevelResponse = serverMain.getNetworkClient().sendRequest(remoteId, getApplicationId(), appLevelMsg.build()).get();
 			if(appLevelResponse.hasDbSyncResponse()){
 				PB.H2PKDBSyncResponse dbSyncResponse = appLevelResponse.getDbSyncResponse();
 				db.integrateSyncUnit(dbSyncResponse);

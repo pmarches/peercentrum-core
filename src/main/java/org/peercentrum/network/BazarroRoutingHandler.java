@@ -14,7 +14,7 @@ import io.netty.util.ReferenceCountUtil;
 class RoutingHandler extends ChannelInboundHandlerAdapter {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RoutingHandler.class);
 	
-	private NetworkServer server;
+	protected NetworkServer server;
 
 	public RoutingHandler(NetworkServer server) {
 		this.server=server;
@@ -22,10 +22,10 @@ class RoutingHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-		MDC.put("NodeId", server.getNodeIdentifier().toString());
+		MDC.put("NodeId", server.serverMain.getLocalIdentity().getIdentifier().toString());
 		HeaderAndPayload currentHeaderAndPayload = (HeaderAndPayload) msg;
 		ApplicationIdentifier appIdReceived = new ApplicationIdentifier(currentHeaderAndPayload.header.getDestinationApplicationId().toByteArray());
-		BaseApplicationMessageHandler applicationHandler=server.getApplicationHandler(appIdReceived);
+		BaseApplicationMessageHandler applicationHandler=server.serverMain.getApplicationHandler(appIdReceived);
 		if(applicationHandler!=null){
 			HeaderAndPayload response = applicationHandler.generateReponseFromQuery(ctx, currentHeaderAndPayload);
 			if(response!=null){

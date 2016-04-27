@@ -2,6 +2,7 @@ package org.peercentrum.core;
 
 import java.io.File;
 import java.net.InetAddress;
+import java.util.Hashtable;
 
 import org.bitlet.weupnp.GatewayDevice;
 import org.bitlet.weupnp.GatewayDiscover;
@@ -11,21 +12,38 @@ import org.peercentrum.blob.P2PBlobConfig;
 import org.peercentrum.blob.P2PBlobRepository;
 import org.peercentrum.blob.P2PBlobRepositoryFS;
 import org.peercentrum.core.nodegossip.NodeGossipApplication;
+import org.peercentrum.network.BaseApplicationMessageHandler;
+import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkServer;
+import org.peercentrum.network.NodeIdentity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ServerMain implements Runnable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServerMain.class);
 	
-	TopLevelConfig topConfig;
-	NetworkServer server;
+	protected TopLevelConfig topConfig;
+  protected NodeIdentity nodeIdentity;
+	protected NetworkServer networkServer;
+  protected NetworkClient networkClient;
+  protected NodeDatabase nodeDatabase;
+  protected Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler> allApplicationHandler=new Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler>();
 
-	public ServerMain(TopLevelConfig configNode) {
+	public ServerMain(TopLevelConfig configNode) throws Exception {
 		this.topConfig=configNode;
+		nodeIdentity=new NodeIdentity(topConfig);
+
+//  this.nodeDatabase=new NodeDatabase(null);
+		this.nodeDatabase=new NodeDatabase(topConfig.getFileRelativeFromConfigDirectory("node.db"));
+
+    networkServer = new NetworkServer(this);
+
+		networkClient=new NetworkClient(getLocalIdentity(), nodeDatabase);
+    networkClient.setLocalListeningPort(networkServer.getListeningPort());
+    networkClient.useEncryption=topConfig.encryptConnection;
 	}
 
-	public static void main(String[] args) throws Exception {
+  public static void main(String[] args) throws Exception {
 		if(args.length!=1){
 			System.err.println("Usage : "+ServerMain.class.getSimpleName()+" <configFile.yaml>");
 			return;
@@ -38,8 +56,7 @@ public class ServerMain implements Runnable {
 
 	public void run() {
 		try {
-			server = new NetworkServer(topConfig);
-			server.setConfig(topConfig);
+
 			if(topConfig.getEnableNAT()){
 				enableNATInboundConnections();
 			}
@@ -50,14 +67,13 @@ public class ServerMain implements Runnable {
 				@Override
 				public void run() {
 					try {
-						server.stopAcceptingConnections();
+						networkServer.stopAcceptingConnections();
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
 			});
 		} catch (Exception e) {
-			e.printStackTrace();
 			LOGGER.error("Exception in main", e);
 		}
 	}
@@ -65,12 +81,12 @@ public class ServerMain implements Runnable {
   private void startApplications() throws Exception {
     //TODO Load the applications from the topConfig file, dynamically, resolving dependencies, ... Maybe we need a OSGI container now?
     //TODO Add application lifecycle OSGI or custom...
-    new Thread(new NodeGossipApplication(server)).start();
+    new Thread(new NodeGossipApplication(this)).start();
 
     P2PBlobConfig blobConfig=(P2PBlobConfig) topConfig.getAppConfig(P2PBlobConfig.class);
     File repositoryPath = topConfig.getFileRelativeFromConfigDirectory("blobRepository");
     P2PBlobRepository blobRepository=new P2PBlobRepositoryFS(repositoryPath);
-    new P2PBlobApplication(server, blobRepository);
+    new P2PBlobApplication(this, blobRepository);
   }
 
 	
@@ -90,7 +106,7 @@ public class ServerMain implements Runnable {
 //		LOGGER.debug("Our external address is {}", externalIPAddress);
 //		server1.setListeningAddress(externalIPAddress);
 
-		final int localPortToMap=server.getListeningPort();
+		final int localPortToMap=networkServer.getListeningPort();
 		LOGGER.debug("Querying device to see if a mapping for port {} already exists", localPortToMap);
 
 		PortMappingEntry portMapping = new PortMappingEntry();
@@ -116,5 +132,39 @@ public class ServerMain implements Runnable {
 			}
 		}
 	}
+	
+  public NodeDatabase getNodeDatabase(){
+    return nodeDatabase;
+  }
+
+  public TopLevelConfig getConfig() {
+    return topConfig;
+  }
+
+  public void addApplicationHandler(BaseApplicationMessageHandler applicationHandler) {
+    this.allApplicationHandler.put(applicationHandler.getApplicationId(), applicationHandler);
+  }
+
+  public BaseApplicationMessageHandler getApplicationHandler(ApplicationIdentifier appIdReceived) {
+    return allApplicationHandler.get(appIdReceived);
+  }
+
+  public NetworkServer getNetworkServer() {
+    return networkServer;
+  }
+
+  public NetworkClient getNetworkClient() {
+    return networkClient;
+  }
+
+  public NodeIdentity getLocalIdentity() {
+    return nodeIdentity;
+  }
+
+  public NodeIdentifier getNodeIdentifier() {
+    return nodeIdentity.getIdentifier();
+  }
+
+
 
 }

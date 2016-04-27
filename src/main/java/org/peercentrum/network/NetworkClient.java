@@ -15,7 +15,7 @@ import com.google.protobuf.MessageLite;
 
 import io.netty.util.concurrent.Future;
 
-public class NetworkClient extends NetworkBase implements Closeable {
+public class NetworkClient implements Closeable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NetworkClient.class);
 	
 	//TODO maybe use a good caching library for this cache?
@@ -24,9 +24,10 @@ public class NetworkClient extends NetworkBase implements Closeable {
 	protected NodeDatabase nodeDatabase;
 	protected int localListeningPort=0;
   public boolean useEncryption=true;
+  protected NodeIdentity localIdentity;
 	
   public NetworkClient(NodeIdentity localIdentity, NodeDatabase nodeDatabase) throws Exception {
-    super(localIdentity);
+    this.localIdentity=localIdentity;
 		this.nodeDatabase=nodeDatabase;
 	}
 
@@ -50,7 +51,7 @@ public class NetworkClient extends NetworkBase implements Closeable {
 	}
 
 	public NetworkClientConnection maybeOpenConnectionToPeer(NodeIdentifier remoteId) throws Exception {
-		if(remoteId.equals(nodeIdentity.getIdentifier())){
+		if(remoteId.equals(this.localIdentity.getIdentifier())){
 			return null;
 		}
 		synchronized(connectionCache){
@@ -72,7 +73,7 @@ public class NetworkClient extends NetworkBase implements Closeable {
 	}
 	
 	public <T extends MessageLite> Future<T> sendRequest(NodeIdentifier peerIdToExchangeWith, ApplicationIdentifier applicationId, final MessageLite protobufRequest, Class<T> appSpecificResponseClass) throws Exception {
-		if(peerIdToExchangeWith.equals(nodeIdentity.getIdentifier())){
+		if(peerIdToExchangeWith.equals(this.localIdentity.getIdentifier())){
 			LOGGER.warn("Trying to send network request to our own node?");
 			return null;
 		}
@@ -90,5 +91,9 @@ public class NetworkClient extends NetworkBase implements Closeable {
 
   public void setLocalListeningPort(int listeningPort) {
     this.localListeningPort=listeningPort;
+  }
+
+  public NodeIdentifier getNodeIdentifier() {
+    return localIdentity.getIdentifier();
   }
 }

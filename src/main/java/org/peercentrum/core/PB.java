@@ -13552,7 +13552,7 @@ public final class PB {
      * <code>optional bool requestMetaData = 3;</code>
      *
      * <pre>
-     *Asks the server to provide the blob's metadata
+     *Asks the networkServer to provide the blob's metadata
      * </pre>
      */
     boolean hasRequestMetaData();
@@ -13560,7 +13560,7 @@ public final class PB {
      * <code>optional bool requestMetaData = 3;</code>
      *
      * <pre>
-     *Asks the server to provide the blob's metadata
+     *Asks the networkServer to provide the blob's metadata
      * </pre>
      */
     boolean getRequestMetaData();
@@ -13570,7 +13570,7 @@ public final class PB {
      * <code>optional bool requestBlockInventory = 5;</code>
      *
      * <pre>
-     *Asks the server to provide a list of blocks they have 
+     *Asks the networkServer to provide a list of blocks they have 
      * </pre>
      */
     boolean hasRequestBlockInventory();
@@ -13578,7 +13578,7 @@ public final class PB {
      * <code>optional bool requestBlockInventory = 5;</code>
      *
      * <pre>
-     *Asks the server to provide a list of blocks they have 
+     *Asks the networkServer to provide a list of blocks they have 
      * </pre>
      */
     boolean getRequestBlockInventory();
@@ -13588,7 +13588,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     java.util.List<org.peercentrum.core.PB.P2PBlobRangeMsg> 
@@ -13597,7 +13597,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     org.peercentrum.core.PB.P2PBlobRangeMsg getRequestedRanges(int index);
@@ -13605,7 +13605,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     int getRequestedRangesCount();
@@ -13613,7 +13613,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     java.util.List<? extends org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder> 
@@ -13622,7 +13622,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder getRequestedRangesOrBuilder(
@@ -13811,7 +13811,7 @@ public final class PB {
      * <code>optional bool requestMetaData = 3;</code>
      *
      * <pre>
-     *Asks the server to provide the blob's metadata
+     *Asks the networkServer to provide the blob's metadata
      * </pre>
      */
     public boolean hasRequestMetaData() {
@@ -13821,7 +13821,7 @@ public final class PB {
      * <code>optional bool requestMetaData = 3;</code>
      *
      * <pre>
-     *Asks the server to provide the blob's metadata
+     *Asks the networkServer to provide the blob's metadata
      * </pre>
      */
     public boolean getRequestMetaData() {
@@ -13835,7 +13835,7 @@ public final class PB {
      * <code>optional bool requestBlockInventory = 5;</code>
      *
      * <pre>
-     *Asks the server to provide a list of blocks they have 
+     *Asks the networkServer to provide a list of blocks they have 
      * </pre>
      */
     public boolean hasRequestBlockInventory() {
@@ -13845,7 +13845,7 @@ public final class PB {
      * <code>optional bool requestBlockInventory = 5;</code>
      *
      * <pre>
-     *Asks the server to provide a list of blocks they have 
+     *Asks the networkServer to provide a list of blocks they have 
      * </pre>
      */
     public boolean getRequestBlockInventory() {
@@ -13859,7 +13859,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     public java.util.List<org.peercentrum.core.PB.P2PBlobRangeMsg> getRequestedRangesList() {
@@ -13869,7 +13869,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     public java.util.List<? extends org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder> 
@@ -13880,7 +13880,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     public int getRequestedRangesCount() {
@@ -13890,7 +13890,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     public org.peercentrum.core.PB.P2PBlobRangeMsg getRequestedRanges(int index) {
@@ -13900,7 +13900,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
      *
      * <pre>
-     *What blocks do we want from the server
+     *What blocks do we want from the networkServer
      * </pre>
      */
     public org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder getRequestedRangesOrBuilder(
@@ -14355,7 +14355,7 @@ public final class PB {
        * <code>optional bool requestMetaData = 3;</code>
        *
        * <pre>
-       *Asks the server to provide the blob's metadata
+       *Asks the networkServer to provide the blob's metadata
        * </pre>
        */
       public boolean hasRequestMetaData() {
@@ -14365,7 +14365,7 @@ public final class PB {
        * <code>optional bool requestMetaData = 3;</code>
        *
        * <pre>
-       *Asks the server to provide the blob's metadata
+       *Asks the networkServer to provide the blob's metadata
        * </pre>
        */
       public boolean getRequestMetaData() {
@@ -14375,7 +14375,7 @@ public final class PB {
        * <code>optional bool requestMetaData = 3;</code>
        *
        * <pre>
-       *Asks the server to provide the blob's metadata
+       *Asks the networkServer to provide the blob's metadata
        * </pre>
        */
       public Builder setRequestMetaData(boolean value) {
@@ -14388,7 +14388,7 @@ public final class PB {
        * <code>optional bool requestMetaData = 3;</code>
        *
        * <pre>
-       *Asks the server to provide the blob's metadata
+       *Asks the networkServer to provide the blob's metadata
        * </pre>
        */
       public Builder clearRequestMetaData() {
@@ -14404,7 +14404,7 @@ public final class PB {
        * <code>optional bool requestBlockInventory = 5;</code>
        *
        * <pre>
-       *Asks the server to provide a list of blocks they have 
+       *Asks the networkServer to provide a list of blocks they have 
        * </pre>
        */
       public boolean hasRequestBlockInventory() {
@@ -14414,7 +14414,7 @@ public final class PB {
        * <code>optional bool requestBlockInventory = 5;</code>
        *
        * <pre>
-       *Asks the server to provide a list of blocks they have 
+       *Asks the networkServer to provide a list of blocks they have 
        * </pre>
        */
       public boolean getRequestBlockInventory() {
@@ -14424,7 +14424,7 @@ public final class PB {
        * <code>optional bool requestBlockInventory = 5;</code>
        *
        * <pre>
-       *Asks the server to provide a list of blocks they have 
+       *Asks the networkServer to provide a list of blocks they have 
        * </pre>
        */
       public Builder setRequestBlockInventory(boolean value) {
@@ -14437,7 +14437,7 @@ public final class PB {
        * <code>optional bool requestBlockInventory = 5;</code>
        *
        * <pre>
-       *Asks the server to provide a list of blocks they have 
+       *Asks the networkServer to provide a list of blocks they have 
        * </pre>
        */
       public Builder clearRequestBlockInventory() {
@@ -14464,7 +14464,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public java.util.List<org.peercentrum.core.PB.P2PBlobRangeMsg> getRequestedRangesList() {
@@ -14478,7 +14478,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public int getRequestedRangesCount() {
@@ -14492,7 +14492,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsg getRequestedRanges(int index) {
@@ -14506,7 +14506,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public Builder setRequestedRanges(
@@ -14527,7 +14527,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public Builder setRequestedRanges(
@@ -14545,7 +14545,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public Builder addRequestedRanges(org.peercentrum.core.PB.P2PBlobRangeMsg value) {
@@ -14565,7 +14565,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public Builder addRequestedRanges(
@@ -14586,7 +14586,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public Builder addRequestedRanges(
@@ -14604,7 +14604,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public Builder addRequestedRanges(
@@ -14622,7 +14622,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public Builder addAllRequestedRanges(
@@ -14640,7 +14640,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public Builder clearRequestedRanges() {
@@ -14657,7 +14657,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public Builder removeRequestedRanges(int index) {
@@ -14674,7 +14674,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsg.Builder getRequestedRangesBuilder(
@@ -14685,7 +14685,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder getRequestedRangesOrBuilder(
@@ -14699,7 +14699,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public java.util.List<? extends org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder> 
@@ -14714,7 +14714,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsg.Builder addRequestedRangesBuilder() {
@@ -14725,7 +14725,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsg.Builder addRequestedRangesBuilder(
@@ -14737,7 +14737,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg requestedRanges = 6;</code>
        *
        * <pre>
-       *What blocks do we want from the server
+       *What blocks do we want from the networkServer
        * </pre>
        */
       public java.util.List<org.peercentrum.core.PB.P2PBlobRangeMsg.Builder> 
@@ -14818,7 +14818,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     java.util.List<org.peercentrum.core.PB.P2PBlobRangeMsg> 
@@ -14827,7 +14827,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     org.peercentrum.core.PB.P2PBlobRangeMsg getLocalBlockInventory(int index);
@@ -14835,7 +14835,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     int getLocalBlockInventoryCount();
@@ -14843,7 +14843,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     java.util.List<? extends org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder> 
@@ -14852,7 +14852,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder getLocalBlockInventoryOrBuilder(
@@ -14908,7 +14908,7 @@ public final class PB {
      * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
      *
      * <pre>
-     *Set only if the server wishes the client to pay
+     *Set only if the networkServer wishes the client to pay
      * </pre>
      */
     boolean hasDataTransferQuote();
@@ -14916,7 +14916,7 @@ public final class PB {
      * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
      *
      * <pre>
-     *Set only if the server wishes the client to pay
+     *Set only if the networkServer wishes the client to pay
      * </pre>
      */
     org.peercentrum.core.PB.P2PBlobDataTransferQuoteMsg getDataTransferQuote();
@@ -14924,7 +14924,7 @@ public final class PB {
      * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
      *
      * <pre>
-     *Set only if the server wishes the client to pay
+     *Set only if the networkServer wishes the client to pay
      * </pre>
      */
     org.peercentrum.core.PB.P2PBlobDataTransferQuoteMsgOrBuilder getDataTransferQuoteOrBuilder();
@@ -15144,7 +15144,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     public java.util.List<org.peercentrum.core.PB.P2PBlobRangeMsg> getLocalBlockInventoryList() {
@@ -15154,7 +15154,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     public java.util.List<? extends org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder> 
@@ -15165,7 +15165,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     public int getLocalBlockInventoryCount() {
@@ -15175,7 +15175,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     public org.peercentrum.core.PB.P2PBlobRangeMsg getLocalBlockInventory(int index) {
@@ -15185,7 +15185,7 @@ public final class PB {
      * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
      *
      * <pre>
-     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+     *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
      * </pre>
      */
     public org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder getLocalBlockInventoryOrBuilder(
@@ -15256,7 +15256,7 @@ public final class PB {
      * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
      *
      * <pre>
-     *Set only if the server wishes the client to pay
+     *Set only if the networkServer wishes the client to pay
      * </pre>
      */
     public boolean hasDataTransferQuote() {
@@ -15266,7 +15266,7 @@ public final class PB {
      * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
      *
      * <pre>
-     *Set only if the server wishes the client to pay
+     *Set only if the networkServer wishes the client to pay
      * </pre>
      */
     public org.peercentrum.core.PB.P2PBlobDataTransferQuoteMsg getDataTransferQuote() {
@@ -15276,7 +15276,7 @@ public final class PB {
      * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
      *
      * <pre>
-     *Set only if the server wishes the client to pay
+     *Set only if the networkServer wishes the client to pay
      * </pre>
      */
     public org.peercentrum.core.PB.P2PBlobDataTransferQuoteMsgOrBuilder getDataTransferQuoteOrBuilder() {
@@ -15958,7 +15958,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public java.util.List<org.peercentrum.core.PB.P2PBlobRangeMsg> getLocalBlockInventoryList() {
@@ -15972,7 +15972,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public int getLocalBlockInventoryCount() {
@@ -15986,7 +15986,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsg getLocalBlockInventory(int index) {
@@ -16000,7 +16000,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder setLocalBlockInventory(
@@ -16021,7 +16021,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder setLocalBlockInventory(
@@ -16039,7 +16039,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder addLocalBlockInventory(org.peercentrum.core.PB.P2PBlobRangeMsg value) {
@@ -16059,7 +16059,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder addLocalBlockInventory(
@@ -16080,7 +16080,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder addLocalBlockInventory(
@@ -16098,7 +16098,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder addLocalBlockInventory(
@@ -16116,7 +16116,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder addAllLocalBlockInventory(
@@ -16134,7 +16134,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder clearLocalBlockInventory() {
@@ -16151,7 +16151,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder removeLocalBlockInventory(int index) {
@@ -16168,7 +16168,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsg.Builder getLocalBlockInventoryBuilder(
@@ -16179,7 +16179,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder getLocalBlockInventoryOrBuilder(
@@ -16193,7 +16193,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public java.util.List<? extends org.peercentrum.core.PB.P2PBlobRangeMsgOrBuilder> 
@@ -16208,7 +16208,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsg.Builder addLocalBlockInventoryBuilder() {
@@ -16219,7 +16219,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobRangeMsg.Builder addLocalBlockInventoryBuilder(
@@ -16231,7 +16231,7 @@ public final class PB {
        * <code>repeated .peercentrum.P2PBlobRangeMsg localBlockInventory = 3;</code>
        *
        * <pre>
-       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the server wishes the client to pay
+       *Set if P2PBlobRequest.requestBlockInventory is set to true, or if the networkServer wishes the client to pay
        * </pre>
        */
       public java.util.List<org.peercentrum.core.PB.P2PBlobRangeMsg.Builder> 
@@ -16573,7 +16573,7 @@ public final class PB {
        * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
        *
        * <pre>
-       *Set only if the server wishes the client to pay
+       *Set only if the networkServer wishes the client to pay
        * </pre>
        */
       public boolean hasDataTransferQuote() {
@@ -16583,7 +16583,7 @@ public final class PB {
        * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
        *
        * <pre>
-       *Set only if the server wishes the client to pay
+       *Set only if the networkServer wishes the client to pay
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobDataTransferQuoteMsg getDataTransferQuote() {
@@ -16597,7 +16597,7 @@ public final class PB {
        * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
        *
        * <pre>
-       *Set only if the server wishes the client to pay
+       *Set only if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder setDataTransferQuote(org.peercentrum.core.PB.P2PBlobDataTransferQuoteMsg value) {
@@ -16617,7 +16617,7 @@ public final class PB {
        * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
        *
        * <pre>
-       *Set only if the server wishes the client to pay
+       *Set only if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder setDataTransferQuote(
@@ -16635,7 +16635,7 @@ public final class PB {
        * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
        *
        * <pre>
-       *Set only if the server wishes the client to pay
+       *Set only if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder mergeDataTransferQuote(org.peercentrum.core.PB.P2PBlobDataTransferQuoteMsg value) {
@@ -16658,7 +16658,7 @@ public final class PB {
        * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
        *
        * <pre>
-       *Set only if the server wishes the client to pay
+       *Set only if the networkServer wishes the client to pay
        * </pre>
        */
       public Builder clearDataTransferQuote() {
@@ -16675,7 +16675,7 @@ public final class PB {
        * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
        *
        * <pre>
-       *Set only if the server wishes the client to pay
+       *Set only if the networkServer wishes the client to pay
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobDataTransferQuoteMsg.Builder getDataTransferQuoteBuilder() {
@@ -16687,7 +16687,7 @@ public final class PB {
        * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
        *
        * <pre>
-       *Set only if the server wishes the client to pay
+       *Set only if the networkServer wishes the client to pay
        * </pre>
        */
       public org.peercentrum.core.PB.P2PBlobDataTransferQuoteMsgOrBuilder getDataTransferQuoteOrBuilder() {
@@ -16701,7 +16701,7 @@ public final class PB {
        * <code>optional .peercentrum.P2PBlobDataTransferQuoteMsg dataTransferQuote = 5;</code>
        *
        * <pre>
-       *Set only if the server wishes the client to pay
+       *Set only if the networkServer wishes the client to pay
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
@@ -18953,7 +18953,7 @@ public final class PB {
      * <code>optional int64 satoshiPerIncomingGigaByte = 1;</code>
      *
      * <pre>
-     *Bytes going to the server
+     *Bytes going to the networkServer
      * </pre>
      */
     boolean hasSatoshiPerIncomingGigaByte();
@@ -18961,7 +18961,7 @@ public final class PB {
      * <code>optional int64 satoshiPerIncomingGigaByte = 1;</code>
      *
      * <pre>
-     *Bytes going to the server
+     *Bytes going to the networkServer
      * </pre>
      */
     long getSatoshiPerIncomingGigaByte();
@@ -18971,7 +18971,7 @@ public final class PB {
      * <code>optional int64 satoshiPerOutgoingGigaByte = 2;</code>
      *
      * <pre>
-     *Bytes coming from the server
+     *Bytes coming from the networkServer
      * </pre>
      */
     boolean hasSatoshiPerOutgoingGigaByte();
@@ -18979,7 +18979,7 @@ public final class PB {
      * <code>optional int64 satoshiPerOutgoingGigaByte = 2;</code>
      *
      * <pre>
-     *Bytes coming from the server
+     *Bytes coming from the networkServer
      * </pre>
      */
     long getSatoshiPerOutgoingGigaByte();
@@ -18989,7 +18989,7 @@ public final class PB {
    *
    * <pre>
    **
-   * This message is returned to the client when the server wants the client to pay.
+   * This message is returned to the client when the networkServer wants the client to pay.
    * We could make this a lot more complex: Using a  specialized message that represents a quote, which the
    * client signs (turning it into an invoice). The user can lay claim to bytes of a specified file &amp; whatnot.
    * Let's start simple by simply sending our prices
@@ -19100,7 +19100,7 @@ public final class PB {
      * <code>optional int64 satoshiPerIncomingGigaByte = 1;</code>
      *
      * <pre>
-     *Bytes going to the server
+     *Bytes going to the networkServer
      * </pre>
      */
     public boolean hasSatoshiPerIncomingGigaByte() {
@@ -19110,7 +19110,7 @@ public final class PB {
      * <code>optional int64 satoshiPerIncomingGigaByte = 1;</code>
      *
      * <pre>
-     *Bytes going to the server
+     *Bytes going to the networkServer
      * </pre>
      */
     public long getSatoshiPerIncomingGigaByte() {
@@ -19124,7 +19124,7 @@ public final class PB {
      * <code>optional int64 satoshiPerOutgoingGigaByte = 2;</code>
      *
      * <pre>
-     *Bytes coming from the server
+     *Bytes coming from the networkServer
      * </pre>
      */
     public boolean hasSatoshiPerOutgoingGigaByte() {
@@ -19134,7 +19134,7 @@ public final class PB {
      * <code>optional int64 satoshiPerOutgoingGigaByte = 2;</code>
      *
      * <pre>
-     *Bytes coming from the server
+     *Bytes coming from the networkServer
      * </pre>
      */
     public long getSatoshiPerOutgoingGigaByte() {
@@ -19263,7 +19263,7 @@ public final class PB {
      *
      * <pre>
      **
-     * This message is returned to the client when the server wants the client to pay.
+     * This message is returned to the client when the networkServer wants the client to pay.
      * We could make this a lot more complex: Using a  specialized message that represents a quote, which the
      * client signs (turning it into an invoice). The user can lay claim to bytes of a specified file &amp; whatnot.
      * Let's start simple by simply sending our prices
@@ -19399,7 +19399,7 @@ public final class PB {
        * <code>optional int64 satoshiPerIncomingGigaByte = 1;</code>
        *
        * <pre>
-       *Bytes going to the server
+       *Bytes going to the networkServer
        * </pre>
        */
       public boolean hasSatoshiPerIncomingGigaByte() {
@@ -19409,7 +19409,7 @@ public final class PB {
        * <code>optional int64 satoshiPerIncomingGigaByte = 1;</code>
        *
        * <pre>
-       *Bytes going to the server
+       *Bytes going to the networkServer
        * </pre>
        */
       public long getSatoshiPerIncomingGigaByte() {
@@ -19419,7 +19419,7 @@ public final class PB {
        * <code>optional int64 satoshiPerIncomingGigaByte = 1;</code>
        *
        * <pre>
-       *Bytes going to the server
+       *Bytes going to the networkServer
        * </pre>
        */
       public Builder setSatoshiPerIncomingGigaByte(long value) {
@@ -19432,7 +19432,7 @@ public final class PB {
        * <code>optional int64 satoshiPerIncomingGigaByte = 1;</code>
        *
        * <pre>
-       *Bytes going to the server
+       *Bytes going to the networkServer
        * </pre>
        */
       public Builder clearSatoshiPerIncomingGigaByte() {
@@ -19448,7 +19448,7 @@ public final class PB {
        * <code>optional int64 satoshiPerOutgoingGigaByte = 2;</code>
        *
        * <pre>
-       *Bytes coming from the server
+       *Bytes coming from the networkServer
        * </pre>
        */
       public boolean hasSatoshiPerOutgoingGigaByte() {
@@ -19458,7 +19458,7 @@ public final class PB {
        * <code>optional int64 satoshiPerOutgoingGigaByte = 2;</code>
        *
        * <pre>
-       *Bytes coming from the server
+       *Bytes coming from the networkServer
        * </pre>
        */
       public long getSatoshiPerOutgoingGigaByte() {
@@ -19468,7 +19468,7 @@ public final class PB {
        * <code>optional int64 satoshiPerOutgoingGigaByte = 2;</code>
        *
        * <pre>
-       *Bytes coming from the server
+       *Bytes coming from the networkServer
        * </pre>
        */
       public Builder setSatoshiPerOutgoingGigaByte(long value) {
@@ -19481,7 +19481,7 @@ public final class PB {
        * <code>optional int64 satoshiPerOutgoingGigaByte = 2;</code>
        *
        * <pre>
-       *Bytes coming from the server
+       *Bytes coming from the networkServer
        * </pre>
        */
       public Builder clearSatoshiPerOutgoingGigaByte() {

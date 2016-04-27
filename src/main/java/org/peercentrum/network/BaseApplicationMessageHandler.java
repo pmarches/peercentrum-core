@@ -3,16 +3,17 @@ package org.peercentrum.network;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.HeaderMsg;
+import org.peercentrum.core.ServerMain;
 
 import io.netty.channel.ChannelHandlerContext;
 
 public abstract class BaseApplicationMessageHandler {
-	protected NetworkServer server;
+	protected ServerMain serverMain;
 	
-	public BaseApplicationMessageHandler(NetworkServer server){
-		if(server!=null){
-			this.server=server;
-			server.addApplicationHandler(this);
+	public BaseApplicationMessageHandler(ServerMain serverMain){
+		if(serverMain!=null){
+			this.serverMain=serverMain;
+			serverMain.addApplicationHandler(this);
 		}
 	}
 	

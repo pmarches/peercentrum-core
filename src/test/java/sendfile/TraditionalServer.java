@@ -19,7 +19,7 @@ public class TraditionalServer {
 	    System.out.println("Server waiting for client on port " + 
 			       server_socket.getLocalPort());
 	    
-	    // server infinite loop
+	    // networkServer infinite loop
 	    while(true) {
 		Socket socket = server_socket.accept();
 		System.out.println("New connection accepted " +

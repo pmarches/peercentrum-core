@@ -21,7 +21,7 @@ public class ServerMainTest {
 		configNode2.setListenPort(0);
 		configNode2.setEnableNAT(false);
 		NodeGossipConfig gossipConfigNode2=(NodeGossipConfig) configNode2.getAppConfig(NodeGossipConfig.class);
-		gossipConfigNode2.setBootstrapEndpoint("localhost:"+node1.server.getListeningPort());
+		gossipConfigNode2.setBootstrapEndpoint("localhost:"+node1.networkServer.getListeningPort());
 		ServerMain node2 = new ServerMain(configNode2);
 		node2.run();
 	}

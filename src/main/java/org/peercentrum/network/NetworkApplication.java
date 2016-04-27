@@ -6,6 +6,7 @@ import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.NetworkMessage;
 import org.peercentrum.core.ProtobufByteBufCodec;
+import org.peercentrum.core.ServerMain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,8 +19,8 @@ public class NetworkApplication extends BaseApplicationMessageHandler {
   private static final Logger LOGGER = LoggerFactory.getLogger(NetworkApplication.class);
   
 
-	public NetworkApplication(NetworkServer server) {
-		super(server);
+	public NetworkApplication(ServerMain serverMain) {
+		super(serverMain);
 	}
 
 	@Override
@@ -61,7 +62,7 @@ public class NetworkApplication extends BaseApplicationMessageHandler {
       clientExternalIP=((InetSocketAddress)ctx.channel().remoteAddress()).getHostName();
     }
     InetSocketAddress ipEndpoint=new InetSocketAddress(clientExternalIP, receivedNodeMetaDataMsg.getExternalPort());
-    server.getNodeDatabase().mapNodeIdToAddress(server.getRemoteNodeIdentifier(ctx), ipEndpoint);
+    serverMain.getNodeDatabase().mapNodeIdToAddress(serverMain.getNetworkServer().getRemoteNodeIdentifier(ctx), ipEndpoint);
 
 
     //FIXME, nothing to reply!

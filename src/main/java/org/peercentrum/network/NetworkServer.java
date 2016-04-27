@@ -1,14 +1,11 @@
 package org.peercentrum.network;
 
 import java.net.InetSocketAddress;
-import java.util.Hashtable;
 
 import javax.security.cert.X509Certificate;
 
-import org.peercentrum.core.ApplicationIdentifier;
-import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.core.TopLevelConfig;
+import org.peercentrum.core.ServerMain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +26,7 @@ import io.netty.util.concurrent.DefaultEventExecutorGroup;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 
-public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
+public class NetworkServer { //TODO implement AutoClosable
   private static final String TLS_HANDLER_NAME = "tls";
   private static final Logger LOGGER = LoggerFactory.getLogger(NetworkServer.class);
   protected static final AttributeKey<NodeIdentifier> REMOTE_NODE_ID_ATTR = AttributeKey.valueOf("REMOTE_NODE_ID");
@@ -37,21 +34,14 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   DefaultEventExecutorGroup applicationWorkerGroup = new DefaultEventExecutorGroup(2);
   NioEventLoopGroup nioWorkerGroup = new NioEventLoopGroup();
   Channel bindChannel;
-  TopLevelConfig configuration;
-  Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler> allApplicationHandler=new Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler>();
   protected int effectiveListeningPort;
-  protected NodeDatabase nodeDatabase;
   protected ECDSASslContext serverSideSSLContext;
-  public NetworkClient networkClient;
+  protected ServerMain serverMain;
 
-  public NetworkServer(TopLevelConfig config) throws Exception {
-    super(new NodeIdentity(config));
-    this.configuration=config;
-//    this.nodeDatabase=new NodeDatabase(null);
-    this.nodeDatabase=new NodeDatabase(config.getFileRelativeFromConfigDirectory("node.db"));
-    this.serverSideSSLContext = new ECDSASslContext(nodeIdentity, new CheckSelfSignedNodeIdTrustManager(null));
+  public NetworkServer(ServerMain serverMain) throws Exception {
+    this.serverMain=serverMain;
+    this.serverSideSSLContext = new ECDSASslContext(serverMain.getLocalIdentity(), new CheckSelfSignedNodeIdTrustManager(null));
 
-    new NetworkApplication(this);
     ServerBootstrap b = new ServerBootstrap();
     b.group(nioWorkerGroup)
       .channel(NioServerSocketChannel.class)
@@ -60,13 +50,9 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
       .childOption(ChannelOption.SO_KEEPALIVE, true)
 //      .childOption(ChannelOption.ALLOW_HALF_CLOSURE, true)
       ;
-    bindChannel = b.bind(config.getListenPort()).sync().channel();
+    bindChannel = b.bind(serverMain.getConfig().getListenPort()).sync().channel();
     effectiveListeningPort=((InetSocketAddress) bindChannel.localAddress()).getPort();
-    LOGGER.debug("server "+super.getNodeIdentifier()+" now listening on port {}", effectiveListeningPort);
-    
-    networkClient=new NetworkClient(getLocalIdentity(), getNodeDatabase());
-    networkClient.setLocalListeningPort(getListeningPort());
-    networkClient.useEncryption=config.encryptConnection;
+    LOGGER.debug("networkServer "+serverMain.getLocalIdentity().getIdentifier()+" now listening on port {}", effectiveListeningPort);
   }
 
   private GenericFutureListener<Future<Channel>> onSslHandshakeCompletes=new GenericFutureListener<Future<Channel>>() {
@@ -83,7 +69,7 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
   ChannelInitializer<SocketChannel> channelInitializer=new ChannelInitializer<SocketChannel>() {
     @Override
     public void initChannel(SocketChannel ch) throws Exception {
-      SslHandler sslHandler=serverSideSSLContext.newHandler(NetworkServer.this.configuration.encryptConnection, false);
+      SslHandler sslHandler=serverSideSSLContext.newHandler(serverMain.getConfig().encryptConnection, false);
       sslHandler.handshakeFuture().addListener(onSslHandshakeCompletes);
       ch.pipeline().addLast(TLS_HANDLER_NAME, sslHandler);
 
@@ -107,36 +93,12 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
     //		applicationWorkerGroup.awaitTermination(1000, TimeUnit.DAYS);
   }
 
-
-  public void addApplicationHandler(BaseApplicationMessageHandler applicationHandler) {
-    this.allApplicationHandler.put(applicationHandler.getApplicationId(), applicationHandler);
-  }
-
-  public BaseApplicationMessageHandler getApplicationHandler(ApplicationIdentifier appIdReceived) {
-    return allApplicationHandler.get(appIdReceived);
-  }
-
-  public void setConfig(TopLevelConfig config) {
-    this.configuration=config;
-  }
-  public TopLevelConfig getConfig(){
-    return configuration;
-  }
-
   public int getListeningPort() {
     return effectiveListeningPort;
   }
 
   public InetSocketAddress getListeningAddress() {
     return (InetSocketAddress) bindChannel.localAddress();
-  }
-
-  public NodeDatabase getNodeDatabase(){
-    return nodeDatabase;
-  }
-
-  public NodeIdentity getLocalIdentity() {
-    return this.nodeIdentity;
   }
   
   public NodeIdentifier getRemoteNodeIdentifier(ChannelHandlerContext ctx) {
@@ -148,7 +110,5 @@ public class NetworkServer extends NetworkBase { //TODO implement AutoClosable
     Attribute<NodeIdentifier> nodeIdHolder = channel.attr(REMOTE_NODE_ID_ATTR);
     nodeIdHolder.set(remoteNodeId);
   }
-
-
 
 }

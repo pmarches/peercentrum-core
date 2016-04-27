@@ -10,6 +10,7 @@ import org.peercentrum.core.PB.DHTFindMsg;
 import org.peercentrum.core.PB.DHTStoreValueMsg;
 import org.peercentrum.core.PB.DHTTopLevelMsg.Builder;
 import org.peercentrum.core.ProtobufByteBufCodec;
+import org.peercentrum.core.ServerMain;
 import org.peercentrum.dht.selfregistration.SelfRegistrationEntry;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
@@ -34,9 +35,9 @@ public abstract class DHTApplication extends BaseApplicationMessageHandler {
     FIFO
   }
 
-  public DHTApplication(NetworkServer server) throws Exception {
-    super(server);
-    dhtClient=new DHTClient(server.networkClient, getApplicationId());
+  public DHTApplication(ServerMain serverMain) throws Exception {
+    super(serverMain);
+    dhtClient=new DHTClient(serverMain.getNetworkClient(), getApplicationId());
   }
 
   static {
@@ -49,7 +50,7 @@ public abstract class DHTApplication extends BaseApplicationMessageHandler {
   public HeaderAndPayload generateReponseFromQuery(ChannelHandlerContext ctx, HeaderAndPayload receivedMessage) {
     try {
       PB.DHTTopLevelMsg dhtTopLevelMsg = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, PB.DHTTopLevelMsg.class);
-      dhtClient.receivedMessageFrom(new KIdentifier(server.getRemoteNodeIdentifier(ctx).getBytes()));
+      dhtClient.receivedMessageFrom(new KIdentifier(serverMain.getNetworkServer().getRemoteNodeIdentifier(ctx).getBytes()));
       
       PB.HeaderMsg.Builder responseHeader = super.newResponseHeaderForRequest(receivedMessage);
       PB.DHTTopLevelMsg.Builder topLevelResponseMsg=PB.DHTTopLevelMsg.newBuilder();
@@ -84,7 +85,7 @@ public abstract class DHTApplication extends BaseApplicationMessageHandler {
       PB.PeerEndpointMsg.Builder peerEndpointMsg=PB.PeerEndpointMsg.newBuilder();
       peerEndpointMsg.setIdentity(ByteString.copyFrom(oneId.getBytes()));
 
-      InetSocketAddress socketAddress = server.getNodeDatabase().getEndpointByNodeIdentifier(new NodeIdentifier(oneId.getBytes()));
+      InetSocketAddress socketAddress = serverMain.getNodeDatabase().getEndpointByNodeIdentifier(new NodeIdentifier(oneId.getBytes()));
       PB.PeerEndpointMsg.TLSEndpointMsg.Builder ipEndpointBuilder=PB.PeerEndpointMsg.TLSEndpointMsg.newBuilder();
       ipEndpointBuilder.setIpAddress(socketAddress.getHostName());
       ipEndpointBuilder.setPort(socketAddress.getPort());

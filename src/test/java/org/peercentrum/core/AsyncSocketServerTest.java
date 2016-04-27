@@ -12,7 +12,6 @@ import org.peercentrum.core.PB.HeaderMsg;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkClientConnection;
-import org.peercentrum.network.NetworkServer;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -30,8 +29,8 @@ public class AsyncSocketServerTest {
 		CountDownLatch countdownLatch;
 		public AtomicInteger numberOfMessagesReceived=new AtomicInteger();
 
-		public MessageEchoApp(NetworkServer server, CountDownLatch serverSideLatch) {
-			super(server);
+		public MessageEchoApp(ServerMain serverMain, CountDownLatch serverSideLatch) {
+			super(serverMain);
 			countdownLatch = serverSideLatch;
 		}
 		
@@ -58,11 +57,11 @@ public class AsyncSocketServerTest {
 	public void testAsyncSocketServer() throws Exception {
 		ResourceLeakDetector.setLevel(Level.ADVANCED);
 		TopLevelConfig topConfig=new TopLevelConfig();
-		final NetworkServer server = new NetworkServer(topConfig);
+		final ServerMain server = new ServerMain(topConfig);
 		final CountDownLatch serverDoneBarrier = new CountDownLatch(NB_CLIENTS*NUMBER_OF_MESSAGE);
 		MessageEchoApp serverSideCountingHandler=new MessageEchoApp(server, serverDoneBarrier);
 		
-		NodeIPEndpoint serverEndpoint=new NodeIPEndpoint(server.getNodeIdentifier(), new InetSocketAddress(server.getListeningPort()));
+		NodeIPEndpoint serverEndpoint=new NodeIPEndpoint(server.getNodeIdentifier(), new InetSocketAddress(server.getNetworkServer().getListeningPort()));
 		final NetworkClientConnection connection = new NetworkClientConnection(null, serverEndpoint, 0);
 		final CountDownLatch clientsDoneBarrier = new CountDownLatch(NB_CLIENTS);
 		for(int i=0; i<NB_CLIENTS; i++){
@@ -80,7 +79,7 @@ public class AsyncSocketServerTest {
 		connection.close();
 		serverDoneBarrier.await();
 		
-		server.stopAcceptingConnections();
+		server.networkServer.stopAcceptingConnections();
 
 		assertEquals(NB_CLIENTS*NUMBER_OF_MESSAGE, serverSideCountingHandler.numberOfMessagesReceived.intValue());
 	}

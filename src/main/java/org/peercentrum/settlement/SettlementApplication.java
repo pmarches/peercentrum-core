@@ -6,9 +6,9 @@ import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.HeaderMsg.Builder;
 import org.peercentrum.core.ProtobufByteBufCodec;
+import org.peercentrum.core.ServerMain;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
-import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,15 +22,15 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
   protected SettlementDB db;
   protected BitcoinSettlement bitcoinSettlement;
 	
-	public SettlementApplication(NetworkServer server) throws Exception {
-		super(server);
+	public SettlementApplication(ServerMain serverMain) throws Exception {
+		super(serverMain);
 	}
 
 	@Override
 	public HeaderAndPayload generateReponseFromQuery(ChannelHandlerContext ctx, HeaderAndPayload receivedMessage) {
 		LOGGER.debug("settlement generateReponseFromQuery");
 		try {
-			NodeIdentifier remoteNodeIdentifier=server.getRemoteNodeIdentifier(ctx);
+			NodeIdentifier remoteNodeIdentifier=serverMain.getNetworkServer().getRemoteNodeIdentifier(ctx);
 
       PB.SettlementMsg.Builder topLevelResponse=PB.SettlementMsg.newBuilder();
 			PB.SettlementMsg settlementReqMsg = ProtobufByteBufCodec.decodeNoLengthPrefix(receivedMessage.payload, PB.SettlementMsg.class);
@@ -59,8 +59,8 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 	
 	protected BitcoinSettlement getBitcoinSettlement() throws Exception{
 	  if(bitcoinSettlement==null){
-	    db=new SettlementDB(server.getConfig().getFileRelativeFromConfigDirectory("settlement.db"));
-	    bitcoinSettlement=new BitcoinSettlement(server.getConfig().getFileRelativeFromConfigDirectory("bitcoin.wallet"));
+	    db=new SettlementDB(serverMain.getConfig().getFileRelativeFromConfigDirectory("settlement.db"));
+	    bitcoinSettlement=new BitcoinSettlement(serverMain.getConfig().getFileRelativeFromConfigDirectory("bitcoin.wallet"));
 	  }
 	  return bitcoinSettlement;
 	}

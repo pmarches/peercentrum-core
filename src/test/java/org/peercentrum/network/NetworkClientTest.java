@@ -3,6 +3,7 @@ package org.peercentrum.network;
 import org.junit.Test;
 import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NullConfig;
+import org.peercentrum.core.ServerMain;
 
 public class NetworkClientTest {
 
@@ -39,13 +40,13 @@ public class NetworkClientTest {
 
   @Test
   public void testPing() throws Exception{
-    NetworkServer server1=new NetworkServer(new NullConfig());
+    ServerMain server1=new ServerMain(new NullConfig());
     NetworkClient client=new NetworkClient(new NodeIdentity(new NullConfig()), new NodeDatabase(null));
-    client.nodeDatabase.mapNodeIdToAddress(server1.getNodeIdentifier(), server1.getListeningAddress());
+    client.nodeDatabase.mapNodeIdToAddress(server1.getNodeIdentifier(), server1.getNetworkServer().getListeningAddress());
     NetworkClientConnection connection1To2 = client.createConnectionToPeer(server1.getNodeIdentifier());
     connection1To2.ping();
     connection1To2.close();
-    server1.stopAcceptingConnections();
+    server1.getNetworkServer().stopAcceptingConnections();
     client.close();
   }
 

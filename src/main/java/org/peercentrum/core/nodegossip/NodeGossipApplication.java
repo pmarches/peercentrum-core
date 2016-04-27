@@ -2,13 +2,13 @@ package org.peercentrum.core.nodegossip;
 
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeDatabase;
-import org.peercentrum.core.NodeMetaData;
 import org.peercentrum.core.NodeIPEndpoint;
+import org.peercentrum.core.NodeMetaData;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.ProtobufByteBufCodec;
+import org.peercentrum.core.ServerMain;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
-import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,14 +27,13 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler impleme
 
 	NodeGossipClient client;
   
-	public NodeGossipApplication(NetworkServer server) throws Exception {
-		super(server);
-		client=new NodeGossipClient(server.networkClient);
-		client.reachableListeningPort=server.getListeningPort();
+	public NodeGossipApplication(ServerMain serverMain) throws Exception {
+		super(serverMain);
+		client=new NodeGossipClient(serverMain.getNetworkClient(), serverMain.getNetworkServer().getListeningPort());
 	}
 	
 	private void bootstrapGossiping() throws Exception {
-	  NodeGossipConfig gossipConfig=(NodeGossipConfig) server.getConfig().getAppConfig(NodeGossipConfig.class);
+	  NodeGossipConfig gossipConfig=(NodeGossipConfig) serverMain.getConfig().getAppConfig(NodeGossipConfig.class);
 	  if(gossipConfig==null){
 	    LOGGER.warn("There exists no '"+NodeGossipConfig.class.getName()+"' configuration, let's hope we are well known..");
 	  }
@@ -54,7 +53,7 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler impleme
 	public HeaderAndPayload generateReponseFromQuery(ChannelHandlerContext ctx, HeaderAndPayload receivedMessage) {
 		try {
 			LOGGER.debug("generateReponseFromQuery");
-			NodeDatabase nodeDb = server.getNodeDatabase();
+			NodeDatabase nodeDb = serverMain.getNodeDatabase();
 			
 			if(receivedMessage.header.hasApplicationSpecificBlockLength()==false){
 				LOGGER.error("Request is missing the application block payload");
@@ -86,7 +85,7 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler impleme
 
   @Override
   public void run() {
-    if(server.getNodeDatabase().size()==0){
+    if(serverMain.getNodeDatabase().size()==0){
       LOGGER.info("Node database is empty, will try to bootstrap, if possible");
       try {
         bootstrapGossiping();

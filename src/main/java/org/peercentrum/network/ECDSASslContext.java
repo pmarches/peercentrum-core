@@ -50,7 +50,7 @@ public class ECDSASslContext {
 //        sessCtx.setSessionTimeout((int) Math.min(sessionTimeout, Integer.MAX_VALUE));
 //      }
     } catch (Exception e) {
-      throw new SSLException("failed to initialize the server-side SSL context", e);
+      throw new SSLException("failed to initialize the networkServer-side SSL context", e);
     }
   }
 

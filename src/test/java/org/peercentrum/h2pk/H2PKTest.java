@@ -9,9 +9,9 @@ import org.peercentrum.consensusprocess.ConsensusThreshold;
 import org.peercentrum.consensusprocess.MockTriggerableThreshold;
 import org.peercentrum.consensusprocess.UniqueNodeList;
 import org.peercentrum.core.NodeDatabase;
+import org.peercentrum.core.ServerMain;
 import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.network.NetworkClient;
-import org.peercentrum.network.NetworkServer;
 import org.peercentrum.network.NodeIdentity;
 
 
@@ -27,8 +27,8 @@ public class H2PKTest {
 		ConsensusThreshold mockThreshold=new MockTriggerableThreshold(1, NB_NODES);
 		for(int i=0; i<NB_NODES; i++){
 			TopLevelConfig topConfig=new TopLevelConfig();
-			NetworkServer nodeServer = new NetworkServer(topConfig);
-			InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", nodeServer.getListeningPort());
+			ServerMain nodeServer = new ServerMain(topConfig);
+			InetSocketAddress serverEndpoint=new InetSocketAddress("localhost", nodeServer.getNetworkServer().getListeningPort());
 			sharedNodeDatabase.mapNodeIdToAddress(nodeServer.getNodeIdentifier(), serverEndpoint);
 			sharedUNL.addValidatorNode(nodeServer.getNodeIdentifier());
 			HashToPublicKeyDB db=new HashToPublicKeyDB();

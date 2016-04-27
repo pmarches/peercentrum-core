@@ -11,10 +11,10 @@ import org.peercentrum.core.PB.P2PBlobBlobRequestMsg;
 import org.peercentrum.core.PB.P2PBlobRequestMsg;
 import org.peercentrum.core.PB.P2PBlobResponseMsg;
 import org.peercentrum.core.ProtobufByteBufCodec;
+import org.peercentrum.core.ServerMain;
 import org.peercentrum.h2pk.HashIdentifier;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
-import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,10 +30,10 @@ public class P2PBlobApplication extends BaseApplicationMessageHandler {
 
 	protected P2PBlobRepository blobRepository;
 	
-	public P2PBlobApplication(NetworkServer clientOrServer, P2PBlobRepository blobRepository) {
-		super(clientOrServer);
+	public P2PBlobApplication(ServerMain serverMain, P2PBlobRepository blobRepository) {
+		super(serverMain);
 		this.blobRepository=blobRepository;
-		clientOrServer.addApplicationHandler(this);
+		serverMain.addApplicationHandler(this);
 	}
 
 	@Override

@@ -43,7 +43,7 @@ public class SettlementApplicationClient implements Closeable {
   ClientConnection clientHandler=new ClientConnection(){
     @Override
     public void sendToServer(TwoWayChannelMessage twoWayClientMsg) {
-      LOGGER.debug("CLIENT: send to server {}", twoWayClientMsg);
+      LOGGER.debug("CLIENT: send to networkServer {}", twoWayClientMsg);
       PB.SettlementMsg.Builder saRequestMsg=PB.SettlementMsg.newBuilder();
       saRequestMsg.addTwoWayChannelMsg(twoWayClientMsg);
       Future<SettlementMsg> responseFuture = networkClient.sendRequestMsg(SettlementApplication.APP_ID, saRequestMsg.build());
@@ -56,7 +56,7 @@ public class SettlementApplicationClient implements Closeable {
             return;
           }
           for(Protos.TwoWayChannelMessage twoWayServerMsg : serverResponseMsg.getTwoWayChannelMsgList()){
-            LOGGER.debug("Client received response from server {}", twoWayServerMsg);
+            LOGGER.debug("Client received response from networkServer {}", twoWayServerMsg);
             paymentChannel.receiveMessage(twoWayServerMsg);
           }
           LOGGER.debug("client Done processing response");

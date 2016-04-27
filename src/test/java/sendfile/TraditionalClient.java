@@ -22,10 +22,10 @@ public class TraditionalClient {
 	int ERROR = 1;
 	
 	
-	// connect to server
+	// connect to networkServer
 	try {
 	    socket = new Socket(server, port);
-	    System.out.println("Connected with server " +
+	    System.out.println("Connected with networkServer " +
 				   socket.getInetAddress() +
 				   ":" + socket.getPort());
 	}

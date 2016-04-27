@@ -9,9 +9,9 @@ import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.DHTFindMsg;
 import org.peercentrum.core.PB.DHTStoreValueMsg;
 import org.peercentrum.core.PB.DHTTopLevelMsg.Builder;
+import org.peercentrum.core.ServerMain;
 import org.peercentrum.core.Signature;
 import org.peercentrum.dht.DHTApplication;
-import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,8 +23,8 @@ public class QueueDHT extends DHTApplication {
   private static final Logger LOGGER = LoggerFactory.getLogger(QueueDHT.class);
   public static ApplicationIdentifier APP_ID=new ApplicationIdentifier(QueueDHT.class.getName().getBytes());
   
-  public QueueDHT(NetworkServer server) throws Exception {
-    super(server);
+  public QueueDHT(ServerMain serverMain) throws Exception {
+    super(serverMain);
     setEntryTimeToLive(30, TimeUnit.DAYS);
     setEntryMaximumCardinality(1000);
     setEntryOverflowHandling(OverflowHandling.LIFO);
