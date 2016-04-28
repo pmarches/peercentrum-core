@@ -9,6 +9,7 @@ import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.ServerMain;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
+import org.peercentrum.network.NetworkClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +24,8 @@ import io.netty.channel.ChannelHandlerContext;
  */
 public class NodeGossipApplication extends BaseApplicationMessageHandler implements Runnable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NodeGossipApplication.class);
-	public static final ApplicationIdentifier GOSSIP_ID=new ApplicationIdentifier((NodeGossipApplication.class.getSimpleName()+"_APP_ID").getBytes()); 
+	public static final ApplicationIdentifier GOSSIP_ID=new ApplicationIdentifier((NodeGossipApplication.class.getSimpleName()+"_APP_ID").getBytes());
+  private static final int NB_CACHED_CONNECTIONS = 10; 
 
 	NodeGossipClient client;
   
@@ -33,6 +35,7 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler impleme
 	}
 	
 	private void bootstrapGossiping() throws Exception {
+	  LOGGER.info("Contacting the bootstraping node to gather more nodes");
 	  NodeGossipConfig gossipConfig=(NodeGossipConfig) serverMain.getConfig().getAppConfig(NodeGossipConfig.class);
 	  if(gossipConfig==null){
 	    LOGGER.warn("There exists no '"+NodeGossipConfig.class.getName()+"' configuration, let's hope we are well known..");
@@ -70,7 +73,7 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler impleme
 			PB.GossipReplyMorePeers.Builder gossipReplyBuilder=PB.GossipReplyMorePeers.newBuilder();
 			for(NodeMetaData oneNodeInfo:nodeDb.getAllNodeInformation(50)){
 			  PB.PeerEndpointMsg.Builder onePeerBuilder = PB.PeerEndpointMsg.newBuilder();
-				onePeerBuilder.setIdentity(ByteString.copyFrom(oneNodeInfo.publicKey.getBytes()));
+				onePeerBuilder.setIdentity(ByteString.copyFrom(oneNodeInfo.nodeIdentifier.getBytes()));
 				onePeerBuilder.setTlsEndpoint(PB.PeerEndpointMsg.TLSEndpointMsg.newBuilder().setIpAddress(oneNodeInfo.nodeSocketAddress.getHostString()).setPort(oneNodeInfo.nodeSocketAddress.getPort()));
 				gossipReplyBuilder.addPeers(onePeerBuilder.build());
 			}
@@ -85,12 +88,23 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler impleme
 
   @Override
   public void run() {
-    if(serverMain.getNodeDatabase().size()==0){
-      LOGGER.info("Node database is empty, will try to bootstrap, if possible");
+    NetworkClient client=serverMain.getNetworkClient();
+    int nbMissingConnections=NB_CACHED_CONNECTIONS-client.getNumberOfCachedConnections();
+    if(nbMissingConnections>0){
+      LOGGER.info("We are low on cached connections, attempting to contact "+nbMissingConnections+" other nodes");
       try {
-        bootstrapGossiping();
+        if(serverMain.getNodeDatabase().size()<NB_CACHED_CONNECTIONS){
+          bootstrapGossiping();
+        }
       } catch (Exception e) {
         LOGGER.error("Exception during bootstrap gossiping", e);
+      }
+      try {
+        for(NodeMetaData remoteNode: client.getNodeDatabase().getAllNodeInformation(nbMissingConnections)){
+          client.maybeOpenConnectionToPeer(remoteNode.nodeIdentifier);
+        }
+      } catch (Exception e) {
+        LOGGER.error("", e);
       }
     }
   }

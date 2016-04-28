@@ -32,6 +32,8 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 
 public class SettlementApplicationClient implements Closeable {
+  public static final String BITCOIN_DIRNAME = "bitcoin";
+
   private static final Logger LOGGER = LoggerFactory.getLogger(SettlementApplicationClient.class);
   
   WalletAppKit clientKit;
@@ -93,7 +95,7 @@ public class SettlementApplicationClient implements Closeable {
     this.networkClient=networkClient;
     this.settlementMethodTable=settlementMethodTable;
     RegTestParams params=RegTestParams.get(); //FIXME
-    File bitcoinDir=topConfig.getFileRelativeFromConfigDirectory("bitcoin");
+    File bitcoinDir=topConfig.getFileRelativeFromConfigDirectory(BITCOIN_DIRNAME);
     clientKit=new WalletAppKit(params, bitcoinDir, "settlementClient1") {
       @Override
       protected List<WalletExtension> provideWalletExtensions() throws Exception {

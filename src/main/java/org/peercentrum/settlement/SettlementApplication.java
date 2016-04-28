@@ -16,7 +16,9 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 
 public class SettlementApplication extends BaseApplicationMessageHandler {
-	private static final Logger LOGGER = LoggerFactory.getLogger(SettlementApplication.class);
+	public static final String BITCOIN_WALLET_FILENAME = "bitcoin.wallet";
+  private static final String SETTLEMENT_DB_FILENAME = "settlement.db";
+  private static final Logger LOGGER = LoggerFactory.getLogger(SettlementApplication.class);
 	public static final ApplicationIdentifier APP_ID=new ApplicationIdentifier("SettlementApplication".getBytes());
 
   protected SettlementDB db;
@@ -59,8 +61,8 @@ public class SettlementApplication extends BaseApplicationMessageHandler {
 	
 	protected BitcoinSettlement getBitcoinSettlement() throws Exception{
 	  if(bitcoinSettlement==null){
-	    db=new SettlementDB(serverMain.getConfig().getFileRelativeFromConfigDirectory("settlement.db"));
-	    bitcoinSettlement=new BitcoinSettlement(serverMain.getConfig().getFileRelativeFromConfigDirectory("bitcoin.wallet"));
+	    db=new SettlementDB(serverMain.getConfig().getFileRelativeFromConfigDirectory(SETTLEMENT_DB_FILENAME));
+	    bitcoinSettlement=new BitcoinSettlement(serverMain.getConfig().getFileRelativeFromConfigDirectory(BITCOIN_WALLET_FILENAME));
 	  }
 	  return bitcoinSettlement;
 	}

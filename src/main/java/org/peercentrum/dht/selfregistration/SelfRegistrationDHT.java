@@ -29,6 +29,7 @@ import com.google.protobuf.ByteString;
  * Usefull for stuff like swarm tracking like bitorrent.
  */
 public class SelfRegistrationDHT extends DHTApplication {
+  public static final String DHT_FILENAME = "DHT.db";
   private static final Logger LOGGER = LoggerFactory.getLogger(SelfRegistrationDHT.class);
   public static ApplicationIdentifier APP_ID=new ApplicationIdentifier(SelfRegistrationDHT.class.getName().getBytes());
   private static final String DHT_VALUE_TABLE_NAME = "dhtValue";
@@ -45,7 +46,7 @@ public class SelfRegistrationDHT extends DHTApplication {
     setEntryMaximumCardinality(1000);
     setEntryOverflowHandling(OverflowHandling.LIFO); //LIFO or FIFO    
 
-    File serverFile=serverMain.getConfig().getFileRelativeFromConfigDirectory("DHT.db");
+    File serverFile=serverMain.getConfig().getFileRelativeFromConfigDirectory(DHT_FILENAME);
     boolean dbExists=serverFile.exists();
     db = new SqlJetDb(serverFile, true);
     db.open();

@@ -27,7 +27,7 @@ import com.google.protobuf.ByteString;
 public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction> implements Closeable {
 	private static final Logger LOGGER = LoggerFactory.getLogger(HashToPublicKeyDB.class);
 
-	protected static final String FIELD_PUBLIC_KEY = "publicKey";
+	protected static final String FIELD_PUBLIC_KEY = "nodeIdentifier";
 	protected static final String INDEX_ADDRESS = "addressIdx";
 	protected static final String INDEX_ADDRESS_PK = "addressPkIdx";
 	protected SqlJetDb db;
@@ -113,7 +113,7 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 			throw new NullPointerException("address cannot be null");
 		}
 		if(publicKey==null){
-			throw new NullPointerException("publicKey cannot be null");
+			throw new NullPointerException("nodeIdentifier cannot be null");
 		}
 		
 		try {
@@ -132,10 +132,10 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 	}
 
 	private void maybeCreateSchema() throws SqlJetException {
-		final ISqlJetTableDef tDef = db.createTable("create table addressToPK(address BLOB, publicKey BLOB);");
+		final ISqlJetTableDef tDef = db.createTable("create table addressToPK(address BLOB, nodeIdentifier BLOB);");
 		addressToPKTable = db.getTable(tDef.getName());
 		db.createIndex("CREATE INDEX " + INDEX_ADDRESS + " ON addressToPK(address)");
-		db.createIndex("CREATE UNIQUE INDEX " + INDEX_ADDRESS_PK + " ON addressToPK(address,publicKey)");
+		db.createIndex("CREATE UNIQUE INDEX " + INDEX_ADDRESS_PK + " ON addressToPK(address,nodeIdentifier)");
 	}
 
 	/**

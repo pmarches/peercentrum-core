@@ -4,11 +4,11 @@ import java.net.InetSocketAddress;
 
 public class NodeMetaData {
 	public NodeMetaData(NodeIdentifier NodeIdentifier, InetSocketAddress nodeSocketAddress) {
-		this.publicKey=NodeIdentifier;
+		this.nodeIdentifier=NodeIdentifier;
 		this.nodeSocketAddress=nodeSocketAddress;
 	}
 
-	public NodeIdentifier publicKey;
+	public NodeIdentifier nodeIdentifier;
 	public InetSocketAddress nodeSocketAddress;
 
 	public long firstSeenAt;

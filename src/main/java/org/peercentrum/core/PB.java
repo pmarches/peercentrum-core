@@ -7889,13 +7889,13 @@ public final class PB {
      */
     com.google.protobuf.ByteString getAddress();
 
-    // optional bytes publicKey = 3;
+    // optional bytes nodeIdentifier = 3;
     /**
-     * <code>optional bytes publicKey = 3;</code>
+     * <code>optional bytes nodeIdentifier = 3;</code>
      */
     boolean hasPublicKey();
     /**
-     * <code>optional bytes publicKey = 3;</code>
+     * <code>optional bytes nodeIdentifier = 3;</code>
      */
     com.google.protobuf.ByteString getPublicKey();
 
@@ -8170,17 +8170,17 @@ public final class PB {
       return address_;
     }
 
-    // optional bytes publicKey = 3;
+    // optional bytes nodeIdentifier = 3;
     public static final int PUBLICKEY_FIELD_NUMBER = 3;
     private com.google.protobuf.ByteString publicKey_;
     /**
-     * <code>optional bytes publicKey = 3;</code>
+     * <code>optional bytes nodeIdentifier = 3;</code>
      */
     public boolean hasPublicKey() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional bytes publicKey = 3;</code>
+     * <code>optional bytes nodeIdentifier = 3;</code>
      */
     public com.google.protobuf.ByteString getPublicKey() {
       return publicKey_;
@@ -8618,22 +8618,22 @@ public final class PB {
         return this;
       }
 
-      // optional bytes publicKey = 3;
+      // optional bytes nodeIdentifier = 3;
       private com.google.protobuf.ByteString publicKey_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes publicKey = 3;</code>
+       * <code>optional bytes nodeIdentifier = 3;</code>
        */
       public boolean hasPublicKey() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional bytes publicKey = 3;</code>
+       * <code>optional bytes nodeIdentifier = 3;</code>
        */
       public com.google.protobuf.ByteString getPublicKey() {
         return publicKey_;
       }
       /**
-       * <code>optional bytes publicKey = 3;</code>
+       * <code>optional bytes nodeIdentifier = 3;</code>
        */
       public Builder setPublicKey(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -8645,7 +8645,7 @@ public final class PB {
         return this;
       }
       /**
-       * <code>optional bytes publicKey = 3;</code>
+       * <code>optional bytes nodeIdentifier = 3;</code>
        */
       public Builder clearPublicKey() {
         bitField0_ = (bitField0_ & ~0x00000004);

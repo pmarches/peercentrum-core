@@ -78,8 +78,8 @@ public class TopLevelConfig {
     return new File(directoryOfConfigFile, fileName);
   }
 
-  public File getDirectory(String string) {
-    File directoryGenerated=getFileRelativeFromConfigDirectory(string);
+  public File getDirectory(String directoryNameStr) {
+    File directoryGenerated=getFileRelativeFromConfigDirectory(directoryNameStr);
     directoryGenerated.mkdirs();
     return directoryGenerated;
   }

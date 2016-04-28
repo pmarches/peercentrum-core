@@ -11,4 +11,9 @@ public class HashIdentifier extends Identifier {
 	public HashIdentifier(byte[] byteArray) {
 		super(byteArray);
 	}
+
+  public HashIdentifier(String hexHashString) {
+    super(hexHashString);
+  }
+
 }

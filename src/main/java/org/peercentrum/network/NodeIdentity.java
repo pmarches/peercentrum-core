@@ -49,6 +49,9 @@ import io.netty.handler.codec.base64.Base64;
 import io.netty.util.CharsetUtil;
 
 public class NodeIdentity {
+  public static final String LOCAL_PRIVATE_KEY_FILENAME = "localPrivateKey.pem";
+  public static final String LOCAL_CERTIFICATE_FILENAME = "localCertificate.crt";
+
   private static final Logger LOGGER = LoggerFactory.getLogger(NodeIdentity.class);
   static final String BC_PROVIDER = "BC";
   public static ECParameterSpec secp256k1 = ECNamedCurveTable.getParameterSpec("secp256k1");
@@ -67,8 +70,8 @@ public class NodeIdentity {
 
   public NodeIdentity(TopLevelConfig config) throws Exception {
     if(config!=null){
-      localCertificateFile=config.getFileRelativeFromConfigDirectory("localCertificate.crt");
-      localPrivateKeyFile=config.getFileRelativeFromConfigDirectory("localPrivateKey.pem");
+      localCertificateFile=config.getFileRelativeFromConfigDirectory(LOCAL_CERTIFICATE_FILENAME);
+      localPrivateKeyFile=config.getFileRelativeFromConfigDirectory(LOCAL_PRIVATE_KEY_FILENAME);
     }
     random = SecureRandom.getInstance("SHA1PRNG");
     if(localCertificateFile==null || localCertificateFile.exists()==false){

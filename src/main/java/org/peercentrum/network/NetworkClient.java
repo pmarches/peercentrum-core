@@ -96,4 +96,8 @@ public class NetworkClient implements Closeable {
   public NodeIdentifier getNodeIdentifier() {
     return localIdentity.getIdentifier();
   }
+
+  public int getNumberOfCachedConnections() {
+    return connectionCache.size();
+  }
 }

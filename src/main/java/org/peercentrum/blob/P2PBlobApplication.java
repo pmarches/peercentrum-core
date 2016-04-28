@@ -25,7 +25,7 @@ import io.netty.channel.ChannelHandlerContext;
 
 public class P2PBlobApplication extends BaseApplicationMessageHandler {
 	private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobApplication.class);
-	public static final ApplicationIdentifier APP_ID=new ApplicationIdentifier(P2PBlobApplication.class.getSimpleName().getBytes());
+	public static final ApplicationIdentifier APP_ID=new ApplicationIdentifier(P2PBlobApplication.class.getName().getBytes());
 	public static final int DEFAULT_BLOCK_SIZE = 256*1024;
 
 	protected P2PBlobRepository blobRepository;

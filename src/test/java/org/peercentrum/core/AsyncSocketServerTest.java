@@ -2,12 +2,12 @@ package org.peercentrum.core;
 
 import static org.junit.Assert.assertEquals;
 
-import java.net.InetSocketAddress;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
+import org.peercentrum.TransientMockNetworkOfNodes;
 import org.peercentrum.core.PB.HeaderMsg;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
@@ -56,18 +56,15 @@ public class AsyncSocketServerTest {
 	@Test
 	public void testAsyncSocketServer() throws Exception {
 		ResourceLeakDetector.setLevel(Level.ADVANCED);
-		TopLevelConfig topConfig=new TopLevelConfig();
-		final ServerMain server = new ServerMain(topConfig);
+		TransientMockNetworkOfNodes mockNetworkOfNodes=new TransientMockNetworkOfNodes();
 		final CountDownLatch serverDoneBarrier = new CountDownLatch(NB_CLIENTS*NUMBER_OF_MESSAGE);
-		MessageEchoApp serverSideCountingHandler=new MessageEchoApp(server, serverDoneBarrier);
+		MessageEchoApp serverSideCountingHandler=new MessageEchoApp(mockNetworkOfNodes.server1, serverDoneBarrier);
 		
-		NodeIPEndpoint serverEndpoint=new NodeIPEndpoint(server.getLocalIdentifier(), new InetSocketAddress(server.getNetworkServer().getListeningPort()));
-		final NetworkClientConnection connection = new NetworkClientConnection(null, serverEndpoint, 0);
 		final CountDownLatch clientsDoneBarrier = new CountDownLatch(NB_CLIENTS);
 		for(int i=0; i<NB_CLIENTS; i++){
 			new Thread(){ @Override public void run() {
 					try {
-						doNettyClientWrite(connection);
+						doNettyClientWrite(mockNetworkOfNodes.client1ToServer1Connection);
 						clientsDoneBarrier.countDown();
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -76,10 +73,10 @@ public class AsyncSocketServerTest {
 			}.start();
 		}
 		clientsDoneBarrier.await();
-		connection.close();
+		mockNetworkOfNodes.client1ToServer1Connection.close();
 		serverDoneBarrier.await();
 		
-		server.networkServer.stopAcceptingConnections();
+		mockNetworkOfNodes.server1.networkServer.stopAcceptingConnections();
 
 		assertEquals(NB_CLIENTS*NUMBER_OF_MESSAGE, serverSideCountingHandler.numberOfMessagesReceived.intValue());
 	}

@@ -9,6 +9,7 @@ import org.peercentrum.blob.P2PBlobRepository;
 import org.peercentrum.blob.P2PBlobRepositoryFS;
 import org.peercentrum.core.nodegossip.NodeGossipApplication;
 import org.peercentrum.network.BaseApplicationMessageHandler;
+import org.peercentrum.network.NetworkApplication;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkServer;
 import org.peercentrum.network.NodeIdentity;
@@ -16,7 +17,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ServerMain implements Runnable {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ServerMain.class);
+	public static final String BLOB_REPOSITORY_DIRNAME = "blobRepository";
+
+  public static final String NODE_DB_FILENAME = "node.db";
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(ServerMain.class);
 	
 	protected TopLevelConfig topConfig;
   protected NodeIdentity nodeIdentity;
@@ -29,8 +34,7 @@ public class ServerMain implements Runnable {
 		this.topConfig=configNode;
 		nodeIdentity=new NodeIdentity(topConfig);
 
-//  this.nodeDatabase=new NodeDatabase(null);
-		this.nodeDatabase=new NodeDatabase(topConfig.getFileRelativeFromConfigDirectory("node.db"));
+		this.nodeDatabase=new NodeDatabase(topConfig.getFileRelativeFromConfigDirectory(NODE_DB_FILENAME));
 
     networkServer = new NetworkServer(this);
 
@@ -69,13 +73,13 @@ public class ServerMain implements Runnable {
 		}
 	}
 
-  private void startApplications() throws Exception {
+  public void startApplications() throws Exception {
     //TODO Load the applications from the topConfig file, dynamically, resolving dependencies, ... Maybe we need a OSGI container now?
     //TODO Add application lifecycle OSGI or custom...
     new Thread(new NodeGossipApplication(this)).start();
 
     P2PBlobConfig blobConfig=(P2PBlobConfig) topConfig.getAppConfig(P2PBlobConfig.class);
-    File repositoryPath = topConfig.getFileRelativeFromConfigDirectory("blobRepository");
+    File repositoryPath = topConfig.getFileRelativeFromConfigDirectory(BLOB_REPOSITORY_DIRNAME);
     P2PBlobRepository blobRepository=new P2PBlobRepositoryFS(repositoryPath);
     new P2PBlobApplication(this, blobRepository);
   }

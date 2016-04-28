@@ -83,7 +83,7 @@ public class KBuckets {
   public void populateFromNodeDatabase(NodeDatabase nodeDatabase) {
     List<NodeMetaData> startingNodes = nodeDatabase.getAllNodeInformation(KIdentifier.NB_BITS*KBucket.K_BUCKET_SIZE);
     for(NodeMetaData node : startingNodes){
-      KIdentifier idToAdd=new KIdentifier(node.publicKey.getBytes());
+      KIdentifier idToAdd=new KIdentifier(node.nodeIdentifier.getBytes());
       if(idToAdd.equals(this.localId)==false){
         maybeAdd(idToAdd);
       }
