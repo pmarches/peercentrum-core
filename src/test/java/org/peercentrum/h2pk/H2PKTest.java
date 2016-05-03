@@ -8,11 +8,11 @@ import org.junit.Test;
 import org.peercentrum.consensusprocess.ConsensusThreshold;
 import org.peercentrum.consensusprocess.MockTriggerableThreshold;
 import org.peercentrum.consensusprocess.UniqueNodeList;
-import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.ServerMain;
 import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NodeIdentity;
+import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
 
 
 public class H2PKTest {
@@ -22,7 +22,7 @@ public class H2PKTest {
 		NetworkClient networkClient=null;
 		HashToPublicKeyStandaloneClient client=null;
 		UniqueNodeList sharedUNL = new UniqueNodeList();
-		NodeDatabase sharedNodeDatabase = new NodeDatabase(null);
+		NodeStatisticsDatabase sharedNodeDatabase = new NodeStatisticsDatabase(null);
 		HashToPublicKeyApplication[] apps=new HashToPublicKeyApplication[NB_NODES]; 
 		ConsensusThreshold mockThreshold=new MockTriggerableThreshold(1, NB_NODES);
 		for(int i=0; i<NB_NODES; i++){

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeMetaData;
+import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
 
 
 public class KBuckets {
@@ -80,7 +80,7 @@ public class KBuckets {
     return closestMatches;
   }
 
-  public void populateFromNodeDatabase(NodeDatabase nodeDatabase) {
+  public void populateFromNodeDatabase(NodeStatisticsDatabase nodeDatabase) {
     List<NodeMetaData> startingNodes = nodeDatabase.getAllNodeInformation(KIdentifier.NB_BITS*KBucket.K_BUCKET_SIZE);
     for(NodeMetaData node : startingNodes){
       KIdentifier idToAdd=new KIdentifier(node.nodeIdentifier.getBytes());

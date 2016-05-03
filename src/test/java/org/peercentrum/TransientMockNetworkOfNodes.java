@@ -8,7 +8,6 @@ import org.peercentrum.blob.P2PBlobConfig;
 import org.peercentrum.blob.P2PBlobRepository;
 import org.peercentrum.blob.P2PBlobRepositoryFS;
 import org.peercentrum.blob.P2PBlobStandaloneClient;
-import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.ServerMain;
 import org.peercentrum.core.TestUtilities;
@@ -20,6 +19,7 @@ import org.peercentrum.network.NetworkApplication;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkClientConnection;
 import org.peercentrum.network.NodeIdentity;
+import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
 import org.peercentrum.settlement.SettlementConfig;
 
 import com.google.common.io.Files;
@@ -92,7 +92,7 @@ public class TransientMockNetworkOfNodes {
   
   private void configureClient() throws Exception {
     client1Config = generateConfiguration("clientNode1");
-    NodeDatabase clientNodeDatabase=new NodeDatabase(null);
+    NodeStatisticsDatabase clientNodeDatabase=new NodeStatisticsDatabase(null);
     networkClient1=new NetworkClient(new NodeIdentity(client1Config), clientNodeDatabase);
     clientNodeDatabase.mapNodeIdToAddress(server1.getLocalIdentifier(), new InetSocketAddress(server1.getNetworkServer().getListeningPort()));
     clientNodeDatabase.mapNodeIdToAddress(commonNodeId, InetSocketAddress.createUnresolved("commonNode.com", 1234));

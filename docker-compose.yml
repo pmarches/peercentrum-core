@@ -13,6 +13,7 @@ services:
       - ./permanentMockNetwork.testdata/node1/:/runtime
     depends_on:
       - bootstrapernode
+    entrypoint: bash -c "sleep 1; java -jar /pc/org-peercentrum-core-1.1-SNAPSHOT.jar /runtime/peercentrum-config.yaml"
 
   node2:
     image: pmarches/peercentrum
@@ -20,3 +21,4 @@ services:
       - ./permanentMockNetwork.testdata/node2/:/runtime
     depends_on:
       - bootstrapernode
+    entrypoint: bash -c "sleep 2; java -jar /pc/org-peercentrum-core-1.1-SNAPSHOT.jar /runtime/peercentrum-config.yaml"

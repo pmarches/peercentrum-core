@@ -13,6 +13,7 @@ import org.peercentrum.network.NetworkApplication;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkServer;
 import org.peercentrum.network.NodeIdentity;
+import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,14 +28,14 @@ public class ServerMain implements Runnable {
   protected NodeIdentity nodeIdentity;
 	protected NetworkServer networkServer;
   protected NetworkClient networkClient;
-  protected NodeDatabase nodeDatabase;
+  protected NodeStatisticsDatabase nodeDatabase;
   protected Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler> allApplicationHandler=new Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler>();
 
 	public ServerMain(TopLevelConfig configNode) throws Exception {
 		this.topConfig=configNode;
 		nodeIdentity=new NodeIdentity(topConfig);
 
-		this.nodeDatabase=new NodeDatabase(topConfig.getFileRelativeFromConfigDirectory(NODE_DB_FILENAME));
+		this.nodeDatabase=new NodeStatisticsDatabase(topConfig.getFileRelativeFromConfigDirectory(NODE_DB_FILENAME));
 
     networkServer = new NetworkServer(this);
 
@@ -86,7 +87,7 @@ public class ServerMain implements Runnable {
 
 	
 	
-  public NodeDatabase getNodeDatabase(){
+  public NodeStatisticsDatabase getNodeDatabase(){
     return nodeDatabase;
   }
 

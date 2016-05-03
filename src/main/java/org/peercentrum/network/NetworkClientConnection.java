@@ -1,6 +1,7 @@
 package org.peercentrum.network;
 
 import java.net.InetSocketAddress;
+import java.time.Instant;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -9,6 +10,7 @@ import org.peercentrum.core.NodeIPEndpoint;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.ProtobufByteBufCodec;
+import org.peercentrum.nodestatistics.NodeStatisticsDatabase.ConnectionHistoryType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +39,7 @@ public class NetworkClientConnection implements AutoCloseable {
 
   NioEventLoopGroup workerGroup = new NioEventLoopGroup(); //TODO Pass-in as argument
   ChannelFuture socketChannelFuture;
-  AtomicInteger requestCounter = new AtomicInteger();
+  AtomicInteger requestNumberGenerator = new AtomicInteger();
   ConcurrentHashMap<Integer, DefaultPromise<ByteBuf>> pendingRequests = new  ConcurrentHashMap<>();
   NodeIdentifier localNodeId;
   NodeIPEndpoint remoteEndpoint;
@@ -59,7 +61,13 @@ public class NetworkClientConnection implements AutoCloseable {
     socketChannelFuture = b.connect(remoteEndpoint.getAddress());
     socketChannelFuture.addListener(new GenericFutureListener<Future<? super Void>>() {
       @Override public void operationComplete(Future<? super Void> future) throws Exception {
-        sendLocalNodeMetaData(localListeningPort);
+        if(future.isSuccess()){
+          networkClient.nodeDatabase.recordConnectionEvent(remoteEndpoint.getNodeId(), ConnectionHistoryType.OUTBOUND_CONNECTION_SUCCESS, Instant.now());
+          sendLocalNodeMetaData(localListeningPort);
+        }
+        else{
+          networkClient.nodeDatabase.recordConnectionEvent(remoteEndpoint.getNodeId(), ConnectionHistoryType.OUTBOUND_CONNECTION_FAILED, Instant.now());
+        }
       }
     });
   }
@@ -74,6 +82,11 @@ public class NetworkClientConnection implements AutoCloseable {
       ch.pipeline().addLast(headerAndPayloadHandler);
 
       ch.pipeline().addLast(new HeaderAndPayloadToBytesEncoder());
+    };
+    
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+      System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!EXCEPTION CAUGHT!!!!!!!!!!!!!");
+      ctx.close();
     };
   };
 
@@ -114,7 +127,7 @@ public class NetworkClientConnection implements AutoCloseable {
     PB.HeaderMsg.Builder headerBuilder=PB.HeaderMsg.newBuilder();
     headerBuilder.setDestinationApplicationId(ByteString.copyFrom(destinationApp.getBytes()));
 
-    int thisRequestNumber=requestCounter.incrementAndGet();
+    int thisRequestNumber=requestNumberGenerator.incrementAndGet();
     headerBuilder.setRequestNumber(thisRequestNumber);
     DefaultPromise<ByteBuf> responseFuture = new DefaultPromise<ByteBuf>(socketChannelFuture.channel().eventLoop());
     if(expectResponse){

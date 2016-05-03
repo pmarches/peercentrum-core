@@ -2,12 +2,12 @@ package org.peercentrum.core.nodegossip;
 
 import java.net.InetSocketAddress;
 
-import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.NodeIPEndpoint;
 import org.peercentrum.core.PB;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkClientConnection;
+import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +31,7 @@ public class NodeGossipClient {
     integrateGossipResponse(responseFuture.get(), client.getNodeDatabase());
   }
 
-  protected void integrateGossipResponse(PB.GossipMessage response, NodeDatabase nodeDb) {
+  protected void integrateGossipResponse(PB.GossipMessage response, NodeStatisticsDatabase nodeDb) {
     if(response.hasReply()){
       PB.GossipReplyMorePeers gossipReply = response.getReply();
       for(PB.PeerEndpointMsg peer : gossipReply.getPeersList()){

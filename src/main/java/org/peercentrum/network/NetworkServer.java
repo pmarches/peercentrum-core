@@ -66,6 +66,12 @@ public class NetworkServer { //TODO implement AutoClosable
   private GenericFutureListener<Future<Channel>> onSslHandshakeCompletes=new GenericFutureListener<Future<Channel>>() {
     @Override
     public void operationComplete(Future<Channel> future) throws Exception {
+      if(future.isSuccess()==false){
+        LOGGER.debug("Failed to complete SSL handshake with ");
+        future.cancel(true);
+        return;
+      }
+
       SocketChannel channel = (SocketChannel) future.get();
       SslHandler sslHandler=(SslHandler) channel.pipeline().get(TLS_HANDLER_NAME);
       X509Certificate[] remoteCertificate = sslHandler.engine().getSession().getPeerCertificateChain();

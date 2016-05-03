@@ -1,7 +1,6 @@
 package org.peercentrum.core.nodegossip;
 
 import org.peercentrum.core.ApplicationIdentifier;
-import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIPEndpoint;
 import org.peercentrum.core.NodeMetaData;
 import org.peercentrum.core.PB;
@@ -10,6 +9,7 @@ import org.peercentrum.core.ServerMain;
 import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkClient;
+import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,7 +56,7 @@ public class NodeGossipApplication extends BaseApplicationMessageHandler impleme
 	public HeaderAndPayload generateReponseFromQuery(ChannelHandlerContext ctx, HeaderAndPayload receivedMessage) {
 		try {
 			LOGGER.debug("generateReponseFromQuery");
-			NodeDatabase nodeDb = serverMain.getNodeDatabase();
+			NodeStatisticsDatabase nodeDb = serverMain.getNodeDatabase();
 			
 			if(receivedMessage.header.hasApplicationSpecificBlockLength()==false){
 				LOGGER.error("Request is missing the application block payload");

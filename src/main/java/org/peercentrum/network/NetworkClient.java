@@ -5,8 +5,8 @@ import java.net.InetSocketAddress;
 import java.util.HashMap;
 
 import org.peercentrum.core.ApplicationIdentifier;
-import org.peercentrum.core.NodeDatabase;
 import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
 import org.peercentrum.core.NodeIPEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,12 +21,12 @@ public class NetworkClient implements Closeable {
 	//TODO maybe use a good caching library for this cache?
 	//FIXME This cache will work only for a small number of nodes! 
 	protected HashMap<NodeIdentifier, NetworkClientConnection> connectionCache=new HashMap<>();
-	protected NodeDatabase nodeDatabase;
+	protected NodeStatisticsDatabase nodeDatabase;
 	protected int localListeningPort=0;
   public boolean useEncryption=true;
   protected NodeIdentity localIdentity;
 	
-  public NetworkClient(NodeIdentity localIdentity, NodeDatabase nodeDatabase) throws Exception {
+  public NetworkClient(NodeIdentity localIdentity, NodeStatisticsDatabase nodeDatabase) throws Exception {
     this.localIdentity=localIdentity;
 		this.nodeDatabase=nodeDatabase;
 	}
@@ -85,7 +85,7 @@ public class NetworkClient implements Closeable {
 		return responseFuture;
 	}	
 
-	public NodeDatabase getNodeDatabase(){
+	public NodeStatisticsDatabase getNodeDatabase(){
 	  return nodeDatabase;
 	}
 

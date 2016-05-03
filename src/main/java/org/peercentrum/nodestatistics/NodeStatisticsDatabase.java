@@ -1,13 +1,16 @@
-package org.peercentrum.core;
+package org.peercentrum.nodestatistics;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.peercentrum.core.NodeIdentifier;
+import org.peercentrum.core.NodeMetaData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tmatesoft.sqljet.core.SqlJetException;
@@ -17,21 +20,32 @@ import org.tmatesoft.sqljet.core.table.ISqlJetTable;
 import org.tmatesoft.sqljet.core.table.ISqlJetTransaction;
 import org.tmatesoft.sqljet.core.table.SqlJetDb;
 
-public class NodeDatabase implements AutoCloseable {
-	private static final Logger LOGGER = LoggerFactory.getLogger(NodeDatabase.class);
+public class NodeStatisticsDatabase implements AutoCloseable {
+	private static final Logger LOGGER = LoggerFactory.getLogger(NodeStatisticsDatabase.class);
 
 	static final String NODE_INFO_TABLE_NAME = "NODE_INFO";
 	static final String NODE_APPLICATION_TABLE_NAME = "NODE_APPLICATION";
+  static final String CONNECTION_HISTORY_TABLE_NAME = "CONNECTION_HISTORY";
+
 //	static final String NODE_APPLICATION_INDEX_NAME = "NODE_ID_APP";
 	static final String ENDPOINT_ADDRESS_FN = "endPointAddress";
 	static final String ENDPOINT_PORT_FN = "endPointPort";
 	static final String NODE_ID_FN = "nodeId";
+
 	
 	protected SqlJetDb db;
 	protected ISqlJetTable nodeInfoTable;
 	protected ISqlJetTable nodeApplicationTable;
 	
-	public NodeDatabase(File nodeDatabasePath) {
+	public enum ConnectionHistoryType {
+    OUTBOUND_CONNECTION_SUCCESS,
+    OUTBOUND_CONNECTION_FAILED,
+	  INBOUND_CONNECTION_SUCCESS,
+	  CONNECTION_DROPPED,
+	  FAILED_PROTOCOL,
+	}
+	
+	public NodeStatisticsDatabase(File nodeDatabasePath) {
 		try {
 			boolean schemaNeedsToBeCreated;
 			if(nodeDatabasePath==null){
@@ -64,7 +78,14 @@ public class NodeDatabase implements AutoCloseable {
 					+ ");");
 			//TODO Maybe the index needs to be on application instead of nodeId
 //			db.createIndex("CREATE INDEX " + NODE_APPLICATION_INDEX_NAME + " ON "+NODE_APPLICATION_TABLE_NAME+"(nodeId)");
-			db.commit();
+
+	     db.createTable("create table "+CONNECTION_HISTORY_TABLE_NAME+"("
+	          + NODE_ID_FN+" BLOB, "
+	          + " EVENT_TYPE INTEGER, "
+            + " EVENT_TIMESTAMP INTEGER "
+	          + ");");
+	     
+	     db.commit();
 		}
 		nodeInfoTable = db.getTable(NODE_INFO_TABLE_NAME);
 		nodeApplicationTable = db.getTable(NODE_APPLICATION_TABLE_NAME);
@@ -170,6 +191,10 @@ public class NodeDatabase implements AutoCloseable {
 //		return idToPeer.values().iterator();
 //	}
 
+	public void recordConnectionEvent(NodeIdentifier remoteNode, ConnectionHistoryType connectionEvent, Instant when){
+	  LOGGER.info("Recording that "+remoteNode+" has "+connectionEvent+" at "+when);
+	}
+	
 	@Override
 	public void close() throws IOException {
 		try {
