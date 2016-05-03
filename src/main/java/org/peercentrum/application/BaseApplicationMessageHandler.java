@@ -1,8 +1,9 @@
-package org.peercentrum.network;
+package org.peercentrum.application;
 
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.HeaderMsg;
+import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.core.ServerMain;
 
 import io.netty.channel.ChannelHandlerContext;

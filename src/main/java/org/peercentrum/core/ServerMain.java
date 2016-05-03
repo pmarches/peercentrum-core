@@ -3,13 +3,12 @@ package org.peercentrum.core;
 import java.io.File;
 import java.util.Hashtable;
 
+import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.blob.P2PBlobConfig;
 import org.peercentrum.blob.P2PBlobRepository;
 import org.peercentrum.blob.P2PBlobRepositoryFS;
 import org.peercentrum.core.nodegossip.NodeGossipApplication;
-import org.peercentrum.network.BaseApplicationMessageHandler;
-import org.peercentrum.network.NetworkApplication;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkServer;
 import org.peercentrum.network.NodeIdentity;
@@ -30,7 +29,7 @@ public class ServerMain implements Runnable {
   protected NetworkClient networkClient;
   protected NodeStatisticsDatabase nodeDatabase;
   protected Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler> allApplicationHandler=new Hashtable<ApplicationIdentifier, BaseApplicationMessageHandler>();
-
+  
 	public ServerMain(TopLevelConfig configNode) throws Exception {
 		this.topConfig=configNode;
 		nodeIdentity=new NodeIdentity(topConfig);

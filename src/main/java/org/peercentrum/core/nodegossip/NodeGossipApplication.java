@@ -1,12 +1,12 @@
 package org.peercentrum.core.nodegossip;
 
+import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIPEndpoint;
 import org.peercentrum.core.NodeMetaData;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.ServerMain;
-import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.nodestatistics.NodeStatisticsDatabase;

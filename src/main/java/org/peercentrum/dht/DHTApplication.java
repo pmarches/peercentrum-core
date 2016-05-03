@@ -4,6 +4,7 @@ import java.net.InetSocketAddress;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.DHTFindMsg;
@@ -12,7 +13,6 @@ import org.peercentrum.core.PB.DHTTopLevelMsg.Builder;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.ServerMain;
 import org.peercentrum.dht.selfregistration.SelfRegistrationEntry;
-import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkServer;
 import org.slf4j.Logger;

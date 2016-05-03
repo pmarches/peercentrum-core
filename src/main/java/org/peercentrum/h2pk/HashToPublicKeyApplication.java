@@ -2,6 +2,7 @@ package org.peercentrum.h2pk;
 
 import java.util.List;
 
+import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.consensusprocess.ConsensusProcess;
 import org.peercentrum.consensusprocess.ConsensusThreshold;
 import org.peercentrum.consensusprocess.ProposedTransactions;
@@ -14,7 +15,6 @@ import org.peercentrum.core.PB.H2PKProposedTransactions;
 import org.peercentrum.core.PB.HashToPublicKeyMessage;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.ServerMain;
-import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

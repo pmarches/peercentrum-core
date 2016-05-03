@@ -1,13 +1,13 @@
 package org.peercentrum.settlement;
 
 import org.bitcoin.paymentchannel.Protos;
+import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.HeaderMsg.Builder;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.ServerMain;
-import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

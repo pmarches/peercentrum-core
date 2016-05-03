@@ -2,6 +2,7 @@ package org.peercentrum.network;
 
 import java.net.InetSocketAddress;
 
+import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.NetworkMessage;

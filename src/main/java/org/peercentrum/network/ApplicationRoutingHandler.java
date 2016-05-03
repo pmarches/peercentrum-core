@@ -1,5 +1,6 @@
 package org.peercentrum.network;
 
+import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

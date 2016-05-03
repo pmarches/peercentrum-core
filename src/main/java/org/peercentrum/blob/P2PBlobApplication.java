@@ -2,6 +2,7 @@ package org.peercentrum.blob;
 
 import java.nio.ByteBuffer;
 
+import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.blob.P2PBlobRangeSet.DiscreteIterator;
 import org.peercentrum.core.ApplicationIdentifier;
 import org.peercentrum.core.PB;
@@ -13,7 +14,6 @@ import org.peercentrum.core.PB.P2PBlobResponseMsg;
 import org.peercentrum.core.ProtobufByteBufCodec;
 import org.peercentrum.core.ServerMain;
 import org.peercentrum.h2pk.HashIdentifier;
-import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

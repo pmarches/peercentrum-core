@@ -8,8 +8,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
 import org.peercentrum.TransientMockNetworkOfNodes;
+import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.core.PB.HeaderMsg;
-import org.peercentrum.network.BaseApplicationMessageHandler;
 import org.peercentrum.network.HeaderAndPayload;
 import org.peercentrum.network.NetworkClientConnection;
 
