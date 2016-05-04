@@ -11,7 +11,7 @@ import org.peercentrum.TransientMockNetworkOfNodes;
 import org.peercentrum.application.BaseApplicationMessageHandler;
 import org.peercentrum.core.PB.HeaderMsg;
 import org.peercentrum.network.HeaderAndPayload;
-import org.peercentrum.network.NetworkClientConnection;
+import org.peercentrum.network.NetworkClientTCPConnection;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -81,7 +81,7 @@ public class AsyncSocketServerTest {
 		assertEquals(NB_CLIENTS*NUMBER_OF_MESSAGE, serverSideCountingHandler.numberOfMessagesReceived.intValue());
 	}
 
-	private void doNettyClientWrite(NetworkClientConnection connection) throws InterruptedException, ExecutionException {
+	private void doNettyClientWrite(NetworkClientTCPConnection connection) throws InterruptedException, ExecutionException {
 		ByteBuf helloWorldBuffer = Unpooled.wrappedBuffer("Hello world".getBytes());
 		Future<ByteBuf> helloWorldResponse=connection.sendRequestBytes(MessageEchoApp.ECHO_APP, helloWorldBuffer);
 

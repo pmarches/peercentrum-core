@@ -6,7 +6,7 @@ import org.bitcoinj.core.Coin;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.P2PBlobResponseMsg;
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.network.NetworkClientConnection;
+import org.peercentrum.network.NetworkClientTCPConnection;
 import org.peercentrum.settlement.SettlementApplicationClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,10 +22,10 @@ public class P2PBlobStandaloneClient {
 	private static final Logger LOGGER = LoggerFactory.getLogger(P2PBlobStandaloneClient.class);
   PriceLimits ourPriceModel=null;
 	
-	NetworkClientConnection connection;
+	NetworkClientTCPConnection connection;
 	SettlementApplicationClient settlementClient;
 	
-	public P2PBlobStandaloneClient(NetworkClientConnection connection, TopLevelConfig config, SettlementApplicationClient settlementClient) {
+	public P2PBlobStandaloneClient(NetworkClientTCPConnection connection, TopLevelConfig config, SettlementApplicationClient settlementClient) {
 	  this.connection=connection;
 	  this.settlementClient=settlementClient;
 	  P2PBlobConfig blobConfig=(P2PBlobConfig) config.getAppConfig(P2PBlobConfig.class);

@@ -17,7 +17,7 @@ import org.peercentrum.core.nodegossip.NodeGossipConfig;
 import org.peercentrum.h2pk.HashToPublicKeyConfig;
 import org.peercentrum.network.NetworkApplication;
 import org.peercentrum.network.NetworkClient;
-import org.peercentrum.network.NetworkClientConnection;
+import org.peercentrum.network.NetworkClientTCPConnection;
 import org.peercentrum.network.NodeIdentity;
 import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
 import org.peercentrum.settlement.SettlementConfig;
@@ -32,7 +32,7 @@ public class TransientMockNetworkOfNodes {
   public NetworkClient networkClient1;
 
   public TopLevelConfig client1Config;
-  public NetworkClientConnection client1ToServer1Connection;
+  public NetworkClientTCPConnection client1ToServer1Connection;
   
   public TransientMockNetworkOfNodes() {
     try{

@@ -9,7 +9,7 @@ import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.NodeMetaData;
 import org.peercentrum.core.PB;
 import org.peercentrum.network.NetworkClient;
-import org.peercentrum.network.NetworkClientConnection;
+import org.peercentrum.network.NetworkClientTCPConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -75,7 +75,7 @@ public class DHTClient {
 
     //TODO Make this parallel
     for(KIdentifier node:thisIterationOfClosest){
-      try (NetworkClientConnection conn=networkClient.createConnectionToPeer(new NodeIdentifier(node.getBytes()))) {
+      try (NetworkClientTCPConnection conn=networkClient.createConnectionToPeer(new NodeIdentifier(node.getBytes()))) {
         Future<PB.DHTTopLevelMsg> found = conn.sendRequestMsg(dhtApplicationID, topMsg.build());
         PB.DHTTopLevelMsg response=found.get();
         receivedMessageFrom(node);

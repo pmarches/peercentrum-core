@@ -22,7 +22,7 @@ import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.SettlementMsg;
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.network.NetworkClientConnection;
+import org.peercentrum.network.NetworkClientTCPConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +38,7 @@ public class SettlementApplicationClient implements Closeable {
   
   WalletAppKit clientKit;
   StoredPaymentChannelClientStates clientStoredStates;
-  NetworkClientConnection networkClient;
+  NetworkClientTCPConnection networkClient;
   SettlementMethodTable settlementMethodTable;
   Object paymentChannelIsOpenMonitor=new Object();
   Object paymentChannelIsClosed=new Object();
@@ -91,7 +91,7 @@ public class SettlementApplicationClient implements Closeable {
   };
   private PaymentChannelClient paymentChannel;
 
-  public SettlementApplicationClient(NetworkClientConnection networkClient, TopLevelConfig topConfig, SettlementMethodTable settlementMethodTable) {
+  public SettlementApplicationClient(NetworkClientTCPConnection networkClient, TopLevelConfig topConfig, SettlementMethodTable settlementMethodTable) {
     this.networkClient=networkClient;
     this.settlementMethodTable=settlementMethodTable;
     RegTestParams params=RegTestParams.get(); //FIXME

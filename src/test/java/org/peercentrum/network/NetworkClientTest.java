@@ -45,7 +45,7 @@ public class NetworkClientTest {
     NetworkClient client=new NetworkClient(new NodeIdentity(new NullConfig()), new NodeStatisticsDatabase(null));
     NodeIdentity fakeId=new NodeIdentity(new NullConfig());
     client.nodeDatabase.mapNodeIdToAddress(fakeId.getIdentifier(), InetSocketAddress.createUnresolved("192.168.1.231", 8888));
-    NetworkClientConnection connection1To2 = client.createConnectionToPeer(fakeId.getIdentifier());
+    NetworkClientTCPConnection connection1To2 = client.createConnectionToPeer(fakeId.getIdentifier());
     Thread.sleep(1000);
     connection1To2.close();
     client.close();
@@ -56,7 +56,7 @@ public class NetworkClientTest {
 //    ServerMain server1=new ServerMain(new NullConfig());
 //    NetworkClient client=new NetworkClient(new NodeIdentity(new NullConfig()), new NodeStatisticsDatabase(null));
 //    client.nodeDatabase.mapNodeIdToAddress(server1.getLocalIdentifier(), server1.getNetworkServer().getListeningAddress());
-//    NetworkClientConnection connection1To2 = client.createConnectionToPeer(server1.getLocalIdentifier());
+//    NetworkClientTCPConnection connection1To2 = client.createConnectionToPeer(server1.getLocalIdentifier());
 //    connection1To2.ping();
 //    connection1To2.close();
 //    server1.getNetworkServer().stopAcceptingConnections();

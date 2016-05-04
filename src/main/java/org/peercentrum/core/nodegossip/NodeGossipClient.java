@@ -6,7 +6,7 @@ import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.NodeIPEndpoint;
 import org.peercentrum.core.PB;
 import org.peercentrum.network.NetworkClient;
-import org.peercentrum.network.NetworkClientConnection;
+import org.peercentrum.network.NetworkClientTCPConnection;
 import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,7 +48,7 @@ public class NodeGossipClient {
   public void bootstrapGossiping(NodeIPEndpoint bootstrapEndpoint) throws Exception {
     if(bootstrapEndpoint!=null){
       LOGGER.info("Starting bootstrap with {}", bootstrapEndpoint);
-      NetworkClientConnection newConnection = new NetworkClientConnection(localClient, bootstrapEndpoint, reachableListeningPort);
+      NetworkClientTCPConnection newConnection = new NetworkClientTCPConnection(localClient, bootstrapEndpoint, reachableListeningPort);
       
       PB.GossipMessage.Builder gossipReqBuilder=PB.GossipMessage.newBuilder();
       gossipReqBuilder.setRequestMorePeers(PB.GossipRequestMorePeers.getDefaultInstance());

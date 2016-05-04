@@ -20,7 +20,7 @@ public class NetworkClient implements Closeable {
 	
 	//TODO maybe use a good caching library for this cache?
 	//FIXME This cache will work only for a small number of nodes! 
-	protected HashMap<NodeIdentifier, NetworkClientConnection> connectionCache=new HashMap<>();
+	protected HashMap<NodeIdentifier, NetworkClientTCPConnection> connectionCache=new HashMap<>();
 	protected NodeStatisticsDatabase nodeDatabase;
 	protected int localListeningPort=0;
   public boolean useEncryption=true;
@@ -34,28 +34,28 @@ public class NetworkClient implements Closeable {
 	@Override
 	public void close() {
 		synchronized (connectionCache) {
-			for(NetworkClientConnection conn : connectionCache.values()){
+			for(NetworkClientTCPConnection conn : connectionCache.values()){
 				conn.close();
 			}
 			connectionCache.clear();
 		}
 	}
 	
-	public NetworkClientConnection createConnectionToPeer(NodeIdentifier remoteId) throws Exception{
+	public NetworkClientTCPConnection createConnectionToPeer(NodeIdentifier remoteId) throws Exception{
 		InetSocketAddress remoteEndpoint=nodeDatabase.getEndpointByNodeIdentifier(remoteId);
 		if(remoteEndpoint==null){
 			throw new RuntimeException("No endpoint found for peer "+remoteId);
 		}
-		NetworkClientConnection newConnection = new NetworkClientConnection(this, new NodeIPEndpoint(remoteId, remoteEndpoint), localListeningPort);
+		NetworkClientTCPConnection newConnection = new NetworkClientTCPConnection(this, new NodeIPEndpoint(remoteId, remoteEndpoint), localListeningPort);
 		return newConnection;
 	}
 
-	public NetworkClientConnection maybeOpenConnectionToPeer(NodeIdentifier remoteId) throws Exception {
+	public NetworkClientTCPConnection maybeOpenConnectionToPeer(NodeIdentifier remoteId) throws Exception {
 		if(remoteId.equals(this.localIdentity.getIdentifier())){
 			return null;
 		}
 		synchronized(connectionCache){
-			NetworkClientConnection connectionToPeer=connectionCache.get(remoteId);
+			NetworkClientTCPConnection connectionToPeer=connectionCache.get(remoteId);
 			if(connectionToPeer==null){
 				connectionToPeer = createConnectionToPeer(remoteId);
 				if(connectionToPeer==null){
@@ -77,7 +77,7 @@ public class NetworkClient implements Closeable {
 			LOGGER.warn("Trying to send network request to our own node?");
 			return null;
 		}
-		NetworkClientConnection connection = maybeOpenConnectionToPeer(peerIdToExchangeWith);
+		NetworkClientTCPConnection connection = maybeOpenConnectionToPeer(peerIdToExchangeWith);
 		if(connection==null){
 			return null;
 		}

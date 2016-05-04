@@ -34,8 +34,8 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
-public class NetworkClientConnection implements AutoCloseable {
-  private static final Logger LOGGER = LoggerFactory.getLogger(NetworkClientConnection.class);
+public class NetworkClientTCPConnection implements AutoCloseable {
+  private static final Logger LOGGER = LoggerFactory.getLogger(NetworkClientTCPConnection.class);
 
   NioEventLoopGroup workerGroup = new NioEventLoopGroup(); //TODO Pass-in as argument
   ChannelFuture socketChannelFuture;
@@ -47,7 +47,7 @@ public class NetworkClientConnection implements AutoCloseable {
   InetSocketAddress serverEndpoint;
   private boolean useEncryption;
 
-  public NetworkClientConnection(NetworkClient networkClient, NodeIPEndpoint remoteEndpoint, final int localListeningPort) throws Exception {
+  public NetworkClientTCPConnection(NetworkClient networkClient, NodeIPEndpoint remoteEndpoint, final int localListeningPort) throws Exception {
     this.remoteEndpoint=remoteEndpoint;
     this.sslCtx = new ECDSASslContext(networkClient.localIdentity, new CheckSelfSignedNodeIdTrustManager(remoteEndpoint.getNodeId()));
     this.useEncryption=networkClient.useEncryption;

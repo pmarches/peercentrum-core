@@ -9,14 +9,14 @@ import org.junit.Test;
 import org.peercentrum.TransientMockNetworkOfNodes;
 import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.core.NodeIdentifier;
-import org.peercentrum.network.NetworkClientConnection;
+import org.peercentrum.network.NetworkClientTCPConnection;
 
 public class SettlementApplicationTest {
 
 //  @Test
 //  public void testPayNode() throws Exception {
 //    TransientMockNetworkOfNodes mockNodes=new TransientMockNetworkOfNodes();
-//    NetworkClientConnection clientToServerConnection = mockNodes.networkClient1.createConnectionToPeer(mockNodes.server1.getLocalIdentifier());
+//    NetworkClientTCPConnection clientToServerConnection = mockNodes.networkClient1.createConnectionToPeer(mockNodes.server1.getLocalIdentifier());
 //    double clientStartAmount=13.0;
 //    mockNodes.fundBitcoinWalletOfNode(mockNodes.settlementClient1.clientKit.wallet(), clientStartAmount);
 //
