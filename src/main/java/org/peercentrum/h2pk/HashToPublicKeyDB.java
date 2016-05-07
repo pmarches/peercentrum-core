@@ -251,7 +251,11 @@ public class HashToPublicKeyDB<T> extends ConsensusDB<HashToPublicKeyTransaction
 		if(obj==null){
 			return false;
 		}
-		HashToPublicKeyDB<T> otherDb=(HashToPublicKeyDB<T>) obj;
+		if(obj instanceof HashToPublicKeyDB==false){
+		  return false;
+		}
+		@SuppressWarnings("unchecked")
+    HashToPublicKeyDB<T> otherDb=(HashToPublicKeyDB<T>) obj;
 		if(dbVersion.equals(otherDb.dbVersion)==false){
 			return false;
 		}

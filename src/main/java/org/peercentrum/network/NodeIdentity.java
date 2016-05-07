@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -43,7 +42,6 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.io.Files;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.base64.Base64;
 import io.netty.util.CharsetUtil;
@@ -94,29 +92,29 @@ public class NodeIdentity {
 
 
     PKCS8EncodedKeySpec encodedKeySpec;
-    if(false){
-      PemReader privateKeyReader=new PemReader(new FileReader(this.localPrivateKeyFile));
-      PemObject privateKeyPEM=privateKeyReader.readPemObject();
-      privateKeyReader.close();
-      encodedKeySpec = new PKCS8EncodedKeySpec(privateKeyPEM.getContent());
-    }
-    else if(true){
+//    if(false){
+//      PemReader privateKeyReader=new PemReader(new FileReader(this.localPrivateKeyFile));
+//      PemObject privateKeyPEM=privateKeyReader.readPemObject();
+//      privateKeyReader.close();
+//      encodedKeySpec = new PKCS8EncodedKeySpec(privateKeyPEM.getContent());
+//    }
+//    else if(true){
       PEMParser privateKeyParser=new PEMParser(new FileReader(this.localPrivateKeyFile));
       PemObject privateKeyPEM=privateKeyParser.readPemObject();
       privateKeyParser.close();
       encodedKeySpec = new PKCS8EncodedKeySpec(privateKeyPEM.getContent());
-    }
-    else{
-      //For whatever reason PemReader is not accessible from outside their package
-      Class pemReaderClass=Class.forName("io.netty.handler.ssl.PemReader");
-      Method readPrivateKeyMethod = pemReaderClass.getDeclaredMethod("readPrivateKey", File.class);
-      readPrivateKeyMethod.setAccessible(true);
-      ByteBuf encodedKeyBuf = (ByteBuf) readPrivateKeyMethod.invoke(null, localPrivateKeyFile);
-      //    ByteBuf encodedKeyBuf = PemReader.readPrivateKey(localPrivateKeyFile);
-      byte[] encodedKey = new byte[encodedKeyBuf.readableBytes()];
-      encodedKeyBuf.readBytes(encodedKey).release();
-      encodedKeySpec = new PKCS8EncodedKeySpec(encodedKey);
-    }
+//    }
+//    else{
+//      //For whatever reason PemReader is not accessible from outside their package
+//      Class pemReaderClass=Class.forName("io.netty.handler.ssl.PemReader");
+//      Method readPrivateKeyMethod = pemReaderClass.getDeclaredMethod("readPrivateKey", File.class);
+//      readPrivateKeyMethod.setAccessible(true);
+//      ByteBuf encodedKeyBuf = (ByteBuf) readPrivateKeyMethod.invoke(null, localPrivateKeyFile);
+//      //    ByteBuf encodedKeyBuf = PemReader.readPrivateKey(localPrivateKeyFile);
+//      byte[] encodedKey = new byte[encodedKeyBuf.readableBytes()];
+//      encodedKeyBuf.readBytes(encodedKey).release();
+//      encodedKeySpec = new PKCS8EncodedKeySpec(encodedKey);
+//    }
     KeyFactory ecKeyFactory = KeyFactory.getInstance("EC", BC_PROVIDER);
     localPrivateECKey = (BCECPrivateKey) ecKeyFactory.generatePrivate(encodedKeySpec);
     localPublicECKey = (BCECPublicKey) localCertificateChainArray[0].getPublicKey();
@@ -132,19 +130,19 @@ public class NodeIdentity {
       return;
     }
     //Encode in PEM format, the format prefered by openssl
-    if(false){
-      PEMWriter pemWriter=new PEMWriter(new FileWriter(localPrivateKeyFile));
-      pemWriter.writeObject(localPrivateECKey);
-      pemWriter.close();
-    }
-    else{
+//    if(false){
+//      PEMWriter pemWriter=new PEMWriter(new FileWriter(localPrivateKeyFile));
+//      pemWriter.writeObject(localPrivateECKey);
+//      pemWriter.close();
+//    }
+//    else{
       String keyText = "-----BEGIN EC PRIVATE KEY-----\n" +
           Base64.encode(Unpooled.wrappedBuffer(localPrivateECKey.getEncoded()), true).toString(CharsetUtil.US_ASCII) +
           "\n-----END EC PRIVATE KEY-----\n";
       Files.write(keyText, localPrivateKeyFile, CharsetUtil.US_ASCII);
 
       Files.write(localId.toString(), new File(localPrivateKeyFile.getParentFile(), "localPublic.hash"), CharsetUtil.US_ASCII);
-    }
+//    }
 
     PEMWriter certificateWriter=new PEMWriter(new FileWriter(localCertificateFile));
     certificateWriter.writeObject(cert);
