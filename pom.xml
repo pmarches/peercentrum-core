@@ -129,14 +129,14 @@
 				<configuration>
 					<instructions>
 						<Export-Package>org.peercentrum</Export-Package>
-						<Private-Package>org.*</Private-Package>
+						<Private-Package>org.peercentrum.*</Private-Package>
 						<Bundle-Activator>org.peercentrum.osgi.OSGIActivator</Bundle-Activator>
-<!-- 						<Include-Resource>inline</Include-Resource> -->
+<!-- 						<Include-Resource>path/of/resource</Include-Resource> -->
 						<Import-Package>org.osgi.framework</Import-Package>
             <Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency>
-            <Embed-Directory>target/dependency</Embed-Directory>
-            <Embed-StripGroup>true</Embed-StripGroup>
-            <Embed-Transitive>true</Embed-Transitive>
+<!--             <Embed-Directory>target/dependency</Embed-Directory> -->
+<!--             <Embed-StripGroup>true</Embed-StripGroup> -->
+<!--             <Embed-Transitive>true</Embed-Transitive> -->
 					</instructions>
 				</configuration>
 			</plugin>
