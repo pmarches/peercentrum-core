@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.peercentrum.core</groupId>
-	<artifactId>org-peercentrum-core</artifactId>
+	<groupId>org.peercentrum</groupId>
+	<artifactId>peercentrum-core</artifactId>
 	<version>1.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>bundle</packaging>
 
-	<name>org-peercentrum-core</name>
+	<name>peercentrum-core</name>
 	<url>https://github.com/pmarches/peercentrum-core</url>
 
 	<properties>
@@ -15,6 +15,16 @@
 	</properties>
 
 	<dependencies>
+<!--     <dependency> -->
+<!--       <groupId>org.apache.felix</groupId> -->
+<!--       <artifactId>org.osgi.core</artifactId> -->
+<!--       <version>1.0.0</version> -->
+<!--     </dependency> -->
+			<dependency>
+		    <groupId>org.osgi</groupId>
+		    <artifactId>org.osgi.core</artifactId>
+		    <version>6.0.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.bitlet</groupId>
 			<artifactId>weupnp</artifactId>
@@ -24,6 +34,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.tmatesoft.sqljet</groupId>
@@ -42,16 +53,16 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>org.eclipse.jetty.websocket</groupId>
-			<artifactId>websocket-client</artifactId>
-			<version>9.2.1.v20140609</version>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>1.1</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.eclipse.jetty.websocket</groupId> -->
+<!-- 			<artifactId>websocket-client</artifactId> -->
+<!-- 			<version>9.2.1.v20140609</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.googlecode.json-simple</groupId> -->
+<!-- 			<artifactId>json-simple</artifactId> -->
+<!-- 			<version>1.1</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
@@ -73,16 +84,6 @@
 			<version>1.13</version>
 		</dependency>
 		<dependency>
-			<groupId>wf.bitcoin</groupId>
-			<artifactId>JavaBitcoindRpcClient</artifactId>
-			<version>0.9.9</version>
-		</dependency>
-		<dependency>
-			<groupId>org.bitcoinj</groupId>
-			<artifactId>bitcoinj-core</artifactId>
-			<version>0.13.6</version>
-		</dependency>
-		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk15on</artifactId>
 			<version>1.50</version>
@@ -92,21 +93,21 @@
 			<artifactId>bcpkix-jdk15on</artifactId>
 			<version>1.50</version>
 		</dependency>
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz-jobs</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-		<dependency>
-			  <groupId>org.javassist</groupId>
-			  <artifactId>javassist</artifactId>
-			  <version>3.20.0-GA</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.quartz-scheduler</groupId> -->
+<!-- 			<artifactId>quartz</artifactId> -->
+<!-- 			<version>2.2.1</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.quartz-scheduler</groupId> -->
+<!-- 			<artifactId>quartz-jobs</artifactId> -->
+<!-- 			<version>2.2.1</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			  <groupId>org.javassist</groupId> -->
+<!-- 			  <artifactId>javassist</artifactId> -->
+<!-- 			  <version>3.20.0-GA</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 	
 	<build>
@@ -120,6 +121,24 @@
     </resources>
     
 		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.5.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Export-Package>org.peercentrum</Export-Package>
+						<Private-Package>org.peercentrum.*</Private-Package>
+						<Bundle-Activator>org.peercentrum.osgi.OSGIActivator</Bundle-Activator>
+            <Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency>
+            <Embed-Directory>target/dependency</Embed-Directory>
+            <Embed-StripGroup>true</Embed-StripGroup>
+            <Embed-Transitive>true</Embed-Transitive>
+					</instructions>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -154,19 +173,36 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<mainClass>org.peercentrum.core.ServerMain</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
+      <plugin>
+        <groupId>org.xolstice.maven.plugins</groupId>
+        <artifactId>protobuf-maven-plugin</artifactId>
+        <version>0.5.0</version>
+        <configuration>
+          <protocExecutable>/usr/bin/protoc</protocExecutable>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>test-compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
+<!-- 				<version>2.6</version> -->
+<!-- 				<configuration> -->
+<!-- 					<archive> -->
+<!-- 						<manifest> -->
+<!-- 							<addClasspath>true</addClasspath> -->
+<!-- 							<mainClass>org.peercentrum.core.ServerMain</mainClass> -->
+<!-- 						</manifest> -->
+<!-- 					</archive> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 
 		</plugins>
 	</build>

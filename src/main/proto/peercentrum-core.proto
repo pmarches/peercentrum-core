@@ -191,11 +191,11 @@ message SettlementTermOfServiceByteStorage {
 
 /////////////// Settlement ////////////////
 
-import "paymentchannel.proto";
-
-message SettlementMsg {
-	repeated paymentchannels.TwoWayChannelMessage twoWayChannelMsg=1;
-};
+//import "paymentchannel.proto";
+//
+//message SettlementMsg {
+//	repeated paymentchannels.TwoWayChannelMessage twoWayChannelMsg=1;
+//};
 
 
 ////////////////// DHT ////////////////////
@@ -223,16 +223,16 @@ message DHTFoundMsg {
 
 ////////////// SelfRegistration DHT /////////
 message DHTReservationMsg { //See https://github.com/vinced/namecoin/blob/master/DESIGN-namecoin.md
-  optional bytes reservationHash;
-  optional bytes keyOwner;
-  optional bytes initialValue;
+  optional bytes reservationHash=1;
+  optional bytes keyOwner=2;
+  optional bytes initialValue=3;
 };
 
 message DHTUpdateValueMsg {
-  optional bytes keyToUpdate;
-  optional bytes firstTimeRandom;
-  optional uint32 sequence;
-  optional bytes newValue;
+  optional bytes keyToUpdate=1;
+  optional bytes firstTimeRandom=2;
+  optional uint32 sequence=3;
+  optional bytes newValue=4;
 };
 
 message DHTStoreValueMsg { //This is more akin to a transaction than a command.
@@ -243,8 +243,9 @@ message DHTStoreValueMsg { //This is more akin to a transaction than a command.
 };
 
 ////////////// QueueDHT ///////////////////
-message QueueDHTTransaction {
-  optional bytes key=1;
-  optional repeated bytes valuesToAppend=2;
-  optional uint32 numberOfElementsToTake=3;
-};
+//message QueueDHTTransaction {
+//  optional bytes key=1;
+//  optional repeated bytes valuesToAppend=2;
+//  optional uint32 numberOfElementsToTake=3;
+//};
+

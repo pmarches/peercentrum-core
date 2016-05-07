@@ -3,24 +3,17 @@ package org.peercentrum;
 import java.io.File;
 import java.net.InetSocketAddress;
 
-import org.peercentrum.blob.P2PBlobApplication;
 import org.peercentrum.blob.P2PBlobConfig;
-import org.peercentrum.blob.P2PBlobRepository;
-import org.peercentrum.blob.P2PBlobRepositoryFS;
-import org.peercentrum.blob.P2PBlobStandaloneClient;
 import org.peercentrum.core.NodeIdentifier;
 import org.peercentrum.core.ServerMain;
 import org.peercentrum.core.TestUtilities;
 import org.peercentrum.core.TopLevelConfig;
-import org.peercentrum.core.nodegossip.NodeGossipApplication;
 import org.peercentrum.core.nodegossip.NodeGossipConfig;
 import org.peercentrum.h2pk.HashToPublicKeyConfig;
-import org.peercentrum.network.NetworkApplication;
 import org.peercentrum.network.NetworkClient;
 import org.peercentrum.network.NetworkClientTCPConnection;
 import org.peercentrum.network.NodeIdentity;
 import org.peercentrum.nodestatistics.NodeStatisticsDatabase;
-import org.peercentrum.settlement.SettlementConfig;
 
 import com.google.common.io.Files;
 
@@ -66,7 +59,7 @@ public class TransientMockNetworkOfNodes {
 
   public TopLevelConfig generateConfiguration(String nodeName) {
     TopLevelConfig generatedConfig=new TopLevelConfig();
-    generatedConfig.setAppConfig(new SettlementConfig());
+//    generatedConfig.setAppConfig(new SettlementConfig());
     generatedConfig.setAppConfig(new NodeGossipConfig());
     P2PBlobConfig p2pConfig=new P2PBlobConfig();
     p2pConfig.transferPricingPerGigabyte=new Integer(1);

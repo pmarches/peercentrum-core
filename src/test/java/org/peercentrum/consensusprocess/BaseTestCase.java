@@ -22,12 +22,12 @@ public class BaseTestCase {
 	public static ConsensusTransaction tx6_clone;
 	public static MockTransaction tx7_invalid;
 
-	public static ProposedTransactions nodeAProposal_1_3;
-	public static ProposedTransactions nodeBProposal_2;
-	public static ProposedTransactions nodeBProposal_1_2_3;
-	public static ProposedTransactions nodeCProposal_1_3;
-	public static ProposedTransactions nodeDProposal_1_3;
-	public static ProposedTransactions nodeZProposal_1_2_3;
+	public static ProposedTransactions<ConsensusTransaction> nodeAProposal_1_3;
+	public static ProposedTransactions<ConsensusTransaction> nodeBProposal_2;
+	public static ProposedTransactions<ConsensusTransaction> nodeBProposal_1_2_3;
+	public static ProposedTransactions<ConsensusTransaction> nodeCProposal_1_3;
+	public static ProposedTransactions<ConsensusTransaction> nodeDProposal_1_3;
+	public static ProposedTransactions<ConsensusTransaction> nodeZProposal_1_2_3;
 
 	static{
 		nodeA = new NodeIdentifier("nodeA");
@@ -51,27 +51,27 @@ public class BaseTestCase {
 		tx6_clone=new MockTransaction(true, 6);
 		tx7_invalid=new MockTransaction(false, 7);
 		
-		nodeAProposal_1_3 = new ProposedTransactions(UnsignedLong.ONE, nodeA);
+		nodeAProposal_1_3 = new ProposedTransactions<>(UnsignedLong.ONE, nodeA);
 		nodeAProposal_1_3.addTransactions(tx1);
 		nodeAProposal_1_3.addTransactions(tx3);
 
-		nodeBProposal_2 = new ProposedTransactions(UnsignedLong.ONE, nodeB);
+		nodeBProposal_2 = new ProposedTransactions<>(UnsignedLong.ONE, nodeB);
 		nodeBProposal_2.addTransactions(tx2);
 
-		nodeBProposal_1_2_3 = new ProposedTransactions(UnsignedLong.ONE, nodeB);
+		nodeBProposal_1_2_3 = new ProposedTransactions<>(UnsignedLong.ONE, nodeB);
 		nodeBProposal_1_2_3.addTransactions(tx1);
 		nodeBProposal_1_2_3.addTransactions(tx2);
 		nodeBProposal_1_2_3.addTransactions(tx3);
 
-		nodeCProposal_1_3 = new ProposedTransactions(UnsignedLong.ONE, nodeC);
+		nodeCProposal_1_3 = new ProposedTransactions<>(UnsignedLong.ONE, nodeC);
 		nodeCProposal_1_3.addTransactions(tx1);
 		nodeCProposal_1_3.addTransactions(tx3);
 
-		nodeDProposal_1_3 = new ProposedTransactions(UnsignedLong.ONE, nodeD);
+		nodeDProposal_1_3 = new ProposedTransactions<>(UnsignedLong.ONE, nodeD);
 		nodeDProposal_1_3.addTransactions(tx1);
 		nodeDProposal_1_3.addTransactions(tx3);
 
-		nodeZProposal_1_2_3 = new ProposedTransactions(UnsignedLong.ONE, nodeZ);
+		nodeZProposal_1_2_3 = new ProposedTransactions<>(UnsignedLong.ONE, nodeZ);
 		nodeZProposal_1_2_3.addTransactions(tx1);
 		nodeZProposal_1_2_3.addTransactions(tx2);
 		nodeZProposal_1_2_3.addTransactions(tx3);

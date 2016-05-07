@@ -9,9 +9,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
+import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.peercentrum.core.PB;
 import org.peercentrum.h2pk.HashIdentifier;
-import org.spongycastle.crypto.digests.SHA256Digest;
 
 import com.google.protobuf.ByteString;
 

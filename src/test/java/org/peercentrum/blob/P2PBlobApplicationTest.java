@@ -13,7 +13,7 @@ public class P2PBlobApplicationTest {
 
   @Test
   public void testDownload() throws Exception {
-    P2PBlobStandaloneClient blobClient = new P2PBlobStandaloneClient(mockNodes.client1ToServer1Connection, mockNodes.client1Config, null);
+    P2PBlobStandaloneClient blobClient = new P2PBlobStandaloneClient(mockNodes.client1ToServer1Connection, mockNodes.client1Config);
 
     P2PBlobStoredBlobMemoryOnly bonjourMondeUpload=new P2PBlobStoredBlobMemoryOnly("Bonjour monde!\n".getBytes());
     HashIdentifier bonjourMondeHash=new HashIdentifier("3EC129755B093D2B403C893D33322D933D7F2C0889F70FBA75662D8319FF08A6");

@@ -2,12 +2,10 @@ package org.peercentrum.blob;
 
 import java.nio.ByteBuffer;
 
-import org.bitcoinj.core.Coin;
 import org.peercentrum.core.PB;
 import org.peercentrum.core.PB.P2PBlobResponseMsg;
 import org.peercentrum.core.TopLevelConfig;
 import org.peercentrum.network.NetworkClientTCPConnection;
-import org.peercentrum.settlement.SettlementApplicationClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,11 +21,9 @@ public class P2PBlobStandaloneClient {
   PriceLimits ourPriceModel=null;
 	
 	NetworkClientTCPConnection connection;
-	SettlementApplicationClient settlementClient;
 	
-	public P2PBlobStandaloneClient(NetworkClientTCPConnection connection, TopLevelConfig config, SettlementApplicationClient settlementClient) {
+	public P2PBlobStandaloneClient(NetworkClientTCPConnection connection, TopLevelConfig config) {
 	  this.connection=connection;
-	  this.settlementClient=settlementClient;
 	  P2PBlobConfig blobConfig=(P2PBlobConfig) config.getAppConfig(P2PBlobConfig.class);
 	  ourPriceModel=blobConfig.getPriceLimits();
 	}
@@ -97,9 +93,9 @@ public class P2PBlobStandaloneClient {
             long serverPricePerGB=quoteMsg.getSatoshiPerOutgoingGigaByte();
             if(ourPriceModel.isDownloadPriceWithinLimits(serverPricePerGB)){
               //Determine if we have that much money...
-              Coin microPaymentAmount=Coin.valueOf((nbBytesWeHaveToPayFor*serverPricePerGB)/1_000_000);
+//              Coin microPaymentAmount=Coin.valueOf((nbBytesWeHaveToPayFor*serverPricePerGB)/1_000_000);
               
-              settlementClient.makeMicroPayment(P2PBlobApplication.APP_ID, microPaymentAmount);
+//              settlementClient.makeMicroPayment(P2PBlobApplication.APP_ID, microPaymentAmount);
             }
           }
         }
